@@ -1,6 +1,8 @@
 import "@/app/globals.css"
+import type { Metadata } from "next"
 import { Geist_Mono, Manrope, Playfair_Display } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
+import { siteConfig } from "@/lib/site-config"
 import { cn } from "@/lib/utils"
 
 const playfairDisplayHeading = Playfair_Display({
@@ -14,6 +16,35 @@ const fontMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
 })
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    template: `%s | ${siteConfig.name}`,
+    default: siteConfig.name,
+  },
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+}
 
 export default function RootLayout({
   children,
