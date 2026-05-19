@@ -1,5 +1,17 @@
+import type { Metadata } from "next"
 import type { JSX } from "react/jsx-runtime"
 import { Button } from "@/components/ui/button"
+import { siteConfig } from "@/lib/site-config"
+
+export const metadata: Metadata = {
+  title: siteConfig.name,
+  description: siteConfig.description,
+  openGraph: {
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+  },
+}
 
 export default function Page(): JSX.Element {
   return (

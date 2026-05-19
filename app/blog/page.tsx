@@ -1,6 +1,18 @@
+import type { Metadata } from "next"
 import type { JSX } from "react/jsx-runtime"
 import { posts } from "@/.velite"
 import BlogCard from "@/components/blog/blog-card"
+import { siteConfig } from "@/lib/site-config"
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description: `Latest CCTV and surveillance insights — reviews, guides, and security tips from ${siteConfig.name}.`,
+  openGraph: {
+    url: `${siteConfig.url}/blog`,
+    title: `Blog | ${siteConfig.name}`,
+    description: `Latest CCTV and surveillance insights — reviews, guides, and security tips from ${siteConfig.name}.`,
+  },
+}
 
 export default function BlogPage(): JSX.Element {
   const sorted = [...posts].toSorted(

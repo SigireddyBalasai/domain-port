@@ -1,8 +1,32 @@
 import Link from "next/link"
+import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import type { JSX } from "react/jsx-runtime";
+import type { JSX } from "react/jsx-runtime"
 import { posts } from "@/.velite"
 import { MdxContent } from "@/components/mdx-content"
+import { siteConfig } from "@/lib/site-config"
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: { slug: string }
+}): Promise<Metadata> => {
+  const post = posts.find((p) => p.slug === params.slug)
+  if (!post) return {}
+
+  return {
+    title: post.title,
+    description: post.description ?? `Read about ${post.title} on ${siteConfig.name}`,
+    openGraph: {
+      type: "article",
+      url: `${siteConfig.url}/blog/${post.slug}`,
+      title: post.title,
+      description: post.description ?? `Read about ${post.title} on ${siteConfig.name}`,
+      publishedTime: post.publishedAt,
+      tags: post.tags,
+    },
+  }
+}
 
 export const generateStaticParams = (): { slug: string }[] =>
   posts.map((post) => ({ slug: post.slug }))
