@@ -10,6 +10,7 @@
     "build:content": "velite --clean",
     "build:next": "next build",
     "build": "run-s build:*",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
