@@ -1,37 +1,34 @@
-import { siteConfig } from "@/lib/site-config"
+import Rss from "rss"
 import { posts } from "@/.velite"
+import { siteConfig } from "@/lib/site-config"
 
-export const dynamic = "force-static"
+export async function GET(): Promise<Response> {
+  const feed = new Rss({
+    title: siteConfig.name,
+    description: siteConfig.description,
+    feed_url: `${siteConfig.url}/feed.xml`,
+    site_url: siteConfig.url,
+    language: "en",
+    pubDate: new Date().toUTCString(),
+    ttl: 60,
+  })
 
-export async function GET() {
-  const items = posts
+  posts
     .toSorted(
       (a, b) =>
         new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
     )
-    .map(
-      (post) => `
-    <item>
-      <title><![CDATA[${post.title}]]></title>
-      <description><![CDATA[${post.description ?? ""}]]></description>
-      <link>${siteConfig.url}/blog/${post.slug}</link>
-      <guid>${siteConfig.url}/blog/${post.slug}</guid>
-      <pubDate>${new Date(post.publishedAt).toUTCString()}</pubDate>
-    </item>`
-    )
-    .join("\n")
+    .forEach((post) => {
+      feed.item({
+        title: post.title,
+        description: post.description ?? "",
+        url: `${siteConfig.url}/blog/${post.slug}`,
+        guid: `${siteConfig.url}/blog/${post.slug}`,
+        date: new Date(post.publishedAt),
+      })
+    })
 
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>${siteConfig.name}</title>
-    <description>${siteConfig.description}</description>
-    <link>${siteConfig.url}</link>
-    <atom:link href="${siteConfig.url}/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-    ${items}
-  </channel>
-</rss>`
+  const xml = feed.xml({ indent: true })
 
   return new Response(xml, {
     headers: { "Content-Type": "application/xml; charset=utf-8" },

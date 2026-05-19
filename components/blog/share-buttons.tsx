@@ -1,5 +1,6 @@
 "use client"
 
+import type { JSX } from "react/jsx-runtime"
 import { siteConfig } from "@/lib/site-config"
 import { cn } from "@/lib/utils"
 
@@ -8,7 +9,10 @@ interface ShareButtonsProps {
   slug: string
 }
 
-export function ShareButtons({ title, slug }: ShareButtonsProps) {
+export const ShareButtons = ({
+  title,
+  slug,
+}: ShareButtonsProps): JSX.Element => {
   const url = `${siteConfig.url}/blog/${slug}`
   const text = `${title} — ${siteConfig.name}`
 
@@ -25,41 +29,45 @@ export function ShareButtons({ title, slug }: ShareButtonsProps) {
     },
   ]
 
-  const handleCopyLink = async () => {
+  const handleCopyLink = async (): Promise<void> => {
     try {
       await navigator.clipboard.writeText(url)
-    } catch {
-      // fallback
+    } catch (error) {
+      console.error("Failed to copy: ", error)
     }
   }
 
   return (
     <div className="flex items-center gap-2 pt-6">
       <span className="text-sm text-muted-foreground">Share:</span>
-      {shareLinks.map((link) => (
-        <a
-          key={link.name}
-          href={link.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={link.label}
-          className={cn(
-            "inline-flex h-8 w-8 items-center justify-center rounded-md border text-xs transition-colors",
-            "hover:bg-secondary hover:text-foreground"
-          )}
-        >
-          {link.name}
-        </a>
-      ))}
+      {shareLinks.map((link) => {
+        return (
+          <a
+            key={link.name}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={link.label}
+            className={cn(
+              "inline-flex h-8 w-8 items-center justify-center rounded-md border text-xs transition-colors",
+              "hover:bg-secondary hover:text-foreground"
+            )}
+          >
+            {link.name}
+          </a>
+        )
+      })}
       <button
         type="button"
-        onClick={handleCopyLink}
         aria-label="Copy link"
+        title="Copy link"
         className={cn(
           "inline-flex h-8 w-8 items-center justify-center rounded-md border text-xs transition-colors",
           "hover:bg-secondary hover:text-foreground"
         )}
-        title="Copy link"
+        onClick={() => {
+          handleCopyLink().catch(() => undefined)
+        }}
       >
         ⎘
       </button>

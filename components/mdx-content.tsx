@@ -13,16 +13,15 @@ const createMdxComponent = (
 ): React.ComponentType<{
   components?: Record<string, React.ComponentType>
 }> => {
-  const Fn = globalThis.Function as unknown as new (code: string) => (...args: unknown[]) => { default: React.ComponentType }
+  const Fn = globalThis.Function as unknown as new (
+    code: string
+  ) => (...args: unknown[]) => { default: React.ComponentType }
   const fn = new Fn(code)
 
   return fn({ ...runtime }).default
 }
 
-export const MdxContent = ({
-  code,
-  components,
-}: MdxProps): React.ReactNode => {
+export const MdxContent = ({ code, components }: MdxProps): React.ReactNode => {
   const Component = useMemo(() => createMdxComponent(code), [code])
 
   return <Component components={{ ...sharedComponents, ...components }} />

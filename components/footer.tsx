@@ -1,0 +1,54 @@
+"use client"
+
+import Link from "next/link"
+import type { JSX } from "react"
+import { siteConfig } from "@/lib/site-config"
+
+export function Footer(): JSX.Element {
+  return (
+    <footer className="border-t border-border/40 bg-background/95 py-12">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          <div>
+            <h3 className="font-bold">{siteConfig.name}</h3>
+            <p className="mt-2 text-sm text-muted-foreground">
+              {siteConfig.description}
+            </p>
+          </div>
+          <div>
+            <h4 className="font-semibold">Navigation</h4>
+            <nav className="mt-4 space-y-2">
+              <Link href="/" className="block text-sm hover:text-primary">
+                Home
+              </Link>
+              <Link href="/blog" className="block text-sm hover:text-primary">
+                Blog
+              </Link>
+            </nav>
+          </div>
+          <div>
+            <h4 className="font-semibold">Connect</h4>
+            <div className="mt-4 space-y-2">
+              {siteConfig.links.twitter && (
+                <a
+                  href={siteConfig.links.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-sm hover:text-primary"
+                >
+                  Twitter
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="mt-8 border-t border-border/40 pt-8 text-center text-sm text-muted-foreground">
+          <p>
+            &copy; {new Date().getFullYear()} {siteConfig.name}. All rights
+            reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  )
+}

@@ -1,8 +1,8 @@
 import "@/app/globals.css"
 import type { Metadata } from "next"
 import { Geist_Mono, Manrope, Playfair_Display } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@/components/google-analytics"
+import { ThemeProvider } from "@/components/theme-provider"
 import { siteConfig } from "@/lib/site-config"
 import { cn } from "@/lib/utils"
 

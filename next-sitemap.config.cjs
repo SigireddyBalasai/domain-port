@@ -10,9 +10,10 @@ module.exports = {
   },
   transform: async (config, path) => {
     let priority = 0.5
-    if (path === "/") priority = 1.0
-    else if (path === "/blog") priority = 0.8
-    else if (path.startsWith("/blog/")) priority = 0.6
+
+    if (path === "/") {priority = 1.0}
+    else if (path === "/blog") {priority = 0.8}
+    else if (path.startsWith("/blog/")) {priority = 0.6}
 
     return {
       loc: path,

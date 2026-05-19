@@ -4,10 +4,12 @@ import { notFound } from "next/navigation"
 import type { JSX } from "react/jsx-runtime"
 import type { BlogPosting, BreadcrumbList } from "schema-dts"
 import { posts } from "@/.velite"
+import { ShareButtons } from "@/components/blog/share-buttons"
+import { Footer } from "@/components/footer"
+import { Header } from "@/components/header"
 import { MdxContent } from "@/components/mdx-content"
 import { JsonLd } from "@/lib/json-ld"
 import { siteConfig } from "@/lib/site-config"
-import { ShareButtons } from "@/components/blog/share-buttons"
 
 interface InlineInterface2 {
   slug: string
@@ -15,16 +17,23 @@ interface InlineInterface2 {
 interface InlineInterface {
   params: InlineInterface2
 }
-export const generateMetadata = async ({
+
+export const generateStaticParams = (): InlineInterface2[] => {
+  return posts.map((post) => { return {
+    slug: post.slug,
+  } })
+}
+
+export const generateMetadata = ({
   params,
 }: InlineInterface): Promise<Metadata> => {
   const post = posts.find((p) => p.slug === params.slug)
 
   if (!post) {
-    return {}
+    return Promise.resolve({})
   }
 
-  return {
+  return Promise.resolve({
     title: post.title,
     description:
       post.description ?? `Read about ${post.title} on ${siteConfig.name}`,
@@ -37,17 +46,7 @@ export const generateMetadata = async ({
       publishedTime: post.publishedAt,
       tags: post.tags,
     },
-  }
-}
-
-export const generateStaticParams = (): { slug: string }[] =>
-  posts.map((post) => ({ slug: post.slug }))
-
-interface InlineInterface2 {
-  slug: string
-}
-interface InlineInterface {
-  params: InlineInterface2
+  })
 }
 export default function PostPage({ params }: InlineInterface): JSX.Element {
   const post = posts.find((p) => p.slug === params.slug)
@@ -95,31 +94,39 @@ export default function PostPage({ params }: InlineInterface): JSX.Element {
           url: `${siteConfig.url}/blog/${post.slug}`,
         }}
       />
-      <article className="mx-auto max-w-3xl py-12">
-        <Link
-          href="/blog"
-          className="mb-8 block text-sm text-muted-foreground hover:text-primary"
-        >
-          &larr; Back to Blog
-        </Link>
-        <time className="text-sm text-muted-foreground">
-          {new Date(post.publishedAt).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
-        </time>
-        <h1 className="mt-2 text-4xl font-bold">{post.title}</h1>
-        {post.description && (
-          <p className="mt-4 text-lg text-muted-foreground">
-            {post.description}
-          </p>
-        )}
-        <div className="blog-content mt-8">
-          <MdxContent code={post.content} />
-        </div>
-      </article>
-      <ShareButtons title={post.title} slug={post.slug} />
+      <div className="flex min-h-screen flex-col">
+        <Header />
+        <main className="flex-1">
+          <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+            <Link
+              href="/blog"
+              className="mb-8 block text-sm text-muted-foreground hover:text-primary"
+            >
+              &larr; Back to Blog
+            </Link>
+            <time className="text-sm text-muted-foreground">
+              {new Date(post.publishedAt).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </time>
+            <h1 className="mt-2 text-4xl font-bold">{post.title}</h1>
+            {post.description && (
+              <p className="mt-4 text-lg text-muted-foreground">
+                {post.description}
+              </p>
+            )}
+            <div className="blog-content mt-8">
+              <MdxContent code={post.content} />
+            </div>
+            <div className="mt-12">
+              <ShareButtons title={post.title} slug={post.slug} />
+            </div>
+          </article>
+        </main>
+        <Footer />
+      </div>
     </>
   )
 }
