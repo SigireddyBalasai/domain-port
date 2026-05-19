@@ -2,6 +2,7 @@ import "@/app/globals.css"
 import type { Metadata } from "next"
 import { Geist_Mono, Manrope, Playfair_Display } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Analytics } from "@/components/google-analytics"
 import { siteConfig } from "@/lib/site-config"
 import { cn } from "@/lib/utils"
 
@@ -64,7 +65,16 @@ export default function RootLayout({
       )}
     >
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-background focus:p-3 focus:text-foreground focus:outline-ring"
+        >
+          Skip to content
+        </a>
+        <ThemeProvider>
+          <main id="main-content">{children}</main>
+        </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
