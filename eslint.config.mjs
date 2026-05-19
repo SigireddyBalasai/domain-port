@@ -1,18 +1,36 @@
-import { defineConfig, globalIgnores } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTs from "eslint-config-next/typescript";
+import { sheriff } from "eslint-config-sheriff";
+import { defineConfig } from "eslint/config";
 
-const eslintConfig = defineConfig([
-  ...nextVitals,
-  ...nextTs,
-  // Override default ignores of eslint-config-next.
-  globalIgnores([
-    // Default ignores of eslint-config-next:
-    ".next/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
-  ]),
+const sheriffOptions = {
+  react: true,
+  next: true,
+  astro: false,
+  lodash: false,
+  remeda: false,
+  playwright: false,
+  storybook: false,
+  jest: false,
+  vitest: false,
+  tsconfigRootDir: import.meta.dirname,
+};
+
+export default defineConfig([
+  {
+    ignores: [
+      "components/ui/**/*",
+      "components/theme-provider.tsx",
+      "lib/utils.ts",
+      "next.config.mjs",
+      "postcss.config.mjs",
+    ],
+  },
+  ...sheriff(sheriffOptions),
+  {
+    files: ["components/mdx-content.tsx"],
+    rules: {
+      "react/function-component-definition": ["error", {
+        namedComponents: "arrow-function",
+      }],
+    },
+  },
 ]);
-
-export default eslintConfig;

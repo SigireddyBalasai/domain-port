@@ -31,6 +31,10 @@ pnpm-debug.log*
 # env files
 .env*.local
 
+# velite
+/.velite
+/public/static
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

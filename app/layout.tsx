@@ -1,12 +1,14 @@
-import { Geist, Geist_Mono, Manrope, Playfair_Display } from "next/font/google"
-
-import "./globals.css"
+import "@/app/globals.css"
+import { Geist_Mono, Manrope, Playfair_Display } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
-const playfairDisplayHeading = Playfair_Display({subsets:['latin'],variable:'--font-heading'});
+const playfairDisplayHeading = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-heading",
+})
 
-const manrope = Manrope({subsets:['latin'],variable:'--font-sans'})
+const manrope = Manrope({ subsets: ["latin"], variable: "--font-sans" })
 
 const fontMono = Geist_Mono({
   subsets: ["latin"],
@@ -17,12 +19,18 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
-}>) {
+}>): React.ReactNode {
   return (
     <html
-      lang="en"
       suppressHydrationWarning
-      className={cn("antialiased", fontMono.variable, "font-sans", manrope.variable, playfairDisplayHeading.variable)}
+      lang="en"
+      className={cn(
+        "antialiased",
+        fontMono.variable,
+        "font-sans",
+        manrope.variable,
+        playfairDisplayHeading.variable
+      )}
     >
       <body>
         <ThemeProvider>{children}</ThemeProvider>
