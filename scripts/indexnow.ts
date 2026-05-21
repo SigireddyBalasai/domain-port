@@ -62,7 +62,14 @@ const submitUrls = async (): Promise<void> => {
     urlList: [siteUrl],
   }
   log("  Endpoint:", endpoint)
-  log("  Payload:", JSON.stringify({ ...testPayload, key: testPayload.key.slice(0, 8) + "..." }, null, 2))
+  log(
+    "  Payload:",
+    JSON.stringify(
+      { ...testPayload, key: testPayload.key.slice(0, 8) + "..." },
+      null,
+      2
+    )
+  )
 
   try {
     const testResp = await axios.post(endpoint, testPayload, {
@@ -72,7 +79,12 @@ const submitUrls = async (): Promise<void> => {
     })
     log("  Response status:", testResp.status)
     log("  Response headers:", JSON.stringify(testResp.headers, null, 2))
-    log("  Response body:", typeof testResp.data === "string" ? testResp.data : JSON.stringify(testResp.data, null, 2))
+    log(
+      "  Response body:",
+      typeof testResp.data === "string"
+        ? testResp.data
+        : JSON.stringify(testResp.data, null, 2)
+    )
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err)
     log("  ERROR: Direct API call failed:", msg)

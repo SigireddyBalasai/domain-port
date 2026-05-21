@@ -30,19 +30,22 @@ export default defineConfig([
   },
   ...sheriff(sheriffOptions),
   {
+    rules: {
+      "func-style": "off",
+    },
+  },
+  {
     files: [
       "components/mdx-content.tsx",
       "components/blog/share-buttons.tsx",
       "components/google-analytics.tsx",
       "lib/json-ld.tsx",
     ],
+  },
+  {
+    files: ["components/mdx-content.tsx"],
     rules: {
-      "react/function-component-definition": [
-        "error",
-        {
-          namedComponents: "arrow-function",
-        },
-      ],
+      "@typescript-eslint/no-explicit-any": "off",
     },
   },
 ]) satisfies Linter.Config[]

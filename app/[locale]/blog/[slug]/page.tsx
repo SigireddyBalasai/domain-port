@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { getTranslations, setRequestLocale } from "next-intl/server"
 import type { JSX } from "react/jsx-runtime"
 import type {
   Article,
@@ -19,8 +20,6 @@ import type {
   VideoObject,
   WithContext,
 } from "schema-dts"
-import { getTranslations } from "next-intl/server"
-import { setRequestLocale } from "next-intl/server"
 import { posts } from "@/.velite"
 import { ShareButtons } from "@/components/blog/share-buttons"
 import Footer from "@/components/footer"
@@ -29,18 +28,21 @@ import { MdxContent } from "@/components/mdx-content"
 import { JsonLd } from "@/lib/json-ld"
 import { siteConfig } from "@/lib/site-config"
 
-type Props = {
+interface Props {
   params: Promise<{ locale: string; slug: string }>
 }
 
-export function generateStaticParams() {
+export const generateStaticParams = (): { locale: string; slug: string }[] => {
   const locales = ["en", "es", "fr"]
-  return locales.flatMap((locale) =>
-    posts.map((post) => ({
-      locale,
-      slug: post.slug,
-    }))
-  )
+
+  return locales.flatMap((locale) => {
+    return posts.map((post) => {
+      return {
+        locale,
+        slug: post.slug,
+      }
+    })
+  })
 }
 
 export const generateMetadata = async ({
@@ -116,6 +118,7 @@ export default async function PostPage({
   params,
 }: Props): Promise<JSX.Element> {
   const { locale, slug } = await params
+
   setRequestLocale(locale)
   const t = await getTranslations("common")
   const post = posts.find((p) => p.slug === slug)

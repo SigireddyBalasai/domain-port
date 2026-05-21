@@ -1,8 +1,7 @@
 import type { Metadata } from "next"
+import { getTranslations, setRequestLocale } from "next-intl/server"
 import type { JSX } from "react/jsx-runtime"
 import type { BreadcrumbList, CollectionPage } from "schema-dts"
-import { getTranslations } from "next-intl/server"
-import { setRequestLocale } from "next-intl/server"
 import { posts } from "@/.velite"
 import BlogCard from "@/components/blog/blog-card"
 import Footer from "@/components/footer"
@@ -10,12 +9,15 @@ import Header from "@/components/header"
 import { JsonLd } from "@/lib/json-ld"
 import { siteConfig } from "@/lib/site-config"
 
-type Props = {
+interface Props {
   params: Promise<{ locale: string }>
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export const generateMetadata = async ({
+  params,
+}: Props): Promise<Metadata> => {
   const { locale } = await params
+
   return {
     title: "Blog",
     description: `Latest CCTV and surveillance insights — reviews, guides, and security tips from ${siteConfig.name}.`,
@@ -36,8 +38,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function BlogPage({ params }: Props): Promise<JSX.Element> {
+export default async function BlogPage({
+  params,
+}: Props): Promise<JSX.Element> {
   const { locale } = await params
+
   setRequestLocale(locale)
   const t = await getTranslations("common")
 

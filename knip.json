@@ -1,0 +1,10 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": [
+    "velite.config.ts",
+    "next-sitemap.config.ts",
+    "app/**/*.{ts,tsx}",
+    "scripts/**/*.ts"
+  ],
+  "ignoreDependencies": ["shiki"]
+}

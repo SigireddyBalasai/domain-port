@@ -1,3 +1,10 @@
+import rehypeAutolinkHeadings from "rehype-autolink-headings"
+import rehypeExternalLinks from "rehype-external-links"
+import rehypeKatex from "rehype-katex"
+import rehypeRaw from "rehype-raw"
+import rehypeSlug from "rehype-slug"
+import remarkEmoji from "remark-emoji"
+import remarkGfm from "remark-gfm"
 import type { PluggableList } from "unified"
 import { defineCollection, defineConfig, s } from "velite"
 import rehypeShiki from "@shikijs/rehype"
@@ -137,6 +144,28 @@ export default defineConfig({
   },
   collections: { posts, faqs },
   mdx: {
-    rehypePlugins: [[rehypeShiki, { theme: "github-dark" }]] as PluggableList,
+    remarkPlugins: [remarkGfm, remarkEmoji] as PluggableList,
+    rehypePlugins: [
+      rehypeSlug,
+      [rehypeAutolinkHeadings, { behavior: "wrap" }],
+      rehypeKatex,
+      [
+        rehypeRaw,
+        {
+          passThrough: [
+            "mdxJsxFlowElement",
+            "mdxJsxTextElement",
+            "mdxFlowExpression",
+            "mdxTextExpression",
+            "mdxEsm",
+          ] as const,
+        },
+      ],
+      [
+        rehypeExternalLinks,
+        { target: "_blank", rel: ["nofollow", "noopener", "noreferrer"] },
+      ],
+      [rehypeShiki, { theme: "github-dark" }],
+    ] as PluggableList,
   },
 })

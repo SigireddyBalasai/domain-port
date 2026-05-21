@@ -1,9 +1,8 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import { getTranslations, setRequestLocale } from "next-intl/server"
 import type { JSX } from "react/jsx-runtime"
 import type { Blog, Organization, WebSite } from "schema-dts"
-import { getTranslations } from "next-intl/server"
-import { setRequestLocale } from "next-intl/server"
 import { posts } from "@/.velite"
 import BlogCard from "@/components/blog/blog-card"
 import Footer from "@/components/footer"
@@ -11,12 +10,15 @@ import Header from "@/components/header"
 import { JsonLd } from "@/lib/json-ld"
 import { siteConfig } from "@/lib/site-config"
 
-type Props = {
+interface Props {
   params: Promise<{ locale: string }>
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export const generateMetadata = async ({
+  params,
+}: Props): Promise<Metadata> => {
   const { locale } = await params
+
   return {
     title: siteConfig.name,
     description: siteConfig.description,
@@ -39,6 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function Page({ params }: Props): Promise<JSX.Element> {
   const { locale } = await params
+
   setRequestLocale(locale)
   const t = await getTranslations("common")
 

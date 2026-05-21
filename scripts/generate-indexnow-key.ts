@@ -4,7 +4,9 @@ import path from "path"
 const indexnowKey = process.env.INDEXNOW_KEY?.trim()
 
 if (!indexnowKey) {
-  console.log("[indexnow-key] INDEXNOW_KEY is not set; skipping key file generation.")
+  console.log(
+    "[indexnow-key] INDEXNOW_KEY is not set; skipping key file generation."
+  )
   process.exit(0)
 }
 

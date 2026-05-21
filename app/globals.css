@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "katex/dist/katex.min.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -176,4 +177,22 @@
 }
 .blog-content hr {
   @apply my-8 border-border;
+}
+.blog-content table {
+  @apply w-full caption-bottom border-collapse text-sm;
+}
+.blog-content thead tr {
+  @apply border-b;
+}
+.blog-content tbody tr:last-child {
+  @apply border-0;
+}
+.blog-content tr {
+  @apply border-b transition-colors hover:bg-muted/50;
+}
+.blog-content th {
+  @apply h-12 px-3 text-start align-middle font-medium text-foreground;
+}
+.blog-content td {
+  @apply p-3 align-middle;
 }

@@ -1,18 +1,16 @@
 "use client"
 
 import type { JSX } from "react/jsx-runtime"
+import { RiLinkedinFill, RiLinksLine, RiTwitterXFill } from "@remixicon/react"
+import { Button } from "@/components/ui/button"
 import { siteConfig } from "@/lib/site-config"
-import { cn } from "@/lib/utils"
 
 interface ShareButtonsProps {
   title: string
   slug: string
 }
 
-export const ShareButtons = ({
-  title,
-  slug,
-}: ShareButtonsProps): JSX.Element => {
+export function ShareButtons({ title, slug }: ShareButtonsProps): JSX.Element {
   const url = `${siteConfig.url}/blog/${slug}`
   const text = `${title} — ${siteConfig.name}`
 
@@ -21,11 +19,13 @@ export const ShareButtons = ({
       name: "X",
       href: `https://x.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
       label: "Share on X",
+      icon: RiTwitterXFill,
     },
     {
       name: "LinkedIn",
       href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
       label: "Share on LinkedIn",
+      icon: RiLinkedinFill,
     },
   ]
 
@@ -42,35 +42,30 @@ export const ShareButtons = ({
       <span className="text-sm text-muted-foreground">Share:</span>
       {shareLinks.map((link) => {
         return (
-          <a
+          <Button
             key={link.name}
-            href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
+            variant="outline"
+            size="icon-sm"
             aria-label={link.label}
-            className={cn(
-              "inline-flex h-8 w-8 items-center justify-center rounded-md border text-xs transition-colors",
-              "hover:bg-secondary hover:text-foreground"
-            )}
+            onClick={() =>
+              window.open(link.href, "_blank", "noopener,noreferrer")
+            }
           >
-            {link.name}
-          </a>
+            <link.icon size={16} />
+          </Button>
         )
       })}
-      <button
-        type="button"
+      <Button
+        variant="outline"
+        size="icon-sm"
         aria-label="Copy link"
         title="Copy link"
-        className={cn(
-          "inline-flex h-8 w-8 items-center justify-center rounded-md border text-xs transition-colors",
-          "hover:bg-secondary hover:text-foreground"
-        )}
         onClick={() => {
           handleCopyLink().catch(() => undefined)
         }}
       >
-        ⎘
-      </button>
+        <RiLinksLine size={16} />
+      </Button>
     </div>
   )
 }

@@ -5,9 +5,9 @@ interface JsonLdProps<T extends Thing> {
   schema: WithContext<T>
 }
 
-export const JsonLd = <T extends Thing>({
+export function JsonLd<T extends Thing>({
   schema,
-}: JsonLdProps<T>): JSX.Element => {
+}: JsonLdProps<T>): JSX.Element {
   return (
     <script
       type="application/ld+json"

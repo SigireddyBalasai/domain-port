@@ -1,8 +1,9 @@
 "use client"
 
 import { useParams, usePathname, useRouter } from "next/navigation"
-import { routing } from "@/i18n/routing"
 import type { JSX } from "react"
+import { Button } from "@/components/ui/button"
+import { routing } from "@/i18n/routing"
 
 const localeLabels: Record<string, string> = {
   en: "EN",
@@ -17,29 +18,32 @@ export default function LanguageSwitcher(): JSX.Element {
 
   const switchLocale = (nextLocale: string) => {
     const segments = pathname.split("/").filter(Boolean)
-    const pathWithoutLocale = (routing.locales as readonly string[]).includes(segments[0])
+    const pathWithoutLocale = (routing.locales as readonly string[]).includes(
+      segments[0]
+    )
       ? segments.slice(1)
       : segments
     const nextPath = `/${nextLocale}/${pathWithoutLocale.join("/")}`
+
     router.push(nextPath.replace(/\/$/, "") || "/")
   }
 
   return (
     <div className="flex items-center gap-1">
-      {routing.locales.map((locale) => (
-        <button
-          key={locale}
-          onClick={() => switchLocale(locale)}
-          type="button"
-          className={`rounded px-2 py-1 text-xs font-medium transition-colors ${
-            currentLocale === locale
-              ? "bg-primary text-primary-foreground"
-              : "text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          {localeLabels[locale] ?? locale.toUpperCase()}
-        </button>
-      ))}
+      {routing.locales.map((locale) => {
+        return (
+          <Button
+            key={locale}
+            variant={currentLocale === locale ? "default" : "ghost"}
+            size="xs"
+            onClick={() => {
+              switchLocale(locale)
+            }}
+          >
+            {localeLabels[locale] ?? locale.toUpperCase()}
+          </Button>
+        )
+      })}
     </div>
   )
 }

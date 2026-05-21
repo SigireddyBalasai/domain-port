@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
+import { setRequestLocale } from "next-intl/server"
 import type { JSX } from "react"
 import type { BreadcrumbList, FAQPage, WebPage } from "schema-dts"
-import { setRequestLocale } from "next-intl/server"
 import { faqs } from "@/.velite"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
@@ -9,12 +9,15 @@ import { MdxContent } from "@/components/mdx-content"
 import { JsonLd } from "@/lib/json-ld"
 import { siteConfig } from "@/lib/site-config"
 
-type Props = {
+interface Props {
   params: Promise<{ locale: string }>
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export const generateMetadata = async ({
+  params,
+}: Props): Promise<Metadata> => {
   const { locale } = await params
+
   return {
     title: "FAQ - Common CCTV Questions",
     description:
@@ -48,6 +51,7 @@ const categories = [
 
 export default async function FaqPage({ params }: Props): Promise<JSX.Element> {
   const { locale } = await params
+
   setRequestLocale(locale)
 
   const sortedFaqs = [...faqs].toSorted(

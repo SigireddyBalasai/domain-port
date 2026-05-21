@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation"
 import { type JSX, useState } from "react"
+import { Button } from "@/components/ui/button"
 import { signIn, twoFactor } from "@/lib/auth-client"
 
 export default function LoginPage(): JSX.Element {
@@ -131,13 +132,9 @@ export default function LoginPage(): JSX.Element {
               />
             </div>
 
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 disabled:opacity-50"
-            >
+            <Button type="submit" disabled={isLoading} className="w-full">
               {isLoading ? "Signing in..." : "Sign In"}
-            </button>
+            </Button>
           </form>
         ) : (
           <form
@@ -167,13 +164,9 @@ export default function LoginPage(): JSX.Element {
               />
             </div>
 
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 disabled:opacity-50"
-            >
+            <Button type="submit" disabled={isLoading} className="w-full">
               {isLoading ? "Verifying..." : "Verify"}
-            </button>
+            </Button>
           </form>
         )}
       </div>

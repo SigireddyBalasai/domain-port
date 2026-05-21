@@ -10,6 +10,7 @@ import { siteConfig } from "@/lib/site-config"
 export default function Footer(): JSX.Element {
   const t = useTranslations("common")
   const { locale } = useParams()
+  const localeStr = locale as string
 
   return (
     <footer className="border-t border-border/40 bg-background/95 py-12">
@@ -17,7 +18,12 @@ export default function Footer(): JSX.Element {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           <div>
             <div className="flex items-center space-x-2">
-              <Image src="/logo-icon.svg" alt={siteConfig.name} width={24} height={24} />
+              <Image
+                src="/logo-icon.svg"
+                alt={siteConfig.name}
+                width={24}
+                height={24}
+              />
               <h3 className="font-bold">{siteConfig.name}</h3>
             </div>
             <p className="mt-2 text-sm text-muted-foreground">
@@ -27,10 +33,16 @@ export default function Footer(): JSX.Element {
           <div>
             <h4 className="font-semibold">{t("navigation")}</h4>
             <nav className="mt-4 space-y-2">
-              <Link href={`/${locale}`} className="block text-sm hover:text-primary">
+              <Link
+                href={`/${localeStr}`}
+                className="block text-sm hover:text-primary"
+              >
                 {t("home")}
               </Link>
-              <Link href={`/${locale}/blog`} className="block text-sm hover:text-primary">
+              <Link
+                href={`/${localeStr}/blog`}
+                className="block text-sm hover:text-primary"
+              >
                 {t("blog")}
               </Link>
             </nav>
@@ -53,7 +65,8 @@ export default function Footer(): JSX.Element {
         </div>
         <div className="mt-8 border-t border-border/40 pt-8 text-center text-sm text-muted-foreground">
           <p>
-            &copy; {new Date().getFullYear()} {siteConfig.name}. {t("copyright")}
+            &copy; {new Date().getFullYear()} {siteConfig.name}.{" "}
+            {t("copyright")}
           </p>
         </div>
       </div>
