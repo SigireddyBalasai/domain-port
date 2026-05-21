@@ -17,7 +17,7 @@ export default function LanguageSwitcher(): JSX.Element {
 
   const switchLocale = (nextLocale: string) => {
     const segments = pathname.split("/").filter(Boolean)
-    const pathWithoutLocale = routing.locales.includes(segments[0])
+    const pathWithoutLocale = (routing.locales as readonly string[]).includes(segments[0])
       ? segments.slice(1)
       : segments
     const nextPath = `/${nextLocale}/${pathWithoutLocale.join("/")}`
