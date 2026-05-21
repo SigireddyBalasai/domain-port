@@ -1,8 +1,8 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import type { JSX } from "react"
-import { RiArrowRightLine } from "@remixicon/react"
 import { siteConfig } from "@/lib/site-config"
 
 export default function Header(): JSX.Element {
@@ -11,7 +11,7 @@ export default function Header(): JSX.Element {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-14 items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
-            <RiArrowRightLine size={18} className="text-primary" />
+            <Image src="/logo-icon.svg" alt={siteConfig.name} width={24} height={24} />
             <span className="font-bold">{siteConfig.name}</span>
           </Link>
           <nav className="flex items-center space-x-6">

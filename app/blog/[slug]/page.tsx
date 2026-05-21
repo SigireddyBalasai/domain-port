@@ -206,14 +206,16 @@ export default async function PostPage({
           schema={{
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            mainEntity: post.faq.map((item) => { return {
-              "@type": "Question",
-              name: item.question,
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: item.answer,
-              },
-            } }),
+            mainEntity: post.faq.map((item) => {
+              return {
+                "@type": "Question",
+                name: item.question,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: item.answer,
+                },
+              }
+            }),
           }}
         />
       )}
@@ -224,31 +226,34 @@ export default async function PostPage({
             "@type": "HowTo",
             name: post.title,
             description: post.description ?? undefined,
-            step: post.howTo.map((step) => { return {
-              "@type": "HowToStep",
-              name: step.name,
-              text: step.text,
-            } }),
+            step: post.howTo.map((step) => {
+              return {
+                "@type": "HowToStep",
+                name: step.name,
+                text: step.text,
+              }
+            }),
           }}
         />
       )}
-      {post.video && post.video.length > 0 &&
+      {post.video &&
+        post.video.length > 0 &&
         post.video.map((video, index) => {
           return (
             <JsonLd<VideoObject>
               key={video.name + String(index)}
               schema={{
-              "@context": "https://schema.org",
-              "@type": "VideoObject",
-              name: video.name,
-              description: video.description ?? post.description ?? undefined,
-              thumbnailUrl: video.thumbnailUrl ?? post.image ?? undefined,
-              uploadDate: video.uploadDate ?? post.publishedAt,
-              contentUrl: video.contentUrl,
-              embedUrl: video.embedUrl,
-              duration: video.duration,
-            }}
-          />
+                "@context": "https://schema.org",
+                "@type": "VideoObject",
+                name: video.name,
+                description: video.description ?? post.description ?? undefined,
+                thumbnailUrl: video.thumbnailUrl ?? post.image ?? undefined,
+                uploadDate: video.uploadDate ?? post.publishedAt,
+                contentUrl: video.contentUrl,
+                embedUrl: video.embedUrl,
+                duration: video.duration,
+              }}
+            />
           )
         })}
       {post.product && (
@@ -373,13 +378,16 @@ export default async function PostPage({
             >
               &larr; Back to Blog
             </Link>
-            <time className="text-sm text-muted-foreground">
-              {new Date(post.publishedAt).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </time>
+            <p className="text-sm text-muted-foreground">
+              Published{" "}
+              <time dateTime={post.publishedAt}>
+                {new Date(post.publishedAt).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </time>
+            </p>
             <h1 className="mt-2 text-4xl font-bold">{post.title}</h1>
             <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
               <span>{post.author ?? siteConfig.name}</span>

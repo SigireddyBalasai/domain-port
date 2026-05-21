@@ -15,9 +15,12 @@ interface AuthorPageProps {
 export const generateStaticParams = (): { name: string }[] => {
   const authors = posts
     .map((post) => post.author)
-    .filter((author): author is string => author != null && author !== "")
+    .filter(
+      (author): author is string => typeof author === "string" && author !== ""
+    )
 
   const uniqueAuthors = [...new Set(authors)]
+
   return uniqueAuthors.map((author) => {
     return {
       name: author.toLowerCase().replaceAll(/\s+/g, "-"),
@@ -29,7 +32,7 @@ export const generateMetadata = async ({
   params,
 }: AuthorPageProps): Promise<Metadata> => {
   const { name } = await params
-  const authorName = name.replaceAll('-', " ")
+  const authorName = name.replaceAll("-", " ")
 
   return {
     title: `${authorName} - Author`,
@@ -46,7 +49,7 @@ export default async function AuthorPage({
   params,
 }: AuthorPageProps): Promise<JSX.Element> {
   const { name } = await params
-  const authorName = name.replaceAll('-', " ")
+  const authorName = name.replaceAll("-", " ")
   const authorPosts = posts.filter(
     (post) => post.author?.toLowerCase() === authorName.toLowerCase()
   )
@@ -111,16 +114,18 @@ export default async function AuthorPage({
               {sorted.length} article{sorted.length === 1 ? "" : "s"} published
             </p>
             <div className="space-y-6">
-              {sorted.map((post) => 
-                { return <BlogCard
-                  key={post.slug}
-                  title={post.title}
-                  description={post.description}
-                  publishedAt={post.publishedAt}
-                  slug={post.slug}
-                  tags={post.tags}
-                /> }
-              )}
+              {sorted.map((post) => {
+                return (
+                  <BlogCard
+                    key={post.slug}
+                    title={post.title}
+                    description={post.description}
+                    publishedAt={post.publishedAt}
+                    slug={post.slug}
+                    tags={post.tags}
+                  />
+                )
+              })}
               {sorted.length === 0 && (
                 <p className="text-muted-foreground">No articles yet.</p>
               )}

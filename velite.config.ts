@@ -51,7 +51,10 @@ const eventDetails = s.object({
   location: s.string().optional(),
   description: s.string().optional(),
   eventStatus: s.string().default("EventScheduled").optional(),
-  eventAttendanceMode: s.string().default("OfflineEventAttendanceMode").optional(),
+  eventAttendanceMode: s
+    .string()
+    .default("OfflineEventAttendanceMode")
+    .optional(),
 })
 
 const faqs = defineCollection({
@@ -90,7 +93,19 @@ const posts = defineCollection({
       image: s.string().optional(),
       tags: s.array(s.string()).optional(),
       content: s.mdx(),
-      postType: s.enum(["blog", "article", "review", "faq", "video", "howto", "event", "software"]).default("blog").optional(),
+      postType: s
+        .enum([
+          "blog",
+          "article",
+          "review",
+          "faq",
+          "video",
+          "howto",
+          "event",
+          "software",
+        ])
+        .default("blog")
+        .optional(),
       faq: s.array(faqItem).optional(),
       howTo: s.array(howToStep).optional(),
       video: s.array(videoObject).optional(),

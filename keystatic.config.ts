@@ -17,9 +17,18 @@ export default config({
           multiline: true,
         }),
         publishedAt: fields.date({ label: "Published At" }),
-        updatedAt: fields.date({ label: "Updated At", validation: { isRequired: false } }),
-        author: fields.text({ label: "Author", validation: { isRequired: false } }),
-        image: fields.text({ label: "Image", validation: { isRequired: false } }),
+        updatedAt: fields.date({
+          label: "Updated At",
+          validation: { isRequired: false },
+        }),
+        author: fields.text({
+          label: "Author",
+          validation: { isRequired: false },
+        }),
+        image: fields.text({
+          label: "Image",
+          validation: { isRequired: false },
+        }),
         tags: fields.array(fields.text({ label: "Tag" }), {
           label: "Tags",
           itemLabel: (props) => props.value,

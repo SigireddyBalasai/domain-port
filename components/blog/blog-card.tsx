@@ -19,13 +19,16 @@ export default function BlogCard({
   return (
     <article className="group rounded-lg border p-6 transition-colors hover:border-primary">
       <Link href={`/blog/${slug}`} className="block">
-        <time className="text-sm text-muted-foreground">
-          {new Date(publishedAt).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
-        </time>
+        <span className="text-sm text-muted-foreground">
+          Published{" "}
+          <time dateTime={publishedAt}>
+            {new Date(publishedAt).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </time>
+        </span>
         <h2 className="mt-2 text-xl font-semibold group-hover:text-primary">
           {title}
         </h2>

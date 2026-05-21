@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import type { JSX } from "react"
 import { siteConfig } from "@/lib/site-config"
@@ -10,7 +11,10 @@ export default function Footer(): JSX.Element {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           <div>
-            <h3 className="font-bold">{siteConfig.name}</h3>
+            <div className="flex items-center space-x-2">
+              <Image src="/logo-icon.svg" alt={siteConfig.name} width={24} height={24} />
+              <h3 className="font-bold">{siteConfig.name}</h3>
+            </div>
             <p className="mt-2 text-sm text-muted-foreground">
               {siteConfig.description}
             </p>
