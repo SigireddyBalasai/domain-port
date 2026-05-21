@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import type { JSX } from "react"
 import type { BreadcrumbList, Person, ProfilePage } from "schema-dts"
+import { getTranslations } from "next-intl/server"
+import { setRequestLocale } from "next-intl/server"
 import { posts } from "@/.velite"
 import BlogCard from "@/components/blog/blog-card"
 import Footer from "@/components/footer"
@@ -8,11 +10,14 @@ import Header from "@/components/header"
 import { JsonLd } from "@/lib/json-ld"
 import { siteConfig } from "@/lib/site-config"
 
-interface AuthorPageProps {
-  params: Promise<{ name: string }>
+type Props = {
+  params: Promise<{ locale: string; name: string }>
 }
 
-export const generateStaticParams = (): { name: string }[] => {
+export const generateStaticParams = async (): Promise<
+  { locale: string; name: string }[]
+> => {
+  const locales = ["en", "es", "fr"]
   const authors = posts
     .map((post) => post.author)
     .filter(
@@ -21,34 +26,47 @@ export const generateStaticParams = (): { name: string }[] => {
 
   const uniqueAuthors = [...new Set(authors)]
 
-  return uniqueAuthors.map((author) => {
-    return {
+  return locales.flatMap((locale) =>
+    uniqueAuthors.map((author) => ({
+      locale,
       name: author.toLowerCase().replaceAll(/\s+/g, "-"),
-    }
-  })
+    }))
+  )
 }
 
 export const generateMetadata = async ({
   params,
-}: AuthorPageProps): Promise<Metadata> => {
-  const { name } = await params
+}: Props): Promise<Metadata> => {
+  const { locale, name } = await params
   const authorName = name.replaceAll("-", " ")
 
   return {
     title: `${authorName} - Author`,
     description: `Articles and guides by ${authorName} on ${siteConfig.name}.`,
     openGraph: {
-      url: `${siteConfig.url}/author/${name}`,
+      url: `${siteConfig.url}/${locale}/author/${name}`,
       title: `${authorName} | ${siteConfig.name}`,
       description: `Articles and guides by ${authorName}.`,
+    },
+    alternates: {
+      canonical: `/${locale}/author/${name}`,
+      languages: {
+        en: `/en/author/${name}`,
+        es: `/es/author/${name}`,
+        fr: `/fr/author/${name}`,
+        "x-default": `/en/author/${name}`,
+      },
     },
   }
 }
 
 export default async function AuthorPage({
   params,
-}: AuthorPageProps): Promise<JSX.Element> {
-  const { name } = await params
+}: Props): Promise<JSX.Element> {
+  const { locale, name } = await params
+  setRequestLocale(locale)
+  const t = await getTranslations("common")
+
   const authorName = name.replaceAll("-", " ")
   const authorPosts = posts.filter(
     (post) => post.author?.toLowerCase() === authorName.toLowerCase()
@@ -75,13 +93,13 @@ export default async function AuthorPage({
               "@type": "ListItem",
               position: 2,
               name: "Authors",
-              item: `${siteConfig.url}/authors`,
+              item: `${siteConfig.url}/${locale}/authors`,
             },
             {
               "@type": "ListItem",
               position: 3,
               name: authorName,
-              item: `${siteConfig.url}/author/${name}`,
+              item: `${siteConfig.url}/${locale}/author/${name}`,
             },
           ],
         }}
@@ -91,7 +109,7 @@ export default async function AuthorPage({
           "@context": "https://schema.org",
           "@type": "Person",
           name: authorName,
-          url: `${siteConfig.url}/author/${name}`,
+          url: `${siteConfig.url}/${locale}/author/${name}`,
           sameAs: [siteConfig.links.twitter],
         }}
       />
@@ -127,7 +145,7 @@ export default async function AuthorPage({
                 )
               })}
               {sorted.length === 0 && (
-                <p className="text-muted-foreground">No articles yet.</p>
+                <p className="text-muted-foreground">{t("noArticles")}</p>
               )}
             </div>
           </div>
