@@ -19,6 +19,8 @@ import type {
   VideoObject,
   WithContext,
 } from "schema-dts"
+import { getTranslations } from "next-intl/server"
+import { setRequestLocale } from "next-intl/server"
 import { posts } from "@/.velite"
 import { ShareButtons } from "@/components/blog/share-buttons"
 import Footer from "@/components/footer"
@@ -27,25 +29,24 @@ import { MdxContent } from "@/components/mdx-content"
 import { JsonLd } from "@/lib/json-ld"
 import { siteConfig } from "@/lib/site-config"
 
-interface InlineInterface2 {
-  slug: string
-}
-interface InlineInterface {
-  params: Promise<InlineInterface2>
+type Props = {
+  params: Promise<{ locale: string; slug: string }>
 }
 
-export const generateStaticParams = (): InlineInterface2[] => {
-  return posts.map((post) => {
-    return {
+export function generateStaticParams() {
+  const locales = ["en", "es", "fr"]
+  return locales.flatMap((locale) =>
+    posts.map((post) => ({
+      locale,
       slug: post.slug,
-    }
-  })
+    }))
+  )
 }
 
 export const generateMetadata = async ({
   params,
-}: InlineInterface): Promise<Metadata> => {
-  const { slug } = await params
+}: Props): Promise<Metadata> => {
+  const { locale, slug } = await params
   const post = posts.find((p) => p.slug === slug)
 
   if (!post) {
@@ -57,12 +58,18 @@ export const generateMetadata = async ({
     description:
       post.description ?? `Read about ${post.title} on ${siteConfig.name}`,
     alternates: {
-      canonical: `${siteConfig.url}/blog/${post.slug}`,
+      canonical: `${siteConfig.url}/${locale}/blog/${post.slug}`,
+      languages: {
+        en: `${siteConfig.url}/en/blog/${post.slug}`,
+        es: `${siteConfig.url}/es/blog/${post.slug}`,
+        fr: `${siteConfig.url}/fr/blog/${post.slug}`,
+        "x-default": `${siteConfig.url}/en/blog/${post.slug}`,
+      },
     },
     authors: post.author ? [{ name: post.author }] : undefined,
     openGraph: {
       type: "article",
-      url: `${siteConfig.url}/blog/${post.slug}`,
+      url: `${siteConfig.url}/${locale}/blog/${post.slug}`,
       title: post.title,
       description:
         post.description ?? `Read about ${post.title} on ${siteConfig.name}`,
@@ -107,8 +114,10 @@ const createAuthorSchema = (
 
 export default async function PostPage({
   params,
-}: InlineInterface): Promise<JSX.Element> {
-  const { slug } = await params
+}: Props): Promise<JSX.Element> {
+  const { locale, slug } = await params
+  setRequestLocale(locale)
+  const t = await getTranslations("common")
   const post = posts.find((p) => p.slug === slug)
 
   if (!post) {
@@ -134,13 +143,13 @@ export default async function PostPage({
               "@type": "ListItem",
               position: 2,
               name: "Blog",
-              item: `${siteConfig.url}/blog`,
+              item: `${siteConfig.url}/${locale}/blog`,
             },
             {
               "@type": "ListItem",
               position: 3,
               name: post.title,
-              item: `${siteConfig.url}/blog/${post.slug}`,
+              item: `${siteConfig.url}/${locale}/blog/${post.slug}`,
             },
           ],
         }}
@@ -154,10 +163,10 @@ export default async function PostPage({
           datePublished: post.publishedAt,
           dateModified: post.updatedAt ?? post.publishedAt,
           author: authorSchema,
-          url: `${siteConfig.url}/blog/${post.slug}`,
+          url: `${siteConfig.url}/${locale}/blog/${post.slug}`,
           mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": `${siteConfig.url}/blog/${post.slug}`,
+            "@id": `${siteConfig.url}/${locale}/blog/${post.slug}`,
           },
           image: {
             "@type": "ImageObject",
@@ -182,10 +191,10 @@ export default async function PostPage({
             datePublished: post.publishedAt,
             dateModified: post.updatedAt ?? post.publishedAt,
             author: authorSchema,
-            url: `${siteConfig.url}/blog/${post.slug}`,
+            url: `${siteConfig.url}/${locale}/blog/${post.slug}`,
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": `${siteConfig.url}/blog/${post.slug}`,
+              "@id": `${siteConfig.url}/${locale}/blog/${post.slug}`,
             },
             image: {
               "@type": "ImageObject",
@@ -373,15 +382,15 @@ export default async function PostPage({
         <main className="flex-1">
           <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
             <Link
-              href="/blog"
+              href={`/${locale}/blog`}
               className="mb-8 block text-sm text-muted-foreground hover:text-primary"
             >
-              &larr; Back to Blog
+              &larr; {t("backToBlog")}
             </Link>
             <p className="text-sm text-muted-foreground">
               Published{" "}
               <time dateTime={post.publishedAt}>
-                {new Date(post.publishedAt).toLocaleDateString("en-US", {
+                {new Date(post.publishedAt).toLocaleDateString(locale, {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
@@ -396,7 +405,7 @@ export default async function PostPage({
                 Updated{" "}
                 {new Date(
                   post.updatedAt ?? post.publishedAt
-                ).toLocaleDateString("en-US", {
+                ).toLocaleDateString(locale, {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
@@ -410,7 +419,7 @@ export default async function PostPage({
             )}
             {post.author && (
               <Link
-                href={`/author/${post.author.toLowerCase().replaceAll(/\s+/g, "-")}`}
+                href={`/${locale}/author/${post.author.toLowerCase().replaceAll(/\s+/g, "-")}`}
                 className="mt-2 inline-block text-sm text-primary hover:underline"
               >
                 View all articles by {post.author}
