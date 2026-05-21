@@ -2,6 +2,8 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import type { JSX } from "react/jsx-runtime"
 import type { Blog, Organization, WebSite } from "schema-dts"
+import { getTranslations } from "next-intl/server"
+import { setRequestLocale } from "next-intl/server"
 import { posts } from "@/.velite"
 import BlogCard from "@/components/blog/blog-card"
 import Footer from "@/components/footer"
@@ -9,17 +11,37 @@ import Header from "@/components/header"
 import { JsonLd } from "@/lib/json-ld"
 import { siteConfig } from "@/lib/site-config"
 
-export const metadata: Metadata = {
-  title: siteConfig.name,
-  description: siteConfig.description,
-  openGraph: {
-    url: siteConfig.url,
-    title: siteConfig.name,
-    description: siteConfig.description,
-  },
+type Props = {
+  params: Promise<{ locale: string }>
 }
 
-export default function Page(): JSX.Element {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  return {
+    title: siteConfig.name,
+    description: siteConfig.description,
+    openGraph: {
+      url: siteConfig.url,
+      title: siteConfig.name,
+      description: siteConfig.description,
+    },
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        en: "/en",
+        es: "/es",
+        fr: "/fr",
+        "x-default": "/en",
+      },
+    },
+  }
+}
+
+export default async function Page({ params }: Props): Promise<JSX.Element> {
+  const { locale } = await params
+  setRequestLocale(locale)
+  const t = await getTranslations("common")
+
   const sorted = [...posts].toSorted(
     (a, b) =>
       new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
@@ -89,10 +111,10 @@ export default function Page(): JSX.Element {
                 </p>
                 <div className="mt-10 flex justify-center gap-4">
                   <Link
-                    href="/blog"
+                    href={`/${locale}/blog`}
                     className="inline-flex items-center rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground hover:bg-primary/90"
                   >
-                    Read Blog
+                    {t("readBlog")}
                   </Link>
                 </div>
               </div>
@@ -104,7 +126,7 @@ export default function Page(): JSX.Element {
             <section className="border-b border-border/40 py-24 sm:py-32">
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <h2 className="font-display text-3xl font-bold">
-                  Featured Posts
+                  {t("featuredPosts")}
                 </h2>
                 <div className="mt-12 space-y-6">
                   {featuredPosts.map((post) => {
@@ -130,13 +152,13 @@ export default function Page(): JSX.Element {
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between">
                   <h2 className="font-display text-3xl font-bold">
-                    Latest Posts
+                    {t("latestPosts")}
                   </h2>
                   <Link
-                    href="/blog"
+                    href={`/${locale}/blog`}
                     className="text-sm font-medium hover:text-primary"
                   >
-                    View all →
+                    {t("viewAll")}
                   </Link>
                 </div>
                 <div className="mt-12 space-y-6">
