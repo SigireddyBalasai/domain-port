@@ -5,6 +5,7 @@ import Link from "next/link"
 import { useParams } from "next/navigation"
 import { useTranslations } from "next-intl"
 import type { JSX } from "react"
+import LanguageSwitcher from "@/components/language-switcher"
 import { siteConfig } from "@/lib/site-config"
 
 export default function Header(): JSX.Element {
@@ -26,6 +27,7 @@ export default function Header(): JSX.Element {
             >
               {t("blog")}
             </Link>
+            <LanguageSwitcher />
             {siteConfig.links.twitter && (
               <a
                 href={siteConfig.links.twitter}
