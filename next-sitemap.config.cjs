@@ -1,4 +1,10 @@
 /** @type {import('next-sitemap').IConfig} */
+const posts = require("./.velite/posts.json")
+
+const postLastmodByPath = new Map(
+  posts.map((post) => [`/blog/${post.slug}`, post.updatedAt ?? post.publishedAt])
+)
+
 module.exports = {
   siteUrl: "https://cctv.name",
   generateRobotsTxt: false,
@@ -19,7 +25,7 @@ module.exports = {
       loc: path,
       changefreq: path === "/" ? "daily" : "weekly",
       priority,
-      lastmod: new Date().toISOString(),
+      lastmod: postLastmodByPath.get(path) ?? new Date().toISOString(),
     }
   },
 }

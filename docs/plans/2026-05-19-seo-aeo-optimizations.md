@@ -1,5 +1,17 @@
 # SEO, AEO & Performance Implementation Plan
 
+**Status:** In progress
+**Last updated:** 2026-05-19
+
+## Current Audit
+
+- Root metadata, robots.txt, sitemap generation, JSON-LD, RSS feed, and static blog generation already exist.
+- IndexNow is now wired through the `indexnow-submitter` package in `postbuild`, with a root key-file route at `/<INDEXNOW_KEY>.txt`.
+- Blog post metadata still needs canonical URLs, Open Graph images, Twitter images, `dateModified`, and richer author support.
+- The only live post is a starter post, so the biggest SEO lift now is publishing substantial, intent-driven articles with strong internal linking.
+- `next-sitemap` currently stamps `lastmod` from build time, which should be replaced with content-aware timestamps.
+- Current content is brand-light and trust-light; adding author bios, update dates, and topical clusters will better match Google’s people-first guidance.
+
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
 
 **Goal:** Add full SEO, AEO, analytics, RSS, social sharing, performance, and accessibility optimizations to the cctv.name CCTV/surveillance blog.
@@ -27,6 +39,8 @@ bun add -d next-sitemap
 ```
 
 Expected: packages added to `dependencies` and `devDependencies` in `package.json`.
+
+**Current state:** already present in `package.json` and locked in the workspace.
 
 **Step 2: Commit**
 
@@ -131,6 +145,8 @@ git commit -m "feat: add global metadata and OpenGraph tags"
 **Files:**
 - Create: `app/robots.ts`
 
+**Current state:** already implemented.
+
 **Step 1: Write robots.txt handler**
 
 ```ts
@@ -168,6 +184,8 @@ git commit -m "feat: add robots.txt"
 **Files:**
 - Create: `next-sitemap.config.js`
 - Modify: `package.json`
+
+**Current state:** the repo uses `next-sitemap.config.cjs` and the build hook is already wired.
 
 **Step 1: Write next-sitemap config**
 
@@ -219,6 +237,8 @@ git commit -m "feat: add next-sitemap config and postbuild hook"
 
 **Files:**
 - Modify: `app/page.tsx`
+
+**Current state:** already implemented.
 
 **Step 1: Add metadata export**
 

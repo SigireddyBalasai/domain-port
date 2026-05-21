@@ -4,7 +4,7 @@ import Link from "next/link"
 import type { JSX } from "react"
 import { siteConfig } from "@/lib/site-config"
 
-export function Footer(): JSX.Element {
+export default function Footer(): JSX.Element {
   return (
     <footer className="border-t border-border/40 bg-background/95 py-12">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

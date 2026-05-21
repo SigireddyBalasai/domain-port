@@ -2,11 +2,27 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import type { JSX } from "react/jsx-runtime"
-import type { BlogPosting, BreadcrumbList } from "schema-dts"
+import type {
+  Article,
+  BlogPosting,
+  BreadcrumbList,
+  Event,
+  FAQPage,
+  HowTo,
+  ImageObject,
+  Organization,
+  Person,
+  Product,
+  Review,
+  SoftwareApplication,
+  SpeakableSpecification,
+  VideoObject,
+  WithContext,
+} from "schema-dts"
 import { posts } from "@/.velite"
 import { ShareButtons } from "@/components/blog/share-buttons"
-import { Footer } from "@/components/footer"
-import { Header } from "@/components/header"
+import Footer from "@/components/footer"
+import Header from "@/components/header"
 import { MdxContent } from "@/components/mdx-content"
 import { JsonLd } from "@/lib/json-ld"
 import { siteConfig } from "@/lib/site-config"
@@ -15,19 +31,22 @@ interface InlineInterface2 {
   slug: string
 }
 interface InlineInterface {
-  params: InlineInterface2
+  params: Promise<InlineInterface2>
 }
 
 export const generateStaticParams = (): InlineInterface2[] => {
-  return posts.map((post) => { return {
-    slug: post.slug,
-  } })
+  return posts.map((post) => {
+    return {
+      slug: post.slug,
+    }
+  })
 }
 
-export const generateMetadata = ({
+export const generateMetadata = async ({
   params,
 }: InlineInterface): Promise<Metadata> => {
-  const post = posts.find((p) => p.slug === params.slug)
+  const { slug } = await params
+  const post = posts.find((p) => p.slug === slug)
 
   if (!post) {
     return Promise.resolve({})
@@ -37,6 +56,10 @@ export const generateMetadata = ({
     title: post.title,
     description:
       post.description ?? `Read about ${post.title} on ${siteConfig.name}`,
+    alternates: {
+      canonical: `${siteConfig.url}/blog/${post.slug}`,
+    },
+    authors: post.author ? [{ name: post.author }] : undefined,
     openGraph: {
       type: "article",
       url: `${siteConfig.url}/blog/${post.slug}`,
@@ -44,16 +67,55 @@ export const generateMetadata = ({
       description:
         post.description ?? `Read about ${post.title} on ${siteConfig.name}`,
       publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt ?? post.publishedAt,
       tags: post.tags,
+      images: [
+        {
+          url: `${siteConfig.url}${post.image ?? "/og.svg"}`,
+          width: "1200",
+          height: "630",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description:
+        post.description ?? `Read about ${post.title} on ${siteConfig.name}`,
+      images: [`${siteConfig.url}${post.image ?? "/og.svg"}`],
     },
   })
 }
-export default function PostPage({ params }: InlineInterface): JSX.Element {
-  const post = posts.find((p) => p.slug === params.slug)
+
+const createAuthorSchema = (
+  author: string | undefined
+): WithContext<Person> | WithContext<Organization> => {
+  if (author) {
+    return {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: author,
+    }
+  }
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: siteConfig.name,
+  }
+}
+
+export default async function PostPage({
+  params,
+}: InlineInterface): Promise<JSX.Element> {
+  const { slug } = await params
+  const post = posts.find((p) => p.slug === slug)
 
   if (!post) {
     notFound()
   }
+
+  const authorSchema = createAuthorSchema(post.author)
 
   return (
     <>
@@ -90,8 +152,215 @@ export default function PostPage({ params }: InlineInterface): JSX.Element {
           headline: post.title,
           description: post.description ?? undefined,
           datePublished: post.publishedAt,
-          author: { "@type": "Organization", name: siteConfig.name },
+          dateModified: post.updatedAt ?? post.publishedAt,
+          author: authorSchema,
           url: `${siteConfig.url}/blog/${post.slug}`,
+          mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": `${siteConfig.url}/blog/${post.slug}`,
+          },
+          image: {
+            "@type": "ImageObject",
+            url: `${siteConfig.url}${post.image ?? "/og.svg"}`,
+            width: "1200",
+            height: "630",
+          },
+          publisher: {
+            "@type": "Organization",
+            name: siteConfig.name,
+            logo: { "@type": "ImageObject", url: siteConfig.ogImage },
+          },
+        }}
+      />
+      {post.postType === "article" && (
+        <JsonLd<Article>
+          schema={{
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: post.title,
+            description: post.description ?? undefined,
+            datePublished: post.publishedAt,
+            dateModified: post.updatedAt ?? post.publishedAt,
+            author: authorSchema,
+            url: `${siteConfig.url}/blog/${post.slug}`,
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `${siteConfig.url}/blog/${post.slug}`,
+            },
+            image: {
+              "@type": "ImageObject",
+              url: `${siteConfig.url}${post.image ?? "/og.svg"}`,
+              width: "1200",
+              height: "630",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: siteConfig.name,
+              logo: { "@type": "ImageObject", url: siteConfig.ogImage },
+            },
+          }}
+        />
+      )}
+      {post.faq && post.faq.length > 0 && (
+        <JsonLd<FAQPage>
+          schema={{
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: post.faq.map((item) => { return {
+              "@type": "Question",
+              name: item.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: item.answer,
+              },
+            } }),
+          }}
+        />
+      )}
+      {post.howTo && post.howTo.length > 0 && (
+        <JsonLd<HowTo>
+          schema={{
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            name: post.title,
+            description: post.description ?? undefined,
+            step: post.howTo.map((step) => { return {
+              "@type": "HowToStep",
+              name: step.name,
+              text: step.text,
+            } }),
+          }}
+        />
+      )}
+      {post.video && post.video.length > 0 &&
+        post.video.map((video, index) => {
+          return (
+            <JsonLd<VideoObject>
+              key={video.name + String(index)}
+              schema={{
+              "@context": "https://schema.org",
+              "@type": "VideoObject",
+              name: video.name,
+              description: video.description ?? post.description ?? undefined,
+              thumbnailUrl: video.thumbnailUrl ?? post.image ?? undefined,
+              uploadDate: video.uploadDate ?? post.publishedAt,
+              contentUrl: video.contentUrl,
+              embedUrl: video.embedUrl,
+              duration: video.duration,
+            }}
+          />
+          )
+        })}
+      {post.product && (
+        <>
+          <JsonLd<Product>
+            schema={{
+              "@context": "https://schema.org",
+              "@type": "Product",
+              name: post.product.name,
+              description: post.product.description ?? post.description,
+              image: post.product.image ?? post.image,
+              brand: post.product.brand
+                ? { "@type": "Brand", name: post.product.brand }
+                : undefined,
+              offers: {
+                "@type": "Offer",
+                price: post.product.price,
+                priceCurrency: post.product.priceCurrency,
+                availability:
+                  post.product.availability === "OutOfStock"
+                    ? "https://schema.org/OutOfStock"
+                    : "https://schema.org/InStock",
+              },
+            }}
+          />
+          {post.product.ratingValue !== undefined && (
+            <JsonLd<Review>
+              schema={{
+                "@context": "https://schema.org",
+                "@type": "Review",
+                reviewBody: post.description,
+                author: authorSchema,
+                datePublished: post.publishedAt,
+                itemReviewed: {
+                  "@type": "Product",
+                  name: post.product.name,
+                },
+                reviewRating: {
+                  "@type": "Rating",
+                  ratingValue: post.product.ratingValue,
+                  bestRating: 5,
+                  worstRating: 1,
+                },
+              }}
+            />
+          )}
+        </>
+      )}
+      {post.software && (
+        <JsonLd<SoftwareApplication>
+          schema={{
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            name: post.software.name,
+            operatingSystem: post.software.operatingSystem,
+            applicationCategory: post.software.applicationCategory,
+            offers: {
+              "@type": "Offer",
+              price: post.software.price,
+              priceCurrency: post.software.priceCurrency,
+            },
+            aggregateRating: post.software.ratingValue
+              ? {
+                  "@type": "AggregateRating",
+                  ratingValue: post.software.ratingValue,
+                  ratingCount: post.software.ratingCount ?? 1,
+                }
+              : undefined,
+          }}
+        />
+      )}
+      {post.event && (
+        <JsonLd<Event>
+          schema={{
+            "@context": "https://schema.org",
+            "@type": "Event",
+            name: post.event.name,
+            description: post.event.description ?? post.description,
+            startDate: post.event.startDate,
+            endDate: post.event.endDate ?? post.event.startDate,
+            location: post.event.location
+              ? {
+                  "@type": "Place",
+                  name: post.event.location,
+                }
+              : undefined,
+            organizer: {
+              "@type": "Organization",
+              name: siteConfig.name,
+              url: siteConfig.url,
+            },
+          }}
+        />
+      )}
+      {post.speakable && post.speakable.length > 0 && (
+        <JsonLd<SpeakableSpecification>
+          schema={{
+            "@context": "https://schema.org",
+            "@type": "SpeakableSpecification",
+            cssSelector: post.speakable.map((selector) => `.${selector}`),
+          }}
+        />
+      )}
+      <JsonLd<ImageObject>
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "ImageObject",
+          contentUrl: `${siteConfig.url}${post.image ?? "/og.svg"}`,
+          caption: post.description ?? post.title,
+          creator: authorSchema,
+          copyrightNotice: `© ${String(new Date().getFullYear())} ${siteConfig.name}. All rights reserved.`,
+          license: `${siteConfig.url}/license`,
         }}
       />
       <div className="flex min-h-screen flex-col">
@@ -112,10 +381,32 @@ export default function PostPage({ params }: InlineInterface): JSX.Element {
               })}
             </time>
             <h1 className="mt-2 text-4xl font-bold">{post.title}</h1>
+            <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+              <span>{post.author ?? siteConfig.name}</span>
+              <span aria-hidden="true">•</span>
+              <time dateTime={post.updatedAt ?? post.publishedAt}>
+                Updated{" "}
+                {new Date(
+                  post.updatedAt ?? post.publishedAt
+                ).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </time>
+            </div>
             {post.description && (
               <p className="mt-4 text-lg text-muted-foreground">
                 {post.description}
               </p>
+            )}
+            {post.author && (
+              <Link
+                href={`/author/${post.author.toLowerCase().replaceAll(/\s+/g, "-")}`}
+                className="mt-2 inline-block text-sm text-primary hover:underline"
+              >
+                View all articles by {post.author}
+              </Link>
             )}
             <div className="blog-content mt-8">
               <MdxContent code={post.content} />

@@ -1,11 +1,11 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import type { JSX } from "react/jsx-runtime"
-import type { Blog, Organization } from "schema-dts"
+import type { Blog, Organization, WebSite } from "schema-dts"
 import { posts } from "@/.velite"
 import BlogCard from "@/components/blog/blog-card"
-import { Footer } from "@/components/footer"
-import { Header } from "@/components/header"
+import Footer from "@/components/footer"
+import Header from "@/components/header"
 import { JsonLd } from "@/lib/json-ld"
 import { siteConfig } from "@/lib/site-config"
 
@@ -36,6 +36,12 @@ export default function Page(): JSX.Element {
           name: siteConfig.name,
           url: siteConfig.url,
           description: siteConfig.description,
+          sameAs: [
+            siteConfig.links.twitter,
+            siteConfig.links.youtube,
+            siteConfig.links.github,
+          ],
+          logo: siteConfig.ogImage,
         }}
       />
       <JsonLd<Blog>
@@ -45,6 +51,27 @@ export default function Page(): JSX.Element {
           name: siteConfig.name,
           description: siteConfig.description,
           url: siteConfig.url,
+        }}
+      />
+      <JsonLd<WebSite>
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: siteConfig.name,
+          url: siteConfig.url,
+          description: siteConfig.description,
+          potentialAction: {
+            "@type": "SearchAction",
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate: `${siteConfig.url}/blog?q={search_term_string}`,
+              actionPlatform: [
+                "https://schema.org/DesktopWebPlatform",
+                "https://schema.org/IOSPlatform",
+                "https://schema.org/AndroidPlatform",
+              ],
+            },
+          },
         }}
       />
       <div className="flex min-h-screen flex-col">
