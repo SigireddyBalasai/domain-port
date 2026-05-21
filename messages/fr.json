@@ -1,0 +1,29 @@
+{
+  "common": {
+    "siteName": "CCTV Name",
+    "skipToContent": "Passer au contenu",
+    "readBlog": "Lire le Blog",
+    "featuredPosts": "Articles \u00e0 la Une",
+    "latestPosts": "Derniers Articles",
+    "viewAll": "Voir tout \u2192",
+    "noPosts": "Pas encore d'articles.",
+    "published": "Publi\u00e9",
+    "updated": "Mis \u00e0 jour",
+    "backToBlog": "\u2190 Retour au Blog",
+    "viewAllArticlesBy": "Voir tous les articles de {author}",
+    "articlesPublished": "{count} article publi\u00e9",
+    "articlesPublished_plural": "{count} articles publi\u00e9s",
+    "noArticles": "Pas encore d'articles.",
+    "faqTitle": "Questions Fr\u00e9quentes",
+    "faqDescription": "Questions fr\u00e9quentes sur les cam\u00e9ras CCTV, l'installation et les solutions de surveillance.",
+    "faqQuestionsAnswered": "{count} question r\u00e9pondue",
+    "faqQuestionsAnswered_plural": "{count} questions r\u00e9pondues",
+    "copyright": "Tous droits r\u00e9serv\u00e9s.",
+    "navigation": "Navigation",
+    "connect": "Connexion",
+    "home": "Accueil",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "authors": "Auteurs"
+  }
+}
