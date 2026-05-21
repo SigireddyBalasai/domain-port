@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import type { JSX } from "react/jsx-runtime"
 import type { BreadcrumbList, CollectionPage } from "schema-dts"
+import { getTranslations } from "next-intl/server"
+import { setRequestLocale } from "next-intl/server"
 import { posts } from "@/.velite"
 import BlogCard from "@/components/blog/blog-card"
 import Footer from "@/components/footer"
@@ -8,17 +10,37 @@ import Header from "@/components/header"
 import { JsonLd } from "@/lib/json-ld"
 import { siteConfig } from "@/lib/site-config"
 
-export const metadata: Metadata = {
-  title: "Blog",
-  description: `Latest CCTV and surveillance insights — reviews, guides, and security tips from ${siteConfig.name}.`,
-  openGraph: {
-    url: `${siteConfig.url}/blog`,
-    title: `Blog | ${siteConfig.name}`,
-    description: `Latest CCTV and surveillance insights — reviews, guides, and security tips from ${siteConfig.name}.`,
-  },
+type Props = {
+  params: Promise<{ locale: string }>
 }
 
-export default function BlogPage(): JSX.Element {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  return {
+    title: "Blog",
+    description: `Latest CCTV and surveillance insights — reviews, guides, and security tips from ${siteConfig.name}.`,
+    openGraph: {
+      url: `${siteConfig.url}/${locale}/blog`,
+      title: `Blog | ${siteConfig.name}`,
+      description: `Latest CCTV and surveillance insights — reviews, guides, and security tips from ${siteConfig.name}.`,
+    },
+    alternates: {
+      canonical: `/${locale}/blog`,
+      languages: {
+        en: "/en/blog",
+        es: "/es/blog",
+        fr: "/fr/blog",
+        "x-default": "/en/blog",
+      },
+    },
+  }
+}
+
+export default async function BlogPage({ params }: Props): Promise<JSX.Element> {
+  const { locale } = await params
+  setRequestLocale(locale)
+  const t = await getTranslations("common")
+
   const sorted = [...posts].toSorted(
     (a, b) =>
       new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
@@ -41,7 +63,7 @@ export default function BlogPage(): JSX.Element {
               "@type": "ListItem",
               position: 2,
               name: "Blog",
-              item: `${siteConfig.url}/blog`,
+              item: `${siteConfig.url}/${locale}/blog`,
             },
           ],
         }}
@@ -52,14 +74,14 @@ export default function BlogPage(): JSX.Element {
           "@type": "CollectionPage",
           name: `Blog | ${siteConfig.name}`,
           description: `Latest CCTV and surveillance insights from ${siteConfig.name}.`,
-          url: `${siteConfig.url}/blog`,
+          url: `${siteConfig.url}/${locale}/blog`,
         }}
       />
       <div className="flex min-h-screen flex-col">
         <Header />
         <main className="flex-1">
           <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-            <h1 className="mb-8 text-4xl font-bold">Blog</h1>
+            <h1 className="mb-8 text-4xl font-bold">{t("blog")}</h1>
             <div className="space-y-6">
               {sorted.map((post) => {
                 return (
@@ -74,7 +96,7 @@ export default function BlogPage(): JSX.Element {
                 )
               })}
               {sorted.length === 0 && (
-                <p className="text-muted-foreground">No posts yet.</p>
+                <p className="text-muted-foreground">{t("noPosts")}</p>
               )}
             </div>
           </div>
