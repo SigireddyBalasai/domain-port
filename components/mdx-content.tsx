@@ -1,11 +1,53 @@
 import { useMemo } from "react"
 import * as runtime from "react/jsx-runtime"
 import { BlogTable } from "./blog-table"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+  Alert,
+  AlertDescription,
+  AlertTitle,
+  Badge,
+  Callout,
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  Kbd,
+  KbdGroup,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "./mdx-components"
 import { YouTubeEmbed } from "./youtube-embed"
 
 const sharedComponents: Record<string, React.ComponentType<any>> = {
   YouTubeEmbed,
   table: BlogTable,
+  Alert,
+  AlertTitle,
+  AlertDescription,
+  Badge,
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  Kbd,
+  KbdGroup,
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+  Callout,
 }
 
 interface MdxProps {
