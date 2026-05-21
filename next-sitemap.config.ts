@@ -53,11 +53,13 @@ const config: IConfig = {
       priority = 0.6
     }
 
+    const lastmod = postLastmodByPath.get(path)
+
     return {
       loc: path,
       changefreq: locales.some((l) => path === `/${l}`) ? "daily" : "weekly",
       priority,
-      lastmod: postLastmodByPath.get(path) ?? new Date().toISOString(),
+      ...(lastmod ? { lastmod } : {}),
     }
   },
 }

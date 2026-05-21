@@ -55,6 +55,8 @@ export const generateMetadata = async ({
     return Promise.resolve({})
   }
 
+  const ogLocale = siteConfig.localeMap[locale] ?? "en_US"
+
   return Promise.resolve({
     title: post.title,
     description:
@@ -68,10 +70,20 @@ export const generateMetadata = async ({
         "x-default": `${siteConfig.url}/en/blog/${post.slug}`,
       },
     },
-    authors: post.author ? [{ name: post.author }] : undefined,
+    authors: post.author
+      ? [
+          {
+            name: post.author,
+            url: `${siteConfig.url}/${locale}/author/${post.author.toLowerCase().replaceAll(/\s+/g, "-")}`,
+          },
+        ]
+      : undefined,
+    keywords: post.tags,
     openGraph: {
       type: "article",
+      locale: ogLocale,
       url: `${siteConfig.url}/${locale}/blog/${post.slug}`,
+      siteName: siteConfig.name,
       title: post.title,
       description:
         post.description ?? `Read about ${post.title} on ${siteConfig.name}`,
@@ -81,13 +93,15 @@ export const generateMetadata = async ({
       images: [
         {
           url: `${siteConfig.url}${post.image ?? "/og.svg"}`,
-          width: "1200",
-          height: "630",
+          width: 1200,
+          height: 630,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
+      site: siteConfig.author.twitter,
+      creator: siteConfig.author.twitter,
       title: post.title,
       description:
         post.description ?? `Read about ${post.title} on ${siteConfig.name}`,
@@ -432,7 +446,11 @@ export default async function PostPage({
               <MdxContent code={post.content} />
             </div>
             <div className="mt-12">
-              <ShareButtons title={post.title} slug={post.slug} />
+              <ShareButtons
+                title={post.title}
+                slug={post.slug}
+                locale={locale}
+              />
             </div>
           </article>
         </main>

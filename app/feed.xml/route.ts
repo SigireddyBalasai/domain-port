@@ -22,8 +22,8 @@ export async function GET(): Promise<Response> {
       feed.item({
         title: post.title,
         description: post.description ?? "",
-        url: `${siteConfig.url}/blog/${post.slug}`,
-        guid: `${siteConfig.url}/blog/${post.slug}`,
+        url: `${siteConfig.url}/en/blog/${post.slug}`,
+        guid: `${siteConfig.url}/en/blog/${post.slug}`,
         date: new Date(post.publishedAt),
       })
     })

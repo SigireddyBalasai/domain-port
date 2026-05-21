@@ -38,22 +38,34 @@ export const generateMetadata = async ({
 }: Props): Promise<Metadata> => {
   const { locale, name } = await params
   const authorName = name.replaceAll("-", " ")
+  const ogLocale = siteConfig.localeMap[locale] ?? "en_US"
 
   return {
     title: `${authorName} - Author`,
     description: `Articles and guides by ${authorName} on ${siteConfig.name}.`,
     openGraph: {
+      locale: ogLocale,
       url: `${siteConfig.url}/${locale}/author/${name}`,
+      siteName: siteConfig.name,
       title: `${authorName} | ${siteConfig.name}`,
       description: `Articles and guides by ${authorName}.`,
+      images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: siteConfig.author.twitter,
+      creator: siteConfig.author.twitter,
+      title: `${authorName} | ${siteConfig.name}`,
+      description: `Articles and guides by ${authorName}.`,
+      images: [siteConfig.ogImage],
     },
     alternates: {
-      canonical: `/${locale}/author/${name}`,
+      canonical: `${siteConfig.url}/${locale}/author/${name}`,
       languages: {
-        en: `/en/author/${name}`,
-        es: `/es/author/${name}`,
-        fr: `/fr/author/${name}`,
-        "x-default": `/en/author/${name}`,
+        en: `${siteConfig.url}/en/author/${name}`,
+        es: `${siteConfig.url}/es/author/${name}`,
+        fr: `${siteConfig.url}/fr/author/${name}`,
+        "x-default": `${siteConfig.url}/en/author/${name}`,
       },
     },
   }

@@ -17,24 +17,37 @@ export const generateMetadata = async ({
   params,
 }: Props): Promise<Metadata> => {
   const { locale } = await params
+  const ogLocale = siteConfig.localeMap[locale] ?? "en_US"
 
   return {
     title: "FAQ - Common CCTV Questions",
     description:
       "Frequently asked questions about CCTV cameras, installation, and surveillance solutions.",
     openGraph: {
+      locale: ogLocale,
       url: `${siteConfig.url}/${locale}/faq`,
+      siteName: siteConfig.name,
       title: `FAQ | ${siteConfig.name}`,
       description:
         "Frequently asked questions about CCTV cameras, installation, and surveillance solutions.",
+      images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: siteConfig.author.twitter,
+      creator: siteConfig.author.twitter,
+      title: `FAQ | ${siteConfig.name}`,
+      description:
+        "Frequently asked questions about CCTV cameras, installation, and surveillance solutions.",
+      images: [siteConfig.ogImage],
     },
     alternates: {
-      canonical: `/${locale}/faq`,
+      canonical: `${siteConfig.url}/${locale}/faq`,
       languages: {
-        en: "/en/faq",
-        es: "/es/faq",
-        fr: "/fr/faq",
-        "x-default": "/en/faq",
+        en: `${siteConfig.url}/en/faq`,
+        es: `${siteConfig.url}/es/faq`,
+        fr: `${siteConfig.url}/fr/faq`,
+        "x-default": `${siteConfig.url}/en/faq`,
       },
     },
   }

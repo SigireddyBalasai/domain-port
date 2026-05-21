@@ -10,6 +10,9 @@ export const siteConfig = {
     "security cameras",
     "home security",
     "business surveillance",
+    "security systems",
+    "video surveillance",
+    "camera installation",
   ],
   links: {
     twitter: "https://twitter.com/cctvname",
@@ -20,4 +23,15 @@ export const siteConfig = {
     name: "CCTV Name Team",
     twitter: "@cctvname",
   },
+  localeMap: {
+    en: "en_US",
+    es: "es_ES",
+    fr: "fr_FR",
+  } as Record<string, string>,
+  themeColor: {
+    light: "#ffffff",
+    dark: "#09090b",
+  },
 }
+
+export type Locale = keyof typeof siteConfig.localeMap

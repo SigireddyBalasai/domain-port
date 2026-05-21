@@ -24,6 +24,11 @@
     "home": "Inicio",
     "blog": "Blog",
     "faq": "FAQ",
-    "authors": "Autores"
+    "authors": "Autores",
+    "notFoundTitle": "Página No Encontrada",
+    "notFoundDescription": "Lo sentimos, la página que buscas no existe o ha sido movida.",
+    "notFoundGoHome": "Ir al Inicio",
+    "notFoundBrowseBlog": "Explorar Blog",
+    "notFoundReport": "Si crees que esto es un error, contáctanos."
   }
 }

@@ -17,22 +17,34 @@ export const generateMetadata = async ({
   params,
 }: Props): Promise<Metadata> => {
   const { locale } = await params
+  const ogLocale = siteConfig.localeMap[locale] ?? "en_US"
 
   return {
     title: "Blog",
     description: `Latest CCTV and surveillance insights — reviews, guides, and security tips from ${siteConfig.name}.`,
     openGraph: {
+      locale: ogLocale,
       url: `${siteConfig.url}/${locale}/blog`,
+      siteName: siteConfig.name,
       title: `Blog | ${siteConfig.name}`,
       description: `Latest CCTV and surveillance insights — reviews, guides, and security tips from ${siteConfig.name}.`,
+      images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: siteConfig.author.twitter,
+      creator: siteConfig.author.twitter,
+      title: `Blog | ${siteConfig.name}`,
+      description: `Latest CCTV and surveillance insights — reviews, guides, and security tips from ${siteConfig.name}.`,
+      images: [siteConfig.ogImage],
     },
     alternates: {
-      canonical: `/${locale}/blog`,
+      canonical: `${siteConfig.url}/${locale}/blog`,
       languages: {
-        en: "/en/blog",
-        es: "/es/blog",
-        fr: "/fr/blog",
-        "x-default": "/en/blog",
+        en: `${siteConfig.url}/en/blog`,
+        es: `${siteConfig.url}/es/blog`,
+        fr: `${siteConfig.url}/fr/blog`,
+        "x-default": `${siteConfig.url}/en/blog`,
       },
     },
   }

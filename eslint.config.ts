@@ -35,6 +35,19 @@ export default defineConfig([
     },
   },
   {
+    files: ["app/**/layout.tsx"],
+    rules: {
+      "react-refresh/only-export-components": "off",
+    },
+  },
+  {
+    files: ["app/**/loading.tsx"],
+    rules: {
+      "react/no-array-index-key": "off",
+      "arrow-return-style/arrow-return-style": "off",
+    },
+  },
+  {
     files: [
       "components/mdx-content.tsx",
       "components/blog/share-buttons.tsx",

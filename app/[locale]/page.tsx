@@ -18,22 +18,34 @@ export const generateMetadata = async ({
   params,
 }: Props): Promise<Metadata> => {
   const { locale } = await params
+  const ogLocale = siteConfig.localeMap[locale] ?? "en_US"
 
   return {
     title: siteConfig.name,
     description: siteConfig.description,
     openGraph: {
-      url: siteConfig.url,
+      locale: ogLocale,
+      url: `${siteConfig.url}/${locale}`,
+      siteName: siteConfig.name,
       title: siteConfig.name,
       description: siteConfig.description,
+      images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: siteConfig.author.twitter,
+      creator: siteConfig.author.twitter,
+      title: siteConfig.name,
+      description: siteConfig.description,
+      images: [siteConfig.ogImage],
     },
     alternates: {
-      canonical: `/${locale}`,
+      canonical: `${siteConfig.url}/${locale}`,
       languages: {
-        en: "/en",
-        es: "/es",
-        fr: "/fr",
-        "x-default": "/en",
+        en: `${siteConfig.url}/en`,
+        es: `${siteConfig.url}/es`,
+        fr: `${siteConfig.url}/fr`,
+        "x-default": `${siteConfig.url}/en`,
       },
     },
   }

@@ -23,5 +23,10 @@
   "home": "Startseite",
   "blog": "Blog",
   "faq": "FAQ",
-  "authors": "Autoren"
+  "authors": "Autoren",
+  "notFoundTitle": "Seite Nicht Gefunden",
+  "notFoundDescription": "Entschuldigung, die gesuchte Seite existiert nicht oder wurde verschoben.",
+  "notFoundGoHome": "Zur Startseite",
+  "notFoundBrowseBlog": "Blog durchsuchen",
+  "notFoundReport": "Wenn Sie glauben, dass dies ein Fehler ist, kontaktieren Sie uns."
 }

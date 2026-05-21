@@ -1,4 +1,4 @@
-import { useMemo } from "react"
+import { createElement, useMemo } from "react"
 import * as runtime from "react/jsx-runtime"
 import { BlogTable } from "./blog-table"
 import {
@@ -26,6 +26,12 @@ import {
 import { YouTubeEmbed } from "./youtube-embed"
 
 const sharedComponents: Record<string, React.ComponentType<any>> = {
+  h1: (props) => createElement("h2", props),
+  h2: (props) => createElement("h3", props),
+  h3: (props) => createElement("h4", props),
+  h4: (props) => createElement("h5", props),
+  h5: (props) => createElement("h6", props),
+  h6: (props) => createElement("h6", props),
   YouTubeEmbed,
   table: BlogTable,
   Alert,

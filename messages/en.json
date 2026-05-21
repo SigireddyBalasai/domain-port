@@ -24,6 +24,11 @@
     "home": "Home",
     "blog": "Blog",
     "faq": "FAQ",
-    "authors": "Authors"
+    "authors": "Authors",
+    "notFoundTitle": "Page Not Found",
+    "notFoundDescription": "Sorry, the page you are looking for does not exist or has been moved.",
+    "notFoundGoHome": "Go Home",
+    "notFoundBrowseBlog": "Browse Blog",
+    "notFoundReport": "If you believe this is an error, please contact us."
   }
 }

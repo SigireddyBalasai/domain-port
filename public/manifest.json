@@ -1,0 +1,24 @@
+{
+  "name": "CCTV Name",
+  "short_name": "CCTV Name",
+  "description": "Expert CCTV and surveillance solutions — reviews, installation guides, and security tips for your home and business.",
+  "start_url": "/en",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#09090b",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ],
+  "lang": "en",
+  "categories": ["security", "technology", "surveillance"]
+}

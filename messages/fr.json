@@ -24,6 +24,11 @@
     "home": "Accueil",
     "blog": "Blog",
     "faq": "FAQ",
-    "authors": "Auteurs"
+    "authors": "Auteurs",
+    "notFoundTitle": "Page Non Trouvée",
+    "notFoundDescription": "Désolé, la page que vous cherchez n'existe pas ou a été déplacée.",
+    "notFoundGoHome": "Accueil",
+    "notFoundBrowseBlog": "Parcourir le Blog",
+    "notFoundReport": "Si vous pensez qu'il s'agit d'une erreur, contactez-nous."
   }
 }
