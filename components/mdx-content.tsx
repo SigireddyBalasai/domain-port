@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { createElement, useMemo } from "react"
 import * as runtime from "react/jsx-runtime"
 import { BlogTableLazy } from "./blog/blog-table-lazy"
@@ -36,6 +37,37 @@ const sharedComponents: Record<string, React.ComponentType<any>> = {
   h4: (props) => createElement("h5", props),
   h5: (props) => createElement("h6", props),
   h6: (props) => createElement("h6", props),
+  img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
+    const { src, alt } = props
+
+    if (!src || typeof src !== "string") {
+      return null
+    }
+    if (src.endsWith(".svg") || src.startsWith("http")) {
+      return (
+        <Image
+          unoptimized
+          src={src}
+          alt={alt ?? ""}
+          width={0}
+          height={0}
+          className="h-auto w-full"
+        />
+      )
+    }
+
+    return (
+      <div className="relative my-6 w-full" style={{ aspectRatio: "16/9" }}>
+        <Image
+          fill
+          src={src}
+          alt={alt ?? ""}
+          className="rounded-lg object-cover"
+          sizes="(max-width: 768px) 100vw, 672px"
+        />
+      </div>
+    )
+  },
   YouTubeEmbed,
   table: BlogTable,
   Alert,

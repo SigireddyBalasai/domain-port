@@ -26,6 +26,8 @@ export default defineConfig([
       "next.config.ts",
       "postcss.config.mjs",
       "scripts/**/*",
+      "public/sw.js",
+      "public/blog-manifest.json",
     ],
   },
   ...sheriff(sheriffOptions),

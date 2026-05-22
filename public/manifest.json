@@ -1,6 +1,6 @@
 {
   "name": "CCTV Name",
-  "short_name": "CCTV Name",
+  "short_name": "CCTV",
   "description": "Expert CCTV and surveillance solutions — reviews, installation guides, and security tips for your home and business.",
   "start_url": "/en",
   "display": "standalone",
@@ -20,5 +20,7 @@
     }
   ],
   "lang": "en",
-  "categories": ["security", "technology", "surveillance"]
+  "categories": ["security", "technology", "surveillance"],
+  "scope": "/",
+  "prefer_related_applications": false
 }

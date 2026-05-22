@@ -4,6 +4,7 @@ import { getMessages, setRequestLocale } from "next-intl/server"
 import type { ReactNode } from "react"
 import type { JSX } from "react/jsx-runtime"
 import { GoogleAnalyticsLazy } from "@/components/google-analytics-lazy"
+import { ServiceWorkerRegister } from "@/components/service-worker-register"
 import { ThemeProvider } from "@/components/theme-provider"
 import { routing } from "@/i18n/routing"
 
@@ -38,6 +39,7 @@ export default async function LocaleLayout({
       {process.env.NEXT_PUBLIC_GA4_ID ? (
         <GoogleAnalyticsLazy gaId={process.env.NEXT_PUBLIC_GA4_ID} />
       ) : null}
+      <ServiceWorkerRegister />
     </ThemeProvider>
   )
 }

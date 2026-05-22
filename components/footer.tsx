@@ -21,6 +21,7 @@ export default async function Footer({
             <div className="flex items-center space-x-2">
               <Image
                 aria-hidden
+                priority
                 src="/logo-icon.svg"
                 alt=""
                 width={24}

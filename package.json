@@ -16,6 +16,7 @@
     "dev": "run-p dev:*",
     "knip": "knip",
     "build:content": "velite --clean",
+    "build:manifest": "bun run scripts/generate-blog-manifest.ts",
     "build:llmstxt": "bun run scripts/generate-llmstxt.ts",
     "build:key": "bun run scripts/generate-indexnow-key.ts",
     "build:next": "next build",
@@ -32,7 +33,7 @@
     "@base-ui/react": "^1.5.0",
     "@keystatic/core": "^0.5.50",
     "@keystatic/next": "^5.0.4",
-    "@markdoc/markdoc": "^0.5.7",
+
     "@next/third-parties": "^16.2.6",
     "@remixicon/react": "^4.9.0",
     "@shikijs/rehype": "^4.1.0",

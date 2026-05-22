@@ -6,8 +6,10 @@ export const siteConfig = {
     "Expert CCTV and surveillance solutions — reviews, installation guides, and security tips for your home and business.",
   keywords: [
     "CCTV",
+    "cctv camera",
     "surveillance",
     "security cameras",
+    "security camera",
     "home security",
     "business surveillance",
     "security systems",

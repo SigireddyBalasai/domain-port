@@ -7,13 +7,19 @@ import { cn } from "@/lib/utils"
 const playfairDisplayHeading = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-heading",
+  display: "swap",
 })
 
-const manrope = Manrope({ subsets: ["latin"], variable: "--font-sans" })
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+})
 
 const fontMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
+  display: "swap",
 })
 
 export const viewport: Viewport = {
@@ -104,9 +110,9 @@ export default function RootLayout({
       className={cn(
         "antialiased",
         fontMono.variable,
-        "font-sans",
         manrope.variable,
-        playfairDisplayHeading.variable
+        playfairDisplayHeading.variable,
+        "font-sans"
       )}
     >
       <body>

@@ -6,6 +6,9 @@ const withNextIntl = createNextIntlPlugin()
 const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
   experimental: {
     webpackBuildWorker: true,
     optimizePackageImports: ["@remixicon/react", "@base-ui/react"],

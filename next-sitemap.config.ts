@@ -35,7 +35,6 @@ const config: IConfig = {
     "/keystatic/*",
     "/api/*",
     "/login*",
-    "/*/markdoc-demo",
     "/apple-icon.png",
     "/robots.txt",
     "/*.txt",

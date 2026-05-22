@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { type JSX, useState } from "react"
+import { type JSX, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { signIn, twoFactor } from "@/lib/auth-client"
 
@@ -13,6 +13,7 @@ export default function LoginPage(): JSX.Element {
   const [step, setStep] = useState<"credentials" | "totp">("credentials")
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
+  const totpRef = useRef<HTMLInputElement>(null)
 
   const handleCredentialsSubmit = async (
     e: React.SyntheticEvent<HTMLFormElement>
@@ -31,6 +32,7 @@ export default function LoginPage(): JSX.Element {
             if (ctx.error.code === "TWO_FACTOR_NOT_ENABLED") {
               setError("2FA is required. Please enter your TOTP code.")
               setStep("totp")
+              setTimeout(() => totpRef.current?.focus(), 0)
             } else {
               setError(ctx.error.message || "Invalid credentials")
             }
@@ -43,6 +45,7 @@ export default function LoginPage(): JSX.Element {
     } catch (error_) {
       if (error_ instanceof Error && error_.message.includes("TWO_FACTOR")) {
         setStep("totp")
+        setTimeout(() => totpRef.current?.focus(), 0)
         setError("Enter your TOTP code to continue")
       } else {
         setError("Invalid credentials")
@@ -152,8 +155,10 @@ export default function LoginPage(): JSX.Element {
               </label>
               <input
                 required
+                ref={totpRef}
                 id="totp"
                 type="text"
+                inputMode="numeric"
                 value={totpCode}
                 maxLength={6}
                 placeholder="000000"

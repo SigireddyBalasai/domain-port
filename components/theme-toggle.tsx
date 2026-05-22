@@ -16,7 +16,7 @@ export default function ThemeToggle(): JSX.Element {
       aria-label="Toggle theme"
       title="Toggle theme"
       aria-pressed={resolvedTheme === "dark"}
-      className="rounded-md px-2 py-1 text-sm hover:bg-accent"
+      className="flex size-6 items-center justify-center rounded-md text-sm hover:bg-accent"
       onClick={toggle}
     >
       <span className="sr-only">Toggle theme</span>

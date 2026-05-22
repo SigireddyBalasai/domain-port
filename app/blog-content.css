@@ -44,7 +44,7 @@
   @apply bg-transparent p-0;
 }
 .blog-content img {
-  @apply my-6 rounded-lg;
+  @apply my-6 h-auto max-w-full rounded-lg;
 }
 .blog-content hr {
   @apply my-8 border-border;
