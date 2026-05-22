@@ -8,7 +8,11 @@ const GoogleAnalyticsInner = dynamic(
   { ssr: false }
 )
 
-interface GoogleAnalyticsLazyProps { gaId: string }
-export function GoogleAnalyticsLazy({ gaId }: GoogleAnalyticsLazyProps): JSX.Element {
+interface GoogleAnalyticsLazyProps {
+  gaId: string
+}
+export function GoogleAnalyticsLazy({
+  gaId,
+}: GoogleAnalyticsLazyProps): JSX.Element {
   return <GoogleAnalyticsInner gaId={gaId} />
 }
