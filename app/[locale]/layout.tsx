@@ -3,6 +3,8 @@ import { hasLocale, NextIntlClientProvider } from "next-intl"
 import { getMessages, setRequestLocale } from "next-intl/server"
 import type { ReactNode } from "react"
 import type { JSX } from "react/jsx-runtime"
+import { GoogleAnalytics } from "@next/third-parties/google"
+import { ThemeProvider } from "@/components/theme-provider"
 import { routing } from "@/i18n/routing"
 
 interface Props {
@@ -29,8 +31,13 @@ export default async function LocaleLayout({
   const messages = await getMessages()
 
   return (
-    <NextIntlClientProvider locale={locale} messages={messages}>
-      {children}
-    </NextIntlClientProvider>
+    <ThemeProvider>
+      <NextIntlClientProvider locale={locale} messages={messages}>
+        {children}
+      </NextIntlClientProvider>
+      {process.env.NEXT_PUBLIC_GA4_ID ? (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA4_ID} />
+      ) : null}
+    </ThemeProvider>
   )
 }

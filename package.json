@@ -4,6 +4,12 @@
   "type": "module",
   "packageManager": "bun@1.3.0",
   "private": true,
+  "browserslist": [
+    "Chrome >= 119",
+    "Edge >= 119",
+    "Firefox >= 120",
+    "Safari >= 17"
+  ],
   "scripts": {
     "dev:next": "next dev --turbopack",
     "dev:content": "velite --watch",

@@ -7,6 +7,7 @@ import BlogCard from "@/components/blog/blog-card"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
 import { JsonLd } from "@/lib/json-ld"
+import { locales } from "@/lib/locales"
 import { siteConfig } from "@/lib/site-config"
 
 interface Props {
@@ -14,7 +15,6 @@ interface Props {
 }
 
 export const generateStaticParams = (): { locale: string; name: string }[] => {
-  const locales = ["en", "es", "fr"]
   const authors = posts
     .map((post) => post.author)
     .filter(
@@ -62,9 +62,9 @@ export const generateMetadata = async ({
     alternates: {
       canonical: `${siteConfig.url}/${locale}/author/${name}`,
       languages: {
-        en: `${siteConfig.url}/en/author/${name}`,
-        es: `${siteConfig.url}/es/author/${name}`,
-        fr: `${siteConfig.url}/fr/author/${name}`,
+        ...Object.fromEntries(
+          locales.map((l) => [l, `${siteConfig.url}/${l}/author/${name}`])
+        ),
         "x-default": `${siteConfig.url}/en/author/${name}`,
       },
     },
@@ -136,7 +136,7 @@ export default async function AuthorPage({
         }}
       />
       <div className="flex min-h-screen flex-col">
-        <Header />
+        <Header locale={locale} currentPath={`/author/${name}`} />
         <main className="flex-1">
           <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
             <h1 className="mb-2 text-4xl font-bold">{authorName}</h1>
@@ -152,6 +152,7 @@ export default async function AuthorPage({
                     description={post.description}
                     publishedAt={post.publishedAt}
                     slug={post.slug}
+                    locale={locale}
                     tags={post.tags}
                   />
                 )
@@ -162,7 +163,7 @@ export default async function AuthorPage({
             </div>
           </div>
         </main>
-        <Footer />
+        <Footer locale={locale} />
       </div>
     </>
   )

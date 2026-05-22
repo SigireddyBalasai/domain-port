@@ -6,6 +6,7 @@ interface BlogCardProps {
   description?: string
   publishedAt: string
   slug: string
+  locale: string
   tags?: string[]
 }
 
@@ -14,11 +15,12 @@ export default function BlogCard({
   description,
   publishedAt,
   slug,
+  locale,
   tags,
 }: BlogCardProps): JSX.Element {
   return (
     <article className="group rounded-lg border p-6 transition-colors hover:border-primary">
-      <Link href={`/blog/${slug}`} className="block">
+      <Link href={`/${locale}/blog/${slug}`} className="block">
         <span className="text-sm text-muted-foreground">
           Published{" "}
           <time dateTime={publishedAt}>

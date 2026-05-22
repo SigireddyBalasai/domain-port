@@ -1,16 +1,17 @@
-"use client"
-
 import Image from "next/image"
 import Link from "next/link"
-import { useParams } from "next/navigation"
-import { useTranslations } from "next-intl"
+import { getTranslations } from "next-intl/server"
 import type { JSX } from "react"
 import { siteConfig } from "@/lib/site-config"
 
-export default function Footer(): JSX.Element {
-  const t = useTranslations("common")
-  const { locale } = useParams()
-  const localeStr = locale as string
+interface FooterProps {
+  locale: string
+}
+
+export default async function Footer({
+  locale,
+}: FooterProps): Promise<JSX.Element> {
+  const t = await getTranslations("common")
 
   return (
     <footer className="border-t border-border/40 bg-background/95 py-12">
@@ -19,8 +20,9 @@ export default function Footer(): JSX.Element {
           <div>
             <div className="flex items-center space-x-2">
               <Image
+                aria-hidden
                 src="/logo-icon.svg"
-                alt={siteConfig.name}
+                alt=""
                 width={24}
                 height={24}
               />
@@ -34,13 +36,13 @@ export default function Footer(): JSX.Element {
             <h4 className="font-semibold">{t("navigation")}</h4>
             <nav className="mt-4 space-y-2">
               <Link
-                href={`/${localeStr}`}
+                href={`/${locale}`}
                 className="block text-sm hover:text-primary"
               >
                 {t("home")}
               </Link>
               <Link
-                href={`/${localeStr}/blog`}
+                href={`/${locale}/blog`}
                 className="block text-sm hover:text-primary"
               >
                 {t("blog")}

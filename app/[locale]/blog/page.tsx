@@ -7,6 +7,7 @@ import BlogCard from "@/components/blog/blog-card"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
 import { JsonLd } from "@/lib/json-ld"
+import { locales } from "@/lib/locales"
 import { siteConfig } from "@/lib/site-config"
 
 interface Props {
@@ -41,9 +42,9 @@ export const generateMetadata = async ({
     alternates: {
       canonical: `${siteConfig.url}/${locale}/blog`,
       languages: {
-        en: `${siteConfig.url}/en/blog`,
-        es: `${siteConfig.url}/es/blog`,
-        fr: `${siteConfig.url}/fr/blog`,
+        ...Object.fromEntries(
+          locales.map((l) => [l, `${siteConfig.url}/${l}/blog`])
+        ),
         "x-default": `${siteConfig.url}/en/blog`,
       },
     },
@@ -95,7 +96,7 @@ export default async function BlogPage({
         }}
       />
       <div className="flex min-h-screen flex-col">
-        <Header />
+        <Header locale={locale} currentPath="/blog" />
         <main className="flex-1">
           <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
             <h1 className="mb-8 text-4xl font-bold">{t("blog")}</h1>
@@ -108,6 +109,7 @@ export default async function BlogPage({
                     description={post.description}
                     publishedAt={post.publishedAt}
                     slug={post.slug}
+                    locale={locale}
                     tags={post.tags}
                   />
                 )
@@ -118,7 +120,7 @@ export default async function BlogPage({
             </div>
           </div>
         </main>
-        <Footer />
+        <Footer locale={locale} />
       </div>
     </>
   )

@@ -8,6 +8,16 @@ const nextConfig: NextConfig = {
     webpackBuildWorker: true,
     optimizePackageImports: ["@remixicon/react", "@base-ui/react"],
   },
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "cctv.name" }],
+        destination: "https://www.cctv.name/:path*",
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default withNextIntl(nextConfig)

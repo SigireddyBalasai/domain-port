@@ -7,6 +7,7 @@ import Footer from "@/components/footer"
 import Header from "@/components/header"
 import { MdxContent } from "@/components/mdx-content"
 import { JsonLd } from "@/lib/json-ld"
+import { locales } from "@/lib/locales"
 import { siteConfig } from "@/lib/site-config"
 
 interface Props {
@@ -44,9 +45,9 @@ export const generateMetadata = async ({
     alternates: {
       canonical: `${siteConfig.url}/${locale}/faq`,
       languages: {
-        en: `${siteConfig.url}/en/faq`,
-        es: `${siteConfig.url}/es/faq`,
-        fr: `${siteConfig.url}/fr/faq`,
+        ...Object.fromEntries(
+          locales.map((l) => [l, `${siteConfig.url}/${l}/faq`])
+        ),
         "x-default": `${siteConfig.url}/en/faq`,
       },
     },
@@ -134,7 +135,7 @@ export default async function FaqPage({ params }: Props): Promise<JSX.Element> {
         }}
       />
       <div className="flex min-h-screen flex-col">
-        <Header />
+        <Header locale={locale} currentPath="/faq" />
         <main className="flex-1">
           <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
             <h1 className="mb-2 text-4xl font-bold">
@@ -203,7 +204,7 @@ export default async function FaqPage({ params }: Props): Promise<JSX.Element> {
             })}
           </div>
         </main>
-        <Footer />
+        <Footer locale={locale} />
       </div>
     </>
   )

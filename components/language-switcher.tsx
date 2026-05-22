@@ -1,47 +1,37 @@
-"use client"
-
-import { useParams, usePathname, useRouter } from "next/navigation"
+import Link from "next/link"
 import type { JSX } from "react"
-import { Button } from "@/components/ui/button"
-import { routing } from "@/i18n/routing"
+import { localeLabels, locales } from "@/lib/locales"
 
-const localeLabels: Record<string, string> = {
-  en: "EN",
-  es: "ES",
-  fr: "FR",
+interface LanguageSwitcherProps {
+  currentLocale: string
+  currentPath: string
 }
 
-export default function LanguageSwitcher(): JSX.Element {
-  const pathname = usePathname()
-  const router = useRouter()
-  const { locale: currentLocale } = useParams()
-
-  const switchLocale = (nextLocale: string) => {
-    const segments = pathname.split("/").filter(Boolean)
-    const pathWithoutLocale = (routing.locales as readonly string[]).includes(
-      segments[0]
-    )
-      ? segments.slice(1)
-      : segments
-    const nextPath = `/${nextLocale}/${pathWithoutLocale.join("/")}`
-
-    router.push(nextPath.replace(/\/$/, "") || "/")
-  }
+export default function LanguageSwitcher({
+  currentLocale,
+  currentPath,
+}: LanguageSwitcherProps): JSX.Element {
+  const normalizedPath =
+    currentPath === "/" ? "" : currentPath.replace(/\/$/, "")
 
   return (
     <div className="flex items-center gap-1">
-      {routing.locales.map((locale) => {
+      {locales.map((locale) => {
+        const href = `/${locale}${normalizedPath}`
+
         return (
-          <Button
+          <Link
             key={locale}
-            variant={currentLocale === locale ? "default" : "ghost"}
-            size="xs"
-            onClick={() => {
-              switchLocale(locale)
-            }}
+            href={href}
+            aria-current={currentLocale === locale ? "page" : undefined}
+            className={
+              currentLocale === locale
+                ? "rounded-md bg-primary px-2 py-1 text-xs font-medium text-primary-foreground"
+                : "rounded-md px-2 py-1 text-xs font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+            }
           >
             {localeLabels[locale] ?? locale.toUpperCase()}
-          </Button>
+          </Link>
         )
       })}
     </div>

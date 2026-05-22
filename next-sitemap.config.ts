@@ -1,10 +1,15 @@
 import type { IConfig } from "next-sitemap"
-import { readFileSync } from "node:fs"
+import { readdirSync, readFileSync } from "node:fs"
 import { fileURLToPath } from "node:url"
 import { dirname, join } from "node:path"
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const postsRaw = readFileSync(join(__dirname, ".velite", "posts.json"), "utf-8")
+
+const locales = readdirSync(join(__dirname, "messages"))
+  .filter((f) => f.endsWith(".json"))
+  .map((f) => f.replace(/\.json$/, ""))
+  .toSorted()
 
 interface Post {
   slug: string
@@ -13,8 +18,6 @@ interface Post {
 }
 
 const typedPosts = JSON.parse(postsRaw) as Post[]
-
-const locales = ["en", "es", "fr"]
 
 const postLastmodByPath = new Map<string, string>(
   typedPosts.flatMap((post) =>
@@ -26,7 +29,7 @@ const postLastmodByPath = new Map<string, string>(
 )
 
 const config: IConfig = {
-  siteUrl: "https://cctv.name",
+  siteUrl: "https://www.cctv.name",
   generateRobotsTxt: false,
   exclude: [
     "/keystatic/*",
@@ -37,10 +40,11 @@ const config: IConfig = {
     "/*.txt",
   ],
   alternateRefs: [
-    { href: "https://cctv.name/en", hreflang: "en" },
-    { href: "https://cctv.name/es", hreflang: "es" },
-    { href: "https://cctv.name/fr", hreflang: "fr" },
-    { href: "https://cctv.name/en", hreflang: "x-default" },
+    ...locales.map((locale) => ({
+      href: `https://www.cctv.name/${locale}`,
+      hreflang: locale,
+    })),
+    { href: "https://www.cctv.name/en", hreflang: "x-default" },
   ],
   transform: async (_config, path) => {
     let priority = 0.5

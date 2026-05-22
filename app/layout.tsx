@@ -1,8 +1,6 @@
-import "@/app/globals.css"
+import "./globals.css"
 import type { Metadata, Viewport } from "next"
 import { Geist_Mono, Manrope, Playfair_Display } from "next/font/google"
-import { Analytics } from "@/components/google-analytics"
-import { ThemeProvider } from "@/components/theme-provider"
 import { siteConfig } from "@/lib/site-config"
 import { cn } from "@/lib/utils"
 
@@ -118,10 +116,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <ThemeProvider>
-          <main id="main-content">{children}</main>
-        </ThemeProvider>
-        <Analytics />
+        <main id="main-content">{children}</main>
       </body>
     </html>
   )
