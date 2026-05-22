@@ -7,7 +7,6 @@ const intlMiddleware = createMiddleware(routing)
 export const proxy = (
   request: NextRequest
 ): NextResponse | Promise<NextResponse> => {
-  // Keystatic is locale-unaware — handle auth before intl middleware
   if (request.nextUrl.pathname.startsWith("/keystatic")) {
     const sessionToken = request.cookies.get("better-auth.session_token")
 
@@ -19,7 +18,6 @@ export const proxy = (
       return NextResponse.redirect(loginUrl)
     }
 
-    // Authenticated: let keystatic render without locale prefix
     return NextResponse.next()
   }
 

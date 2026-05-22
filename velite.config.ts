@@ -1,6 +1,5 @@
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypeExternalLinks from "rehype-external-links"
-import rehypeKatex from "rehype-katex"
 import rehypeRaw from "rehype-raw"
 import rehypeSlug from "rehype-slug"
 import remarkEmoji from "remark-emoji"
@@ -148,7 +147,6 @@ export default defineConfig({
     rehypePlugins: [
       rehypeSlug,
       [rehypeAutolinkHeadings, { behavior: "wrap" }],
-      rehypeKatex,
       [
         rehypeRaw,
         {

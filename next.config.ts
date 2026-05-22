@@ -4,6 +4,8 @@ import type { NextConfig } from "next"
 const withNextIntl = createNextIntlPlugin()
 
 const nextConfig: NextConfig = {
+  compress: true,
+  poweredByHeader: false,
   experimental: {
     webpackBuildWorker: true,
     optimizePackageImports: ["@remixicon/react", "@base-ui/react"],
