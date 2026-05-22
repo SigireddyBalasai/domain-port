@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic"
 import { createElement, useMemo } from "react"
 import * as runtime from "react/jsx-runtime"
 import { BlogTable } from "./blog-table"
@@ -23,7 +24,11 @@ import {
   TabsList,
   TabsTrigger,
 } from "./mdx-components"
-import { YouTubeEmbed } from "./youtube-embed"
+
+const YouTubeEmbed = dynamic(
+  () => import("./youtube-embed").then((mod) => mod.YouTubeEmbed),
+  { ssr: false }
+)
 
 const sharedComponents: Record<string, React.ComponentType<any>> = {
   h1: (props) => createElement("h2", props),
