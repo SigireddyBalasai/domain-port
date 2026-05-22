@@ -116,13 +116,13 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
         <Header locale={locale} currentPath="/" />
         <main className="flex-1">
           {/* Hero Section */}
-          <section className="border-b border-border/40 py-24 last:border-b-0 md:py-32">
+          <section className="border-b border-border/40 py-24 sm:py-32">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="text-center">
-                <h1 className="font-heading text-4xl leading-tight font-bold tracking-tight sm:text-5xl md:text-6xl">
+                <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                   {siteConfig.name}
                 </h1>
-                <p className="mt-6 text-lg leading-relaxed text-muted-foreground sm:text-xl">
+                <p className="mt-6 text-lg text-muted-foreground sm:text-xl">
                   {siteConfig.description}
                 </p>
                 <div className="mt-10 flex justify-center gap-4">
@@ -139,9 +139,9 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
 
           {/* Featured Posts */}
           {featuredPosts.length > 0 && (
-            <section className="border-b border-border/40 py-24 last:border-b-0 md:py-32">
+            <section className="border-b border-border/40 py-24 sm:py-32">
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <h2 className="font-heading text-3xl leading-9 font-bold">
+                <h2 className="font-display text-3xl font-bold">
                   {t("featuredPosts")}
                 </h2>
                 <div className="mt-12 space-y-6">
@@ -165,10 +165,10 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
 
           {/* Latest Posts */}
           {latestPosts.length > 0 && (
-            <section className="border-b border-border/40 py-24 last:border-b-0 md:py-32">
+            <section className="py-24 sm:py-32">
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between">
-                  <h2 className="font-heading text-3xl leading-9 font-bold">
+                  <h2 className="font-display text-3xl font-bold">
                     {t("latestPosts")}
                   </h2>
                   <Link

@@ -403,50 +403,44 @@ export default async function PostPage({
             >
               &larr; {t("backToBlog")}
             </Link>
-            <div className="mb-12">
-              <p className="text-sm text-muted-foreground">
-                Published{" "}
-                <time dateTime={post.publishedAt}>
-                  {new Date(post.publishedAt).toLocaleDateString(locale, {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </time>
-              </p>
-              <h1 className="mt-2 text-4xl leading-tight font-bold">
-                {post.title}
-              </h1>
-              <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
-                <span>{post.author ?? siteConfig.name}</span>
-                <span className="text-muted-foreground" aria-hidden="true">
-                  •
-                </span>
-                <time dateTime={post.updatedAt ?? post.publishedAt}>
-                  Updated{" "}
-                  {new Date(
-                    post.updatedAt ?? post.publishedAt
-                  ).toLocaleDateString(locale, {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </time>
-              </div>
-              {post.description && (
-                <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-                  {post.description}
-                </p>
-              )}
-              {post.author && (
-                <Link
-                  href={`/${locale}/author/${post.author.toLowerCase().replaceAll(/\s+/g, "-")}`}
-                  className="mt-2 inline-block text-sm text-primary hover:underline"
-                >
-                  View all articles by {post.author}
-                </Link>
-              )}
+            <p className="text-sm text-muted-foreground">
+              Published{" "}
+              <time dateTime={post.publishedAt}>
+                {new Date(post.publishedAt).toLocaleDateString(locale, {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </time>
+            </p>
+            <h1 className="mt-2 text-4xl font-bold">{post.title}</h1>
+            <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+              <span>{post.author ?? siteConfig.name}</span>
+              <span aria-hidden="true">•</span>
+              <time dateTime={post.updatedAt ?? post.publishedAt}>
+                Updated{" "}
+                {new Date(
+                  post.updatedAt ?? post.publishedAt
+                ).toLocaleDateString(locale, {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </time>
             </div>
+            {post.description && (
+              <p className="mt-4 text-lg text-muted-foreground">
+                {post.description}
+              </p>
+            )}
+            {post.author && (
+              <Link
+                href={`/${locale}/author/${post.author.toLowerCase().replaceAll(/\s+/g, "-")}`}
+                className="mt-2 inline-block text-sm text-primary hover:underline"
+              >
+                View all articles by {post.author}
+              </Link>
+            )}
             <div className="blog-content mt-8">
               <MdxContent code={post.content} />
             </div>
