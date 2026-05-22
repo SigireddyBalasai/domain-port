@@ -7,7 +7,7 @@ import Footer from "@/components/footer"
 import Header from "@/components/header"
 import { MdxContent } from "@/components/mdx-content"
 import { JsonLd } from "@/lib/json-ld"
-import { locales } from "@/lib/locales"
+import { defaultLocale, locales } from "@/lib/locales"
 import { siteConfig } from "@/lib/site-config"
 
 interface Props {
@@ -19,6 +19,8 @@ export const generateMetadata = async ({
 }: Props): Promise<Metadata> => {
   const { locale } = await params
   const ogLocale = siteConfig.localeMap[locale] ?? "en_US"
+  const localePrefix = locale === defaultLocale ? "" : `/${locale}`
+  const pageUrl = `${siteConfig.url}${localePrefix}/faq`
 
   return {
     title: "FAQ - Common CCTV Questions",
@@ -26,7 +28,7 @@ export const generateMetadata = async ({
       "Frequently asked questions about CCTV cameras, installation, and surveillance solutions.",
     openGraph: {
       locale: ogLocale,
-      url: `${siteConfig.url}/${locale}/faq`,
+      url: pageUrl,
       siteName: siteConfig.name,
       title: `FAQ | ${siteConfig.name}`,
       description:
@@ -43,12 +45,19 @@ export const generateMetadata = async ({
       images: [siteConfig.ogImage],
     },
     alternates: {
-      canonical: `${siteConfig.url}/${locale}/faq`,
+      canonical: pageUrl,
       languages: {
         ...Object.fromEntries(
-          locales.map((l) => [l, `${siteConfig.url}/${l}/faq`])
+          locales.map((l) => {
+            return [
+              l,
+              l === defaultLocale
+                ? `${siteConfig.url}/faq`
+                : `${siteConfig.url}/${l}/faq`,
+            ]
+          })
         ),
-        "x-default": `${siteConfig.url}/en/faq`,
+        "x-default": `${siteConfig.url}/faq`,
       },
     },
   }

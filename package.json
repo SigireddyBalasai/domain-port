@@ -16,6 +16,7 @@
     "dev": "run-p dev:*",
     "knip": "knip",
     "build:content": "velite --clean",
+    "build:llmstxt": "bun run scripts/generate-llmstxt.ts",
     "build:key": "bun run scripts/generate-indexnow-key.ts",
     "build:next": "next build",
     "build": "run-s build:*",

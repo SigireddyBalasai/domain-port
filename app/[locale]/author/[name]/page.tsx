@@ -7,7 +7,7 @@ import BlogCard from "@/components/blog/blog-card"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
 import { JsonLd } from "@/lib/json-ld"
-import { locales } from "@/lib/locales"
+import { defaultLocale, locales } from "@/lib/locales"
 import { siteConfig } from "@/lib/site-config"
 
 interface Props {
@@ -39,13 +39,15 @@ export const generateMetadata = async ({
   const { locale, name } = await params
   const authorName = name.replaceAll("-", " ")
   const ogLocale = siteConfig.localeMap[locale] ?? "en_US"
+  const localePrefix = locale === defaultLocale ? "" : `/${locale}`
+  const pageUrl = `${siteConfig.url}${localePrefix}/author/${name}`
 
   return {
     title: `${authorName} - Author`,
     description: `Articles and guides by ${authorName} on ${siteConfig.name}.`,
     openGraph: {
       locale: ogLocale,
-      url: `${siteConfig.url}/${locale}/author/${name}`,
+      url: pageUrl,
       siteName: siteConfig.name,
       title: `${authorName} | ${siteConfig.name}`,
       description: `Articles and guides by ${authorName}.`,
@@ -60,12 +62,19 @@ export const generateMetadata = async ({
       images: [siteConfig.ogImage],
     },
     alternates: {
-      canonical: `${siteConfig.url}/${locale}/author/${name}`,
+      canonical: pageUrl,
       languages: {
         ...Object.fromEntries(
-          locales.map((l) => [l, `${siteConfig.url}/${l}/author/${name}`])
+          locales.map((l) => {
+            return [
+              l,
+              l === defaultLocale
+                ? `${siteConfig.url}/author/${name}`
+                : `${siteConfig.url}/${l}/author/${name}`,
+            ]
+          })
         ),
-        "x-default": `${siteConfig.url}/en/author/${name}`,
+        "x-default": `${siteConfig.url}/author/${name}`,
       },
     },
   }

@@ -7,7 +7,7 @@ import BlogCard from "@/components/blog/blog-card"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
 import { JsonLd } from "@/lib/json-ld"
-import { locales } from "@/lib/locales"
+import { defaultLocale, locales } from "@/lib/locales"
 import { siteConfig } from "@/lib/site-config"
 
 interface Props {
@@ -19,13 +19,15 @@ export const generateMetadata = async ({
 }: Props): Promise<Metadata> => {
   const { locale } = await params
   const ogLocale = siteConfig.localeMap[locale] ?? "en_US"
+  const localePrefix = locale === defaultLocale ? "" : `/${locale}`
+  const pageUrl = `${siteConfig.url}${localePrefix}/blog`
 
   return {
     title: "Blog",
     description: `Latest CCTV and surveillance insights — reviews, guides, and security tips from ${siteConfig.name}.`,
     openGraph: {
       locale: ogLocale,
-      url: `${siteConfig.url}/${locale}/blog`,
+      url: pageUrl,
       siteName: siteConfig.name,
       title: `Blog | ${siteConfig.name}`,
       description: `Latest CCTV and surveillance insights — reviews, guides, and security tips from ${siteConfig.name}.`,
@@ -40,12 +42,19 @@ export const generateMetadata = async ({
       images: [siteConfig.ogImage],
     },
     alternates: {
-      canonical: `${siteConfig.url}/${locale}/blog`,
+      canonical: pageUrl,
       languages: {
         ...Object.fromEntries(
-          locales.map((l) => [l, `${siteConfig.url}/${l}/blog`])
+          locales.map((l) => {
+            return [
+              l,
+              l === defaultLocale
+                ? `${siteConfig.url}/blog`
+                : `${siteConfig.url}/${l}/blog`,
+            ]
+          })
         ),
-        "x-default": `${siteConfig.url}/en/blog`,
+        "x-default": `${siteConfig.url}/blog`,
       },
     },
   }

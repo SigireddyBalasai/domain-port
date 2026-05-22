@@ -27,7 +27,7 @@ import Footer from "@/components/footer"
 import Header from "@/components/header"
 import { MdxContent } from "@/components/mdx-content"
 import { JsonLd } from "@/lib/json-ld"
-import { locales } from "@/lib/locales"
+import { defaultLocale, locales } from "@/lib/locales"
 import { siteConfig } from "@/lib/site-config"
 
 const ShareButtons = ShareButtonsLazy
@@ -58,25 +58,34 @@ export const generateMetadata = async ({
   }
 
   const ogLocale = siteConfig.localeMap[locale] ?? "en_US"
+  const localePrefix = locale === defaultLocale ? "" : `/${locale}`
+  const postUrl = `${siteConfig.url}${localePrefix}/blog/${post.slug}`
 
   return Promise.resolve({
     title: post.title,
     description:
       post.description ?? `Read about ${post.title} on ${siteConfig.name}`,
     alternates: {
-      canonical: `${siteConfig.url}/${locale}/blog/${post.slug}`,
+      canonical: postUrl,
       languages: {
         ...Object.fromEntries(
-          locales.map((l) => [l, `${siteConfig.url}/${l}/blog/${post.slug}`])
+          locales.map((l) => {
+            return [
+              l,
+              l === defaultLocale
+                ? `${siteConfig.url}/blog/${post.slug}`
+                : `${siteConfig.url}/${l}/blog/${post.slug}`,
+            ]
+          })
         ),
-        "x-default": `${siteConfig.url}/en/blog/${post.slug}`,
+        "x-default": `${siteConfig.url}/blog/${post.slug}`,
       },
     },
     authors: post.author
       ? [
           {
             name: post.author,
-            url: `${siteConfig.url}/${locale}/author/${post.author.toLowerCase().replaceAll(/\s+/g, "-")}`,
+            url: `${siteConfig.url}${localePrefix}/author/${post.author.toLowerCase().replaceAll(/\s+/g, "-")}`,
           },
         ]
       : undefined,
@@ -84,7 +93,7 @@ export const generateMetadata = async ({
     openGraph: {
       type: "article",
       locale: ogLocale,
-      url: `${siteConfig.url}/${locale}/blog/${post.slug}`,
+      url: postUrl,
       siteName: siteConfig.name,
       title: post.title,
       description:

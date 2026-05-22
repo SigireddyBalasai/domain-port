@@ -1,0 +1,21 @@
+# CCTV Name
+
+> Expert CCTV and surveillance solutions — reviews, installation guides, and security tips for your home and business.
+
+## Blog
+- [All Posts](https://www.cctv.name/blog): Latest CCTV and surveillance insights
+- [Best CCTV Cameras Under $200 (2026)](https://www.cctv.name/blog/best-cameras-under-200): A curated list of reliable CCTV cameras under $200 — tradeoffs, features, and recommended models.
+- [A Complete Guide to CCTV Video File Formats](https://www.cctv.name/blog/cctv-video-file-formats): An in-depth guide to CCTV video formats — AVI, MP4, H.264, H.265, MOV, MKV, MJPEG, and more — with compression, compatibility, and storage tradeoffs explained.
+- [How to Set Up a PoE NVR for CCTV](https://www.cctv.name/blog/poe-nvr-setup): Step-by-step PoE NVR setup for small installations: cabling, camera registration, retention settings.
+
+## FAQ
+- [Frequently Asked Questions](https://www.cctv.name/faq): Common questions about CCTV cameras, installation, and surveillance
+- [Do I need permission to install CCTV cameras?](https://www.cctv.name/faq#cctv-permission): Do I need permission to install CCTV cameras?
+- [How long should CCTV footage be stored?](https://www.cctv.name/faq#footage-storage): How long should CCTV footage be stored?
+- [How many CCTV cameras do I need for my home?](https://www.cctv.name/faq#how-many-cameras): How many CCTV cameras do I need for my home?
+- [What is the difference between IP and analog CCTV cameras?](https://www.cctv.name/faq#ip-vs-analog): What is the difference between IP and analog CCTV cameras?
+- [Can CCTV cameras work in the dark?](https://www.cctv.name/faq#night-vision): Can CCTV cameras work in the dark?
+- [What is CCTV and how does it work?](https://www.cctv.name/faq#what-is-cctv): What is CCTV and how does it work?
+
+## About
+- [Author: CCTV Name Team](https://www.cctv.name/author/cctv-name): Articles and guides by the CCTV Name team
