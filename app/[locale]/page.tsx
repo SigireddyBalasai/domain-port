@@ -8,7 +8,7 @@ import BlogCard from "@/components/blog/blog-card"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
 import { JsonLd } from "@/lib/json-ld"
-import { locales } from "@/lib/locales"
+import { defaultLocale, locales } from "@/lib/locales"
 import { siteConfig } from "@/lib/site-config"
 
 interface Props {
@@ -21,12 +21,15 @@ export const generateMetadata = async ({
   const { locale } = await params
   const ogLocale = siteConfig.localeMap[locale] ?? "en_US"
 
+  const localeUrl =
+    locale === defaultLocale ? siteConfig.url : `${siteConfig.url}/${locale}`
+
   return {
     title: siteConfig.name,
     description: siteConfig.description,
     openGraph: {
       locale: ogLocale,
-      url: `${siteConfig.url}/${locale}`,
+      url: localeUrl,
       siteName: siteConfig.name,
       title: siteConfig.name,
       description: siteConfig.description,
@@ -41,12 +44,17 @@ export const generateMetadata = async ({
       images: [siteConfig.ogImage],
     },
     alternates: {
-      canonical: `${siteConfig.url}/${locale}`,
+      canonical: localeUrl,
       languages: {
         ...Object.fromEntries(
-          locales.map((l) => [l, `${siteConfig.url}/${l}`])
+          locales.map((l) => {
+            return [
+              l,
+              l === defaultLocale ? siteConfig.url : `${siteConfig.url}/${l}`,
+            ]
+          })
         ),
-        "x-default": `${siteConfig.url}/en`,
+        "x-default": siteConfig.url,
       },
     },
   }
