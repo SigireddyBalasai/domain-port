@@ -1,6 +1,6 @@
 import { createElement, useMemo } from "react"
 import * as runtime from "react/jsx-runtime"
-import { BlogTable } from "./blog-table"
+import { BlogTableLazy } from "./blog/blog-table-lazy"
 import {
   Accordion,
   AccordionContent,
@@ -24,6 +24,8 @@ import {
   TabsTrigger,
 } from "./mdx-components"
 import { YouTubeEmbedLazy } from "./youtube-embed-lazy"
+
+const BlogTable = BlogTableLazy
 
 const YouTubeEmbed = YouTubeEmbedLazy
 

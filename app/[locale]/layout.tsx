@@ -3,7 +3,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl"
 import { getMessages, setRequestLocale } from "next-intl/server"
 import type { ReactNode } from "react"
 import type { JSX } from "react/jsx-runtime"
-import { GoogleAnalytics } from "@next/third-parties/google"
+import { GoogleAnalyticsLazy } from "@/components/google-analytics-lazy"
 import { ThemeProvider } from "@/components/theme-provider"
 import { routing } from "@/i18n/routing"
 
@@ -36,7 +36,7 @@ export default async function LocaleLayout({
         {children}
       </NextIntlClientProvider>
       {process.env.NEXT_PUBLIC_GA4_ID ? (
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA4_ID} />
+        <GoogleAnalyticsLazy gaId={process.env.NEXT_PUBLIC_GA4_ID} />
       ) : null}
     </ThemeProvider>
   )
