@@ -1,6 +1,5 @@
 import "../../../blog-content.css"
 import type { Metadata } from "next"
-import dynamic from "next/dynamic"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { getTranslations, setRequestLocale } from "next-intl/server"
@@ -23,6 +22,7 @@ import type {
   WithContext,
 } from "schema-dts"
 import { posts } from "@/.velite"
+import { ShareButtonsLazy } from "@/components/blog/share-buttons-lazy"
 import Footer from "@/components/footer"
 import Header from "@/components/header"
 import { MdxContent } from "@/components/mdx-content"
@@ -30,10 +30,7 @@ import { JsonLd } from "@/lib/json-ld"
 import { locales } from "@/lib/locales"
 import { siteConfig } from "@/lib/site-config"
 
-const ShareButtons = dynamic(
-  () => import("@/components/blog/share-buttons").then((mod) => mod.ShareButtons),
-  { ssr: false }
-)
+const ShareButtons = ShareButtonsLazy
 
 interface Props {
   params: Promise<{ locale: string; slug: string }>
