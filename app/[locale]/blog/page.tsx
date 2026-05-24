@@ -4,8 +4,6 @@ import type { JSX } from "react/jsx-runtime"
 import type { BreadcrumbList, CollectionPage } from "schema-dts"
 import { posts } from "@/.velite"
 import BlogCard from "@/components/blog/blog-card"
-import Footer from "@/components/footer"
-import Header from "@/components/header"
 import { JsonLd } from "@/lib/json-ld"
 import { defaultLocale, locales } from "@/lib/locales"
 import { siteConfig } from "@/lib/site-config"
@@ -18,7 +16,7 @@ export const generateMetadata = async ({
   params,
 }: Props): Promise<Metadata> => {
   const { locale } = await params
-  const ogLocale = siteConfig.localeMap[locale] ?? "en_US"
+  const ogLocale = (siteConfig.localeMap[locale] ?? "en-US").replaceAll('-', "_")
   const localePrefix = locale === defaultLocale ? "" : `/${locale}`
   const pageUrl = `${siteConfig.url}${localePrefix}/blog`
 
@@ -104,33 +102,29 @@ export default async function BlogPage({
           url: `${siteConfig.url}/${locale}/blog`,
         }}
       />
-      <div className="flex min-h-screen flex-col">
-        <Header locale={locale} currentPath="/blog" />
-        <main className="flex-1">
-          <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-            <h1 className="mb-8 text-4xl font-bold">{t("blog")}</h1>
-            <div className="space-y-6">
-              {sorted.map((post) => {
-                return (
-                  <BlogCard
-                    key={post.slug}
-                    title={post.title}
-                    description={post.description}
-                    publishedAt={post.publishedAt}
-                    slug={post.slug}
-                    locale={locale}
-                    tags={post.tags}
-                  />
-                )
-              })}
-              {sorted.length === 0 && (
-                <p className="text-muted-foreground">{t("noPosts")}</p>
-              )}
-            </div>
+      <main className="flex-1">
+        <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+          <h1 className="mb-8 text-4xl font-bold">{t("blog")}</h1>
+          <div className="space-y-6">
+            {sorted.map((post) => {
+              return (
+                <BlogCard
+                  key={post.slug}
+                  title={post.title}
+                  description={post.description}
+                  publishedAt={post.publishedAt}
+                  slug={post.slug}
+                  locale={locale}
+                  tags={post.tags}
+                />
+              )
+            })}
+            {sorted.length === 0 && (
+              <p className="text-muted-foreground">{t("noPosts")}</p>
+            )}
           </div>
-        </main>
-        <Footer locale={locale} />
-      </div>
+        </div>
+      </main>
     </>
   )
 }

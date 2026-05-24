@@ -3,7 +3,11 @@
   "short_name": "CCTV",
   "description": "Expert CCTV and surveillance solutions — reviews, installation guides, and security tips for your home and business.",
   "start_url": "/en",
+  "id": "/en",
   "display": "standalone",
+  "display_override": [
+    "window-controls-overlay"
+  ],
   "background_color": "#ffffff",
   "theme_color": "#09090b",
   "icons": [
@@ -15,12 +19,33 @@
     },
     {
       "src": "/favicon.ico",
-      "sizes": "48x48",
+      "sizes": "64x64",
       "type": "image/x-icon"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "CCTV App - Desktop View"
+    },
+    {
+      "src": "/screenshot-narrow.png",
+      "sizes": "720x1280",
+      "type": "image/png",
+      "label": "CCTV App - Mobile View"
     }
   ],
   "lang": "en",
   "categories": ["security", "technology", "surveillance"],
   "scope": "/",
-  "prefer_related_applications": false
+  "prefer_related_applications": false,
+  "protocol_handlers": [
+    {
+      "protocol": "web+cctv",
+      "url": "/en?source=%s"
+    }
+  ]
 }

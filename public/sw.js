@@ -2,6 +2,15 @@ const CACHE = "domain-port-v1"
 
 const ASSETS = ["/favicon.svg", "/favicon.ico"]
 
+function getLocalePrefix(pathname) {
+  const match = pathname.match(/^\/(de|en|es|fr|hi)(\/|$)/)
+  return match ? match[1] : null
+}
+
+function shellUrlForLocale(locale) {
+  return locale === "en" || !locale ? "/" : `/${locale}`
+}
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
     (async () => {
@@ -19,10 +28,9 @@ self.addEventListener("install", (event) => {
               // Individual URL pre-cache failure is non-fatal
             }
           }
-          console.log(`[SW] Pre-cached ${urls.length} content URLs`)
         }
       } catch {
-        // No manifest at first install — will cache on visit
+        // No manifest at first SW install
       }
     })()
   )
@@ -53,20 +61,20 @@ self.addEventListener("fetch", (event) => {
   if (!shouldCache(url)) return
 
   if (request.mode === "navigate") {
-    event.respondWith(staleWhileRevalidate(request))
+    event.respondWith(navigateWithShellFallback(request))
     return
   }
 
   event.respondWith(cacheFirst(request))
 })
 
-async function staleWhileRevalidate(request) {
+async function navigateWithShellFallback(request) {
   const cached = await caches.match(request)
   if (cached) {
     fetch(request)
-      .then((response) => {
-        if (response.ok) {
-          caches.open(CACHE).then((cache) => cache.put(request, response))
+      .then((res) => {
+        if (res.ok) {
+          caches.open(CACHE).then((cache) => cache.put(request, res))
         }
       })
       .catch(() => {})
@@ -81,10 +89,16 @@ async function staleWhileRevalidate(request) {
     }
     return response
   } catch {
-    return new Response("Offline", {
-      status: 503,
-      headers: { "Content-Type": "text/plain" },
-    })
+    const locale = getLocalePrefix(new URL(request.url).pathname)
+    const shellUrl = shellUrlForLocale(locale)
+    const shell = await caches.match(shellUrl)
+    if (shell) return shell
+
+    const lc = locale ?? "en"
+    const notFound = await caches.match(`/${lc}/not-found`)
+    if (notFound) return notFound
+
+    return new Response("Offline", { status: 503 })
   }
 }
 

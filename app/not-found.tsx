@@ -1,5 +1,6 @@
 import Link from "next/link"
 import type { JSX } from "react"
+import { defaultLocale } from "@/lib/locales"
 
 export default function RootNotFound(): JSX.Element {
   return (
@@ -12,13 +13,13 @@ export default function RootNotFound(): JSX.Element {
         </p>
         <div className="mt-8 flex justify-center gap-4">
           <Link
-            href="/en"
+            href={`/${defaultLocale}`}
             className="inline-flex items-center rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
           >
             Go Home
           </Link>
           <Link
-            href="/en/blog"
+            href={`/${defaultLocale}/blog`}
             className="inline-flex items-center rounded-lg border border-border bg-background px-5 py-2.5 text-sm font-medium hover:bg-accent"
           >
             Browse Blog

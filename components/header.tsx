@@ -4,16 +4,15 @@ import { getTranslations } from "next-intl/server"
 import type { JSX } from "react"
 import LanguageSwitcher from "@/components/language-switcher"
 import { ThemeToggleLazy as ThemeToggle } from "@/components/theme-toggle-lazy"
+import { locales } from "@/lib/locales"
 import { siteConfig } from "@/lib/site-config"
 
 interface HeaderProps {
   locale: string
-  currentPath: string
 }
 
 export default async function Header({
   locale,
-  currentPath,
 }: HeaderProps): Promise<JSX.Element> {
   const t = await getTranslations("common")
 
@@ -39,10 +38,7 @@ export default async function Header({
             >
               {t("blog")}
             </Link>
-            <LanguageSwitcher
-              currentLocale={locale}
-              currentPath={currentPath}
-            />
+            <LanguageSwitcher currentLocale={locale} locales={locales} />
             <ThemeToggle />
             {siteConfig.links.twitter && (
               <a

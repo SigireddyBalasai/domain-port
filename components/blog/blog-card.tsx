@@ -1,5 +1,6 @@
 import Link from "next/link"
 import type { JSX } from "react/jsx-runtime"
+import { siteConfig } from "@/lib/site-config"
 
 interface BlogCardProps {
   title: string
@@ -24,11 +25,14 @@ export default function BlogCard({
         <span className="text-sm text-muted-foreground">
           Published{" "}
           <time dateTime={publishedAt}>
-            {new Date(publishedAt).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
+            {new Date(publishedAt).toLocaleDateString(
+              siteConfig.localeMap[locale] || "en-US",
+              {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              }
+            )}
           </time>
         </span>
         <h2 className="mt-2 text-xl font-semibold group-hover:text-primary">

@@ -23,8 +23,6 @@ import type {
 } from "schema-dts"
 import { posts } from "@/.velite"
 import { ShareButtonsLazy } from "@/components/blog/share-buttons-lazy"
-import Footer from "@/components/footer"
-import Header from "@/components/header"
 import { MdxContent } from "@/components/mdx-content"
 import { JsonLd } from "@/lib/json-ld"
 import { defaultLocale, locales } from "@/lib/locales"
@@ -57,7 +55,7 @@ export const generateMetadata = async ({
     return Promise.resolve({})
   }
 
-  const ogLocale = siteConfig.localeMap[locale] ?? "en_US"
+  const ogLocale = (siteConfig.localeMap[locale] ?? "en-US").replaceAll('-', "_")
   const localePrefix = locale === defaultLocale ? "" : `/${locale}`
   const postUrl = `${siteConfig.url}${localePrefix}/blog/${post.slug}`
 
@@ -407,68 +405,61 @@ export default async function PostPage({
           license: `${siteConfig.url}/license`,
         }}
       />
-      <div className="flex min-h-screen flex-col">
-        <Header locale={locale} currentPath={`/blog/${slug}`} />
-        <main className="flex-1">
-          <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-            <Link
-              href={`/${locale}/blog`}
-              className="mb-8 block text-sm text-muted-foreground hover:text-primary"
-            >
-              &larr; {t("backToBlog")}
-            </Link>
-            <p className="text-sm text-muted-foreground">
-              Published{" "}
-              <time dateTime={post.publishedAt}>
-                {new Date(post.publishedAt).toLocaleDateString(locale, {
+      <main className="flex-1">
+        <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+          <Link
+            href={`/${locale}/blog`}
+            className="mb-8 block text-sm text-muted-foreground hover:text-primary"
+          >
+            &larr; {t("backToBlog")}
+          </Link>
+          <p className="text-sm text-muted-foreground">
+            Published{" "}
+            <time dateTime={post.publishedAt}>
+              {new Date(post.publishedAt).toLocaleDateString(locale, {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </time>
+          </p>
+          <h1 className="mt-2 text-4xl font-bold">{post.title}</h1>
+          <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+            <span>{post.author ?? siteConfig.name}</span>
+            <span aria-hidden="true">•</span>
+            <time dateTime={post.updatedAt ?? post.publishedAt}>
+              Updated{" "}
+              {new Date(post.updatedAt ?? post.publishedAt).toLocaleDateString(
+                locale,
+                {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
-                })}
-              </time>
+                }
+              )}
+            </time>
+          </div>
+          {post.description && (
+            <p className="mt-4 text-lg text-muted-foreground">
+              {post.description}
             </p>
-            <h1 className="mt-2 text-4xl font-bold">{post.title}</h1>
-            <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
-              <span>{post.author ?? siteConfig.name}</span>
-              <span aria-hidden="true">•</span>
-              <time dateTime={post.updatedAt ?? post.publishedAt}>
-                Updated{" "}
-                {new Date(
-                  post.updatedAt ?? post.publishedAt
-                ).toLocaleDateString(locale, {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </time>
-            </div>
-            {post.description && (
-              <p className="mt-4 text-lg text-muted-foreground">
-                {post.description}
-              </p>
-            )}
-            {post.author && (
-              <Link
-                href={`/${locale}/author/${post.author.toLowerCase().replaceAll(/\s+/g, "-")}`}
-                className="mt-2 inline-block text-sm text-primary hover:underline"
-              >
-                View all articles by {post.author}
-              </Link>
-            )}
-            <div className="blog-content mt-8">
-              <MdxContent code={post.content} />
-            </div>
-            <div className="mt-12">
-              <ShareButtons
-                title={post.title}
-                slug={post.slug}
-                locale={locale}
-              />
-            </div>
-          </article>
-        </main>
-        <Footer locale={locale} />
-      </div>
+          )}
+          {post.author && (
+            <Link
+              href={`/${locale}/author/${post.author.toLowerCase().replaceAll(/\s+/g, "-")}`}
+              className="mt-2 inline-block text-sm text-primary hover:underline"
+            >
+              View all articles by {post.author}
+            </Link>
+          )}
+          <div className="blog-content mt-8">
+            <MdxContent code={post.content} />
+          </div>
+          <div className="mt-12">
+            <ShareButtons title={post.title} slug={post.slug} locale={locale} />
+          </div>
+        </article>
+      </main>
     </>
   )
 }

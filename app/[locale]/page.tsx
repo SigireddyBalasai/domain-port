@@ -5,8 +5,6 @@ import type { JSX } from "react/jsx-runtime"
 import type { Blog, Organization, WebSite } from "schema-dts"
 import { posts } from "@/.velite"
 import BlogCard from "@/components/blog/blog-card"
-import Footer from "@/components/footer"
-import Header from "@/components/header"
 import { JsonLd } from "@/lib/json-ld"
 import { defaultLocale, locales } from "@/lib/locales"
 import { siteConfig } from "@/lib/site-config"
@@ -19,7 +17,7 @@ export const generateMetadata = async ({
   params,
 }: Props): Promise<Metadata> => {
   const { locale } = await params
-  const ogLocale = siteConfig.localeMap[locale] ?? "en_US"
+  const ogLocale = (siteConfig.localeMap[locale] ?? "en-US").replaceAll('-', "_")
 
   const localeUrl =
     locale === defaultLocale ? siteConfig.url : `${siteConfig.url}/${locale}`
@@ -120,93 +118,89 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
           },
         }}
       />
-      <div className="flex min-h-screen flex-col">
-        <Header locale={locale} currentPath="/" />
-        <main className="flex-1">
-          {/* Hero Section */}
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="border-b border-border/40 py-24 sm:py-32">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center">
+              <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+                {siteConfig.name}
+              </h1>
+              <p className="mt-6 text-lg text-muted-foreground sm:text-xl">
+                {siteConfig.description}
+              </p>
+              <div className="mt-10 flex justify-center gap-4">
+                <Link
+                  href={`/${locale}/blog`}
+                  className="inline-flex items-center rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground hover:bg-primary/90"
+                >
+                  {t("readBlog")}
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Featured Posts */}
+        {featuredPosts.length > 0 && (
           <section className="border-b border-border/40 py-24 sm:py-32">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div className="text-center">
-                <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-                  {siteConfig.name}
-                </h1>
-                <p className="mt-6 text-lg text-muted-foreground sm:text-xl">
-                  {siteConfig.description}
-                </p>
-                <div className="mt-10 flex justify-center gap-4">
-                  <Link
-                    href={`/${locale}/blog`}
-                    className="inline-flex items-center rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground hover:bg-primary/90"
-                  >
-                    {t("readBlog")}
-                  </Link>
-                </div>
+              <h2 className="font-display text-3xl font-bold">
+                {t("featuredPosts")}
+              </h2>
+              <div className="mt-12 space-y-6">
+                {featuredPosts.map((post) => {
+                  return (
+                    <BlogCard
+                      key={post.slug}
+                      title={post.title}
+                      description={post.description}
+                      publishedAt={post.publishedAt}
+                      slug={post.slug}
+                      locale={locale}
+                      tags={post.tags}
+                    />
+                  )
+                })}
               </div>
             </div>
           </section>
+        )}
 
-          {/* Featured Posts */}
-          {featuredPosts.length > 0 && (
-            <section className="border-b border-border/40 py-24 sm:py-32">
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Latest Posts */}
+        {latestPosts.length > 0 && (
+          <section className="py-24 sm:py-32">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div className="flex items-center justify-between">
                 <h2 className="font-display text-3xl font-bold">
-                  {t("featuredPosts")}
+                  {t("latestPosts")}
                 </h2>
-                <div className="mt-12 space-y-6">
-                  {featuredPosts.map((post) => {
-                    return (
-                      <BlogCard
-                        key={post.slug}
-                        title={post.title}
-                        description={post.description}
-                        publishedAt={post.publishedAt}
-                        slug={post.slug}
-                        locale={locale}
-                        tags={post.tags}
-                      />
-                    )
-                  })}
-                </div>
+                <Link
+                  href={`/${locale}/blog`}
+                  className="text-sm font-medium hover:text-primary"
+                >
+                  {t("viewAll")}
+                </Link>
               </div>
-            </section>
-          )}
-
-          {/* Latest Posts */}
-          {latestPosts.length > 0 && (
-            <section className="py-24 sm:py-32">
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between">
-                  <h2 className="font-display text-3xl font-bold">
-                    {t("latestPosts")}
-                  </h2>
-                  <Link
-                    href={`/${locale}/blog`}
-                    className="text-sm font-medium hover:text-primary"
-                  >
-                    {t("viewAll")}
-                  </Link>
-                </div>
-                <div className="mt-12 space-y-6">
-                  {latestPosts.map((post) => {
-                    return (
-                      <BlogCard
-                        key={post.slug}
-                        title={post.title}
-                        description={post.description}
-                        publishedAt={post.publishedAt}
-                        slug={post.slug}
-                        locale={locale}
-                        tags={post.tags}
-                      />
-                    )
-                  })}
-                </div>
+              <div className="mt-12 space-y-6">
+                {latestPosts.map((post) => {
+                  return (
+                    <BlogCard
+                      key={post.slug}
+                      title={post.title}
+                      description={post.description}
+                      publishedAt={post.publishedAt}
+                      slug={post.slug}
+                      locale={locale}
+                      tags={post.tags}
+                    />
+                  )
+                })}
               </div>
-            </section>
-          )}
-        </main>
-        <Footer locale={locale} />
-      </div>
+            </div>
+          </section>
+        )}
+      </main>
     </>
   )
 }

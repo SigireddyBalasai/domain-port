@@ -3,8 +3,6 @@ import { setRequestLocale } from "next-intl/server"
 import type { JSX } from "react"
 import type { BreadcrumbList, FAQPage, WebPage } from "schema-dts"
 import { faqs } from "@/.velite"
-import Footer from "@/components/footer"
-import Header from "@/components/header"
 import { MdxContent } from "@/components/mdx-content"
 import { JsonLd } from "@/lib/json-ld"
 import { defaultLocale, locales } from "@/lib/locales"
@@ -18,7 +16,7 @@ export const generateMetadata = async ({
   params,
 }: Props): Promise<Metadata> => {
   const { locale } = await params
-  const ogLocale = siteConfig.localeMap[locale] ?? "en_US"
+  const ogLocale = (siteConfig.localeMap[locale] ?? "en-US").replaceAll('-', "_")
   const localePrefix = locale === defaultLocale ? "" : `/${locale}`
   const pageUrl = `${siteConfig.url}${localePrefix}/faq`
 
@@ -143,78 +141,74 @@ export default async function FaqPage({ params }: Props): Promise<JSX.Element> {
           },
         }}
       />
-      <div className="flex min-h-screen flex-col">
-        <Header locale={locale} currentPath="/faq" />
-        <main className="flex-1">
-          <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-            <h1 className="mb-2 text-4xl font-bold">
-              Frequently Asked Questions
-            </h1>
-            <p className="mb-8 text-muted-foreground">
-              {sortedFaqs.length} question{sortedFaqs.length === 1 ? "" : "s"}{" "}
-              answered
-            </p>
+      <main className="flex-1">
+        <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+          <h1 className="mb-2 text-4xl font-bold">
+            Frequently Asked Questions
+          </h1>
+          <p className="mb-8 text-muted-foreground">
+            {sortedFaqs.length} question{sortedFaqs.length === 1 ? "" : "s"}{" "}
+            answered
+          </p>
 
-            {/* Category quick links */}
-            <div className="mb-8 flex flex-wrap gap-2">
-              {categories.map((category) => {
-                return (
-                  <a
-                    key={category}
-                    href={`#${category}`}
-                    className="rounded-full border border-border/40 px-3 py-1 text-sm capitalize hover:border-primary hover:text-primary"
-                  >
-                    {category}
-                  </a>
-                )
-              })}
-            </div>
-
-            {/* Grouped FAQs */}
-            {Object.entries(groupedFaqs).map(([category, categoryFaqs]) => {
+          {/* Category quick links */}
+          <div className="mb-8 flex flex-wrap gap-2">
+            {categories.map((category) => {
               return (
-                <section key={category} id={category} className="mb-12">
-                  <h2 className="mb-4 text-2xl font-semibold capitalize">
-                    {category}
-                  </h2>
-                  <div className="space-y-6">
-                    {categoryFaqs.map((faq) => {
-                      return (
-                        <div
-                          key={faq.slug}
-                          className="border-b border-border/40 pb-6"
-                        >
-                          <h3 className="text-xl font-semibold">
-                            {faq.question}
-                          </h3>
-                          <div className="faq-content mt-3 text-muted-foreground">
-                            <MdxContent code={faq.answer} />
-                          </div>
-                          {faq.tags && faq.tags.length > 0 && (
-                            <div className="mt-3 flex flex-wrap gap-1">
-                              {faq.tags.map((tag) => {
-                                return (
-                                  <span
-                                    key={tag}
-                                    className="rounded bg-muted px-2 py-0.5 text-xs text-muted-foreground"
-                                  >
-                                    {tag}
-                                  </span>
-                                )
-                              })}
-                            </div>
-                          )}
-                        </div>
-                      )
-                    })}
-                  </div>
-                </section>
+                <a
+                  key={category}
+                  href={`#${category}`}
+                  className="rounded-full border border-border/40 px-3 py-1 text-sm capitalize hover:border-primary hover:text-primary"
+                >
+                  {category}
+                </a>
               )
             })}
           </div>
-        </main>
-        <Footer locale={locale} />
-      </div>
+
+          {/* Grouped FAQs */}
+          {Object.entries(groupedFaqs).map(([category, categoryFaqs]) => {
+            return (
+              <section key={category} id={category} className="mb-12">
+                <h2 className="mb-4 text-2xl font-semibold capitalize">
+                  {category}
+                </h2>
+                <div className="space-y-6">
+                  {categoryFaqs.map((faq) => {
+                    return (
+                      <div
+                        key={faq.slug}
+                        className="border-b border-border/40 pb-6"
+                      >
+                        <h3 className="text-xl font-semibold">
+                          {faq.question}
+                        </h3>
+                        <div className="faq-content mt-3 text-muted-foreground">
+                          <MdxContent code={faq.answer} />
+                        </div>
+                        {faq.tags && faq.tags.length > 0 && (
+                          <div className="mt-3 flex flex-wrap gap-1">
+                            {faq.tags.map((tag) => {
+                              return (
+                                <span
+                                  key={tag}
+                                  className="rounded bg-muted px-2 py-0.5 text-xs text-muted-foreground"
+                                >
+                                  {tag}
+                                </span>
+                              )
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
+              </section>
+            )
+          })}
+        </div>
+      </main>
     </>
   )
 }

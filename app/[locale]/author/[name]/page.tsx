@@ -4,8 +4,6 @@ import type { JSX } from "react"
 import type { BreadcrumbList, Person, ProfilePage } from "schema-dts"
 import { posts } from "@/.velite"
 import BlogCard from "@/components/blog/blog-card"
-import Footer from "@/components/footer"
-import Header from "@/components/header"
 import { JsonLd } from "@/lib/json-ld"
 import { defaultLocale, locales } from "@/lib/locales"
 import { siteConfig } from "@/lib/site-config"
@@ -38,7 +36,7 @@ export const generateMetadata = async ({
 }: Props): Promise<Metadata> => {
   const { locale, name } = await params
   const authorName = name.replaceAll("-", " ")
-  const ogLocale = siteConfig.localeMap[locale] ?? "en_US"
+  const ogLocale = (siteConfig.localeMap[locale] ?? "en-US").replaceAll('-', "_")
   const localePrefix = locale === defaultLocale ? "" : `/${locale}`
   const pageUrl = `${siteConfig.url}${localePrefix}/author/${name}`
 
@@ -144,36 +142,32 @@ export default async function AuthorPage({
           },
         }}
       />
-      <div className="flex min-h-screen flex-col">
-        <Header locale={locale} currentPath={`/author/${name}`} />
-        <main className="flex-1">
-          <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-            <h1 className="mb-2 text-4xl font-bold">{authorName}</h1>
-            <p className="mb-8 text-muted-foreground">
-              {sorted.length} article{sorted.length === 1 ? "" : "s"} published
-            </p>
-            <div className="space-y-6">
-              {sorted.map((post) => {
-                return (
-                  <BlogCard
-                    key={post.slug}
-                    title={post.title}
-                    description={post.description}
-                    publishedAt={post.publishedAt}
-                    slug={post.slug}
-                    locale={locale}
-                    tags={post.tags}
-                  />
-                )
-              })}
-              {sorted.length === 0 && (
-                <p className="text-muted-foreground">{t("noArticles")}</p>
-              )}
-            </div>
+      <main className="flex-1">
+        <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
+          <h1 className="mb-2 text-4xl font-bold">{authorName}</h1>
+          <p className="mb-8 text-muted-foreground">
+            {sorted.length} article{sorted.length === 1 ? "" : "s"} published
+          </p>
+          <div className="space-y-6">
+            {sorted.map((post) => {
+              return (
+                <BlogCard
+                  key={post.slug}
+                  title={post.title}
+                  description={post.description}
+                  publishedAt={post.publishedAt}
+                  slug={post.slug}
+                  locale={locale}
+                  tags={post.tags}
+                />
+              )
+            })}
+            {sorted.length === 0 && (
+              <p className="text-muted-foreground">{t("noArticles")}</p>
+            )}
           </div>
-        </main>
-        <Footer locale={locale} />
-      </div>
+        </div>
+      </main>
     </>
   )
 }

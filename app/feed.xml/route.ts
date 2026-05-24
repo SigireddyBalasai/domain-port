@@ -1,5 +1,6 @@
 import Rss from "rss"
 import { posts } from "@/.velite"
+import { defaultLocale } from "@/lib/locales"
 import { siteConfig } from "@/lib/site-config"
 
 export async function GET(): Promise<Response> {
@@ -8,7 +9,7 @@ export async function GET(): Promise<Response> {
     description: siteConfig.description,
     feed_url: `${siteConfig.url}/feed.xml`,
     site_url: siteConfig.url,
-    language: "en",
+    language: defaultLocale,
     pubDate: new Date().toUTCString(),
     ttl: 60,
   })
@@ -22,8 +23,8 @@ export async function GET(): Promise<Response> {
       feed.item({
         title: post.title,
         description: post.description ?? "",
-        url: `${siteConfig.url}/en/blog/${post.slug}`,
-        guid: `${siteConfig.url}/en/blog/${post.slug}`,
+        url: `${siteConfig.url}/${defaultLocale}/blog/${post.slug}`,
+        guid: `${siteConfig.url}/${defaultLocale}/blog/${post.slug}`,
         date: new Date(post.publishedAt),
       })
     })
