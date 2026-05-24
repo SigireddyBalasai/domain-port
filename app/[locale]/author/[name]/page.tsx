@@ -36,7 +36,10 @@ export const generateMetadata = async ({
 }: Props): Promise<Metadata> => {
   const { locale, name } = await params
   const authorName = name.replaceAll("-", " ")
-  const ogLocale = (siteConfig.localeMap[locale] ?? "en-US").replaceAll('-', "_")
+  const ogLocale = (siteConfig.localeMap[locale] ?? "en-US").replaceAll(
+    "-",
+    "_"
+  )
   const localePrefix = locale === defaultLocale ? "" : `/${locale}`
   const pageUrl = `${siteConfig.url}${localePrefix}/author/${name}`
 
@@ -50,14 +53,6 @@ export const generateMetadata = async ({
       title: `${authorName} | ${siteConfig.name}`,
       description: `Articles and guides by ${authorName}.`,
       images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      site: siteConfig.author.twitter,
-      creator: siteConfig.author.twitter,
-      title: `${authorName} | ${siteConfig.name}`,
-      description: `Articles and guides by ${authorName}.`,
-      images: [siteConfig.ogImage],
     },
     alternates: {
       canonical: pageUrl,
@@ -129,7 +124,7 @@ export default async function AuthorPage({
           "@type": "Person",
           name: authorName,
           url: `${siteConfig.url}/${locale}/author/${name}`,
-          sameAs: [siteConfig.links.twitter],
+          sameAs: [],
         }}
       />
       <JsonLd<ProfilePage>

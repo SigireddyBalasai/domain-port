@@ -16,7 +16,10 @@ export const generateMetadata = async ({
   params,
 }: Props): Promise<Metadata> => {
   const { locale } = await params
-  const ogLocale = (siteConfig.localeMap[locale] ?? "en-US").replaceAll('-', "_")
+  const ogLocale = (siteConfig.localeMap[locale] ?? "en-US").replaceAll(
+    "-",
+    "_"
+  )
   const localePrefix = locale === defaultLocale ? "" : `/${locale}`
   const pageUrl = `${siteConfig.url}${localePrefix}/faq`
 
@@ -32,15 +35,6 @@ export const generateMetadata = async ({
       description:
         "Frequently asked questions about CCTV cameras, installation, and surveillance solutions.",
       images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      site: siteConfig.author.twitter,
-      creator: siteConfig.author.twitter,
-      title: `FAQ | ${siteConfig.name}`,
-      description:
-        "Frequently asked questions about CCTV cameras, installation, and surveillance solutions.",
-      images: [siteConfig.ogImage],
     },
     alternates: {
       canonical: pageUrl,

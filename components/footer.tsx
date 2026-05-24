@@ -52,18 +52,7 @@ export default async function Footer({
           </div>
           <div>
             <h4 className="font-semibold">{t("connect")}</h4>
-            <div className="mt-4 space-y-2">
-              {siteConfig.links.twitter && (
-                <a
-                  href={siteConfig.links.twitter}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-sm hover:text-primary"
-                >
-                  Twitter
-                </a>
-              )}
-            </div>
+            <div className="mt-4 space-y-2"></div>
           </div>
         </div>
         <div className="mt-8 border-t border-border/40 pt-8 text-center text-sm text-muted-foreground">

@@ -22,6 +22,7 @@ import type {
   WithContext,
 } from "schema-dts"
 import { posts } from "@/.velite"
+import { Badge } from "@/components/ui/badge"
 import { ShareButtonsLazy } from "@/components/blog/share-buttons-lazy"
 import { MdxContent } from "@/components/mdx-content"
 import { JsonLd } from "@/lib/json-ld"
@@ -35,13 +36,11 @@ interface Props {
 }
 
 export const generateStaticParams = (): { locale: string; slug: string }[] => {
-  return locales.flatMap((locale) => {
-    return posts.map((post) => {
-      return {
-        locale,
-        slug: post.slug,
-      }
-    })
+  return posts.map((post) => {
+    return {
+      locale: post.locale,
+      slug: post.slug,
+    }
   })
 }
 
@@ -49,13 +48,16 @@ export const generateMetadata = async ({
   params,
 }: Props): Promise<Metadata> => {
   const { locale, slug } = await params
-  const post = posts.find((p) => p.slug === slug)
+  const post = posts.find((p) => p.slug === slug && p.locale === locale) ?? posts.find((p) => p.slug === slug && p.locale === "en")
 
   if (!post) {
     return Promise.resolve({})
   }
 
-  const ogLocale = (siteConfig.localeMap[locale] ?? "en-US").replaceAll('-', "_")
+  const ogLocale = (siteConfig.localeMap[locale] ?? "en-US").replaceAll(
+    "-",
+    "_"
+  )
   const localePrefix = locale === defaultLocale ? "" : `/${locale}`
   const postUrl = `${siteConfig.url}${localePrefix}/blog/${post.slug}`
 
@@ -107,15 +109,6 @@ export const generateMetadata = async ({
         },
       ],
     },
-    twitter: {
-      card: "summary_large_image",
-      site: siteConfig.author.twitter,
-      creator: siteConfig.author.twitter,
-      title: post.title,
-      description:
-        post.description ?? `Read about ${post.title} on ${siteConfig.name}`,
-      images: [`${siteConfig.url}${post.image ?? "/og.svg"}`],
-    },
   })
 }
 
@@ -144,13 +137,14 @@ export default async function PostPage({
 
   setRequestLocale(locale)
   const t = await getTranslations("common")
-  const post = posts.find((p) => p.slug === slug)
+  const post = posts.find((p) => p.slug === slug && p.locale === locale) ?? posts.find((p) => p.slug === slug && p.locale === "en")
 
   if (!post) {
     notFound()
   }
 
   const authorSchema = createAuthorSchema(post.author)
+  const isFallback = post.locale !== locale
 
   return (
     <>
@@ -413,6 +407,11 @@ export default async function PostPage({
           >
             &larr; {t("backToBlog")}
           </Link>
+          {isFallback && (
+            <Badge variant="secondary" className="mb-4">
+              Showing English version
+            </Badge>
+          )}
           <p className="text-sm text-muted-foreground">
             Published{" "}
             <time dateTime={post.publishedAt}>

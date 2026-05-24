@@ -7,6 +7,7 @@
 - [Best CCTV Cameras Under $200 (2026)](https://www.cctv.name/blog/best-cameras-under-200): A curated list of reliable CCTV cameras under $200 — tradeoffs, features, and recommended models.
 - [A Complete Guide to CCTV Video File Formats](https://www.cctv.name/blog/cctv-video-file-formats): An in-depth guide to CCTV video formats — AVI, MP4, H.264, H.265, MOV, MKV, MJPEG, and more — with compression, compatibility, and storage tradeoffs explained.
 - [How to Set Up a PoE NVR for CCTV](https://www.cctv.name/blog/poe-nvr-setup): Step-by-step PoE NVR setup for small installations: cabling, camera registration, retention settings.
+- [Cómo Configurar un NVR PoE para CCTV](https://www.cctv.name/blog/poe-nvr-setup): Guía paso a paso para la configuración de NVR PoE para instalaciones pequeñas: cableado, registro de cámaras, configuración de retención.
 
 ## FAQ
 - [Frequently Asked Questions](https://www.cctv.name/faq): Common questions about CCTV cameras, installation, and surveillance

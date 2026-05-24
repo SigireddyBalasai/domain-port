@@ -17,7 +17,10 @@ export const generateMetadata = async ({
   params,
 }: Props): Promise<Metadata> => {
   const { locale } = await params
-  const ogLocale = (siteConfig.localeMap[locale] ?? "en-US").replaceAll('-', "_")
+  const ogLocale = (siteConfig.localeMap[locale] ?? "en-US").replaceAll(
+    "-",
+    "_"
+  )
 
   const localeUrl =
     locale === defaultLocale ? siteConfig.url : `${siteConfig.url}/${locale}`
@@ -32,14 +35,6 @@ export const generateMetadata = async ({
       title: siteConfig.name,
       description: siteConfig.description,
       images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      site: siteConfig.author.twitter,
-      creator: siteConfig.author.twitter,
-      title: siteConfig.name,
-      description: siteConfig.description,
-      images: [siteConfig.ogImage],
     },
     alternates: {
       canonical: localeUrl,
@@ -80,11 +75,7 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
           name: siteConfig.name,
           url: siteConfig.url,
           description: siteConfig.description,
-          sameAs: [
-            siteConfig.links.twitter,
-            siteConfig.links.youtube,
-            siteConfig.links.github,
-          ],
+          sameAs: [siteConfig.links.youtube, siteConfig.links.github],
           logo: siteConfig.ogImage,
         }}
       />

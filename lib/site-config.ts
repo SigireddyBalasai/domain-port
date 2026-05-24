@@ -17,13 +17,11 @@ export const siteConfig = {
     "camera installation",
   ],
   links: {
-    twitter: "https://twitter.com/cctvname",
     youtube: "https://youtube.com/@cctvname",
     github: "https://github.com/cctvname",
   },
   author: {
     name: "CCTV Name Team",
-    twitter: "@cctvname",
   },
   localeMap: {
     en: "en-US",

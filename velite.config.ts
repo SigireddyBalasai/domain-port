@@ -88,7 +88,7 @@ const faqs = defineCollection({
 
 const posts = defineCollection({
   name: "Post",
-  pattern: "posts/**/*.mdx",
+  pattern: "posts/*/*.mdx",
   schema: s
     .object({
       title: s.string(),
@@ -98,6 +98,7 @@ const posts = defineCollection({
       updatedAt: s.isodate().optional(),
       image: s.string().optional(),
       tags: s.array(s.string()).optional(),
+      locale: s.string().optional(),
       content: s.mdx(),
       postType: s
         .enum([
@@ -121,13 +122,13 @@ const posts = defineCollection({
       speakable: s.array(s.string()).max(3).optional(),
     })
     .transform((data, { meta }) => {
+      const parts = meta.path.split("/")
+      const file = parts.pop() ?? ""
+      const folder = parts.pop() ?? ""
       return {
         ...data,
-        slug:
-          meta.path
-            .split("/")
-            .pop()
-            ?.replace(/\.mdx$/, "") ?? "",
+        slug: folder,
+        locale: file.replace(/\.mdx$/, ""),
       }
     }),
 })

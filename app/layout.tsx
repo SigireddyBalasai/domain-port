@@ -78,14 +78,6 @@ export const metadata: Metadata = {
     images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
     countryName: "US",
   },
-  twitter: {
-    card: "summary_large_image",
-    site: siteConfig.author.twitter,
-    creator: siteConfig.author.twitter,
-    title: siteConfig.name,
-    description: siteConfig.description,
-    images: [siteConfig.ogImage],
-  },
   robots: {
     index: true,
     follow: true,

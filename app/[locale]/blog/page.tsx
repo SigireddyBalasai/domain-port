@@ -16,7 +16,10 @@ export const generateMetadata = async ({
   params,
 }: Props): Promise<Metadata> => {
   const { locale } = await params
-  const ogLocale = (siteConfig.localeMap[locale] ?? "en-US").replaceAll('-', "_")
+  const ogLocale = (siteConfig.localeMap[locale] ?? "en-US").replaceAll(
+    "-",
+    "_"
+  )
   const localePrefix = locale === defaultLocale ? "" : `/${locale}`
   const pageUrl = `${siteConfig.url}${localePrefix}/blog`
 
@@ -30,14 +33,6 @@ export const generateMetadata = async ({
       title: `Blog | ${siteConfig.name}`,
       description: `Latest CCTV and surveillance insights — reviews, guides, and security tips from ${siteConfig.name}.`,
       images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      site: siteConfig.author.twitter,
-      creator: siteConfig.author.twitter,
-      title: `Blog | ${siteConfig.name}`,
-      description: `Latest CCTV and surveillance insights — reviews, guides, and security tips from ${siteConfig.name}.`,
-      images: [siteConfig.ogImage],
     },
     alternates: {
       canonical: pageUrl,
@@ -66,10 +61,12 @@ export default async function BlogPage({
   setRequestLocale(locale)
   const t = await getTranslations("common")
 
-  const sorted = [...posts].toSorted(
-    (a, b) =>
-      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-  )
+  const sorted = [...posts]
+    .filter((p) => p.locale === locale)
+    .toSorted(
+      (a, b) =>
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    )
 
   return (
     <>
