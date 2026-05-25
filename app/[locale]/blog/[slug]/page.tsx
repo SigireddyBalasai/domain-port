@@ -12,6 +12,7 @@ import type {
   FAQPage,
   HowTo,
   ImageObject,
+  InteractionCounter,
   Organization,
   Person,
   Product,
@@ -28,6 +29,8 @@ import { MdxContent } from "@/components/mdx-content"
 import { JsonLd } from "@/lib/json-ld"
 import { defaultLocale, locales } from "@/lib/locales"
 import { siteConfig } from "@/lib/site-config"
+import { Comments } from "@/components/blog/comments"
+import { getCommentCount } from "@/lib/comment-db"
 
 const ShareButtons = ShareButtonsLazy
 
@@ -145,6 +148,7 @@ export default async function PostPage({
 
   const authorSchema = createAuthorSchema(post.author)
   const isFallback = post.locale !== locale
+  const commentCount = await getCommentCount(slug, locale)
 
   return (
     <>
@@ -183,6 +187,13 @@ export default async function PostPage({
           keywords: post.tags ?? undefined,
           datePublished: post.publishedAt,
           dateModified: post.updatedAt ?? post.publishedAt,
+          interactionStatistic: [
+            {
+              "@type": "InteractionCounter",
+              interactionType: "https://schema.org/CommentAction",
+              userInteractionCount: commentCount,
+            },
+          ] as InteractionCounter[],
           author: authorSchema,
           url: `${siteConfig.url}/${locale}/blog/${post.slug}`,
           mainEntityOfPage: {
@@ -457,6 +468,7 @@ export default async function PostPage({
           <div className="mt-12">
             <ShareButtons title={post.title} slug={post.slug} locale={locale} />
           </div>
+          <Comments postSlug={slug} locale={locale} />
         </article>
       </main>
     </>

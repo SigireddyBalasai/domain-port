@@ -1,0 +1,232 @@
+---
+title: "Guía de Resolución de Cámaras IP: 2MP vs 4MP vs 4K (2026)"
+publishedAt: "2026-05-25"
+description: "Guía completa de resolución de cámaras IP — 2MP (1080p), 4MP, 5MP y 4K (8MP). Compare distancia de identificación, requisitos de almacenamiento, lentes y estándares DORI para elegir la resolución adecuada para cada ubicación."
+author: "CCTV Name Authoe"
+updatedAt: "2026-05-25"
+image: "/og.svg"
+tags: ["cctv", "cámara ip", "resolución de cámara", "4k", "1080p", "cámara de seguridad", "megapíxel"]
+postType: "howto"
+howTo:
+  - name: "Comprenda los niveles de resolución"
+    text: "Compare 2MP (1080p), 4MP, 5MP y 4K (8MP) en cantidad de píxeles, distancia de identificación y almacenamiento diario por cámara."
+  - name: "Combine la resolución con la escena"
+    text: "Use los estándares DORI para elegir la resolución correcta para cada ubicación — entrada, perímetro, interior y áreas abiertas grandes."
+  - name: "Considere el lente y el sensor"
+    text: "La distancia focal y el tamaño del sensor importan. Una cámara de alta resolución con el lente incorrecto no identificará rostros o placas a distancia."
+  - name: "Planifique el almacenamiento y ancho de banda"
+    text: "Calcule el almacenamiento diario por nivel de resolución y elija compresión H.265+ para reducir el almacenamiento sin sacrificar calidad."
+  - name: "Mezcle resoluciones por zona"
+    text: "Use 4K para entrada y áreas de alto riesgo, 4MP para cobertura general y 1080p para espacios interiores reducidos para optimizar costo y retención."
+faq:
+  - question: "¿Qué significan 2MP, 4MP y 4K en una cámara de seguridad?"
+    answer: "Se refieren a la resolución del sensor. 2MP captura 1920×1080 píxeles (1080p Full HD). 4MP captura 2560×1440 píxeles. 4K (8MP) captura 3840×2160 píxeles — cuatro veces el detalle de 1080p."
+  - question: "¿Es 4K siempre mejor para cámaras de seguridad?"
+    answer: "No siempre. 4K requiere cuatro veces el almacenamiento de 1080p y rinde peor en poca luz que una cámara de menor resolución con sensor más grande. Use 4K para áreas exteriores amplias donde necesite identificar rostros a 15-25 metros. Para escenas interiores de cerca, 4MP o incluso 1080p es suficiente."
+  - question: "¿A qué distancia puede identificar un rostro una cámara 4K?"
+    answer: "Según los estándares DORI, una cámara 4K puede identificar un rostro de forma fiable a 15-25 metros, dependiendo del lente y la iluminación. Una cámara 1080p se limita típicamente a 5-8 metros."
+  - question: "¿Mayor resolución significa mejor visión nocturna?"
+    answer: "No. El rendimiento en poca luz depende del tamaño del sensor y del píxel, no de la resolución. Una cámara 4MP Starlight con sensor grande superará a una 4K con sensor pequeño en oscuridad."
+  - question: "¿Puedo mezclar resoluciones en un mismo NVR?"
+    answer: "Sí. Los NVR modernos soportan resoluciones mixtas. Es una buena práctica: use 4K para zonas de entrada y alto riesgo, 4MP para cobertura general y 1080p para espacios interiores reducidos."
+  - question: "¿Cuánto almacenamiento usa una cámara 4K por día?"
+    answer: "Una cámara 4K grabando continuamente con H.265 usa 30-50 GB por día. La misma cámara a 1080p usa 10-15 GB. La grabación solo por movimiento reduce estas cifras en un 60-70%."
+---
+
+La resolución es la primera especificación que todos miran al comprar una cámara de seguridad. Pero más megapíxeles no significan automáticamente mejor footage. Una cámara 4K con el lente incorrecto montada demasiado lejos de su objetivo capturará menos detalle útil que una cámara 2MP bien colocada.
+
+Esta guía desglosa cada nivel de resución — 2MP (1080p), 4MP, 5MP y 4K (8MP) — en los factores que realmente importan: distancia de identificación, costo de almacenamiento, rendimiento en poca luz y compatibilidad con lentes.
+
+<Callout type="info" title="Conclusión Clave">
+  El mejor sistema de cámaras usa **resoluciones mixtas** — 4K para zonas exteriores amplias donde la identificación de rostros y placas importa, 4MP para cobertura general y 1080p para espacios interiores reducidos. Una sola resolución no sirve para todas las escenas.
+</Callout>
+
+## Comparación de Niveles de Resolución
+
+| Nivel | Píxeles | Relación de Aspecto | Distancia ID (DORI) | Almacenamiento/Día | Almacenamiento/Mes (8 cámaras) |
+|---|---|---|---|---|---|
+| 2MP (1080p) | 1920 × 1080 | 16:9 | 5-8 m | 10-15 GB | ~500 GB |
+| 4MP (2K) | 2560 × 1440 | 16:9 | 8-12 m | 20-30 GB | ~1 TB |
+| 5MP | 2592 × 1944 | 4:3 | 9-15 m | 25-35 GB | ~1.3 TB |
+| 8MP (4K) | 3840 × 2160 | 16:9 | 15-25 m | 30-50 GB | ~2 TB |
+| 12MP | 4000 × 3000 | 4:3 | 21-33 m | 50-80 GB | ~3 TB |
+
+<Callout type="warning" title="Advertencia de Almacenamiento">
+  Una sola cámara 4K grabando 24/7 a 30 fps con H.265 consume aproximadamente **1 TB por mes**. Un sistema de 8 cámaras 4K en grabación continua necesita 8+ TB para 30 días de retención. Siempre considere su objetivo de retención en las decisiones de resolución.
+</Callout>
+
+## 2MP (1080p) — La Línea Base Económica
+
+2MP es la resolución de entrada para cámaras IP modernas. Captura video Full HD a 1920 × 1080 píxeles.
+
+**Mejor para:**
+- Cámaras de timbre y porche a menos de 3 m del sujeto
+- Espacios interiores pequeños (pasillos, escaleras, ascensores)
+- Instalaciones con presupuesto limitado donde la monitorización de cerca es suficiente
+- Cámaras secundarias en áreas de bajo riesgo
+
+**Limitaciones:**
+- Identificación facial poco fiable más allá de 5-8 m
+- Captura de placas requiere el vehículo dentro de 3-5 m
+- El zoom digital revela pixelación casi inmediatamente
+
+<Callout type="tip" title="Cuándo 1080p es Suficiente">
+  Para una cámara que cubre un pasillo de 3 metros, una puerta de escalera o una vista fija de una caja registradora, la resolución 4K no añade nada útil. El sujeto llena suficiente del cuadro que 1080p captura cada detalle necesario. Aquí es donde las cámaras de 2MP ahorran almacenamiento real sin sacrificar resultados de seguridad.
+</Callout>
+
+## 4MP (2K) — El Estándar Recomendado
+
+4MP se ha convertido en la resolución predeterminada para la mayoría de las instalaciones residenciales y comerciales en 2026. Ofrece aproximadamente un 75% más de detalle que 1080p por solo un 25-30% más de almacenamiento.
+
+**Mejor para:**
+- Cobertura de entrada principal
+- Monitoreo de entrada y garaje
+- Espacios comerciales y de oficina en general
+- Áreas interiores de 6-12 m de profundidad
+- La resolución principal para la mayoría de sistemas de 8 cámaras
+
+**Ventajas:**
+- Identificación facial clara a 5-8 metros
+- Captura de placas a corta distancia (menos de 5 metros)
+- Buen rendimiento en poca luz con sensores modernos
+- Tamaños de archivo manejables (25% más grandes que 2MP)
+- Mejor relación calidad-precio
+
+<Callout type="note" title="Por Qué 4MP es el Punto Dulce">
+  Los instaladores profesionales recomiendan consistentemente 4MP como predeterminado. Ofrece suficiente densidad de píxeles para identificación a distancias residenciales típicas sin las penalizaciones de almacenamiento y ancho de banda de 4K. En un sistema de resolución mixta, 4MP maneja la mayoría de las cámaras mientras 4K se reserva para zonas críticas.
+</Callout>
+
+## 4K (8MP) — Detalle Máximo
+
+Las cámaras 4K capturan 3840 × 2160 píxeles — cuatro veces la cantidad de píxeles de 1080p. Esta resolución se justifica en escenarios específicos donde el detalle a distancia es crítico.
+
+**Mejor para:**
+- Estacionamientos y grandes áreas abiertas
+- Vestíbulos y atrios de edificios
+- Vistas panorámicas de pisos comerciales
+- Entradas y jardines delanteros en propiedades grandes
+- Escenas donde se necesita zoom digital durante la reproducción
+
+**Requisitos:**
+- NVR con ancho de banda y capacidad de decodificación suficiente
+- Discos duros para vigilancia 4x más grandes que un sistema 1080p equivalente
+- Cableado Cat6 o Cat6A para tasa de bits estable a distancia
+- Iluminación adecuada o tecnología de sensor Starlight/ColorVu
+
+**Compromisos:**
+- Almacenamiento: ~40 GB/día vs ~12 GB/día para 1080p
+- Ancho de banda: 8-12 Mbps por cámara vs 2-4 Mbps para 1080p
+
+## Entendiendo los Estándares DORI
+
+DORI (Detección, Observación, Reconocimiento, Identificación) es el estándar de la industria para medir lo que una cámara puede ver realmente a una distancia determinada.
+
+| Nivel DORI | Píxeles Requeridos | Lo Que Puede Hacer |
+|---|---|---|
+| Detección | 25 PPM (píxeles por metro) | Ver que hay una persona o vehículo |
+| Observación | 63 PPM | Ver patrones de movimiento y dirección |
+| Reconocimiento | 125 PPM | Determinar si conoce a la persona |
+| Identificación | 250 PPM | Identificar un rostro o leer una placa |
+
+<Callout type="warning" title="El Lente Importa Más de lo Que Cree">
+  Una cámara 4K con un lente gran angular de 2.8mm captura menos detalle de identificación a 15 m que una cámara 4MP con un lente de 6mm. Siempre considere la **distancia focal del lente** junto con la resolución. Un lente varifocal (2.8-12mm) permite ajustar en el momento de la instalación.
+</Callout>
+
+## Distancia Focal del Lente por Escena
+
+| Escena | Distancia Focal Recomendada | Mejor Resolución |
+|---|---|---|
+| Porche, puerta principal (2-3 m) | 2.8mm | 2MP es suficiente |
+| Entrada, jardín lateral (5-9 m) | 4mm | 4MP o 4K |
+| Jardín trasero, estacionamiento (9-15 m) | 6mm | 4K recomendado |
+| Entrada larga, lote (15-25 m) | 8mm | 4K mínimo |
+| Calle, callejón (25+ m) | 12mm+ | 4K con varifocal/PTZ |
+
+## Almacenamiento por Resolución
+
+Asumiendo compresión H.265, grabación continua 24/7:
+
+| Resolución | Por Día | 7 Días (4 cámaras) | 30 Días (4 cámaras) | 30 Días (8 cámaras) |
+|---|---|---|---|---|
+| 2MP (1080p) | 12 GB | 336 GB | 1.44 TB | 2.88 TB |
+| 4MP | 25 GB | 700 GB | 3 TB | 6 TB |
+| 4K (8MP) | 40 GB | 1.12 TB | 4.8 TB | 9.6 TB |
+
+**Con grabación solo por movimiento, reduzca estas cifras en un 60-70%.**
+**Con H.265+ (códec inteligente), ahorre un 30-50% adicional.**
+
+## Construyendo un Sistema de Resolución Mixta
+
+El enfoque más inteligente es combinar la resolución con la escena:
+
+| Zona | Resolución | Lente | Justificación |
+|---|---|---|---|
+| Puerta principal | 4MP | 2.8mm | Cerca, cobertura amplia |
+| Entrada de coches | 4K | 4-6mm | ID de rostro y placa a distancia |
+| Jardín trasero | 4K | 4mm | Cobertura amplia con ID a distancia |
+| Jardín lateral | 4MP | 4mm | Monitoreo general de perímetro |
+| Pasillo (interior) | 2MP | 2.8mm | Cerca, sin ID a distancia |
+| Caja registradora | 4MP | 2.8-4mm | Captura clara de rostro |
+| Estacionamiento | 4K | 6-8mm | Área amplia con captura de placas |
+| Escalera | 2MP | 2.8mm | Espacio reducido, sujeto cerca |
+
+<Callout type="note" title="Resolución Mixta Ahorra Almacenamiento">
+  Un sistema con 2x 4K + 4x 4MP + 2x 1080p usa aproximadamente un 40% menos de almacenamiento que 8x 4K, mientras ofrece mejor cobertura general porque cada cámara está adaptada a su escena.
+</Callout>
+
+## Guía de Decisión
+
+**Elija 2MP (1080p) si:**
+- La escena de la cámara tiene menos de 5 m de profundidad
+- El presupuesto o la capacidad de almacenamiento es la principal limitación
+- La cámara cubre un área interior reducida (pasillo, ascensor, escalera)
+- El monitoreo general de actividad es suficiente
+
+**Elija 4MP si:**
+- Necesita identificación fiable a 5-12 m
+- Esta es una cámara de propósito general para la mayor parte de su sistema
+- Quiere el mejor equilibrio de detalle, poca luz y almacenamiento
+- Está construyendo un sistema de 8-16 cámaras
+
+**Elija 4K si:**
+- Necesita identificación de rostro o placa a 12-25 m
+- La cámara cubre un área abierta amplia (estacionamiento, jardín, almacén)
+- Necesita hacer zoom digital en la reproducción
+- La capacidad de almacenamiento y ancho de banda del NVR son adecuados
+
+## Preguntas Frecuentes
+
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>¿Es 4K siempre mejor para cámaras de seguridad?</AccordionTrigger>
+    <AccordionContent>
+      No. 4K requiere cuatro veces el almacenamiento de 1080p y puede rendir peor en poca luz debido a píxeles individuales más pequeños. Use 4K donde necesite identificación a distancia o capacidad de zoom digital. Para escenas de cerca, una cámara 4MP o incluso 1080p bien colocada ofrecerá mejores resultados por gigabyte de almacenamiento.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>¿Mayor resolución significa mejor visión nocturna?</AccordionTrigger>
+    <AccordionContent>
+      Generalmente no. El rendimiento en poca luz depende del tamaño del sensor y la separación de píxeles, no de la cantidad de megapíxeles. Una cámara 4MP Starlight con sensor de 1/1.8" superará a la mayoría de cámaras 4K en oscuridad. Si el rendimiento nocturno es crítico, priorice el tamaño del sensor sobre la resolución.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>¿Puedo mezclar resoluciones en un NVR?</AccordionTrigger>
+    <AccordionContent>
+      Sí. Todos los NVR modernos soportan resoluciones mixtas. Es una buena práctica: use 4K en zonas exteriores de alto riesgo, 4MP para cobertura general y 1080p para espacios interiores reducidos. Esto optimiza tanto la cobertura como la utilización del almacenamiento.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>¿Necesito 4K para reconocimiento de placas?</AccordionTrigger>
+    <AccordionContent>
+      No necesariamente. La captura de placas depende más de la distancia focal y la posición de la cámara que de la resolución. Una cámara de 2MP con lente de 12mm dirigida a la trayectoria del vehículo capturará placas más fiablemente que una 4K con lente gran angular de 2.8mm. Posicione la cámara paralela a la vía a unos 15 m con un lente de 6-12mm.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>¿Cuánto ancho de banda necesita una cámara 4K?</AccordionTrigger>
+    <AccordionContent>
+      Una cámara 4K a 15 fps con H.265 usa aproximadamente 8-12 Mbps. A 30 fps puede alcanzar 15-20 Mbps. Un sistema de 8 cámaras 4K requiere 80+ Mbps de ancho de banda dedicado. Asegúrese de que su switch PoE tenga enlace Gigabit y que su NVR pueda ingerir el flujo total.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+Para un sistema completo, combine esto con nuestra [guía de configuración NVR](/blog/poe-nvr-setup) o explore [cámaras por menos de $200](/blog/best-cameras-under-200) para opciones económicas.

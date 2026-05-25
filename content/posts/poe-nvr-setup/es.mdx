@@ -1,17 +1,372 @@
 ---
-title: "Cómo Configurar un NVR PoE para CCTV"
-publishedAt: "2026-05-20"
-description: "Guía paso a paso para la configuración de NVR PoE para instalaciones pequeñas: cableado, registro de cámaras, configuración de retención."
+title: "Cómo Configurar un Sistema NVR PoE: Guía Completa Paso a Paso"
+publishedAt: "2026-05-25"
+description: "Guía completa para planificar, cablear, configurar y asegurar un sistema NVR PoE de cámaras de seguridad para hogares y pequeñas empresas. Cubre Cat6 vs Cat5e, estándares PoE, cálculo de almacenamiento, seguridad VLAN y acceso remoto."
 author: "CCTV Name Authoe"
-updatedAt: "2026-05-20"
+updatedAt: "2026-05-25"
 image: "/og.svg"
-tags: ["cctv","cámara cctv","cámara de seguridad","nvr","configuración"]
+tags: ["cctv", "nvr", "poe", "cámara de seguridad", "cámara ip", "vigilancia", "grabador de video en red"]
+postType: "howto"
+howTo:
+  - name: "Planifique el diseño de su sistema"
+    text: "Decida las ubicaciones de las cámaras, mida los tendidos de cable (máximo 100 metros) y calcule el presupuesto de energía PoE total."
+  - name: "Seleccione el cable y hardware adecuados"
+    text: "Elija cable Cat6 de cobre sólido, discos duros para vigilancia (WD Purple o Seagate SkyHawk) y un NVR con el doble de canales de los que necesita actualmente."
+  - name: "Tienda y termine los cables"
+    text: "Instale Cat6 para exteriores en conduit o bandeja porta cables. Etiquete ambos extremos. Mantenga un radio de curvatura de 5 cm y una separación de 30 cm de la corriente alterna."
+  - name: "Monte las cámaras y conecte el NVR"
+    text: "Monte las cámaras de forma segura. Conecte el NVR al router vía Ethernet, enchufe las cámaras a los puertos PoE y encienda el sistema."
+  - name: "Configure el NVR"
+    text: "Establezca una contraseña de administrador segura, configure la sincronización NTP, active la compresión H.265, defina zonas de detección de movimiento y elija un horario de grabación."
+  - name: "Asegure el acceso remoto"
+    text: "Configure una VPN para la visualización remota. Nunca exponga la interfaz web del NVR a internet directo. Coloque el NVR en una VLAN aislada. Desactive UPnP."
+faq:
+  - question: "¿Cuál es la longitud máxima de un cable PoE?"
+    answer: "El estándar IEEE 802.3 limita los tendidos Ethernet a 100 metros (328 pies) incluyendo cables de conexión. Más allá, use un extensor PoE o fibra óptica."
+  - question: "¿Cuánto almacenamiento necesito para mi NVR?"
+    answer: "Una cámara 4K grabando continuamente con H.265 usa aproximadamente 30-40 GB al día. La grabación solo por movimiento reduce eso en un 60-70%. Un sistema de 8 cámaras 4K con retención de 30 días necesita aproximadamente 10-12 TB."
+  - question: "¿Necesito internet para que funcione mi NVR?"
+    answer: "La grabación local funciona sin internet. La visualización remota, notificaciones push y actualizaciones de firmware requieren conexión."
+  - question: "¿Puedo mezclar marcas de cámaras con mi NVR?"
+    answer: "Sí, si tanto las cámaras como el NVR soportan ONVIF Profile T y G. Esto garantiza compatibilidad para transmisión H.265, detección de movimiento y reproducción."
+  - question: "¿Cuánto duran los discos duros para vigilancia?"
+    answer: "Los discos para vigilancia (WD Purple, Seagate SkyHawk) duran típicamente 3-5 años bajo escritura continua 24/7. Los discos de escritorio pueden fallar en 1-2 años."
+  - question: "¿Debería usar Cat5e o Cat6 para cámaras PoE?"
+    answer: "Cat6 es recomendado para cualquier instalación nueva. Los conductores de 23 AWG reducen la caída de voltaje y proporcionan mejor margen de ancho de banda para cámaras 4K."
+  - question: "¿Qué pasa cuando el disco duro del NVR se llena?"
+    answer: "La mayoría de los NVR sobrescriben las grabaciones más antiguas. Siempre verifique que esta configuración esté activada; algunos vienen con 'detener grabación al llenarse' por defecto."
+  - question: "¿Por qué mis cámaras se reinician por la noche?"
+    answer: "Indica un presupuesto PoE insuficiente. Cuando los LED IR se activan por la noche, el consumo de energía de la cámara aumenta. Asegúrese de que su switch PoE tenga al menos 20-30% de margen sobre la carga total."
 ---
 
-Esta guía cubre lo esencial para configurar un sistema NVR PoE pequeño: tipo de cable, planificación de energía y configuración inicial.
+Un sistema NVR PoE (Power over Ethernet) es la columna vertebral de la vigilancia IP moderna. Entrega energía y datos a las cámaras de seguridad a través de un solo cable Ethernet, eliminando las fuentes de alimentación individuales y el cableado desordenado. Para pequeñas empresas, comercios minoristas y hogares, un sistema NVR PoE bien planificado proporciona grabación local confiable sin cuotas mensuales de la nube.
 
-1. Tienda Cat6 hasta las ubicaciones de las cámaras.
-2. Monte las cámaras y conecte el switch PoE.
-3. Configure la retención del NVR y las zonas de movimiento.
+Esta guía cubre cada paso — desde la selección del cable y el presupuesto de energía hasta la configuración del NVR y el endurecimiento de la seguridad — basada en prácticas de instalación del mundo real y estándares de hardware de 2026.
 
-[Consulte nuestras guías de cámaras](/blog/best-cameras-under-200) para orientación sobre selección de cámaras.
+<Callout type="info" title="Qué Cambió en 2026">
+  Los discos de vigilancia de 24 TB, la compresión H.266 (VVC) en NVR de consumo y el soporte maduro de cámaras Matter significan que los costos de almacenamiento son más bajos y la compatibilidad es mejor que nunca. Los códecs inteligentes H.265+ ahora ofrecen un 50% de ahorro sobre H.264.
+</Callout>
+
+## Planificación del Sistema
+
+Toda instalación exitosa comienza con un plan. Comprar hardware sin calcular presupuestos de energía, longitudes de cable y necesidades de almacenamiento es el error más común.
+
+### Elija su Arquitectura
+
+Tiene dos opciones principales para conectar las cámaras:
+
+| Arquitectura | Mejor Para | Compromisos |
+|---|---|---|
+| NVR con puertos PoE integrados | Principiantes, instalaciones pequeñas (4-8 cámaras) | Limitado al número de puertos y presupuesto de energía |
+| Switch PoE + NVR separado | Instalaciones grandes, diseños flexibles | Más componentes, pero más fácil de escalar y reemplazar |
+
+<Callout type="tip" title="Consejo Profesional">
+  Siempre compre un NVR con al menos **el doble de canales** de su plan actual. Una instalación de 4 cámaras debe usar un NVR de 8 canales. La expansión siempre ocurre, y actualizar un NVR es más costoso que comprar uno más grande desde el principio.
+</Callout>
+
+### Selección del Cable
+
+El cable es el componente físico más importante. Una mala elección causa reinicios intermitentes, caída de voltaje y pérdida de datos que son frustrantes de diagnosticar.
+
+| Tipo de Cable | Mejor Uso | Por Qué |
+|---|---|---|
+| Cat5e | Cámaras 1080p, tendidos bajo 50 m | Más barato, pero conductores 24 AWG significan mayor resistencia |
+| Cat6 | La mayoría de cámaras IP modernas | Conductores 23 AWG reducen caída de voltaje; línea base recomendada |
+| Cat6A | Cámaras 4K, tendidos sobre 70 m, PTZ de alto consumo | Conductores más gruesos, mejor disipación de calor, soporta PoE++ |
+
+<Callout type="warning" title="Evite el Cobre Revestido de Aluminio (CCA)">
+  El cable CCA es más barato pero tiene una resistencia significativamente mayor que el cobre sólido. Causa caída de voltaje, acumulación de calor y reinicios intermitentes de cámaras. Para cualquier instalación profesional, use **cobre sólido** de una marca reconocida.
+</Callout>
+
+**Reglas clave de cableado:**
+- Longitud máxima: 100 metros (328 pies) incluyendo cables de conexión
+- Radio de curvatura: mínimo 5 cm — las torceduras matan la calidad de la señal
+- Separación de corriente alterna: mínimo 30 cm
+- Tendidos exteriores: use cable con clasificación UV y relleno de gel en conduit
+- Etiquete ambos extremos de cada cable
+
+### Estándares PoE y Presupuesto de Energía
+
+Comprender los estándares PoE previene la falla de instalación más común: cámaras que funcionan de día pero se reinician de noche cuando los LED IR consumen la máxima potencia.
+
+| Estándar | Potencia por Puerto | Consumo Típico de Cámara |
+|---|---|---|
+| IEEE 802.3af (PoE) | 15.4 W | Cámaras fijas 1080p/4MP (4-8 W) |
+| IEEE 802.3at (PoE+) | 30 W | Cámaras 4K, PTZ interior (8-15 W) |
+| IEEE 802.3bt Tipo 3 (PoE++) | 60 W | PTZ exterior con calefactor (20-40 W) |
+| IEEE 802.3bt Tipo 4 (PoE++) | 100 W | Cámaras multisensor, PTZ de alta potencia |
+
+<Callout type="danger" title="El Problema Nocturno">
+  Una cámara que consume 5 W durante el día puede dispararse a 12 W por la noche cuando sus LED IR se activan. Siempre calcule usando el **consumo máximo** de la hoja de datos. Luego añada **30% de margen** en su switch PoE.
+</Callout>
+
+Ejemplo de presupuesto — 8 cámaras a 12 W pico cada una:
+- Carga total: 96 W
+- Con 30% de margen: **125 W mínimos de presupuesto PoE**
+- Recomendado: Un switch PoE+ de 16 puertos con presupuesto de 150+ W
+
+### Planificación del Almacenamiento
+
+El almacenamiento es donde la mayoría de los sistemas fallan silenciosamente. Un sistema diseñado para 30 días en papel a menudo entrega solo 18-22 días en la práctica.
+
+**Almacenamiento diario por cámara (H.265, 24/7 continuo):**
+| Resolución | Almacenamiento Diario |
+|---|---|
+| 1080p (2MP) | 10-15 GB |
+| 4MP | 20-30 GB |
+| 4K (8MP) | 30-50 GB |
+
+**Cálculo real para un sistema de 4 cámaras 4K, retención de 30 días:**
+- Grabación continua: 4 × 40 GB × 30 = 4.8 TB → compre un disco de 6 TB
+- Solo por movimiento: 4 × 12 GB × 30 = 1.44 TB → un disco de 2 TB funciona
+- Híbrido (continua baja resolución, movimiento alta resolución): lo mejor de ambos mundos
+
+<Callout type="tip" title="Recomendación de Almacenamiento">
+  Para la mayoría de sistemas domésticos de 4 cámaras 4K: un disco de 4 TB para vigilancia con H.265 y grabación solo por movimiento proporciona 30 días de historial. Para 8 cámaras 4K con grabación continua, suba a 10-12 TB.
+</Callout>
+
+**Use siempre discos diseñados para vigilancia:**
+| Serie de Disco | Por Qué |
+|---|---|
+| WD Purple | Clasificado para escritura 24/7, tecnología AllFrame reduce pérdida de video |
+| Seagate SkyHawk | Firmware ImagePerfect, clasificado para carga de escritura 24/7 |
+| Toshiba S300 | Optimizado para vigilancia, garantía de 3 años |
+
+Los discos de escritorio estándar fallan a una tasa 2-3 veces mayor que los discos de vigilancia bajo carga de escritura continua y a menudo se desconectan del bus durante la recuperación de errores.
+
+## Instalación del Hardware
+
+### Lo Que Necesita
+
+- NVR (con o sin PoE integrado)
+- Cámaras PoE (ONVIF Profile T/G recomendado)
+- Cable Cat6 de cobre sólido (para exteriores si es necesario)
+- Switch PoE (si usa NVR sin PoE o expande más allá de los puertos integrados)
+- Disco duro para vigilancia
+- Router con puerto LAN libre
+- Monitor (HDMI/VGA) y ratón USB para configuración inicial
+
+### Paso 1: Posicione el NVR
+
+Coloque el NVR en un lugar seguro, con clima controlado y buena ventilación. Evite apilarlo con otros equipos electrónicos. Deje al menos 2 cm de espacio alrededor para la circulación de aire. Conéctelo al router a través del puerto LAN usando un cable Ethernet corto.
+
+<Callout type="note" title="Se Recomienda un UPS">
+  Un UPS (respaldo de batería) para el NVR, router y switch PoE asegura que su sistema siga grabando durante cortes de energía. Esto es especialmente importante para negocios.
+</Callout>
+
+### Paso 2: Tienda y Termine los Cables
+
+Tienda los cables desde cada ubicación de cámara hasta el NVR o switch PoE. Use clips para asegurar los tendidos a lo largo de zócalos, paredes o techos. Para instalaciones profesionales, pase los cables a través de paredes o conduit.
+
+1. Mida cada tendido en un plano o con un medidor láser, luego añada holgura para esquinas y bucles de servicio
+2. Manténgase dentro del límite de 100 metros incluyendo cables de conexión
+3. Use el estándar de cableado T568B para todas las terminaciones
+4. Pruebe cada cable con un comprobador de continuidad antes de conectar las cámaras
+5. Para tendidos sobre 70 metros, use Cat6 o Cat6A para minimizar la caída de voltaje
+
+<Callout type="warning" title="Calor en Haces de Cables">
+  Al tender múltiples cables PoE en un haz o conduit, el calor se acumula por la resistencia en los conductores. Para haces de 10+ cables, use Cat6 o Cat6A de 23 AWG y evite llenar el conduit más del 40% de su capacidad. El cable sin blindaje (UTP) Cat6 es suficiente para la mayoría de entornos residenciales y de oficina.
+</Callout>
+
+### Paso 3: Monte las Cámaras
+
+Monte cada cámara en la ubicación planificada, asegurándose de que esté nivelada y firme. Las cámaras exteriores necesitan conexiones resistentes a la intemperie.
+
+**Consejos de colocación:**
+- Cubra todos los puntos de entrada (puertas, ventanas de planta baja, garaje)
+- Evite el deslumbramiento directo de ventanas o luces brillantes
+- Posicione las cámaras a 2.5-3 metros de altura para una captura facial óptima
+- Para cámaras 4K, incline lo suficiente para cubrir el campo cercano
+
+### Paso 4: Conecte las Cámaras
+
+Enchufe cada cable Ethernet en un puerto PoE del NVR o switch PoE. La cámara recibe energía y datos a través de esta única conexión. La cámara se iniciará en 30-60 segundos.
+
+**Para NVR con puertos PoE integrados:**
+- Enchufe directamente en los puertos PoE etiquetados en la parte posterior del NVR
+- Las cámaras se detectan automáticamente en 30-60 segundos
+- No se necesita configuración adicional
+
+**Para configuraciones de switch PoE + NVR:**
+- Conecte las cámaras al switch PoE
+- Asegúrese de que el switch y el NVR estén en la misma red local
+- En el menú del NVR, vaya a Cámara > Añadir Cámaras > Búsqueda Automática o Búsqueda ONVIF
+
+### Paso 5: Configuración Inicial del NVR
+
+Encienda el NVR y conecte un monitor vía HDMI. El asistente de configuración le guiará a través de la configuración básica:
+
+1. **Establezca una contraseña de administrador segura** — nunca use valores predeterminados como admin/admin
+2. **Configure la fecha y hora** — use NTP para precisión
+3. **Establezca la zona horaria** — las marcas de tiempo precisas son críticas para la evidencia
+4. **Inicialice el disco duro** — formatee el disco de vigilancia en el NVR
+5. **Active la sobrescritura** — confirme que el NVR sobrescribirá las grabaciones antiguas cuando el disco esté lleno
+
+<Callout type="danger" title="Las Credenciales Predeterminadas Son un Riesgo">
+  Muchos NVR vienen con credenciales predeterminadas como admin/admin. Cámbielas inmediatamente. El catálogo de vulnerabilidades conocidas de CISA incluye múltiples vulnerabilidades de interfaz web de NVR de 2021-2024. No se convierta en un blanco fácil.
+</Callout>
+
+## Configuración de Cámaras y Grabación
+
+### Paso 6: Configure Cada Cámara
+
+Acceda a la configuración de cada cámara a través de la interfaz del NVR:
+
+- **Resolución**: use 4K para áreas de entrada/riesgo, 1080p para cobertura amplia
+- **Fotogramas por segundo**: 15-20 fps es estándar. 30 fps duplica el almacenamiento con poco beneficio
+- **Compresión**: active **H.265** o **H.265+** para reducir el almacenamiento en un 40-50%
+- **Tasa de bits**: use tasa de bits variable (VBR) para ahorrar almacenamiento en escenas estáticas
+
+### Paso 7: Detección de Movimiento y Alertas Inteligentes
+
+La detección de movimiento predeterminada casi siempre es demasiado sensible. Cada hoja, sombra o faro que pasa activa una alerta.
+
+Para cada cámara:
+1. Abra Configuración de Cámara > Detección de Movimiento
+2. Establezca la sensibilidad en aproximadamente 50%
+3. Defina zonas de detección — excluya árboles, carreteras y jardines vecinos
+4. Active la **detección inteligente** si su NVR la soporta (Persona, Vehículo, Animal)
+
+<Callout type="tip" title="La Detección Inteligente Reduce Falsas Alarmas en un 80%+">
+  Los NVR con IA integrada pueden filtrar eventos de movimiento por tipo. Un coche pasando no activará una alerta de persona. Esto hace que revisar el metraje sea mucho más rápido.
+</Callout>
+
+### Paso 8: Programación de Grabación
+
+Configure una estrategia de grabación escalonada en Ajustes del NVR > Almacenamiento > Programación de Grabación:
+
+| Zona | Programa Recomendado | Por Qué |
+|---|---|---|
+| Puntos de entrada (puertas, entrada) | Grabación continua | Sin espacios en áreas críticas |
+| Perímetro (jardín, estacionamiento) | Solo por movimiento | Ahorra almacenamiento en áreas de bajo riesgo |
+| Interior (oficina, almacén) | Por movimiento con pre-grabación | Captura contexto antes y después de eventos |
+
+Establezca su período de retención (típicamente 30 días para negocios, 7-14 días para hogares). Active "Sobrescribir cuando esté lleno".
+
+## Acceso Remoto y Seguridad
+
+El acceso remoto es el área donde la mayoría de las instalaciones introducen vulnerabilidades. Un NVR correctamente asegurado graba durante años sin problemas. Un NVR expuesto se ve comprometido.
+
+### La Forma Correcta: VPN
+
+Configure WireGuard o OpenVPN en su router. Conéctese a su red mediante VPN, luego acceda al NVR usando su dirección IP local. Este es el estándar de oro para el acceso remoto seguro.
+
+### La Forma Incorrecta: Reenvío de Puertos
+
+Nunca reenvíe los puertos 80 o 443 a la interfaz web de su NVR. Nunca exponga la interfaz web del NVR directamente a internet público. Este es el mayor vector de ataque para la compromisión del NVR.
+
+<Callout type="danger" title="Nunca Reenvíe Puertos a su NVR">
+  La lista CISA de vulnerabilidades explotadas conocidas incluye vulnerabilidades de interfaz web de NVR de Hikvision, Dahua y otras marcas importantes. Estas son explotadas activamente. Use VPN para acceso remoto. Punto.
+</Callout>
+
+### Medidas de Seguridad Adicionales
+
+- **Desactive UPnP** en el NVR — el reenvío automático de puertos es un vector de ataque común
+- **Ponga el NVR en una VLAN aislada** — bloquee todo el tráfico de salida excepto NTP y actualizaciones programadas
+- **Bloquee el tráfico de telefonía de las cámaras** — incluso en una VLAN aislada, las cámaras generan consultas DNS y tráfico saliente
+- **Actualice el firmware** — verifique el sitio web del fabricante para la última versión estable
+- **Monitoreo SMART semanal** — alerte sobre sectores reasignados antes de que un disco falle silenciosamente
+
+## Solución de Problemas Comunes
+
+| Problema | Causa Más Probable | Solución |
+|---|---|---|
+| Cámara no detectada | Cable o puerto PoE defectuoso | Pruebe con un cable conocido y otro puerto. Verifique el LED de la cámara |
+| Vista en vivo lenta | NVR mostrando flujo principal (4K) en vivo | Cambie a sub-flujo (1080p) para vista en vivo |
+| Cámaras se reinician de noche | Presupuesto PoE insuficiente | Los LED IR aumentan el consumo. Valide el margen de su switch PoE |
+| Alertas de movimiento excesivas | Zona de detección demasiado amplia | Reduzca zonas, active detección inteligente, sensibilidad ~50% |
+| App no conecta remotamente | NVR sin internet o hora incorrecta | Verifique sincronización NTP, cuenta en la nube y conectividad |
+| Error de disco duro | Disco de escritorio en uso 24/7 | Reemplace con disco para vigilancia inmediatamente |
+| Espacios en la línea de tiempo | Sobrescritura desactivada o cuello de botella | Confirme que "sobrescribir al llenarse" esté activado |
+
+## Escenarios de Almacenamiento: Ejemplos Reales
+
+| Escenario | Cámaras | Resolución | Grabación | Retención | Almacenamiento Requerido |
+|---|---|---|---|---|---|
+| Hogar pequeño | 4 | 1080p | Solo movimiento | 14 días | 1 TB |
+| Hogar con 4K | 4 | 4K | Solo mov. (H.265) | 30 días | 4 TB |
+| Oficina pequeña | 8 | 4MP | Continua (H.265) | 30 días | 12 TB |
+| Tienda minorista | 16 | 4K | Híbrida | 30 días | 24 TB |
+| Almacén | 32 | 4MP | Continua (H.265+) | 60 días | 60 TB (RAID 6) |
+
+Añada 20% de margen a todos los cálculos de almacenamiento.
+
+<Callout type="note" title="H.266 (VVC) Está Llegando">
+  El nuevo estándar de compresión H.266 ofrece aproximadamente un 50% más de ahorro sobre H.265. Algunos NVR de 2026 ya lo soportan. Si compra un NVR nuevo, verifique la compatibilidad con H.266.
+</Callout>
+
+## Lista de Verificación Final
+
+Antes de declarar la instalación completa:
+
+- [ ] Cada cable probado con continuidad y longitud bajo 100 metros
+- [ ] Cable Cat6 de cobre sólido usado (sin CCA)
+- [ ] Presupuesto PoE calculado con 30% de margen
+- [ ] Contraseña de administrador del NVR cambiada
+- [ ] Sincronización NTP configurada
+- [ ] Compresión H.265 o mejor activada
+- [ ] Zonas de detección de movimiento configuradas por cámara
+- [ ] Detección inteligente activada donde esté disponible
+- [ ] Programa de grabación configurado
+- [ ] Sobrescritura al llenarse activada
+- [ ] Acceso remoto asegurado vía VPN
+- [ ] NVR en VLAN aislada
+- [ ] UPnP desactivado
+- [ ] Firmware actualizado
+- [ ] Disco duro para vigilancia instalado
+- [ ] UPS conectado al NVR, router y switch PoE
+- [ ] Todos los cables etiquetados en ambos extremos
+- [ ] Período de retención verificado después de 7 días de operación
+
+<Callout type="tip" title="Documente Todo">
+  Mantenga un registro simple de las ubicaciones de las cámaras, direcciones IP, longitudes de cable y credenciales de administrador (en un gestor de contraseñas, no en una nota adhesiva). El usted del futuro y cualquier técnico que herede el sistema lo agradecerán.
+</Callout>
+
+## Preguntas Frecuentes
+
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>¿Cuál es la longitud máxima de un cable PoE?</AccordionTrigger>
+    <AccordionContent>
+      El estándar IEEE 802.3 limita los tendidos Ethernet a 100 metros (328 pies) incluyendo cables de conexión. Más allá, use un extensor PoE (añade 100 m por unidad, hasta 4 unidades para 500 m total), fibra óptica con switch remoto, o acerque el NVR a las cámaras.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>¿Necesito internet para que funcione mi NVR?</AccordionTrigger>
+    <AccordionContent>
+      La grabación local funciona perfectamente sin internet. Necesita conexión solo para visualización remota (vía app o web), notificaciones push y actualizaciones de firmware. Si la seguridad es su prioridad, el NVR puede funcionar completamente desconectado en una red aislada.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>¿Puedo mezclar marcas de cámaras con mi NVR?</AccordionTrigger>
+    <AccordionContent>
+      Sí, si tanto las cámaras como el NVR soportan ONVIF. Para mejores resultados, seleccione cámaras que soporten ONVIF Profile T (transmisión H.265, detección de movimiento avanzada, audio bidireccional) y Profile G (protocolos de reproducción, búsqueda de almacenamiento). Esto garantiza compatibilidad incluso entre marcas como Hikvision, Dahua, Reolink y Amcrest.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>¿Cuánto duran los discos duros para vigilancia?</AccordionTrigger>
+    <AccordionContent>
+      Los discos para vigilancia (WD Purple, Seagate SkyHawk) están diseñados para cargas de escritura 24/7 y típicamente duran 3-5 años. Los discos de escritorio estándar pueden fallar en 1-2 años bajo grabación continua. Para cualquier instalación seria, use discos para vigilancia desde el día uno.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>¿Qué pasa cuando el disco duro se llena?</AccordionTrigger>
+    <AccordionContent>
+      La mayoría de los NVR sobrescriben las grabaciones más antiguas cuando el disco está lleno. Sin embargo, algunos NVR vienen con "detener grabación al llenarse" como configuración predeterminada. Siempre verifique esta configuración durante la instalación inicial. Un sistema que deja de grabar silenciosamente porque el disco se llenó, derrota todo el propósito.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>¿Por qué mis cámaras PoE se reinician por la noche?</AccordionTrigger>
+    <AccordionContent>
+      Esta es la falla clásica del presupuesto de energía PoE. Cuando los LED IR se activan por la noche, el consumo de cada cámara aumenta (a veces duplicándose). Si su switch PoE o NVR carece de margen, las cámaras pierden energía y se reinician. Solución: sume el consumo máximo de cada cámara según la hoja de datos, añada 30% de margen, y asegúrese de que su switch PoE supere esa cifra.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>¿Debería usar Cat5e o Cat6 para cámaras PoE?</AccordionTrigger>
+    <AccordionContent>
+      Para cualquier instalación nueva, use Cat6. Los conductores de 23 AWG reducen la caída de voltaje en comparación con los 24 AWG de Cat5e, lo que importa para la entrega de energía PoE — especialmente en tendidos de más de 50 metros y para cámaras con LED IR o calefactores. La diferencia de costo es de aproximadamente $0.04-0.10 por pie, lo que añade quizás $30-80 para un sistema de 8 cámaras. Esto es insignificante comparado con el costo de mano de obra de tender el cable.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+[Consulte nuestra guía de selección de cámaras](/blog/best-cameras-under-200) para recomendaciones de cámaras compatibles, o use nuestra [calculadora de almacenamiento NVR](/blog/camera-storage-calculator) para dimensionar su sistema con precisión.

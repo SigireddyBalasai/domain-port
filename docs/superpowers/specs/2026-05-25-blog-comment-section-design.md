@@ -9,25 +9,27 @@ Add a self-hosted, moderated comment section below blog posts. Comments are serv
 
 ## Database
 
-SQLite via `better-sqlite3` (same pattern as `lib/auth.ts`), new file `data/comments.db`.
+**Neon Postgres** — existing project "cctv.name" (`broad-star-11787918`), `neondb` database.
+
+New table `blog_comments` (separate from existing `comments` table which uses UUID FK to CMS `posts.id`):
 
 ```sql
-CREATE TABLE comments (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE blog_comments (
+  id SERIAL PRIMARY KEY,
   post_slug TEXT NOT NULL,
   locale TEXT NOT NULL DEFAULT 'en',
   author_name TEXT NOT NULL,
   author_email TEXT NOT NULL,
   content TEXT NOT NULL,
-  is_approved INTEGER NOT NULL DEFAULT 0,
-  created_at TEXT NOT NULL DEFAULT (datetime('now')),
-  moderated_at TEXT,
-  ip_address TEXT,
-  user_agent TEXT
+  is_approved BOOLEAN NOT NULL DEFAULT false,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  moderated_at TIMESTAMPTZ
 );
 
-CREATE INDEX idx_comments_post ON comments(post_slug, locale, is_approved);
+CREATE INDEX idx_blog_comments_post ON blog_comments(post_slug, locale, is_approved);
 ```
+
+Connection via `@neondatabase/serverless` with pooled connection string from existing project.
 
 Flat comments (no threaded replies).
 
@@ -35,7 +37,7 @@ Flat comments (no threaded replies).
 
 | File | Purpose |
 |---|---|
-| `lib/comment-db.ts` | SQLite wrapper (init, insert, list, approve, delete, count) |
+| `lib/comment-db.ts` | Neon Postgres wrapper (query, insert, list, approve, delete, count) via `@neondatabase/serverless` |
 | `lib/comment-spam.ts` | Spam detection (honeypot, rate limit, URL blocking) |
 | `app/api/comments/route.ts` | POST submit comment |
 | `app/api/comments/[id]/route.ts` | PATCH approve, DELETE reject |
