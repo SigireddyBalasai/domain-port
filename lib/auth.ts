@@ -1,14 +1,14 @@
-import path from "node:path"
 import { betterAuth } from "better-auth"
 import { twoFactor } from "better-auth/plugins"
-import sqlite3 from "better-sqlite3"
+import { Pool } from "pg"
 
-const dbPath = path.join(process.cwd(), "data", "auth.db")
-
-const db = new sqlite3(dbPath)
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false },
+})
 
 export const auth = betterAuth({
-  database: db,
+  database: pool,
   emailAndPassword: {
     enabled: true,
     requireEmailVerification: false,
