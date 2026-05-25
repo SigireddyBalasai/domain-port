@@ -4,7 +4,7 @@ import { routing } from "./i18n/routing"
 
 const intlMiddleware = createMiddleware(routing)
 
-export const proxy = (
+export const middleware = (
   request: NextRequest
 ): NextResponse | Promise<NextResponse> => {
   if (request.nextUrl.pathname.startsWith("/keystatic")) {
