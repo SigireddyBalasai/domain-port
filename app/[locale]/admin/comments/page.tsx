@@ -1,4 +1,5 @@
 import { headers } from "next/headers"
+import { redirect } from "next/navigation"
 import type { JSX } from "react/jsx-runtime"
 import { auth } from "@/lib/auth"
 import { getAllComments, getPendingCommentsCount } from "@/lib/comment-db"
@@ -8,14 +9,7 @@ export default async function AdminCommentsPage(): Promise<JSX.Element> {
   const session = await auth.api.getSession({ headers: await headers() })
 
   if (!session) {
-    return (
-      <div className="mx-auto max-w-2xl px-4 py-20 text-center">
-        <h1 className="text-2xl font-bold">Unauthorized</h1>
-        <p className="mt-2 text-muted-foreground">
-          You must be logged in to access the moderation dashboard.
-        </p>
-      </div>
-    )
+    redirect("/login")
   }
 
   const [comments, pendingCount] = await Promise.all([
