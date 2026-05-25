@@ -12,7 +12,6 @@ import type {
   FAQPage,
   HowTo,
   ImageObject,
-  InteractionCounter,
   Organization,
   Person,
   Product,
@@ -23,14 +22,14 @@ import type {
   WithContext,
 } from "schema-dts"
 import { posts } from "@/.velite"
-import { Badge } from "@/components/ui/badge"
+import { Comments } from "@/components/blog/comments"
 import { ShareButtonsLazy } from "@/components/blog/share-buttons-lazy"
 import { MdxContent } from "@/components/mdx-content"
+import { Badge } from "@/components/ui/badge"
+import { getCommentCount } from "@/lib/comment-db"
 import { JsonLd } from "@/lib/json-ld"
 import { defaultLocale, locales } from "@/lib/locales"
 import { siteConfig } from "@/lib/site-config"
-import { Comments } from "@/components/blog/comments"
-import { getCommentCount } from "@/lib/comment-db"
 
 const ShareButtons = ShareButtonsLazy
 
@@ -190,10 +189,10 @@ export default async function PostPage({
           interactionStatistic: [
             {
               "@type": "InteractionCounter",
-              interactionType: "https://schema.org/CommentAction",
+              interactionType: { "@id": "https://schema.org/CommentAction" },
               userInteractionCount: commentCount,
             },
-          ] as InteractionCounter[],
+          ],
           author: authorSchema,
           url: `${siteConfig.url}/${locale}/blog/${post.slug}`,
           mainEntityOfPage: {

@@ -22,18 +22,26 @@ export interface CreateCommentInput {
   userAgent: string
 }
 
-const sql = neon(process.env.DATABASE_URL!)
+const databaseUrl = process.env.DATABASE_URL
+
+if (!databaseUrl) {
+  throw new Error("DATABASE_URL environment variable is not set")
+}
+
+const sql = neon(databaseUrl)
 
 export async function getComments(
   postSlug: string,
   locale: string
 ): Promise<CommentRow[]> {
-  return sql`
+  const rows = await sql`
     SELECT id, post_slug, locale, author_name, author_email, content, is_approved, created_at, moderated_at
     FROM blog_comments
     WHERE post_slug = ${postSlug} AND locale = ${locale} AND is_approved = true
     ORDER BY created_at ASC
   `
+
+  return rows as CommentRow[]
 }
 
 export async function getCommentCount(
@@ -45,6 +53,7 @@ export async function getCommentCount(
     FROM blog_comments
     WHERE post_slug = ${postSlug} AND locale = ${locale} AND is_approved = true
   `
+
   return Number(rows[0]?.count ?? 0)
 }
 
@@ -56,6 +65,7 @@ export async function createComment(
     VALUES (${input.postSlug}, ${input.locale}, ${input.authorName}, ${input.authorEmail}, ${input.content})
     RETURNING id, post_slug, locale, author_name, author_email, content, is_approved, created_at, moderated_at
   `
+
   return rows[0] as CommentRow
 }
 
@@ -72,11 +82,13 @@ export async function deleteComment(id: number): Promise<void> {
 }
 
 export async function getAllComments(): Promise<CommentRow[]> {
-  return sql`
+  const rows = await sql`
     SELECT id, post_slug, locale, author_name, author_email, content, is_approved, created_at, moderated_at
     FROM blog_comments
     ORDER BY created_at DESC
   `
+
+  return rows as CommentRow[]
 }
 
 export async function getPendingCommentsCount(): Promise<number> {
@@ -85,5 +97,6 @@ export async function getPendingCommentsCount(): Promise<number> {
     FROM blog_comments
     WHERE is_approved = false
   `
+
   return Number(rows[0]?.count ?? 0)
 }

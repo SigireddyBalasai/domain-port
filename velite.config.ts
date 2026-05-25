@@ -125,6 +125,7 @@ const posts = defineCollection({
       const parts = meta.path.split("/")
       const file = parts.pop() ?? ""
       const folder = parts.pop() ?? ""
+
       return {
         ...data,
         slug: folder,

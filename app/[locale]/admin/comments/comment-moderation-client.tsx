@@ -1,7 +1,7 @@
 "use client"
 
-import type { JSX } from "react/jsx-runtime"
 import { useState } from "react"
+import type { JSX } from "react/jsx-runtime"
 import { Button } from "@/components/ui/button"
 import type { CommentRow } from "@/lib/comment-db"
 
@@ -66,7 +66,6 @@ export function CommentModerationClient({
               <div className="flex shrink-0 gap-2">
                 {!comment.is_approved && (
                   <Button
-                    variant="default"
                     size="sm"
                     onClick={() => {
                       handleApprove(comment.id).catch(() => undefined)

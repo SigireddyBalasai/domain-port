@@ -1,5 +1,5 @@
 import type { JSX } from "react/jsx-runtime"
-import { getComments, getCommentCount } from "@/lib/comment-db"
+import { getCommentCount, getComments } from "@/lib/comment-db"
 import { CommentFormLazy } from "./comment-form-lazy"
 
 interface CommentsProps {

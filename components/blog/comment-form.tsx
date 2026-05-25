@@ -1,7 +1,6 @@
 "use client"
 
-import type { JSX, FormEvent } from "react"
-import { useState } from "react"
+import { type JSX , useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -20,45 +19,49 @@ export function CommentForm({
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
   const [errorMessage, setErrorMessage] = useState("")
 
-  const handleSubmit = async (e: FormEvent): Promise<void> => {
+  const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>): void => {
     e.preventDefault()
     setStatus("loading")
     setErrorMessage("")
 
-    const form = e.currentTarget as HTMLFormElement
-    const website = (
-      form.elements.namedItem("website") as HTMLInputElement
-    )?.value
+    const form = e.currentTarget
+    const website = (form.elements.namedItem("website") as HTMLInputElement | null)?.value
 
-    try {
-      const res = await fetch("/api/comments", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          postSlug,
-          locale,
-          authorName: authorName.trim(),
-          authorEmail: authorEmail.trim(),
-          content: content.trim(),
-          website,
-        }),
-      })
+    const submit = async (): Promise<void> => {
+      try {
+        const res = await fetch("/api/comments", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            postSlug,
+            locale,
+            authorName: authorName.trim(),
+            authorEmail: authorEmail.trim(),
+            content: content.trim(),
+            website,
+          }),
+        })
 
-      if (!res.ok) {
-        const data = (await res.json()) as { error: string }
-        setErrorMessage(data.error ?? "Failed to submit comment.")
+        if (!res.ok) {
+          const data = (await res.json()) as { error?: string }
+
+          setErrorMessage(data.error ?? "Failed to submit comment.")
+          setStatus("error")
+
+          return
+        }
+
+        setStatus("success")
+        setAuthorName("")
+        setAuthorEmail("")
+        setContent("")
+      } catch {
+        setErrorMessage("Network error. Please try again.")
         setStatus("error")
-        return
       }
-
-      setStatus("success")
-      setAuthorName("")
-      setAuthorEmail("")
-      setContent("")
-    } catch {
-      setErrorMessage("Network error. Please try again.")
-      setStatus("error")
     }
+
+    submit().catch(() => undefined)
   }
 
   if (status === "success") {
@@ -70,16 +73,16 @@ export function CommentForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form className="space-y-4" onSubmit={handleSubmit}>
       <div aria-hidden="true" className="absolute -left-[9999px] -top-[9999px]">
         <label htmlFor="website">Website</label>
         <input
+          readOnly
           id="website"
           name="website"
           type="text"
           tabIndex={-1}
           autoComplete="off"
-          readOnly
         />
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
@@ -88,13 +91,13 @@ export function CommentForm({
             Name <span className="text-destructive">*</span>
           </label>
           <Input
+            required
             id="author-name"
             type="text"
-            required
             minLength={2}
             placeholder="Your name"
             value={authorName}
-            onChange={(e) => setAuthorName(e.target.value)}
+            onChange={(e) => { setAuthorName(e.target.value) }}
           />
         </div>
         <div className="space-y-1.5">
@@ -102,12 +105,12 @@ export function CommentForm({
             Email <span className="text-destructive">*</span>
           </label>
           <Input
+            required
             id="author-email"
             type="email"
-            required
             placeholder="your@email.com"
             value={authorEmail}
-            onChange={(e) => setAuthorEmail(e.target.value)}
+            onChange={(e) => { setAuthorEmail(e.target.value) }}
           />
         </div>
       </div>
@@ -116,14 +119,14 @@ export function CommentForm({
           Comment <span className="text-destructive">*</span>
         </label>
         <textarea
-          id="comment-content"
           required
+          id="comment-content"
           minLength={10}
           rows={5}
           placeholder="Share your thoughts..."
           className="w-full min-w-0 rounded-3xl border border-transparent bg-input/50 px-3 py-2 text-base transition-[color,box-shadow,background-color] outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30 md:text-sm"
           value={content}
-          onChange={(e) => setContent(e.target.value)}
+          onChange={(e) => { setContent(e.target.value) }}
         />
       </div>
       {status === "error" && (

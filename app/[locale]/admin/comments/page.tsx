@@ -1,6 +1,6 @@
+import { headers } from "next/headers"
 import type { JSX } from "react/jsx-runtime"
 import { auth } from "@/lib/auth"
-import { headers } from "next/headers"
 import { getAllComments, getPendingCommentsCount } from "@/lib/comment-db"
 import { CommentModerationClient } from "./comment-moderation-client"
 
