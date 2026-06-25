@@ -33,6 +33,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { getCommentCount } from "@/lib/comment-db"
 import { JsonLd } from "@/lib/json-ld"
 import { defaultLocale, locales } from "@/lib/locales"
+import { buildMetaDescription, buildOgImageUrl } from "@/lib/seo"
 import { siteConfig } from "@/lib/site-config"
 
 const ShareButtons = ShareButtonsLazy
@@ -99,22 +100,32 @@ export const generateMetadata = async ({
 
   return {
     title: post.title,
-    description: post.description,
+    description: buildMetaDescription(post),
     openGraph: {
       locale: ogLocale,
       url: postUrl,
       siteName: siteConfig.name,
       title: post.title,
-      description: post.description,
+      description: buildMetaDescription(post),
       images: [
-        { url: post.image ?? siteConfig.ogImage, width: 1200, height: 630 },
+        {
+          url: post.image
+            ? `${siteConfig.url}${post.image}`
+            : buildOgImageUrl(post.slug),
+          width: 1200,
+          height: 630,
+        },
       ],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
-      description: post.description,
-      images: [post.image ?? siteConfig.ogImage],
+      description: buildMetaDescription(post),
+      images: [
+        post.image
+          ? `${siteConfig.url}${post.image}`
+          : buildOgImageUrl(post.slug),
+      ],
     },
     alternates: {
       canonical: postUrl,

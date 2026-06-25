@@ -33,6 +33,7 @@ import { Badge } from "@/components/ui/badge"
 import { getCommentCount } from "@/lib/comment-db"
 import { JsonLd } from "@/lib/json-ld"
 import { defaultLocale, locales } from "@/lib/locales"
+import { buildOgImageUrl, buildMetaDescription } from "@/lib/seo"
 import { siteConfig } from "@/lib/site-config"
 
 const ShareButtons = ShareButtonsLazy
@@ -71,8 +72,7 @@ export const generateMetadata = async ({
 
   return Promise.resolve({
     title: post.title,
-    description:
-      post.description ?? `Read about ${post.title} on ${siteConfig.name}`,
+    description: buildMetaDescription(post),
     alternates: {
       canonical: postUrl,
       languages: {
@@ -104,14 +104,15 @@ export const generateMetadata = async ({
       url: postUrl,
       siteName: siteConfig.name,
       title: post.title,
-      description:
-        post.description ?? `Read about ${post.title} on ${siteConfig.name}`,
+      description: buildMetaDescription(post),
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt ?? post.publishedAt,
       tags: post.tags,
       images: [
         {
-          url: `${siteConfig.url}${post.image ?? "/og.svg"}`,
+          url: post.image
+            ? `${siteConfig.url}${post.image}`
+            : buildOgImageUrl(post.slug),
           width: 1200,
           height: 630,
         },
@@ -120,9 +121,12 @@ export const generateMetadata = async ({
     twitter: {
       card: "summary_large_image",
       title: post.title,
-      description:
-        post.description ?? `Read about ${post.title} on ${siteConfig.name}`,
-      images: [`${siteConfig.url}${post.image ?? "/og.svg"}`],
+      description: buildMetaDescription(post),
+      images: [
+        post.image
+          ? `${siteConfig.url}${post.image}`
+          : buildOgImageUrl(post.slug),
+      ],
     },
   })
 }
