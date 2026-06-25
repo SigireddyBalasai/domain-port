@@ -24,6 +24,7 @@ import type {
 import { posts } from "@/.velite"
 import { Comments } from "@/components/blog/comments"
 import { ShareButtonsLazy } from "@/components/blog/share-buttons-lazy"
+import TableOfContents from "@/components/blog/table-of-contents"
 // Removed unused Callout import
 import { MdxContent } from "@/components/mdx-content"
 import Breadcrumbs from "@/components/breadcrumbs"
@@ -496,6 +497,7 @@ export default async function PostPage({
               View all articles by {post.author}
             </Link>
           )}
+          <TableOfContents />
           <div className="blog-content mt-8">
             <MdxContent code={post.content} />
           </div>
