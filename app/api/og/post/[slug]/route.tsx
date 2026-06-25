@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og"
 import { posts } from "@/.velite"
 
-export const runtime = "edge"
+export const runtime = "nodejs"
 
 interface InlineInterface {
   params: Promise<{ slug: string }>
