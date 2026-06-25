@@ -27,6 +27,7 @@ import { ShareButtonsLazy } from "@/components/blog/share-buttons-lazy"
 // Removed unused Callout import
 import { MdxContent } from "@/components/mdx-content"
 import Breadcrumbs from "@/components/breadcrumbs"
+import RelatedPosts from "@/components/blog/related-posts"
 import { Badge } from "@/components/ui/badge"
 import { getCommentCount } from "@/lib/comment-db"
 import { JsonLd } from "@/lib/json-ld"
@@ -498,6 +499,11 @@ export default async function PostPage({
           <div className="blog-content mt-8">
             <MdxContent code={post.content} />
           </div>
+          <RelatedPosts
+            currentSlug={post.slug}
+            locale={locale}
+            tags={post.tags}
+          />
           <div className="mt-12">
             <ShareButtons title={post.title} slug={post.slug} locale={locale} />
           </div>
