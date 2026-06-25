@@ -1,5 +1,6 @@
 import "../../../blog-content.css"
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { getTranslations, setRequestLocale } from "next-intl/server"
@@ -12,7 +13,6 @@ import type {
   FAQPage,
   HowTo,
   ImageObject,
-  Organization,
   Person,
   Product,
   Review,
@@ -24,10 +24,12 @@ import type {
 import { posts } from "@/.velite"
 import { Comments } from "@/components/blog/comments"
 import { ShareButtonsLazy } from "@/components/blog/share-buttons-lazy"
-// Removed unused Callout import
+import { Callout } from "@/components/mdx-components"
 import { MdxContent } from "@/components/mdx-content"
 import Breadcrumbs from "@/components/breadcrumbs"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { getCommentCount } from "@/lib/comment-db"
 import { JsonLd } from "@/lib/json-ld"
 import { defaultLocale, locales } from "@/lib/locales"
@@ -39,13 +41,41 @@ interface Props {
   params: Promise<{ locale: string; slug: string }>
 }
 
+interface InlineInterface {
+  url?: string
+}
+const normalizeAffiliateUrl = ({
+  url,
+}: InlineInterface): string | undefined => {
+  if (!url) {
+    return undefined
+  }
+  const { tag } = siteConfig.affiliate.amazon
+
+  if (!tag) {
+    return url
+  }
+
+  try {
+    const parsed = new URL(url)
+
+    parsed.searchParams.set("tag", tag)
+
+    return parsed.toString()
+  } catch {
+    return url
+  }
+}
+
 export const generateStaticParams = (): { locale: string; slug: string }[] => {
-  return posts.map((post) => {
-    return {
-      locale: post.locale,
-      slug: post.slug,
-    }
-  })
+  return posts
+    .filter((post) => post.postType === "listing")
+    .map((post) => {
+      return {
+        locale: post.locale,
+        slug: post.slug,
+      }
+    })
 }
 
 export const generateMetadata = async ({
@@ -65,12 +95,27 @@ export const generateMetadata = async ({
     "_"
   )
   const localePrefix = locale === defaultLocale ? "" : `/${locale}`
-  const postUrl = `${siteConfig.url}${localePrefix}/blog/${post.slug}`
+  const postUrl = `${siteConfig.url}${localePrefix}/listing/${post.slug}`
 
-  return Promise.resolve({
+  return {
     title: post.title,
-    description:
-      post.description ?? `Read about ${post.title} on ${siteConfig.name}`,
+    description: post.description,
+    openGraph: {
+      locale: ogLocale,
+      url: postUrl,
+      siteName: siteConfig.name,
+      title: post.title,
+      description: post.description,
+      images: [
+        { url: post.image ?? siteConfig.ogImage, width: 1200, height: 630 },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [post.image ?? siteConfig.ogImage],
+    },
     alternates: {
       canonical: postUrl,
       languages: {
@@ -79,77 +124,25 @@ export const generateMetadata = async ({
             return [
               l,
               l === defaultLocale
-                ? `${siteConfig.url}/blog/${post.slug}`
-                : `${siteConfig.url}/${l}/blog/${post.slug}`,
+                ? `${siteConfig.url}/listing/${post.slug}`
+                : `${siteConfig.url}/${l}/listing/${post.slug}`,
             ]
           })
         ),
-        "x-default": `${siteConfig.url}/blog/${post.slug}`,
+        "x-default": `${siteConfig.url}/listing/${post.slug}`,
       },
     },
-    authors: post.author
-      ? [
-          {
-            name: post.author,
-            url: `${siteConfig.url}${localePrefix}/author/${post.author.toLowerCase().replaceAll(/\s+/g, "-")}`,
-          },
-        ]
-      : undefined,
-    keywords: post.tags,
-    openGraph: {
-      type: "article",
-      locale: ogLocale,
-      url: postUrl,
-      siteName: siteConfig.name,
-      title: post.title,
-      description:
-        post.description ?? `Read about ${post.title} on ${siteConfig.name}`,
-      publishedTime: post.publishedAt,
-      modifiedTime: post.updatedAt ?? post.publishedAt,
-      tags: post.tags,
-      images: [
-        {
-          url: `${siteConfig.url}${post.image ?? "/og.svg"}`,
-          width: 1200,
-          height: 630,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description:
-        post.description ?? `Read about ${post.title} on ${siteConfig.name}`,
-      images: [`${siteConfig.url}${post.image ?? "/og.svg"}`],
-    },
-  })
-}
-
-const createAuthorSchema = (
-  author: string | undefined
-): WithContext<Person> | WithContext<Organization> => {
-  if (author) {
-    return {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      name: author,
-    }
-  }
-
-  return {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: siteConfig.name,
   }
 }
 
-export default async function PostPage({
+export default async function ListingPost({
   params,
 }: Props): Promise<JSX.Element> {
   const { locale, slug } = await params
 
   setRequestLocale(locale)
   const t = await getTranslations("common")
+
   const post =
     posts.find((p) => p.slug === slug && p.locale === locale) ??
     posts.find((p) => p.slug === slug && p.locale === "en")
@@ -158,9 +151,17 @@ export default async function PostPage({
     notFound()
   }
 
-  const authorSchema = createAuthorSchema(post.author)
   const isFallback = post.locale !== locale
   const commentCount = await getCommentCount(slug, locale)
+
+  const authorSchema: WithContext<Person> = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: post.author ?? siteConfig.author.name,
+    url: `${siteConfig.url}/author/${(post.author ?? siteConfig.author.name)
+      .toLowerCase()
+      .replaceAll(/\s+/g, "-")}`,
+  }
 
   return (
     <>
@@ -178,14 +179,14 @@ export default async function PostPage({
             {
               "@type": "ListItem",
               position: 2,
-              name: "Blog",
-              item: `${siteConfig.url}/${locale}/blog`,
+              name: "Listing",
+              item: `${siteConfig.url}/${locale}/listing`,
             },
             {
               "@type": "ListItem",
               position: 3,
               name: post.title,
-              item: `${siteConfig.url}/${locale}/blog/${post.slug}`,
+              item: `${siteConfig.url}/${locale}/listing/${post.slug}`,
             },
           ],
         }}
@@ -207,10 +208,10 @@ export default async function PostPage({
             },
           ],
           author: authorSchema,
-          url: `${siteConfig.url}/${locale}/blog/${post.slug}`,
+          url: `${siteConfig.url}/${locale}/listing/${post.slug}`,
           mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": `${siteConfig.url}/${locale}/blog/${post.slug}`,
+            "@id": `${siteConfig.url}/${locale}/listing/${post.slug}`,
           },
           image: {
             "@type": "ImageObject",
@@ -225,12 +226,7 @@ export default async function PostPage({
           },
         }}
       />
-      {(post.postType === "article" ||
-        post.postType === "blog" ||
-        post.postType === "howto" ||
-        post.postType === "review" ||
-        post.postType === "faq" ||
-        post.postType === "video") && (
+      {post.postType === "article" && (
         <JsonLd<Article>
           schema={{
             "@context": "https://schema.org",
@@ -241,10 +237,10 @@ export default async function PostPage({
             datePublished: post.publishedAt,
             dateModified: post.updatedAt ?? post.publishedAt,
             author: authorSchema,
-            url: `${siteConfig.url}/${locale}/blog/${post.slug}`,
+            url: `${siteConfig.url}/${locale}/listing/${post.slug}`,
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": `${siteConfig.url}/${locale}/blog/${post.slug}`,
+              "@id": `${siteConfig.url}/${locale}/listing/${post.slug}`,
             },
             image: {
               "@type": "ImageObject",
@@ -447,8 +443,8 @@ export default async function PostPage({
           <Breadcrumbs
             items={[
               { label: "Home", href: `/${locale}` },
-              { label: "Blog", href: `/${locale}/blog` },
-              { label: post.title, href: `/${locale}/blog/${post.slug}` },
+              { label: "Listings", href: `/${locale}/listing` },
+              { label: post.title, href: `/${locale}/listing/${post.slug}` },
             ]}
           />
           {isFallback && (
@@ -489,15 +485,129 @@ export default async function PostPage({
           )}
           {post.author && (
             <Link
-              href={`/${locale}/author/${post.author.toLowerCase().replaceAll(/\s+/g, "-")}`}
               className="mt-2 inline-block text-sm text-primary hover:underline"
+              href={`/${locale}/author/${post.author
+                .toLowerCase()
+                .replaceAll(/\s+/g, "-")}`}
             >
               View all articles by {post.author}
             </Link>
           )}
-          <div className="blog-content mt-8">
-            <MdxContent code={post.content} />
-          </div>
+          {post.postType === "listing" && post.listing?.length ? (
+            <div className="mt-8 space-y-6">
+              <div className="blog-content">
+                <MdxContent code={post.content} />
+              </div>
+              <div className="grid gap-6 sm:grid-cols-2">
+                {post.listing.map((item) => {
+                  const primaryLink =
+                    normalizeAffiliateUrl({ url: item.affiliateUrl }) ??
+                    normalizeAffiliateUrl({ url: item.amazonUrl })
+
+                  return (
+                    <Card key={`${item.name}-${item.asin ?? ""}`}>
+                      {item.image && (
+                        <Image
+                          src={item.image}
+                          alt={item.name}
+                          width={400}
+                          height={224}
+                          className="h-56 w-full object-cover"
+                        />
+                      )}
+                      <CardHeader>
+                        <CardTitle>{item.name}</CardTitle>
+                        {item.brand && (
+                          <p className="text-xs tracking-wide text-muted-foreground uppercase">
+                            {item.brand}
+                          </p>
+                        )}
+                        {item.price && (
+                          <p className="text-sm text-muted-foreground">
+                            {item.priceCurrency ? `${item.priceCurrency} ` : ""}
+                            {item.price}
+                          </p>
+                        )}
+                      </CardHeader>
+                      <CardContent>
+                        {item.description && (
+                          <p className="text-sm text-muted-foreground">
+                            {item.description}
+                          </p>
+                        )}
+                        {item.ratingValue !== undefined && (
+                          <p className="mt-3 text-sm text-muted-foreground">
+                            Rating: {String(item.ratingValue)}
+                            {item.ratingCount
+                              ? ` (${String(item.ratingCount)})`
+                              : ""}
+                          </p>
+                        )}
+                        {item.features && item.features.length > 0 && (
+                          <ul className="mt-4 list-disc space-y-1 pl-5 text-sm">
+                            {item.features.map((feature) => (
+                              <li key={feature}>{feature}</li>
+                            ))}
+                          </ul>
+                        )}
+                        {item.pros && item.pros.length > 0 && (
+                          <ul className="mt-4 list-disc space-y-1 pl-5 text-sm">
+                            {item.pros.map((pro) => (
+                              <li key={pro}>{pro}</li>
+                            ))}
+                          </ul>
+                        )}
+                        {item.cons && item.cons.length > 0 && (
+                          <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+                            {item.cons.map((con) => (
+                              <li key={con}>{con}</li>
+                            ))}
+                          </ul>
+                        )}
+                        {item.specs && Object.keys(item.specs).length > 0 && (
+                          <div className="mt-4 text-sm text-muted-foreground">
+                            {Object.entries(item.specs).map(([key, value]) => {
+                              return (
+                                <p key={key}>
+                                  <span className="font-medium text-foreground">
+                                    {key}:
+                                  </span>{" "}
+                                  {value}
+                                </p>
+                              )
+                            })}
+                          </div>
+                        )}
+                        {primaryLink && (
+                          <div className="mt-4">
+                            <Button asChild>
+                              <a
+                                href={primaryLink}
+                                target="_blank"
+                                rel="nofollow noopener noreferrer"
+                              >
+                                View on Amazon
+                              </a>
+                            </Button>
+                          </div>
+                        )}
+                      </CardContent>
+                    </Card>
+                  )
+                })}
+              </div>
+              <div className="blog-content">
+                <Callout title="Affiliate disclosure">
+                  This page may contain affiliate links. If you purchase through
+                  them, we may earn a small commission at no extra cost to you.
+                </Callout>
+              </div>
+            </div>
+          ) : (
+            <div className="blog-content mt-8">
+              <MdxContent code={post.content} />
+            </div>
+          )}
           <div className="mt-12">
             <ShareButtons title={post.title} slug={post.slug} locale={locale} />
           </div>
