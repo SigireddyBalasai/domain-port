@@ -16,6 +16,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps): JSX.Element {
       <ol className="flex flex-wrap items-center gap-1.5">
         {items.map((item, index) => {
           const isLast = index === items.length - 1
+
           return (
             <li key={item.href} className="flex items-center gap-1.5">
               {index > 0 && <span aria-hidden="true">/</span>}
@@ -26,7 +27,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps): JSX.Element {
               ) : (
                 <Link
                   href={item.href}
-                  className="hover:text-primary transition-colors"
+                  className="transition-colors hover:text-primary"
                 >
                   {item.label}
                 </Link>

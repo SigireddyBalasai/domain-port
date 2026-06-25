@@ -1,6 +1,6 @@
 "use client"
 
-import { type JSX , useState } from "react"
+import { type JSX, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
@@ -16,7 +16,9 @@ export function CommentForm({
   const [authorName, setAuthorName] = useState("")
   const [authorEmail, setAuthorEmail] = useState("")
   const [content, setContent] = useState("")
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle")
   const [errorMessage, setErrorMessage] = useState("")
 
   const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>): void => {
@@ -25,7 +27,9 @@ export function CommentForm({
     setErrorMessage("")
 
     const form = e.currentTarget
-    const website = (form.elements.namedItem("website") as HTMLInputElement | null)?.value
+    const website = (
+      form.elements.namedItem("website") as HTMLInputElement | null
+    )?.value
 
     const submit = async (): Promise<void> => {
       try {
@@ -74,7 +78,7 @@ export function CommentForm({
 
   return (
     <form className="space-y-4" onSubmit={handleSubmit}>
-      <div aria-hidden="true" className="absolute -left-[9999px] -top-[9999px]">
+      <div aria-hidden="true" className="absolute -top-[9999px] -left-[9999px]">
         <label htmlFor="website">Website</label>
         <input
           readOnly
@@ -97,7 +101,9 @@ export function CommentForm({
             minLength={2}
             placeholder="Your name"
             value={authorName}
-            onChange={(e) => { setAuthorName(e.target.value) }}
+            onChange={(e) => {
+              setAuthorName(e.target.value)
+            }}
           />
         </div>
         <div className="space-y-1.5">
@@ -110,7 +116,9 @@ export function CommentForm({
             type="email"
             placeholder="your@email.com"
             value={authorEmail}
-            onChange={(e) => { setAuthorEmail(e.target.value) }}
+            onChange={(e) => {
+              setAuthorEmail(e.target.value)
+            }}
           />
         </div>
       </div>
@@ -126,7 +134,9 @@ export function CommentForm({
           placeholder="Share your thoughts..."
           className="w-full min-w-0 rounded-3xl border border-transparent bg-input/50 px-3 py-2 text-base transition-[color,box-shadow,background-color] outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30 md:text-sm"
           value={content}
-          onChange={(e) => { setContent(e.target.value) }}
+          onChange={(e) => {
+            setContent(e.target.value)
+          }}
         />
       </div>
       {status === "error" && (

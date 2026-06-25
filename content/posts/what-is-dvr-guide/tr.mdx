@@ -1,0 +1,226 @@
+---
+title: "DVR Nedir? Dijital Video Kaydediciler için Kapsamlı Rehber (2026)"
+publishedAt: "2026-06-18"
+description: "DVR (Dijital Video Kaydedici) güvenlik sistemleri için başlangıç seviyesinde kapsamlı rehber — analog DVR'lar nasıl çalışır, çözünürlük sınırları, koaksiyel kablolama, NVR yerine DVR ne zaman seçilmeli ve IP kameraya nasıl yükseltme yapılır."
+author: "CCTV Name Authoe"
+image: "/og.svg"
+tags: ["cctv", "dvr", "dijital video kaydedici", "analog kamera", "güvenlik kamerası", "koaksiyel kablo", "güvenlik", "video kaydı"]
+postType: "howto"
+howTo:
+  - name: "DVR Nedir?"
+    text: "DVR (Dijital Video Kaydedici), analog kameralardan koaksiyel kablo üzerinden video kaydeder. DVR, analog sinyalleri dijitale dönüştürür, sıkıştırır ve görüntüleri sabit disklere depolar. DVR sistemleri, mevcut analog tesisatları yükseltmek için idealdir."
+  - name: "DVR Sistemleri Nasıl Çalışır"
+    text: "Analog kameralar, ham video sinyallerini koaksiyel kablo (RG59/RG6) üzerinden DVR'a gönderir. DVR sinyalleri dijitalleştirir, sıkıştırır (H.264/H.265) ve sabit diske yazar. Her kamera kendi koaksiyel kablosunu ve güç bağlantısını gerektirir."
+  - name: "DVR Çözünürlüğü ve Sınırlamaları"
+    text: "Standart DVR'lar maksimum 1080p'ye (2 MP) ulaşır. Üst düzey HD analog DVR'lar 4K'ya kadar destekler ancak daha yüksek maliyetle. DVR'lar gelişmiş AI analizlerinden yoksundur ve NVR sistemlerine kıyasla sınırlı ölçeklenebilirliğe sahiptir."
+  - name: "DVR vs NVR Ne Zaman Seçilmeli"
+    text: "Mevcut koaksiyel altyapıyı yükseltirken, temel 1080p izleme için veya kısıtlı bütçeyle DVR'ı seçin. 4K+ çözünürlük, AI özellikleri veya gelecekteki genişleme gerektiren yeni kurulumlar için NVR'ı seçin."
+  - name: "DVR'dan NVR'a Yükseltme"
+    text: "Kademeli geçiş için hibrit bir XVR kaydedici kullanın — IP kameralar eklerken mevcut analog kameraları koruyun. Sonunda analog kameraları IP kameralarla değiştirin ve saf bir NVR'a geçin."
+faq:
+  - question: "DVR açılımı nedir?"
+    answer: "DVR, Digital Video Recorder (Dijital Video Kaydedici) anlamına gelir. Analog güvenlik kameralarından video kaydeden, analog sinyalleri dijital formata dönüştüren, videoyu sıkıştıran ve oynatma ve inceleme için sabit diske depolayan bir cihazdır."
+  - question: "DVR ve NVR arasındaki fark nedir?"
+    answer: "DVR, koaksiyel kablo üzerinden analog kameralarla çalışır, videoyu kaydedicide işler. NVR, Ethernet üzerinden IP kameralarla çalışır, videoyu kamerada işler. NVR daha yüksek çözünürlük, tek kablolu PoE kurulumu ve AI analitikleri destekler. DVR esas olarak eski analog sistem yükseltmeleri içindir."
+  - question: "Mevcut DVR'ımla IP kamera kullanabilir miyim?"
+    answer: "Hayır. Saf DVR'lar yalnızca koaksiyel BNC konektörleri aracılığıyla analog kamera girişini kabul eder. Mevcut analog kameraların yanında IP kamera kullanmak için hem analog hem de IP girişlerini destekleyen hibrit bir XVR kaydediciye ihtiyacınız vardır."
+  - question: "DVR 2026'da geçerliliğini yitirdi mi?"
+    answer: "Tamamen değil. DVR sistemleri, koaksiyel kabloyu değiştirmenin çok pahalı veya zahmetli olacağı mevcut analog tesisatları yükseltmek için hala geçerlidir. Ancak yeni kurulumlar için NVR önerilen seçimdir."
+  - question: "DVR'lar internet gerektirir mi?"
+    answer: "Hayır. DVR'lar yerel olarak sabit disklere kayıt yapar ve tamamen çevrimdışı çalışır. İnternet yalnızca uzaktan izleme (çoğu DVR'da port yönlendirme gerektirir) ve donanım yazılımı güncellemeleri için gereklidir."
+  - question: "DVR sistemimi NVR'a dönüştürebilir miyim?"
+    answer: "Evet, aşamalı bir yaklaşımla. DVR'ınızı hibrit bir XVR ile değiştirerek başlayın, ardından kademeli olarak analog kameraları IP kameralarla değiştirin. Tüm kameralar IP olduğunda, özel bir NVR'a geçebilirsiniz."
+---
+
+DVR (Dijital Video Kaydedici), analog güvenlik kamera sistemleri için merkezi kayıt cihazıdır. Koaksiyel bağlantılı kameralardan ham video alır, dijitalleştirir, sıkıştırır ve canlı izleme ve oynatma için dahili sabit disklere depolar.
+
+2026'da NVR tabanlı IP kamera sistemleri yeni kurulumlara hakim olsa da, DVR sistemleri dünya çapında milyonlarca mevcut analog güvenlik kurulumunu çalıştırmaya devam ediyor. DVR teknolojisini anlamak, eski bir sistemi yükselten veya kısıtlı bütçeyle çalışan herkes için önemlidir.
+
+<Callout type="info" title="2026'da DVR">
+  DVR'lar ölü değil — mevcut analog altyapıyı yükseltmek için en uygun maliyetli çözüm olmaya devam ediyorlar. Duvarlarınızda zaten koaksiyel kablo varsa ve ihtiyaçlarınız 1080p veya daha düşükse, bir DVR değişimi genellikle harcayabileceğiniz en akıllıca 5.000-6.000 TL'dir.
+</Callout>
+
+## DVR Sistemleri Nasıl Çalışır
+
+Bir DVR sisteminde video akışı basit bir yol izler:
+
+1. **Analog kamera videoyu yakalar** — Kamera merceği, CMOS veya CCD sensörüne ışık odaklar ve bu sensör görüntüyü temsil eden ham bir analog elektrik sinyali üretir.
+2. **Sinyal koaksiyel kablodan geçer** — Analog sinyal, RG59 veya RG6 koaksiyel kablo aracılığıyla DVR'a ulaşır. Her kamera kendi koaksiyel kablo hattını gerektirir.
+3. **DVR sinyali dijitalleştirir** — DVR'ın video kod çözücü çipi, analog dalga formunu dijital bit akışına dönüştürür. DVR sistemlerinin kalite tavanı burada belirlenir.
+4. **Dijital video sıkıştırılır** — DVR, kabul edilebilir kaliteyi korurken dosya boyutunu önemli ölçüde azaltmak için ham dijital videoyu H.264 veya H.265 sıkıştırma kullanarak kodlar.
+5. **Sıkıştırılmış video diske yazılır** — DVR, sıkıştırılmış görüntüleri bir sabit diske (genellikle 1-6 TB, 7/24 çalışma için derecelendirilmiş) kaydeder.
+6. **Oynatma ve inceleme** — Kaydedilmiş görüntülere DVR'ın ekran görüntüsü (HDMI/VGA ile bağlı monitör), mobil uygulama veya web tarayıcısı aracılığıyla erişirsiniz.
+
+<Callout type="tip" title="İşleme: DVR vs NVR">
+  DVR sisteminde tüm video işleme kaydedicide gerçekleşir — kamera aslında sadece bir lens ve sensördür. NVR sisteminde IP kameralar videoyu kamerada işler ve kodlar, NVR ise önceden sıkıştırılmış akışları depolar. Bu nedenle DVR kameraları daha ucuzdur ancak kaydedici daha fazla iş yapar.
+</Callout>
+
+## DVR Çözünürlük Seviyeleri
+
+Analog video çözünürlüğü önemli ölçüde gelişmiştir. Karşılaşacağınız standartlar şunlardır:
+
+| Standart | Çözünürlük | Piksel | Kalite Seviyesi |
+|---|---|---|---|
+| 960H | 960 x 576 | ~0,5 MP | Standart çözünürlük, eski sistemler |
+| 720p HD Analog | 1280 x 720 | ~0,9 MP | Giriş seviyesi HD, genel alan izleme için kabul edilebilir |
+| 1080p HD Analog | 1920 x 1080 | ~2 MP | En yaygın DVR çözünürlüğü, çoğu kullanım için iyi |
+| 4K HD Analog (HDCVI/HDTVI/AHD 4K) | 3840 x 2160 | ~8 MP | Premium, sınırlı cihaz desteği, pahalı |
+
+<Callout type="warning" title="Her 4K Analog Aynı Değildir">
+  4K analog kameralar ve DVR'lar mevcuttur ancak bazı kısıtlamaları vardır. Yüksek kaliteli RG6 koaksiyel kablo, daha kısa kablo mesafeleri (200 m altı) ve NVR eşdeğerleri kadar maliyetli premium kaydediciler gerektirirler. Bu fiyat noktasında, giriş seviyesi bir NVR sistemi daha fazla özellikle daha iyi sonuçlar sunar.
+</Callout>
+
+IP kamera çözünürlükleriyle karşılaştırmalı detaylı analiz için [kamera çözünürlük rehberimize](/blog/camera-resolution-guide) bakın.
+
+## Temel DVR Özellikleri
+
+| Özellik | Giriş Seviyesi DVR (2.000-4.000 TL) | Orta Seviye DVR (4.000-8.000 TL) | Premium DVR (8.000-16.000 TL) |
+|---|---|---|---|
+| Kanal sayısı | 4-8 | 4-16 | 8-32 |
+| Maks. çözünürlük | 1080p @ 15 fps | 1080p @ 30 fps | 4K @ 15 fps |
+| Sıkıştırma | H.264 | H.264/H.265 | H.265+ |
+| Maks. HDD kapasitesi | 2 TB | 6 TB | 10 TB |
+| Ses desteği | Yok | 1-2 RCA girişi | Kanal başına hat girişi |
+| Uzaktan izleme | P2P (temel) | P2P + mobil uygulama | P2P + web + uygulama |
+| AI/kişi algılama | Yok | Yok veya sınırlı | Temel (premium HD analogda) |
+| SMART HDD desteği | Yok | Var | Var |
+
+## DVR Kablo Gereksinimleri
+
+DVR sistemleri, NVR sistemlerinin kullandığı Ethernet kablolamasından önemli ölçüde farklı olan koaksiyel kablo kullanır.
+
+### Koaksiyel Kablo Türleri
+
+| Kablo Türü | En Uygun | Maks. Mesafe (1080p) | Maks. Mesafe (4K) | 30 m'de Maliyet |
+|---|---|---|---|---|
+| RG59 (standart) | 720p-1080p, kısa mesafeler | 300 m | Önerilmez | 600-1.000 TL |
+| RG59 (siam) | 720p-1080p, entegre güç ile | 300 m | Önerilmez | 1.000-1.400 TL |
+| RG6 | 1080p-4K, uzun mesafeler | 500 m | 200 m | 800-1.200 TL |
+
+### Konektörler
+
+Koaksiyel kablolar **BNC konektörlerle** sonlandırılır. Temel bir aletle kolayca sonlandırılabilen RJ45 Ethernet fişlerinin aksine, BNC konektörleri şunları gerektirir:
+- Koaksiyel kablo sıyırıcı (iç iletkeni ve korumayı hassas uzunluklarda açığa çıkarmak için)
+- BNC sıkıştırma veya kıvırma aleti
+- Kablo türünüze uygun boyutta BNC konektörleri (RG59 vs RG6)
+
+### Güç Gereksinimleri
+
+Her analog kamera ayrıca güce ihtiyaç duyar:
+- **Bireysel güç adaptörleri**: Her kamera bir duvar prizine takılır
+- **Merkezi güç dağıtım kutusu**: DVR konumunda çok kanallı güç kaynağı, koaksiyel kablonun yanında 18/2 güç kablosu çalıştırır
+- **Siam kablo**: RG59 koaksiyel ve 18/2 güç tek bir kılıf içinde birleştirilmiştir — yeni DVR kurulumları için en yaygın seçim
+
+<Callout type="note" title="Kablo Maliyeti Artar">
+  4 kameralı bir DVR kurulumu yaklaşık 4.000-6.000 TL koaksiyel ve güç kablosu kullanabilir. Eşdeğer 4 kameralı NVR kurulumu yaklaşık 2.000-3.000 TL Cat6 Ethernet kullanır. Kablo malzeme maliyeti farkı uzun mesafelerde daralır, ancak DVR sistemleri her zaman kamera başına bir yerine iki kablo yönetmeyi gerektirir.
+</Callout>
+
+## DVR vs NVR Karşılaştırması
+
+| Özellik | DVR | NVR |
+|---|---|---|
+| Kamera türü | Analog (HDCVI/HDTVI/AHD) | IP (Ethernet üzerinden dijital) |
+| Kamera başına kablo | 2 (koaksiyel + güç) | 1 (PoE ile Cat6) |
+| Maks. çözünürlük | Tipik 1080p, 4K premium | 4K standart, 12 MP'ye kadar |
+| Video işleme | Kaydedicide | Kamerada |
+| Ses | Ayrı RCA veya ses yok | Cat6'ya gömülü |
+| Maks. kablo mesafesi | 300-500 m (koaksiyel) | 100 m (Cat6), fiber ile daha uzak |
+| AI analitikleri | Nadir, yalnızca temel hareket | Standart (kişi/araç/yüz) |
+| Genişleme | Fiziksel portlarla sınırlı | Ağa kamera ekleme |
+| Uzaktan erişim | Manuel port yönlendirme | Dahili bulut/P2P |
+| 4 kamera sistem maliyeti | 6.000-12.000 TL | 10.000-20.000 TL |
+
+Detaylı analiz için [NVR vs DVR karşılaştırmamızı](/blog/nvr-vs-dvr) okuyun.
+
+<Callout type="tip" title="DVR Kablo Mesafe Avantajı">
+  DVR'ın 2026'da hala sahip olduğu tek teknik avantaj kablo mesafesidir. Koaksiyel kablo, sinyal yükseltici olmadan 300-500 m gidebilirken, Cat6 Ethernet 100 m ile sınırlıdır. Depo, çiftlik veya otopark gibi büyük mülkler için DVR'ın daha uzun erişimi, ara ağ anahtarları ihtiyacını ortadan kaldırabilir.
+</Callout>
+
+## DVR'ın Hala Mantıklı Olduğu Durumlar
+
+NVR yeni kurulumlar için standart olsa da, DVR şu senaryolarda doğru seçim olmaya devam ediyor:
+
+### 1. Mevcut Analog Altyapıyı Yükseltme
+
+Bina duvarlarınızda zaten koaksiyel kablo varsa, DVR değişimi Ethernet ile yeniden kablolamanın çok daha ucuzudur. Eski DVR'ı değiştirir ve mevcut kameraları korursunuz (veya aynı koaksiyeli kullanan 1080p analog kameralara yükseltirsiniz).
+
+### 2. Aşırı Bütçe Kısıtlamaları
+
+Çalışan bir 4 kameralı DVR sistemi 8.000 TL'nin altında kurulabilir. Bu, DVR'ı şunlar için uygun kılar:
+- Geçici şantiye izlemesi
+- Minimum güvenlik gereken kiralık mülkler
+- Kritik olmayan alanlar (depo odaları, otopark genel görünümü)
+
+### 3. Uzun Kablo Mesafeleri
+
+Endüstriyel tesisler, depolar ve geniş çevre alanları, sinyal genişletici veya ara anahtar gerektirmeyen DVR'ın 300-500 m koaksiyel kablo mesafesinden faydalanır.
+
+### 4. Basit, Çevrimdışı İzleme
+
+Sadece uzaktan erişim olmadan bir monitörde canlı video izlemek isteyen kullanıcılar için DVR en basit kurulumu sunar — kameraları takın, bir monitör bağlayın ve kaydedin.
+
+## DVR'dan NVR'a Yükseltme
+
+Mevcut bir DVR sisteminiz varsa ve modern IP kameralara geçmek istiyorsanız, en iyi yol hibrit bir XVR kaydedicidir.
+
+### XVR Köprü Stratejisi
+
+1. **DVR'ınızı bir XVR ile değiştirin** — Hibrit bir XVR, hem analog kameraları (BNC aracılığıyla) hem de IP kameraları (Ethernet aracılığıyla) kabul eder. Mevcut analog kameralarınız çalışmaya devam eder.
+2. **Analog kameraların yanına IP kameralar ekleyin** — Çözünürlük gereksinimlerinin daha düşük olduğu yerlerde analog kameraları korurken, yüksek öncelikli alanlara yeni IP kameralar kurun.
+3. **Kademeli olarak analog kameraları değiştirin** — Bütçe izin verdikçe analog kameraları tek tek IP kameralarla değiştirin.
+4. **Saf NVR'a geçin** — Tüm kameralar IP olduğunda, XVR'ı özel bir NVR ile değiştirin.
+
+<Callout type="note" title="Aşamalı Yükseltme Kesintiyi Önler">
+  Aşamalı XVR yaklaşımı, güvenlik kapsamınızın yükseltme sırasında asla düşmemesi anlamına gelir. Bileşenleri her şeyi bir kerede söküp atmak yerine aylar veya yıllar içinde değiştirirsiniz. Yükseltme yolunun son adımı için [PoE NVR kurulum rehberimize](/blog/poe-nvr-setup) bakın.
+</Callout>
+
+IP tabanlı sistemlere kapsamlı bir genel bakış için [NVR nedir rehberimizi](/blog/what-is-nvr-guide) okuyun.
+
+## Sıkça Sorulan Sorular
+
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>DVR açılımı nedir?</AccordionTrigger>
+    <AccordionContent>
+      DVR, Digital Video Recorder (Dijital Video Kaydedici) anlamına gelir. Koaksiyel kablo ile bağlanan analog güvenlik kameralarından video kaydeden özel bir bilgisayardır. DVR, analog sinyalleri H.264 veya H.265 kullanarak dijital formata dönüştürür, sıkıştırır ve daha sonra oynatma ve inceleme için dahili sabit disklere depolar.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>DVR ve NVR arasındaki fark nedir?</AccordionTrigger>
+    <AccordionContent>
+      DVR, koaksiyel kablo üzerinden analog kameralarla çalışır. Video işleme kaydedicide gerçekleşir — kamera ham sinyal gönderir ve DVR bunu dijitalleştirir ve sıkıştırır. NVR, Ethernet üzerinden IP kameralarla çalışır. Video işleme kamerada gerçekleşir — IP kamera videoyu kodlar ve depolama için NVR'a sıkıştırılmış dijital bir akış gönderir. NVR daha yüksek çözünürlükleri, tek kablolu PoE kurulumunu ve yerleşik AI analitiklerini destekler. Yeni kurulumlar için NVR önerilen seçimdir.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Mevcut DVR'ımla IP kamera kullanabilir miyim?</AccordionTrigger>
+    <AccordionContent>
+      Hayır. Saf DVR'lar yalnızca koaksiyel BNC konektörleri aracılığıyla analog kamera girişini kabul eder. IP kamera bağlantısı için Ethernet portları yoktur. Mevcut analog kameraların yanında IP kamera kullanmak için hem analog BNC girişlerini hem de Ethernet IP girişlerini destekleyen hibrit bir XVR (eXtended Video Recorder) gerekir. Bazı XVR'lar 16 analog kanalın yanında 8 IP kanalına kadar destekler.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>DVR 2026'da geçerliliğini yitirdi mi?</AccordionTrigger>
+    <AccordionContent>
+      Tamamen değil, ancak rolü küçülüyor. DVR, koaksiyel kabloyu değiştirmenin çok pahalı veya zahmetli olacağı mevcut analog altyapıyı yükseltmek için hala geçerlidir. Ayrıca temel 1080p izlemenin yeterli olduğu bütçe kısıtlı uygulamalara da hizmet eder. Ancak yeni kurulumlar için üstün çözünürlük, daha basit kablolama, AI analitikleri ve daha kolay genişleme nedeniyle NVR önerilen seçimdir. IP kamera fiyatları düştükçe DVR pazarı daralmaya devam etmektedir.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>DVR'lar internet gerektirir mi?</AccordionTrigger>
+    <AccordionContent>
+      Hayır. DVR'lar yerel olarak sabit disklere kayıt yapar ve tamamen çevrimdışı çalışır. İnternetiniz kesilse bile görüntüler her zaman korunur. İnternet yalnızca uzaktan izleme (genellikle manuel port yönlendirme yapılandırması gerektirir), push bildirimleri, e-posta uyarıları ve donanım yazılımı güncellemeleri için gereklidir. DVR sistemlerinin avantajlarından biri, minimum ağ maruziyetine sahip olmalarıdır — çevrimdışı bir DVR uzaktan hacklenemez.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>DVR sistemimi NVR'a dönüştürebilir miyim?</AccordionTrigger>
+    <AccordionContent>
+      Evet, aşamalı bir yaklaşımla. Hem analog hem de IP kameraları kabul eden hibrit bir XVR kaydedici ile başlayın. Mevcut analog kameralarınız çalışmaya devam ederken, öncelikli alanlara IP kameralar eklersiniz. Bütçe izin verdikçe kademeli olarak analog kameraları IP kameralarla değiştirin. Tüm kameralar IP olduğunda, tam özellik seti için XVR'ı özel bir NVR ile değiştirebilirsiniz. Bu aşamalı yaklaşım kesintileri önler ve maliyetleri aylar veya yıllar içinde dağıtır.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Bir DVR destekleyebileceği maksimum kamera sayısı nedir?</AccordionTrigger>
+    <AccordionContent>
+      Tüketici DVR'ları tipik olarak 4, 8, 16 veya 32 kanal sunar. Her kanal, DVR'ın arkasındaki fiziksel bir BNC portuna karşılık gelir. Kaydedicinin yerleşik port sayısını aşmak için ağa kamera ekleyebileceğiniz NVR sistemlerinin aksine, DVR genişletmesi ya daha büyük bir DVR satın almayı ya da ikinci bir DVR eklemeyi gerektirir. 32+ kanallı kurumsal DVR'lar mevcuttur ancak pazar NVR'a kaydıkça giderek nadir hale gelmektedir.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+DVR teknolojisi dünya çapında milyonlarca güvenlik kamerasını çalıştırır ve mevcut analog sistemleri yükseltmek için en pratik seçim olmaya devam eder. Sıfırdan başlıyorsanız veya gelecekteki büyüme için plan yapıyorsanız, ihtiyaçlarınız için doğru kaydediciyi seçme konusunda yardım için [NVR vs DVR karşılaştırmamıza](/blog/nvr-vs-dvr) bakın.

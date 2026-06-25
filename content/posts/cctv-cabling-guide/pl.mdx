@@ -1,0 +1,281 @@
+---
+title: "Poradnik okablowania CCTV: Cat5e, Cat6, koryta i najlepsze praktyki instalacyjne"
+publishedAt: "2026-05-25"
+description: "Kompletny przewodnik po okablowaniu CCTV dla kamer IP — Cat5e vs Cat6 vs Cat6A, zasilanie PoE, standardy zakończeń, wymagania dotyczące koryt, ochrona przeciwprzepięciowa i typowe błędy okablowania do uniknięcia."
+author: "CCTV Name Authoe"
+updatedAt: "2026-05-25"
+image: "/og.svg"
+tags: ["cctv", "okablowanie", "cat6", "poe", "ethernet", "instalacja", "ochrona przeciwprzepięciowa", "okablowanie"]
+postType: "howto"
+howTo:
+  - name: "Wybierz odpowiedni kabel"
+    text: "Wybierz Cat6 z litej miedzi do większości nowych instalacji. Użyj Cat6A do tras powyżej 70 metrów lub urządzeń PoE++ o wysokiej mocy. Za wszelką cenę unikaj aluminium pokrytego miedzią (CCA)."
+  - name: "Zaplanuj trasy kablowe"
+    text: "Zmierz każdą trasę od kamery do rejestratora. Nie przekraczaj 100 metrów. Zaplanuj ścieżki koryt dla sekcji zewnętrznych. Oznacz oba końce każdego kabla."
+  - name: "Zakończ prawidłowo"
+    text: "Użyj standardu okablowania T568B. Dla niezawodności zakończ na panelu krosowym po stronie rejestratora. Przetestuj każdy kabel testerem ciągłości przed podłączeniem kamer."
+  - name: "Zainstaluj ochronę przeciwprzepięciową"
+    text: "Umieść ochronniki przeciwprzepięciowe PoE przy punkcie wejścia do budynku dla każdej zewnętrznej trasy kablowej. Prawidłowo uziemij system. Użyj pętli kroplowych przy każdym połączeniu kamery."
+  - name: "Dokumentuj i testuj"
+    text: "Oznacz wszystkie kable na obu końcach. Przetestuj ciągłość, mapę okablowania i dostarczanie mocy PoE. Zweryfikuj obraz z każdej kamery przed zamknięciem tras kablowych."
+faq:
+  - question: "Czy powinienem użyć Cat5e czy Cat6 do kamer bezpieczeństwa?"
+    answer: "Cat6 jest zalecany do każdej nowej instalacji. Przewody 23 AWG redukują spadek napięcia na długich trasach i zapewniają lepszy zapas przepustowości dla kamer 4K. Różnica kosztów w stosunku do Cat5e wynosi około $0,04-0,10 za stopę."
+  - question: "Jak długa może być trasa kabla PoE?"
+    answer: "Norma IEEE 802.3 ogranicza trasy Ethernet do 100 metrów (328 stóp) włączając przewody krosowe. Powyżej tego użyj przedłużacza PoE, łącza światłowodowego lub zdalnego przełącznika PoE."
+  - question: "Co to jest kabel CCA i dlaczego go unikać?"
+    answer: "Kabel CCA (aluminium pokryte miedzią) wykorzystuje aluminiowe rdzenie z cienką powłoką miedzianą. Ma wyższą rezystancję, powoduje spadek napięcia, nagrzewa się pod obciążeniem PoE i z czasem staje się kruchy. Zawsze używaj kabla w 100% z litej miedzi do kamer PoE."
+  - question: "Czy potrzebuję kabla ekranowanego (STP) do kamer zewnętrznych?"
+    answer: "Tylko jeśli kabel biegnie w pobliżu dużych silników, paneli elektrycznych lub oświetlenia fluorescencyjnego. W większości instalacji domowych i biurowych nieekranowany (UTP) Cat6 jest wystarczający. Używaj ekranowanego kabla i złączy tylko w przypadku określonych źródeł zakłóceń."
+  - question: "Czy potrzebuję ochrony przeciwprzepięciowej do kamer PoE?"
+    answer: "Tak, dla każdego kabla wychodzącego z budynku. Przepięcia indukowane przez pioruny mogą podróżować przez długie miedziane trasy nawet z uderzeń oddalonych o setki stóp. Ochronnik przeciwprzepięciowy PoE przy punkcie wejścia do budynku kosztuje $15-50 i jest tanią polisą ubezpieczeniową."
+  - question: "Czy mogę prowadzić kable Ethernet i elektryczne w tym samym korycie?"
+    answer: "Nie. Zachowaj co najmniej 30 cm odstępu od kabli zasilania AC. Jeśli musisz skrzyżować linię energetyczną, zrób to pod kątem 90 stopni, aby zminimalizować zakłócenia."
+---
+
+Złe okablowanie odpowiada za więcej awarii CCTV niż jakikolwiek inny pojedynczy czynnik. Kamera, która okresowo traci połączenie, obraz gubiący klatki w nocy lub system resetujący się po włączeniu IR — wszystko to częściej wynika z problemów z kablami niż z usterek rejestratora lub kamery.
+
+Ten przewodnik obejmuje wszystko, czego potrzebujesz do prawidłowego okablowania systemu kamer PoE: wybór kabla, zakończenia, koryta, ochronę przeciwprzepięciową, potrzebne narzędzia i błędy odróżniające profesjonalną instalację od problematycznej.
+
+<Callout type="info" title="40% problemów PoE jest związanych z kablami">
+  Dane branżowe pokazują, że około 40% zgłoszeń "kamera offline" wynika z problemów z kablami — nieprawidłowy przekrój, kabel wewnętrzny użyty na zewnątrz, podrobiony Cat6 będący w rzeczywistości CCA Cat5e lub złe zakończenia. Odpowiedni kabel od pierwszego dnia eliminuje najczęstszy tryb awarii.
+</Callout>
+
+## Wybór kabla
+
+### Kategoria kabla
+
+| Kabel | Przekrój | Maksymalna przepustowość | Maksymalna moc PoE | Najlepszy do |
+|---|---|---|---|---|
+| Cat5e | 24 AWG | 1 Gb/s przy 100 m | PoE/PoE+ (30W) | Budżetowe 1080p, trasy poniżej 50 m |
+| Cat6 | 23 AWG | 1 Gb/s przy 100 m, 10 Gb/s przy 55 m | PoE/PoE+/PoE++ (60W) | Zalecany do wszystkich nowych instalacji |
+| Cat6A | 23 AWG | 10 Gb/s przy 100 m | Wszystkie standardy PoE w tym PoE++ Typ 4 (100W) | Kamery 4K, trasy powyżej 70 m, PTZ wysokiej mocy |
+| Cat7 | 22 AWG | 10 Gb/s przy 100 m | Wszystkie standardy PoE | Przyszłościowe instalacje komercyjne |
+
+<Callout type="tip" title="Cat6 to optymalny wybór na 2026">
+  Cat6 to najlepszy wszechstronny wybór do instalacji kamer bezpieczeństwa. Przewody 23 AWG redukują spadek napięcia i nagrzewanie związane z PoE w porównaniu z Cat5e. Przepustowość 250 MHz zapewnia hojny zapas dla strumieni wideo 4K. Premia kosztowa w stosunku do Cat5e wynosi zwykle tylko $0,04-0,10 za stopę — w systemie 8 kamer to dodatkowe $30-80 łącznie. Za tę niewielką premię otrzymujesz wymiernie lepszą wydajność PoE i zapas przepustowości na przyszłe modernizacje kamer.
+</Callout>
+
+### Lita miedź vs. CCA
+
+To najważniejsza decyzja dotycząca kabla, jaką podejmiesz.
+
+| Właściwość | 100% lita miedź | Aluminium pokryte miedzią (CCA) |
+|---|---|---|
+| Rezystancja | Niska | 40-60% wyższa |
+| Niezawodność PoE | Doskonała | Powoduje spadek napięcia powyżej 30 m |
+| Nagrzewanie pod obciążeniem PoE+ | Niskie | Znaczące |
+| Elastyczność | Dobra | Kruchy, pęka przy ciągnięciu |
+| Koszt za stopę | ~$0,30-0,50 | ~$0,10-0,15 |
+| Żywotność na zewnątrz | 10+ lat | 2-3 lata |
+
+<Callout type="danger" title="Nigdy nie używaj CCA do PoE">
+  Kabel CCA ma wyższą rezystancję niż czysta miedź, co oznacza większy spadek napięcia, więcej ciepła i okresowe awarie zasilania kamery. Pod obciążeniem PoE+ (30W) kable CCA mogą nagrzewać się na tyle, że z czasem degradacji ulega izolacja. Jeśli sprzedawca nie podaje wyraźnie "100% czysta miedź" lub "goła miedź", zakładaj, że to CCA. W każdej profesjonalnej instalacji nalegaj na litą miedź.
+</Callout>
+
+### Kabel wewnętrzny vs. zewnętrzny
+
+| Właściwość | Wewnętrzny (CM/CMR) | Zewnętrzny (CMX/bezpośrednie zakopanie) |
+|---|---|---|
+| Materiał izolacji | PVC (miękki, elastyczny) | LLDPE (twardy, odporny na UV) |
+| Wodoodporność | Brak | Wypełniony żelem lub taśma blokująca wodę |
+| Ochrona UV | Niska (pęknięcia w 1-2 lata) | Wysoka (wytrzymuje 10+ lat) |
+| Zakres temperatur | 0°C do 60°C | -40°C do 75°C |
+| Najlepsze zastosowanie | Wewnątrz ścian, strych, koryta wewnątrz | Odkryte trasy zewnętrzne, bezpośrednie zakopanie |
+
+Jeśli jakakolwiek część trasy kablowej jest narażona na warunki atmosferyczne, światło słoneczne lub wilgoć, użyj kabla zewnętrznego lub poprowadź standardowy kabel wewnętrzny przez koryto odporne na UV.
+
+## Potrzebne narzędzia
+
+| Narzędzie | Przeznaczenie | Przybliżony koszt |
+|---|---|---|
+| Zaciskarka Cat6 (kompatybilna z pass-through) | Zakończenia złączy RJ45 | $25-50 |
+| Złącza RJ45 pass-through | Łatwiejsze, bardziej niezawodne zakończenia | $15-25 za 50 szt. |
+| Tester kabli (ciągłość + mapa okablowania) | Weryfikacja zakończeń | $15-30 |
+ | Taśma wciągarka lub pręty świetlne | Przeciąganie kabli przez ściany/koryta | $20-40 |
+| Smar do kabli | Długie przeciągi w korytach | $10-15 |
+| Tester PoE | Weryfikacja dostarczania mocy na odległość | $50-150 |
+| Narzędzie punch-down | Zakończenia paneli krosowych | $15-30 |
+| Etykiety kablowe | Oznaczanie obu końców każdej trasy | $5-10 |
+| Ściągacz izolacji | Usuwanie izolacji kabla | $10-20 |
+| Wiertarka udarowa + wiertła do muru | Montaż kamer na cegle/betonie | Różne |
+
+<Callout type="note" title="Kable prefabrykowane są opcją">
+  W małych instalacjach (1-4 kamery) z dostępnymi ścieżkami kablowymi, prefabrykowane kable Cat6 w mierzonych długościach oszczędzają czas i zapobiegają błędom zakończeń. W większych instalacjach lub trasach przez koryta, samodzielne zakończenie kabla złączami pass-through RJ45 jest bardziej niezawodne i opłacalne.
+</Callout>
+
+## Standardy zakończeń
+
+### Okablowanie T568B
+
+Standard T568B jest dominującym wzorem okablowania dla instalacji kamer bezpieczeństwa w Ameryce Północnej. Oba końce każdego kabla muszą używać tego samego standardu.
+
+**Kolejność przewodów (pin 1 do pin 8):**
+1. Biały/Pomarańczowy
+2. Pomarańczowy
+3. Biały/Zielony
+4. Niebieski
+5. Biały/Niebieski
+6. Zielony
+7. Biały/Brązowy
+8. Brązowy
+
+### Wskazówki dotyczące zakończeń
+
+- **Zdejmij izolację na odpowiednią długość**: Zbyt dużo odsłoniętej izolacji tworzy przesłuchy. Zbyt mało uniemożliwia pełne osadzenie przewodów.
+- **Zachowaj skrętkę**: Utrzymuj każdą parę skręconą jak najbliżej złącza. Rozkręcenie o więcej niż 12 mm pogarsza wydajność Cat6.
+- **Użyj złączy pass-through**: Przewody wychodzą przez przód złącza, więc możesz wizualnie sprawdzić kolejność przed zaciśnięciem.
+- **Zakończ na panelu krosowym po stronie rejestratora**: W przypadku długich tras zakończenie na panelu krosowym jest bardziej niezawodne niż bezpośrednie zaciśnięcie RJ45. Znacznie ułatwia to również rozwiązywanie problemów i ponowne zakończenie.
+
+<Callout type="warning" title="Przetestuj każde zakończenie">
+  Użyj testera kabli do weryfikacji mapy okablowania, ciągłości i zwarć na każdej trasie przed podłączeniem kamery. 30-sekundowy test wykrywa problemy, których zdiagnozowanie zajęłoby później godziny. W przypadku długich tras zewnętrznych przetestuj również testerem PoE, aby zweryfikować dostarczanie mocy po stronie kamery.
+</Callout>
+
+## Koryta i zarządzanie kablami
+
+### Kiedy używać koryt
+
+| Scenariusz | Typ koryta | Powód |
+|---|---|---|
+| Odkryte trasy zewnętrzne | PVC Schedule 40 | Odporność na warunki atmosferyczne i UV |
+| Zakopanie pod ziemią | PVC Schedule 40 lub 80 | Ochrona fizyczna, wymóg norm |
+| Między budynkami | Elastyczne pancerne | Złącza ruchome, ochrona fizyczna |
+| Wiązki kabli wewnętrznych | Koryto kablowe lub haki J | Organizacja, odprowadzanie ciepła |
+| Przejścia przez ściany | Krótka tuleja PVC | Ochrona przed krawędziami |
+
+### Zasady dotyczące koryt
+
+- **Minimalna głębokość zakopania**: 45 cm dla PVC, 15 cm dla koryt metalowych według NEC
+- **Współczynnik wypełnienia**: Nie wypełniaj koryta powyżej 40% pojemności — kable potrzebują cyrkulacji powietrza do odprowadzania ciepła
+- **Promień gięcia**: Minimum 4x średnica kabla dla Cat6. Używaj łuków, nie ostrych zagięć 90°
+- **Uszczelnij końce**: Zapobiegaj przedostawaniu się wilgoci za pomocą masy uszczelniającej lub silikonu na każdym końcu koryta
+- **Oddziel od zasilania AC**: Zachowaj 30 cm odstępu. Krzyżuj pod kątem 90° jeśli nieuniknione
+
+### Ciepło w wiązkach kabli
+
+Gdy wiele kabli PoE biegnie razem w wiązce lub korycie, ciepło gromadzi się z oporu elektrycznego w przewodach. Jest to poważny problem w instalacjach PoE o wysokiej mocy.
+
+| Liczba kabli w wiązce | Wzrost temperatury powyżej otoczenia | Zalecane działanie |
+|---|---|---|
+| 1-6 | 0% (bez deratingu) | Standardowa instalacja |
+| 7-15 | 15-25% | Zmniejsz rozmiar wiązki lub zwiększ odstępy |
+| 16-30 | 30-40% | Podziel na mniejsze wiązki |
+| 31+ | 40-55% | Użyj Cat6A, zmniejsz rozmiar wiązki, zapewnij wentylację |
+
+<Callout type="tip" title="Zarządzanie ciepłem dla dużych wiązek">
+  ISO/IEC zaleca maksymalny rozmiar wiązki 24 kabli niezależnie od rozważań PoE. W instalacjach PoE++ o wysokiej mocy używaj przewodów Cat6A (23 AWG), które skuteczniej odprowadzają ciepło. Unikaj prowadzenia kabli PoE w niewentylowanych przestrzeniach, takich jak zamknięte przestrzenie sufitowe lub uszczelnione koryta bez odpowiedniego deratingu termicznego.
+</Callout>
+
+## Ochrona przeciwprzepięciowa
+
+Kamery na długich trasach PoE są podatne na przepięcia indukowane przez pioruny, nawet z pobliskich uderzeń (bez bezpośredniego trafienia). Ochrona przeciwprzepięciowa powinna być traktowana jako obowiązkowa warstwa, a nie opcjonalne ulepszenie.
+
+### Minimalna ochrona
+
+- Jeden ochronnik przeciwprzepięciowy PoE przy punkcie wejścia do budynku dla każdej zewnętrznej trasy kablowej ($15-50 każdy)
+- Prawidłowe uziemienie ochronnika do uziemienia budynku
+
+### Rozszerzona ochrona
+
+- Ochronnik przeciwprzepięciowy PoE przy każdej kamerze (droższy, ale lepsza izolacja)
+- Ochronnik przeciwprzepięciowy całego budynku przy głównej rozdzielnicy elektrycznej
+- UPS z ochroną przeciwprzepięciową dla rejestratora i przełącznika PoE
+
+<Callout type="danger" title="Uziemienie nie jest opcjonalne">
+  Ochronnik przeciwprzepięciowy, który nie jest prawidłowo uziemiony, nie zapewnia ochrony. Upewnij się, że ochronniki są podłączone do uziemienia budynku. W instalacjach komercyjnych uziemienie musi spełniać lokalne wymogi norm elektrycznych.
+</Callout>
+
+## Typowe błędy okablowania
+
+### 1. Punkty zgniecenia kabla
+Ostre zagięcia niszczą jakość danych na długich trasach. Utrzymuj promień gięcia co najmniej 5 cm. Nigdy nie zszywaj kabla bezpośrednio do ścian — używaj odpowiednich klipsów kablowych lub opasek na rzep.
+
+### 2. Niechlujne zakończenia
+Luźne styki RJ45 powodują okresowe awarie, które są frustrujące w diagnozowaniu. Używaj testera po każdym zakończeniu. W przypadku długich tras zakończ na panelu krosowym zamiast bezpośredniego zaciskania.
+
+### 3. Kabel w tym samym korycie co zasilanie AC
+Indukuje zakłócenia i pogarsza sygnał. Zachowaj 30 cm odstępu od kabli zasilania AC. Jeśli musisz skrzyżować, zrób to pod kątem 90 stopni.
+
+### 4. Kabel wewnętrzny użyty na zewnątrz
+Wewnętrzny kabel PVC narażony na promieniowanie UV ulega degradacji w ciągu 2-3 lat. Izolacja pęka, wilgoć dostaje się do kabla przez działanie kapilarne, a kamera ulega awarii. Używaj kabla zewnętrznego (CMX) lub koryta dla każdej sekcji zewnętrznej.
+
+### 5. Zwoje nadmiaru kabla przy kamerze
+Zwijanie nadmiaru prefabrykowanego kabla przy kamerze zbiera zakłócenia elektryczne i działa jak antena. Używaj długości kabla dopasowanych do rzeczywistej trasy lub zwiń nadmiar schludnie po stronie rejestratora.
+
+### 6. Brak pętli kroplowej
+Gdy kabel dociera do kamery, pozwól mu zwisać w mały kształt "U" przed wejściem do kamery lub ściany. Zapewnia to, że woda kapie z dołu łuku, zamiast spływać do złącza.
+
+### 7. Brak etykiet
+Nieoznakowane kable zamieniają 30-minutowe zadanie rozwiązywania problemów w 3-godzinną udrękę. Oznacz oba końce każdego kabla spójnym schematem nazewnictwa (np. "Kam-01-DrzwiWejściowe").
+
+## Lista kontrolna instalacji zewnętrznej
+
+- [ ] Kabel Cat6 zewnętrzny (CMX) lub kabel wewnętrzny w korycie odpornym na UV
+- [ ] Pętla kroplowa przy każdym połączeniu kamery
+- [ ] Wodoodporne złącza RJ45 lub puszka przyłączeniowa
+- [ ] Smar dielektryczny na pinach złącza zapobiegający korozji
+- [ ] Taśma samowulkanizująca na połączeniach zewnętrznych (wodoodporne uszczelnienie)
+- [ ] Silikonowy uszczelniacz wokół przejść przez ściany
+- [ ] Ochronnik przeciwprzepięciowy PoE przy punkcie wejścia do budynku
+- [ ] Koryto dla odsłoniętych tras i sekcji podziemnych
+- [ ] Klipsy kablowe lub opaski na rzep co 30-50 cm na odsłoniętych trasach
+- [ ] Etykiety na obu końcach każdego kabla
+- [ ] Test ciągłości i mocy PoE zweryfikowany
+
+## Protokół testowania końcowego
+
+Przed uznaniem instalacji za zakończoną:
+
+1. **Test ciągłości**: Każdy pin prawidłowo podłączony w każdym kablu
+2. **Test mocy PoE**: Sprawdź napięcie po stronie kamery każdej trasy pod obciążeniem
+3. **Wykrywanie kamer**: Każda kamera pojawia się na rejestratorze w ciągu 60 sekund
+4. **Test nocny**: Sprawdź, czy wszystkie kamery utrzymują stabilne połączenie po zmroku, gdy diody IR się włączają
+5. **Test dostępu zdalnego**: Potwierdź, że zdalny podgląd działa spoza sieci lokalnej
+6. **Weryfikacja nagrywania**: Po 7 dniach sprawdź, czy oś czasu rejestratora nie ma przerw w nagrywaniu
+
+<Callout type="tip" title="Twardy limit 100 metrów">
+  Norma IEEE 802.3 ogranicza trasy Ethernet do 100 metrów (328 stóp) włączając wszystkie przewody krosowe. W praktyce z czystym miedzianym Cat6 niezawodnie osiągniesz 95 metrów. Powyżej tego spadek napięcia nawet na dobrym kablu powoduje okresowe resetowanie kamer. Zaplanuj przedłużacze PoE lub łącza światłowodowe dla każdej trasy przekraczającej 90 metrów.
+</Callout>
+
+## Często zadawane pytania
+
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>Czy powinienem użyć Cat5e czy Cat6 do kamer bezpieczeństwa?</AccordionTrigger>
+    <AccordionContent>
+      Cat6 to zalecana podstawa dla każdej nowej instalacji. Przewody 23 AWG redukują spadek napięcia w porównaniu z 24 AWG w Cat5e, co ma znaczenie dla zasilania PoE — szczególnie na trasach powyżej 50 metrów i dla kamer z diodami IR lub grzałkami. Różnica kosztów jest minimalna ($0,04-0,10 za stopę) w porównaniu z robocizną przy układaniu kabli. Zarezerwuj Cat5e tylko do krótkich tras poniżej 30 metrów z kamerami 1080p.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Jak długa może być trasa kabla PoE?</AccordionTrigger>
+    <AccordionContent>
+      Norma IEEE 802.3 ogranicza trasy Ethernet do łącznie 100 metrów (328 stóp), włączając przewody krosowe. Powyżej 100 metrów sygnał danych ulega degradacji, a moc PoE spada poniżej minimum kamery. W przypadku dłuższych tras użyj przedłużacza PoE (dodaje 100 m na urządzenie, do 4 urządzeń), łącza światłowodowego z zdalnym przełącznikiem PoE lub przenieś rejestrator bliżej.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Czy mogę mieszać kable CCA i litej miedzi w tej samej instalacji?</AccordionTrigger>
+    <AccordionContent>
+      Nie. Mieszanie CCA i litej miedzi tworzy punkt korozji galwanicznej na połączeniu, co zwiększa rezystancję i powoduje awarię połączenia z czasem. Wybierz jeden typ kabla i używaj go wszędzie. W przypadku PoE zawsze powinna to być lita miedź.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Czy potrzebuję kabla ekranowanego (STP)?</AccordionTrigger>
+    <AccordionContent>
+      Tylko jeśli biegnie w pobliżu znaczących zakłóceń elektrycznych — dużych silników, stateczników fluorescencyjnych, maszyn przemysłowych lub paneli elektrycznych. W większości instalacji domowych i biurowych nieekranowany (UTP) Cat6 jest w pełni wystarczający. Jeśli używasz STP, musisz używać ekranowanych złączy i prawidłowego uziemienia tylko na jednym końcu, w przeciwnym razie ekranowanie staje się nieskuteczne.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Jaki jest minimalny promień gięcia dla Cat6?</AccordionTrigger>
+    <AccordionContent>
+      Minimalny promień gięcia dla Cat6 to 4x średnica kabla, czyli około 5 cm (2 cale). Ostre zagięcia miażdżą wewnętrzne skręcenie par i pogarszają jakość sygnału. W instalacjach stałych używaj łuków lub kolanek 45 stopni zamiast ostrych zagięć 90 stopni.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Jak głęboko zakopać kabel Ethernet do kamer zewnętrznych?</AccordionTrigger>
+    <AccordionContent>
+      Według National Electrical Code (NEC), koryto PVC należy zakopać na głębokość co najmniej 18 cali (45 cm). Koryto metalowe wymaga tylko 6 cali (15 cm). Do tras podziemnych preferowany jest kabel do bezpośredniego zakopania w korycie. Zawsze dzwoń po lokalizatory mediów przed kopaniem.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+Połącz ten przewodnik z naszym [przewodnikiem konfiguracji rejestratora PoE](/blog/poe-nvr-setup), aby uzyskać kompletne instrukcje instalacji krok po kroku od kabla do konfiguracji.

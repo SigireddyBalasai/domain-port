@@ -1,0 +1,330 @@
+---
+title: "NVR Nedir? Ağ Video Kayıt Cihazları için Kapsamlı Rehber (2026)"
+publishedAt: "2026-06-18"
+description: "NVR (Ağ Video Kaydedici) sistemleri için eksiksiz başlangıç rehberi — nasıl çalıştıkları, temel özellikleri, çözünürlük desteği, PoE kablolaması, yapay zeka analitiği ve güvenlik kameralarınız için doğru NVR'yi nasıl seçeceğiniz."
+author: "CCTV Name Authoe"
+image: "/og.svg"
+tags: ["cctv", "nvr", "ağ video kaydedici", "ip kamera", "güvenlik kamerası", "poe", "gözetim", "video kaydı"]
+postType: "howto"
+howTo:
+  - name: "NVR Nedir?"
+    text: "NVR (Ağ Video Kaydedici), IP kameralardan gelen videoyu bir ağ üzerinden kaydeder. DVR'lardan farklı olarak NVR'ler, önceden kodlanmış dijital video akışlarını alır; bu sayede daha yüksek çözünürlükler, daha basit kablolama ve gelişmiş yapay zeka özellikleri sunar."
+  - name: "NVR Sistemleri Nasıl Çalışır"
+    text: "IP kameralar videoyu dahili olarak yakalar ve kodlar, ardından sıkıştırılmış dijital videoyu depolama için Ethernet üzerinden NVR'ye akışla gönderir. Power over Ethernet (PoE), tek bir kablonun hem güç hem de veri taşımasını sağlar."
+  - name: "Aranacak Temel Özellikler"
+    text: "Kanal sayısı, desteklenen çözünürlük (4K+ arayın), PoE güç bütçesi, yapay zeka analitiği (insan/araç algılama), H.265+ sıkıştırma, sabit disk kapasitesi ve uzaktan izleme uygulaması kalitesini göz önünde bulundurun."
+  - name: "NVR vs DVR vs Bulut"
+    text: "NVR, çözünürlük, yerel depolama, yapay zeka özellikleri ve aylık ücret olmaması açısından en iyi dengeyi sunar. DVR, eski analog sistemler içindir. Bulut kameralar sürekli abonelik gerektirir ve internete bağımlıdır."
+  - name: "Doğru NVR'yi Seçmek"
+    text: "NVR'nizi kamera sayınıza, çözünürlük ihtiyaçlarınıza, depolama gereksinimlerinize ve bütçenize göre belirleyin. Kanal sayısı ve PoE bütçesi seçerken %20-30 gelecekteki genişleme için plan yapın."
+faq:
+  - question: "NVR açılımı nedir?"
+    answer: "NVR, Network Video Recorder (Ağ Video Kaydedici) anlamına gelir. IP kameralardan gelen videoyu bir Ethernet ağı üzerinden kaydeden, görüntüleri yerel oynatma ve uzaktan erişim için dahili sabit disklere depolayan özel bir bilgisayardır."
+  - question: "NVR, DVR'dan nasıl farklıdır?"
+    answer: "NVR, videoyu kamerada işleyen ve Ethernet üzerinden dijital akışlar gönderen IP kameralarla çalışır. DVR, koaksiyel kablo üzerinden ham sinyaller gönderen analog kameralarla çalışır. NVR, daha yüksek çözünürlükleri (4K+), tek kablolu PoE kurulumunu ve yerleşik yapay zeka analitiğini destekler."
+  - question: "NVR'nin kayıt yapması için internet gerekli mi?"
+    answer: "Hayır. NVR'ler sabit disklere yerel olarak kayıt yapar ve tamamen çevrimdışı çalışır. İnternet yalnızca uzaktan izleme, anlık bildirimler ve donanım yazılımı güncellemeleri için gereklidir. İnternet kesilse bile kayıtlarınız korunur."
+  - question: "Farklı kamera markalarını tek bir NVR ile karıştırabilir miyim?"
+    answer: "Evet, kameralar ve NVR'nin her ikisi de ONVIF standardını destekliyorsa. Çoğu modern NVR ve IP kamera ONVIF uyumludur ve aynı NVR'de Hikvision, Dahua, Reolink ve Amcrest gibi markaları bir arada kullanmanıza olanak tanır."
+  - question: "Bir NVR için ne kadar depolama alanına ihtiyacım var?"
+    answer: "H.265+ sıkıştırmayla 4K kamera günde yaklaşık 30-60 GB kayıt yapar. 7/24 kayıt yapan 4 kameralı 4K sistem, 30 günlük depolama için yaklaşık 6-12 TB'a ihtiyaç duyar. Gözetim sınıfı sabit diskler kullanın (WD Purple, Seagate SkyHawk)."
+  - question: "PoE nedir ve NVR için neden önemlidir?"
+    answer: "PoE (Power over Ethernet), tek bir Cat6 kablosu üzerinden hem güç hem de veri sağlar. Dahili PoE anahtarlı NVR'ler, kameraları doğrudan besleyebilir — her kamera konumunda ayrı priz gerekmez. Bu, kurulumu basitleştirir ve maliyeti düşürür."
+---
+
+Bir güvenlik kamera sistemi arıyorsanız, **NVR** kısaltmasını her yerde görmüşsünüzdür — NVR kitleri, NVR kayıt cihazları, PoE NVR sistemleri. Peki NVR tam olarak nedir, nasıl çalışır ve neden her montajcı onu eski DVR teknolojisine tercih eder?
+
+NVR (Ağ Video Kaydedici), IP kameralardan gelen videoyu bir Ethernet ağı üzerinden kaydeden özel bir bilgisayardır. Görüntüleri dahili sabit disklere depolar, canlı ve kayıtlı videoyu izlemek için bir yönetim arayüzü sağlar ve bir mobil uygulama veya web tarayıcısı üzerinden her yerden uzaktan erişime olanak tanır. Onu modern bir IP gözetim sisteminin beyni olarak düşünün.
+
+2026'da NVR'ler, ev ve iş yeri gözetimi için standart seçimdir. 4K, 8MP ve hatta 12MP kameraları destekler, yanlış alarmları filtreleyen yerleşik yapay zeka analitiği içerir ve tek bir kabloyla kameraları beslemek için Power over Ethernet (PoE) kullanır. Bu rehber, bilmeniz gereken her şeyi kapsar.
+
+<Callout type="info" title="NVR'e Kısa Bir Bakış">
+  NVR, IP kameralardan gelen dijital video akışlarını bir ağ üzerinden kaydeder. Görüntüleri yerel olarak sabit disklere depolar (bulut aboneliği gerekmez), 4K+ çözünürlüğü destekler, tek kablolu kurulum için PoE'yi etkinleştirir ve insan, araç ve hayvan algılama için yapay zeka analitiği içerir. DVR'ların aksine, video işleme kameranın içinde gerçekleşir — NVR, önceden kodlanmış akışları depolar ve yönetir.
+</Callout>
+
+## NVR Sistemleri Nasıl Çalışır
+
+Bir NVR sistemi üç temel bileşenden oluşur: IP kameralar, ağ altyapısı ve NVR'nin kendisi.
+
+### Veri Akışı
+
+1. **IP kameralar** videoyu yakalar ve H.265 veya H.264 sıkıştırma kullanarak dahili olarak kodlar. Kamera tüm işlemeyi yapar — NVR asla ham video verilerine dokunmaz.
+2. Sıkıştırılmış dijital video, IP paketlerine sarılır ve **Ethernet kablosu** (Cat5e veya Cat6) üzerinden NVR'ye gönderilir.
+3. **NVR** akışları alır, depolama için bir sabit diske yazar ve canlı ve kayıtlı videoyu yönetim arayüzü aracılığıyla sunar.
+4. Uzaktan erişim için NVR, yerel ağınıza bağlanır ve ona bir mobil uygulama veya güvenli VPN bağlantısı üzerinden erişirsiniz.
+
+| Bileşen | Ne Yapar | Örnek |
+|---|---|---|
+| IP kamera | Videoyu yakalar, dijital olarak kodlar, Ethernet üzerinden iletir | Reolink RLC-810A, Hikvision DS-2CD2T47G2 |
+| Ağ kablosu | Kamera ile NVR arasında güç ve veri taşır | Cat6 katı bakır, 100 metreye kadar |
+| PoE anahtarı veya NVR PoE portları | Aynı kablo üzerinden kameralara güç sağlar | Dahili NVR PoE veya bağımsız anahtar |
+| NVR | Görüntüleri depolar, kayıtları yönetir, uzaktan erişim sağlar | Reolink RLN36, Hikvision DS-7608NI-I2 |
+| Sabit disk | Kaydedilen video için uzun süreli depolama sağlar | WD Purple 6 TB, Seagate SkyHawk 8 TB |
+
+<Callout type="tip" title="DVR'dan Temel Fark">
+  Bir DVR sisteminde, analog kameralar koaksiyel kablo üzerinden ham işlenmemiş video gönderir ve DVR tüm kodlamayı yapar. Bir NVR sisteminde, IP kameralar kendi kodlamalarını yapar — bu nedenle NVR'ler daha ölçeklenebilirdir (kameraları yükselterek işlem gücü ekleyin) ve daha yüksek çözünürlükleri yerel olarak destekler.
+</Callout>
+
+### Yerel ve Uzaktan Erişim
+
+| Erişim Türü | Nasıl Çalışır | Gereksinimler |
+|---|---|---|
+| Yerel (sahada) | NVR'ye HDMI veya VGA ile bir monitör bağlayın | Monitör, USB fare, aynı ağda NVR |
+| Uzaktan (dışarıdan) | Mobil uygulama veya web tarayıcısı ile internet üzerinden | İnternete bağlı NVR, uygulama hesabı, VPN önerilir |
+| ONVIF istemcisi | Üçüncü taraf yazılım NVR'ye bağlanır | ONVIF uyumlu görüntüleyici, NVR IP adresi |
+
+## Temel Özellik Karşılaştırması
+
+Tüm NVR'ler eşit değildir. En önemli özelliklerin yaygın modeller arasında nasıl karşılaştırıldığı aşağıda açıklanmıştır:
+
+| Özellik | Giriş Seviyesi NVR | Orta Seviye NVR | Üst Seviye NVR |
+|---|---|---|---|
+| Kanal sayısı | 4-8 kanal | 8-16 kanal | 16-64 kanal |
+| Kamera başına maks. çözünürlük | 4K (8MP) | 4K (8MP) | 12MP+ |
+| PoE portları | 4-8 dahili | 8-16 dahili | 0-16 (ayrı anahtar) |
+| PoE bütçesi | 50-80 W | 80-150 W | 150-400 W |
+| Yapay zeka analitiği | Temel hareket | İnsan + araç algılama | İnsan, araç, hayvan, yüz, ANPR |
+| Sıkıştırma | H.264, H.265 | H.265, H.265+ | H.265+, H.266 |
+| Maks. HDD desteği | 1× 10 TB | 2× 14 TB | 4-8× 20 TB |
+| RAID desteği | Yok | Yok | RAID 0/1/5/6 |
+| Uygulama kalitesi | Temel | İyi | Mükemmel |
+| Fiyat aralığı | ₺500-3500 | ₺3500-8500 | ₺8500-35000+ |
+
+<Callout type="note" title="Kanal Sayısı Planlaması">
+  Şu anda ihtiyacınız olanın **2 katı** kanala sahip bir NVR satın alın. 4 kameralı bir kurulum, 8 kanallı bir NVR kullanmalıdır. 6 kameralı bir kurulum, 16 kanallı bir NVR kullanmalıdır. Genişleme her zaman olur ve bir NVR'yi kullanım ömrü ortasında değiştirmek maliyetli ve zahmetlidir.
+</Callout>
+
+## Power over Ethernet (PoE) Açıklaması
+
+PoE, NVR sistemlerinin en büyük avantajlarından biridir. Tek bir Ethernet kablosu üzerinden hem elektrik gücü hem de veri sağlayarak her kamera için ayrı güç adaptörleri ihtiyacını ortadan kaldırır.
+
+### PoE Nasıl Çalışır
+
+Bir PoE anahtarı veya PoE özellikli NVR, Ethernet kablosundaki kullanılmayan tel çiftlerine bir DC voltajı (genellikle 48 V) enjekte eder. IP kamera bu gücü Ethernet portu aracılığıyla alır, dahili bileşenlerini besler ve aynı kablo üzerinden video verilerini geri gönderir.
+
+| PoE Standardı | Port Başına Güç | Tipik Kullanım |
+|---|---|---|
+| IEEE 802.3af (PoE) | 15,4 W | 1080p/4MP sabit kameralar, 4-8 W çekiş |
+| IEEE 802.3at (PoE+) | 30 W | 4K kameralar, iç mekan PTZ, 8-15 W çekiş |
+| IEEE 802.3bt Tip 3 (PoE++) | 60 W | Isıtıcılı dış mekan PTZ, 20-40 W çekiş |
+| IEEE 802.3bt Tip 4 (PoE++) | 100 W | Çok sensörlü kameralar, yüksek güçlü PTZ |
+
+<Callout type="warning" title="PoE Bütçe Tuzağı">
+  Gündüz 5 W çeken bir kamera, gece IR LED'leri etkinleştiğinde 12-15 W'a fırlayabilir. Her zaman kamera veri sayfasındaki **maksimum güç çekişini** kullanarak bütçe yapın ve en az %20-30 marj ekleyin. Her biri en fazla 12 W çeken 8 kameralı bir sistemin yaklaşık 125 W PoE bütçesine ihtiyacı vardır, 96 W değil.
+</Callout>
+
+### Kablo Türleri ve Mesafe Sınırları
+
+| Kablo | Maks. Mesafe | En Uygun | Notlar |
+|---|---|---|---|
+| Cat5e | 100 m | 1080p kameralar, kısa mesafeler | 24 AWG, daha yüksek voltaj düşüşü |
+| Cat6 | 100 m | Tüm modern IP kameralar | 23 AWG, önerilen temel |
+| Cat6A | 100 m | 4K kameralar, yüksek güçlü PTZ | En kalın iletkenler, PoE++ dereceli |
+
+Tüm Ethernet standartları aynı 100 metrelik mesafe sınırını paylaşır. Bunun ötesinde bir PoE genişletici kullanın veya uzak bir anahtara fiber çekin.
+
+### PoE'nin NVR Sistemleri İçin Önemi
+
+- **Tek kablolu kurulum**: Kamera başına bir Cat6 kablosu güç, video, ses ve PTZ kontrolü taşır
+- **Merkezi güç yönetimi**: NVR veya PoE anahtarı tüm kameraları tek bir yerden besler — duvar prizi aramaya gerek yok
+- **UPS hazır**: Tek bir UPS yedek bataryası yalnızca kayıt cihazını değil, tüm kamera sistemini korur
+- **Daha temiz kurulum**: Tavana monte kameralardan sarkan güç adaptörleri yok
+- **Daha düşük kablo maliyeti**: Bir Cat6 kablosu, koaksiyel kablo artı ayrı bir güç kablosundan daha ucuzdur
+
+## NVR Sistemlerinin Avantajları
+
+### Daha Yüksek Çözünürlük
+
+NVR'ler temel olarak 4K (8MP) destekler ve çoğu 5MP, 8MP ve hatta 12MP kameraları destekler. Bu, herhangi bir analog DVR sisteminden daha uzak mesafelerden yüzleri ve plakaları tanımlayabileceğiniz anlamına gelir.
+
+| Çözünürlük | Piksel Sayısı | Tanımlama Mesafesi |
+|---|---|---|
+| 1080p (2MP) | 1920 × 1080 | 4,5-6 m |
+| 4MP | 2688 × 1520 | 7,5-10,5 m |
+| 4K (8MP) | 3840 × 2160 | 12-18 m |
+| 12MP | 4000 × 3000 | 18-24+ m |
+
+Doğru çözünürlüğü seçme hakkında daha ayrıntılı bilgi için [kamera çözünürlük rehberimize](/blog/camera-resolution-guide) bakın.
+
+### Tek Kablolu Kurulum
+
+PoE, kamera başına bir Cat6 kablosunun güç, video, ses ve PTZ kontrolü taşıdığı anlamına gelir. Ayrı güç adaptörleri yok. Koaksiyel kablo yok. Ekstra kablo çekimi yok. Bu, analog DVR sistemlerine kıyasla kurulum süresini yarıya indirir ve yenilemeleri önemli ölçüde basitleştirir.
+
+### Yerleşik Yapay Zeka Analitiği
+
+Modern NVR'ler, videoyu yerel olarak işleyen yerleşik yapay zeka ile birlikte gelir — bulut aboneliği gerekmez:
+
+- **İnsan algılama** — yalnızca bir insan göründüğünde kaydet ve uyar
+- **Araç algılama** — araba, kamyon, motosikletleri insan uyarılarından filtrele
+- **Hayvan algılama** — evcil ve vahşi hayvanları yoksay
+- **Çizgi ihlali** — birisi yasak bölgeye girdiğinde alarm tetikle
+- **İzinsiz giriş algılama** — hassas alanların etrafında sanal çit
+- **Yüz algılama** — tanınan kişileri belirle (premium modeller)
+- **ANPR (Otomatik Plaka Tanıma)** — plakaları oku ve kaydet (üst seviye modeller)
+
+<Callout type="info" title="Yapay Zeka Yanlış Alarmları %80-90 Oranında Azaltır">
+  Geleneksel hareket algılama, hareket eden her nesneye tetiklenir — ağaçlar, gölgeler, farlar, hayvanlar. NVR yapay zekası bunları filtreler ve yalnızca önemli olanlarda sizi uyarır. Yalnızca insan algılama bile çoğu yanlış alarmı ortadan kaldırır ve kayıtları incelemeyi 10 kat hızlandırır.
+</Callout>
+
+### Ölçeklenebilirlik
+
+Başka bir kamera eklemek mi istiyorsunuz? NVR'nizde boş PoE portları varsa, sadece takın. Yoksa ağa bir PoE anahtarı eklersiniz. NVR sistemleri, aynı kayıt cihazında 4 kameradan 100+ kameraya kadar ölçeklenir. DVR sistemleri, arka paneldeki fiziksel koaksiyel portlarla sınırlıdır.
+
+### Uzaktan Erişim
+
+Her modern NVR, her yerden canlı ve kayıtlı görüntüleri izlemenizi sağlayan bir mobil uygulama (iOS ve Android) ile birlikte gelir. Zaman çizelgesi kayıtlarında gezinebilir, anında bildirimler alabilir ve klipler paylaşabilirsiniz — P2P veya bulut hizmetleri kullanırken bağlantı noktası yönlendirme gerekmez.
+
+### ONVIF Uyumluluğu
+
+ONVIF, farklı üreticilerin IP kameralarının ve NVR'lerinin birlikte çalışmasını sağlayan açık bir standarttır. Bir kamera ve NVR'nin her ikisi de ONVIF Profile T ve Profile G'yi destekliyorsa, markaları özgürce karıştırabilirsiniz. Bu, satıcı bağımlılığını önler ve her konum için en iyi kamerayı seçmenize olanak tanır.
+
+| ONVIF Profili | Sağladığı Özellikler |
+|---|---|
+| Profile G | Kayıt, depolama arama ve oynatma |
+| Profile Q | Hızlı kurulum ve cihaz keşfi |
+| Profile T | H.265 akışı, gelişmiş hareket, ses |
+| Profile M | Meta veri ve analitik olayları |
+
+### Aylık Ücret Yok
+
+Bu, bulut tabanlı kameralara (Ring, Nest, Arlo, Eufy) göre en büyük avantajlardan biridir. Bir NVR, yerel sabit disklere kayıt yapar — depolamayı bir kez satın alırsınız ve size kalır. Bulut kameralar, kayıt ve akıllı uyarılar için kamera başına aylık 3-20 $ ücret alır. 5 yıl boyunca bu, 4 kameralı bir sistem için 720-4.800 $'dır.
+
+## NVR vs DVR vs Bulut
+
+| Özellik | NVR (Yerel) | DVR (Analog) | Bulut Kamera |
+|---|---|---|---|
+| Kamera türü | IP (Ethernet üzerinden dijital) | Analog (koaksiyel) | Wi-Fi kamera |
+| Maks. çözünürlük | 4K-12MP | 1080p-4K (premium) | 1080p-2K |
+| Kablolama | Tek Cat6 (PoE) | Koaksiyel + güç | Wi-Fi (kablo yok) |
+| Kablo mesafesi | 100 m | 300-500 m | Wi-Fi menziliyle sınırlı |
+| Yerel depolama | Evet, sabit disk | Evet, sabit disk | Hayır (yalnızca bulut) |
+| Aylık ücretler | ₺0 | ₺0 | Kamera başına aylık ₺100-650 |
+| Yapay zeka analitiği | Yerleşik, ücretsiz | Sınırlı veya yok | Abonelik gerekli |
+| ONVIF uyumlu | Evet | Hayır | Hayır |
+| Uzaktan erişim | Uygulama + VPN | Manuel kurulum | Uygulama (buluta bağımlı) |
+| Çevrimdışı çalışır | Evet | Evet | Hayır |
+| Gizlilik | Tam (yerel depolama) | Tam | Görüntüler satıcı sunucularında |
+| En uygun | Yeni kurulumlar, kalite | Yenileme, bütçe | Kiracılar, rahatlık |
+
+Ayrıntılı bir döküm için [NVR vs DVR karşılaştırmamızı](/blog/nvr-vs-dvr) okuyun.
+
+<Callout type="tip" title="5 Yıllık Maliyet Karşılaştırması: NVR vs Bulut">
+  4 kameralı 4K NVR sistemi, peşin yaklaşık ₺10.000 tutar (NVR + 4 kamera + 4 TB disk) ve aylık ₺0'dır. 4 kameralı Ring sistemi, peşin ₺8.000 artı yılda ₺1.500 abonelikle — 5 yılda ₺15.500 eder. NVR sistemi daha yüksek çözünürlüğe, yerel depolamaya sahiptir, çevrimdışı çalışır ve uzun vadede daha az maliyetlidir.
+</Callout>
+
+## Doğru NVR Nasıl Seçilir
+
+### Adım 1: Kanal Sayınıza Karar Verin
+
+Şimdi ihtiyacınız olan kameraları sayın ve ikiye katlayın.
+
+| Mevcut Kameralar | Önerilen NVR |
+|---|---|
+| 1-3 | 8 kanallı |
+| 4-6 | 16 kanallı |
+| 8-14 | 32 kanallı |
+| 15+ | 64 kanallı veya kurumsal |
+
+Kamera ekleyeceksiniz. Bu her zaman olur. Şimdi bir boy büyük almak ₺1.000-2.000 fazla tutar ama sonra yüzlerce ₺ tasarruf sağlar.
+
+### Adım 2: Çözünürlüğünüzü Seçin
+
+| Çözünürlük İhtiyacı | Minimum NVR Özelliği |
+|---|---|
+| Yalnızca genel bakış (1080p) | Herhangi bir NVR |
+| Yüz tanımlama (4MP-4K) | H.265, 8MP destekli NVR |
+| Plaka okuma (4K-12MP) | Yüksek bit hızlı kayıt yapan NVR |
+
+### Adım 3: Depolamayı Hesaplayın
+
+H.265 sürekli kayıtla kamera başına günlük depolama:
+- 1080p (2MP): 10-15 GB
+- 4MP: 20-30 GB
+- 4K (8MP): 30-50 GB
+- 12MP: 60-100 GB
+
+30 gün saklamalı 4 kameralı 4K sistem için:
+- Sürekli: 4 × 40 GB × 30 = 4,8 TB → 6 TB disk
+- Yalnızca hareket: 4 × 12 GB × 30 = 1,44 TB → 2 TB disk
+
+### Adım 4: Yapay Zeka Yeteneklerini Kontrol Edin
+
+Gerçekten çalışan akıllı uyarılar istiyorsanız, insan ve araç algılama minimumdur. Reolink, Hikvision (AcuSense) ve Dahua (WizSense) orta seviye NVR'lerinin çoğu bunu ek ücret olmadan içerir.
+
+### Adım 5: PoE Bütçesini Doğrulayın
+
+Her kameranın maksimum güç çekişini toplayın. %30 marj ekleyin. NVR'nin PoE bütçesinin bu sayıyı aştığından emin olun. Ayrı bir PoE anahtarı kullanıyorsanız, NVR'nin kendisinin PoE portlarına ihtiyacı yoktur.
+
+<Callout type="warning" title="Bu Hatalardan Kaçının">
+  - IP kamera kullanmayı planlarken DVR satın almak (uyumsuzdurlar)
+  - Büyüme payı olmadan 6 kamera için 8 kanallı NVR satın almak
+  - PoE bütçesini göz ardı etmek — gece yeniden başlayan kameralar kullanışsızdır
+  - Gözetim sınıfı disk yerine standart bir masaüstü sabit diski kullanmak
+  - "ONVIF ile çalışır" ifadesinin tam özellik desteği anlamına geldiğini varsaymak — her zaman ONVIF profillerini kontrol edin
+</Callout>
+
+## Sıkça Sorulan Sorular
+
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>NVR açılımı nedir?</AccordionTrigger>
+    <AccordionContent>
+      NVR, Network Video Recorder (Ağ Video Kaydedici) anlamına gelir. IP kameralardan gelen videoyu bir Ethernet ağı üzerinden kaydetmek için özel olarak üretilmiş bir bilgisayardır. Standart bir bilgisayardan farklı olarak NVR, özel video yönetim yazılımı, kameraları beslemek için PoE portları, yerleşik yapay zeka işlemcileri ve 7/24 kesintisiz kayıt için optimize edilmiş donanım içerir.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>NVR, DVR'dan nasıl farklıdır?</AccordionTrigger>
+    <AccordionContent>
+      Temel fark, video işlemenin nerede gerçekleştiğidir. Bir NVR sisteminde, IP kameralar videoyu kendileri kodlar ve Ethernet üzerinden zaten dijital akışlar gönderir. Bir DVR sisteminde, analog kameralar koaksiyel kablo üzerinden ham işlenmemiş sinyaller gönderir ve DVR kodlamayı yapar. Bu, NVR'lerin daha yüksek çözünürlükleri (4K+) desteklediği, daha basit kablolama (PoE ile tek Cat6) kullandığı ve daha kolay ölçeklendiği anlamına gelir. Ayrıntılar için tam [NVR vs DVR karşılaştırmamıza](/blog/nvr-vs-dvr) bakın.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>NVR'nin kayıt yapması için internet gerekli mi?</AccordionTrigger>
+    <AccordionContent>
+      Hayır. NVR'ler dahili sabit disklere yerel olarak kayıt yapar ve tamamen çevrimdışı çalışır. Kameralarınız kayda devam eder ve NVR'niz, internet çalışsın ya da çalışmasın, görüntüleri depolamaya devam eder. İnternet yalnızca ağınızın dışından uzaktan izleme, telefonunuza anında bildirimler ve donanım yazılımı güncellemeleri için gereklidir. Bu, bulut tabanlı sistemlere göre en önemli avantajlardan biridir — görüntüleriniz her zaman yerel olarak kullanılabilir.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Farklı kamera markalarını tek bir NVR ile karıştırabilir miyim?</AccordionTrigger>
+    <AccordionContent>
+      Evet, kameralar ve NVR ONVIF'i desteklediği sürece. ONVIF, çoğu büyük IP kamera ve NVR üreticisi tarafından desteklenen açık bir birlikte çalışabilirlik standardıdır. En iyi uyumluluk için ONVIF Profile T (H.265 akışı, gelişmiş hareket algılama, çift yönlü ses) ve Profile G (oynatma ve depolama arama) destekleyen kameralar ve NVR'ler arayın. Aynı NVR'de Hikvision, Dahua, Reolink, Amcrest, Axis ve diğer markaları karıştırabilirsiniz.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Bir NVR için ne kadar depolama alanına ihtiyacım var?</AccordionTrigger>
+    <AccordionContent>
+      Depolama gereksinimleri çözünürlüğe, kare hızına, sıkıştırmaya ve kayıt moduna bağlıdır. H.265 sıkıştırmayla 7/24 kayıt yapan tek bir 4K kamera günde yaklaşık 30-50 GB kullanır. Yalnızca hareketli kayıt bunu %60-70 oranında azaltır. 30 gün saklamalı 4 kameralı 4K sistem için kayıt moduna bağlı olarak 6-12 TB planlayın. Her zaman WD Purple veya Seagate SkyHawk gibi gözetim sınıfı sabit diskler kullanın — bunlar 7/24 yazma yükleri için tasarlanmıştır ve hata kurtarma sırasında kare düşüşünü önleyen donanım yazılımı içerir.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>PoE nedir ve NVR için neden önemlidir?</AccordionTrigger>
+    <AccordionContent>
+      PoE (Power over Ethernet), tek bir Ethernet kablosu üzerinden hem elektrik gücü hem de veri sağlayan bir teknolojidir. Dahili PoE portlarına sahip bir NVR, videoyu taşıyan aynı Cat6 kablosu üzerinden her kameraya güç gönderir. Bu, kamera konumlarında priz ihtiyacını ortadan kaldırır, güç adaptörü karmaşasını giderir ve tüm kamera sistemini tek bir UPS ile korumanıza olanak tanır. PoE, NVR sistemlerinin DVR veya bulut sistemlerinden daha hızlı ve daha temiz kurulmasının ana nedenlerinden biridir.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Bir NVR, PoE olmayan kameraları besleyebilir mi?</AccordionTrigger>
+    <AccordionContent>
+      Hayır. Bir NVR yalnızca PoE portları aracılığıyla güç sağlar. PoE olmayan kameralarınız varsa veya NVR'nin dahili PoE kapasitesinin ötesindeki kameraları beslemeniz gerekiyorsa, ayrı bir PoE anahtarına ihtiyacınız vardır. Kameraları PoE anahtarına bağlayın, ardından anahtarı yerel ağınız üzerinden NVR'ye bağlayın. Bu ayrıca NVR'den uzakta bulunan kameralar için de çalışır — kameraların yakınındaki uzak bir PoE anahtarına uzun bir ağ kablosu çekin.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Bir NVR ne kadar dayanır?</AccordionTrigger>
+    <AccordionContent>
+      İyi tasarlanmış bir NVR sistemi tipik olarak değiştirilmeden önce 7-10 yıl hizmet verir. Sabit diskler her 3-5 yılda bir değiştirilmelidir (7/24 çalışırlar ve yıpranırlar). Güvenlik açıklarını kapatmak için donanım yazılımı güncellemeleri düzenli olarak uygulanmalıdır. İhtiyaçlarınız artarsa (daha fazla kamera, daha yüksek çözünürlük), fiziksel olarak arızalanmadan önce NVR'nin kanal sayısını veya bant genişliği kapasitesini aşabilirsiniz. Bu nedenle mevcut kanal sayınızın 2 katını satın almak finansal olarak mantıklıdır.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+## Sonraki Adımlar
+
+Artık NVR'nin ne olduğunu ve nasıl çalıştığını anladığınıza göre, işte pratik sonraki adımlar:
+
+- Adım adım kurulum talimatları için [PoE NVR kurulum rehberimizi](/blog/poe-nvr-setup) okuyun
+- Her konum için doğru çözünürlüğü seçmek için [kamera çözünürlük rehberimize](/blog/camera-resolution-guide) göz atın
+- Bütçe dostu IP kameralar için [200 $ altı en iyi kameralar](/blog/best-cameras-under-200) sayfamıza bakın
+- İki sistem arasında karar veriyorsanız [NVR vs DVR](/blog/nvr-vs-dvr) karşılaştırın
+
+<Callout type="note" title="Hala Sorularınız mı Var?">
+  NVR teknolojisi gelişmeye devam ediyor. 2026'da H.265'e kıyasla %50 depolama tasarrufu sağlayan H.266 (VVC) sıkıştırma, daha hızlı ve daha ucuz hale gelen yapay zeka işlemcileri ve ana akım haline gelen 24 TB gözetim diskleri görüyoruz. Hangi NVR'nin özel ihtiyaçlarınıza uygun olduğundan emin değilseniz, kaç kameraya ve nerede ihtiyacınız olduğuna dair net bir planla başlayın — diğer her şey bundan sonra gelir.
+</Callout>

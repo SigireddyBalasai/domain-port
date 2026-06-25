@@ -1,0 +1,327 @@
+---
+title: "Panduan Lengkap Format File Video CCTV"
+publishedAt: "2026-05-21"
+description: "Panduan mendalam tentang format video CCTV — AVI, MP4, H.264, H.265, MOV, MKV, MJPEG, dan lainnya — dengan penjelasan tentang kompresi, kompatibilitas, dan tradeoff penyimpanan."
+author: "CCTV Name Authoe"
+updatedAt: "2026-05-21"
+image: "/og.svg"
+tags: ["CCTV","kamera CCTV","kamera keamanan","format-video","penyimpanan","kompresi"]
+---
+
+Memilih format file yang tepat untuk rekaman CCTV memengaruhi kualitas video, kebutuhan penyimpanan, kompatibilitas pemutaran, dan kegunaan forensik. Panduan ini mencakup format kontainer dan codec utama yang digunakan dalam sistem pengawasan.
+
+## Kontainer vs Codec
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#2563eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="4" y="12" width="56" height="40" rx="4"/>
+  <path d="M28 28 L40 36 L28 44 Z" fill="#2563eb" opacity="0.15"/>
+  <circle cx="16" cy="20" r="3" fill="#2563eb" opacity="0.3"/>
+</svg>
+
+[Format kontainer](https://en.wikipedia.org/wiki/Container_format) (seperti MP4 atau AVI) membungkus video, audio, dan metadata bersama-sama. [Codec](https://en.wikipedia.org/wiki/Video_codec) (seperti H.264 atau H.265) menentukan bagaimana video dikompresi di dalam kontainer tersebut. Sistem CCTV modern biasanya menggunakan video H.264 atau H.265 di dalam kontainer MP4.
+
+<YouTubeEmbed id="nepKKz-MzFM" title="FFmpeg: Video Codecs & Containers Explained" start={599} />
+
+<div style={{clear:'both'}}/>
+
+## Format Kontainer
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#2563eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="8" y="8" width="48" height="48" rx="6"/>
+  <path d="M24 22 L40 22 M24 30 L36 30 M24 38 L32 38" strokeWidth="2.5"/>
+  <rect x="12" y="44" width="12" height="8" rx="2" fill="#2563eb" opacity="0.2"/>
+  <rect x="28" y="44" width="24" height="8" rx="2" fill="#2563eb" opacity="0.2"/>
+</svg>
+
+### AVI (Audio Video Interleave)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#6366f1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="6" y="8" width="36" height="32" rx="3"/>
+  <circle cx="24" cy="24" r="8"/>
+  <polygon points="22,20 22,28 29,24" fill="#6366f1" opacity="0.3"/>
+  <rect x="6" y="36" width="8" height="4" rx="1" fill="#6366f1" opacity="0.2"/>
+  <rect x="34" y="36" width="8" height="4" rx="1" fill="#6366f1" opacity="0.2"/>
+</svg>
+
+[AVI](https://en.wikipedia.org/wiki/Audio_Video_Interleave) diperkenalkan oleh Microsoft pada tahun 1992. Format ini menyimpan data dengan kompresi minimal, menghasilkan file besar dengan kualitas tinggi.
+
+**Terbaik untuk:** Klip forensik jangka pendek yang mengutamakan detail daripada penyimpanan.
+
+| Kelebihan | Kekurangan |
+|------|------|
+| Kualitas tinggi, dukungan pemutaran luas | Ukuran file sangat besar |
+| Tidak perlu encoding kompleks | Efisiensi kompresi buruk |
+
+### MP4 (MPEG-4 Part 14)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#10b981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="6" y="6" width="36" height="36" rx="4"/>
+  <rect x="10" y="10" width="28" height="28" rx="2" fill="#10b981" opacity="0.1"/>
+  <polygon points="20,16 20,32 32,24" fill="#10b981" opacity="0.4"/>
+</svg>
+
+[MP4](https://en.wikipedia.org/wiki/MP4_file_format) adalah format dominan dalam pengawasan modern. Format ini menyeimbangkan efisiensi kompresi dengan kompatibilitas luas di seluruh NVR, aplikasi seluler, dan platform cloud.
+
+**Terbaik untuk:** Rekaman jangka panjang, peninjauan jarak jauh, dan alur kerja multi-platform.
+
+| Kelebihan | Kekurangan |
+|------|------|
+| Rasio kompresi-ke-kualitas sangat baik | Encoding sedikit lebih kompleks dari AVI |
+| Dukungan perangkat universal | |
+| Performa streaming bagus | |
+
+### MOV (QuickTime File Format)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#a855f7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="6" y="6" width="36" height="36" rx="6"/>
+  <path d="M16 14 L16 34 L34 24 Z" fill="#a855f7" opacity="0.3"/>
+  <circle cx="14" cy="14" r="2" fill="#a855f7" opacity="0.4"/>
+</svg>
+
+[MOV](https://en.wikipedia.org/wiki/QuickTime_File_Format) dikembangkan oleh Apple dan umum dalam alur kerja pasca-produksi. Beberapa NVR mengekspor ke MOV untuk tujuan pengeditan atau pengarsipan.
+
+**Terbaik untuk:** Alur kerja berbasis macOS dan rekaman yang ditujukan untuk pengeditan video.
+
+| Kelebihan | Kekurangan |
+|------|------|
+| Kualitas tinggi, mendukung codec ramah editing | Lebih besar dari MP4 |
+| Dukungan metadata baik | Dukungan asli lebih sedikit di luar ekosistem Apple |
+
+### MKV (Matroska Video)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#f59e0b" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="4" y="4" width="18" height="18" rx="2" fill="#f59e0b" opacity="0.15"/>
+  <rect x="26" y="4" width="18" height="18" rx="2" fill="#f59e0b" opacity="0.15"/>
+  <rect x="4" y="26" width="18" height="18" rx="2" fill="#f59e0b" opacity="0.15"/>
+  <rect x="26" y="26" width="18" height="18" rx="2" fill="#f59e0b" opacity="0.15"/>
+  <path d="M13 13 L35 13 M13 35 L35 35 M13 13 L13 35 M35 13 L35 35" strokeWidth="1" opacity="0.3"/>
+</svg>
+
+[MKV](https://en.wikipedia.org/wiki/Matroska) adalah kontainer standar terbuka yang dapat menampung banyak trek audio, aliran subtitle, dan penanda bab dalam satu file.
+
+**Terbaik untuk:** Ekspor multi-kamera atau pengarsipan rekaman dengan metadata.
+
+| Kelebihan | Kekurangan |
+|------|------|
+| Mendukung trek tak terbatas dalam satu file | Kurang dukungan di software NVR mainstream |
+| Sumber terbuka, tanpa biaya lisensi | Tidak kompatibel secara universal |
+
+### WMV (Windows Media Video)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#3b82f6" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="6" y="8" width="36" height="32" rx="2"/>
+  <path d="M6 28 L16 18 L22 26 L30 16 L42 28" strokeWidth="1.5" fill="none"/>
+  <polygon points="34,18 36,16 42,18 40,20" fill="#3b82f6" opacity="0.3"/>
+  <rect x="6" y="36" width="36" height="4" rx="1" fill="#3b82f6" opacity="0.1"/>
+</svg>
+
+[WMV](https://en.wikipedia.org/wiki/Windows_Media_Video) dirancang oleh Microsoft untuk pemutaran berbasis Windows. Format ini mencapai ukuran file kecil tetapi dengan mengorbankan kualitas yang cukup terlihat.
+
+**Terbaik untuk:** Sistem DVR lawas khusus Windows.
+
+| Kelebihan | Kekurangan |
+|------|------|
+| Ukuran file kecil | Kualitas lebih rendah dari codec modern |
+| Pemutaran asli Windows | Dukungan lintas platform buruk |
+
+### FLV (Flash Video)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#ef4444" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <polygon points="26,6 12,28 22,28 18,42 36,20 26,20" fill="#ef4444" opacity="0.2"/>
+</svg>
+
+[FLV](https://en.wikipedia.org/wiki/Flash_Video) banyak digunakan untuk streaming web pada tahun 2000-an. Format ini sudah usang sejak Adobe mengakhiri dukungan Flash pada tahun 2020.
+
+**Terbaik untuk:** Antarmuka pengawasan berbasis webcam atau browser lawas.
+
+| Kelebihan | Kekurangan |
+|------|------|
+| File kecil, streaming cepat | Teknologi usang |
+| | Kompatibilitas modern sangat terbatas |
+
+### 3GP
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#ec4899" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="12" y="4" width="24" height="40" rx="4"/>
+  <rect x="18" y="8" width="12" height="2" rx="1" fill="#ec4899" opacity="0.3"/>
+  <circle cx="24" cy="28" r="6"/>
+  <polygon points="22,24 22,32 29,28" fill="#ec4899" opacity="0.3"/>
+  <circle cx="24" cy="40" r="2" fill="#ec4899" opacity="0.4"/>
+</svg>
+
+[3GP](https://en.wikipedia.org/wiki/3GP_and_3G2) dikembangkan untuk ponsel 3G. Beberapa penampil CCTV seluler lama menggunakan format ini.
+
+**Terbaik untuk:** Aplikasi pengawasan seluler yang sangat lama.
+
+| Kelebihan | Kekurangan |
+|------|------|
+| Ukuran file sangat kecil | Kualitas video rendah |
+| Dioptimalkan untuk seluler bandwidth rendah | Format usang |
+
+<YouTubeEmbed id="_KMPjeioX08" title="I Watched This Movie on 10 Different Formats" />
+
+## Standar Kompresi (Codec)
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#059669" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <circle cx="32" cy="28" r="18"/>
+  <circle cx="32" cy="28" r="10"/>
+  <circle cx="32" cy="28" r="4"/>
+  <path d="M32 4 L32 10 M32 46 L32 52 M4 28 L10 28 M54 28 L60 28" strokeWidth="2.5" opacity="0.5"/>
+  <path d="M12 12 L16 16 M48 48 L52 52 M48 16 L52 12 M12 48 L16 44" strokeWidth="1.5" opacity="0.4"/>
+</svg>
+
+### H.264 (Advanced Video Coding)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <circle cx="24" cy="24" r="16"/>
+  <circle cx="24" cy="24" r="8"/>
+  <path d="M24 4 L24 8 M24 40 L24 44 M4 24 L8 24 M40 24 L44 24" strokeWidth="2" opacity="0.4"/>
+  <path d="M10 10 L13 13 M35 35 L38 38 M35 10 L38 13 M10 35 L13 38" strokeWidth="1.2" opacity="0.3"/>
+  <text x="18" y="29" fontSize="12" fill="#059669" fontWeight="bold" fontFamily="monospace">264</text>
+</svg>
+
+[H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) adalah standar kompresi video yang paling banyak digunakan di CCTV. Format ini dapat mengurangi ukuran file hingga 50% dibandingkan MJPEG sambil mempertahankan kualitas yang sebanding.
+
+**Terbaik untuk:** Rekaman HD dan pengawasan 24/7 berkelanjutan pada perangkat keras yang ada.
+
+| Kelebihan | Kekurangan |
+|------|------|
+| Dukungan dekoder perangkat keras luas | Terkendala lisensi (meski sebagian besar OEM menanggungnya) |
+| Matang, teruji baik dalam pengawasan | Digantikan oleh H.265 |
+
+### H.265 (High Efficiency Video Coding)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <circle cx="18" cy="24" r="12" opacity="0.6"/>
+  <circle cx="30" cy="24" r="12" opacity="0.6"/>
+  <circle cx="18" cy="24" r="6" opacity="0.4"/>
+  <circle cx="30" cy="24" r="6" opacity="0.4"/>
+  <path d="M18 8 L18 12 M30 8 L30 12 M18 36 L18 40 M30 36 L30 40" strokeWidth="1.5" opacity="0.3"/>
+  <text x="13" y="29" fontSize="10" fill="#059669" fontWeight="bold" fontFamily="monospace">265</text>
+  <text x="25" y="29" fontSize="10" fill="#059669" fontWeight="bold" fontFamily="monospace">265</text>
+</svg>
+
+[H.265](https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding) (disebut juga HEVC) kira-kira menggandakan rasio kompresi H.264, menjadikannya pilihan utama untuk NVR 4K dan multi-kanal.
+
+**Terbaik untuk:** Kamera 4K, NVR kanal tinggi, dan sistem dengan penyimpanan atau bandwidth terbatas.
+
+| Kelebihan | Kekurangan |
+|------|------|
+| File ~50% lebih kecil dari H.264 pada kualitas sama | Membutuhkan daya pemrosesan lebih |
+| Ideal untuk resolusi 4K+ | Dukungan terbatas di perangkat keras NVR lama |
+
+<YouTubeEmbed id="DI1BjkmVhTg" title="H.264 vs H.265 Codec Comparison" start={375} />
+
+<YouTubeEmbed id="WVjtK71qqXU" title="AV1 Codec Explained" />
+
+### MJPEG (Motion JPEG)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="4" y="10" width="10" height="28" rx="1" fill="#059669" opacity="0.15"/>
+  <rect x="16" y="10" width="10" height="28" rx="1" fill="#059669" opacity="0.15"/>
+  <rect x="28" y="10" width="10" height="28" rx="1" fill="#059669" opacity="0.15"/>
+  <rect x="40" y="10" width="6" height="28" rx="1" fill="#059669" opacity="0.1"/>
+  <line x1="9" y1="18" x2="9" y2="32" strokeWidth="1.2"/>
+  <line x1="21" y1="18" x2="21" y2="32" strokeWidth="1.2"/>
+  <line x1="33" y1="18" x2="33" y2="32" strokeWidth="1.2"/>
+  <circle cx="9" cy="16" r="1.5" fill="#059669"/>
+  <circle cx="21" cy="16" r="1.5" fill="#059669"/>
+  <circle cx="33" cy="16" r="1.5" fill="#059669"/>
+</svg>
+
+[MJPEG](https://en.wikipedia.org/wiki/Motion_JPEG) mengkodekan setiap bingkai sebagai gambar JPEG independen. Ini membuat analisis bingkai-per-bingkai sederhana tetapi menghasilkan file besar karena tidak ada kompresi antar-bingkai yang digunakan.
+
+**Terbaik untuk:** Aplikasi yang memerlukan latensi encoding rendah atau ekstraksi bingkai mudah.
+
+| Kelebihan | Kekurangan |
+|------|------|
+| Setiap bingkai adalah gambar penuh (mudah mengambil gambar diam) | Kompresi buruk dibandingkan H.264/H.265 |
+| Latensi encoding rendah | Ukuran file besar untuk perekaman terus-menerus |
+
+### RAW / Video Tak Terkompresi
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <polygon points="24,4 44,24 24,44 4,24" fill="#059669" opacity="0.1"/>
+  <polygon points="24,10 38,24 24,38 10,24" fill="none" strokeWidth="1" opacity="0.4"/>
+  <circle cx="24" cy="24" r="6" fill="none"/>
+  <circle cx="24" cy="24" r="2" fill="#059669" opacity="0.4"/>
+</svg>
+
+[Video tak terkompresi](https://en.wikipedia.org/wiki/Uncompressed_video) menangkap setiap piksel dari sensor tanpa kompresi. File berukuran sangat besar tetapi menawarkan nilai bukti maksimal.
+
+**Terbaik untuk:** Bukti forensik, barang bukti pengadilan, dan analisis investigasi.
+
+| Kelebihan | Kekurangan |
+|------|------|
+| Tanpa artefak kompresi | Kebutuhan penyimpanan sangat besar secara tidak praktis |
+| Detail maksimal untuk analisis | Memerlukan perangkat lunak pemutaran khusus |
+
+## Format DVR Properti
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#dc2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="6" y="14" width="52" height="36" rx="4"/>
+  <rect x="12" y="20" width="40" height="24" rx="2" fill="#dc2626" opacity="0.1"/>
+  <circle cx="20" cy="32" r="4" fill="#dc2626" opacity="0.3"/>
+  <path d="M26 32 L44 32 M44 28 L44 36" strokeWidth="2.5"/>
+  <rect x="6" y="44" width="14" height="6" rx="1" fill="#dc2626" opacity="0.2"/>
+  <rect x="44" y="44" width="14" height="6" rx="1" fill="#dc2626" opacity="0.2"/>
+</svg>
+
+Banyak produsen DVR menggunakan [format kontainer proprietary](https://en.wikipedia.org/wiki/Proprietary_format) yang menyematkan metadata seperti stempel waktu, peristiwa gerakan, dan ID kamera. File-file ini memerlukan perangkat lunak atau pemutar dari vendor untuk diputar.
+
+**Terbaik untuk:** Pemutaran mulus dalam ekosistem pabrikan.
+
+| Kelebihan | Kekurangan |
+|------|------|
+| Metadata kaya (waktu, gerakan, ID kamera) | Terikat pada satu vendor |
+| Dioptimalkan untuk perangkat keras spesifik | Ekspor biasanya memerlukan konversi |
+
+## Pertimbangan Penyimpanan
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="8" y="10" width="48" height="44" rx="4"/>
+  <rect x="14" y="16" width="36" height="10" rx="2" fill="#7c3aed" opacity="0.15"/>
+  <rect x="14" y="30" width="36" height="10" rx="2" fill="#7c3aed" opacity="0.15"/>
+  <rect x="14" y="44" width="36" height="6" rx="2" fill="#7c3aed" opacity="0.15"/>
+  <circle cx="20" cy="21" r="1.5" fill="#7c3aed"/>
+  <circle cx="20" cy="35" r="1.5" fill="#7c3aed"/>
+</svg>
+
+Pilihan codec secara langsung memengaruhi perencanaan penyimpanan. Sistem 4 kanal 1080p yang merekam 24/7 membutuhkan kira-kira:
+
+| Codec | Penyimpanan Harian (4× 1080p @ 15 fps) |
+|-------|-----------------------------------|
+| MJPEG | ~300 GB |
+| H.264 | ~80 GB |
+| H.265 | ~40 GB |
+| RAW   | ~2+ TB |
+
+Lihat [implementasi referensi H.264](https://en.wikipedia.org/wiki/X264) atau [proyek x265](https://en.wikipedia.org/wiki/X265) untuk pendalaman teknis tentang codec ini.
+
+## Panduan Pemilihan Cepat
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#ca8a04" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="6" y="6" width="52" height="52" rx="6"/>
+  <path d="M20 32 L28 40 L44 24" strokeWidth="3" stroke="#ca8a04"/>
+  <path d="M20 18 L44 18" strokeWidth="2" opacity="0.4"/>
+  <path d="M20 46 L40 46" strokeWidth="2" opacity="0.4"/>
+</svg>
+
+| Kebutuhan | Format yang Direkomendasikan |
+|------|-------------------|
+| CCTV modern serbaguna | MP4 dengan H.264 atau H.265 |
+| Kualitas maksimal untuk bukti | AVI atau RAW |
+| Analisis forensik bingkai per bingkai | MJPEG |
+| Rekaman 4K jangka panjang | H.265 di dalam MP4 |
+| Alur kerja macOS atau pengeditan video | MOV dengan H.264 |
+
+## Tontonan Lebih Lanjut
+
+| Topik | Saluran | Video |
+|-------|---------|-------|
+| Codec & kontainer video secara mendalam | Lex Fridman Podcast | [FFmpeg: The Technology Behind Video on the Internet](https://www.youtube.com/watch?v=nepKKz-MzFM) (stempel waktu 9:59) |
+| Perbandingan 10 format video (VHS hingga 4K Blu-ray) | Linus Tech Tips | [I Watched This Movie on 10 Different Formats](https://www.youtube.com/watch?v=_KMPjeioX08) |
+| H.264 vs H.265 untuk unggahan YouTube | Gerald Undone | [Beat the Compression!](https://www.youtube.com/watch?v=DI1BjkmVhTg) |
+| Codec AV1 dijelaskan dan diuji | Linus Tech Tips | [I bought a SECOND GPU… but NOT for gaming](https://www.youtube.com/watch?v=WVjtK71qqXU) |
+
+[Kembali ke blog](/blog)

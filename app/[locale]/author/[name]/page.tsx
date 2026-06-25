@@ -54,6 +54,12 @@ export const generateMetadata = async ({
       description: `Articles and guides by ${authorName}.`,
       images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: `${authorName} | ${siteConfig.name}`,
+      description: `Articles and guides by ${authorName}.`,
+      images: [siteConfig.ogImage],
+    },
     alternates: {
       canonical: pageUrl,
       languages: {
@@ -106,8 +112,8 @@ export default async function AuthorPage({
             {
               "@type": "ListItem",
               position: 2,
-              name: "Authors",
-              item: `${siteConfig.url}/${locale}/authors`,
+              name: "Blog",
+              item: `${siteConfig.url}/${locale}/blog`,
             },
             {
               "@type": "ListItem",

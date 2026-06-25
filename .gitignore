@@ -42,3 +42,7 @@ pnpm-debug.log*
 *.tsbuildinfo
 next-env.d.ts
 .vercel
+
+# google search console mcp
+/credentials.json
+/credentials_token.json

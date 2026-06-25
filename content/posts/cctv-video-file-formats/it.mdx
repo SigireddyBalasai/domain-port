@@ -1,0 +1,327 @@
+---
+title: "Guida completa ai formati di file video CCTV"
+publishedAt: "2026-05-21"
+description: "Una guida approfondita ai formati video CCTV — AVI, MP4, H.264, H.265, MOV, MKV, MJPEG e altri — con spiegazioni su compressione, compatibilità e compromessi di archiviazione."
+author: "CCTV Name Authoe"
+updatedAt: "2026-05-21"
+image: "/og.svg"
+tags: ["CCTV","telecamera CCTV","telecamera di sicurezza","formati-video","archiviazione","compressione"]
+---
+
+La scelta del formato file giusto per i filmati CCTV influisce sulla qualità video, sui requisiti di archiviazione, sulla compatibilità di riproduzione e sull'usabilità forense. Questa guida copre i principali formati contenitore e codec utilizzati nei sistemi di sorveglianza.
+
+## Contenitori vs Codec
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#2563eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="4" y="12" width="56" height="40" rx="4"/>
+  <path d="M28 28 L40 36 L28 44 Z" fill="#2563eb" opacity="0.15"/>
+  <circle cx="16" cy="20" r="3" fill="#2563eb" opacity="0.3"/>
+</svg>
+
+Un [formato contenitore](https://en.wikipedia.org/wiki/Container_format) (come MP4 o AVI) raggruppa video, audio e metadati insieme. Un [codec](https://en.wikipedia.org/wiki/Video_codec) (come H.264 o H.265) determina come il video viene compresso all'interno di quel contenitore. I moderni sistemi CCTV utilizzano tipicamente video H.264 o H.265 all'interno di un contenitore MP4.
+
+<YouTubeEmbed id="nepKKz-MzFM" title="FFmpeg: Video Codecs & Containers Explained" start={599} />
+
+<div style={{clear:'both'}}/>
+
+## Formati contenitore
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#2563eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="8" y="8" width="48" height="48" rx="6"/>
+  <path d="M24 22 L40 22 M24 30 L36 30 M24 38 L32 38" strokeWidth="2.5"/>
+  <rect x="12" y="44" width="12" height="8" rx="2" fill="#2563eb" opacity="0.2"/>
+  <rect x="28" y="44" width="24" height="8" rx="2" fill="#2563eb" opacity="0.2"/>
+</svg>
+
+### AVI (Audio Video Interleave)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#6366f1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="6" y="8" width="36" height="32" rx="3"/>
+  <circle cx="24" cy="24" r="8"/>
+  <polygon points="22,20 22,28 29,24" fill="#6366f1" opacity="0.3"/>
+  <rect x="6" y="36" width="8" height="4" rx="1" fill="#6366f1" opacity="0.2"/>
+  <rect x="34" y="36" width="8" height="4" rx="1" fill="#6366f1" opacity="0.2"/>
+</svg>
+
+[AVI](https://en.wikipedia.org/wiki/Audio_Video_Interleave) è stato introdotto da Microsoft nel 1992. Memorizza i dati con una compressione minima, producendo file di grandi dimensioni con alta qualità.
+
+**Ideale per:** Clip forensi a breve termine dove il dettaglio è più importante dello storage.
+
+| Pro | Contro |
+|------|------|
+| Alta qualità, ampio supporto di riproduzione | Dimensioni file molto grandi |
+| Nessuna codifica complessa necessaria | Scarsa efficienza di compressione |
+
+### MP4 (MPEG-4 Part 14)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#10b981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="6" y="6" width="36" height="36" rx="4"/>
+  <rect x="10" y="10" width="28" height="28" rx="2" fill="#10b981" opacity="0.1"/>
+  <polygon points="20,16 20,32 32,24" fill="#10b981" opacity="0.4"/>
+</svg>
+
+[MP4](https://en.wikipedia.org/wiki/MP4_file_format) è il formato dominante nella sorveglianza moderna. Bilancia l'efficienza di compressione con un'ampia compatibilità su NVR, app mobili e piattaforme cloud.
+
+**Ideale per:** Registrazione a lungo termine, visualizzazione remota e flussi di lavoro multipiattaforma.
+
+| Pro | Contro |
+|------|------|
+| Eccellente rapporto compressione-qualità | Codifica leggermente più complessa dell'AVI |
+| Supporto universale dei dispositivi | |
+| Buone prestazioni di streaming | |
+
+### MOV (QuickTime File Format)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#a855f7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="6" y="6" width="36" height="36" rx="6"/>
+  <path d="M16 14 L16 34 L34 24 Z" fill="#a855f7" opacity="0.3"/>
+  <circle cx="14" cy="14" r="2" fill="#a855f7" opacity="0.4"/>
+</svg>
+
+[MOV](https://en.wikipedia.org/wiki/QuickTime_File_Format) è stato sviluppato da Apple ed è comune nei flussi di post-produzione. Alcuni NVR esportano in MOV per scopi di editing o archiviazione.
+
+**Ideale per:** Flussi di lavoro basati su macOS e filmati destinati al montaggio video.
+
+| Pro | Contro |
+|------|------|
+| Alta qualità, supporta codec adatti all'editing | Più grande di MP4 |
+| Buon supporto dei metadati | Minor supporto nativo al di fuori dell'ecosistema Apple |
+
+### MKV (Matroska Video)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#f59e0b" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="4" y="4" width="18" height="18" rx="2" fill="#f59e0b" opacity="0.15"/>
+  <rect x="26" y="4" width="18" height="18" rx="2" fill="#f59e0b" opacity="0.15"/>
+  <rect x="4" y="26" width="18" height="18" rx="2" fill="#f59e0b" opacity="0.15"/>
+  <rect x="26" y="26" width="18" height="18" rx="2" fill="#f59e0b" opacity="0.15"/>
+  <path d="M13 13 L35 13 M13 35 L35 35 M13 13 L13 35 M35 13 L35 35" strokeWidth="1" opacity="0.3"/>
+</svg>
+
+[MKV](https://en.wikipedia.org/wiki/Matroska) è un contenitore open-standard che può contenere multiple tracce audio, flussi di sottotitoli e marcatori di capitolo in un singolo file.
+
+**Ideale per:** Esportazioni multi-telecamera o archiviazione di filmati con metadati.
+
+| Pro | Contro |
+|------|------|
+| Supporta tracce illimitate in un file | Meno supportato nei software NVR mainstream |
+| Open-source, nessuna tassa di licenza | Non universalmente compatibile |
+
+### WMV (Windows Media Video)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#3b82f6" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="6" y="8" width="36" height="32" rx="2"/>
+  <path d="M6 28 L16 18 L22 26 L30 16 L42 28" strokeWidth="1.5" fill="none"/>
+  <polygon points="34,18 36,16 42,18 40,20" fill="#3b82f6" opacity="0.3"/>
+  <rect x="6" y="36" width="36" height="4" rx="1" fill="#3b82f6" opacity="0.1"/>
+</svg>
+
+[WMV](https://en.wikipedia.org/wiki/Windows_Media_Video) è stato progettato da Microsoft per la riproduzione su Windows. Raggiunge dimensioni file ridotte ma a un notevole costo di qualità.
+
+**Ideale per:** Sistemi DVR legacy solo Windows.
+
+| Pro | Contro |
+|------|------|
+| Dimensioni file ridotte | Qualità inferiore rispetto ai codec moderni |
+| Riproduzione nativa Windows | Scarso supporto multipiattaforma |
+
+### FLV (Flash Video)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#ef4444" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <polygon points="26,6 12,28 22,28 18,42 36,20 26,20" fill="#ef4444" opacity="0.2"/>
+</svg>
+
+[FLV](https://en.wikipedia.org/wiki/Flash_Video) era ampiamente utilizzato per lo streaming web negli anni 2000. È in gran parte obsoleto da quando Adobe ha terminato il supporto Flash nel 2020.
+
+**Ideale per:** Interfacce di sorveglianza legacy basate su webcam o browser.
+
+| Pro | Contro |
+|------|------|
+| File piccoli, streaming veloce | Tecnologia obsoleta |
+| | Compatibilità moderna molto limitata |
+
+### 3GP
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#ec4899" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="12" y="4" width="24" height="40" rx="4"/>
+  <rect x="18" y="8" width="12" height="2" rx="1" fill="#ec4899" opacity="0.3"/>
+  <circle cx="24" cy="28" r="6"/>
+  <polygon points="22,24 22,32 29,28" fill="#ec4899" opacity="0.3"/>
+  <circle cx="24" cy="40" r="2" fill="#ec4899" opacity="0.4"/>
+</svg>
+
+[3GP](https://en.wikipedia.org/wiki/3GP_and_3G2) è stato sviluppato per telefoni cellulari 3G. Alcuni vecchi viewer CCTV mobili utilizzano questo formato.
+
+**Ideale per:** App di sorveglianza mobile molto datate.
+
+| Pro | Contro |
+|------|------|
+| Dimensioni file estremamente ridotte | Bassa qualità video |
+| Ottimizzato per dispositivi mobili a bassa larghezza di banda | Formato obsoleto |
+
+<YouTubeEmbed id="_KMPjeioX08" title="I Watched This Movie on 10 Different Formats" />
+
+## Standard di compressione (Codec)
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#059669" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <circle cx="32" cy="28" r="18"/>
+  <circle cx="32" cy="28" r="10"/>
+  <circle cx="32" cy="28" r="4"/>
+  <path d="M32 4 L32 10 M32 46 L32 52 M4 28 L10 28 M54 28 L60 28" strokeWidth="2.5" opacity="0.5"/>
+  <path d="M12 12 L16 16 M48 48 L52 52 M48 16 L52 12 M12 48 L16 44" strokeWidth="1.5" opacity="0.4"/>
+</svg>
+
+### H.264 (Advanced Video Coding)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <circle cx="24" cy="24" r="16"/>
+  <circle cx="24" cy="24" r="8"/>
+  <path d="M24 4 L24 8 M24 40 L24 44 M4 24 L8 24 M40 24 L44 24" strokeWidth="2" opacity="0.4"/>
+  <path d="M10 10 L13 13 M35 35 L38 38 M35 10 L38 13 M10 35 L13 38" strokeWidth="1.2" opacity="0.3"/>
+  <text x="18" y="29" fontSize="12" fill="#059669" fontWeight="bold" fontFamily="monospace">264</text>
+</svg>
+
+[H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) è lo standard di compressione video più diffuso in ambito CCTV. Può ridurre la dimensione dei file fino al 50% rispetto a MJPEG mantenendo una qualità comparabile.
+
+**Ideale per:** Registrazione HD e sorveglianza continua 24/7 su hardware esistente.
+
+| Pro | Contro |
+|------|------|
+| Ampio supporto di decoder hardware | Vincoli di licenza (anche se la maggior parte degli OEM li copre) |
+| Maturo, ben testato nella sorveglianza | In fase di sostituzione da H.265 |
+
+### H.265 (High Efficiency Video Coding)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <circle cx="18" cy="24" r="12" opacity="0.6"/>
+  <circle cx="30" cy="24" r="12" opacity="0.6"/>
+  <circle cx="18" cy="24" r="6" opacity="0.4"/>
+  <circle cx="30" cy="24" r="6" opacity="0.4"/>
+  <path d="M18 8 L18 12 M30 8 L30 12 M18 36 L18 40 M30 36 L30 40" strokeWidth="1.5" opacity="0.3"/>
+  <text x="13" y="29" fontSize="10" fill="#059669" fontWeight="bold" fontFamily="monospace">265</text>
+  <text x="25" y="29" fontSize="10" fill="#059669" fontWeight="bold" fontFamily="monospace">265</text>
+</svg>
+
+[H.265](https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding) (chiamato anche HEVC) raddoppia circa il rapporto di compressione di H.264, rendendolo la scelta ideale per NVR 4K e multi-canale.
+
+**Ideale per:** Telecamere 4K, NVR ad alto numero di canali e sistemi con archiviazione o larghezza di banda limitata.
+
+| Pro | Contro |
+|------|------|
+| File ~50% più piccoli di H.264 alla stessa qualità | Richiede più potenza di elaborazione |
+| Ideale per risoluzioni 4K+ | Supporto limitato in hardware NVR più vecchi |
+
+<YouTubeEmbed id="DI1BjkmVhTg" title="H.264 vs H.265 Codec Comparison" start={375} />
+
+<YouTubeEmbed id="WVjtK71qqXU" title="AV1 Codec Explained" />
+
+### MJPEG (Motion JPEG)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="4" y="10" width="10" height="28" rx="1" fill="#059669" opacity="0.15"/>
+  <rect x="16" y="10" width="10" height="28" rx="1" fill="#059669" opacity="0.15"/>
+  <rect x="28" y="10" width="10" height="28" rx="1" fill="#059669" opacity="0.15"/>
+  <rect x="40" y="10" width="6" height="28" rx="1" fill="#059669" opacity="0.1"/>
+  <line x1="9" y1="18" x2="9" y2="32" strokeWidth="1.2"/>
+  <line x1="21" y1="18" x2="21" y2="32" strokeWidth="1.2"/>
+  <line x1="33" y1="18" x2="33" y2="32" strokeWidth="1.2"/>
+  <circle cx="9" cy="16" r="1.5" fill="#059669"/>
+  <circle cx="21" cy="16" r="1.5" fill="#059669"/>
+  <circle cx="33" cy="16" r="1.5" fill="#059669"/>
+</svg>
+
+[MJPEG](https://en.wikipedia.org/wiki/Motion_JPEG) codifica ogni fotogramma come un'immagine JPEG indipendente. Questo rende l'analisi fotogramma per fotogramma semplice ma produce file grandi poiché non viene utilizzata alcuna compressione inter-fotogramma.
+
+**Ideale per:** Applicazioni che richiedono bassa latenza di codifica o facile estrazione di fotogrammi.
+
+| Pro | Contro |
+|------|------|
+| Ogni fotogramma è un'immagine completa (facile estrarre fermi immagine) | Compressione scarsa rispetto a H.264/H.265 |
+| Bassa latenza di codifica | Dimensioni file elevate per registrazione continua |
+
+### RAW / Video non compresso
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <polygon points="24,4 44,24 24,44 4,24" fill="#059669" opacity="0.1"/>
+  <polygon points="24,10 38,24 24,38 10,24" fill="none" strokeWidth="1" opacity="0.4"/>
+  <circle cx="24" cy="24" r="6" fill="none"/>
+  <circle cx="24" cy="24" r="2" fill="#059669" opacity="0.4"/>
+</svg>
+
+[Il video non compresso](https://en.wikipedia.org/wiki/Uncompressed_video) cattura ogni pixel dal sensore senza compressione. I file sono enormi ma offrono il massimo valore probatorio.
+
+**Ideale per:** Prove forensi, esposizioni in tribunale e analisi investigative.
+
+| Pro | Contro |
+|------|------|
+| Nessun artefatto di compressione | Requisiti di archiviazione impraticabilmente grandi |
+| Massimo dettaglio per l'analisi | Richiede software di riproduzione specializzato |
+
+## Formati DVR proprietari
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#dc2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="6" y="14" width="52" height="36" rx="4"/>
+  <rect x="12" y="20" width="40" height="24" rx="2" fill="#dc2626" opacity="0.1"/>
+  <circle cx="20" cy="32" r="4" fill="#dc2626" opacity="0.3"/>
+  <path d="M26 32 L44 32 M44 28 L44 36" strokeWidth="2.5"/>
+  <rect x="6" y="44" width="14" height="6" rx="1" fill="#dc2626" opacity="0.2"/>
+  <rect x="44" y="44" width="14" height="6" rx="1" fill="#dc2626" opacity="0.2"/>
+</svg>
+
+Molti produttori di DVR utilizzano [formati contenitore proprietari](https://en.wikipedia.org/wiki/Proprietary_format) che incorporano metadati come timestamp, eventi di movimento e ID telecamera. Questi file richiedono il software o il lettore del vendor per la riproduzione.
+
+**Ideale per:** Riproduzione senza soluzione di continuità all'interno dell'ecosistema del produttore.
+
+| Pro | Contro |
+|------|------|
+| Metadati ricchi (tempo, movimento, ID telecamera) | Legato a un unico vendor |
+| Ottimizzato per l'hardware specifico | L'esportazione richiede solitamente conversione |
+
+## Considerazioni sull'archiviazione
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="8" y="10" width="48" height="44" rx="4"/>
+  <rect x="14" y="16" width="36" height="10" rx="2" fill="#7c3aed" opacity="0.15"/>
+  <rect x="14" y="30" width="36" height="10" rx="2" fill="#7c3aed" opacity="0.15"/>
+  <rect x="14" y="44" width="36" height="6" rx="2" fill="#7c3aed" opacity="0.15"/>
+  <circle cx="20" cy="21" r="1.5" fill="#7c3aed"/>
+  <circle cx="20" cy="35" r="1.5" fill="#7c3aed"/>
+</svg>
+
+La scelta del codec influisce direttamente sulla pianificazione dello storage. Un sistema a 4 canali 1080p che registra 24/7 richiede approssimativamente:
+
+| Codec | Archiviazione giornaliera (4× 1080p @ 15 fps) |
+|-------|-----------------------------------|
+| MJPEG | ~300 GB |
+| H.264 | ~80 GB |
+| H.265 | ~40 GB |
+| RAW   | ~2+ TB |
+
+Fare riferimento all'[implementazione di riferimento H.264](https://en.wikipedia.org/wiki/X264) o al [progetto x265](https://en.wikipedia.org/wiki/X265) per approfondimenti tecnici su questi codec.
+
+## Guida rapida alla selezione
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#ca8a04" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="6" y="6" width="52" height="52" rx="6"/>
+  <path d="M20 32 L28 40 L44 24" strokeWidth="3" stroke="#ca8a04"/>
+  <path d="M20 18 L44 18" strokeWidth="2" opacity="0.4"/>
+  <path d="M20 46 L40 46" strokeWidth="2" opacity="0.4"/>
+</svg>
+
+| Esigenza | Formato consigliato |
+|------|-------------------|
+| CCTV moderno per uso generale | MP4 con H.264 o H.265 |
+| Massima qualità per prove | AVI o RAW |
+| Analisi forense fotogramma per fotogramma | MJPEG |
+| Registrazione 4K a lungo termine | H.265 in MP4 |
+| Flussi macOS o editing video | MOV con H.264 |
+
+## Per approfondire
+
+| Argomento | Canale | Video |
+|-------|---------|-------|
+| Codec e contenitori video approfonditi | Lex Fridman Podcast | [FFmpeg: The Technology Behind Video on the Internet](https://www.youtube.com/watch?v=nepKKz-MzFM) (timestamp 9:59) |
+| Confronto di 10 formati video (da VHS a 4K Blu-ray) | Linus Tech Tips | [I Watched This Movie on 10 Different Formats](https://www.youtube.com/watch?v=_KMPjeioX08) |
+| H.264 vs H.265 per upload YouTube | Gerald Undone | [Beat the Compression!](https://www.youtube.com/watch?v=DI1BjkmVhTg) |
+| Codec AV1 spiegato e testato | Linus Tech Tips | [I bought a SECOND GPU… but NOT for gaming](https://www.youtube.com/watch?v=WVjtK71qqXU) |
+
+[Torna al blog](/blog)

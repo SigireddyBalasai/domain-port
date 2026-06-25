@@ -26,7 +26,7 @@ export default function LoginPage(): JSX.Element {
       await signIn.email({
         email,
         password,
-        callbackURL: "/keystatic",
+        callbackURL: "/admin/comments",
         fetchOptions: {
           onError: (ctx) => {
             if (ctx.error.code === "TWO_FACTOR_NOT_ENABLED") {
@@ -38,7 +38,7 @@ export default function LoginPage(): JSX.Element {
             }
           },
           onSuccess: () => {
-            router.push("/keystatic")
+            router.push("/admin/comments")
           },
         },
       })
@@ -65,7 +65,7 @@ export default function LoginPage(): JSX.Element {
         code: totpCode,
         fetchOptions: {
           onSuccess: () => {
-            router.push("/keystatic")
+            router.push("/admin/comments")
           },
           onError: (ctx) => {
             setError(ctx.error.message || "Invalid TOTP code")

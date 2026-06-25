@@ -1,0 +1,327 @@
+---
+title: "Полное руководство по форматам видеофайлов для камер видеонаблюдения"
+publishedAt: "2026-05-21"
+description: "Какой формат видео CCTV выбрать? Сравнение AVI, MP4, H.264, H.265, MOV, MKV и MJPEG. H.265 экономит 50% места без потери качества. Выберите лучший формат для вашей системы видеонаблюдения."
+author: "CCTV Name Authoe"
+updatedAt: "2026-05-21"
+image: "/og.svg"
+tags: ["CCTV","камера CCTV","камера безопасности","форматы-видео","хранилище","сжатие"]
+---
+
+Выбор правильного формата файла для записей CCTV влияет на качество видео, требования к хранилищу, совместимость воспроизведения и судебную пригодность. Это руководство охватывает основные форматы контейнеров и кодеки, используемые в системах видеонаблюдения.
+
+## Контейнеры vs Кодеки
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#2563eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="4" y="12" width="56" height="40" rx="4"/>
+  <path d="M28 28 L40 36 L28 44 Z" fill="#2563eb" opacity="0.15"/>
+  <circle cx="16" cy="20" r="3" fill="#2563eb" opacity="0.3"/>
+</svg>
+
+[Формат контейнера](https://en.wikipedia.org/wiki/Container_format) (такой как MP4 или AVI) объединяет видео, аудио и метаданные вместе. [Кодек](https://en.wikipedia.org/wiki/Video_codec) (такой как H.264 или H.265) определяет, как видео сжимается внутри этого контейнера. Современные системы CCTV обычно используют видео H.264 или H.265 внутри контейнера MP4.
+
+<YouTubeEmbed id="nepKKz-MzFM" title="FFmpeg: Video Codecs & Containers Explained" start={599} />
+
+<div style={{clear:'both'}}/>
+
+## Форматы контейнеров
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#2563eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="8" y="8" width="48" height="48" rx="6"/>
+  <path d="M24 22 L40 22 M24 30 L36 30 M24 38 L32 38" strokeWidth="2.5"/>
+  <rect x="12" y="44" width="12" height="8" rx="2" fill="#2563eb" opacity="0.2"/>
+  <rect x="28" y="44" width="24" height="8" rx="2" fill="#2563eb" opacity="0.2"/>
+</svg>
+
+### AVI (Audio Video Interleave)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#6366f1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="6" y="8" width="36" height="32" rx="3"/>
+  <circle cx="24" cy="24" r="8"/>
+  <polygon points="22,20 22,28 29,24" fill="#6366f1" opacity="0.3"/>
+  <rect x="6" y="36" width="8" height="4" rx="1" fill="#6366f1" opacity="0.2"/>
+  <rect x="34" y="36" width="8" height="4" rx="1" fill="#6366f1" opacity="0.2"/>
+</svg>
+
+[AVI](https://en.wikipedia.org/wiki/Audio_Video_Interleave) был представлен Microsoft в 1992 году. Он хранит данные с минимальным сжатием, создавая большие файлы высокого качества.
+
+**Лучше всего для:** Краткосрочных судебных клипов, где детали важнее объёма хранилища.
+
+| Плюсы | Минусы |
+|------|------|
+| Высокое качество, широкая поддержка воспроизведения | Очень большие размеры файлов |
+| Не требуется сложное кодирование | Низкая эффективность сжатия |
+
+### MP4 (MPEG-4 Part 14)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#10b981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="6" y="6" width="36" height="36" rx="4"/>
+  <rect x="10" y="10" width="28" height="28" rx="2" fill="#10b981" opacity="0.1"/>
+  <polygon points="20,16 20,32 32,24" fill="#10b981" opacity="0.4"/>
+</svg>
+
+[MP4](https://en.wikipedia.org/wiki/MP4_file_format) является доминирующим форматом в современном видеонаблюдении. Он балансирует эффективность сжатия с широкой совместимостью в NVR, мобильных приложениях и облачных платформах.
+
+**Лучше всего для:** Долгосрочной записи, удалённого просмотра и кроссплатформенных рабочих процессов.
+
+| Плюсы | Минусы |
+|------|------|
+| Отличное соотношение сжатия и качества | Несколько более сложное кодирование, чем AVI |
+| Универсальная поддержка устройств | |
+| Хорошая производительность потоковой передачи | |
+
+### MOV (QuickTime File Format)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#a855f7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="6" y="6" width="36" height="36" rx="6"/>
+  <path d="M16 14 L16 34 L34 24 Z" fill="#a855f7" opacity="0.3"/>
+  <circle cx="14" cy="14" r="2" fill="#a855f7" opacity="0.4"/>
+</svg>
+
+[MOV](https://en.wikipedia.org/wiki/QuickTime_File_Format) был разработан Apple и распространён в рабочих процессах постпроизводства. Некоторые NVR экспортируют в MOV для целей редактирования или архивирования.
+
+**Лучше всего для:** Рабочих процессов на основе macOS и записей, предназначенных для видеомонтажа.
+
+| Плюсы | Минусы |
+|------|------|
+| Высокое качество, поддерживает удобные для редактирования кодеки | Больше, чем MP4 |
+| Хорошая поддержка метаданных | Меньше нативной поддержки вне экосистемы Apple |
+
+### MKV (Matroska Video)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#f59e0b" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="4" y="4" width="18" height="18" rx="2" fill="#f59e0b" opacity="0.15"/>
+  <rect x="26" y="4" width="18" height="18" rx="2" fill="#f59e0b" opacity="0.15"/>
+  <rect x="4" y="26" width="18" height="18" rx="2" fill="#f59e0b" opacity="0.15"/>
+  <rect x="26" y="26" width="18" height="18" rx="2" fill="#f59e0b" opacity="0.15"/>
+  <path d="M13 13 L35 13 M13 35 L35 35 M13 13 L13 35 M35 13 L35 35" strokeWidth="1" opacity="0.3"/>
+</svg>
+
+[MKV](https://en.wikipedia.org/wiki/Matroska) — это открытый стандартный контейнер, который может содержать несколько аудиодорожек, потоков субтитров и маркеров глав в одном файле.
+
+**Лучше всего для:** Многокамерного экспорта или архивирования записей с метаданными.
+
+| Плюсы | Минусы |
+|------|------|
+| Поддерживает неограниченное количество дорожек в одном файле | Меньше поддержки в主流 NVR-программах |
+| Открытый исходный код, без лицензионных отчислений | Не универсально совместим |
+
+### WMV (Windows Media Video)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#3b82f6" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="6" y="8" width="36" height="32" rx="2"/>
+  <path d="M6 28 L16 18 L22 26 L30 16 L42 28" strokeWidth="1.5" fill="none"/>
+  <polygon points="34,18 36,16 42,18 40,20" fill="#3b82f6" opacity="0.3"/>
+  <rect x="6" y="36" width="36" height="4" rx="1" fill="#3b82f6" opacity="0.1"/>
+</svg>
+
+[WMV](https://en.wikipedia.org/wiki/Windows_Media_Video) был разработан Microsoft для воспроизведения на Windows. Он достигает небольших размеров файлов, но с заметной потерей качества.
+
+**Лучше всего для:** Устаревших систем DVR только для Windows.
+
+| Плюсы | Минусы |
+|------|------|
+| Небольшие размеры файлов | Более низкое качество по сравнению с современными кодеками |
+| Нативное воспроизведение в Windows | Плохая кроссплатформенная поддержка |
+
+### FLV (Flash Video)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#ef4444" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <polygon points="26,6 12,28 22,28 18,42 36,20 26,20" fill="#ef4444" opacity="0.2"/>
+</svg>
+
+[FLV](https://en.wikipedia.org/wiki/Flash_Video) широко использовался для веб-стриминга в 2000-х годах. Он в значительной степени устарел после прекращения поддержки Flash компанией Adobe в 2020 году.
+
+**Лучше всего для:** Устаревших интерфейсов наблюдения на базе веб-камер или браузера.
+
+| Плюсы | Минусы |
+|------|------|
+| Небольшие файлы, быстрая потоковая передача | Устаревшая технология |
+| | Очень ограниченная современная совместимость |
+
+### 3GP
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#ec4899" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="12" y="4" width="24" height="40" rx="4"/>
+  <rect x="18" y="8" width="12" height="2" rx="1" fill="#ec4899" opacity="0.3"/>
+  <circle cx="24" cy="28" r="6"/>
+  <polygon points="22,24 22,32 29,28" fill="#ec4899" opacity="0.3"/>
+  <circle cx="24" cy="40" r="2" fill="#ec4899" opacity="0.4"/>
+</svg>
+
+[3GP](https://en.wikipedia.org/wiki/3GP_and_3G2) был разработан для мобильных телефонов 3G. Некоторые старые мобильные просмотрщики CCTV используют этот формат.
+
+**Лучше всего для:** Очень старых мобильных приложений наблюдения.
+
+| Плюсы | Минусы |
+|------|------|
+| Чрезвычайно маленькие размеры файлов | Низкое качество видео |
+| Оптимизирован для мобильных устройств с низкой пропускной способностью | Устаревший формат |
+
+<YouTubeEmbed id="_KMPjeioX08" title="I Watched This Movie on 10 Different Formats" />
+
+## Стандарты сжатия (Кодеки)
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#059669" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <circle cx="32" cy="28" r="18"/>
+  <circle cx="32" cy="28" r="10"/>
+  <circle cx="32" cy="28" r="4"/>
+  <path d="M32 4 L32 10 M32 46 L32 52 M4 28 L10 28 M54 28 L60 28" strokeWidth="2.5" opacity="0.5"/>
+  <path d="M12 12 L16 16 M48 48 L52 52 M48 16 L52 12 M12 48 L16 44" strokeWidth="1.5" opacity="0.4"/>
+</svg>
+
+### H.264 (Advanced Video Coding)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <circle cx="24" cy="24" r="16"/>
+  <circle cx="24" cy="24" r="8"/>
+  <path d="M24 4 L24 8 M24 40 L24 44 M4 24 L8 24 M40 24 L44 24" strokeWidth="2" opacity="0.4"/>
+  <path d="M10 10 L13 13 M35 35 L38 38 M35 10 L38 13 M10 35 L13 38" strokeWidth="1.2" opacity="0.3"/>
+  <text x="18" y="29" fontSize="12" fill="#059669" fontWeight="bold" fontFamily="monospace">264</text>
+</svg>
+
+[H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) является наиболее широко распространённым стандартом сжатия видео в CCTV. Он может уменьшить размер файла до 50% по сравнению с MJPEG, сохраняя при этом сопоставимое качество.
+
+**Лучше всего для:** HD-записи и круглосуточного наблюдения 24/7 на существующем оборудовании.
+
+| Плюсы | Минусы |
+|------|------|
+| Широкая поддержка аппаратных декодеров | Лицензионные ограничения (хотя большинство OEM-производителей покрывают их) |
+| Зрелый, хорошо протестирован в видеонаблюдении | Заменяется H.265 |
+
+### H.265 (High Efficiency Video Coding)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <circle cx="18" cy="24" r="12" opacity="0.6"/>
+  <circle cx="30" cy="24" r="12" opacity="0.6"/>
+  <circle cx="18" cy="24" r="6" opacity="0.4"/>
+  <circle cx="30" cy="24" r="6" opacity="0.4"/>
+  <path d="M18 8 L18 12 M30 8 L30 12 M18 36 L18 40 M30 36 L30 40" strokeWidth="1.5" opacity="0.3"/>
+  <text x="13" y="29" fontSize="10" fill="#059669" fontWeight="bold" fontFamily="monospace">265</text>
+  <text x="25" y="29" fontSize="10" fill="#059669" fontWeight="bold" fontFamily="monospace">265</text>
+</svg>
+
+[H.265](https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding) (также называемый HEVC) примерно удваивает степень сжатия H.264, что делает его лучшим выбором для 4K- и многоканальных NVR.
+
+**Лучше всего для:** 4K-камер, NVR с большим количеством каналов и систем с ограниченным хранилищем или пропускной способностью.
+
+| Плюсы | Минусы |
+|------|------|
+| Файлы ~50% меньше H.264 при том же качестве | Требует больше вычислительной мощности |
+| Идеально для разрешений 4K+ | Ограниченная поддержка в старых NVR |
+
+<YouTubeEmbed id="DI1BjkmVhTg" title="H.264 vs H.265 Codec Comparison" start={375} />
+
+<YouTubeEmbed id="WVjtK71qqXU" title="AV1 Codec Explained" />
+
+### MJPEG (Motion JPEG)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="4" y="10" width="10" height="28" rx="1" fill="#059669" opacity="0.15"/>
+  <rect x="16" y="10" width="10" height="28" rx="1" fill="#059669" opacity="0.15"/>
+  <rect x="28" y="10" width="10" height="28" rx="1" fill="#059669" opacity="0.15"/>
+  <rect x="40" y="10" width="6" height="28" rx="1" fill="#059669" opacity="0.1"/>
+  <line x1="9" y1="18" x2="9" y2="32" strokeWidth="1.2"/>
+  <line x1="21" y1="18" x2="21" y2="32" strokeWidth="1.2"/>
+  <line x1="33" y1="18" x2="33" y2="32" strokeWidth="1.2"/>
+  <circle cx="9" cy="16" r="1.5" fill="#059669"/>
+  <circle cx="21" cy="16" r="1.5" fill="#059669"/>
+  <circle cx="33" cy="16" r="1.5" fill="#059669"/>
+</svg>
+
+[MJPEG](https://en.wikipedia.org/wiki/Motion_JPEG) кодирует каждый кадр как независимое изображение JPEG. Это упрощает покадровый анализ, но создаёт большие файлы, поскольку межкадровое сжатие не используется.
+
+**Лучше всего для:** Приложений, требующих низкой задержки кодирования или лёгкого извлечения кадров.
+
+| Плюсы | Минусы |
+|------|------|
+| Каждый кадр — полноценное изображение (легко делать стоп-кадры) | Плохое сжатие по сравнению с H.264/H.265 |
+| Низкая задержка кодирования | Большие размеры файлов при непрерывной записи |
+
+### RAW / Несжатое видео
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <polygon points="24,4 44,24 24,44 4,24" fill="#059669" opacity="0.1"/>
+  <polygon points="24,10 38,24 24,38 10,24" fill="none" strokeWidth="1" opacity="0.4"/>
+  <circle cx="24" cy="24" r="6" fill="none"/>
+  <circle cx="24" cy="24" r="2" fill="#059669" opacity="0.4"/>
+</svg>
+
+[Несжатое видео](https://en.wikipedia.org/wiki/Uncompressed_video) захватывает каждый пиксель с сенсора без сжатия. Файлы огромны, но обеспечивают максимальную доказательную ценность.
+
+**Лучше всего для:** Судебных доказательств, материалов для суда и следственного анализа.
+
+| Плюсы | Минусы |
+|------|------|
+| Нет артефактов сжатия | Непрактично большие требования к хранилищу |
+| Максимальная детализация для анализа | Требуется специализированное ПО для воспроизведения |
+
+## Проприетарные форматы DVR
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#dc2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="6" y="14" width="52" height="36" rx="4"/>
+  <rect x="12" y="20" width="40" height="24" rx="2" fill="#dc2626" opacity="0.1"/>
+  <circle cx="20" cy="32" r="4" fill="#dc2626" opacity="0.3"/>
+  <path d="M26 32 L44 32 M44 28 L44 36" strokeWidth="2.5"/>
+  <rect x="6" y="44" width="14" height="6" rx="1" fill="#dc2626" opacity="0.2"/>
+  <rect x="44" y="44" width="14" height="6" rx="1" fill="#dc2626" opacity="0.2"/>
+</svg>
+
+Многие производители DVR используют [проприетарные](https://en.wikipedia.org/wiki/Proprietary_format) форматы контейнеров, которые встраивают метаданные, такие как временные метки, события движения и идентификаторы камер. Эти файлы требуют программного обеспечения или проигрывателя производителя для воспроизведения.
+
+**Лучше всего для:** Бесшовного воспроизведения в экосистеме производителя.
+
+| Плюсы | Минусы |
+|------|------|
+| Богатые метаданные (время, движение, ID камеры) | Привязан к одному производителю |
+| Оптимизирован для конкретного оборудования | Экспорт обычно требует конвертации |
+
+## Вопросы хранения
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="8" y="10" width="48" height="44" rx="4"/>
+  <rect x="14" y="16" width="36" height="10" rx="2" fill="#7c3aed" opacity="0.15"/>
+  <rect x="14" y="30" width="36" height="10" rx="2" fill="#7c3aed" opacity="0.15"/>
+  <rect x="14" y="44" width="36" height="6" rx="2" fill="#7c3aed" opacity="0.15"/>
+  <circle cx="20" cy="21" r="1.5" fill="#7c3aed"/>
+  <circle cx="20" cy="35" r="1.5" fill="#7c3aed"/>
+</svg>
+
+Выбор кодека напрямую влияет на планирование хранилища. Система с 4 каналами 1080p, записывающая 24/7, требует примерно:
+
+| Кодек | Ежедневное хранилище (4× 1080p @ 15 кадров/с) |
+|-------|-----------------------------------|
+| MJPEG | ~300 ГБ |
+| H.264 | ~80 ГБ |
+| H.265 | ~40 ГБ |
+| RAW   | ~2+ ТБ |
+
+Обратитесь к [эталонной реализации H.264](https://en.wikipedia.org/wiki/X264) или [проекту x265](https://en.wikipedia.org/wiki/X265) для технического углубления в эти кодеки.
+
+## Краткое руководство по выбору
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#ca8a04" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="6" y="6" width="52" height="52" rx="6"/>
+  <path d="M20 32 L28 40 L44 24" strokeWidth="3" stroke="#ca8a04"/>
+  <path d="M20 18 L44 18" strokeWidth="2" opacity="0.4"/>
+  <path d="M20 46 L40 46" strokeWidth="2" opacity="0.4"/>
+</svg>
+
+| Потребность | Рекомендуемый формат |
+|------|-------------------|
+| Современное CCTV общего назначения | MP4 с H.264 или H.265 |
+| Максимальное качество для улик | AVI или RAW |
+| Покадровый криминалистический анализ | MJPEG |
+| Долгосрочная 4K-запись | H.265 внутри MP4 |
+| macOS или видеомонтаж | MOV с H.264 |
+
+## Дополнительные видео
+
+| Тема | Канал | Видео |
+|-------|---------|-------|
+| Кодеки и контейнеры видео — глубокое погружение | Lex Fridman Podcast | [FFmpeg: The Technology Behind Video on the Internet](https://www.youtube.com/watch?v=nepKKz-MzFM) (таймкод 9:59) |
+| Сравнение 10 форматов видео (от VHS до 4K Blu-ray) | Linus Tech Tips | [I Watched This Movie on 10 Different Formats](https://www.youtube.com/watch?v=_KMPjeioX08) |
+| H.264 против H.265 для загрузки на YouTube | Gerald Undone | [Beat the Compression!](https://www.youtube.com/watch?v=DI1BjkmVhTg) |
+| Кодек AV1 — объяснение и тестирование | Linus Tech Tips | [I bought a SECOND GPU… but NOT for gaming](https://www.youtube.com/watch?v=WVjtK71qqXU) |
+
+[Назад в блог](/blog)

@@ -2,7 +2,7 @@ import "../../../blog-content.css"
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { getTranslations, setRequestLocale } from "next-intl/server"
+import { setRequestLocale } from "next-intl/server"
 import type { JSX } from "react/jsx-runtime"
 import type {
   Article,
@@ -23,17 +23,17 @@ import type {
 } from "schema-dts"
 import { posts } from "@/.velite"
 import { Comments } from "@/components/blog/comments"
+import RelatedPosts from "@/components/blog/related-posts"
 import { ShareButtonsLazy } from "@/components/blog/share-buttons-lazy"
 import TableOfContents from "@/components/blog/table-of-contents"
+import Breadcrumbs from "@/components/breadcrumbs"
 // Removed unused Callout import
 import { MdxContent } from "@/components/mdx-content"
-import Breadcrumbs from "@/components/breadcrumbs"
-import RelatedPosts from "@/components/blog/related-posts"
 import { Badge } from "@/components/ui/badge"
 import { getCommentCount } from "@/lib/comment-db"
 import { JsonLd } from "@/lib/json-ld"
 import { defaultLocale, locales } from "@/lib/locales"
-import { buildOgImageUrl, buildMetaDescription } from "@/lib/seo"
+import { buildMetaDescription, buildOgImageUrl } from "@/lib/seo"
 import { siteConfig } from "@/lib/site-config"
 
 const ShareButtons = ShareButtonsLazy
@@ -155,7 +155,6 @@ export default async function PostPage({
   const { locale, slug } = await params
 
   setRequestLocale(locale)
-  const t = await getTranslations("common")
   const post =
     posts.find((p) => p.slug === slug && p.locale === locale) ??
     posts.find((p) => p.slug === slug && p.locale === "en")

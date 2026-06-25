@@ -1,0 +1,327 @@
+---
+title: "সিসিটিভি ভিডিও ফাইল ফরম্যাটের সম্পূর্ণ গাইড"
+publishedAt: "2026-05-21"
+description: "সিসিটিভি ভিডিও ফরম্যাটের গভীর নির্দেশিকা — AVI, MP4, H.264, H.265, MOV, MKV, MJPEG এবং আরও অনেক কিছু — কম্প্রেশন, সামঞ্জস্যতা এবং স্টোরেজ ট্রেডঅফ সহ ব্যাখ্যা করা হয়েছে।"
+author: "CCTV Name Authoe"
+updatedAt: "2026-05-21"
+image: "/og.svg"
+tags: ["সিসিটিভি","সিসিটিভি ক্যামেরা","নিরাপত্তা ক্যামেরা","ভিডিও-ফরম্যাট","স্টোরেজ","কম্প্রেশন"]
+---
+
+সিসিটিভি ফুটেজের জন্য সঠিক ফাইল ফরম্যাট নির্বাচন ভিডিও গুণমান, স্টোরেজ প্রয়োজনীয়তা, প্লেব্যাক সামঞ্জস্যতা এবং ফরেনসিক ব্যবহারযোগ্যতাকে প্রভাবিত করে। এই গাইডটি নজরদারি সিস্টেমে ব্যবহৃত প্রধান কন্টেইনার ফরম্যাট এবং কোডেক কভার করে।
+
+## কন্টেইনার বনাম কোডেক
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#2563eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="4" y="12" width="56" height="40" rx="4"/>
+  <path d="M28 28 L40 36 L28 44 Z" fill="#2563eb" opacity="0.15"/>
+  <circle cx="16" cy="20" r="3" fill="#2563eb" opacity="0.3"/>
+</svg>
+
+একটি [কন্টেইনার ফরম্যাট](https://en.wikipedia.org/wiki/Container_format) (যেমন MP4 বা AVI) ভিডিও, অডিও এবং মেটাডেটা একসাথে মোড়ক করে। একটি [কোডেক](https://en.wikipedia.org/wiki/Video_codec) (যেমন H.264 বা H.265) নির্ধারণ করে যে সেই কন্টেইনারের ভিতরে ভিডিও কিভাবে সংকুচিত হয়। আধুনিক সিসিটিভি সিস্টেম সাধারণত MP4 কন্টেইনারের ভিতরে H.264 বা H.265 ভিডিও ব্যবহার করে।
+
+<YouTubeEmbed id="nepKKz-MzFM" title="FFmpeg: Video Codecs & Containers Explained" start={599} />
+
+<div style={{clear:'both'}}/>
+
+## কন্টেইনার ফরম্যাট
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#2563eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="8" y="8" width="48" height="48" rx="6"/>
+  <path d="M24 22 L40 22 M24 30 L36 30 M24 38 L32 38" strokeWidth="2.5"/>
+  <rect x="12" y="44" width="12" height="8" rx="2" fill="#2563eb" opacity="0.2"/>
+  <rect x="28" y="44" width="24" height="8" rx="2" fill="#2563eb" opacity="0.2"/>
+</svg>
+
+### AVI (Audio Video Interleave)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#6366f1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="6" y="8" width="36" height="32" rx="3"/>
+  <circle cx="24" cy="24" r="8"/>
+  <polygon points="22,20 22,28 29,24" fill="#6366f1" opacity="0.3"/>
+  <rect x="6" y="36" width="8" height="4" rx="1" fill="#6366f1" opacity="0.2"/>
+  <rect x="34" y="36" width="8" height="4" rx="1" fill="#6366f1" opacity="0.2"/>
+</svg>
+
+[AVI](https://en.wikipedia.org/wiki/Audio_Video_Interleave) ১৯৯২ সালে মাইক্রোসফট দ্বারা প্রবর্তিত হয়েছিল। এটি ন্যূনতম কম্প্রেশন সহ ডেটা সংরক্ষণ করে, উচ্চ গুণমান সহ বড় ফাইল তৈরি করে।
+
+**সেরা:** স্বল্পমেয়াদী ফরেনসিক ক্লিপের জন্য যেখানে বিশদ স্টোরেজের চেয়ে বেশি গুরুত্বপূর্ণ।
+
+| সুবিধা | অসুবিধা |
+|------|------|
+| উচ্চ গুণমান, বিস্তৃত প্লেব্যাক সমর্থন | খুব বড় ফাইল সাইজ |
+| জটিল এনকোডিং প্রয়োজন হয় না | দুর্বল কম্প্রেশন দক্ষতা |
+
+### MP4 (MPEG-4 Part 14)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#10b981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="6" y="6" width="36" height="36" rx="4"/>
+  <rect x="10" y="10" width="28" height="28" rx="2" fill="#10b981" opacity="0.1"/>
+  <polygon points="20,16 20,32 32,24" fill="#10b981" opacity="0.4"/>
+</svg>
+
+[MP4](https://en.wikipedia.org/wiki/MP4_file_format) আধুনিক নজরদারিতে প্রভাবশালী ফরম্যাট। এটি NVR, মোবাইল অ্যাপ এবং ক্লাউড প্ল্যাটফর্ম জুড়ে বিস্তৃত সামঞ্জস্যের সাথে কম্প্রেশন দক্ষতার ভারসাম্য বজায় রাখে।
+
+**সেরা:** দীর্ঘমেয়াদী রেকর্ডিং, দূরবর্তী দেখা এবং মাল্টি-প্ল্যাটফর্ম ওয়ার্কফ্লোর জন্য।
+
+| সুবিধা | অসুবিধা |
+|------|------|
+| চমৎকার কম্প্রেশন-থেকে-গুণমান অনুপাত | AVI এর তুলনায় সামান্য জটিল এনকোডিং |
+| সর্বজনীন ডিভাইস সমর্থন | |
+| ভাল স্ট্রিমিং পারফরম্যান্স | |
+
+### MOV (QuickTime File Format)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#a855f7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="6" y="6" width="36" height="36" rx="6"/>
+  <path d="M16 14 L16 34 L34 24 Z" fill="#a855f7" opacity="0.3"/>
+  <circle cx="14" cy="14" r="2" fill="#a855f7" opacity="0.4"/>
+</svg>
+
+[MOV](https://en.wikipedia.org/wiki/QuickTime_File_Format) অ্যাপল দ্বারা তৈরি করা হয়েছিল এবং পোস্ট-প্রোডাকশন ওয়ার্কফ্লোতে সাধারণ। কিছু NVR সম্পাদনা বা সংরক্ষণাগারের উদ্দেশ্যে MOV তে এক্সপোর্ট করে।
+
+**সেরা:** macOS-ভিত্তিক ওয়ার্কফ্লো এবং ভিডিও সম্পাদনার জন্য নির্ধারিত ফুটেজের জন্য।
+
+| সুবিধা | অসুবিধা |
+|------|------|
+| উচ্চ গুণমান, সম্পাদনা-বান্ধব কোডেক সমর্থন করে | MP4 এর চেয়ে বড় |
+| ভাল মেটাডেটা সমর্থন | অ্যাপল ইকোসিস্টেমের বাইরে কম নেটিভ সমর্থন |
+
+### MKV (Matroska Video)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#f59e0b" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="4" y="4" width="18" height="18" rx="2" fill="#f59e0b" opacity="0.15"/>
+  <rect x="26" y="4" width="18" height="18" rx="2" fill="#f59e0b" opacity="0.15"/>
+  <rect x="4" y="26" width="18" height="18" rx="2" fill="#f59e0b" opacity="0.15"/>
+  <rect x="26" y="26" width="18" height="18" rx="2" fill="#f59e0b" opacity="0.15"/>
+  <path d="M13 13 L35 13 M13 35 L35 35 M13 13 L13 35 M35 13 L35 35" strokeWidth="1" opacity="0.3"/>
+</svg>
+
+[MKV](https://en.wikipedia.org/wiki/Matroska) একটি ওপেন-স্ট্যান্ডার্ড কন্টেইনার যা একটি ফাইলে একাধিক অডিও ট্র্যাক, সাবটাইটেল স্ট্রিম এবং অধ্যায় মার্কার ধারণ করতে পারে।
+
+**সেরা:** মাল্টি-ক্যামেরা এক্সপোর্ট বা মেটাডেটা সহ ফুটেজ আর্কাইভ করার জন্য।
+
+| সুবিধা | অসুবিধা |
+|------|------|
+| একটি ফাইলে সীমাহীন ট্র্যাক সমর্থন করে | মূলধারার NVR সফ্টওয়্যারে কম সমর্থন |
+| ওপেন-সোর্স, কোন লাইসেন্সিং ফি নেই | বাক্সের বাইরে সর্বজনীনভাবে সামঞ্জস্যপূর্ণ নয় |
+
+### WMV (Windows Media Video)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#3b82f6" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="6" y="8" width="36" height="32" rx="2"/>
+  <path d="M6 28 L16 18 L22 26 L30 16 L42 28" strokeWidth="1.5" fill="none"/>
+  <polygon points="34,18 36,16 42,18 40,20" fill="#3b82f6" opacity="0.3"/>
+  <rect x="6" y="36" width="36" height="4" rx="1" fill="#3b82f6" opacity="0.1"/>
+</svg>
+
+[WMV](https://en.wikipedia.org/wiki/Windows_Media_Video) মাইক্রোসফট দ্বারা উইন্ডোজ-ভিত্তিক প্লেব্যাকের জন্য ডিজাইন করা হয়েছিল। এটি ছোট ফাইল সাইজ অর্জন করে তবে লক্ষণীয় গুণমান খরচে।
+
+**সেরা:** লিগ্যাসি উইন্ডোজ-শুধু DVR সিস্টেমের জন্য।
+
+| সুবিধা | অসুবিধা |
+|------|------|
+| ছোট ফাইল সাইজ | আধুনিক কোডেকের তুলনায় নিম্ন মান |
+| নেটিভ উইন্ডোজ প্লেব্যাক | দুর্বল ক্রস-প্ল্যাটফর্ম সমর্থন |
+
+### FLV (Flash Video)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#ef4444" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <polygon points="26,6 12,28 22,28 18,42 36,20 26,20" fill="#ef4444" opacity="0.2"/>
+</svg>
+
+[FLV](https://en.wikipedia.org/wiki/Flash_Video) ২০০০-এর দশকে ওয়েব স্ট্রিমিংয়ের জন্য ব্যাপকভাবে ব্যবহৃত হত। অ্যাডোব ২০২০ সালে ফ্ল্যাশ সমর্থন বন্ধ করার পর এটি মূলত অপ্রচলিত।
+
+**সেরা:** লিগ্যাসি ওয়েবক্যাম বা ব্রাউজার-ভিত্তিক নজরদারি ইন্টারফেসের জন্য।
+
+| সুবিধা | অসুবিধা |
+|------|------|
+| ছোট ফাইল, দ্রুত স্ট্রিমিং | অপ্রচলিত প্রযুক্তি |
+| | খুব সীমিত আধুনিক সামঞ্জস্য |
+
+### 3GP
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#ec4899" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="12" y="4" width="24" height="40" rx="4"/>
+  <rect x="18" y="8" width="12" height="2" rx="1" fill="#ec4899" opacity="0.3"/>
+  <circle cx="24" cy="28" r="6"/>
+  <polygon points="22,24 22,32 29,28" fill="#ec4899" opacity="0.3"/>
+  <circle cx="24" cy="40" r="2" fill="#ec4899" opacity="0.4"/>
+</svg>
+
+[3GP](https://en.wikipedia.org/wiki/3GP_and_3G2) ৩জি মোবাইল ফোনের জন্য তৈরি করা হয়েছিল। কিছু পুরানো মোবাইল সিসিটিভি ভিউয়ার এই ফরম্যাট ব্যবহার করে।
+
+**সেরা:** খুব পুরানো মোবাইল-কেন্দ্রিক নজরদারি অ্যাপের জন্য।
+
+| সুবিধা | অসুবিধা |
+|------|------|
+| অত্যন্ত ছোট ফাইল সাইজ | নিম্ন ভিডিও গুণমান |
+| কম-ব্যান্ডউইথ মোবাইলের জন্য অপ্টিমাইজড | অপ্রচলিত ফরম্যাট |
+
+<YouTubeEmbed id="_KMPjeioX08" title="I Watched This Movie on 10 Different Formats" />
+
+## কম্প্রেশন স্ট্যান্ডার্ড (কোডেক)
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#059669" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <circle cx="32" cy="28" r="18"/>
+  <circle cx="32" cy="28" r="10"/>
+  <circle cx="32" cy="28" r="4"/>
+  <path d="M32 4 L32 10 M32 46 L32 52 M4 28 L10 28 M54 28 L60 28" strokeWidth="2.5" opacity="0.5"/>
+  <path d="M12 12 L16 16 M48 48 L52 52 M48 16 L52 12 M12 48 L16 44" strokeWidth="1.5" opacity="0.4"/>
+</svg>
+
+### H.264 (অ্যাডভান্সড ভিডিও কোডিং)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <circle cx="24" cy="24" r="16"/>
+  <circle cx="24" cy="24" r="8"/>
+  <path d="M24 4 L24 8 M24 40 L24 44 M4 24 L8 24 M40 24 L44 24" strokeWidth="2" opacity="0.4"/>
+  <path d="M10 10 L13 13 M35 35 L38 38 M35 10 L38 13 M10 35 L13 38" strokeWidth="1.2" opacity="0.3"/>
+  <text x="18" y="29" fontSize="12" fill="#059669" fontWeight="bold" fontFamily="monospace">264</text>
+</svg>
+
+[H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) সিসিটিভিতে সবচেয়ে ব্যাপকভাবে ব্যবহৃত ভিডিও কম্প্রেশন স্ট্যান্ডার্ড। এটি একই মান বজায় রেখে MJPEG এর তুলনায় ফাইল সাইজ ৫০% পর্যন্ত কমাতে পারে।
+
+**সেরা:** বিদ্যমান হার্ডওয়্যারে এইচডি রেকর্ডিং এবং একটানা ২৪/৭ নজরদারির জন্য।
+
+| সুবিধা | অসুবিধা |
+|------|------|
+| বিস্তৃত হার্ডওয়্যার ডিকোডার সমর্থন | লাইসেন্সিং জটিলতা (যদিও বেশিরভাগ OEM এটি কভার করে) |
+| পরিণত, নজরদারিতে ভালভাবে পরীক্ষিত | H.265 দ্বারা প্রতিস্থাপিত হচ্ছে |
+
+### H.265 (হাই এফিশিয়েন্সি ভিডিও কোডিং)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <circle cx="18" cy="24" r="12" opacity="0.6"/>
+  <circle cx="30" cy="24" r="12" opacity="0.6"/>
+  <circle cx="18" cy="24" r="6" opacity="0.4"/>
+  <circle cx="30" cy="24" r="6" opacity="0.4"/>
+  <path d="M18 8 L18 12 M30 8 L30 12 M18 36 L18 40 M30 36 L30 40" strokeWidth="1.5" opacity="0.3"/>
+  <text x="13" y="29" fontSize="10" fill="#059669" fontWeight="bold" fontFamily="monospace">265</text>
+  <text x="25" y="29" fontSize="10" fill="#059669" fontWeight="bold" fontFamily="monospace">265</text>
+</svg>
+
+[H.265](https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC নামেও পরিচিত) H.264 এর কম্প্রেশন অনুপাত প্রায় দ্বিগুণ করে, এটি 4K এবং মাল্টি-চ্যানেল NVR-এর জন্য পছন্দের পছন্দ করে তোলে।
+
+**সেরা:** 4K ক্যামেরা, উচ্চ-চ্যানেল NVR এবং সীমিত স্টোরেজ বা ব্যান্ডউইথ সম্পন্ন সিস্টেমের জন্য।
+
+| সুবিধা | অসুবিধা |
+|------|------|
+| একই গুণমানে H.264 এর চেয়ে ~৫০% ছোট ফাইল | বেশি প্রসেসিং পাওয়ার প্রয়োজন |
+| 4K+ রেজোলিউশনের জন্য আদর্শ | পুরানো NVR হার্ডওয়্যারে সীমিত সমর্থন |
+
+<YouTubeEmbed id="DI1BjkmVhTg" title="H.264 vs H.265 Codec Comparison" start={375} />
+
+<YouTubeEmbed id="WVjtK71qqXU" title="AV1 Codec Explained" />
+
+### MJPEG (মোশন JPEG)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="4" y="10" width="10" height="28" rx="1" fill="#059669" opacity="0.15"/>
+  <rect x="16" y="10" width="10" height="28" rx="1" fill="#059669" opacity="0.15"/>
+  <rect x="28" y="10" width="10" height="28" rx="1" fill="#059669" opacity="0.15"/>
+  <rect x="40" y="10" width="6" height="28" rx="1" fill="#059669" opacity="0.1"/>
+  <line x1="9" y1="18" x2="9" y2="32" strokeWidth="1.2"/>
+  <line x1="21" y1="18" x2="21" y2="32" strokeWidth="1.2"/>
+  <line x1="33" y1="18" x2="33" y2="32" strokeWidth="1.2"/>
+  <circle cx="9" cy="16" r="1.5" fill="#059669"/>
+  <circle cx="21" cy="16" r="1.5" fill="#059669"/>
+  <circle cx="33" cy="16" r="1.5" fill="#059669"/>
+</svg>
+
+[MJPEG](https://en.wikipedia.org/wiki/Motion_JPEG) প্রতিটি ফ্রেমকে একটি স্বাধীন JPEG চিত্র হিসাবে এনকোড করে। এটি ফ্রেম-বাই-ফ্রেম বিশ্লেষণ সহজ করে কিন্তু বড় ফাইল তৈরি করে যেহেতু কোন আন্তঃ-ফ্রেম কম্প্রেশন ব্যবহার করা হয় না।
+
+**সেরা:** কম এনকোডিং লেটেন্সি বা সহজ ফ্রেম নিষ্কাশন প্রয়োজন এমন অ্যাপ্লিকেশনের জন্য।
+
+| সুবিধা | অসুবিধা |
+|------|------|
+| প্রতিটি ফ্রেম একটি সম্পূর্ণ চিত্র (সহজেই স্টিল গ্র্যাব করা যায়) | H.264/H.265 এর তুলনায় দুর্বল কম্প্রেশন |
+| কম এনকোডিং লেটেন্সি | একটানা রেকর্ডিংয়ের জন্য বড় ফাইল সাইজ |
+
+### RAW / অকম্প্রেসড ভিডিও
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <polygon points="24,4 44,24 24,44 4,24" fill="#059669" opacity="0.1"/>
+  <polygon points="24,10 38,24 24,38 10,24" fill="none" strokeWidth="1" opacity="0.4"/>
+  <circle cx="24" cy="24" r="6" fill="none"/>
+  <circle cx="24" cy="24" r="2" fill="#059669" opacity="0.4"/>
+</svg>
+
+[অকম্প্রেসড ভিডিও](https://en.wikipedia.org/wiki/Uncompressed_video) সেন্সর থেকে শূন্য কম্প্রেশন সহ প্রতিটি পিক্সেল ক্যাপচার করে। ফাইলগুলি বিশাল কিন্তু সর্বোচ্চ প্রমাণিক মান প্রদান করে।
+
+**সেরা:** ফরেনসিক প্রমাণ, আদালতের প্রদর্শনী এবং তদন্তমূলক বিশ্লেষণের জন্য।
+
+| সুবিধা | অসুবিধা |
+|------|------|
+| কোন কম্প্রেশন আর্টিফ্যাক্ট নেই | অবাস্তবিকভাবে বড় স্টোরেজ প্রয়োজনীয়তা |
+| বিশ্লেষণের জন্য সর্বোচ্চ বিশদ | বিশেষায়িত প্লেব্যাক সফ্টওয়্যার প্রয়োজন |
+
+## মালিকানা DVR ফরম্যাট
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#dc2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="6" y="14" width="52" height="36" rx="4"/>
+  <rect x="12" y="20" width="40" height="24" rx="2" fill="#dc2626" opacity="0.1"/>
+  <circle cx="20" cy="32" r="4" fill="#dc2626" opacity="0.3"/>
+  <path d="M26 32 L44 32 M44 28 L44 36" strokeWidth="2.5"/>
+  <rect x="6" y="44" width="14" height="6" rx="1" fill="#dc2626" opacity="0.2"/>
+  <rect x="44" y="44" width="14" height="6" rx="1" fill="#dc2626" opacity="0.2"/>
+</svg>
+
+অনেক DVR নির্মাতা [মালিকানা](https://en.wikipedia.org/wiki/Proprietary_format) কন্টেইনার ফরম্যাট ব্যবহার করে যা টাইমস্ট্যাম্প, মোশন ইভেন্ট এবং ক্যামেরা আইডির মতো মেটাডেটা এম্বেড করে। এই ফাইলগুলি প্লেব্যাকের জন্য বিক্রেতার সফ্টওয়্যার বা প্লেয়ার প্রয়োজন।
+
+**সেরা:** নির্মাতার ইকোসিস্টেমের মধ্যে নির্বিঘ্ন প্লেব্যাকের জন্য।
+
+| সুবিধা | অসুবিধা |
+|------|------|
+| সমৃদ্ধ মেটাডেটা (সময়, গতি, ক্যামেরা আইডি) | এক বিক্রেতার সাথে আবদ্ধ |
+| নির্দিষ্ট হার্ডওয়্যারের জন্য অপ্টিমাইজড | এক্সপোর্ট সাধারণত রূপান্তর প্রয়োজন |
+
+## স্টোরেজ বিবেচনা
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="8" y="10" width="48" height="44" rx="4"/>
+  <rect x="14" y="16" width="36" height="10" rx="2" fill="#7c3aed" opacity="0.15"/>
+  <rect x="14" y="30" width="36" height="10" rx="2" fill="#7c3aed" opacity="0.15"/>
+  <rect x="14" y="44" width="36" height="6" rx="2" fill="#7c3aed" opacity="0.15"/>
+  <circle cx="20" cy="21" r="1.5" fill="#7c3aed"/>
+  <circle cx="20" cy="35" r="1.5" fill="#7c3aed"/>
+</svg>
+
+কোডেক পছন্দ সরাসরি স্টোরেজ পরিকল্পনাকে প্রভাবিত করে। একটি 4-চ্যানেল 1080p সিস্টেম 24/7 রেকর্ড করলে মোটামুটি প্রয়োজন:
+
+| কোডেক | দৈনিক স্টোরেজ (4× 1080p @ 15 fps) |
+|-------|-----------------------------------|
+| MJPEG | ~300 GB |
+| H.264 | ~80 GB |
+| H.265 | ~40 GB |
+| RAW   | ~2+ TB |
+
+এই কোডেকগুলির প্রযুক্তিগত গভীরতার জন্য [H.264 রেফারেন্স ইমপ্লিমেন্টেশন](https://en.wikipedia.org/wiki/X264) বা [x265 প্রকল্প](https://en.wikipedia.org/wiki/X265) দেখুন।
+
+## দ্রুত নির্বাচন নির্দেশিকা
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#ca8a04" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="6" y="6" width="52" height="52" rx="6"/>
+  <path d="M20 32 L28 40 L44 24" strokeWidth="3" stroke="#ca8a04"/>
+  <path d="M20 18 L44 18" strokeWidth="2" opacity="0.4"/>
+  <path d="M20 46 L40 46" strokeWidth="2" opacity="0.4"/>
+</svg>
+
+| প্রয়োজন | প্রস্তাবিত ফরম্যাট |
+|------|-------------------|
+| সাধারণ-উদ্দেশ্য আধুনিক সিসিটিভি | H.264 বা H.265 সহ MP4 |
+| প্রমাণের জন্য সর্বোচ্চ গুণমান | AVI বা RAW |
+| ফ্রেম-বাই-ফ্রেম ফরেনসিক বিশ্লেষণ | MJPEG |
+| দীর্ঘমেয়াদী 4K রেকর্ডিং | MP4 এর ভিতরে H.265 |
+| macOS বা ভিডিও-সম্পাদনা ওয়ার্কফ্লো | H.264 সহ MOV |
+
+## আরও দেখুন
+
+| বিষয় | চ্যানেল | ভিডিও |
+|-------|---------|-------|
+| ভিডিও কোডেক ও কন্টেইনার গভীর ডুব | Lex Fridman Podcast | [FFmpeg: The Technology Behind Video on the Internet](https://www.youtube.com/watch?v=nepKKz-MzFM) (টাইমস্ট্যাম্প 9:59) |
+| ১০টি ভিডিও ফরম্যাটের তুলনা (VHS থেকে 4K Blu-ray) | Linus Tech Tips | [I Watched This Movie on 10 Different Formats](https://www.youtube.com/watch?v=_KMPjeioX08) |
+| ইউটিউব আপলোডের জন্য H.264 বনাম H.265 | Gerald Undone | [Beat the Compression!](https://www.youtube.com/watch?v=DI1BjkmVhTg) |
+| AV1 কোডেক ব্যাখ্যা ও বেঞ্চমার্ক | Linus Tech Tips | [I bought a SECOND GPU… but NOT for gaming](https://www.youtube.com/watch?v=WVjtK71qqXU) |
+
+[ব্লগে ফিরে যান](/blog)

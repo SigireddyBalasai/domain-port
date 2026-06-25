@@ -1,0 +1,281 @@
+---
+title: "Hướng dẫn đi cáp CCTV: Cat5e, Cat6, ống luồn dây và các phương pháp lắp đặt tốt nhất"
+publishedAt: "2026-05-25"
+description: "Hướng dẫn toàn diện về đi cáp CCTV cho camera an ninh IP — Cat5e vs Cat6 vs Cat6A, cấp nguồn PoE, tiêu chuẩn đấu nối, yêu cầu ống luồn dây, bảo vệ chống sét lan truyền và các lỗi đi dây thường gặp cần tránh."
+author: "CCTV Name Authoe"
+updatedAt: "2026-05-25"
+image: "/og.svg"
+tags: ["cctv", "đi cáp", "cat6", "poe", "ethernet", "lắp đặt", "chống sét", "đi dây"]
+postType: "howto"
+howTo:
+  - name: "Chọn đúng loại cáp"
+    text: "Chọn cáp đồng nguyên khối Cat6 cho hầu hết các lắp đặt mới. Dùng Cat6A cho đường chạy trên 70 mét hoặc thiết bị PoE++ công suất cao. Tránh cáp nhôm mạ đồng (CCA) bằng mọi giá."
+  - name: "Lập kế hoạch đường chạy cáp"
+    text: "Đo mọi đường chạy từ camera đến NVR. Giữ dưới 100 mét. Lên kế hoạch đường ống cho các đoạn ngoài trời. Dán nhãn cả hai đầu mỗi sợi cáp."
+  - name: "Đấu nối đúng cách"
+    text: "Sử dụng tiêu chuẩn đi dây T568B. Đấu nối vào patch panel ở đầu NVR để đảm bảo độ tin cậy. Kiểm tra mọi sợi cáp bằng máy đo thông mạch trước khi kết nối camera."
+  - name: "Lắp đặt thiết bị chống sét"
+    text: "Đặt thiết bị chống sét PoE tại điểm vào tòa nhà cho mọi đường cáp ngoài trời. Nối đất hệ thống đúng cách. Sử dụng vòng chống nước tại mỗi kết nối camera."
+  - name: "Ghi chép và kiểm tra"
+    text: "Dán nhãn tất cả cáp ở cả hai đầu. Kiểm tra thông mạch, sơ đồ dây và cấp nguồn PoE. Xác nhận mọi luồng camera trước khi đóng đường chạy cáp."
+faq:
+  - question: "Tôi nên dùng Cat5e hay Cat6 cho camera an ninh?"
+    answer: "Cat6 được khuyến nghị cho mọi lắp đặt mới. Ruột dẫn 23 AWG giảm sụt áp trên đường chạy dài và cung cấp băng thông dự phòng tốt hơn cho camera 4K. Chênh lệch chi phí so với Cat5e khoảng $0.04-0.10 mỗi foot."
+  - question: "Cáp PoE có thể chạy dài bao nhiêu?"
+    answer: "Tiêu chuẩn IEEE 802.3 giới hạn đường chạy Ethernet ở 100 mét (328 feet) bao gồm cả dây patch. Vượt quá mức đó, hãy sử dụng bộ mở rộng PoE, đường truyền cáp quang hoặc switch PoE từ xa."
+  - question: "Cáp CCA là gì và tại sao tôi nên tránh nó?"
+    answer: "Cáp CCA (nhôm mạ đồng) sử dụng lõi nhôm với lớp mạ đồng mỏng. Nó có điện trở cao hơn, gây sụt áp, nóng lên dưới tải PoE và trở nên giòn theo thời gian. Luôn sử dụng cáp đồng nguyên khối 100% cho camera an ninh PoE."
+  - question: "Tôi có cần cáp có vỏ bọc (STP) cho camera ngoài trời không?"
+    answer: "Chỉ khi cáp chạy gần động cơ lớn, tủ điện hoặc đèn huỳnh quang. Đối với hầu hết lắp đặt dân dụng và văn phòng, cáp không vỏ bọc (UTP) Cat6 là đủ. Chỉ sử dụng cáp có vỏ bọc và đầu nối khi có nguồn nhiễu cụ thể."
+  - question: "Tôi có cần bảo vệ chống sét cho camera PoE không?"
+    answer: "Có, cho bất kỳ cáp nào ra khỏi vỏ bọc tòa nhà. Sét có thể tạo ra xung điện áp lan truyền qua các đường cáp đồng dài ngay cả từ những tia sét cách xa hàng trăm feet. Một thiết bị chống sét PoE tại điểm vào tòa nhà có giá $15-50 và là bảo hiểm rẻ tiền."
+  - question: "Tôi có thể chạy cáp Ethernet và cáp điện trong cùng một ống không?"
+    answer: "Không. Duy trì khoảng cách ít nhất 30 cm (12 inch) với đường cáp nguồn AC. Nếu buộc phải cắt ngang đường dây điện, hãy làm ở góc 90 độ để giảm thiểu nhiễu."
+---
+
+Đi cáp kém là nguyên nhân gây ra nhiều sự cố CCTV hơn bất kỳ yếu tố đơn lẻ nào khác. Một camera bị mất kết nối ngắt quãng, luồng video bị rớt khung hình vào ban đêm, hoặc hệ thống reset khi đèn hồng ngoại bật — tất cả đều bắt nguồn từ vấn đề cáp thường xuyên hơn là lỗi NVR hoặc camera.
+
+Hướng dẫn này bao gồm mọi thứ bạn cần để đi cáp hệ thống camera an ninh PoE đúng cách: lựa chọn cáp, đấu nối, ống luồn dây, bảo vệ chống sét, các công cụ cần thiết và những sai lầm phân biệt lắp đặt chuyên nghiệp với lắp đặt có vấn đề.
+
+<Callout type="info" title="40% sự cố PoE liên quan đến cáp">
+  Dữ liệu ngành cho thấy khoảng 40% phiếu "camera ngoại tuyến" bắt nguồn từ vấn đề cáp — sai loại dây, cáp trong nhà dùng ngoài trời, Cat6 giả thực chất là CCA Cat5e, hoặc đấu nối kém. Đi cáp đúng ngay từ ngày đầu tiên sẽ loại bỏ chế độ hỏng hóc phổ biến nhất.
+</Callout>
+
+## Lựa chọn cáp
+
+### Loại cáp
+
+| Cáp | Cỡ dây | Băng thông tối đa | Công suất PoE tối đa | Tốt nhất cho |
+|---|---|---|---|---|
+| Cat5e | 24 AWG | 1 Gbps ở 100 m | PoE/PoE+ (30W) | 1080p tiết kiệm, chạy dưới 50 m |
+| Cat6 | 23 AWG | 1 Gbps ở 100 m, 10 Gbps ở 55 m | PoE/PoE+/PoE++ (60W) | Khuyến nghị cho mọi lắp đặt mới |
+| Cat6A | 23 AWG | 10 Gbps ở 100 m | Mọi chuẩn PoE kể cả PoE++ Type 4 (100W) | Camera 4K, chạy trên 70 m, PTZ công suất cao |
+| Cat7 | 22 AWG | 10 Gbps ở 100 m | Mọi chuẩn PoE | Lắp đặt thương mại tương lai |
+
+<Callout type="tip" title="Cat6 là điểm ngọt cho năm 2026">
+  Cat6 là lựa chọn đa năng tốt nhất cho lắp đặt camera an ninh. Ruột dẫn 23 AWG giảm sụt áp liên quan đến PoE và nhiệt so với Cat5e. Băng thông 250 MHz cung cấp khoảng trống dồi dào cho luồng video 4K. Phí bảo hiểm so với Cat5e thường chỉ $0.04-0.10 mỗi foot — trên hệ thống 8 camera, tổng cộng thêm $30-80. Với số tiền nhỏ đó, bạn có hiệu suất PoE tốt hơn rõ rệt và khoảng trống băng thông cho nâng cấp camera trong tương lai.
+</Callout>
+
+### Đồng nguyên khối vs. CCA
+
+Đây là quyết định cáp quan trọng nhất bạn sẽ đưa ra.
+
+| Thuộc tính | Đồng nguyên khối 100% | Nhôm mạ đồng (CCA) |
+|---|---|---|
+| Điện trở | Thấp | Cao hơn 40-60% |
+| Độ tin cậy PoE | Xuất sắc | Gây sụt áp trên 30 m |
+| Nhiệt dưới tải PoE+ | Thấp | Đáng kể |
+| Độ linh hoạt | Tốt | Giòn, đứt khi kéo |
+| Chi phí mỗi foot | ~$0.30-0.50 | ~$0.10-0.15 |
+| Tuổi thọ ngoài trời | 10+ năm | 2-3 năm |
+
+<Callout type="danger" title="Không bao giờ dùng CCA cho PoE">
+  Cáp CCA có điện trở cao hơn đồng nguyên chất, đồng nghĩa với sụt áp nhiều hơn, nhiệt nhiều hơn và mất điện camera ngắt quãng. Dưới tải PoE+ (30W), cáp CCA có thể nóng đủ để làm hỏng vỏ bọc theo thời gian. Nếu người bán không nói rõ "đồng nguyên chất 100%" hoặc "đồng trần," hãy coi đó là CCA. Đối với bất kỳ lắp đặt chuyên nghiệp nào, hãy yêu cầu đồng nguyên khối.
+</Callout>
+
+### Cáp trong nhà vs. ngoài trời
+
+| Thuộc tính | Trong nhà (CM/CMR) | Ngoài trời (CMX/chôn trực tiếp) |
+|---|---|---|
+| Vật liệu vỏ | PVC (mềm, linh hoạt) | LLDPE (cứng, chống UV) |
+| Chống nước | Không | Đầy gel hoặc băng chặn nước |
+| Chống UV | Thấp (nứt sau 1-2 năm) | Cao (bền 10+ năm) |
+| Dải nhiệt độ | 0°C đến 60°C | -40°C đến 75°C |
+| Sử dụng tốt nhất | Trong tường, gác xép, ống trong nhà | Đường chạy ngoài trời, chôn trực tiếp |
+
+Nếu bất kỳ phần nào của đường cáp tiếp xúc với thời tiết, ánh nắng hoặc độ ẩm, hãy sử dụng cáp chịu được ngoài trời hoặc chạy cáp trong nhà tiêu chuẩn qua ống chống UV.
+
+## Công cụ bạn cần
+
+| Công cụ | Mục đích | Chi phí ước tính |
+|---|---|---|
+| Kìm bấm mạng Cat6 (tương thích pass-through) | Đấu nối đầu RJ45 | $25-50 |
+| Đầu RJ45 pass-through | Đấu nối dễ dàng, tin cậy hơn | $15-25 mỗi hộp 50 cái |
+| Máy đo cáp (thông mạch + sơ đồ dây) | Kiểm tra đấu nối | $15-30 |
+| Dây câu hoặc que luồn dây | Kéo cáp qua tường/ống | $20-40 |
+| Chất bôi trơn cáp | Kéo cáp qua ống dài | $10-15 |
+| Máy đo PoE | Kiểm tra cấp nguồn ở khoảng cách xa | $50-150 |
+| Dụng cụ đấu nối patch panel | Đấu nối patch panel | $15-30 |
+| Nhãn cáp | Đánh dấu cả hai đầu mỗi đường chạy | $5-10 |
+| Kéo tuốt dây | Tuốt vỏ cáp | $10-20 |
+| Máy khoan búa + mũi khoan gạch | Gắn camera trên gạch/bê tông | Thay đổi |
+
+<Callout type="note" title="Cáp bấm sẵn là một lựa chọn">
+  Đối với lắp đặt nhỏ (1-4 camera) với đường dẫn cáp dễ tiếp cận, cáp Cat6 bấm sẵn với chiều dài đo sẵn giúp tiết kiệm thời gian và tránh lỗi đấu nối. Đối với lắp đặt lớn hơn hoặc đường chạy qua ống, tự đấu nối cáp với đầu RJ45 pass-through sẽ tin cậy và hiệu quả chi phí hơn.
+</Callout>
+
+## Tiêu chuẩn đấu nối
+
+### Chuẩn đi dây T568B
+
+Tiêu chuẩn T568B là mẫu đi dây phổ biến cho lắp đặt camera an ninh ở Bắc Mỹ. Cả hai đầu của mỗi cáp phải sử dụng cùng một tiêu chuẩn.
+
+**Thứ tự dây (chân 1 đến chân 8):**
+1. Trắng/Cam
+2. Cam
+3. Trắng/Xanh lục
+4. Xanh lam
+5. Trắng/Xanh lam
+6. Xanh lục
+7. Trắng/Nâu
+8. Nâu
+
+### Mẹo đấu nối
+
+- **Tuốt vỏ đúng chiều dài**: Quá nhiều vỏ hở tạo nhiễu xuyên âm. Quá ít ngăn ruột dẫn ngồi hoàn toàn.
+- **Duy trì độ xoắn**: Giữ mỗi cặp xoắn càng gần đầu nối càng tốt. Xoắn ra hơn 12 mm làm giảm hiệu suất Cat6.
+- **Sử dụng đầu nối pass-through**: Ruột dẫn xuyên qua mặt trước đầu nối để bạn có thể kiểm tra trực quan thứ tự dây trước khi bấm.
+- **Đấu nối vào patch panel ở đầu NVR**: Đối với đường chạy dài, đấu nối vào patch panel tin cậy hơn bấm RJ45 trực tiếp. Nó cũng giúp xử lý sự cố và đấu nối lại dễ dàng hơn nhiều.
+
+<Callout type="warning" title="Kiểm tra mọi đấu nối">
+  Sử dụng máy đo cáp để xác minh sơ đồ dây, thông mạch và chập trên mọi đường chạy trước khi kết nối camera. Một bài kiểm tra 30 giây phát hiện vấn đề sẽ mất hàng giờ để chẩn đoán sau này. Đối với đường chạy ngoài trời dài, cũng kiểm tra bằng máy đo PoE để xác minh cấp nguồn ở đầu camera.
+</Callout>
+
+## Ống luồn dây và quản lý cáp
+
+### Khi nào dùng ống luồn dây
+
+| Tình huống | Loại ống | Lý do |
+|---|---|---|
+| Đường chạy ngoài trời | PVC Schedule 40 | Chống thời tiết, chống UV |
+| Chôn ngầm dưới đất | PVC Schedule 40 hoặc 80 | Bảo vệ vật lý, yêu cầu quy chuẩn |
+| Giữa các tòa nhà | Bọc thép linh hoạt | Khớp chuyển động, bảo vệ vật lý |
+| Bó cáp trong nhà | Khay cáp hoặc móc J | Tổ chức, tản nhiệt |
+| Xuyên tường | Ống PVC ngắn | Bảo vệ khỏi cạnh sắc |
+
+### Quy tắc ống luồn dây
+
+- **Độ sâu chôn tối thiểu**: 45 cm cho PVC, 15 cm cho ống kim loại theo NEC
+- **Tỷ lệ lấp đầy**: Không lấp đầy ống quá 40% — cáp cần lưu thông không khí để tản nhiệt
+- **Bán kính uốn**: Tối thiểu 4x đường kính cáp cho Cat6. Sử dụng uốn cong mềm, không uốn gập 90 độ
+- **Bịt kín đầu ống**: Ngăn hơi ẩm xâm nhập bằng keo bịt ống hoặc silicone tại mỗi đầu ống
+- **Tách biệt khỏi nguồn AC**: Duy trì khoảng cách 30 cm. Cắt ngang ở 90 độ nếu không thể tránh
+
+### Nhiệt bó cáp
+
+Khi nhiều cáp PoE chạy cùng nhau trong một bó hoặc ống, nhiệt tích tụ từ điện trở trong ruột dẫn. Đây là mối quan tâm nghiêm trọng cho lắp đặt PoE công suất cao.
+
+| Số cáp trong bó | Tăng nhiệt so với môi trường | Hành động khuyến nghị |
+|---|---|---|
+| 1-6 | 0% (không cần giảm tải) | Lắp đặt tiêu chuẩn |
+| 7-15 | 15-25% | Giảm kích thước bó hoặc tăng khoảng cách |
+| 16-30 | 30-40% | Chia thành các bó nhỏ hơn |
+| 31+ | 40-55% | Dùng Cat6A, giảm kích thước bó, đảm bảo thông gió |
+
+<Callout type="tip" title="Quản lý nhiệt cho bó lớn">
+  ISO/IEC khuyến nghị kích thước bó tối đa là 24 cáp bất kể cân nhắc PoE. Đối với lắp đặt PoE++ công suất cao, sử dụng ruột dẫn Cat6A (23 AWG) giúp tản nhiệt hiệu quả hơn. Tránh chạy cáp PoE trong không gian không thông gió như trần kín hoặc ống bịt kín mà không giảm tải nhiệt thích hợp.
+</Callout>
+
+## Bảo vệ chống sét lan truyền
+
+Camera trên đường chạy PoE dài dễ bị xung điện áp do sét gây ra, ngay cả từ những tia sét gần đó (không cần trúng trực tiếp). Bảo vệ chống sét nên được coi là lớp bắt buộc, không phải nâng cấp tùy chọn.
+
+### Bảo vệ tối thiểu
+
+- Một thiết bị chống sét PoE tại điểm vào tòa nhà cho mọi đường cáp ngoài trời ($15-50 mỗi cái)
+- Nối đất thiết bị chống sét đúng cách với tiếp đất của tòa nhà
+
+### Bảo vệ tăng cường
+
+- Thiết bị chống sét PoE tại mỗi camera (đắt hơn nhưng cách ly tốt hơn)
+- Thiết bị chống sét toàn tòa nhà tại tủ điện chính
+- UPS có chống sét cho NVR và switch PoE
+
+<Callout type="danger" title="Nối đất không phải tùy chọn">
+  Thiết bị chống sét không được nối đất đúng cách không cung cấp bảo vệ. Đảm bảo thiết bị chống sét của bạn được kết nối với tiếp đất của tòa nhà. Trong lắp đặt thương mại, nối đất phải đáp ứng yêu cầu quy chuẩn điện địa phương.
+</Callout>
+
+## Lỗi cáp thường gặp
+
+### 1. Điểm kẹp cáp
+Góc cua gấp làm hỏng chất lượng dữ liệu trên đường chạy dài. Duy trì bán kính uốn tối thiểu 5 cm. Không bao giờ ghim cáp trực tiếp vào tường — sử dụng kẹp cáp hoặc dây buộc velcro phù hợp.
+
+### 2. Đấu nối cẩu thả
+Tiếp xúc RJ45 lỏng lẻo gây ra lỗi ngắt quãng rất khó chẩn đoán. Sử dụng máy đo sau mỗi lần đấu nối. Đối với đường chạy dài, đấu nối vào patch panel thay vì bấm trực tiếp.
+
+### 3. Cáp trong cùng ống với nguồn AC
+Gây nhiễu và làm giảm chất lượng tín hiệu. Duy trì khoảng cách 30 cm với đường cáp nguồn AC. Nếu buộc phải cắt ngang, làm ở góc 90 độ.
+
+### 4. Cáp trong nhà dùng ngoài trời
+Cáp PVC trong nhà tiếp xúc với UV sẽ hỏng sau 2-3 năm. Vỏ nứt, hơi ẩm thấm vào cáp qua mao dẫn và camera hỏng. Sử dụng cáp chịu được ngoài trời (CMX) hoặc ống luồn cho mọi đoạn bên ngoài.
+
+### 5. Cáp thừa cuộn tại camera
+Cuộn cáp thừa bấm sẵn tại vị trí camera hút nhiễu điện và hoạt động như ăng-ten. Sử dụng chiều dài cáp phù hợp với đường chạy thực tế hoặc cuộn gọn phần thừa ở đầu NVR.
+
+### 6. Không có vòng chống nước
+Khi cáp đến camera, hãy để nó treo thành hình chữ "U" nhỏ trước khi vào camera hoặc tường. Điều này đảm bảo nước nhỏ giọt khỏi đáy đường cong thay vì chảy vào đầu nối.
+
+### 7. Thiếu nhãn
+Cáp không nhãn biến công việc xử lý sự cố 30 phút thành ác mộng 3 giờ. Dán nhãn cả hai đầu mỗi cáp với một sơ đồ đặt tên nhất quán (ví dụ: "Cam-01-FrontDoor").
+
+## Danh sách kiểm tra lắp đặt ngoài trời
+
+- [ ] Cáp Cat6 chịu được ngoài trời (CMX) hoặc cáp trong nhà trong ống chống UV
+- [ ] Vòng chống nước tại mỗi kết nối camera
+- [ ] Đầu nối RJ45 chống thời tiết hoặc hộp nối
+- [ ] Mỡ điện môi trên chân cắm đầu nối để chống ăn mòn
+- [ ] Băng tự dính trên các kết nối ngoài trời (niêm phong chống nước)
+- [ ] Keo silicone quanh các lỗ xuyên tường
+- [ ] Thiết bị chống sét PoE tại điểm vào tòa nhà
+- [ ] Ống luồn cho đường chạy hở và đoạn ngầm
+- [ ] Kẹp cáp hoặc dây velcro mỗi 30-50 cm trên đường chạy hở
+- [ ] Nhãn trên cả hai đầu mỗi sợi cáp
+- [ ] Đã xác minh kiểm tra thông mạch và nguồn PoE
+
+## Quy trình kiểm tra cuối cùng
+
+Trước khi tuyên bố hoàn thành lắp đặt:
+
+1. **Kiểm tra thông mạch**: Mọi chân được đấu đúng trên mọi sợi cáp
+2. **Kiểm tra nguồn PoE**: Xác minh điện áp tại đầu camera của mọi đường chạy dưới tải
+3. **Phát hiện camera**: Mọi camera xuất hiện trên NVR trong vòng 60 giây
+4. **Kiểm tra ban đêm**: Xác minh tất cả camera duy trì kết nối ổn định sau khi trời tối khi đèn LED hồng ngoại kích hoạt
+5. **Kiểm tra truy cập từ xa**: Xác nhận xem từ xa hoạt động từ bên ngoài mạng nội bộ
+6. **Xác minh ghi hình**: Sau 7 ngày, kiểm tra dòng thời gian NVR không có khoảng trống ghi hình
+
+<Callout type="tip" title="Giới hạn cứng 100 mét">
+  Tiêu chuẩn IEEE 802.3 giới hạn đường chạy Ethernet ở 100 mét (328 feet) bao gồm tất cả dây patch. Trong thực tế, với Cat6 đồng nguyên chất, bạn có thể đạt đáng tin cậy 95 mét. Vượt quá, sụt áp trên cả cáp tốt gây ra reset camera ngắt quãng. Lên kế hoạch cho bộ mở rộng PoE hoặc đường truyền cáp quang cho bất kỳ đường chạy nào vượt quá 90 mét.
+</Callout>
+
+## Các câu hỏi thường gặp
+
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>Tôi nên dùng Cat5e hay Cat6 cho camera an ninh?</AccordionTrigger>
+    <AccordionContent>
+      Cat6 là mức cơ bản được khuyến nghị cho mọi lắp đặt mới. Ruột dẫn 23 AWG giảm sụt áp so với 24 AWG của Cat5e, điều này quan trọng cho cấp nguồn PoE — đặc biệt trên đường chạy trên 50 mét và cho camera có đèn LED hồng ngoại hoặc bộ sưởi. Chênh lệch chi phí là tối thiểu ($0.04-0.10 mỗi foot) so với công lao động kéo cáp. Chỉ dùng Cat5e cho đường chạy ngắn dưới 30 mét với camera 1080p.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Cáp PoE có thể chạy dài bao nhiêu?</AccordionTrigger>
+    <AccordionContent>
+      Tiêu chuẩn IEEE 802.3 giới hạn đường chạy Ethernet ở tổng cộng 100 mét (328 feet), bao gồm dây patch. Trên 100 mét, tín hiệu dữ liệu suy giảm và cấp nguồn PoE giảm dưới mức tối thiểu của camera. Cho đường chạy dài hơn, sử dụng bộ mở rộng PoE (thêm 100 m mỗi thiết bị, tối đa 4 thiết bị), đường truyền cáp quang với switch PoE từ xa, hoặc di chuyển NVR đến gần hơn.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Tôi có thể trộn cáp CCA và đồng nguyên khối trong cùng một lắp đặt không?</AccordionTrigger>
+    <AccordionContent>
+      Không. Trộn CCA và đồng nguyên khối tạo ra điểm ăn mòn điện hóa tại kết nối, làm tăng điện trở và khiến kết nối hỏng theo thời gian. Chọn một loại cáp và sử dụng nó trong toàn bộ hệ thống. Đối với PoE, đó phải luôn là đồng nguyên khối.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Tôi có cần cáp có vỏ bọc (STP) không?</AccordionTrigger>
+    <AccordionContent>
+      Chỉ khi chạy gần nhiễu điện đáng kể — động cơ lớn, chấn lưu huỳnh quang, máy móc công nghiệp hoặc tủ điện. Đối với hầu hết lắp đặt dân dụng và văn phòng, cáp không vỏ bọc (UTP) Cat6 hoàn toàn đủ. Nếu bạn dùng STP, bạn phải sử dụng đầu nối có vỏ bọc và nối đất đúng cách chỉ ở một đầu, nếu không vỏ bọc trở nên vô hiệu.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Bán kính uốn tối thiểu cho Cat6 là bao nhiêu?</AccordionTrigger>
+    <AccordionContent>
+      Bán kính uốn tối thiểu cho Cat6 là 4 lần đường kính cáp, hoặc khoảng 5 cm (2 inch). Uốn gấp làm hỏng độ xoắn cặp bên trong và làm giảm chất lượng tín hiệu. Đối với lắp đặt cố định, sử dụng uốn cong mềm hoặc khuỷu 45 độ thay vì góc gấp 90 độ.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Tôi nên chôn cáp Ethernet sâu bao nhiêu cho camera ngoài trời?</AccordionTrigger>
+    <AccordionContent>
+      Theo Quy chuẩn Điện Quốc gia (NEC), ống PVC phải được chôn ít nhất 18 inch (45 cm). Ống kim loại chỉ yêu cầu 6 inch (15 cm). Cáp chịu chôn trực tiếp trong ống được ưu tiên cho đường chạy ngầm. Luôn gọi thợ định vị tiện ích trước khi đào.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+Kết hợp hướng dẫn này với [hướng dẫn thiết lập PoE NVR](/blog/poe-nvr-setup) của chúng tôi để có hướng dẫn lắp đặt từng bước hoàn chỉnh từ cáp đến cấu hình.

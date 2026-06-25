@@ -1,0 +1,128 @@
+# CCTV Name — Full Content
+
+> Expert CCTV and surveillance solutions — reviews, installation guides, and security tips for your home and business.
+
+---
+
+## Homepage
+
+CCTV Name is a comprehensive resource for CCTV and surveillance information. We publish in-depth comparison guides, product reviews, installation tutorials, and buying advice covering IP cameras, NVRs, DVRs, PoE systems, and all aspects of video surveillance.
+
+Key topics: CCTV camera resolution, 4K vs 5MP, camera installation, NVR vs DVR, PoE setup, video file formats, cabling best practices, and product reviews.
+
+---
+
+## Blog Posts
+
+### 4K vs 5MP Resolution Guide (2026): Which Is Better for Security Cameras?
+
+URL: https://www.cctv.name/blog/4k-vs-5mp-resolution-guide
+Tags: cctv, security camera, 4k, 5mp, camera resolution, megapixel, surveillance
+
+4K (8.3MP) and 5MP are the two most common high-resolution options for security cameras in 2026. This guide compares them across pixel count, low-light performance, storage requirements, identification distance, and total cost of ownership.
+
+Key findings:
+- 4K has ~8.3 million pixels (3840 × 2160) — 60% more than 5MP
+- 5MP has ~5 million pixels (2560 × 1920) with a taller 4:3 aspect ratio
+- 4K wins on detail and zoom capability for wide outdoor scenes
+- 5MP wins on low-light performance (larger pixels) and storage efficiency
+- 4K uses 40-50% more storage than 5MP
+- Mixing both resolutions on one NVR is the recommended approach for most installations
+
+### IP Camera Resolution Guide (2026): 2MP vs 4MP vs 5MP vs 4K
+
+URL: https://www.cctv.name/blog/camera-resolution-guide
+Tags: cctv, ip camera, camera resolution, 4k, 1080p, security camera, megapixel
+
+A comprehensive comparison of all major security camera resolutions. Covers identification distance per DORI standards, storage requirements per camera resolution, lens matching recommendations, and low-light performance tradeoffs across 2MP (1080p), 4MP, 5MP, and 4K (8MP).
+
+Key findings:
+- 2MP (1080p): Good for general coverage, lowest storage requirements
+- 4MP: Best balance of detail and storage efficiency
+- 5MP: Better for identification, good low-light performance
+- 4K: Maximum detail at distance, highest storage needs
+
+### CCTV Cabling Guide: Cat5e, Cat6, Conduit, and Installation Best Practices
+
+URL: https://www.cctv.name/blog/cctv-cabling-guide
+Tags: cctv, cabling, cat6, poe, ethernet, installation, surge protection, wiring
+
+Complete guide to CCTV cabling for IP security cameras. Covers Cat5e vs Cat6 vs Cat6A comparison with distance limits and bandwidth capabilities, PoE standards (802.3af/at/bt) with power budgeting calculations, RJ45 termination standards (T568A vs T568B), conduit requirements per electrical code, surge protection best practices, and common wiring mistakes to avoid.
+
+### A Complete Guide to CCTV Video File Formats
+
+URL: https://www.cctv.name/blog/cctv-video-file-formats
+Tags: cctv, cctv camera, security camera, video-formats, storage, compression
+
+In-depth guide to video formats used in CCTV systems. Covers H.264 vs H.265 compression efficiency (H.265 uses ~40% less storage), AVI/MKV/MOV/MP4 container formats and compatibility, MJPEG applications in live-view scenarios, and how to choose the right recording format based on your NVR/DVR and viewing setup.
+
+### Best Security Cameras Under $200 (2026): Top CCTV Picks Reviewed
+
+URL: https://www.cctv.name/blog/best-cameras-under-200
+Tags: cctv, security camera, camera under 200, PoE camera, budget camera, home security, review
+
+Curated list of the best CCTV cameras under $200 in 2026. Includes detailed reviews of top models from Reolink, Amcrest, TP-Link, and other leading brands. Each review covers resolution, night vision quality, field of view, audio capabilities, storage options, and smart home integration. Pros and cons for each model with buying recommendations based on use case.
+
+### NVR vs DVR (2026): Which Security Camera Recorder Should You Choose?
+
+URL: https://www.cctv.name/blog/nvr-vs-dvr
+Tags: cctv, nvr, dvr, security camera, recorder, ip camera, analog camera, comparison
+
+Complete comparison of NVR (Network Video Recorder) and DVR (Digital Video Recorder) systems. Covers resolution limits (NVR supports up to 12MP+, DVR typically maxes at 1080p/5MP), cabling differences (Ethernet vs coaxial), cost comparison, scalability for future expansion, AI analytics capabilities (smart detection, people/vehicle detection), and hybrid XVR options for mixing IP and analog cameras.
+
+### How to Set Up a PoE NVR System (2026): Complete Step-by-Step Guide
+
+URL: https://www.cctv.name/blog/poe-nvr-setup
+Tags: cctv, nvr, poe, security camera, ip camera, surveillance, network video recorder
+
+Step-by-step guide for planning and installing a PoE NVR system at home or for a small business. Covers system planning and camera placement, Cat6 vs Cat5e cable selection with distance limitations, PoE standards (802.3af/at/bt) and power budgeting calculations, hard drive storage sizing (how much storage per camera per day), NVR configuration and setup, VLAN network security best practices, and VPN remote access configuration.
+
+### What Is an NVR? Complete Guide to Network Video Recorders (2026)
+
+URL: https://www.cctv.name/blog/what-is-nvr-guide
+Tags: cctv, nvr, network video recorder, ip camera, security camera, poe, surveillance, video recording
+
+Beginner-friendly guide to NVR systems. Explains how NVRs differ from DVRs, what to look for when buying (channel count, resolution support, PoE capabilities, storage capacity, AI analytics), how to connect IP cameras to an NVR, and whether a PoE NVR or WiFi-based system is better for different scenarios.
+
+### What Is a DVR? Complete Guide to Digital Video Recorders (2026)
+
+URL: https://www.cctv.name/blog/what-is-dvr-guide
+Tags: cctv, dvr, digital video recorder, analog camera, security camera, coaxial cable, surveillance, video recording
+
+Beginner-friendly guide to DVR security systems. Explains how analog DVRs work, their resolution limitations (most cap at 1080p), coaxial cabling requirements (RG59/Siamese), when choosing a DVR over NVR makes sense (budget constraints, existing analog cameras, simpler setup), and options for upgrading to hybrid XVR systems that support both analog and IP cameras.
+
+### Maizic Smarthome Mini Fox PTZ Security Camera Review (2026)
+
+URL: https://www.cctv.name/blog/maizic-mini-fox-ptz-review
+Tags: cctv, cctv camera, security camera, indoor camera, ptz camera, wifi camera, review, budget
+
+In-depth review of the Maizic Smarthome 3MP FHD WiFi Indoor Mini Fox PTZ Security Camera. Covers color night vision quality, 360° pan and tilt rotation, motion tracking performance, two-way audio quality, setup difficulty, app experience, and how it compares to other budget indoor PTZ cameras. Includes pros and cons based on real-world testing.
+
+### Top 5 PoE Cameras for Home Security
+
+URL: https://www.cctv.name/blog/best-poe-cameras
+Tags: PoE cameras, home security
+
+Curated list of top Power over Ethernet (PoE) cameras for home security. Includes specifications, pricing, and key features of recommended models. Each camera supports power and data over a single Ethernet cable for clean, reliable installation.
+
+---
+
+## Frequently Asked Questions
+
+### What is CCTV and how does it work?
+CCTV (Closed-Circuit Television) is a video surveillance system that transmits signals to a specific set of monitors or recorders. Unlike broadcast television, CCTV signals are not openly transmitted. Modern CCTV systems use DVRs or NVRs to store footage. Basic components include cameras (analog or IP), recording device (DVR/NVR), cables or network connection, and monitors for viewing.
+
+### What is the difference between IP and analog CCTV cameras?
+IP cameras transmit digital data over a network, offering higher resolution (up to 4K+), remote access, advanced features like motion detection/AI analytics, and PoE capability. Analog cameras use coaxial cables and DVRs, typically offering lower resolution (1080p max), lower cost per camera, simpler setup for small systems, and reliable performance with less network dependency.
+
+### How many CCTV cameras do I need for my home?
+For most homes, 2-4 cameras are sufficient. Place cameras at entry points (front door, back door, garage) and consider covering windows or blind spots. Larger properties may need 6-8 cameras for complete coverage. Key areas: front door entrance, back door or patio, garage or driveway, ground-floor windows, backyard or side yard.
+
+### Can CCTV cameras work in the dark?
+Yes, most modern CCTV cameras have infrared (IR) LEDs for night vision, allowing them to capture clear footage in complete darkness up to 30-100 feet. Night vision technologies include: IR LEDs (standard, black and white), color night vision (built-in spotlights), starlight sensors (enhanced low-light color), and thermal imaging (heat signatures). For best results, position cameras to avoid IR reflection from nearby surfaces.
+
+### Do I need permission to install CCTV cameras?
+In most areas, you can install CCTV on your property without permission. However, cameras should not record public spaces or neighbors' properties without consent. Check local regulations and HOA rules before installation. Some areas require signage notifying people of surveillance. Audio recording may have additional legal restrictions.
+
+### How long should CCTV footage be stored?
+Storage duration depends on your needs: Homes typically need 7-14 days, small businesses 30 days recommended, large businesses 30-90 days. Factors affecting storage: number of cameras (more = more space), resolution (higher = more space), motion detection (reduces storage), retention period, compression type (H.265 saves ~40% space compared to H.264).

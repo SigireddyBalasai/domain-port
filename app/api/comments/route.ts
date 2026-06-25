@@ -40,7 +40,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid locale." }, { status: 400 })
   }
 
-  if (typeof authorName !== "string" || authorName.trim().length < 2 || containsUrl(authorName)) {
+  if (
+    typeof authorName !== "string" ||
+    authorName.trim().length < 2 ||
+    containsUrl(authorName)
+  ) {
     return NextResponse.json(
       { error: "Please enter a valid name." },
       { status: 400 }

@@ -14,7 +14,9 @@ export async function GET(): Promise<Response> {
     ttl: 60,
   })
 
-  posts
+  const enPosts = posts.filter((p) => p.locale === defaultLocale)
+
+  enPosts
     .toSorted(
       (a, b) =>
         new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
@@ -23,8 +25,8 @@ export async function GET(): Promise<Response> {
       feed.item({
         title: post.title,
         description: post.description ?? "",
-        url: `${siteConfig.url}/${defaultLocale}/blog/${post.slug}`,
-        guid: `${siteConfig.url}/${defaultLocale}/blog/${post.slug}`,
+        url: `${siteConfig.url}/blog/${post.slug}`,
+        guid: `${siteConfig.url}/blog/${post.slug}`,
         date: new Date(post.publishedAt),
       })
     })

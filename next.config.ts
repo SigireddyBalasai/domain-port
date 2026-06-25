@@ -17,9 +17,23 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: "/:path*",
-        has: [{ type: "host", value: "cctv.name" }],
-        destination: "https://www.cctv.name/:path*",
+        source: "/:locale/blog/sample-listing",
+        destination: "/:locale/blog",
+        permanent: true,
+      },
+      {
+        source: "/:locale/listing/sample-listing",
+        destination: "/:locale/blog",
+        permanent: true,
+      },
+      {
+        source: "/blog/sample-listing",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/listing/sample-listing",
+        destination: "/blog",
         permanent: true,
       },
     ]

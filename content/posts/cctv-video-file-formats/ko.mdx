@@ -1,0 +1,327 @@
+---
+title: "CCTV 비디오 파일 형식 완벽 가이드"
+publishedAt: "2026-05-21"
+description: "CCTV 비디오 형식 — AVI, MP4, H.264, H.265, MOV, MKV, MJPEG 등 — 에 대한 심층 가이드로, 압축, 호환성 및 저장 공간의 트레이드오프를 설명합니다."
+author: "CCTV Name Authoe"
+updatedAt: "2026-05-21"
+image: "/og.svg"
+tags: ["CCTV","CCTV 카메라","보안 카메라","비디오-형식","저장","압축"]
+---
+
+CCTV 영상에 적합한 파일 형식을 선택하는 것은 비디오 품질, 저장 요구 사항, 재생 호환성 및 법의학적 사용성에 영향을 미칩니다. 이 가이드는 감시 시스템에서 사용되는 주요 컨테이너 형식과 코덱을 다룹니다.
+
+## 컨테이너 vs 코덱
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#2563eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="4" y="12" width="56" height="40" rx="4"/>
+  <path d="M28 28 L40 36 L28 44 Z" fill="#2563eb" opacity="0.15"/>
+  <circle cx="16" cy="20" r="3" fill="#2563eb" opacity="0.3"/>
+</svg>
+
+[컨테이너 형식](https://en.wikipedia.org/wiki/Container_format)(MP4 또는 AVI 등)은 비디오, 오디오 및 메타데이터를 함께 포장합니다. [코덱](https://en.wikipedia.org/wiki/Video_codec)(H.264 또는 H.265 등)은 해당 컨테이너 내에서 비디오가 압축되는 방식을 결정합니다. 최신 CCTV 시스템은 일반적으로 MP4 컨테이너 내에서 H.264 또는 H.265 비디오를 사용합니다.
+
+<YouTubeEmbed id="nepKKz-MzFM" title="FFmpeg: Video Codecs & Containers Explained" start={599} />
+
+<div style={{clear:'both'}}/>
+
+## 컨테이너 형식
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#2563eb" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="8" y="8" width="48" height="48" rx="6"/>
+  <path d="M24 22 L40 22 M24 30 L36 30 M24 38 L32 38" strokeWidth="2.5"/>
+  <rect x="12" y="44" width="12" height="8" rx="2" fill="#2563eb" opacity="0.2"/>
+  <rect x="28" y="44" width="24" height="8" rx="2" fill="#2563eb" opacity="0.2"/>
+</svg>
+
+### AVI (Audio Video Interleave)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#6366f1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="6" y="8" width="36" height="32" rx="3"/>
+  <circle cx="24" cy="24" r="8"/>
+  <polygon points="22,20 22,28 29,24" fill="#6366f1" opacity="0.3"/>
+  <rect x="6" y="36" width="8" height="4" rx="1" fill="#6366f1" opacity="0.2"/>
+  <rect x="34" y="36" width="8" height="4" rx="1" fill="#6366f1" opacity="0.2"/>
+</svg>
+
+[AVI](https://en.wikipedia.org/wiki/Audio_Video_Interleave)는 1992년 Microsoft에 의해 도입되었습니다. 최소한의 압축으로 데이터를 저장하여 고품질의 큰 파일을 생성합니다.
+
+**최적:** 저장 공간보다 세부 묘사가 더 중요한 단기 법의학 클립.
+
+| 장점 | 단점 |
+|------|------|
+| 고품질, 폭넓은 재생 지원 | 매우 큰 파일 크기 |
+| 복잡한 인코딩 불필요 | 압축 효율 낮음 |
+
+### MP4 (MPEG-4 Part 14)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#10b981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="6" y="6" width="36" height="36" rx="4"/>
+  <rect x="10" y="10" width="28" height="28" rx="2" fill="#10b981" opacity="0.1"/>
+  <polygon points="20,16 20,32 32,24" fill="#10b981" opacity="0.4"/>
+</svg>
+
+[MP4](https://en.wikipedia.org/wiki/MP4_file_format)는 현대 감시 시스템에서 지배적인 형식입니다. 압축 효율성과 NVR, 모바일 앱, 클라우드 플랫폼 간의 폭넓은 호환성의 균형을 유지합니다.
+
+**최적:** 장기 녹화, 원격 시청 및 멀티플랫폼 워크플로.
+
+| 장점 | 단점 |
+|------|------|
+| 우수한 압축 대비 품질 비율 | AVI보다 약간 복잡한 인코딩 |
+| 범용 장치 지원 | |
+| 스트리밍 성능 우수 | |
+
+### MOV (QuickTime 파일 형식)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#a855f7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="6" y="6" width="36" height="36" rx="6"/>
+  <path d="M16 14 L16 34 L34 24 Z" fill="#a855f7" opacity="0.3"/>
+  <circle cx="14" cy="14" r="2" fill="#a855f7" opacity="0.4"/>
+</svg>
+
+[MOV](https://en.wikipedia.org/wiki/QuickTime_File_Format)는 Apple이 개발했으며 후반 작업 워크플로에서 일반적입니다. 일부 NVR은 편집 또는 보관 목적으로 MOV로 내보냅니다.
+
+**최적:** macOS 기반 워크플로 및 비디오 편집용 영상.
+
+| 장점 | 단점 |
+|------|------|
+| 고품질, 편집 친화적 코덱 지원 | MP4보다 큼 |
+| 우수한 메타데이터 지원 | Apple 생태계 외부에서 네이티브 지원 부족 |
+
+### MKV (Matroska Video)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#f59e0b" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="4" y="4" width="18" height="18" rx="2" fill="#f59e0b" opacity="0.15"/>
+  <rect x="26" y="4" width="18" height="18" rx="2" fill="#f59e0b" opacity="0.15"/>
+  <rect x="4" y="26" width="18" height="18" rx="2" fill="#f59e0b" opacity="0.15"/>
+  <rect x="26" y="26" width="18" height="18" rx="2" fill="#f59e0b" opacity="0.15"/>
+  <path d="M13 13 L35 13 M13 35 L35 35 M13 13 L13 35 M35 13 L35 35" strokeWidth="1" opacity="0.3"/>
+</svg>
+
+[MKV](https://en.wikipedia.org/wiki/Matroska)는 하나의 파일에 여러 오디오 트랙, 자막 스트림 및 챕터 마커를 담을 수 있는 개방형 표준 컨테이너입니다.
+
+**최적:** 멀티 카메라 내보내기 또는 메타데이터가 포함된 영상 보관.
+
+| 장점 | 단점 |
+|------|------|
+| 하나의 파일에 무제한 트랙 지원 | 주류 NVR 소프트웨어에서 지원 부족 |
+| 오픈 소스, 라이선스 비용 없음 | 범용적으로 호환되지 않음 |
+
+### WMV (Windows Media Video)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#3b82f6" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="6" y="8" width="36" height="32" rx="2"/>
+  <path d="M6 28 L16 18 L22 26 L30 16 L42 28" strokeWidth="1.5" fill="none"/>
+  <polygon points="34,18 36,16 42,18 40,20" fill="#3b82f6" opacity="0.3"/>
+  <rect x="6" y="36" width="36" height="4" rx="1" fill="#3b82f6" opacity="0.1"/>
+</svg>
+
+[WMV](https://en.wikipedia.org/wiki/Windows_Media_Video)는 Microsoft가 Windows 기반 재생을 위해 설계했습니다. 작은 파일 크기를 달성하지만 눈에 띄는 품질 저하가 있습니다.
+
+**최적:** 레거시 Windows 전용 DVR 시스템.
+
+| 장점 | 단점 |
+|------|------|
+| 작은 파일 크기 | 최신 코덱보다 낮은 품질 |
+| 네이티브 Windows 재생 | 크로스플랫폼 지원 부족 |
+
+### FLV (Flash Video)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#ef4444" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <polygon points="26,6 12,28 22,28 18,42 36,20 26,20" fill="#ef4444" opacity="0.2"/>
+</svg>
+
+[FLV](https://en.wikipedia.org/wiki/Flash_Video)는 2000년대에 웹 스트리밍에 널리 사용되었습니다. Adobe가 2020년에 Flash 지원을 종료한 이후로 거의 사용되지 않습니다.
+
+**최적:** 레거시 웹캠 또는 브라우저 기반 감시 인터페이스.
+
+| 장점 | 단점 |
+|------|------|
+| 작은 파일, 빠른 스트리밍 | 구식 기술 |
+| | 현대적 호환성이 매우 제한적 |
+
+### 3GP
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#ec4899" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="12" y="4" width="24" height="40" rx="4"/>
+  <rect x="18" y="8" width="12" height="2" rx="1" fill="#ec4899" opacity="0.3"/>
+  <circle cx="24" cy="28" r="6"/>
+  <polygon points="22,24 22,32 29,28" fill="#ec4899" opacity="0.3"/>
+  <circle cx="24" cy="40" r="2" fill="#ec4899" opacity="0.4"/>
+</svg>
+
+[3GP](https://en.wikipedia.org/wiki/3GP_and_3G2)는 3G 휴대폰용으로 개발되었습니다. 일부 오래된 모바일 CCTV 뷰어가 이 형식을 사용합니다.
+
+**최적:** 매우 오래된 모바일 중심 감시 앱.
+
+| 장점 | 단점 |
+|------|------|
+| 매우 작은 파일 크기 | 낮은 비디오 품질 |
+| 저대역폭 모바일용 최적화 | 구식 형식 |
+
+<YouTubeEmbed id="_KMPjeioX08" title="I Watched This Movie on 10 Different Formats" />
+
+## 압축 표준 (코덱)
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#059669" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <circle cx="32" cy="28" r="18"/>
+  <circle cx="32" cy="28" r="10"/>
+  <circle cx="32" cy="28" r="4"/>
+  <path d="M32 4 L32 10 M32 46 L32 52 M4 28 L10 28 M54 28 L60 28" strokeWidth="2.5" opacity="0.5"/>
+  <path d="M12 12 L16 16 M48 48 L52 52 M48 16 L52 12 M12 48 L16 44" strokeWidth="1.5" opacity="0.4"/>
+</svg>
+
+### H.264 (Advanced Video Coding)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <circle cx="24" cy="24" r="16"/>
+  <circle cx="24" cy="24" r="8"/>
+  <path d="M24 4 L24 8 M24 40 L24 44 M4 24 L8 24 M40 24 L44 24" strokeWidth="2" opacity="0.4"/>
+  <path d="M10 10 L13 13 M35 35 L38 38 M35 10 L38 13 M10 35 L13 38" strokeWidth="1.2" opacity="0.3"/>
+  <text x="18" y="29" fontSize="12" fill="#059669" fontWeight="bold" fontFamily="monospace">264</text>
+</svg>
+
+[H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC)는 CCTV에서 가장 널리 사용되는 비디오 압축 표준입니다. 동등한 품질을 유지하면서 MJPEG 대비 파일 크기를 최대 50%까지 줄일 수 있습니다.
+
+**최적:** 기존 하드웨어에서의 HD 녹화 및 연중무휴 24시간 감시.
+
+| 장점 | 단점 |
+|------|------|
+| 폭넓은 하드웨어 디코더 지원 | 라이선스 제약 (대부분 OEM이 처리) |
+| 성숙하고 감시 분야에서 잘 검증됨 | H.265로 대체되는 중 |
+
+### H.265 (High Efficiency Video Coding)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <circle cx="18" cy="24" r="12" opacity="0.6"/>
+  <circle cx="30" cy="24" r="12" opacity="0.6"/>
+  <circle cx="18" cy="24" r="6" opacity="0.4"/>
+  <circle cx="30" cy="24" r="6" opacity="0.4"/>
+  <path d="M18 8 L18 12 M30 8 L30 12 M18 36 L18 40 M30 36 L30 40" strokeWidth="1.5" opacity="0.3"/>
+  <text x="13" y="29" fontSize="10" fill="#059669" fontWeight="bold" fontFamily="monospace">265</text>
+  <text x="25" y="29" fontSize="10" fill="#059669" fontWeight="bold" fontFamily="monospace">265</text>
+</svg>
+
+[H.265](https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding)(HEVC라고도 함)는 H.264의 압축률을 약 2배 향상시켜 4K 및 다중 채널 NVR에 이상적인 선택입니다.
+
+**최적:** 4K 카메라, 고채널 NVR 및 저장 공간이나 대역폭이 제한된 시스템.
+
+| 장점 | 단점 |
+|------|------|
+| 동일 품질에서 H.264보다 ~50% 작은 파일 | 더 많은 처리 성능 필요 |
+| 4K+ 해상도에 이상적 | 구형 NVR 하드웨어에서 지원 제한적 |
+
+<YouTubeEmbed id="DI1BjkmVhTg" title="H.264 vs H.265 Codec Comparison" start={375} />
+
+<YouTubeEmbed id="WVjtK71qqXU" title="AV1 Codec Explained" />
+
+### MJPEG (Motion JPEG)
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <rect x="4" y="10" width="10" height="28" rx="1" fill="#059669" opacity="0.15"/>
+  <rect x="16" y="10" width="10" height="28" rx="1" fill="#059669" opacity="0.15"/>
+  <rect x="28" y="10" width="10" height="28" rx="1" fill="#059669" opacity="0.15"/>
+  <rect x="40" y="10" width="6" height="28" rx="1" fill="#059669" opacity="0.1"/>
+  <line x1="9" y1="18" x2="9" y2="32" strokeWidth="1.2"/>
+  <line x1="21" y1="18" x2="21" y2="32" strokeWidth="1.2"/>
+  <line x1="33" y1="18" x2="33" y2="32" strokeWidth="1.2"/>
+  <circle cx="9" cy="16" r="1.5" fill="#059669"/>
+  <circle cx="21" cy="16" r="1.5" fill="#059669"/>
+  <circle cx="33" cy="16" r="1.5" fill="#059669"/>
+</svg>
+
+[MJPEG](https://en.wikipedia.org/wiki/Motion_JPEG)는 각 프레임을 독립적인 JPEG 이미지로 인코딩합니다. 이는 프레임별 분석을 단순화하지만 프레임 간 압축을 사용하지 않아 큰 파일이 생성됩니다.
+
+**최적:** 낮은 인코딩 지연 시간 또는 쉬운 프레임 추출이 필요한 애플리케이션.
+
+| 장점 | 단점 |
+|------|------|
+| 각 프레임이 완전한 이미지 (스틸 이미지 캡처 용이) | H.264/H.265 대비 압축률 낮음 |
+| 낮은 인코딩 지연 시간 | 연속 녹화 시 파일 크기 큼 |
+
+### RAW / 비압축 비디오
+
+<svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'10px', marginTop:'4px'}}>
+  <polygon points="24,4 44,24 24,44 4,24" fill="#059669" opacity="0.1"/>
+  <polygon points="24,10 38,24 24,38 10,24" fill="none" strokeWidth="1" opacity="0.4"/>
+  <circle cx="24" cy="24" r="6" fill="none"/>
+  <circle cx="24" cy="24" r="2" fill="#059669" opacity="0.4"/>
+</svg>
+
+[비압축 비디오](https://en.wikipedia.org/wiki/Uncompressed_video)는 센서의 모든 픽셀을 압축 없이 캡처합니다. 파일 크기는 엄청나지만 최대 증거 가치를 제공합니다.
+
+**최적:** 법의학 증거, 법정 자료 및 조사 분석.
+
+| 장점 | 단점 |
+|------|------|
+| 압축 아티팩트 없음 | 비현실적으로 큰 저장 공간 필요 |
+| 분석을 위한 최대 세부 정보 | 전문 재생 소프트웨어 필요 |
+
+## 독점 DVR 형식
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#dc2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="6" y="14" width="52" height="36" rx="4"/>
+  <rect x="12" y="20" width="40" height="24" rx="2" fill="#dc2626" opacity="0.1"/>
+  <circle cx="20" cy="32" r="4" fill="#dc2626" opacity="0.3"/>
+  <path d="M26 32 L44 32 M44 28 L44 36" strokeWidth="2.5"/>
+  <rect x="6" y="44" width="14" height="6" rx="1" fill="#dc2626" opacity="0.2"/>
+  <rect x="44" y="44" width="14" height="6" rx="1" fill="#dc2626" opacity="0.2"/>
+</svg>
+
+많은 DVR 제조업체는 타임스탬프, 모션 이벤트 및 카메라 ID와 같은 메타데이터를 포함하는 [독점](https://en.wikipedia.org/wiki/Proprietary_format) 컨테이너 형식을 사용합니다. 이러한 파일을 재생하려면 공급업체의 소프트웨어나 플레이어가 필요합니다.
+
+**최적:** 제조업체 생태계 내에서 원활한 재생.
+
+| 장점 | 단점 |
+|------|------|
+| 풍부한 메타데이터 (시간, 움직임, 카메라 ID) | 단일 공급업체에 종속 |
+| 특정 하드웨어에 최적화 | 내보내기 시 일반적으로 변환 필요 |
+
+## 저장 공간 고려 사항
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#7c3aed" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="8" y="10" width="48" height="44" rx="4"/>
+  <rect x="14" y="16" width="36" height="10" rx="2" fill="#7c3aed" opacity="0.15"/>
+  <rect x="14" y="30" width="36" height="10" rx="2" fill="#7c3aed" opacity="0.15"/>
+  <rect x="14" y="44" width="36" height="6" rx="2" fill="#7c3aed" opacity="0.15"/>
+  <circle cx="20" cy="21" r="1.5" fill="#7c3aed"/>
+  <circle cx="20" cy="35" r="1.5" fill="#7c3aed"/>
+</svg>
+
+코덱 선택은 저장 공간 계획에 직접적인 영향을 미칩니다. 24시간 연속 녹화하는 4채널 1080p 시스템은 대략 다음과 같은 저장 공간이 필요합니다:
+
+| 코덱 | 일일 저장 공간 (4× 1080p @ 15fps) |
+|-------|-----------------------------------|
+| MJPEG | ~300 GB |
+| H.264 | ~80 GB |
+| H.265 | ~40 GB |
+| RAW   | ~2+ TB |
+
+이러한 코덱에 대한 기술적 깊이는 [H.264 참조 구현](https://en.wikipedia.org/wiki/X264) 또는 [x265 프로젝트](https://en.wikipedia.org/wiki/X265)를 참조하세요.
+
+## 빠른 선택 가이드
+
+<svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="#ca8a04" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{float:'left', marginRight:'12px'}}>
+  <rect x="6" y="6" width="52" height="52" rx="6"/>
+  <path d="M20 32 L28 40 L44 24" strokeWidth="3" stroke="#ca8a04"/>
+  <path d="M20 18 L44 18" strokeWidth="2" opacity="0.4"/>
+  <path d="M20 46 L40 46" strokeWidth="2" opacity="0.4"/>
+</svg>
+
+| 필요 사항 | 권장 형식 |
+|------|-------------------|
+| 범용 최신 CCTV | H.264 또는 H.265를 사용한 MP4 |
+| 증거용 최대 품질 | AVI 또는 RAW |
+| 프레임별 법의학 분석 | MJPEG |
+| 장기 4K 녹화 | MP4 내 H.265 |
+| macOS 또는 비디오 편집 워크플로 | H.264를 사용한 MOV |
+
+## 더 보기
+
+| 주제 | 채널 | 비디오 |
+|-------|---------|-------|
+| 비디오 코덱 및 컨테이너 심층 분석 | Lex Fridman Podcast | [FFmpeg: The Technology Behind Video on the Internet](https://www.youtube.com/watch?v=nepKKz-MzFM) (타임스탬프 9:59) |
+| 10가지 비디오 형식 비교 (VHS ~ 4K Blu-ray) | Linus Tech Tips | [I Watched This Movie on 10 Different Formats](https://www.youtube.com/watch?v=_KMPjeioX08) |
+| YouTube 업로드용 H.264 vs H.265 | Gerald Undone | [Beat the Compression!](https://www.youtube.com/watch?v=DI1BjkmVhTg) |
+| AV1 코덱 설명 및 벤치마크 | Linus Tech Tips | [I bought a SECOND GPU… but NOT for gaming](https://www.youtube.com/watch?v=WVjtK71qqXU) |
+
+[블로그로 돌아가기](/blog)

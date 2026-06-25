@@ -20,6 +20,12 @@ export const siteConfig = {
     youtube: "https://youtube.com/@cctvname",
     github: "https://github.com/cctvname",
   },
+  affiliate: {
+    amazon: {
+      tag: "",
+      baseUrl: "https://www.amazon.com",
+    },
+  },
   author: {
     name: "CCTV Name Team",
   },

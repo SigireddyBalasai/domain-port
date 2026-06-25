@@ -18,9 +18,7 @@ export async function Comments({
 
   return (
     <section className="mt-16 border-t border-border pt-10" id="comments">
-      <h2 className="text-2xl font-bold">
-        Comments ({count})
-      </h2>
+      <h2 className="text-2xl font-bold">Comments ({count})</h2>
       {comments.length > 0 && (
         <div className="mt-8 space-y-6">
           {comments.map((comment) => {
@@ -34,15 +32,15 @@ export async function Comments({
                     {comment.author_name}
                   </span>
                   <span aria-hidden="true">·</span>
-                  <time
-                    className="dt-published"
-                    dateTime={comment.created_at}
-                  >
-                    {new Date(comment.created_at).toLocaleDateString(undefined, {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                    })}
+                  <time className="dt-published" dateTime={comment.created_at}>
+                    {new Date(comment.created_at).toLocaleDateString(
+                      undefined,
+                      {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      }
+                    )}
                   </time>
                 </div>
                 <div className="e-content mt-3 text-sm leading-relaxed">

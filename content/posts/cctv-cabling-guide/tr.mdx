@@ -1,0 +1,281 @@
+---
+title: "CCTV Kablo Kılavuzu: Cat5e, Cat6, Kanallar ve Kurulum En İyi Uygulamaları"
+publishedAt: "2026-05-25"
+description: "IP güvenlik kameraları için eksiksiz CCTV kablo kılavuzu — Cat5e vs Cat6 vs Cat6A, PoE güç iletimi, sonlandırma standartları, kanal gereksinimleri, aşırı gerilim koruması ve kaçınılması gereken yaygın kablo hataları."
+author: "CCTV Name Authoe"
+updatedAt: "2026-05-25"
+image: "/og.svg"
+tags: ["cctv", "kablolama", "cat6", "poe", "ethernet", "kurulum", "aşırı gerilim koruması", "kablo"]
+postType: "howto"
+howTo:
+  - name: "Doğru Kabloyu Seçin"
+    text: "Yeni kurulumların çoğu için Cat6 katı bakır seçin. 70 metreden uzun mesafeler veya yüksek güçlü PoE++ cihazları için Cat6A kullanın. Bakır kaplamalı alüminyumdan (CCA) her ne pahasına olursa olsun kaçının."
+  - name: "Kablo Rotalarını Planlayın"
+    text: "Her hattı kameradan NVR'ye ölçün. 100 metrenin altında kalın. Dış mekan bölümleri için kanal yolları planlayın. Her kablonun her iki ucunu etiketleyin."
+  - name: "Doğru Şekilde Sonlandırın"
+    text: "T568B kablolama standardını kullanın. Güvenilirlik için NVR ucunda bir patch paneline sonlandırın. Kameraları bağlamadan önce her kabloyu bir süreklilik test cihazıyla test edin."
+  - name: "Aşırı Gerilim Koruması Kurun"
+    text: "Her dış mekan kablosu için bina giriş noktasına PoE aşırı gerilim koruyucuları yerleştirin. Sistemi uygun şekilde topraklayın. Her kamera bağlantısında damlama halkası kullanın."
+  - name: "Belgeleyin ve Test Edin"
+    text: "Tüm kabloları her iki ucunda etiketleyin. Süreklilik, kablo haritası ve PoE güç iletimini test edin. Kablo hatlarını kapatmadan önce her kamera görüntüsünü doğrulayın."
+faq:
+  - question: "Güvenlik kameraları için Cat5e mi yoksa Cat6 mı kullanmalıyım?"
+    answer: "Herhangi bir yeni kurulum için Cat6 önerilir. 23 AWG iletkenler uzun hatlarda voltaj düşüşünü azaltır ve 4K kameralar için daha iyi bant genişliği payı sağlar. Cat5e'ye göre maliyet farkı fit başına yaklaşık $0,04-0,10'dur."
+  - question: "Bir PoE kablosu ne kadar uzun olabilir?"
+    answer: "IEEE 802.3 standardı, patch kabloları dahil Ethernet hatlarını 100 metre (328 fit) ile sınırlar. Bunun ötesinde, bir PoE genişletici, fiber bağlantı veya uzak bir PoE anahtarı kullanın."
+  - question: "CCA kablo nedir ve neden kaçınmalıyım?"
+    answer: "CCA (Bakır Kaplamalı Alüminyum) kablo, ince bir bakır kaplamaya sahip alüminyum çekirdekler kullanır. Daha yüksek dirence sahiptir, voltaj düşüşüne neden olur, PoE yükü altında ısınır ve zamanla kırılgan hale gelir. PoE güvenlik kameraları için her zaman %100 katı bakır kablo kullanın."
+  - question: "Dış mekan kameraları için ekranlı (STP) kabloya ihtiyacım var mı?"
+    answer: "Yalnızca kablo büyük motorların, elektrik panellerinin veya floresan aydınlatmanın yakınından geçiyorsa. Çoğu konut ve ofis kurulumu için ekransız (UTP) Cat6 yeterlidir. Ekranlı kablo ve konektörleri yalnızca belirli parazit kaynakları mevcut olduğunda kullanın."
+  - question: "PoE kameralar için aşırı gerilim korumasına ihtiyacım var mı?"
+    answer: "Evet, binayı terk eden her kablo için. Yıldırım kaynaklı aşırı gerilimler, yüzlerce fit uzaktaki yıldırımlardan bile uzun bakır hatlar boyunca ilerleyebilir. Bina giriş noktasındaki bir PoE aşırı gerilim koruyucusu $15-50 tutarındadır ve ucuz bir sigortadır."
+  - question: "Ethernet ve elektrik kablolarını aynı kanalda çalıştırabilir miyim?"
+    answer: "Hayır. AC güç hatlarından en az 30 cm mesafe bırakın. Bir güç hattını geçmeniz gerekiyorsa, paraziti en aza indirmek için 90 derecelik bir açıyla yapın."
+---
+
+Kötü kablolama, diğer tüm faktörlerden daha fazla CCTV arızasından sorumludur. Aralıklı olarak çevrimdışı olan bir kamera, geceleri kare düşüren bir görüntü veya IR devreye girdiğinde sıfırlanan bir sistem — bunların tümü, NVR veya kamera arızalarından daha sık kablo sorunlarına dayanır.
+
+Bu kılavuz, bir PoE güvenlik kamera sistemini doğru şekilde kablolamak için ihtiyacınız olan her şeyi kapsar: kablo seçimi, sonlandırma, kanallar, aşırı gerilim koruması, ihtiyacınız olan araçlar ve profesyonel bir kurulumu sorunlu olandan ayıran hatalar.
+
+<Callout type="info" title="PoE Sorunlarının %40'ı Kablo Kaynaklıdır">
+  Sektör verileri, "kamera çevrimdışı" biletlerinin yaklaşık %40'ının kablo sorunlarına dayandığını gösteriyor — yanlış kalınlık, dışarıda kullanılan iç mekan kablosu, aslında CCA Cat5e olan sahte Cat6 veya kötü sonlandırmalar. İlk günden doğru kabloyu almak, en yaygın arıza modunu ortadan kaldırır.
+</Callout>
+
+## Kablo Seçimi
+
+### Kablo Kategorisi
+
+| Kablo | Kalınlık | Maksimum Bant Genişliği | Maksimum PoE Gücü | En İyisi |
+|---|---|---|---|---|
+| Cat5e | 24 AWG | 100 m'de 1 Gbps | PoE/PoE+ (30W) | Bütçe 1080p, 50 m altı hatlar |
+| Cat6 | 23 AWG | 100 m'de 1 Gbps, 55 m'de 10 Gbps | PoE/PoE+/PoE++ (60W) | Tüm yeni kurulumlar için önerilir |
+| Cat6A | 23 AWG | 100 m'de 10 Gbps | PoE++ Tip 4 (100W) dahil tüm PoE standartları | 4K kameralar, 70 m üzeri hatlar, yüksek watt PTZ |
+| Cat7 | 22 AWG | 100 m'de 10 Gbps | Tüm PoE standartları | Geleceğe yönelik ticari kurulumlar |
+
+<Callout type="tip" title="Cat6 2026 İçin En Uygun Seçimdir">
+  Cat6, güvenlik kamerası kurulumları için en iyi çok yönlü seçimdir. 23 AWG iletkenler, Cat5e'ye kıyasla PoE ile ilgili voltaj düşüşünü ve ısıyı azaltır. 250 MHz bant genişliği, 4K video akışları için cömert bir pay sağlar. Cat5e'ye kıyasla maliyet farkı tipik olarak fit başına yalnızca $0,04-0,10'dur — 8 kameralı bir sistemde bu toplam $30-80 ekler. Bu küçük fark için, ölçülebilir şekilde daha iyi PoE performansı ve gelecekteki kamera yükseltmeleri için bant genişliği payı elde edersiniz.
+</Callout>
+
+### Katı Bakır vs. CCA
+
+Bu, vereceğiniz en önemli tek kablo kararıdır.
+
+| Özellik | %100 Katı Bakır | Bakır Kaplamalı Alüminyum (CCA) |
+|---|---|---|
+| Direnç | Düşük | %40-60 daha yüksek |
+| PoE güvenilirliği | Mükemmel | 30 m üzerinde voltaj düşüşüne neden olur |
+| PoE+ yükü altında ısı | Düşük | Önemli |
+| Esneklik | İyi | Kırılgan, çekildiğinde kırılır |
+| Fit başına maliyet | ~$0,30-0,50 | ~$0,10-0,15 |
+| Dış mekan kullanımında ömür | 10+ yıl | 2-3 yıl |
+
+<Callout type="danger" title="PoE İçin Asla CCA Kullanmayın">
+  CCA kablo, saf bakırdan daha yüksek dirence sahiptir, bu da daha fazla voltaj düşüşü, daha fazla ısı ve aralıklı kamera güç arızaları anlamına gelir. PoE+ yükü (30W) altında, CCA kablolar zamanla kılıfı bozacak kadar ısınabilir. Satıcı açıkça "%100 saf bakır" veya "çıplak bakır" belirtmiyorsa, CCA olduğunu varsayın. Herhangi bir profesyonel kurulum için katı bakırda ısrar edin.
+</Callout>
+
+### İç Mekan vs. Dış Mekan Kablosu
+
+| Özellik | İç Mekan (CM/CMR) | Dış Mekan (CMX/Doğrudan Gömme) |
+|---|---|---|
+| Kılıf malzemesi | PVC (yumuşak, esnek) | LLDPE (sert, UV'ye dayanıklı) |
+| Su yalıtımı | Yok | Jel dolgulu veya su geçirmez bant |
+| UV koruması | Düşük (1-2 yılda çatlar) | Yüksek (10+ yıl dayanır) |
+| Sıcaklık aralığı | 0°C ila 60°C | -40°C ila 75°C |
+| En iyi kullanım | Duvarlar içi, tavan arası, iç kanallar | Açık dış mekan hatları, doğrudan gömme |
+
+Kablo hattının herhangi bir kısmı hava koşullarına, güneş ışığına veya neme maruz kalıyorsa, dış mekan kablosu kullanın veya standart iç mekan kablosunu UV dereceli kanaldan geçirin.
+
+## Gerekli Araçlar
+
+| Araç | Amaç | Tahmini Maliyet |
+|---|---|---|
+| Cat6 sıkma aleti (geçmeli uyumlu) | RJ45 konektörlerini sonlandırma | $25-50 |
+| Geçmeli RJ45 konektörler | Daha kolay, daha güvenilir sonlandırmalar | $15-25 (50'li paket) |
+| Kablo test cihazı (süreklilik + kablo haritası) | Sonlandırmaları doğrulama | $15-30 |
+| Balık şeridi veya parlak çubuklar | Kabloyu duvarlardan/kanallardan çekme | $20-40 |
+| Kablo yağlayıcı | Uzun kanal çekişleri | $10-15 |
+| PoE test cihazı | Mesafede güç iletimini doğrulama | $50-150 |
+| Punch-down aleti | Patch panelleri sonlandırma | $15-30 |
+| Kablo etiketleri | Her hattın her iki ucunu işaretleme | $5-10 |
+| Kablo sıyırıcı | Kablo kılıfını sıyırma | $10-20 |
+| Darbeli matkap + duvar uçları | Kameraları tuğla/beton üzerine monte etme | Değişir |
+
+<Callout type="note" title="Önceden Sonlandırılmış Kablolar Bir Seçenektir">
+  Erişilebilir kablo yollarına sahip küçük kurulumlar (1-4 kamera) için, ölçülü uzunluklarda önceden sonlandırılmış Cat6 kablolar zaman kazandırır ve sonlandırma hatalarını önler. Daha büyük kurulumlar veya kanallardan geçen hatlar için, geçmeli RJ45 konektörlerle kendi kablonuzu sonlandırmak daha güvenilir ve uygun maliyetlidir.
+</Callout>
+
+## Sonlandırma Standartları
+
+### T568B Kablolama
+
+T568B standardı, Kuzey Amerika'da güvenlik kamerası kurulumları için baskın kablolama desenidir. Her kablonun her iki ucu aynı standardı kullanmalıdır.
+
+**Tel sırası (pin 1'den pin 8'e):**
+1. Beyaz/Turuncu
+2. Turuncu
+3. Beyaz/Yeşil
+4. Mavi
+5. Beyaz/Mavi
+6. Yeşil
+7. Beyaz/Kahverengi
+8. Kahverengi
+
+### Sonlandırma İpuçları
+
+- **Doğru uzunlukta sıyırın**: Çok fazla açıkta kılıf karışma yaratır. Çok az, iletkenin tam oturmasını engeller.
+- **Bükümü koruyun**: Her bükümlü çifti konektöre mümkün olduğunca yakın bükülü tutun. 12 mm'den fazla çözmek Cat6 performansını düşürür.
+- **Geçmeli konektörler kullanın**: İletkenler konektörün önünden geçer, böylece sıkmadan önce tel sırasını görsel olarak doğrulayabilirsiniz.
+- **NVR ucunda bir patch paneline punch-down yapın**: Uzun hatlar için, bir patch paneline sonlandırmak doğrudan RJ45 sıkmaktan daha güvenilirdir. Ayrıca sorun gidermeyi ve yeniden sonlandırmayı çok daha kolay hale getirir.
+
+<Callout type="warning" title="Her Sonlandırmayı Test Edin">
+  Bir kamera bağlamadan önce her hatta kablo haritasını, sürekliliği ve kısa devreleri doğrulamak için bir kablo test cihazı kullanın. 30 saniyelik bir test, daha sonra teşhis edilmesi saatler sürecek sorunları yakalar. Uzun dış mekan hatları için, kamera ucunda güç iletimini doğrulamak üzere bir PoE test cihazıyla da test edin.
+</Callout>
+
+## Kanallar ve Kablo Yönetimi
+
+### Ne Zaman Kanal Kullanılır
+
+| Senaryo | Kanal Türü | Neden |
+|---|---|---|
+| Açık dış mekan hatları | PVC Schedule 40 | Hava koşullarına dayanıklı, UV'ye dayanıklı |
+| Yeraltı gömme | PVC Schedule 40 veya 80 | Fiziksel koruma, kod gereksinimi |
+| Binalar arası | Esnek zırhlı | Hareket derzleri, fiziksel koruma |
+| İç mekan kablo demetleri | Kablo tepsisi veya J-kancalar | Düzenleme, ısı dağılımı |
+| Duvar geçişleri | Kısa PVC manşon | Kenarlardan koruma |
+
+### Kanal Kuralları
+
+- **Minimum gömme derinliği**: PVC için 45 cm, NEC'e göre metal kanal için 15 cm
+- **Doluluk oranı**: Kanalı kapasitenin %40'ından fazla doldurmayın — kabloların ısı dağılımı için hava sirkülasyonuna ihtiyacı vardır
+- **Bükülme yarıçapı**: Cat6 için minimum 4x kablo çapı. Sivri 90° dirsekler değil, geniş bükümler kullanın
+- **Uçları sızdırmaz hale getirin**: Her kanal ucunda kanal macunu veya silikon ile nem girişini önleyin
+- **AC gücünden ayırın**: 30 cm mesafe bırakın. Kaçınılmazsa 90°'de çaprazlayın
+
+### Kablo Demeti Isısı
+
+Birden fazla PoE kablosu bir demet veya kanalda birlikte çalıştığında, iletkenlerdeki elektrik direncinden ısı birikir. Bu, yüksek güçlü PoE kurulumları için ciddi bir endişe kaynağıdır.
+
+| Demetteki Kablo Sayısı | Ortam Sıcaklığının Üzerinde Artış | Önerilen Eylem |
+|---|---|---|
+| 1-6 | %0 (düşürmeye gerek yok) | Standart kurulum |
+| 7-15 | %15-25 | Demet boyutunu küçültün veya aralığı artırın |
+| 16-30 | %30-40 | Daha küçük demetlere bölün |
+| 31+ | %40-55 | Cat6A kullanın, demet boyutunu küçültün, havalandırmayı sağlayın |
+
+<Callout type="tip" title="Büyük Demetler İçin Isı Yönetimi">
+  ISO/IEC, PoE hususlarından bağımsız olarak maksimum 24 kablo demet boyutu önerir. Yüksek güçlü PoE++ kurulumları için, ısıyı daha etkili bir şekilde dağıtan Cat6A (23 AWG) iletkenler kullanın. PoE kablolarını, uygun termal düşürme olmadan kapalı tavan boşlukları veya sızdırmaz kanallar gibi havalandırılmayan alanlarda çalıştırmaktan kaçının.
+</Callout>
+
+## Aşırı Gerilim Koruması
+
+Uzun PoE hatlarındaki kameralar, yakındaki yıldırımlardan bile (doğrudan isabet gerekmez) kaynaklanan aşırı gerilimlere karşı hassastır. Aşırı gerilim koruması, isteğe bağlı bir yükseltme değil, zorunlu bir katman olarak ele alınmalıdır.
+
+### Minimum Koruma
+
+- Her dış mekan kablosu için bina giriş noktasında bir PoE aşırı gerilim koruyucusu (her biri $15-50)
+- Aşırı gerilim koruyucusunu bina toprak hattına uygun şekilde topraklayın
+
+### Gelişmiş Koruma
+
+- Her kamerada PoE aşırı gerilim koruyucusu (daha pahalı ancak daha iyi izolasyon)
+- Ana elektrik panosunda tüm bina aşırı gerilim koruyucusu
+- NVR ve PoE anahtarı için aşırı gerilim korumalı UPS
+
+<Callout type="danger" title="Topraklama İsteğe Bağlı Değildir">
+  Düzgün topraklanmamış bir aşırı gerilim koruyucusu hiçbir koruma sağlamaz. Aşırı gerilim koruyucularınızın bina topraklamasına bağlı olduğundan emin olun. Ticari kurulumlarda topraklama, yerel elektrik kodu gereksinimlerini karşılamalıdır.
+</Callout>
+
+## Yaygın Kablo Hataları
+
+### 1. Kablo Sıkışma Noktaları
+Keskin dönüşler uzun hatlarda veri kalitesini bozar. En az 5 cm bükülme yarıçapı koruyun. Kabloyu doğrudan duvarlara zımbalama — uygun kablo klipsleri veya cırt cırt bantları kullanın.
+
+### 2. Özensiz Sonlandırmalar
+Gevşek RJ45 kontakları, teşhis etmesi sinir bozucu olan aralıklı arızalara neden olur. Her sonlandırmadan sonra bir test cihazı kullanın. Uzun hatlar için, doğrudan sıkmak yerine bir patch paneline sonlandırın.
+
+### 3. AC Gücüyle Aynı Kanalda Kablo
+Paraziti tetikler ve sinyali bozar. AC güç hatlarından 30 cm mesafe bırakın. Geçmeniz gerekiyorsa, 90 derecede yapın.
+
+### 4. Dışarıda Kullanılan İç Mekan Kablosu
+UV'ye maruz kalan iç mekan PVC kablosu 2-3 yıl içinde bozulur. Kılıf çatlar, nem kılcal etkiyle kabloya sızar ve kamera arızalanır. Herhangi bir dış bölüm için dış mekan (CMX) kablosu veya kanal kullanın.
+
+### 5. Kamera Kıvrılmış Fazlalık
+Kamera konumunda fazla önceden sonlandırılmış kabloyu sarmak elektriksel paraziti toplar ve bir anten görevi görür. Gerçek hatta uygun kablo uzunlukları kullanın veya fazlalığı NVR ucunda düzgünce sarın.
+
+### 6. Damlama Halkası Yok
+Kablo kameraya ulaştığında, kameraya veya duvara girmeden önce küçük bir "U" şeklinde sarkmasına izin verin. Bu, suyun konektöre akmak yerine eğrinin altından damlamasını sağlar.
+
+### 7. Eksik Etiketler
+Etiketsiz kablolar, 30 dakikalık bir sorun giderme işini 3 saatlik bir çileye dönüştürür. Her kablonun her iki ucunu tutarlı bir adlandırma şemasıyla etiketleyin (ör. "Cam-01-OnKapi").
+
+## Dış Mekan Kurulum Kontrol Listesi
+
+- [ ] Dış mekan (CMX) Cat6 kablosu veya UV dereceli kanalda iç mekan kablosu
+- [ ] Her kamera bağlantısında damlama halkası
+- [ ] Hava koşullarına dayanıklı RJ45 konektörler veya bağlantı kutusu
+- [ ] Korozyonu önlemek için konektör pimlerinde dielektrik gres
+- [ ] Dış mekan bağlantılarında kendinden birleşen bant (su geçirmez sızdırmazlık)
+- [ ] Duvar geçişlerinin etrafında silikon dolgu macunu
+- [ ] Bina giriş noktasında PoE aşırı gerilim koruyucusu
+- [ ] Açık hatlar ve yeraltı bölümleri için kanal
+- [ ] Açık hatlarda her 30-50 cm'de bir kablo klipsi veya cırt cırt bant
+- [ ] Her kablonun her iki ucunda etiketler
+- [ ] Süreklilik ve PoE güç testi doğrulandı
+
+## Son Test Protokolü
+
+Kurulumu tamamlanmış olarak bildirmeden önce:
+
+1. **Süreklilik testi**: Her kablodaki her pin doğru şekilde bağlanmış
+2. **PoE güç testi**: Yük altında her hattın kamera ucunda voltajı doğrulayın
+3. **Kamera algılama**: Her kamera 60 saniye içinde NVR'de görünür
+4. **Gece testi**: IR LED'ler etkinleştirildikten sonra tüm kameraların kararlı bağlantıyı koruduğunu doğrulayın
+5. **Uzaktan erişim testi**: Yerel ağ dışından uzaktan izlemenin çalıştığını onaylayın
+6. **Kayıt doğrulama**: 7 gün sonra NVR zaman çizelgesinde kayıt boşluğu olmadığını kontrol edin
+
+<Callout type="tip" title="100 Metrelik Sert Sınır">
+  IEEE 802.3 standardı, tüm patch kabloları dahil Ethernet hatlarını 100 metre (328 fit) ile sınırlar. Pratikte, saf bakır Cat6 ile güvenilir bir şekilde 95 metreye ulaşabilirsiniz. Bunun ötesinde, iyi kabloda bile voltaj düşüşü aralıklı kamera sıfırlamalarına neden olur. 90 metreyi aşan her hat için PoE genişleticiler veya fiber bağlantı planlayın.
+</Callout>
+
+## Sıkça Sorulan Sorular
+
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>Güvenlik kameraları için Cat5e mi yoksa Cat6 mı kullanmalıyım?</AccordionTrigger>
+    <AccordionContent>
+      Cat6, herhangi bir yeni kurulum için önerilen temel çizgidir. 23 AWG iletkenler, Cat5e'nin 24 AWG'sine kıyasla voltaj düşüşünü azaltır; bu, PoE güç iletimi için önemlidir — özellikle 50 metreden uzun hatlarda ve IR LED'li veya ısıtıcılı kameralar için. Kablo döşeme işçiliğine kıyasla maliyet farkı minimumdur (fit başına $0,04-0,10). Cat5e'yi yalnızca 1080p kameralarla 30 metrenin altındaki kısa hatlar için saklayın.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Bir PoE kablosu ne kadar uzun olabilir?</AccordionTrigger>
+    <AccordionContent>
+      IEEE 802.3 standardı, patch kabloları dahil Ethernet hatlarını toplam 100 metre (328 fit) ile sınırlar. 100 metrenin ötesinde, veri sinyali bozulur ve PoE güç iletimi kamera minimumunun altına düşer. Daha uzun hatlar için, bir PoE genişletici (birim başına 100 m ekler, 4 birime kadar), uzak bir PoE anahtarıyla fiber bağlantı kullanın veya NVR'yi daha yakına taşıyın.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Aynı kurulumda CCA ve katı bakır kabloyu karıştırabilir miyim?</AccordionTrigger>
+    <AccordionContent>
+      Hayır. CCA ve katı bakırı karıştırmak, bağlantıda galvanik korozyon noktası oluşturur, bu da direnci artırır ve zamanla bağlantının arızalanmasına neden olur. Bir kablo türü seçin ve her yerde kullanın. PoE için bu her zaman katı bakır olmalıdır.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Ekranlı (STP) kabloya ihtiyacım var mı?</AccordionTrigger>
+    <AccordionContent>
+      Yalnızca önemli elektriksel parazit yakınında çalışıyorsa — büyük motorlar, floresan balastlar, endüstriyel makineler veya elektrik panelleri. Çoğu konut ve ofis kurulumu için ekransız (UTP) Cat6 tamamen yeterlidir. STP kullanıyorsanız, yalnızca bir ucunda ekranlı konektörler ve uygun topraklama kullanmalısınız, aksi takdirde ekranlama etkisiz hale gelir.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Cat6 için minimum bükülme yarıçapı nedir?</AccordionTrigger>
+    <AccordionContent>
+      Cat6 için minimum bükülme yarıçapı, kablo çapının 4 katı veya yaklaşık 5 cm'dir (2 inç). Keskin bükümler, iç çift bükümünü ezer ve sinyal kalitesini düşürür. Kalıcı kurulumlar için, keskin 90 derecelik dönüşler yerine geniş bükümler veya 45 derecelik dirsekler kullanın.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Dış mekan kameraları için Ethernet kablosu ne kadar derine gömülmelidir?</AccordionTrigger>
+    <AccordionContent>
+      Ulusal Elektrik Kodu'na (NEC) göre, PVC kanal en az 18 inç (45 cm) derinliğe gömülmelidir. Metal kanal yalnızca 6 inç (15 cm) gerektirir. Yeraltı hatları için kanalda doğrudan gömme kablosu tercih edilir. Kazmadan önce her zaman kamu hizmeti bulucularını arayın.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+Kablodan yapılandırmaya kadar eksiksiz adım adım kurulum talimatları için bu kılavuzu [PoE NVR kurulum kılavuzumuzla](/blog/poe-nvr-setup) eşleştirin.

@@ -1,0 +1,251 @@
+---
+title: "IP Kamera Çözünürlük Rehberi: 2MP vs 4MP vs 4K (2026)"
+publishedAt: "2026-05-25"
+description: "2026 IP kamera çözünürlük rehberi: 2MP vs 4MP vs 5MP vs 4K. Tanımlama mesafesi, depolama gereksinimleri, lens uyumu ve DORI standartlarını karşılaştırarak her güvenlik kamerası konumu için en iyi çözünürlüğü seçin."
+author: "CCTV Name Authoe"
+updatedAt: "2026-05-25"
+image: "/og.svg"
+tags: ["cctv", "ip kamera", "kamera çözünürlüğü", "4k", "1080p", "güvenlik kamerası", "megapiksel"]
+postType: "howto"
+howTo:
+  - name: "Çözünürlük Seviyelerini Anlayın"
+    text: "2MP (1080p), 4MP, 5MP ve 4K (8MP) çözünürlüklerini piksel sayısı, tanımlama mesafesi ve kamera başına günlük depolama açısından karşılaştırın."
+  - name: "Çözünürlüğü Sahneye Uydurun"
+    text: "Her kamera konumu için doğru çözünürlüğü seçmek üzere DORI standartlarını kullanın — giriş, çevre, iç mekan ve büyük açık alanlar."
+  - name: "Lens ve Sensörü Hesaba Katın"
+    text: "Odak uzaklığını ve sensör boyutunu hesaba katın. Yanlış lensle yüksek çözünürlüklü bir kamera, uzaktaki yüzleri veya plakaları tanımlayamaz."
+  - name: "Depolama ve Bant Genişliğini Planlayın"
+    text: "Çözünürlük seviyesi başına günlük depolamayı hesaplayın ve görüntü kalitesinden ödün vermeden depolamayı azaltmak için H.265+ sıkıştırmayı seçin."
+  - name: "Bölgeye Göre Çözünürlükleri Karıştırın"
+    text: "Giriş ve yüksek riskli alanlar için 4K, genel kapsama için 4MP ve sınırlı iç mekanlar için 1080p kullanarak maliyeti ve saklama süresini optimize edin."
+faq:
+  - question: "Bir güvenlik kamerasında 2MP, 4MP ve 4K ne anlama gelir?"
+    answer: "Bunlar kameranın sensör çözünürlüğünü belirtir. 2MP, 1920×1080 piksel (1080p Full HD) yakalar. 4MP, 2560×1440 piksel yakalar. 4K (8MP), 3840×2160 piksel yakalar — 1080p'nin dört katı detay."
+  - question: "Güvenlik kameraları için 4K her zaman daha mı iyidir?"
+    answer: "Her zaman değil. 4K, 1080p'nin dört katı depolama gerektirir ve daha büyük sensörlü daha düşük çözünürlüklü bir kameraya göre düşük ışıkta daha kötü performans gösterir. 15-25 metre mesafeden yüzleri tanımlamanız gereken geniş dış mekan alanları için 4K seçin. Yakın mesafe iç mekan sahneleri için 4MP ve hatta 1080p yeterlidir."
+  - question: "Bir 4K kamera bir yüzü ne kadar uzaktan tanımlayabilir?"
+    answer: "DORI standartlarına göre, 4K kamera, lens odak uzaklığı ve aydınlatma koşullarına bağlı olarak 15-25 metre (50-80 fit) mesafeden bir yüzü güvenilir bir şekilde tanımlayabilir. Aynı görev için bir 1080p kamera tipik olarak 4,5-7,5 metre ile sınırlıdır."
+  - question: "Daha yüksek çözünürlük daha iyi gece görüşü anlamına mı gelir?"
+    answer: "Hayır. Düşük ışık performansı öncelikle sensör boyutuna ve piksel boyutuna bağlıdır, çözünürlüğe değil. Büyük sensörlü bir 4MP Starlight kamera, düşük ışıkta küçük sensörlü bir 4K kamerayı geride bırakacaktır. Her zaman sensör boyutunu (1/2.8\", 1/1.8\", vb.) kontrol edin ve Starlight veya ColorVu teknolojisini arayın."
+  - question: "Aynı NVR'de farklı çözünürlüklerde kameraları karıştırabilir miyim?"
+    answer: "Evet. Modern NVR'ler karışık çözünürlükleri destekler. Bu en iyi uygulamadır — giriş ve yüksek riskli bölgeler için 4K, genel kapsama için 4MP ve sınırlı iç mekanlar için 1080p kullanın."
+  - question: "Bir 4K kamera günde ne kadar depolama kullanır?"
+    answer: "H.265 ile sürekli kayıt yapan bir 4K kamera günde 30-50 GB kullanır. Aynı kamera 1080p'de günde 10-15 GB kullanır. Yalnızca hareket kaydı bu rakamları %60-70 oranında azaltır."
+---
+
+Çözünürlük, bir güvenlik kamerası satın alırken herkesin baktığı ilk özelliktir. Ancak daha yüksek megapiksel otomatik olarak daha iyi güvenlik görüntüsü anlamına gelmez. Yanlış lensle hedefinden çok uzağa monte edilmiş bir 4K kamera, iyi yerleştirilmiş bir 2MP kameradan daha az kullanışlı detay yakalayacaktır.
+
+Bu rehber, her çözünürlük seviyesini — 2MP (1080p), 4MP, 5MP ve 4K (8MP) — gerçekten önemli olan faktörlere göre açıklar: tanımlama mesafesi, depolama maliyeti, düşük ışık performansı ve lens uyumu.
+
+<Callout type="info" title="Önemli Çıkarım">
+  En iyi kamera sistemi **karışık çözünürlükler** kullanır — yüz ve plaka tanımlamanın önemli olduğu geniş dış mekan bölgeleri için 4K, genel kapsama için 4MP ve dar iç mekanlar için 1080p. Tek bir çözünürlük her sahneye uymaz.
+</Callout>
+
+## Çözünürlük Seviyeleri Karşılaştırması
+
+| Seviye | Piksel Sayısı | En Boy Oranı | Tanımlama Mesafesi (DORI) | Günlük Depolama | Aylık Depolama (8 kam) |
+|---|---|---|---|---|---|
+| 2MP (1080p) | 1920 × 1080 | 16:9 | 4,5-7,5 m | 10-15 GB | ~500 GB |
+| 4MP (2K) | 2560 × 1440 | 16:9 | 7,5-12 m | 20-30 GB | ~1 TB |
+| 5MP | 2592 × 1944 | 4:3 | 9-15 m | 25-35 GB | ~1,3 TB |
+| 8MP (4K) | 3840 × 2160 | 16:9 | 15-25 m | 30-50 GB | ~2 TB |
+| 12MP | 4000 × 3000 | 4:3 | 21-33 m | 50-80 GB | ~3 TB |
+
+<Callout type="warning" title="Depolama Uyarısı">
+  H.265 ile 30 fps'de 7/24 kayıt yapan tek bir 4K kamera yaklaşık **ayda 1 TB** tüketir. Sürekli kayıtta 8 kameralı 4K sistem, 30 günlük saklama için 8+ TB gerektirir. Çözünürlük kararlarında her zaman saklama hedefinizi hesaba katın.
+</Callout>
+
+## 2MP (1080p) — Bütçe Temel Seviyesi
+
+2MP, modern IP kameralar için giriş seviyesi çözünürlüktür. 1920 × 1080 pikselde Full HD video yakalar.
+
+**En iyisi:**
+- Nesneden 3 m'den daha az mesafedeki kapı zili ve sundurma kameraları
+- Küçük iç mekanlar (koridorlar, merdiven boşlukları, asansör içleri)
+- Yakın mesafe izlemenin yeterli olduğu bütçe kısıtlı kurulumlar
+- Düşük riskli alanları kapsayan yardımcı kameralar
+
+**Sınırlamalar:**
+- 4,5-7,5 m ötesinde yüz tanımlama güvenilmez
+- Plaka yakalama için aracın 3-4,5 m içinde olması gerekir
+- Dijital zoom neredeyse anında piksellenme gösterir
+- 40+ inç monitörlerde zorlanır
+
+<Callout type="tip" title="1080p'nin Yeterli Olduğu Zamanlar">
+  3 metrelik bir koridoru, merdiven kapısını veya bir yazar kasanın sabit görüntüsünü kapsayan bir kamera için 4K çözünürlük yararlı hiçbir şey eklemez. Nesne çerçeveyi yeterince doldurur, böylece 1080p gerekli tüm detayları yakalar. 2MP kameraların güvenlik sonuçlarından ödün vermeden gerçek depolama tasarrufu sağladığı yer burasıdır.
+</Callout>
+
+## 4MP (2K) — Önerilen Standart
+
+4MP, 2026'da çoğu konut ve ticari kurulum için varsayılan çözünürlük haline gelmiştir. Yalnızca yaklaşık %25-30 daha fazla depolamayla 1080p'den yaklaşık %75 daha fazla detay sunar.
+
+**En iyisi:**
+- Ön kapı ve giriş kapsaması
+- Araba yolu ve garaj izleme
+- Genel perakende ve ofis alanları
+- 6-12 m derinliğindeki iç mekan alanları
+- Çoğu 8 kameralı sistem için birincil çözünürlük
+
+**Avantajlar:**
+- 5-8 metrede net yüz tanımlama
+- Yakın mesafede plaka yakalama (5 metrenin altında)
+- Modern sensörlerle iyi düşük ışık performansı
+- Yönetilebilir dosya boyutları (2MP'den yaklaşık %25 büyük)
+- Tüm seviyeler arasında en iyi fiyat-performans
+
+<Callout type="note" title="4MP Neden En İdeal Seçimdir">
+  Sektör kurulumcuları tutarlı bir şekilde 4MP'yi varsayılan olarak önerir. 4K'nın depolama ve bant genişliği cezaları olmadan tipik konut mesafelerinde tanımlama için yeterli piksel yoğunluğu sağlar. Karışık çözünürlüklü bir sistemde, 4MP kameraların çoğunluğunu yönetirken 4K kritik bölgeler için ayrılır.
+</Callout>
+
+## 4K (8MP) — Maksimum Detay
+
+4K kameralar 3840 × 2160 piksel yakalar — 1080p'nin dört katı piksel sayısı. Bu çözünürlük, uzaktaki detayın kritik olduğu belirli senaryolarda haklı çıkar.
+
+**En iyisi:**
+- Otoparklar ve büyük açık alanlar
+- Bina lobileri ve atriyumlar
+- Perakende kat geniş açılı görünümleri
+- Büyük mülklerde araba yolları ve ön bahçeler
+- Oynatma sırasında dijital zoom gereken herhangi bir sahne
+
+**Gereksinimler:**
+- Yeterli bant genişliği ve kod çözme kapasitesine sahip NVR
+- Eşdeğer 1080p sistemden 4x daha büyük gözetim sınıfı HDD
+- Mesafede kararlı bit hızı için Cat6 veya Cat6A kablolama
+- Yeterli aydınlatma veya Starlight/ColorVu sensör teknolojisi
+
+**Ödünleşimler:**
+- Depolama: Kamera başına ~40 GB/gün vs 1080p için ~12 GB/gün
+- Bant genişliği: Kamera başına 8-12 Mbps vs 1080p için 2-4 Mbps
+- Düşük ışık: Daha küçük pikseller, daha büyük piksellerden daha az ışık toplar
+
+## DORI Standartlarını Anlamak
+
+DORI (Algılama, Gözlem, Tanıma, Kimlik Belirleme), belirli bir mesafede bir kameranın gerçekte ne görebildiğini ölçmek için endüstri standardıdır. Çözünürlük bir faktördür — lens odak uzaklığı da aynı derecede önemlidir.
+
+| DORI Seviyesi | Gerekli Piksel | Ne Yapabilirsiniz |
+|---|---|---|
+| Algılama | 25 PPM (metre başına piksel) | Bir kişi veya aracın mevcut olduğunu görmek |
+| Gözlem | 63 PPM | Hareket desenlerini ve yönünü görmek |
+| Tanıma | 125 PPM | Kişiyi tanıyıp tanımadığınızı belirlemek |
+| Kimlik Belirleme | 250 PPM | Güvenilir bir şekilde yüz tanımlama veya plaka okuma |
+
+**Gerçek hayat örneği:** 4 mm lensli bir 4K kamera, yaklaşık 15-18 m mesafeden bir yüzü tanımlayabilir. Aynı kamera 2,8 mm lensle daha geniş bir sahneyi kapsar ancak aynı sayıda piksel daha geniş bir alana yayıldığı için tanımlama menzilini yaklaşık 10,5 m'ye düşürür.
+
+<Callout type="warning" title="Lens Düşündüğünüzden Daha Önemli">
+  2,8 mm geniş lensli bir 4K kamera, 15 m mesafede 6 mm lensli bir 4MP kameradan daha az tanımlama detayı yakalar. Çözünürlüğün yanında her zaman **lens odak uzaklığını** da göz önünde bulundurun. Değişken odaklı bir lens (2,8-12 mm), kurulum sırasında ayar yapmanızı sağlar ve küçük primine değer.
+</Callout>
+
+## Sahneye Göre Lens Odak Uzaklığı
+
+| Sahne | Önerilen Odak Uzaklığı | En İyi Çözünürlük |
+|---|---|---|
+| Sundurma, ön kapı (1,5-3 m) | 2,8 mm | 2MP yeterli |
+| Araba yolu, yan bahçe (4,5-9 m) | 4 mm | 4MP veya 4K |
+| Arka bahçe, otopark (9-15 m) | 6 mm | 4K önerilen |
+| Uzun araba yolu, arazi (15-25 m) | 8 mm | 4K minimum |
+| Cadde, sokak (25+ m) | 12 mm+ | Değişken odaklı/PTZ ile 4K |
+
+## Düşük Işık: Gizli Ödünleşim
+
+Daha yüksek çözünürlük genellikle aynı sensör boyutunda daha küçük tek tek pikseller anlamına gelir. Daha küçük pikseller daha az ışık toplar, bu da 4K kameraların eşdeğer 4MP kameralara göre düşük ışıkta genellikle daha kötü performans gösterdiği anlamına gelir.
+
+| Çözünürlük | Tipik Sensör | Piksel Boyutu | Düşük Işık Performansı |
+|---|---|---|---|
+| 2MP (1080p) | 1/2.8" | ~3,0 µm | İyi |
+| 4MP | 1/2.7" | ~2,0 µm | Çok iyi (Starlight modeller mükemmel) |
+| 4K (8MP) | 1/2.5" | ~1,45 µm | Orta |
+| 4K (8MP) Starlight | 1/1.8" | ~2,4 µm | Mükemmel |
+
+<Callout type="tip" title="Sadece Megapiksel Değil, Sensör Boyutunu da Kontrol Edin">
+  1/1.8\" sensörlü bir 4MP kamera, daha az piksele sahip olmasına rağmen düşük ışıkta 1/2.8\" sensörlü bir 4K kamerayı geride bırakacaktır. Gece performansı için **Starlight, ColorVu veya Full Color** teknolojisini ve 1/1.8\" veya daha büyük sensör boyutunu arayın.
+</Callout>
+
+## Çözünürlüğe Göre Depolama
+
+H.265 sıkıştırma, 7/24 sürekli kayıt varsayılarak:
+
+| Çözünürlük | Günlük | 7 Gün (4 kam) | 30 Gün (4 kam) | 30 Gün (8 kam) |
+|---|---|---|---|---|
+| 2MP (1080p) | 12 GB | 336 GB | 1,44 TB | 2,88 TB |
+| 4MP | 25 GB | 700 GB | 3 TB | 6 TB |
+| 4K (8MP) | 40 GB | 1,12 TB | 4,8 TB | 9,6 TB |
+
+**Yalnızca hareket kaydı ile bu rakamları %60-70 oranında azaltın.**
+**H.265+ akıllı kodlayıcı ile ek %30-50 tasarruf edin.**
+
+## Karışık Çözünürlüklü Sistem Oluşturma
+
+En akıllı yaklaşım, çözünürlüğü sahneye uydurmaktır:
+
+| Bölge | Çözünürlük | Lens | Gerekçe |
+|---|---|---|---|
+| Ön kapı | 4MP | 2,8 mm | Yakın mesafe, geniş kapsama |
+| Araba yolu | 4K | 4-6 mm | Uzaktan yüz ve plaka tanımlama |
+| Arka bahçe | 4K | 4 mm | Uzaktan tanımlamalı geniş kapsama |
+| Yan bahçe | 4MP | 4 mm | Genel çevre izleme |
+| Koridor (iç) | 2MP | 2,8 mm | Yakın mesafe, uzaktan tanımlama gerekmez |
+| Yazar kasa | 4MP | 2,8-4 mm | Tezgahta net yüz yakalama |
+| Otopark | 4K | 6-8 mm | Plaka yakalamalı geniş alan |
+| Merdiven | 2MP | 2,8 mm | Sınırlı alan, yakın nesne |
+
+<Callout type="note" title="Karışık Çözünürlük Depolama Tasarrufu Sağlar">
+  2x 4K + 4x 4MP + 2x 1080p içeren bir sistem, 8x 4K kameradan yaklaşık %40 daha az depolama kullanırken, her kamera sahnesine uygun olduğu için daha iyi genel kapsama sağlar.
+</Callout>
+
+## Karar Akış Şeması
+
+**2MP (1080p) seçin, eğer:**
+- Kamera sahnesi 4,5 m'den daha az derinliğe sahipse
+- Bütçe veya depolama kapasitesi birincil kısıtlamaysa
+- Kamera sınırlı bir iç mekan alanını kapsıyorsa (koridor, asansör, merdiven)
+- Genel aktivite izleme yeterliyse (tanımlama gerekmiyorsa)
+
+**4MP seçin, eğer:**
+- 4,5-12 m mesafede güvenilir tanımlamaya ihtiyacınız varsa
+- Bu, sisteminizin çoğu için genel amaçlı bir kameraysa
+- Detay, düşük ışık ve depolamanın en iyi dengesini istiyorsanız
+- 8-16 kameralı bir sistem kuruyor ve toplam depolamayı yönetmeniz gerekiyorsa
+
+**4K seçin, eğer:**
+- 12-25 m mesafede yüz veya plaka tanımlamaya ihtiyacınız varsa
+- Kamera geniş bir açık alanı kapsıyorsa (otopark, bahçe, depo)
+- Oynatma sırasında görüntülere dijital zoom yapmanız gerekiyorsa
+- Depolama kapasitesi ve NVR bant genişliği yeterliyse
+
+## Sıkça Sorulan Sorular
+
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>Güvenlik kameraları için 4K her zaman daha mı iyidir?</AccordionTrigger>
+    <AccordionContent>
+      Hayır. 4K, 1080p'nin dört katı depolama gerektirir ve daha küçük pikseller nedeniyle düşük ışıkta daha kötü performans gösterebilir. Uzaktan tanımlama veya dijital zoom yeteneğine ihtiyacınız olan yerlerde 4K kullanın. Yakın mesafe sahneleri için, iyi yerleştirilmiş bir 4MP ve hatta 1080p kamera, depolama gigabaytı başına daha iyi sonuçlar verecektir.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Daha yüksek çözünürlük daha iyi gece görüşü anlamına mı gelir?</AccordionTrigger>
+    <AccordionContent>
+      Genellikle hayır. Düşük ışık performansı, megapiksel sayısına değil, sensör boyutuna ve piksel aralığına bağlıdır. 1/1.8\" sensörlü bir 4MP Starlight kamera, karanlıkta çoğu 4K kamerayı geride bırakacaktır. Gece performansı kritikse, çözünürlükten önce sensör boyutuna öncelik verin ve Starlight, ColorVu veya Full Color teknolojisini arayın.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Tek bir NVR'de çözünürlükleri karıştırabilir miyim?</AccordionTrigger>
+    <AccordionContent>
+      Evet. Her modern NVR, karışık çözünürlüklü kameraları destekler. Bu en iyi uygulamadır: yüksek riskli dış mekan bölgelerinde 4K, genel kapsama için 4MP ve dar iç mekanlar için 1080p kullanın. Bu, hem kapsamayı hem de depolama kullanımını optimize eder.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Plaka tanıma için 4K'ya ihtiyacım var mı?</AccordionTrigger>
+    <AccordionContent>
+      Mutlaka değil. Plaka yakalama, çözünürlükten çok lens odak uzaklığına ve kamera konumlandırmasına bağlıdır. Araç yaklaşma yoluna yöneltilmiş 12 mm lensli bir 2MP kamera, 2,8 mm geniş lensli bir 4K kameradan daha güvenilir bir şekilde plaka yakalayacaktır. Özel LPR için, kamerayı araç yoluna paralel olarak yaklaşık 15 m mesafede 6-12 mm lensle konumlandırın.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Bir 4K kamera ne kadar bant genişliğine ihtiyaç duyar?</AccordionTrigger>
+    <AccordionContent>
+      H.265 ile 15 fps'de bir 4K kamera yaklaşık 8-12 Mbps kullanır. 30 fps'de 15-20 Mbps'ye ulaşabilir. 8 kameralı bir 4K sistem, 80+ Mbps özel bant genişliği gerektirir. PoE anahtarınızın uplink'inin Gigabit olduğundan ve NVR'nizin toplam akışı kaldırabildiğinden emin olun. Bunu 1080p için kamera başına 2-4 Mbps ile karşılaştırın.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+Ayrıntılı çözünürlük analizi için [4K vs 5MP karşılaştırmamızı](/blog/4k-vs-5mp-resolution-guide) okuyun veya doğru kayıt seçimi için bunu [NVR vs DVR rehberimiz](/blog/nvr-vs-dvr) ile eşleştirin.

@@ -7,18 +7,14 @@ const intlMiddleware = createMiddleware(routing)
 export const proxy = (
   request: NextRequest
 ): NextResponse | Promise<NextResponse> => {
-  if (request.nextUrl.pathname.startsWith("/keystatic")) {
-    const sessionToken = request.cookies.get("better-auth.session_token")
+  const host = request.headers.get("host") || ""
 
-    if (!sessionToken) {
-      const loginUrl = new URL("/login", request.url)
+  if (host === "cctv.name") {
+    const url = request.nextUrl.clone()
 
-      loginUrl.searchParams.set("callbackUrl", request.nextUrl.pathname)
+    url.host = "www.cctv.name"
 
-      return NextResponse.redirect(loginUrl)
-    }
-
-    return NextResponse.next()
+    return NextResponse.redirect(url, 301)
   }
 
   return intlMiddleware(request)

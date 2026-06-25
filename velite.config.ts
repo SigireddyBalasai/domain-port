@@ -40,6 +40,43 @@ const productReview = s.object({
   availability: s.string().default("InStock").optional(),
 })
 
+const listingItem = s.object({
+  name: s.string(),
+  brand: s.string().optional(),
+  model: s.string().optional(),
+  description: s.string().optional(),
+  image: s.string().optional(),
+  gallery: s.array(s.string()).optional(),
+  price: s.string().optional(),
+  priceCurrency: s.string().default("USD").optional(),
+  priceRange: s.string().optional(),
+  ratingValue: s.number().min(1).max(5).optional(),
+  ratingCount: s.number().min(1).optional(),
+  availability: s.string().default("InStock").optional(),
+  amazonUrl: s.string().optional(),
+  affiliateUrl: s.string().optional(),
+  asin: s.string().optional(),
+  sku: s.string().optional(),
+  category: s.string().optional(),
+  tags: s.array(s.string()).optional(),
+  bestFor: s.array(s.string()).optional(),
+  pros: s.array(s.string()).optional(),
+  cons: s.array(s.string()).optional(),
+  features: s.array(s.string()).optional(),
+  specs: s.record(s.string()).optional(),
+  warranty: s.string().optional(),
+  dimensions: s.string().optional(),
+  weight: s.string().optional(),
+  color: s.string().optional(),
+  material: s.string().optional(),
+  power: s.string().optional(),
+  installation: s.string().optional(),
+  certifications: s.array(s.string()).optional(),
+  included: s.array(s.string()).optional(),
+  video: s.string().optional(),
+  notes: s.string().optional(),
+})
+
 const softwareApp = s.object({
   name: s.string(),
   operatingSystem: s.string().optional(),
@@ -65,7 +102,7 @@ const eventDetails = s.object({
 
 const faqs = defineCollection({
   name: "Faq",
-  pattern: "faqs/**/*.mdx",
+  pattern: "faqs/*/*.mdx",
   schema: s
     .object({
       question: s.string(),
@@ -73,15 +110,16 @@ const faqs = defineCollection({
       category: s.string().default("general").optional(),
       order: s.number().default(0).optional(),
       tags: s.array(s.string()).optional(),
+      locale: s.string().optional(),
     })
     .transform((data, { meta }) => {
+      const parts = meta.path.split("/")
+      const file = parts.pop() ?? ""
+
       return {
         ...data,
-        slug:
-          meta.path
-            .split("/")
-            .pop()
-            ?.replace(/\.mdx$/, "") ?? "",
+        slug: parts.pop() ?? "",
+        locale: file.replace(/\.mdx$/, ""),
       }
     }),
 })
@@ -110,6 +148,7 @@ const posts = defineCollection({
           "howto",
           "event",
           "software",
+          "listing",
         ])
         .default("blog")
         .optional(),
@@ -117,6 +156,7 @@ const posts = defineCollection({
       howTo: s.array(howToStep).optional(),
       video: s.array(videoObject).optional(),
       product: productReview.optional(),
+      listing: s.array(listingItem).optional(),
       software: softwareApp.optional(),
       event: eventDetails.optional(),
       speakable: s.array(s.string()).max(3).optional(),

@@ -1,0 +1,251 @@
+---
+title: "Panduan Resolusi Kamera IP: 2MP vs 4MP vs 4K (2026)"
+publishedAt: "2026-05-25"
+description: "Panduan resolusi kamera IP 2026: 2MP vs 4MP vs 5MP vs 4K. Bandingkan jarak identifikasi, kebutuhan penyimpanan, pencocokan lensa, dan standar DORI untuk memilih resolusi optimal untuk setiap lokasi kamera keamanan."
+author: "CCTV Name Authoe"
+updatedAt: "2026-05-25"
+image: "/og.svg"
+tags: ["cctv", "kamera ip", "resolusi kamera", "4k", "1080p", "kamera keamanan", "megapiksel"]
+postType: "howto"
+howTo:
+  - name: "Memahami Tingkatan Resolusi"
+    text: "Bandingkan 2MP (1080p), 4MP, 5MP, dan 4K (8MP) berdasarkan jumlah piksel, jarak identifikasi, dan penyimpanan harian per kamera."
+  - name: "Cocokkan Resolusi dengan Adegan"
+    text: "Gunakan standar DORI untuk memilih resolusi yang tepat untuk setiap lokasi kamera — pintu masuk, perimeter, dalam ruangan, dan area terbuka luas."
+  - name: "Perhitungkan Lensa dan Sensor"
+    text: "Pertimbangkan panjang fokus dan ukuran sensor. Kamera resolusi tinggi dengan lensa yang salah tidak akan mengidentifikasi wajah atau plat nomor pada jarak jauh."
+  - name: "Rencanakan Penyimpanan dan Bandwidth"
+    text: "Hitung penyimpanan harian per tingkatan resolusi dan pilih kompresi H.265+ untuk mengurangi penyimpanan tanpa mengorbankan kualitas gambar."
+  - name: "Campur Resolusi berdasarkan Zona"
+    text: "Gunakan 4K untuk pintu masuk dan area berisiko tinggi, 4MP untuk cakupan umum, dan 1080p untuk ruang dalam terbatas guna mengoptimalkan biaya dan retensi."
+faq:
+  - question: "Apa arti 2MP, 4MP, dan 4K pada kamera keamanan?"
+    answer: "Ini merujuk pada resolusi sensor kamera. 2MP menangkap 1920×1080 piksel (1080p Full HD). 4MP menangkap 2560×1440 piksel. 4K (8MP) menangkap 3840×2160 piksel — empat kali detail 1080p."
+  - question: "Apakah 4K selalu lebih baik untuk kamera keamanan?"
+    answer: "Tidak selalu. 4K membutuhkan empat kali penyimpanan 1080p dan kinerjanya lebih buruk dalam cahaya rendah dibandingkan kamera resolusi lebih rendah dengan sensor lebih besar. Pilih 4K untuk area luar luas di mana Anda perlu mengidentifikasi wajah pada jarak 15-25 meter. Untuk adegan dalam jarak dekat, 4MP atau bahkan 1080p sudah cukup."
+  - question: "Seberapa jauh kamera 4K dapat mengidentifikasi wajah?"
+    answer: "Menurut standar DORI, kamera 4K dapat mengidentifikasi wajah dengan andal pada jarak 15-25 meter (50-80 kaki), tergantung pada panjang fokus lensa dan kondisi pencahayaan. Kamera 1080p biasanya terbatas pada 4,5-7,5 meter untuk tugas yang sama."
+  - question: "Apakah resolusi lebih tinggi berarti visi malam lebih baik?"
+    answer: "Tidak. Kinerja cahaya rendah terutama tergantung pada ukuran sensor dan ukuran piksel, bukan resolusi. Kamera 4MP Starlight dengan sensor besar akan mengungguli kamera 4K dengan sensor kecil dalam cahaya rendah. Selalu periksa ukuran sensor (1/2.8\", 1/1.8\", dll.) dan cari teknologi Starlight atau ColorVu."
+  - question: "Bisakah saya mencampur kamera resolusi berbeda pada NVR yang sama?"
+    answer: "Ya. NVR modern mendukung resolusi campuran. Ini adalah praktik terbaik — gunakan 4K untuk pintu masuk dan zona berisiko tinggi, 4MP untuk cakupan umum, dan 1080p untuk ruang dalam terbatas."
+  - question: "Berapa banyak penyimpanan yang digunakan kamera 4K per hari?"
+    answer: "Kamera 4K yang merekam terus menerus dengan H.265 menggunakan 30-50 GB per hari. Kamera yang sama pada 1080p menggunakan 10-15 GB per hari. Rekaman hanya saat gerak mengurangi angka ini sebesar 60-70%."
+---
+
+Resolusi adalah spesifikasi pertama yang dilihat semua orang saat membeli kamera keamanan. Namun megapiksel yang lebih tinggi tidak secara otomatis berarti rekaman keamanan yang lebih baik. Kamera 4K dengan lensa yang salah yang dipasang terlalu jauh dari targetnya akan menangkap detail yang kurang berguna dibandingkan kamera 2MP yang ditempatkan dengan baik.
+
+Panduan ini menguraikan setiap tingkatan resolusi — 2MP (1080p), 4MP, 5MP, dan 4K (8MP) — berdasarkan faktor yang benar-benar penting: jarak identifikasi, biaya penyimpanan, kinerja cahaya rendah, dan pencocokan lensa.
+
+<Callout type="info" title="Kesimpulan Utama">
+  Sistem kamera terbaik menggunakan **resolusi campuran** — 4K untuk zona luar ruang luas di mana identifikasi wajah dan plat nomor penting, 4MP untuk cakupan umum, dan 1080p untuk ruang dalam sempit. Satu resolusi tidak cocok untuk setiap adegan.
+</Callout>
+
+## Perbandingan Tingkatan Resolusi
+
+| Tingkatan | Jumlah Piksel | Rasio Aspek | Jarak ID (DORI) | Penyimpanan per Hari | Penyimpanan per Bulan (8 kam) |
+|---|---|---|---|---|---|
+| 2MP (1080p) | 1920 × 1080 | 16:9 | 4,5-7,5 m | 10-15 GB | ~500 GB |
+| 4MP (2K) | 2560 × 1440 | 16:9 | 7,5-12 m | 20-30 GB | ~1 TB |
+| 5MP | 2592 × 1944 | 4:3 | 9-15 m | 25-35 GB | ~1,3 TB |
+| 8MP (4K) | 3840 × 2160 | 16:9 | 15-25 m | 30-50 GB | ~2 TB |
+| 12MP | 4000 × 3000 | 4:3 | 21-33 m | 50-80 GB | ~3 TB |
+
+<Callout type="warning" title="Peringatan Penyimpanan">
+  Satu kamera 4K merekam 24/7 pada 30 fps dengan H.265 menghabiskan sekitar **1 TB per bulan**. Sistem 8 kamera 4K dengan perekaman terus menerus membutuhkan 8+ TB untuk retensi 30 hari. Selalu pertimbangkan target retensi Anda dalam keputusan resolusi.
+</Callout>
+
+## 2MP (1080p) — Garis Dasar Anggaran
+
+2MP adalah resolusi tingkat pemula untuk kamera IP modern. Ini menangkap video Full HD pada 1920 × 1080 piksel.
+
+**Terbaik untuk:**
+- Kamera bel pintu dan teras dalam jarak 3 m dari subjek
+- Ruang dalam kecil (lorong, tangga, interior lift)
+- Instalasi terbatas anggaran di mana pemantauan jarak dekat sudah cukup
+- Kamera sekunder yang mencakup area berisiko rendah
+
+**Keterbatasan:**
+- Identifikasi wajah tidak andal di luar 4,5-7,5 m
+- Tangkapan plat nomor membutuhkan kendaraan dalam jarak 3-4,5 m
+- Zoom digital langsung menunjukkan pikselasi
+- Terbebani pada monitor 40+ inci
+
+<Callout type="tip" title="Saat 1080p Cukup">
+  Untuk kamera yang mencakup lorong 3 meter, pintu tangga, atau pandangan tetap ke mesin kasir, resolusi 4K tidak menambahkan sesuatu yang berguna. Subjek mengisi cukup banyak bingkai sehingga 1080p menangkap setiap detail yang diperlukan. Di sinilah kamera 2MP menghemat penyimpanan nyata tanpa mengorbankan hasil keamanan.
+</Callout>
+
+## 4MP (2K) — Standar yang Direkomendasikan
+
+4MP telah menjadi resolusi default untuk sebagian besar instalasi residensial dan komersial pada tahun 2026. Ini memberikan sekitar 75% lebih detail daripada 1080p hanya dengan sekitar 25-30% lebih banyak penyimpanan.
+
+**Terbaik untuk:**
+- Cakupan pintu depan dan pintu masuk
+- Pemantauan jalan masuk dan garasi
+- Ruang ritel dan kantor umum
+- Area dalam dengan kedalaman 6-12 m
+- Resolusi utama untuk sebagian besar sistem 8 kamera
+
+**Keunggulan:**
+- Identifikasi wajah jelas pada 5-8 meter
+- Tangkapan plat nomor jarak dekat (di bawah 5 meter)
+- Kinerja cahaya rendah yang baik dengan sensor modern
+- Ukuran file yang mudah dikelola (sekitar 25% lebih besar dari 2MP)
+- Nilai terbaik untuk uang di semua tingkatan
+
+<Callout type="note" title="Mengapa 4MP Adalah Titik Manis">
+  Installer industri secara konsisten merekomendasikan 4MP sebagai default. Ini memberikan kepadatan piksel yang cukup untuk identifikasi pada jarak residensial tipikal tanpa penalti penyimpanan dan bandwidth 4K. Dalam sistem resolusi campuran, 4MP menangani sebagian besar kamera sementara 4K disediakan untuk zona kritis.
+</Callout>
+
+## 4K (8MP) — Detail Maksimal
+
+Kamera 4K menangkap 3840 × 2160 piksel — empat kali jumlah piksel 1080p. Resolusi ini dibenarkan dalam skenario spesifik di mana detail pada jarak sangat penting.
+
+**Terbaik untuk:**
+- Tempat parkir dan area terbuka luas
+- Lobi gedung dan atrium
+- Gambaran sudut lebar lantai ritel
+- Jalan masuk dan halaman depan pada properti besar
+- Adegan apa pun di mana zoom digital selama pemutaran diperlukan
+
+**Persyaratan:**
+- NVR dengan bandwidth dan kapasitas decoding yang memadai
+- HDD khusus pengawasan 4x lebih besar dari sistem 1080p setara
+- Kabel Cat6 atau Cat6A untuk bitrate stabil pada jarak jauh
+- Pencahayaan yang memadai atau teknologi sensor Starlight/ColorVu
+
+**Kekurangan:**
+- Penyimpanan: ~40 GB/hari per kamera vs ~12 GB/hari untuk 1080p
+- Bandwidth: 8-12 Mbps per kamera vs 2-4 Mbps untuk 1080p
+- Cahaya rendah: Piksel individual yang lebih kecil mengumpulkan lebih sedikit cahaya
+
+## Memahami Standar DORI
+
+DORI (Deteksi, Observasi, Recognisi, Identifikasi) adalah standar industri untuk mengukur apa yang sebenarnya dapat dilihat kamera pada jarak tertentu. Resolusi adalah satu faktor — panjang fokus lensa sama pentingnya.
+
+| Level DORI | Piksel yang Diperlukan | Yang Dapat Anda Lakukan |
+|---|---|---|
+| Deteksi | 25 PPM (piksel per meter) | Melihat bahwa seseorang atau kendaraan ada |
+| Observasi | 63 PPM | Melihat pola gerakan dan arah |
+| Recognisi | 125 PPM | Menentukan apakah Anda kenal orang tersebut |
+| Identifikasi | 250 PPM | Mengidentifikasi wajah atau membaca plat dengan andal |
+
+**Contoh nyata:** Kamera 4K dengan lensa 4mm dapat mengidentifikasi wajah pada sekitar 15-18 m. Kamera yang sama dengan lensa 2.8mm mencakup adegan yang lebih luas tetapi menurunkan jangkauan identifikasi menjadi sekitar 10,5 m karena jumlah piksel yang sama tersebar di area yang lebih luas.
+
+<Callout type="warning" title="Lensa Lebih Penting dari yang Anda Kira">
+  Kamera 4K dengan lensa lebar 2.8mm menangkap lebih sedikit detail identifikasi pada 15 m dibandingkan kamera 4MP dengan lensa 6mm. Selalu pertimbangkan **panjang fokus lensa** bersama dengan resolusi. Lensa varifokal (2.8-12mm) memungkinkan penyesuaian saat pemasangan dan sebanding dengan premi kecil.
+</Callout>
+
+## Panjang Fokus Lensa berdasarkan Adegan
+
+| Adegan | Panjang Fokus yang Direkomendasikan | Resolusi Terbaik |
+|---|---|---|
+| Teras, pintu depan (1,5-3 m) | 2.8mm | 2MP sudah cukup |
+| Jalan masuk, halaman samping (4,5-9 m) | 4mm | 4MP atau 4K |
+| Halaman belakang, parkir (9-15 m) | 6mm | 4K direkomendasikan |
+| Jalan masuk panjang, lahan (15-25 m) | 8mm | 4K minimal |
+| Jalan, gang (25+ m) | 12mm+ | 4K dengan varifokal/PTZ |
+
+## Cahaya Rendah: Kompromi Tersembunyi
+
+Resolusi lebih tinggi sering berarti piksel individual lebih kecil pada ukuran sensor yang sama. Piksel lebih kecil mengumpulkan lebih sedikit cahaya, yang berarti kamera 4K sering berkinerja lebih buruk dalam cahaya rendah dibandingkan kamera 4MP setara.
+
+| Resolusi | Sensor Tipikal | Ukuran Piksel | Kinerja Cahaya Rendah |
+|---|---|---|---|
+| 2MP (1080p) | 1/2.8" | ~3.0 µm | Baik |
+| 4MP | 1/2.7" | ~2.0 µm | Sangat baik (model Starlight unggul) |
+| 4K (8MP) | 1/2.5" | ~1.45 µm | Sedang |
+| 4K (8MP) Starlight | 1/1.8" | ~2.4 µm | Unggul |
+
+<Callout type="tip" title="Periksa Ukuran Sensor, Bukan Hanya Megapiksel">
+  Kamera 4MP dengan sensor 1/1.8" akan mengungguli kamera 4K dengan sensor 1/2.8" dalam cahaya rendah, meskipun 4MP memiliki lebih sedikit piksel. Cari teknologi **Starlight, ColorVu, atau Full Color** dan ukuran sensor 1/1.8" atau lebih besar untuk kinerja malam hari.
+</Callout>
+
+## Penyimpanan berdasarkan Resolusi
+
+Dengan asumsi kompresi H.265, perekaman terus menerus 24/7:
+
+| Resolusi | Per Hari | 7 Hari (4 kam) | 30 Hari (4 kam) | 30 Hari (8 kam) |
+|---|---|---|---|---|
+| 2MP (1080p) | 12 GB | 336 GB | 1,44 TB | 2,88 TB |
+| 4MP | 25 GB | 700 GB | 3 TB | 6 TB |
+| 4K (8MP) | 40 GB | 1,12 TB | 4,8 TB | 9,6 TB |
+
+**Dengan perekaman hanya saat gerak, kurangi angka ini sebesar 60-70%.**
+**Dengan codec pintar H.265+, hemat tambahan 30-50%.**
+
+## Membangun Sistem Resolusi Campuran
+
+Pendekatan paling cerdas adalah mencocokkan resolusi dengan adegan:
+
+| Zona | Resolusi | Lensa | Justifikasi |
+|---|---|---|---|
+| Pintu depan | 4MP | 2.8mm | Jarak dekat, cakupan luas |
+| Jalan masuk | 4K | 4-6mm | ID wajah dan plat pada jarak |
+| Halaman belakang | 4K | 4mm | Cakupan luas dengan ID jarak jauh |
+| Halaman samping | 4MP | 4mm | Pemantauan perimeter umum |
+| Lorong (dalam) | 2MP | 2.8mm | Jarak dekat, tidak perlu ID jarak jauh |
+| Mesin kasir | 4MP | 2.8-4mm | Tangkapan wajah jelas di konter |
+| Tempat parkir | 4K | 6-8mm | Area luas dengan tangkapan plat |
+| Tangga | 2MP | 2.8mm | Ruang terbatas, subjek dekat |
+
+<Callout type="note" title="Resolusi Campuran Menghemat Penyimpanan">
+  Sistem dengan 2x 4K + 4x 4MP + 2x 1080p menggunakan sekitar 40% lebih sedikit penyimpanan daripada 8x kamera 4K, sambil memberikan cakupan keseluruhan yang lebih baik karena setiap kamera dicocokkan dengan adegannya.
+</Callout>
+
+## Diagram Keputusan
+
+**Pilih 2MP (1080p) jika:**
+- Adegan kamera kurang dari 4,5 m kedalamannya
+- Anggaran atau kapasitas penyimpanan adalah kendala utama
+- Kamera mencakup area dalam terbatas (lorong, lift, tangga)
+- Pemantauan aktivitas umum sudah cukup (tidak perlu ID)
+
+**Pilih 4MP jika:**
+- Anda membutuhkan identifikasi andal pada jarak 4,5-12 m
+- Ini adalah kamera tujuan umum untuk sebagian besar sistem Anda
+- Anda menginginkan keseimbangan terbaik antara detail, cahaya rendah, dan penyimpanan
+- Anda membangun sistem 8-16 kamera dan perlu mengelola total penyimpanan
+
+**Pilih 4K jika:**
+- Anda membutuhkan identifikasi wajah atau plat pada jarak 12-25 m
+- Kamera mencakup area terbuka luas (tempat parkir, halaman, gudang)
+- Anda perlu melakukan zoom digital ke rekaman selama pemutaran
+- Kapasitas penyimpanan dan bandwidth NVR memadai
+
+## Pertanyaan yang Sering Diajukan
+
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>Apakah 4K selalu lebih baik untuk kamera keamanan?</AccordionTrigger>
+    <AccordionContent>
+      Tidak. 4K membutuhkan empat kali penyimpanan 1080p dan dapat berkinerja lebih buruk dalam cahaya rendah karena piksel individual yang lebih kecil. Gunakan 4K di mana Anda membutuhkan identifikasi jarak jauh atau kemampuan zoom digital. Untuk adegan jarak dekat, kamera 4MP atau bahkan 1080p yang ditempatkan dengan baik akan memberikan hasil lebih baik per gigabyte penyimpanan.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Apakah resolusi lebih tinggi berarti visi malam lebih baik?</AccordionTrigger>
+    <AccordionContent>
+      Umumnya tidak. Kinerja cahaya rendah tergantung pada ukuran sensor dan pitch piksel, bukan jumlah megapiksel. Kamera 4MP Starlight dengan sensor 1/1.8" akan mengungguli sebagian besar kamera 4K dalam kegelapan. Jika kinerja malam sangat penting, prioritaskan ukuran sensor di atas resolusi dan cari teknologi Starlight, ColorVu, atau Full Color.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Bisakah saya mencampur resolusi pada satu NVR?</AccordionTrigger>
+    <AccordionContent>
+      Ya. Setiap NVR modern mendukung kamera resolusi campuran. Ini adalah praktik terbaik: gunakan 4K di zona luar berisiko tinggi, 4MP untuk cakupan umum, dan 1080p untuk ruang dalam sempit. Ini mengoptimalkan cakupan dan utilisasi penyimpanan.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Apakah saya perlu 4K untuk pengenalan plat nomor?</AccordionTrigger>
+    <AccordionContent>
+      Belum tentu. Tangkapan plat nomor lebih tergantung pada panjang fokus lensa dan posisi kamera daripada resolusi. Kamera 2MP dengan lensa 12mm yang diarahkan ke jalur pendekatan kendaraan akan menangkap plat lebih andal daripada kamera 4K dengan lensa lebar 2.8mm. Untuk LPR khusus, posisikan kamera sejajar dengan jalur kendaraan pada jarak sekitar 15 m dengan lensa 6-12mm.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Berapa bandwidth yang dibutuhkan kamera 4K?</AccordionTrigger>
+    <AccordionContent>
+      Kamera 4K pada 15 fps dengan H.265 menggunakan sekitar 8-12 Mbps. Pada 30 fps, dapat mencapai 15-20 Mbps. Sistem 8 kamera 4K membutuhkan 80+ Mbps bandwidth khusus. Pastikan uplink switch PoE Anda Gigabit dan NVR Anda dapat menyerap total aliran. Bandingkan dengan 2-4 Mbps per kamera untuk 1080p.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+Untuk analisis resolusi mendetail, baca [perbandingan 4K vs 5MP](/blog/4k-vs-5mp-resolution-guide) kami atau padukan dengan [panduan NVR vs DVR](/blog/nvr-vs-dvr) untuk pemilihan perekam yang tepat.

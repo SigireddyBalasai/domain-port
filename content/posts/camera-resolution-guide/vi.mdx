@@ -1,0 +1,251 @@
+---
+title: "Hướng dẫn Độ phân giải Camera IP: 2MP vs 4MP vs 4K (2026)"
+publishedAt: "2026-05-25"
+description: "Hướng dẫn độ phân giải camera IP 2026: 2MP vs 4MP vs 5MP vs 4K. So sánh khoảng cách nhận dạng, yêu cầu lưu trữ, ghép ống kính và tiêu chuẩn DORI để chọn độ phân giải tối ưu cho từng vị trí camera an ninh."
+author: "CCTV Name Authoe"
+updatedAt: "2026-05-25"
+image: "/og.svg"
+tags: ["cctv", "camera ip", "độ phân giải camera", "4k", "1080p", "camera an ninh", "megapixel"]
+postType: "howto"
+howTo:
+  - name: "Hiểu các cấp độ phân giải"
+    text: "So sánh 2MP (1080p), 4MP, 5MP và 4K (8MP) về số lượng pixel, khoảng cách nhận dạng và dung lượng lưu trữ hàng ngày trên mỗi camera."
+  - name: "Kết hợp độ phân giải với cảnh quay"
+    text: "Sử dụng tiêu chuẩn DORI để chọn độ phân giải phù hợp cho từng vị trí camera — lối vào, vành đai, trong nhà và khu vực mở rộng lớn."
+  - name: "Tính đến ống kính và cảm biến"
+    text: "Xem xét tiêu cự và kích thước cảm biến. Camera độ phân giải cao với ống kính sai sẽ không nhận dạng được khuôn mặt hoặc biển số ở khoảng cách xa."
+  - name: "Lên kế hoạch lưu trữ và băng thông"
+    text: "Tính toán dung lượng lưu trữ hàng ngày theo từng cấp độ phân giải và chọn nén H.265+ để giảm dung lượng lưu trữ mà không hy sinh chất lượng hình ảnh."
+  - name: "Trộn độ phân giải theo khu vực"
+    text: "Sử dụng 4K cho lối vào và khu vực rủi ro cao, 4MP cho phủ sóng chung và 1080p cho không gian trong nhà hạn chế để tối ưu hóa chi phí và thời gian lưu trữ."
+faq:
+  - question: "2MP, 4MP và 4K trên camera an ninh có nghĩa là gì?"
+    answer: "Đây là độ phân giải cảm biến của camera. 2MP ghi 1920×1080 pixel (1080p Full HD). 4MP ghi 2560×1440 pixel. 4K (8MP) ghi 3840×2160 pixel — gấp bốn lần chi tiết so với 1080p."
+  - question: "4K có luôn tốt hơn cho camera an ninh không?"
+    answer: "Không phải lúc nào. 4K yêu cầu dung lượng lưu trữ gấp bốn lần 1080p và hoạt động kém hơn trong điều kiện ánh sáng yếu so với camera độ phân giải thấp hơn với cảm biến lớn hơn. Chọn 4K cho khu vực ngoài trời rộng nơi bạn cần nhận dạng khuôn mặt ở khoảng cách 15-25 mét. Đối với cảnh trong nhà cự ly gần, 4MP hoặc thậm chí 1080p là đủ."
+  - question: "Camera 4K có thể nhận dạng khuôn mặt ở khoảng cách bao xa?"
+    answer: "Theo tiêu chuẩn DORI, camera 4K có thể nhận dạng khuôn mặt một cách đáng tin cậy ở khoảng cách 15-25 mét (50-80 feet), tùy thuộc vào tiêu cự ống kính và điều kiện ánh sáng. Camera 1080p thường bị giới hạn ở 4,5-7,5 mét cho cùng một nhiệm vụ."
+  - question: "Độ phân giải cao hơn có nghĩa là tầm nhìn ban đêm tốt hơn?"
+    answer: "Không. Hiệu suất ánh sáng yếu chủ yếu phụ thuộc vào kích thước cảm biến và kích thước pixel, không phải độ phân giải. Camera 4MP Starlight với cảm biến lớn sẽ vượt trội hơn camera 4K với cảm biến nhỏ trong điều kiện ánh sáng yếu. Luôn kiểm tra kích thước cảm biến (1/2.8\", 1/1.8\", v.v.) và tìm công nghệ Starlight hoặc ColorVu."
+  - question: "Tôi có thể trộn các camera có độ phân giải khác nhau trên cùng một NVR không?"
+    answer: "Có. NVR hiện đại hỗ trợ độ phân giải hỗn hợp. Đây là thực tiễn tốt nhất — sử dụng 4K cho lối vào và khu vực rủi ro cao, 4MP cho phủ sóng chung và 1080p cho không gian trong nhà hạn chế."
+  - question: "Camera 4K sử dụng bao nhiêu dung lượng lưu trữ mỗi ngày?"
+    answer: "Camera 4K ghi liên tục với H.265 sử dụng 30-50 GB mỗi ngày. Cùng một camera ở 1080p sử dụng 10-15 GB mỗi ngày. Chỉ ghi khi có chuyển động giảm các con số này xuống 60-70%."
+---
+
+Độ phân giải là thông số kỹ thuật đầu tiên mà mọi người nhìn vào khi mua camera an ninh. Nhưng số megapixel cao hơn không tự động có nghĩa là cảnh quay an ninh tốt hơn. Camera 4K với ống kính sai được gắn quá xa mục tiêu sẽ ghi được ít chi tiết hữu ích hơn so với camera 2MP được đặt đúng vị trí.
+
+Hướng dẫn này phân tích từng cấp độ phân giải — 2MP (1080p), 4MP, 5MP và 4K (8MP) — dựa trên các yếu tố thực sự quan trọng: khoảng cách nhận dạng, chi phí lưu trữ, hiệu suất ánh sáng yếu và ghép ống kính.
+
+<Callout type="info" title="Kết luận chính">
+  Hệ thống camera tốt nhất sử dụng **độ phân giải hỗn hợp** — 4K cho khu vực ngoài trời rộng nơi việc nhận dạng khuôn mặt và biển số quan trọng, 4MP cho phủ sóng chung và 1080p cho không gian trong nhà chật hẹp. Một độ phân giải không phù hợp với mọi cảnh quay.
+</Callout>
+
+## So sánh các cấp độ phân giải
+
+| Cấp độ | Số lượng pixel | Tỷ lệ khung hình | Khoảng cách ID (DORI) | Lưu trữ mỗi ngày | Lưu trữ mỗi tháng (8 cam) |
+|---|---|---|---|---|---|
+| 2MP (1080p) | 1920 × 1080 | 16:9 | 4,5-7,5 m | 10-15 GB | ~500 GB |
+| 4MP (2K) | 2560 × 1440 | 16:9 | 7,5-12 m | 20-30 GB | ~1 TB |
+| 5MP | 2592 × 1944 | 4:3 | 9-15 m | 25-35 GB | ~1,3 TB |
+| 8MP (4K) | 3840 × 2160 | 16:9 | 15-25 m | 30-50 GB | ~2 TB |
+| 12MP | 4000 × 3000 | 4:3 | 21-33 m | 50-80 GB | ~3 TB |
+
+<Callout type="warning" title="Cảnh báo lưu trữ">
+  Một camera 4K duy nhất ghi 24/7 ở 30 fps với H.265 tiêu thụ khoảng **1 TB mỗi tháng**. Hệ thống 8 camera 4K ghi liên tục cần 8+ TB cho 30 ngày lưu trữ. Luôn xem xét mục tiêu lưu trữ của bạn trong các quyết định về độ phân giải.
+</Callout>
+
+## 2MP (1080p) — Mức cơ bản tiết kiệm
+
+2MP là độ phân giải cấp đầu vào cho camera IP hiện đại. Nó ghi video Full HD ở 1920 × 1080 pixel.
+
+**Tốt nhất cho:**
+- Camera chuông cửa và hiên nhà cách chủ thể dưới 3 m
+- Không gian trong nhà nhỏ (hành lang, cầu thang, bên trong thang máy)
+- Lắp đặt ngân sách hạn chế nơi giám sát cự ly gần là đủ
+- Camera phụ phủ sóng khu vực rủi ro thấp
+
+**Hạn chế:**
+- Nhận dạng khuôn mặt không đáng tin cậy ngoài 4,5-7,5 m
+- Chụp biển số yêu cầu xe trong phạm vi 3-4,5 m
+- Thu phóng kỹ thuật số hiển thị điểm ảnh gần như ngay lập tức
+- Căng thẳng trên màn hình 40+ inch
+
+<Callout type="tip" title="Khi nào 1080p là đủ">
+  Đối với camera bao phủ hành lang dài 3 mét, cửa cầu thang hoặc góc nhìn cố định của máy tính tiền, độ phân giải 4K không thêm gì hữu ích. Chủ thể lấp đầy khung hình đủ để 1080p ghi lại mọi chi tiết cần thiết. Đây là nơi camera 2MP tiết kiệm dung lượng lưu trữ thực sự mà không hy sinh kết quả an ninh.
+</Callout>
+
+## 4MP (2K) — Tiêu chuẩn được khuyến nghị
+
+4MP đã trở thành độ phân giải mặc định cho hầu hết các lắp đặt dân dụng và thương mại vào năm 2026. Nó cung cấp chi tiết nhiều hơn khoảng 75% so với 1080p với chỉ khoảng 25-30% dung lượng lưu trữ nhiều hơn.
+
+**Tốt nhất cho:**
+- Phủ sóng cửa trước và lối vào
+- Giám sát đường lái xe và nhà để xe
+- Không gian bán lẻ và văn phòng nói chung
+- Khu vực trong nhà sâu 6-12 m
+- Độ phân giải chính cho hầu hết các hệ thống 8 camera
+
+**Ưu điểm:**
+- Nhận dạng khuôn mặt rõ ràng ở khoảng cách 5-8 mét
+- Chụp biển số ở cự ly gần (dưới 5 mét)
+- Hiệu suất ánh sáng yếu tốt với cảm biến hiện đại
+- Kích thước tệp dễ quản lý (lớn hơn 2MP khoảng 25%)
+- Giá trị tốt nhất trong tất cả các cấp độ
+
+<Callout type="note" title="Tại sao 4MP là điểm tối ưu">
+  Các nhà lắp đặt trong ngành luôn khuyến nghị 4MP làm mặc định. Nó cung cấp đủ mật độ pixel để nhận dạng ở khoảng cách dân dụng điển hình mà không phải chịu các hình phạt về lưu trữ và băng thông của 4K. Trong hệ thống độ phân giải hỗn hợp, 4MP xử lý phần lớn camera trong khi 4K được dành riêng cho các khu vực quan trọng.
+</Callout>
+
+## 4K (8MP) — Chi tiết tối đa
+
+Camera 4K ghi 3840 × 2160 pixel — gấp bốn lần số pixel của 1080p. Độ phân giải này được chứng minh trong các kịch bản cụ thể nơi chi tiết ở khoảng cách xa là quan trọng.
+
+**Tốt nhất cho:**
+- Bãi đỗ xe và khu vực mở rộng lớn
+- Sảnh tòa nhà và giếng trời
+- Tổng quan góc rộng của tầng bán lẻ
+- Đường lái xe và sân trước trên các bất động sản lớn
+- Bất kỳ cảnh nào cần thu phóng kỹ thuật số khi phát lại
+
+**Yêu cầu:**
+- NVR có đủ băng thông và khả năng giải mã
+- Ổ cứng cấp giám sát lớn gấp 4 lần hệ thống 1080p tương đương
+- Cáp Cat6 hoặc Cat6A cho tốc độ bit ổn định ở khoảng cách xa
+- Ánh sáng đầy đủ hoặc công nghệ cảm biến Starlight/ColorVu
+
+**Đánh đổi:**
+- Lưu trữ: ~40 GB/ngày mỗi camera so với ~12 GB/ngày cho 1080p
+- Băng thông: 8-12 Mbps mỗi camera so với 2-4 Mbps cho 1080p
+- Ánh sáng yếu: Pixel nhỏ hơn thu được ít ánh sáng hơn pixel lớn hơn
+
+## Hiểu về tiêu chuẩn DORI
+
+DORI (Phát hiện, Quan sát, Nhận dạng, Nhận diện) là tiêu chuẩn công nghiệp để đo những gì camera thực sự có thể thấy ở một khoảng cách nhất định. Độ phân giải là một yếu tố — tiêu cự ống kính cũng quan trọng không kém.
+
+| Cấp độ DORI | Pixel yêu cầu | Những gì bạn có thể làm |
+|---|---|---|
+| Phát hiện | 25 PPM (pixel trên mét) | Thấy rằng có người hoặc phương tiện |
+| Quan sát | 63 PPM | Thấy mô hình chuyển động và hướng |
+| Nhận dạng | 125 PPM | Xác định xem bạn có biết người đó không |
+| Nhận diện | 250 PPM | Nhận dạng khuôn mặt hoặc đọc biển số một cách đáng tin cậy |
+
+**Ví dụ thực tế:** Camera 4K với ống kính 4mm có thể nhận dạng khuôn mặt ở khoảng 15-18 m. Cùng một camera với ống kính 2.8mm bao phủ cảnh rộng hơn nhưng giảm phạm vi nhận dạng xuống còn khoảng 10,5 m vì cùng số lượng pixel được trải rộng trên một khu vực rộng hơn.
+
+<Callout type="warning" title="Ống kính quan trọng hơn bạn nghĩ">
+  Camera 4K với ống kính rộng 2.8mm ghi được ít chi tiết nhận dạng ở 15 m hơn so với camera 4MP với ống kính 6mm. Luôn xem xét **tiêu cự ống kính** cùng với độ phân giải. Ống kính varifocal (2.8-12mm) cho phép điều chỉnh khi lắp đặt và xứng đáng với chi phí phụ thêm nhỏ.
+</Callout>
+
+## Tiêu cự ống kính theo cảnh quay
+
+| Cảnh | Tiêu cự khuyến nghị | Độ phân giải tốt nhất |
+|---|---|---|
+| Hiên nhà, cửa trước (1,5-3 m) | 2.8mm | 2MP đủ |
+| Đường lái xe, sân bên (4,5-9 m) | 4mm | 4MP hoặc 4K |
+| Sân sau, bãi đỗ xe (9-15 m) | 6mm | 4K khuyến nghị |
+| Đường lái xe dài, khu đất (15-25 m) | 8mm | 4K tối thiểu |
+| Đường phố, ngõ hẻm (25+ m) | 12mm+ | 4K với varifocal/PTZ |
+
+## Ánh sáng yếu: Sự đánh đổi ẩn
+
+Độ phân giải cao hơn thường có nghĩa là các pixel riêng lẻ nhỏ hơn trên cùng một kích thước cảm biến. Pixel nhỏ hơn thu được ít ánh sáng hơn, có nghĩa là camera 4K thường hoạt động kém hơn trong điều kiện ánh sáng yếu so với camera 4MP tương đương.
+
+| Độ phân giải | Cảm biến điển hình | Kích thước pixel | Hiệu suất ánh sáng yếu |
+|---|---|---|---|
+| 2MP (1080p) | 1/2.8" | ~3.0 µm | Tốt |
+| 4MP | 1/2.7" | ~2.0 µm | Rất tốt (mẫu Starlight xuất sắc) |
+| 4K (8MP) | 1/2.5" | ~1.45 µm | Trung bình |
+| 4K (8MP) Starlight | 1/1.8" | ~2.4 µm | Xuất sắc |
+
+<Callout type="tip" title="Kiểm tra kích thước cảm biến, không chỉ megapixel">
+  Camera 4MP với cảm biến 1/1.8\" sẽ vượt trội hơn camera 4K với cảm biến 1/2.8\" trong điều kiện ánh sáng yếu, mặc dù 4MP có ít pixel hơn. Tìm công nghệ **Starlight, ColorVu hoặc Full Color** và kích thước cảm biến 1/1.8\" hoặc lớn hơn cho hiệu suất ban đêm.
+</Callout>
+
+## Lưu trữ theo độ phân giải
+
+Giả sử nén H.265, ghi liên tục 24/7:
+
+| Độ phân giải | Mỗi ngày | 7 ngày (4 cam) | 30 ngày (4 cam) | 30 ngày (8 cam) |
+|---|---|---|---|---|
+| 2MP (1080p) | 12 GB | 336 GB | 1,44 TB | 2,88 TB |
+| 4MP | 25 GB | 700 GB | 3 TB | 6 TB |
+| 4K (8MP) | 40 GB | 1,12 TB | 4,8 TB | 9,6 TB |
+
+**Với ghi hình chỉ khi có chuyển động, giảm các con số này xuống 60-70%.**
+**Với codec thông minh H.265+, tiết kiệm thêm 30-50%.**
+
+## Xây dựng hệ thống độ phân giải hỗn hợp
+
+Cách tiếp cận thông minh nhất là kết hợp độ phân giải với cảnh quay:
+
+| Khu vực | Độ phân giải | Ống kính | Lý do |
+|---|---|---|---|
+| Cửa trước | 4MP | 2.8mm | Cự ly gần, phủ sóng rộng |
+| Đường lái xe | 4K | 4-6mm | Nhận dạng khuôn mặt và biển số từ xa |
+| Sân sau | 4K | 4mm | Phủ sóng rộng với nhận dạng từ xa |
+| Sân bên | 4MP | 4mm | Giám sát vành đai chung |
+| Hành lang (trong nhà) | 2MP | 2.8mm | Cự ly gần, không cần nhận dạng từ xa |
+| Máy tính tiền | 4MP | 2.8-4mm | Chụp khuôn mặt rõ ràng tại quầy |
+| Bãi đỗ xe | 4K | 6-8mm | Khu vực rộng với chụp biển số |
+| Cầu thang | 2MP | 2.8mm | Không gian hạn chế, chủ thể gần |
+
+<Callout type="note" title="Độ phân giải hỗn hợp tiết kiệm lưu trữ">
+  Hệ thống với 2x 4K + 4x 4MP + 2x 1080p sử dụng dung lượng lưu trữ ít hơn khoảng 40% so với 8x camera 4K, đồng thời cung cấp phủ sóng tổng thể tốt hơn vì mỗi camera được kết hợp với cảnh quay của nó.
+</Callout>
+
+## Sơ đồ quyết định
+
+**Chọn 2MP (1080p) nếu:**
+- Cảnh camera có độ sâu dưới 4,5 m
+- Ngân sách hoặc dung lượng lưu trữ là hạn chế chính
+- Camera bao phủ khu vực trong nhà hạn chế (hành lang, thang máy, cầu thang)
+- Giám sát hoạt động chung là đủ (không cần nhận dạng)
+
+**Chọn 4MP nếu:**
+- Bạn cần nhận dạng đáng tin cậy ở 4,5-12 m
+- Đây là camera đa năng cho phần lớn hệ thống của bạn
+- Bạn muốn sự cân bằng tốt nhất giữa chi tiết, ánh sáng yếu và lưu trữ
+- Bạn đang xây dựng hệ thống 8-16 camera và cần quản lý tổng dung lượng lưu trữ
+
+**Chọn 4K nếu:**
+- Bạn cần nhận dạng khuôn mặt hoặc biển số ở 12-25 m
+- Camera bao phủ khu vực mở rộng lớn (bãi đỗ xe, sân, nhà kho)
+- Bạn cần thu phóng kỹ thuật số vào cảnh quay khi phát lại
+- Dung lượng lưu trữ và băng thông NVR đầy đủ
+
+## Câu hỏi thường gặp
+
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>4K có luôn tốt hơn cho camera an ninh không?</AccordionTrigger>
+    <AccordionContent>
+      Không. 4K yêu cầu dung lượng lưu trữ gấp bốn lần 1080p và có thể hoạt động kém hơn trong điều kiện ánh sáng yếu do pixel nhỏ hơn. Sử dụng 4K ở nơi bạn cần nhận dạng từ xa hoặc khả năng thu phóng kỹ thuật số. Đối với cảnh cự ly gần, camera 4MP hoặc thậm chí 1080p được đặt đúng vị trí sẽ cho kết quả tốt hơn trên mỗi gigabyte lưu trữ.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Độ phân giải cao hơn có nghĩa là tầm nhìn ban đêm tốt hơn?</AccordionTrigger>
+    <AccordionContent>
+      Nói chung là không. Hiệu suất ánh sáng yếu phụ thuộc vào kích thước cảm biến và khoảng cách pixel, không phải số megapixel. Camera 4MP Starlight với cảm biến 1/1.8\" sẽ vượt trội hơn hầu hết camera 4K trong bóng tối. Nếu hiệu suất ban đêm là quan trọng, ưu tiên kích thước cảm biến hơn độ phân giải và tìm công nghệ Starlight, ColorVu hoặc Full Color.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Tôi có thể trộn độ phân giải trên một NVR không?</AccordionTrigger>
+    <AccordionContent>
+      Có. Mọi NVR hiện đại đều hỗ trợ camera độ phân giải hỗn hợp. Đây là thực tiễn tốt nhất: sử dụng 4K ở khu vực ngoài trời rủi ro cao, 4MP cho phủ sóng chung và 1080p cho không gian trong nhà chật hẹp. Điều này tối ưu hóa cả phủ sóng và sử dụng lưu trữ.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Tôi có cần 4K để nhận dạng biển số xe không?</AccordionTrigger>
+    <AccordionContent>
+      Không nhất thiết. Chụp biển số phụ thuộc nhiều hơn vào tiêu cự ống kính và vị trí đặt camera hơn là độ phân giải. Camera 2MP với ống kính 12mm hướng vào đường tiếp cận của xe sẽ chụp biển số đáng tin cậy hơn so với camera 4K với ống kính rộng 2.8mm. Đối với LPR chuyên dụng, đặt camera song song với đường đi của xe ở khoảng cách khoảng 15 m với ống kính 6-12mm.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Camera 4K cần bao nhiêu băng thông?</AccordionTrigger>
+    <AccordionContent>
+      Camera 4K ở 15 fps với H.265 sử dụng khoảng 8-12 Mbps. Ở 30 fps, nó có thể đạt 15-20 Mbps. Hệ thống 8 camera 4K yêu cầu băng thông chuyên dụng 80+ Mbps. Đảm bảo đường uplink của switch PoE của bạn là Gigabit và NVR của bạn có thể xử lý tổng luồng. So sánh với 2-4 Mbps mỗi camera cho 1080p.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+Để phân tích độ phân giải chi tiết, hãy đọc [so sánh 4K vs 5MP](/blog/4k-vs-5mp-resolution-guide) của chúng tôi hoặc kết hợp với [hướng dẫn NVR vs DVR](/blog/nvr-vs-dvr) để chọn máy ghi hình phù hợp.

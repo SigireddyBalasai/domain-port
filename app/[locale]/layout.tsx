@@ -37,7 +37,12 @@ export default async function LocaleLayout({
   return (
     <ThemeProvider>
       <NextIntlClientProvider locale={locale} messages={messages}>
-        <div className="flex min-h-screen flex-col" dir={direction}>
+        <div className="flex min-h-screen flex-col">
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `document.documentElement.lang="${locale}";document.documentElement.dir="${direction}";`,
+            }}
+          />
           <Header locale={locale} />
           {children}
           <Footer locale={locale} />

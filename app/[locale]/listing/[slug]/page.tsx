@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { getTranslations, setRequestLocale } from "next-intl/server"
+import { setRequestLocale } from "next-intl/server"
 import type { JSX } from "react/jsx-runtime"
 import type {
   Article,
@@ -24,9 +24,9 @@ import type {
 import { posts } from "@/.velite"
 import { Comments } from "@/components/blog/comments"
 import { ShareButtonsLazy } from "@/components/blog/share-buttons-lazy"
+import Breadcrumbs from "@/components/breadcrumbs"
 import { Callout } from "@/components/mdx-components"
 import { MdxContent } from "@/components/mdx-content"
-import Breadcrumbs from "@/components/breadcrumbs"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -152,7 +152,6 @@ export default async function ListingPost({
   const { locale, slug } = await params
 
   setRequestLocale(locale)
-  const t = await getTranslations("common")
 
   const post =
     posts.find((p) => p.slug === slug && p.locale === locale) ??

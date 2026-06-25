@@ -41,7 +41,7 @@ This guide covers everything you need to cable a PoE security camera system corr
   Industry data shows that roughly 40% of "camera offline" tickets trace back to cable problems — wrong gauge, indoor cable run outdoors, counterfeit Cat6 that is really CCA Cat5e, or poor terminations. Getting the cable right from day one eliminates the most common failure mode.
 </Callout>
 
-## Cable Selection
+## What cable should you use for CCTV?
 
 ### Cable Category
 
@@ -53,7 +53,7 @@ This guide covers everything you need to cable a PoE security camera system corr
 | Cat7 | 22 AWG | 10 Gbps at 100 m | All PoE standards | Future-proof commercial installs |
 
 <Callout type="tip" title="Cat6 Is the Sweet Spot for 2026">
-  Cat6 is the best all-around choice for security camera installations. The 23 AWG conductors reduce PoE-related voltage drop and heat compared to Cat5e. The 250 MHz bandwidth provides generous headroom for 4K video streams. The cost premium over Cat5e is typically only $0.04-0.10 per foot — on an 8-camera system that adds $30-80 total. For that small premium, you get measurably better PoE performance and bandwidth headroom for future camera upgrades.
+  Cat6 is the best all-around choice for security camera installations. The 23 AWG conductors reduce PoE-related voltage drop and heat compared to Cat5e. The 250 MHz bandwidth provides generous headroom for 4K video streams. The cost premium over Cat5e is typically only $0.04-0.10 per foot — on an 8-camera system that adds $30-80 total. For that small premium, you get measurably better PoE performance and bandwidth headroom for future camera upgrades. Pair this with our [Best PoE Cameras](/blog/best-poe-cameras) guide to complete your system.
 </Callout>
 
 ### Solid Copper vs. CCA
@@ -85,7 +85,7 @@ This is the single most important cable decision you will make.
 
 If any portion of the cable run is exposed to weather, sunlight, or moisture, use outdoor-rated cable or run standard indoor cable through UV-rated conduit.
 
-## Tools You Need
+## What tools do you need for CCTV cabling?
 
 | Tool | Purpose | Approximate Cost |
 |---|---|---|
@@ -104,7 +104,7 @@ If any portion of the cable run is exposed to weather, sunlight, or moisture, us
   For small installations (1-4 cameras) with accessible cable paths, pre-terminated Cat6 cables in measured lengths save time and avoid termination errors. For larger installs or runs through conduit, terminating your own cable with pass-through RJ45 connectors is more reliable and cost-effective.
 </Callout>
 
-## Termination Standards
+## How do you terminate Ethernet cables?
 
 ### T568B Wiring
 
@@ -131,7 +131,7 @@ The T568B standard is the dominant wiring pattern for security camera installati
   Use a cable tester to verify wire map, continuity, and shorts on every single run before connecting a camera. A 30-second test catches problems that would take hours to diagnose later. For long outdoor runs, also test with a PoE tester to verify power delivery at the camera end.
 </Callout>
 
-## Conduit and Cable Management
+## When and how should you use conduit?
 
 ### When to Use Conduit
 
@@ -166,7 +166,7 @@ When multiple PoE cables run together in a bundle or conduit, heat builds up fro
   ISO/IEC recommends a maximum bundle size of 24 cables regardless of PoE considerations. For high-power PoE++ installations, use Cat6A (23 AWG) conductors which dissipate heat more effectively. Avoid running PoE cables in unventilated spaces like closed ceiling plenums or sealed conduits without proper thermal derating.
 </Callout>
 
-## Surge Protection
+## Do you need surge protection for PoE cameras?
 
 Cameras on long PoE runs are vulnerable to lightning-induced surges, even from nearby strikes (no direct hit needed). Surge protection should be treated as a mandatory layer, not an optional upgrade.
 
@@ -185,7 +185,7 @@ Cameras on long PoE runs are vulnerable to lightning-induced surges, even from n
   A surge protector that is not properly grounded provides no protection. Ensure your surge protectors are connected to building earth ground. In commercial installations, grounding should meet local electrical code requirements.
 </Callout>
 
-## Common Cable Mistakes
+## What are the most common cable mistakes?
 
 ### 1. Cable Pinch Points
 Sharp turns kill data quality on long runs. Maintain at least 5 cm bend radius. Never staple cable directly to walls — use proper cable clips or velcro ties.
@@ -208,7 +208,7 @@ When the cable reaches the camera, let it hang in a small "U" shape before enter
 ### 7. Missing Labels
 Unlabeled cables turn a 30-minute troubleshooting job into a 3-hour ordeal. Label both ends of every cable with a consistent naming scheme (e.g., "Cam-01-FrontDoor").
 
-## Outdoor Installation Checklist
+## What should be on your outdoor installation checklist?
 
 - [ ] Outdoor-rated (CMX) Cat6 cable or indoor cable in UV-rated conduit
 - [ ] Drip loop at each camera connection
@@ -222,7 +222,7 @@ Unlabeled cables turn a 30-minute troubleshooting job into a 3-hour ordeal. Labe
 - [ ] Labels on both ends of every cable
 - [ ] Continuity and PoE power test verified
 
-## Final Testing Protocol
+## How do you test your CCTV cabling installation?
 
 Before declaring the install complete:
 
@@ -234,7 +234,7 @@ Before declaring the install complete:
 6. **Retention verification**: After 7 days, check the NVR timeline shows no recording gaps
 
 <Callout type="tip" title="The 100-Meter Hard Limit">
-  The IEEE 802.3 standard limits Ethernet runs to 100 meters (328 feet) including all patch cords. In practice, with pure copper Cat6, you can reliably hit 95 meters. Beyond that, voltage drop on even good cable causes intermittent camera resets. Plan for PoE extenders or fiber backhaul for any run exceeding 90 meters.
+  The IEEE 802.3 standard limits Ethernet runs to 100 meters (328 feet) including all patch cords. In practice, with pure copper Cat6, you can reliably hit 95 meters. Beyond that, voltage drop on even good cable causes intermittent camera resets. Plan for PoE extenders or fiber backhaul for any run exceeding 90 meters. For a deeper look at how NVRs handle PoE, see our [What Is an NVR?](/blog/what-is-nvr-guide) guide.
 </Callout>
 
 ## Frequently Asked Questions
@@ -278,4 +278,4 @@ Before declaring the install complete:
   </AccordionItem>
 </Accordion>
 
-Pair this guide with our [PoE NVR setup guide](/blog/poe-nvr-setup) for complete step-by-step installation instructions from cable to configuration.
+Pair this guide with our [PoE NVR setup guide](/blog/poe-nvr-setup) for complete step-by-step installation instructions from cable to configuration. See our [NVR vs DVR comparison](/blog/nvr-vs-dvr) to understand the cabling differences between the two recorder types, and browse [Best Cameras Under $200](/blog/best-cameras-under-200) for compatible camera options.

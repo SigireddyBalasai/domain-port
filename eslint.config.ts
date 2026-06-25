@@ -22,7 +22,7 @@ export default defineConfig([
       "components/theme-provider.tsx",
       "lib/utils.ts",
       "**/route.ts",
-      "next-sitemap.config.ts",
+      "**/route.tsx",
       "next.config.ts",
       "postcss.config.mjs",
       "scripts/**/*",

@@ -1,0 +1,373 @@
+---
+title: "Een PoE NVR-systeem instellen (2026): Volledige stap-voor-stap handleiding"
+publishedAt: "2026-05-25"
+description: "Een complete gids voor het plannen, bekabelen, configureren en beveiligen van een PoE NVR-beveiligingscamerasysteem in 2026 voor thuis en kleine bedrijven. Behandelt Cat6 vs Cat5e, PoE-standaarden, opslaggrootte, VLAN-beveiliging en externe toegang."
+author: "CCTV Name Authoe"
+updatedAt: "2026-05-25"
+image: "/og.svg"
+tags: ["cctv", "nvr", "poe", "beveiligingscamera", "ip-camera", "bewaking", "netwerkvideorecorder"]
+postType: "howto"
+howTo:
+  - name: "Plan uw systeemindeling"
+    text: "Bepaal cameralocaties, meet kabellengtes onder 100 meter en bereken het totale PoE-vermogensbudget."
+  - name: "Selecteer kabel en hardware"
+    text: "Kies Cat6 massief koperkabel, bewakingsgeschikte HDD's (WD Purple of Seagate SkyHawk) en een NVR met 2x het aantal kanalen dat u momenteel nodig heeft."
+  - name: "Kabels aanleggen en aansluiten"
+    text: "Leg buitenbestendige Cat6 in buizen of kabelgoten. Label beide uiteinden. Houd een buigradius van 5 cm en 30 cm afstand van wisselstroom aan."
+  - name: "Camera's monteren en NVR aansluiten"
+    text: "Monteer camera's stevig. Sluit de NVR via Ethernet aan op uw router, verbind camera's met PoE-poorten en schakel in."
+  - name: "NVR configureren"
+    text: "Stel een sterk beheerderswachtwoord in, configureer NTP-tijdsynchronisatie, schakel H.265-compressie in, stel bewegingsdetectiezones in en kies een opnameschema."
+  - name: "Externe toegang beveiligen"
+    text: "Stel een VPN in voor externe weergave. Gebruik nooit port-forwarding voor de NVR-webinterface. Plaats de NVR op een geïsoleerd VLAN. Schakel UPnP uit."
+faq:
+  - question: "Hoe lang mag een PoE-kabel zijn?"
+    answer: "De IEEE 802.3-standaard beperkt Ethernet-kabels tot 100 meter (328 voet) inclusief patchkabels. Daarboven gebruikt u een PoE-extender of glasvezel-backhaul."
+  - question: "Hoeveel opslag heb ik nodig voor mijn NVR?"
+    answer: "Eén 4K-camera die continu opneemt met H.265 verbruikt ongeveer 30-40 GB per dag. Alleen bewegingsopname vermindert dit met 60-70%. Een 8-camera 4K-systeem met 30 dagen retentie heeft ongeveer 10-12 TB nodig."
+  - question: "Heb ik internet nodig om mijn NVR te laten werken?"
+    answer: "Lokale opname werkt zonder internet. Externe weergave, pushmeldingen en firmware-updates vereisen een verbinding."
+  - question: "Kan ik cameramerken mixen met mijn NVR?"
+    answer: "Ja, als zowel camera's als NVR ONVIF Profile T en G ondersteunen. Dit garandeert compatibiliteit voor H.265-streaming, bewegingsdetectie en weergave."
+  - question: "Hoe lang gaan bewakingsharde schijven mee?"
+    answer: "Bewakingsgeschikte schijven (WD Purple, Seagate SkyHawk) gaan bij 24/7-schrijflast doorgaans 3-5 jaar mee. Standaard desktop-schijven kunnen binnen 1-2 jaar uitvallen."
+  - question: "Moet ik Cat5e of Cat6 gebruiken voor PoE-camera's?"
+    answer: "Cat6 wordt aanbevolen voor elke nieuwe installatie. De 23 AWG-geleiders verminderen spanningsval over lange afstanden en bieden betere bandbreedtereserve voor 4K-camera's."
+  - question: "Wat gebeurt er als de NVR-harde schijf vol raakt?"
+    answer: "De meeste NVR's overschrijven standaard de oudste beelden wanneer de schijf vol is. Controleer altijd of deze instelling is ingeschakeld — sommige apparaten worden geleverd met 'stoppen met opnemen bij vol' als standaard."
+  - question: "Waarom starten mijn camera's 's nachts opnieuw op?"
+    answer: "Dit duidt meestal op een onvoldoende PoE-budget. Wanneer 's nachts IR-LED's worden geactiveerd, neemt het stroomverbruik van de camera toe. Zorg ervoor dat uw PoE-switch ten minste 20-30% reserve heeft boven de totale camerabelasting."
+---
+Een PoE (Power over Ethernet) NVR-systeem is de ruggengraat van moderne IP-bewaking. Het levert zowel stroom als gegevens aan beveiligingscamera's via één enkele Ethernet-kabel, waardoor de losse adapters en rommelige bedrading van oudere installaties overbodig worden. Voor kleine bedrijven, winkels en huiseigenaren biedt een goed geplande PoE NVR-opstelling betrouwbare lokale opname zonder maandelijkse cloudkosten.
+
+Deze handleiding begeleidt elke stap — van kabelselectie en stroombudgettering tot NVR-configuratie en beveiligingsverbetering — gebaseerd op praktijkervaring en hardwarenormen van 2026.
+
+<Callout type="info" title="Wat is er veranderd in 2026">
+  24 TB-bewakingsschijven, H.266 (VVC)-compressie in consumenten-NVR's en volwassen Matter-camera-ondersteuning betekenen lagere opslagkosten en betere compatibiliteit dan ooit. H.265+ slimme codecs leveren nu 50% opslagbesparing ten opzichte van H.264, en ONVIF Profile T/G-adoptie laat u merken vrij mixen.
+</Callout>
+
+## Uw systeem plannen
+
+Elke succesvolle installatie begint met een plan. Haastig hardware kopen zonder stroombudgetten, kabellengtes en opslagbehoeften te berekenen is de meest voorkomende fout.
+
+### Kies uw architectuur
+
+U heeft twee hoofdopties voor het aansluiten van camera's:
+
+| Architectuur | Het beste voor | Nadelen |
+|---|---|---|
+| NVR met ingebouwde PoE-poorten | Beginners, kleine installaties (4-8 camera's) | Gebonden aan aantal poorten en stroombudget |
+| PoE-switch + aparte NVR | Grotere installaties, flexibele indelingen | Meer componenten, maar gemakkelijker schaalbaar en individueel te vervangen |
+
+<Callout type="tip" title="Profiter Tip">
+  Koop altijd een NVR met ten minste **2x het aantal kanalen** van uw huidige cameraplan. Een installatie met 4 camera's moet een 8-kanaals NVR gebruiken. Uitbreiding gebeurt altijd en een NVR upgraden is duurder dan vanaf het begin één maat groter te kopen.
+</Callout>
+
+### Kabelselectie
+
+De kabel is het belangrijkste fysieke onderdeel. Een slechte kabelkeuze veroorzaakt intermitterende herstarts, spanningsval en gegevensverlies die lastig te diagnosticeren zijn.
+
+| Kabeltype | Beste gebruik | Waarom |
+|---|---|---|
+| Cat5e | 1080p-camera's, kabels onder 50 m | Goedkoopste, maar 24 AWG-geleiders betekenen hogere weerstand |
+| Cat6 | De meeste moderne IP-camera's | 23 AWG-geleiders verminderen spanningsval; aanbevolen basislijn voor elke nieuwe installatie |
+| Cat6A | 4K-camera's, kabels boven 70 m, hoogvermogen PTZ | Dikste geleiders, beste warmteafvoer, ondersteunt PoE++ |
+
+<Callout type="warning" title="Vermijd koperbeklede aluminium (CCA)">
+  CCA-kabel is goedkoper maar heeft aanzienlijk hogere weerstand dan massief koper. Het veroorzaakt spanningsval, warmteophoping en intermitterende camera-resets — vooral wanneer 's nachts IR-LED's worden geactiveerd. Sta voor elke professionele installatie op **massief koper** van een gerenommeerd merk (Monoprice, Cable Matters, Belden).
+</Callout>
+
+**Belangrijke bekabelingsregels:**
+- Maximale lengte: 100 meter (328 voet) inclusief patchkabels
+- Buigradius: minimaal 5 cm — scherpe knikken beschadigen de signaalkwaliteit
+- Afstand van wisselstroom: minimaal 30 cm om interferentie te voorkomen
+- Buitenkabels: gebruik UV-bestendige, gelgevulde buitenkabel in buizen
+- Label beide uiteinden van elke kabel — u zult uzelf dankbaar zijn tijdens probleemoplossing
+
+### PoE-standaarden en stroombudgettering
+
+Inzicht in PoE-standaarden voorkomt de meest voorkomende installatiefout: camera's die overdag werken maar 's nachts herstarten wanneer IR-LED's maximale stroom trekken.
+
+| Standaard | Vermogen per poort | Typisch cameraverbruik |
+|---|---|---|
+| IEEE 802.3af (PoE) | 15,4 W | Vaste 1080p/4MP-camera's (4-8 W) |
+| IEEE 802.3at (PoE+) | 30 W | 4K-camera's, indoor PTZ (8-15 W) |
+| IEEE 802.3bt Type 3 (PoE++) | 60 W | Outdoor PTZ met verwarmer (20-40 W) |
+| IEEE 802.3bt Type 4 (PoE++) | 100 W | Multisensorcamera's, hoogvermogen PTZ |
+
+<Callout type="danger" title="De nachtelijke valkuil">
+  Een camera die overdag 5 W verbruikt, kan 's nachts pieken naar 12 W wanneer de IR-LED's aangaan. Stel het budget altijd op met het **maximale stroomverbruik** uit het gegevensblad, niet de typische waarde. Voeg vervolgens **30% reserve** toe aan uw PoE-switchbudget.
+</Callout>
+
+Voorbeeld stroombudget — 8 camera's op elk 12 W piek:
+- Totale belasting: 96 W
+- Met 30% reserve: **minimaal 125 W PoE-budget**
+- Aanbevolen: Een 16-poorts PoE+-switch met 150+ W
+
+### Opslagplanning
+
+Opslag is het gebied waar de meeste systemen stilstand tekortschieten. Een systeem dat op papier voor 30 dagen is ontworpen, levert in de praktijk vaak 18-22 dagen.
+
+**Dagelijkse opslag per camera (H.265, 24/7 continu):**
+| Resolutie | Dagelijkse opslag |
+|---|---|
+| 1080p (2MP) | 10-15 GB |
+| 4MP | 20-30 GB |
+| 4K (8MP) | 30-50 GB |
+
+**Realistische berekening voor een 4-camera 4K-systeem, 30 dagen retentie:**
+- Continue opname: 4 × 40 GB × 30 = 4,8 TB → koop een 6 TB-schijf
+- Alleen bewegingsopname: 4 × 12 GB × 30 = 1,44 TB → een 2 TB-schijf volstaat
+- Hybride (continu lage resolutie, beweging hoge resolutie): het beste van beide werelden
+
+<Callout type="tip" title="Opslagaanbeveling">
+  Voor de meeste 4-camera 4K-thuissystemen: een 4 TB-bewakingsschijf met H.265 en alleen bewegingsopname geeft 30 dagen geschiedenis. Voor 8 camera's 4K met continue opname, stap over naar 10-12 TB.
+</Callout>
+
+**Gebruik altijd bewakingsgeschikte schijven:**
+| Schijfserie | Waarom |
+|---|---|
+| WD Purple | 24/7-schrijfbestendig, AllFrame-technologie vermindert videoverlies |
+| Seagate SkyHawk | ImagePerfect-firmware, 24/7-schrijflastclassificatie |
+| Toshiba S300 | Bewakingsgeoptimaliseerd, 3 jaar garantie |
+
+Standaard desktop-schijven vallen 2-3x vaker uit dan bewakingsschijven onder continue schrijflast en verliezen vaak de verbinding tijdens foutherstel.
+
+## Hardware-installatie
+
+### Wat u nodig heeft
+
+- NVR (met of zonder ingebouwde PoE)
+- PoE-camera's (ONVIF Profile T/G aanbevolen)
+- Cat6 massief koperkabel (buitenbestendig voor buitengebruik)
+- PoE-switch (bij gebruik van niet-PoE NVR of uitbreiding buiten ingebouwde poorten)
+- Bewakingsgeschikte harde schijf(schijven)
+- Router met vrije LAN-poort
+- Monitor (HDMI/VGA) en USB-muis voor initiële installatie
+
+### Stap 1: NVR positioneren
+
+Plaats de NVR op een veilige, klimaatgecontroleerde locatie met goede ventilatie. Vermijd stapelen met andere elektronica. Laat ten minste 2 cm ruimte eromheen voor luchtstroom. Sluit hem via de LAN-poort aan op uw router met een korte Ethernet-kabel.
+
+<Callout type="note" title="UPS aanbevolen">
+  Een UPS-batterijback-up voor de NVR, router en PoE-switch zorgt ervoor dat uw systeem blijft opnemen tijdens stroomuitval. Dit is vooral belangrijk voor bedrijven.
+</Callout>
+
+### Stap 2: Kabels aanleggen en aansluiten
+
+Leg kabels van elke cameralocatie naar de NVR of PoE-switch. Gebruik kabelclips om de kabels langs plinten, muren of plafonds te bevestigen. Voor professionele installaties legt u kabels door muren of buizen.
+
+1. Meet elke route op een plattegrond of met een lasermeter en voeg speling toe voor hoeken en servicelussen
+2. Blijf binnen de 100-metergrens inclusief patchkabels
+3. Gebruik de T568B-bedradingsstandaard voor alle aansluitingen
+4. Test elke kabel met een doorgangstester voordat u camera's aansluit
+5. Gebruik voor routes langer dan 70 meter Cat6 of Cat6A om spanningsval te minimaliseren
+
+<Callout type="warning" title="Kabelbundelwarmte">
+  Wanneer meerdere PoE-kabels in een bundel of buis worden gelegd, hoopt warmte zich op door weerstand in de geleiders. Gebruik voor bundels van 10+ kabels 23 AWG Cat6 of Cat6A en vermijd het vullen van buizen voor meer dan 40%. Ongeschild (UTP) Cat6 is prima voor de meeste woon- en kantooromgevingen — gebruik alleen geschild (STP) nabij grote motoren of industriële apparatuur.
+</Callout>
+
+### Stap 3: Camera's monteren
+
+Monteer elke camera op de geplande locatie en zorg dat deze waterpas en stevig zit. Buitencamera's hebben weerbestendige aansluitingen nodig — gebruik diëlektrisch vet op de RJ45-connector en een waterdichte hoes als de camera er niet mee werd geleverd.
+
+**Tips voor cameraplaatsing:**
+- Dek eerst alle toegangspunten af (deuren, ramen op de begane grond, garage)
+- Vermijd directe schittering van ramen of felle lichten
+- Plaats camera's op 2,5-3 meter hoogte voor optimale gezichtsherkenning
+- Kantel 4K-camera's voldoende naar beneden om het nabije veld te dekken — groothoeklenzen missen details dicht bij de camera
+
+### Stap 4: Camera's aansluiten
+
+Steek elke Ethernet-kabel in een PoE-poort op de NVR of PoE-switch. De camera ontvangt zowel stroom als gegevens via deze ene verbinding. De camera start binnen 30-60 seconden op.
+
+**Voor NVR's met ingebouwde PoE-poorten:**
+- Steek direct in de gemarkeerde PoE-poorten aan de achterkant van de NVR
+- Camera's worden binnen 30-60 seconden automatisch gedetecteerd
+- Geen extra configuratie nodig
+
+**Voor PoE-switch + NVR-opstellingen:**
+- Sluit camera's aan op de PoE-switch
+- Zorg dat de switch en NVR op hetzelfde lokale netwerk zitten
+- Ga in het NVR-menu naar Camera > Camera's toevoegen > Automatisch zoeken of ONVIF-zoeken
+
+### Stap 5: Initiële NVR-configuratie
+
+Schakel de NVR in en sluit een monitor aan via HDMI. De installatiewizard begeleidt u door de basisconfiguratie:
+
+1. **Stel een sterk beheerderswachtwoord in** — gebruik nooit standaardinstellingen zoals admin/admin
+2. **Configureer datum en tijd** — gebruik NTP (Network Time Protocol) voor nauwkeurigheid
+3. **Stel de tijdzone in** — nauwkeurige tijdstempels zijn cruciaal voor bewijs
+4. **Initialiseer de harde schijf** — formatteer de bewakingsschijf in de NVR
+5. **Schakel overschrijven in** — bevestig dat de NVR oude beelden overschrijft wanneer de schijf vol is
+
+<Callout type="danger" title="Standaard inloggegevens zijn een aansprakelijkheid">
+  Veel NVR's worden geleverd met standaard inloggegevens zoals admin/admin. Wijzig deze onmiddellijk. De CISA-catalogus van bekende misbruikte kwetsbaarheden bevat meerdere NVR-webinterface-kwetsbaarheden van 2021-2024 die van invloed zijn op apparaten die met verouderde firmware zijn verzonden. Maak uzelf geen gemakkelijk doelwit.
+</Callout>
+
+## Camera- en opnameconfiguratie
+
+### Stap 6: Elke camera configureren
+
+Ga via de NVR-interface naar de instellingen van elke camera:
+
+- **Resolutie**: Stem af op uw opslagplan. Gebruik 4K voor ingangs-/risicogebieden, 1080p voor brede dekking
+- **Framesnelheid**: 15-20 fps is standaard voor de meeste beveiliging. 30 fps verdubbelt de opslag voor minimaal voordeel. Verlaag niet-kritieke camera's naar 6-8 fps
+- **Compressie**: Schakel **H.265** of **H.265+** (slimme codec) in. Dit bespaart 40-50% opslag vergeleken met H.264
+- **Bitrate**: Gebruik variabele bitrate (VBR) om opslag te besparen tijdens statische scènes — de camera wijst alleen bandbreedte toe wanneer er beweging is
+
+### Stap 7: Bewegingsdetectie en slimme meldingen
+
+Standaard bewegingsdetectie is bijna altijd te gevoelig. Elk passerend blad, schaduw of koplamp activeert een melding.
+
+Voor elke camera:
+1. Open Camera-instellingen > Bewegingsdetectie
+2. Stel de gevoeligheid in op ongeveer 50%
+3. Definieer bewegingsdetectiezones — maskeer bomen, drukke wegen en tuinen van buren
+4. Schakel **slimme detectie** in als uw NVR dit ondersteunt (Persoon, Voertuig, Dier)
+
+<Callout type="tip" title="Slimme detectie vermindert valse alarmen met 80%+">
+  NVR's met ingebouwde AI (Reolink, Hikvision AcuSense, Dahua WizSense) kunnen bewegingsgebeurtenissen filteren op type. Een auto die langs uw raam rijdt, activeert geen persoonsalarm. Dit maakt het bekijken van beelden aanzienlijk sneller.
+</Callout>
+
+### Stap 8: Opnameschema
+
+Stel een gelaagde opnamestrategie in onder NVR-instellingen > Opslag > Opnameschema:
+
+| Zone | Aanbevolen schema | Waarom |
+|---|---|---|
+| Toegangspunten (deuren, oprit) | Continue opname | Geen gaten in kritieke gebieden |
+| Perimeter (tuin, parkeerterrein) | Alleen bewegingsgestuurd | Bespaart opslag terwijl laag-risicogebieden worden gedekt |
+| Interieur (kantoor, magazijn) | Bewegingsgestuurd met vooropname | Leg context voor en na gebeurtenissen vast |
+
+Stel uw bewaarperiode in (doorgaans 30 dagen voor bedrijven, 7-14 dagen voor thuis). Schakel "Overschrijven bij vol" in, zodat de NVR zelf schijfruimte beheert.
+
+## Externe toegang en beveiliging
+
+Externe toegang is het gebied waar de meeste installaties kwetsbaarheden introduceren. Een correct beveiligde NVR neemt jarenlang zonder problemen op. Een blootgestelde NVR wordt gecompromitteerd.
+
+### De juiste manier: VPN
+
+Stel WireGuard of OpenVPN in op uw router. Maak via VPN verbinding met uw thuis- of kantoornetwerk en open vervolgens de NVR via zijn lokale IP-adres. Dit is de gouden standaard voor veilige externe toegang.
+
+### De verkeerde manier: Port forwarding
+
+Stuur poorten 80 of 443 nooit door naar de webinterface van uw NVR. Stel de NVR-webinterface nooit rechtstreeks bloot aan het openbare internet. Dit is de grootste aanvalsvector voor NVR-compromittering.
+
+<Callout type="danger" title="Gebruik nooit port-forwarding voor uw NVR">
+  De CISA-lijst van bekende misbruikte kwetsbaarheden bevat NVR-webinterface-kwetsbaarheden van Hikvision, Dahua en andere grote merken. Deze worden actief misbruikt. Gebruik VPN voor externe toegang. Punt.
+</Callout>
+
+### Aanvullende beveiligingsverbetering
+
+- **Schakel UPnP uit op de NVR** — automatische port forwarding is een veelvoorkomende aanvalsvector
+- **Plaats de NVR op een geïsoleerd VLAN** — blokkeer al het uitgaande internetverkeer behalve NTP en geplande firmware-updates
+- **Blokkeer telemetrieverkeer van camera's** — zelfs op een geïsoleerd VLAN genereren camera's DNS-query's en uitgaand verkeer naar domeinen van leveranciers. Blokkeer dit op de firewall
+- **Werk firmware bij** — controleer de website van de fabrikant op de nieuwste stabiele versie
+- **Stel een apart VLAN in voor IoT-apparaten** — houd camera's en NVR's van uw primaire netwerk
+- **Plan wekelijkse SMART-monitoring** — waarschuw voor opnieuw toegewezen sectoren en lopende sectoren voordat een schijf stilletjes uitvalt
+
+## Problemen oplossen
+
+| Probleem | Meest waarschijnlijke oorzaak | Oplossing |
+|---|---|---|
+| Camera niet gedetecteerd | Defecte kabel of PoE-poort | Test met een goede kabel en een andere PoE-poort. Controleer de camera-LED |
+| Live weergave vertraagd of haperend | NVR toont hoofdstroom (4K) in live weergave | Schakel over naar substroom (1080p) voor live weergave. Hoofdstroom is alleen voor opname |
+| Camera's herstarten 's nachts | Onvoldoende PoE-budget | IR-LED-activering verhoogt stroomverbruik. Controleer of uw PoE-switch reserve heeft |
+| Overmatige bewegingsmeldingen | Detectiezone te breed | Maak zones smaller, schakel slimme detectie in, verlaag gevoeligheid naar ~50% |
+| App kan geen verbinding maken | NVR heeft geen internet of tijd is verkeerd | Controleer NTP-synchronisatie, cloudaccountconfiguratie en internetverbinding |
+| Harde schijffouten | Consumentenschijf in 24/7-gebruik | Onmiddellijk vervangen door bewakingsschijf |
+| Opnamegaten op tijdlijn | Overschrijven uitgeschakeld of bandbreedteflessenhals | Controleer of "overschrijven bij vol" is ingeschakeld. Controleer uplink-snelheid van switch naar NVR |
+| Nachtzicht uitgewassen | Camera gericht op reflecterend oppervlak | Pas camerahoek iets aan, weg van muren, ramen of glanzende oppervlakken |
+
+## Opslagscenario's: Praktijkvoorbeelden
+
+| Scenario | Camera's | Resolutie | Opname | Bewaring | Vereiste opslag |
+|---|---|---|---|---|---|
+| Klein huis | 4 | 1080p | Alleen beweging | 14 dagen | 1 TB |
+| Huis met 4K | 4 | 4K | Alleen beweging (H.265) | 30 dagen | 4 TB |
+| Klein kantoor | 8 | 4MP | Continu (H.265) | 30 dagen | 12 TB |
+| Winkel | 16 | 4K | Hybride continu+beweging | 30 dagen | 24 TB |
+| Magazijn | 32 | 4MP | Continu (H.265+) | 60 dagen | 60 TB (RAID 6) |
+
+Voeg 20% overhead toe aan alle opslagberekeningen voor bestandssysteem, piekdagen en toekomstige groei.
+
+<Callout type="note" title="H.266 (VVC) komt eraan">
+  De volgende generatie compressiestandaard H.266 (Versatile Video Coding) levert ongeveer 50% extra besparing ten opzichte van H.265. Sommige NVR's van 2026 ondersteunen het al. Als u een nieuwe NVR koopt, controleer dan op H.266-compatibiliteit — het verdubbelt effectief uw bewaartermijn zonder extra schijven.
+</Callout>
+
+## Definitieve checklist
+
+Voordat u de installatie als voltooid beschouwt:
+
+- [ ] Elke kabel getest op doorgankelijkheid en lengte onder 100 meter
+- [ ] Massief koper Cat6 gebruikt (geen CCA)
+- [ ] PoE-vermogensbudget berekend met 30% reserve
+- [ ] NVR-beheerderswachtwoord gewijzigd van standaard
+- [ ] NTP-tijdsynchronisatie geconfigureerd
+- [ ] H.265 of betere compressie ingeschakeld
+- [ ] Bewegingsdetectiezones per camera geconfigureerd
+- [ ] Slimme detectie ingeschakeld (persoon/voertuig) waar beschikbaar
+- [ ] Opnameschema ingesteld (continu voor kritieke zones, beweging voor rest)
+- [ ] Overschrijven bij vol ingeschakeld
+- [ ] Externe toegang beveiligd via VPN (geen port forwarding)
+- [ ] NVR op geïsoleerd VLAN, uitgaand verkeer geblokkeerd
+- [ ] UPnP uitgeschakeld
+- [ ] Firmware bijgewerkt naar nieuwste stabiele versie
+- [ ] Bewakingsgeschikte harde schijf geïnstalleerd
+- [ ] UPS aangesloten op NVR, router en PoE-switch
+- [ ] Alle kabels aan beide uiteinden gelabeld
+- [ ] Bewaarperiode geverifieerd na 7 dagen gebruik
+
+<Callout type="tip" title="Documenteer alles">
+  Houd een eenvoudige registratie bij van cameralocaties, IP-adressen, kabellengtes en beheerdersgegevens (in een wachtwoordbeheerder, niet op een plakbriefje). Uzelf en elke technicus die het systeem overneemt, zullen het waarderen.
+</Callout>
+
+## Veelgestelde vragen
+
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>Hoe lang mag een PoE-camerakabel zijn?</AccordionTrigger>
+    <AccordionContent>
+      De IEEE 802.3-standaard beperkt Ethernet-kabels tot 100 meter (328 voet) inclusief patchkabels. Daarboven gebruikt u een PoE-extender (100 m per unit, tot 4 units voor 500 m totaal), een glasvezel-backhaul met een externe switch of verplaatst u de NVR dichter bij de camera's.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Heb ik een internetverbinding nodig om mijn NVR te laten werken?</AccordionTrigger>
+    <AccordionContent>
+      Lokale opname werkt perfect zonder internet. U heeft alleen een verbinding nodig voor externe weergave (via app of web), pushmeldingen en firmware-updates. Als beveiliging uw prioriteit is, kan de NVR volledig offline werken op een geïsoleerd netwerk.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Kan ik cameramerken mixen met mijn NVR?</AccordionTrigger>
+    <AccordionContent>
+      Ja, als zowel camera's als NVR ONVIF ondersteunen. Selecteer voor de beste resultaten camera's die ONVIF Profile T (H.265-streaming, geavanceerde bewegingsdetectie, bidirectionele audio) en Profile G (weergaveprotocollen, opslagzoekopdracht) ondersteunen. Dit garandeert compatibiliteit, zelfs tussen merken zoals Hikvision, Dahua, Reolink en Amcrest.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Hoe lang gaan bewakingsharde schijven mee?</AccordionTrigger>
+    <AccordionContent>
+      Bewakingsgeschikte schijven (WD Purple, Seagate SkyHawk) zijn ontworpen voor 24/7-schrijflasten en gaan doorgaans 3-5 jaar mee. Standaard desktop-schijven kunnen bij continue opname binnen 1-2 jaar uitvallen omdat ze niet de firmware hebben om aanhoudende schrijfstromen te verwerken. Gebruik voor elke serieuze installatie vanaf dag één bewakingsgeschikte schijven.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Wat gebeurt er als de harde schijf vol raakt?</AccordionTrigger>
+    <AccordionContent>
+      De meeste NVR's overschrijven de oudste beelden wanneer de schijf vol is — dit is het verwachte gedrag. Sommige NVR's worden echter geleverd met "stoppen met opnemen bij vol" als standaardinstelling. Controleer deze instelling altijd tijdens de initiële installatie. Een systeem dat stilletjes stopt met opnemen omdat de schijf vol is, ondermijnt het hele doel.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Waarom starten mijn PoE-camera's 's nachts opnieuw op?</AccordionTrigger>
+    <AccordionContent>
+      Dit is de klassieke PoE-vermogensbudgetfout. Wanneer 's nachts IR-LED's worden geactiveerd, piekt het stroomverbruik van elke camera (soms verdubbelt het). Als uw PoE-switch of NVR onvoldoende reserve heeft, verliezen camera's stroom en herstarten ze. Oplossing: tel het maximale stroomverbruik van elke camera uit het gegevensblad op, voeg 30% reserve toe en zorg dat uw PoE-switch dat getal overschrijdt.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Moet ik Cat5e of Cat6 gebruiken voor PoE-camera's?</AccordionTrigger>
+    <AccordionContent>
+      Gebruik voor elke nieuwe installatie Cat6. De 23 AWG-geleiders verminderen spanningsval vergeleken met Cat5e's 24 AWG, wat belangrijk is voor PoE-stroomlevering — vooral op routes langer dan 50 meter en voor camera's met IR-LED's of verwarmingen. Het prijsverschil is ongeveer $0,04-0,10 per voet, wat voor een 8-camerasysteem misschien $30-80 toevoegt. Dat is verwaarloosbaar vergeleken met de arbeidskosten van het leggen van kabels.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+[Bekijk onze cameraselectiegids](/blog/best-cameras-under-200) voor aanbevelingen over compatibele camera's, raadpleeg onze [cameraresolutiegids](/blog/camera-resolution-guide) om te begrijpen welk resolutieniveau u nodig heeft, of lees onze [4K vs 5MP vergelijking](/blog/4k-vs-5mp-resolution-guide) om tussen resoluties te beslissen.
