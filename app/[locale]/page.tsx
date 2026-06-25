@@ -2,9 +2,10 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 import type { JSX } from "react/jsx-runtime"
-import type { Blog, Organization, WebSite } from "schema-dts"
+import type { Blog, BreadcrumbList, Organization, WebSite } from "schema-dts"
 import { posts } from "@/.velite"
 import BlogCard from "@/components/blog/blog-card"
+import { ListingCard } from "@/components/listing/listing-card"
 import { JsonLd } from "@/lib/json-ld"
 import { defaultLocale, locales } from "@/lib/locales"
 import { siteConfig } from "@/lib/site-config"
@@ -26,7 +27,9 @@ export const generateMetadata = async ({
     locale === defaultLocale ? siteConfig.url : `${siteConfig.url}/${locale}`
 
   return {
-    title: siteConfig.name,
+    title: {
+      absolute: `${siteConfig.name} — Expert CCTV Reviews, Guides & Surveillance Tips`,
+    },
     description: siteConfig.description,
     openGraph: {
       locale: ogLocale,
@@ -35,6 +38,12 @@ export const generateMetadata = async ({
       title: siteConfig.name,
       description: siteConfig.description,
       images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: siteConfig.name,
+      description: siteConfig.description,
+      images: [siteConfig.ogImage],
     },
     alternates: {
       canonical: localeUrl,
@@ -59,12 +68,21 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
   setRequestLocale(locale)
   const t = await getTranslations("common")
 
-  const sorted = [...posts].toSorted(
+  const localePosts = posts.filter((post) => post.locale === locale)
+
+  const sorted = [...localePosts].toSorted(
     (a, b) =>
       new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
   )
   const latestPosts = sorted.slice(0, 3)
   const featuredPosts = sorted.slice(0, 2)
+  const listings = posts
+    .filter((post) => post.postType === "listing" && post.locale === locale)
+    .toSorted(
+      (a, b) =>
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    )
+    .slice(0, 3)
 
   return (
     <>
@@ -95,18 +113,20 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
           name: siteConfig.name,
           url: siteConfig.url,
           description: siteConfig.description,
-          potentialAction: {
-            "@type": "SearchAction",
-            target: {
-              "@type": "EntryPoint",
-              urlTemplate: `${siteConfig.url}/blog?q={search_term_string}`,
-              actionPlatform: [
-                "https://schema.org/DesktopWebPlatform",
-                "https://schema.org/IOSPlatform",
-                "https://schema.org/AndroidPlatform",
-              ],
+        }}
+      />
+      <JsonLd<BreadcrumbList>
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: siteConfig.url,
             },
-          },
+          ],
         }}
       />
       <main className="flex-1">
@@ -184,6 +204,38 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
                       slug={post.slug}
                       locale={locale}
                       tags={post.tags}
+                    />
+                  )
+                })}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Latest Listings */}
+        {listings.length > 0 && (
+          <section className="py-24 sm:py-32">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div className="flex items-center justify-between">
+                <h2 className="font-display text-3xl font-bold">
+                  {t("latestListings")}
+                </h2>
+                <Link
+                  href={`/${locale}/blog`}
+                  className="text-sm font-medium hover:text-primary"
+                >
+                  {t("viewAll")}
+                </Link>
+              </div>
+              <div className="mt-12 space-y-6">
+                {listings.map((post) => {
+                  return (
+                    <ListingCard
+                      key={post.slug}
+                      title={post.title}
+                      description={post.description}
+                      slug={post.slug}
+                      locale={locale}
                     />
                   )
                 })}

@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { getTranslations, setRequestLocale } from "next-intl/server"
 import type { JSX } from "react/jsx-runtime"
-import type { BreadcrumbList, CollectionPage } from "schema-dts"
+import type { BreadcrumbList, CollectionPage, ItemList } from "schema-dts"
 import { posts } from "@/.velite"
 import BlogCard from "@/components/blog/blog-card"
 import { JsonLd } from "@/lib/json-ld"
@@ -24,15 +24,28 @@ export const generateMetadata = async ({
   const pageUrl = `${siteConfig.url}${localePrefix}/blog`
 
   return {
-    title: "Blog",
-    description: `Latest CCTV and surveillance insights — reviews, guides, and security tips from ${siteConfig.name}.`,
+    title: "CCTV & Security Camera Guides, Reviews, and How-Tos",
+    description: `Expert CCTV guides, security camera reviews, and surveillance how-tos. Compare 4K vs 5MP, learn NVR setup, and find the best cameras for your needs.`,
+    keywords: [
+      "CCTV blog",
+      "security camera guide",
+      "surveillance tips",
+      "camera reviews",
+      "CCTV installation",
+    ],
     openGraph: {
       locale: ogLocale,
       url: pageUrl,
       siteName: siteConfig.name,
-      title: `Blog | ${siteConfig.name}`,
-      description: `Latest CCTV and surveillance insights — reviews, guides, and security tips from ${siteConfig.name}.`,
+      title: "CCTV & Security Camera Guides, Reviews, and How-Tos",
+      description: `Expert CCTV guides, security camera reviews, and surveillance how-tos. Compare 4K vs 5MP, learn NVR setup, and find the best cameras for your needs.`,
       images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "CCTV & Security Camera Guides, Reviews, and How-Tos",
+      description: `Expert CCTV guides, security camera reviews, and surveillance how-tos. Compare 4K vs 5MP, learn NVR setup, and find the best cameras for your needs.`,
+      images: [siteConfig.ogImage],
     },
     alternates: {
       canonical: pageUrl,
@@ -97,6 +110,25 @@ export default async function BlogPage({
           name: `Blog | ${siteConfig.name}`,
           description: `Latest CCTV and surveillance insights from ${siteConfig.name}.`,
           url: `${siteConfig.url}/${locale}/blog`,
+        }}
+      />
+      <JsonLd<ItemList>
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: `Blog | ${siteConfig.name}`,
+          description: `Latest CCTV and surveillance insights from ${siteConfig.name}.`,
+          url: `${siteConfig.url}/${locale}/blog`,
+          numberOfItems: sorted.length,
+          itemListElement: sorted.map((post, index) => {
+            const postPrefix = locale === defaultLocale ? "" : `/${locale}`
+
+            return {
+              "@type": "ListItem",
+              position: index + 1,
+              url: `${siteConfig.url}${postPrefix}/blog/${post.slug}`,
+            }
+          }),
         }}
       />
       <main className="flex-1">

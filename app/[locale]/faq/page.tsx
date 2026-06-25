@@ -24,17 +24,31 @@ export const generateMetadata = async ({
   const pageUrl = `${siteConfig.url}${localePrefix}/faq`
 
   return {
-    title: "FAQ - Common CCTV Questions",
+    title: "CCTV & Security Camera FAQ — Common Questions Answered",
     description:
-      "Frequently asked questions about CCTV cameras, installation, and surveillance solutions.",
+      "Answers to common CCTV questions: camera resolution, NVR vs DVR, storage needs, night vision, installation tips, and more.",
+    keywords: [
+      "CCTV FAQ",
+      "security camera questions",
+      "surveillance FAQ",
+      "camera installation help",
+      "CCTV troubleshooting",
+    ],
     openGraph: {
       locale: ogLocale,
       url: pageUrl,
       siteName: siteConfig.name,
-      title: `FAQ | ${siteConfig.name}`,
+      title: "CCTV & Security Camera FAQ — Common Questions Answered",
       description:
-        "Frequently asked questions about CCTV cameras, installation, and surveillance solutions.",
+        "Answers to common CCTV questions: camera resolution, NVR vs DVR, storage needs, night vision, installation tips, and more.",
       images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "CCTV & Security Camera FAQ — Common Questions Answered",
+      description:
+        "Answers to common CCTV questions: camera resolution, NVR vs DVR, storage needs, night vision, installation tips, and more.",
+      images: [siteConfig.ogImage],
     },
     alternates: {
       canonical: pageUrl,
@@ -69,7 +83,20 @@ export default async function FaqPage({ params }: Props): Promise<JSX.Element> {
 
   setRequestLocale(locale)
 
-  const sortedFaqs = [...faqs].toSorted(
+  const localeFaqs = faqs.filter(
+    (faq) => faq.locale === locale || faq.locale === "en"
+  )
+  const seen = new Set<string>()
+  const deduped = localeFaqs.filter((faq) => {
+    if (seen.has(faq.slug)) {
+      return false
+    }
+
+    seen.add(faq.slug)
+
+    return true
+  })
+  const sortedFaqs = [...deduped].toSorted(
     (a, b) => (a.order ?? 0) - (b.order ?? 0)
   )
 
