@@ -36,6 +36,16 @@ const nextConfig: NextConfig = {
         destination: "/blog",
         permanent: true,
       },
+      {
+        source: "/markdoc-demo",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/:locale/markdoc-demo",
+        destination: "/:locale",
+        permanent: true,
+      },
     ]
   },
 }

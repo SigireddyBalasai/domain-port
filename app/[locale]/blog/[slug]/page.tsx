@@ -443,8 +443,6 @@ export default async function PostPage({
           creator: authorSchema,
           creditText: siteConfig.name,
           copyrightNotice: `© ${String(new Date().getFullYear())} ${siteConfig.name}. All rights reserved.`,
-          license: `${siteConfig.url}/license`,
-          acquireLicensePage: `${siteConfig.url}/license`,
         }}
       />
       <main className="flex-1">

@@ -190,7 +190,7 @@ export default async function ListingPost({
               "@type": "ListItem",
               position: 2,
               name: "Listing",
-              item: `${siteConfig.url}/${locale}/listing`,
+              item: `${siteConfig.url}/${locale}/blog`,
             },
             {
               "@type": "ListItem",
@@ -444,8 +444,6 @@ export default async function ListingPost({
           creator: authorSchema,
           creditText: siteConfig.name,
           copyrightNotice: `© ${String(new Date().getFullYear())} ${siteConfig.name}. All rights reserved.`,
-          license: `${siteConfig.url}/license`,
-          acquireLicensePage: `${siteConfig.url}/license`,
         }}
       />
       <main className="flex-1">
@@ -453,7 +451,7 @@ export default async function ListingPost({
           <Breadcrumbs
             items={[
               { label: "Home", href: `/${locale}` },
-              { label: "Listings", href: `/${locale}/listing` },
+              { label: "Listings", href: `/${locale}/blog` },
               { label: post.title, href: `/${locale}/listing/${post.slug}` },
             ]}
           />

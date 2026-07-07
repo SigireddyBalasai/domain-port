@@ -119,7 +119,10 @@ export default function LanguageSwitcher({
                         }
                       </Badge>
                       {langs.map((lang) => {
-                        const href = `/${lang.code}${normalizedPath}`
+                        const href =
+                          lang.code === "en"
+                            ? normalizedPath || "/"
+                            : `/${lang.code}${normalizedPath}`
 
                         return (
                           <Link

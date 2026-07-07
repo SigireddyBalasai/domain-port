@@ -47,3 +47,4 @@ next-env.d.ts
 /credentials.json
 /credentials_token.json
 /openroutersbs-bf50b4f78202.json
+openroutersbs-*.json

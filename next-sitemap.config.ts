@@ -42,23 +42,34 @@ const listingSlugs = [
   ...new Set(
     typedPosts
       .filter(
-        (p) =>
-          p.listing && Array.isArray(p.listing) && p.listing.length > 0
+        (p) => p.listing && Array.isArray(p.listing) && p.listing.length > 0
       )
       .map((p) => p.slug)
   ),
 ]
 
-const postLastmodByPath = new Map<string, string>(
-  typedPosts.flatMap((post) => {
-    return locales.map((locale) => {
-      return [
-        `/${locale}/blog/${post.slug}`,
-        post.updatedAt ?? post.publishedAt,
-      ]
-    })
-  })
-)
+const postsBySlugAndLocale = new Map<string, Post[]>()
+
+for (const post of typedPosts) {
+  const existing = postsBySlugAndLocale.get(post.slug)
+
+  if (existing) {
+    existing.push(post)
+  } else {
+    postsBySlugAndLocale.set(post.slug, [post])
+  }
+}
+
+const postLastmodByPath = new Map<string, string>()
+
+for (const [, posts] of postsBySlugAndLocale) {
+  for (const post of posts) {
+    postLastmodByPath.set(
+      `/${post.locale}/blog/${post.slug}`,
+      post.updatedAt ?? post.publishedAt
+    )
+  }
+}
 
 // Add English non-prefixed blog paths for lastmod lookup
 for (const post of typedPosts) {
@@ -100,14 +111,13 @@ const config: IConfig = {
     { href: "https://www.cctv.name", hreflang: "x-default" },
   ],
   transform: (cfg, path) => {
-    // Skip English-prefixed paths (they 301 redirect to non-prefixed)
     if (path === "/en" || path.startsWith("/en/")) {
-      return null
+      return undefined // Skip this path
     }
 
     // Skip service worker files
     if (path.startsWith("/serwist/")) {
-      return null
+      return undefined // Skip this path
     }
 
     let priority = 0.5
@@ -143,60 +153,85 @@ const config: IConfig = {
     }
   },
   additionalPaths: () => {
-    const paths: ISitemapField[] = []
+    let paths: ISitemapField[] = []
 
     // English root (non-prefixed, since localePrefix: "as-needed")
-    paths.push({
-      loc: "/",
-      changefreq: "daily" as const,
-      priority: 1.0,
-    })
+    paths = [
+      ...paths,
+      {
+        loc: "/",
+        changefreq: "daily" as const,
+        priority: 1.0,
+      },
+    ]
 
     // English blog listing
-    paths.push({
-      loc: "/blog",
-      changefreq: "weekly" as const,
-      priority: 0.8,
-    })
+    paths = [
+      ...paths,
+      {
+        loc: "/blog",
+        changefreq: "weekly" as const,
+        priority: 0.8,
+      },
+    ]
 
-    // English blog posts (non-prefixed)
-    const uniqueSlugs = [...new Set(typedPosts.map((p) => p.slug))]
+    // English blog posts (non-prefixed) — only slugs with English content
+    const uniqueSlugs = [
+      ...new Set(
+        typedPosts.filter((p) => p.locale === "en").map((p) => p.slug)
+      ),
+    ]
+
     for (const slug of uniqueSlugs) {
       const lastmod = postLastmodByPath.get(`/blog/${slug}`)
-      paths.push({
-        loc: `/blog/${slug}`,
-        changefreq: "weekly" as const,
-        priority: 0.6,
-        ...(lastmod ? { lastmod } : {}),
-      })
+
+      paths = [
+        ...paths,
+        {
+          loc: `/blog/${slug}`,
+          changefreq: "weekly" as const,
+          priority: 0.6,
+          ...(lastmod ? { lastmod } : {}),
+        },
+      ]
     }
 
     // English listing pages
     for (const slug of listingSlugs) {
-      paths.push({
-        loc: `/listing/${slug}`,
-        changefreq: "weekly" as const,
-        priority: 0.7,
-      })
+      paths = [
+        ...paths,
+        {
+          loc: `/listing/${slug}`,
+          changefreq: "weekly" as const,
+          priority: 0.7,
+        },
+      ]
     }
 
+    // Localized pages
     for (const locale of locales) {
       const prefix = locale === "en" ? "" : `/${locale}`
 
-      paths.push({
-        loc: `${prefix}/faq`,
-        changefreq: "weekly" as const,
-        priority: 0.7,
-      })
+      paths = [
+        ...paths,
+        {
+          loc: `${prefix}/faq`,
+          changefreq: "weekly" as const,
+          priority: 0.7,
+        },
+      ]
 
       for (const author of authors) {
         const slug = author.toLowerCase().replaceAll(/\s+/g, "-")
 
-        paths.push({
-          loc: `${prefix}/author/${slug}`,
-          changefreq: "weekly" as const,
-          priority: 0.5,
-        })
+        paths = [
+          ...paths,
+          {
+            loc: `${prefix}/author/${slug}`,
+            changefreq: "weekly" as const,
+            priority: 0.5,
+          },
+        ]
       }
     }
 
