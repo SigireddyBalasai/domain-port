@@ -20,7 +20,7 @@
     "build:key": "bun run scripts/generate-indexnow-key.ts",
     "build:next": "next build",
     "build": "run-s build:*",
-    "postbuild": "next-sitemap --config next-sitemap.config.ts",
+    "postbuild": "bun run scripts/generate-sitemaps.ts",
     "indexnow": "bun run scripts/indexnow.ts",
     "start": "next start",
     "lint": "eslint",
