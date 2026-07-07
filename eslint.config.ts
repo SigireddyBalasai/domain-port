@@ -37,7 +37,7 @@ export default defineConfig([
     },
   },
   {
-    files: ["app/**/layout.tsx"],
+    files: ["app/**/layout.tsx", "app/**/page.tsx"],
     rules: {
       "react-refresh/only-export-components": "off",
     },

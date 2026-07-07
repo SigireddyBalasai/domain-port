@@ -42,6 +42,9 @@ interface Props {
   params: Promise<{ locale: string; slug: string }>
 }
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const dynamicParams = false
+
 export const generateStaticParams = (): { locale: string; slug: string }[] => {
   return posts.map((post) => {
     return {

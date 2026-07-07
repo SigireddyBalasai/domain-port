@@ -68,6 +68,9 @@ const normalizeAffiliateUrl = ({
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const dynamicParams = false
+
 export const generateStaticParams = (): { locale: string; slug: string }[] => {
   return posts
     .filter((post) => post.postType === "listing")
