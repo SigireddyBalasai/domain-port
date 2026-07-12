@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image"
 import { createElement, useMemo } from "react"
 import * as runtime from "react/jsx-runtime"
@@ -24,6 +26,8 @@ import {
   TabsList,
   TabsTrigger,
 } from "./mdx-components"
+import { MdxLink } from "./mdx-link"
+import { localePrefixContext } from "./mdx-link-context"
 import { YouTubeEmbedLazy } from "./youtube-embed-lazy"
 
 const BlogTable = BlogTableLazy
@@ -95,6 +99,7 @@ const sharedComponents: Record<string, React.ComponentType<any>> = {
 interface MdxProps {
   code: string
   components?: Record<string, React.ComponentType<any>>
+  localePrefix?: string
 }
 
 const createMdxComponent = (
@@ -112,8 +117,19 @@ const createMdxComponent = (
   return fn({ ...runtime }).default
 }
 
-export function MdxContent({ code, components }: MdxProps): React.ReactNode {
+export function MdxContent({
+  code,
+  components,
+  localePrefix = "",
+}: MdxProps): React.ReactNode {
   const Component = useMemo(() => createMdxComponent(code), [code])
+  const LocalePrefixProvider = localePrefixContext.Provider
 
-  return <Component components={{ ...sharedComponents, ...components }} />
+  return (
+    <LocalePrefixProvider value={localePrefix}>
+      <Component
+        components={{ ...sharedComponents, a: MdxLink, ...components }}
+      />
+    </LocalePrefixProvider>
+  )
 }

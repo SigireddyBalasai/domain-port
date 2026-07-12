@@ -83,6 +83,7 @@ export default async function FaqPage({ params }: Props): Promise<JSX.Element> {
 
   setRequestLocale(locale)
 
+  const localePrefix = locale === defaultLocale ? "" : `/${locale}`
   const localeFaqs = faqs.filter(
     (faq) => faq.locale === locale || faq.locale === "en"
   )
@@ -205,7 +206,10 @@ export default async function FaqPage({ params }: Props): Promise<JSX.Element> {
                           {faq.question}
                         </h3>
                         <div className="faq-content mt-3 text-muted-foreground">
-                          <MdxContent code={faq.answer} />
+                          <MdxContent
+                            code={faq.answer}
+                            localePrefix={localePrefix}
+                          />
                         </div>
                         {faq.tags && faq.tags.length > 0 && (
                           <div className="mt-3 flex flex-wrap gap-1">

@@ -91,6 +91,7 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
           "@context": "https://schema.org",
           "@type": "Organization",
           name: siteConfig.name,
+          alternateName: ["CCTV.name", "cctv.name", "CCTVName"],
           url: siteConfig.url,
           description: siteConfig.description,
           sameAs: [siteConfig.links.youtube, siteConfig.links.github],
@@ -111,6 +112,7 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
           "@context": "https://schema.org",
           "@type": "WebSite",
           name: siteConfig.name,
+          alternateName: ["CCTV.name", "cctv.name", "CCTVName"],
           url: siteConfig.url,
           description: siteConfig.description,
         }}

@@ -165,6 +165,7 @@ export default async function ListingPost({
   }
 
   const isFallback = post.locale !== locale
+  const localePrefix = locale === defaultLocale ? "" : `/${locale}`
   const commentCount = await getCommentCount(slug, locale)
 
   const authorSchema: WithContext<Person> = {
@@ -507,7 +508,7 @@ export default async function ListingPost({
           {post.postType === "listing" && post.listing?.length ? (
             <div className="mt-8 space-y-6">
               <div className="blog-content">
-                <MdxContent code={post.content} />
+                <MdxContent code={post.content} localePrefix={localePrefix} />
               </div>
               <div className="grid gap-6 sm:grid-cols-2">
                 {post.listing.map((item) => {
@@ -616,7 +617,7 @@ export default async function ListingPost({
             </div>
           ) : (
             <div className="blog-content mt-8">
-              <MdxContent code={post.content} />
+              <MdxContent code={post.content} localePrefix={localePrefix} />
             </div>
           )}
           <div className="mt-12">

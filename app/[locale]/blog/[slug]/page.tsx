@@ -168,6 +168,7 @@ export default async function PostPage({
 
   const authorSchema = createAuthorSchema(post.author)
   const isFallback = post.locale !== locale
+  const localePrefix = locale === defaultLocale ? "" : `/${locale}`
   const commentCount = await getCommentCount(slug, locale)
 
   return (
@@ -503,7 +504,7 @@ export default async function PostPage({
           )}
           <TableOfContents />
           <div className="blog-content mt-8">
-            <MdxContent code={post.content} />
+            <MdxContent code={post.content} localePrefix={localePrefix} />
           </div>
           <RelatedPosts
             currentSlug={post.slug}
