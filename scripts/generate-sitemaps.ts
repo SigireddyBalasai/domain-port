@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process"
 import { readdirSync, readFileSync, writeFileSync } from "node:fs"
 import { dirname, join } from "node:path"
 import { fileURLToPath } from "node:url"
@@ -41,6 +42,41 @@ const listingSlugs = [
 
 const siteUrl = "https://www.cctv.name"
 
+// Last commit date (ISO 8601) for a git path, or null if git is unavailable.
+// Pass "" for the most recent commit anywhere in the repository.
+function gitLastCommitDate(target: string): string | null {
+  try {
+    const args =
+      target === ""
+        ? ["log", "-1", "--format=%cI"]
+        : ["log", "-1", "--format=%cI", "--", target]
+    return (
+      execFileSync("git", args, { cwd: rootDir, encoding: "utf-8" })
+        .trim()
+        .replace(/\/?$/, "") || null
+    )
+  } catch {
+    return null
+  }
+}
+
+// Static/aggregation pages have no single source file — use the latest repo commit.
+const siteLastmod = gitLastCommitDate("") ?? ""
+
+// Per post: prefer the source MDX's last commit date, then frontmatter.
+const postLastmod: Record<string, string> = {}
+for (const p of posts) {
+  const file = `content/posts/${p.slug}/${p.locale}.mdx`
+  postLastmod[`${p.slug}|${p.locale}`] =
+    gitLastCommitDate(file) ?? p.updatedAt ?? p.publishedAt ?? siteLastmod
+}
+
+function lastmodForPost(slug: string, locale: string): string {
+  return (
+    postLastmod[`${slug}|${locale}`] ?? postLastmod[`${slug}|en`] ?? siteLastmod
+  )
+}
+
 function alternateRefs(
   path: string
 ): Array<{ href: string; hreflang: string }> {
@@ -53,10 +89,26 @@ function alternateRefs(
   ]
 }
 
+function authorAlternateRefs(
+  slug: string
+): Array<{ href: string; hreflang: string }> {
+  return [
+    ...locales.map((l) => ({
+      hreflang: l,
+      href:
+        l === "en"
+          ? `${siteUrl}/author/${slug}`
+          : `${siteUrl}/${l}/author/${slug}`,
+    })),
+    { hreflang: "x-default", href: `${siteUrl}/author/${slug}` },
+  ]
+}
+
 function field(
   loc: string,
   path: string,
-  alternates: Array<{ href: string; hreflang: string }>
+  alternates: Array<{ href: string; hreflang: string }>,
+  lastmod?: string
 ): {
   loc: string
   changefreq: string
@@ -77,6 +129,7 @@ function field(
           : path.includes("/blog/")
             ? 0.6
             : 0.5,
+    lastmod,
     alternateRefs: alternates,
   }
 }
@@ -96,18 +149,23 @@ for (const locale of locales) {
 }
 
 // Root homepage
-rootFields.push(field(`${siteUrl}/`, "/", alternateRefs("/")))
+rootFields.push(field(`${siteUrl}/`, "/", alternateRefs("/"), siteLastmod))
 
 // Root pages
 for (const p of ["/blog", "/faq"]) {
-  rootFields.push(field(`${siteUrl}${p}`, p, alternateRefs(p)))
+  rootFields.push(field(`${siteUrl}${p}`, p, alternateRefs(p), siteLastmod))
 }
 
 // Root author pages
 for (const author of authors) {
   const slug = author.toLowerCase().replaceAll(/\s+/g, "-")
   rootFields.push(
-    field(`${siteUrl}/author/${slug}`, "/author", alternateRefs("/author"))
+    field(
+      `${siteUrl}/author/${slug}`,
+      `/author/${slug}`,
+      authorAlternateRefs(slug),
+      siteLastmod
+    )
   )
 }
 
@@ -125,13 +183,22 @@ for (const slug of [
           ? `${siteUrl}${path}`
           : `${siteUrl}/${p.locale}${path}`,
     }))
-  rootFields.push(field(`${siteUrl}${path}`, path, postAlts))
+  rootFields.push(
+    field(`${siteUrl}${path}`, path, postAlts, lastmodForPost(slug, "en"))
+  )
 }
 
 // Root listing pages
 for (const slug of listingSlugs) {
   const path = `/listing/${slug}`
-  rootFields.push(field(`${siteUrl}${path}`, path, alternateRefs(path)))
+  rootFields.push(
+    field(
+      `${siteUrl}${path}`,
+      path,
+      alternateRefs(path),
+      lastmodForPost(slug, "en")
+    )
+  )
 }
 
 // Per-locale pages
@@ -140,16 +207,28 @@ for (const locale of locales) {
   const allRefs = alternateRefs("/")
 
   // Homepage
-  localeFields[locale].push(field(`${siteUrl}${prefix}`, prefix, allRefs))
+  localeFields[locale].push(
+    field(`${siteUrl}${prefix}`, prefix, allRefs, siteLastmod)
+  )
 
   // Blog listing
   localeFields[locale].push(
-    field(`${siteUrl}${prefix}/blog`, `${prefix}/blog`, alternateRefs("/blog"))
+    field(
+      `${siteUrl}${prefix}/blog`,
+      `${prefix}/blog`,
+      alternateRefs("/blog"),
+      siteLastmod
+    )
   )
 
   // FAQ
   localeFields[locale].push(
-    field(`${siteUrl}${prefix}/faq`, `${prefix}/faq`, alternateRefs("/faq"))
+    field(
+      `${siteUrl}${prefix}/faq`,
+      `${prefix}/faq`,
+      alternateRefs("/faq"),
+      siteLastmod
+    )
   )
 
   // Author pages
@@ -158,8 +237,9 @@ for (const locale of locales) {
     localeFields[locale].push(
       field(
         `${siteUrl}${prefix}/author/${slug}`,
-        `${prefix}/author`,
-        alternateRefs("/author")
+        `${prefix}/author/${slug}`,
+        authorAlternateRefs(slug),
+        siteLastmod
       )
     )
   }
@@ -177,7 +257,12 @@ for (const locale of locales) {
             : `${siteUrl}/${p.locale}${path}`,
       }))
     localeFields[locale].push(
-      field(`${siteUrl}${prefix}${path}`, `${prefix}${path}`, postAlts)
+      field(
+        `${siteUrl}${prefix}${path}`,
+        `${prefix}${path}`,
+        postAlts,
+        lastmodForPost(post.slug, post.locale)
+      )
     )
   }
 
@@ -188,7 +273,8 @@ for (const locale of locales) {
       field(
         `${siteUrl}${prefix}${path}`,
         `${prefix}${path}`,
-        alternateRefs(path)
+        alternateRefs(path),
+        lastmodForPost(slug, locale)
       )
     )
   }
