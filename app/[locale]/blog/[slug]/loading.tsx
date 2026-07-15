@@ -10,7 +10,7 @@ export default function Loading(): JSX.Element {
           <Skeleton className="h-6 w-48" />
         </div>
       </header>
-      <main className="flex-1">
+      <div className="flex-1">
         <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
           <Skeleton className="mb-8 h-4 w-24" />
           <Skeleton className="mb-2 h-4 w-40" />
@@ -29,7 +29,7 @@ export default function Loading(): JSX.Element {
             ))}
           </div>
         </article>
-      </main>
+      </div>
       <footer className="border-t border-border/40">
         <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">

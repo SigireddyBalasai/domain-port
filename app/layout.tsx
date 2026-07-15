@@ -1,27 +1,6 @@
 import "./globals.css"
 import type { Metadata, Viewport } from "next"
-import { Geist_Mono, Manrope, Playfair_Display } from "next/font/google"
-import { SerwistProvider } from "@serwist/turbopack/react"
 import { siteConfig } from "@/lib/site-config"
-import { cn } from "@/lib/utils"
-
-const playfairDisplayHeading = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-heading",
-  display: "swap",
-})
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-})
-
-const fontMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-})
 
 export const viewport: Viewport = {
   themeColor: [
@@ -101,29 +80,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>): React.ReactNode {
-  return (
-    <html
-      suppressHydrationWarning
-      lang="en"
-      className={cn(
-        "antialiased",
-        fontMono.variable,
-        manrope.variable,
-        playfairDisplayHeading.variable,
-        "font-sans"
-      )}
-    >
-      <body>
-        <SerwistProvider swUrl="/serwist/sw.js">
-          <a
-            href="#main-content"
-            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:bg-background focus:p-3 focus:text-foreground focus:outline-ring"
-          >
-            Skip to content
-          </a>
-          <main id="main-content">{children}</main>
-        </SerwistProvider>
-      </body>
-    </html>
-  )
+  return children
 }

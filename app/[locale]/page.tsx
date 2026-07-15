@@ -131,7 +131,7 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
           ],
         }}
       />
-      <main className="flex-1">
+      <div className="flex-1">
         {/* Hero Section */}
         <section className="border-b border-border/40 py-24 sm:py-32">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -245,7 +245,7 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
             </div>
           </section>
         )}
-      </main>
+      </div>
     </>
   )
 }

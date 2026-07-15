@@ -163,7 +163,7 @@ export default async function FaqPage({ params }: Props): Promise<JSX.Element> {
           },
         }}
       />
-      <main className="flex-1">
+      <div className="flex-1">
         <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
           <h1 className="mb-2 text-4xl font-bold">
             Frequently Asked Questions
@@ -233,7 +233,7 @@ export default async function FaqPage({ params }: Props): Promise<JSX.Element> {
             )
           })}
         </div>
-      </main>
+      </div>
     </>
   )
 }

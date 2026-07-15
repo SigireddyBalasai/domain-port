@@ -32,7 +32,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { getCommentCount } from "@/lib/comment-db"
 import { JsonLd } from "@/lib/json-ld"
-import { defaultLocale, locales } from "@/lib/locales"
+import { defaultLocale } from "@/lib/locales"
 import { buildMetaDescription, buildOgImageUrl } from "@/lib/seo"
 import { siteConfig } from "@/lib/site-config"
 
@@ -101,6 +101,21 @@ export const generateMetadata = async ({
   const localePrefix = locale === defaultLocale ? "" : `/${locale}`
   const postUrl = `${siteConfig.url}${localePrefix}/listing/${post.slug}`
 
+  const translatedLocales = posts
+    .filter((p) => p.slug === slug)
+    .map((p) => p.locale)
+
+  const languageAlternates = Object.fromEntries(
+    translatedLocales.map((l) => {
+      return [
+        l,
+        l === defaultLocale
+          ? `${siteConfig.url}/listing/${post.slug}`
+          : `${siteConfig.url}/${l}/listing/${post.slug}`,
+      ]
+    })
+  )
+
   return {
     title: post.title,
     description: buildMetaDescription(post),
@@ -133,16 +148,7 @@ export const generateMetadata = async ({
     alternates: {
       canonical: postUrl,
       languages: {
-        ...Object.fromEntries(
-          locales.map((l) => {
-            return [
-              l,
-              l === defaultLocale
-                ? `${siteConfig.url}/listing/${post.slug}`
-                : `${siteConfig.url}/${l}/listing/${post.slug}`,
-            ]
-          })
-        ),
+        ...languageAlternates,
         "x-default": `${siteConfig.url}/listing/${post.slug}`,
       },
     },
@@ -450,7 +456,7 @@ export default async function ListingPost({
           copyrightNotice: `© ${String(new Date().getFullYear())} ${siteConfig.name}. All rights reserved.`,
         }}
       />
-      <main className="flex-1">
+      <div className="flex-1">
         <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
           <Breadcrumbs
             items={[
@@ -625,7 +631,7 @@ export default async function ListingPost({
           </div>
           <Comments postSlug={slug} locale={locale} />
         </article>
-      </main>
+      </div>
     </>
   )
 }

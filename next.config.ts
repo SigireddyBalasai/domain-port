@@ -17,26 +17,6 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: "/:locale/blog/sample-listing",
-        destination: "/:locale/blog",
-        permanent: true,
-      },
-      {
-        source: "/:locale/listing/sample-listing",
-        destination: "/:locale/blog",
-        permanent: true,
-      },
-      {
-        source: "/blog/sample-listing",
-        destination: "/blog",
-        permanent: true,
-      },
-      {
-        source: "/listing/sample-listing",
-        destination: "/blog",
-        permanent: true,
-      },
-      {
         source: "/markdoc-demo",
         destination: "/",
         permanent: true,

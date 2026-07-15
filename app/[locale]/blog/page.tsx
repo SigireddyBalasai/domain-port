@@ -131,7 +131,7 @@ export default async function BlogPage({
           }),
         }}
       />
-      <main className="flex-1">
+      <div className="flex-1">
         <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
           <h1 className="mb-8 text-4xl font-bold">{t("blog")}</h1>
           <div className="space-y-6">
@@ -153,7 +153,7 @@ export default async function BlogPage({
             )}
           </div>
         </div>
-      </main>
+      </div>
     </>
   )
 }

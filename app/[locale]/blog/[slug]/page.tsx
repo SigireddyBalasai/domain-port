@@ -32,7 +32,7 @@ import { MdxContent } from "@/components/mdx-content"
 import { Badge } from "@/components/ui/badge"
 import { getCommentCount } from "@/lib/comment-db"
 import { JsonLd } from "@/lib/json-ld"
-import { defaultLocale, locales } from "@/lib/locales"
+import { defaultLocale } from "@/lib/locales"
 import { buildMetaDescription, buildOgImageUrl } from "@/lib/seo"
 import { siteConfig } from "@/lib/site-config"
 
@@ -73,22 +73,28 @@ export const generateMetadata = async ({
   const localePrefix = locale === defaultLocale ? "" : `/${locale}`
   const postUrl = `${siteConfig.url}${localePrefix}/blog/${post.slug}`
 
+  const translatedLocales = posts
+    .filter((p) => p.slug === slug)
+    .map((p) => p.locale)
+
+  const languageAlternates = Object.fromEntries(
+    translatedLocales.map((l) => {
+      return [
+        l,
+        l === defaultLocale
+          ? `${siteConfig.url}/blog/${post.slug}`
+          : `${siteConfig.url}/${l}/blog/${post.slug}`,
+      ]
+    })
+  )
+
   return Promise.resolve({
     title: post.title,
     description: buildMetaDescription(post),
     alternates: {
       canonical: postUrl,
       languages: {
-        ...Object.fromEntries(
-          locales.map((l) => {
-            return [
-              l,
-              l === defaultLocale
-                ? `${siteConfig.url}/blog/${post.slug}`
-                : `${siteConfig.url}/${l}/blog/${post.slug}`,
-            ]
-          })
-        ),
+        ...languageAlternates,
         "x-default": `${siteConfig.url}/blog/${post.slug}`,
       },
     },
@@ -449,7 +455,7 @@ export default async function PostPage({
           copyrightNotice: `© ${String(new Date().getFullYear())} ${siteConfig.name}. All rights reserved.`,
         }}
       />
-      <main className="flex-1">
+      <div className="flex-1">
         <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
           <Breadcrumbs
             items={[
@@ -516,7 +522,7 @@ export default async function PostPage({
           </div>
           <Comments postSlug={slug} locale={locale} />
         </article>
-      </main>
+      </div>
     </>
   )
 }

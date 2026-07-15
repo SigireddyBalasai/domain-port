@@ -7,7 +7,7 @@ export default async function LocaleNotFound(): Promise<JSX.Element> {
   const locale = await getLocale()
 
   return (
-    <main className="flex flex-1 items-center justify-center">
+    <div className="flex flex-1 items-center justify-center">
       <div className="mx-auto max-w-md px-4 text-center sm:px-6">
         <p className="font-display text-8xl font-bold text-primary">404</p>
         <h1 className="font-display mt-4 text-2xl font-bold">
@@ -32,6 +32,6 @@ export default async function LocaleNotFound(): Promise<JSX.Element> {
           </Link>
         </div>
       </div>
-    </main>
+    </div>
   )
 }
