@@ -1,5 +1,6 @@
 import "../../../blog-content.css"
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { setRequestLocale } from "next-intl/server"
@@ -27,9 +28,11 @@ import RelatedPosts from "@/components/blog/related-posts"
 import { ShareButtonsLazy } from "@/components/blog/share-buttons-lazy"
 import TableOfContents from "@/components/blog/table-of-contents"
 import Breadcrumbs from "@/components/breadcrumbs"
-// Removed unused Callout import
+import { Callout } from "@/components/mdx-components"
 import { MdxContent } from "@/components/mdx-content"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { getCommentCount } from "@/lib/comment-db"
 import { JsonLd } from "@/lib/json-ld"
 import { defaultLocale } from "@/lib/locales"
@@ -37,6 +40,32 @@ import { buildMetaDescription, buildOgImageUrl } from "@/lib/seo"
 import { siteConfig } from "@/lib/site-config"
 
 const ShareButtons = ShareButtonsLazy
+
+interface AffiliateInput {
+  url?: string
+}
+
+const normalizeAffiliateUrl = ({ url }: AffiliateInput): string | undefined => {
+  if (!url) {
+    return undefined
+  }
+
+  const { tag } = siteConfig.affiliate.amazon
+
+  if (!tag) {
+    return url
+  }
+
+  try {
+    const parsed = new URL(url)
+
+    parsed.searchParams.set("tag", tag)
+
+    return parsed.toString()
+  } catch {
+    return url
+  }
+}
 
 interface Props {
   params: Promise<{ locale: string; slug: string }>
@@ -245,7 +274,8 @@ export default async function PostPage({
         post.postType === "howto" ||
         post.postType === "review" ||
         post.postType === "faq" ||
-        post.postType === "video") && (
+        post.postType === "video" ||
+        post.postType === "listing") && (
         <JsonLd<Article>
           schema={{
             "@context": "https://schema.org",
@@ -512,6 +542,114 @@ export default async function PostPage({
           <div className="blog-content mt-8">
             <MdxContent code={post.content} localePrefix={localePrefix} />
           </div>
+          {post.postType === "listing" && post.listing?.length ? (
+            <div className="mt-8 space-y-6">
+              <div className="grid gap-6 sm:grid-cols-2">
+                {post.listing.map((item) => {
+                  const primaryLink =
+                    normalizeAffiliateUrl({ url: item.affiliateUrl }) ??
+                    normalizeAffiliateUrl({ url: item.amazonUrl })
+
+                  return (
+                    <Card key={`${item.name}-${item.asin ?? ""}`}>
+                      {item.image && (
+                        <Image
+                          src={item.image}
+                          alt={item.name}
+                          width={400}
+                          height={224}
+                          className="h-56 w-full object-cover"
+                        />
+                      )}
+                      <CardHeader>
+                        <CardTitle>{item.name}</CardTitle>
+                        {item.brand && (
+                          <p className="text-xs tracking-wide text-muted-foreground uppercase">
+                            {item.brand}
+                          </p>
+                        )}
+                        {item.price && (
+                          <p className="text-sm text-muted-foreground">
+                            {item.priceCurrency ? `${item.priceCurrency} ` : ""}
+                            {item.price}
+                          </p>
+                        )}
+                      </CardHeader>
+                      <CardContent>
+                        {item.description && (
+                          <p className="text-sm text-muted-foreground">
+                            {item.description}
+                          </p>
+                        )}
+                        {item.ratingValue !== undefined && (
+                          <p className="mt-3 text-sm text-muted-foreground">
+                            Rating: {String(item.ratingValue)}
+                            {item.ratingCount
+                              ? ` (${String(item.ratingCount)})`
+                              : ""}
+                          </p>
+                        )}
+                        {item.features && item.features.length > 0 && (
+                          <ul className="mt-4 list-disc space-y-1 pl-5 text-sm">
+                            {item.features.map((feature) => (
+                              <li key={feature}>{feature}</li>
+                            ))}
+                          </ul>
+                        )}
+                        {item.pros && item.pros.length > 0 && (
+                          <ul className="mt-4 list-disc space-y-1 pl-5 text-sm">
+                            {item.pros.map((pro) => (
+                              <li key={pro}>{pro}</li>
+                            ))}
+                          </ul>
+                        )}
+                        {item.cons && item.cons.length > 0 && (
+                          <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+                            {item.cons.map((con) => (
+                              <li key={con}>{con}</li>
+                            ))}
+                          </ul>
+                        )}
+                        {item.specs && Object.keys(item.specs).length > 0 && (
+                          <div className="mt-4 text-sm text-muted-foreground">
+                            {Object.entries(item.specs).map(([key, value]) => {
+                              return (
+                                <p key={key}>
+                                  <span className="font-medium text-foreground">
+                                    {key}:
+                                  </span>{" "}
+                                  {value}
+                                </p>
+                              )
+                            })}
+                          </div>
+                        )}
+                        {primaryLink && (
+                          <div className="mt-4">
+                            <Button asChild>
+                              <a
+                                href={primaryLink}
+                                target="_blank"
+                                rel="nofollow noopener noreferrer"
+                              >
+                                View on Amazon
+                              </a>
+                            </Button>
+                          </div>
+                        )}
+                      </CardContent>
+                    </Card>
+                  )
+                })}
+              </div>
+              <div className="blog-content">
+                <Callout title="Affiliate disclosure">
+                  This page may contain affiliate links. If you purchase through
+                  them, we may earn a small commission at no extra cost to you.
+                </Callout>
+              </div>
+            </div>
+          ) : null}
           <RelatedPosts
             currentSlug={post.slug}
             locale={locale}

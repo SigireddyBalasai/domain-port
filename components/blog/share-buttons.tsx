@@ -27,7 +27,7 @@ export function ShareButtons({
   locale = "",
 }: ShareButtonsProps): JSX.Element {
   const localePath = locale ? `/${locale}` : ""
-  const url = `${siteConfig.url}${localePath}/listing/${slug}`
+  const url = `${siteConfig.url}${localePath}/blog/${slug}`
   const text = `${title} — ${siteConfig.name}`
   const encodedUrl = encodeURIComponent(url)
   const encodedText = encodeURIComponent(text)

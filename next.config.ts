@@ -26,6 +26,28 @@ const nextConfig: NextConfig = {
         destination: "/:locale",
         permanent: true,
       },
+      // Listing posts are now served as blog posts at /blog/*. Redirect any
+      // previously-indexed /listing/* URLs to the canonical /blog/* location.
+      {
+        source: "/listing/best-poe-cameras",
+        destination: "/blog/best-poe-cameras",
+        permanent: true,
+      },
+      {
+        source: "/listing/best-cameras-under-200",
+        destination: "/blog/best-cameras-under-200",
+        permanent: true,
+      },
+      {
+        source: "/:locale/listing/best-poe-cameras",
+        destination: "/:locale/blog/best-poe-cameras",
+        permanent: true,
+      },
+      {
+        source: "/:locale/listing/best-cameras-under-200",
+        destination: "/:locale/blog/best-cameras-under-200",
+        permanent: true,
+      },
     ]
   },
 }

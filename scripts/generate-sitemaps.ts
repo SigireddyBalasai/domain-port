@@ -122,7 +122,7 @@ function field(
     changefreq: isHome ? "daily" : "weekly",
     priority: isHome
       ? 1.0
-      : path.endsWith("/faq") || path.includes("/listing/")
+      : path.endsWith("/faq")
         ? 0.7
         : path.endsWith("/blog")
           ? 0.8
@@ -185,19 +185,6 @@ for (const slug of [
     }))
   rootFields.push(
     field(`${siteUrl}${path}`, path, postAlts, lastmodForPost(slug, "en"))
-  )
-}
-
-// Root listing pages
-for (const slug of listingSlugs) {
-  const path = `/listing/${slug}`
-  rootFields.push(
-    field(
-      `${siteUrl}${path}`,
-      path,
-      alternateRefs(path),
-      lastmodForPost(slug, "en")
-    )
   )
 }
 
@@ -266,18 +253,7 @@ for (const locale of locales) {
     )
   }
 
-  // Listing pages
-  for (const slug of listingSlugs) {
-    const path = `/listing/${slug}`
-    localeFields[locale].push(
-      field(
-        `${siteUrl}${prefix}${path}`,
-        `${prefix}${path}`,
-        alternateRefs(path),
-        lastmodForPost(slug, locale)
-      )
-    )
-  }
+  // Listing posts are emitted above as regular blog posts
 }
 
 const builder = new SitemapBuilder()
