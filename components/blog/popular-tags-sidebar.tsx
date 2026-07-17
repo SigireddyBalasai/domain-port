@@ -2,20 +2,21 @@ import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 
 interface PopularTagsSidebarProps {
-  posts: Array<{ tags: string[] }>
+  posts: Array<{ tags?: string[] | null }>
   limit?: number
 }
 
 export function PopularTagsSidebar({ posts, limit = 10 }: PopularTagsSidebarProps) {
   const tagCounts = new Map<string, number>()
   posts.forEach(post => {
-    post.tags.forEach(tag => {
+    const tags = post.tags || []
+    tags.forEach(tag => {
       tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1)
     })
   })
 
   const popularTags = Array.from(tagCounts.entries())
-    .sort((a, b) => b[1] - a[1])
+    .toSorted((a, b) => b[1] - a[1])
     .slice(0, limit)
     .map(entry => entry[0])
 

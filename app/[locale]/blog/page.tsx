@@ -4,6 +4,7 @@ import type { JSX } from "react/jsx-runtime"
 import type { BreadcrumbList, CollectionPage, ItemList } from "schema-dts"
 import { posts } from "@/.velite"
 import BlogCard from "@/components/blog/blog-card"
+import { PopularTagsSidebar } from "@/components/blog/popular-tags-sidebar"
 import { JsonLd } from "@/lib/json-ld"
 import { defaultLocale, locales } from "@/lib/locales"
 import { siteConfig } from "@/lib/site-config"
@@ -135,25 +136,32 @@ export default async function BlogPage({
         }}
       />
       <div className="flex-1">
-        <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-          <h1 className="mb-8 text-4xl font-bold">{t("blog")}</h1>
-          <div className="space-y-6">
-            {sorted.map((post) => {
-              return (
-                <BlogCard
-                  key={post.slug}
-                  title={post.title}
-                  description={post.description}
-                  publishedAt={post.publishedAt}
-                  slug={post.slug}
-                  locale={locale}
-                  tags={post.tags}
-                />
-              )
-            })}
-            {sorted.length === 0 && (
-              <p className="text-muted-foreground">{t("noPosts")}</p>
-            )}
+        <div className="mx-auto px-4 py-12 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            {/* Main content */}
+            <div className="lg:col-span-3 space-y-6">
+              <h1 className="mb-8 text-4xl font-bold">{t("blog")}</h1>
+              {sorted.map((post) => {
+                return (
+                  <BlogCard
+                    key={post.slug}
+                    title={post.title}
+                    description={post.description}
+                    publishedAt={post.publishedAt}
+                    slug={post.slug}
+                    locale={locale}
+                    tags={post.tags}
+                  />
+                )
+              })}
+              {sorted.length === 0 && (
+                <p className="text-muted-foreground">{t("noPosts")}</p>
+              )}
+            </div>
+            {/* Sidebar */}
+            <aside className="lg:col-span-1 space-y-8">
+              <PopularTagsSidebar posts={sorted} />
+            </aside>
           </div>
         </div>
       </div>
