@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { setRequestLocale } from "next-intl/server"
+import { Suspense } from "react"
 import type { JSX } from "react/jsx-runtime"
 import type {
   Article,
@@ -658,7 +659,15 @@ export default async function PostPage({
           <div className="mt-12">
             <ShareButtons title={post.title} slug={post.slug} locale={locale} />
           </div>
-          <Comments postSlug={slug} locale={locale} />
+          <Suspense
+            fallback={
+              <div className="mt-16 border-t border-border pt-10 text-muted-foreground">
+                Loading comments…
+              </div>
+            }
+          >
+            <Comments postSlug={slug} locale={locale} />
+          </Suspense>
         </article>
       </div>
     </>
