@@ -24,7 +24,7 @@ export const generateMetadata = async ({
   const pageUrl = `${siteConfig.url}${localePrefix}/blog`
 
   return {
-    title: "CCTV & Security Camera Guides, Reviews, and How-Tos",
+    title: "CCTV Camera Guides & Reviews",
     description: `Expert CCTV guides, security camera reviews, and surveillance how-tos. Compare 4K vs 5MP, learn NVR setup, and find the best cameras for your needs.`,
     keywords: [
       "CCTV blog",
@@ -37,13 +37,13 @@ export const generateMetadata = async ({
       locale: ogLocale,
       url: pageUrl,
       siteName: siteConfig.name,
-      title: "CCTV & Security Camera Guides, Reviews, and How-Tos",
+      title: "CCTV Camera Guides & Reviews",
       description: `Expert CCTV guides, security camera reviews, and surveillance how-tos. Compare 4K vs 5MP, learn NVR setup, and find the best cameras for your needs.`,
       images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
-      title: "CCTV & Security Camera Guides, Reviews, and How-Tos",
+      title: "CCTV Camera Guides & Reviews",
       description: `Expert CCTV guides, security camera reviews, and surveillance how-tos. Compare 4K vs 5MP, learn NVR setup, and find the best cameras for your needs.`,
       images: [siteConfig.ogImage],
     },
