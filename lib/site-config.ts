@@ -3,7 +3,7 @@ export const siteConfig = {
   url: "https://www.cctv.name",
   ogImage: "https://www.cctv.name/og.svg",
   description:
-    "Expert CCTV and surveillance solutions — reviews, installation guides, and security tips for your home and business.",
+    "Expert CCTV and surveillance solutions — independent camera reviews, installation guides, and practical security tips for your home and business.",
   keywords: [
     "CCTV",
     "cctv camera",

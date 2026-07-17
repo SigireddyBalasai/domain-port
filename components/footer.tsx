@@ -20,10 +20,9 @@ export default async function Footer({
           <div>
             <div className="flex items-center space-x-2">
               <Image
-                aria-hidden
                 priority
                 src="/logo-icon.svg"
-                alt=""
+                alt={siteConfig.name}
                 width={24}
                 height={24}
               />

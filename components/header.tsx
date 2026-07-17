@@ -22,10 +22,9 @@ export default async function Header({
         <div className="flex h-14 items-center justify-between">
           <Link href={`/${locale}`} className="flex items-center space-x-2">
             <Image
-              aria-hidden
               priority
               src="/logo-icon.svg"
-              alt=""
+              alt={siteConfig.name}
               width={24}
               height={24}
             />
