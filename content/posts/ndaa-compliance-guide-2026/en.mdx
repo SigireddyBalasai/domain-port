@@ -1,0 +1,328 @@
+---
+title: "NDAA Compliance: What CCTV Installers Need to Know in 2026"
+description: "A comprehensive guide to understanding NDAA requirements, restricted brands (Hikvision, Dahua), and how to choose compliant cameras for federal projects."
+publishedAt: 2026-07-20T00:00:00.000Z
+updatedAt: 2026-07-20T00:00:00.000Z
+slug: "ndaa-compliance-guide-2026"
+author: "Your Name"
+tags: ["compliance", "ndaa"]
+postType: "article"
+---
+
+<svg
+  viewBox="0 0 64 64"
+  width="48"
+  height="48"
+  fill="none"
+  stroke="#dc2626"
+  strokeWidth="2"
+  strokeLinecap="round"
+  strokeLinejoin="round"
+  style={{ float: "left", marginRight: "12px" }}
+>
+  <path d="M32 4 L32 16 M32 48 L32 60 M4 32 L16 32 M48 32 L60 32" />
+  <circle cx="32" cy="32" r="24" strokeWidth="3" opacity="0.3" />
+  <path d="M32 16 L32 48 M16 32 L48 32" strokeWidth="3" />
+</svg>
+
+The National Defense Authorization Act (NDAA) has fundamentally reshaped the landscape for CCTV installers working on federal, state, and critical infrastructure projects. What was once a niche compliance concern has become a daily reality for installers bidding on schools, government buildings, airports, and even many private projects that follow federal guidelines.
+
+If you'veever been asked "Are these cameras NDAA-compliant?" and weren't sure how to answer, this guide is for you. We'll cut through the confusion and give you a practical framework for evaluating equipment, talking to clients, and protecting your business from compliance risks.
+
+*Note: This article reflects the legal landscape as of mid-2026. Always verify current regulations with legal counsel before finalizing equipment choices for federal projects.*
+
+## What is the NDAA and Why Should Installers Care?
+
+The NDAA is an annual bill that funds the U.S. Department of Defense. Since 2019, it has included provisions—particularly Section 889—that restrict certain Chinese-made technology from U.S. government procurement and use.
+
+### Section 889: The Core Restriction
+
+Section 889 prohibits federal agencies from procuring or using covered telecommunications equipment from specific vendors deemed national security threats. The restriction covers:
+
+- **Procurement ban**: Federal agencies cannot buy or obtain covered equipment or services
+- **Contractor ban**: Federal contractors cannot use covered equipment in performance of federal contracts
+- **Expansion to grant recipients**: Many state and local projects receiving federal funding must also comply
+
+The list of covered companies (as of 2026) includes:
+
+- **Hikvision** (Hangzhou Hikvision Digital Technology)
+- **Dahua Technology** (including Lorex, Amcrest, and other brands)
+- **Huawei** (including HiSilicon chips)
+- **Hytera** (two-way radios)
+- **ZTE** (telecom equipment)
+
+These companies are designated by the FCC as covered telecommunications equipment or services (CVETs). The ban applies to core components, not just finished products.
+
+### The "Why" Behind the Restrictions
+
+The U.S. government's concerns center on:
+
+1. **Backdoor vulnerabilities**: Intelligence agencies have documented systematic security flaws and potential backdoors in these manufacturers' firmware
+2. ** compelled cooperation**: Chinese national intelligence laws can require companies to cooperate with government intelligence collection
+3. **Supply chain transparency**: Lack of verifiable traceability in component sourcing
+
+For installers, this means: **it's not just about the brand name on the box**. It's about what's inside.
+
+## What "NDAA-Compliant" Actually Means
+
+Compliance exists on a spectrum. Complete compliance requires demonstrating that:
+
+1. **Core components** (sensors, processors, chips, PCBs) are not sourced from restricted countries
+2. **Assembly** occurs in a non-restricted country (USA, Mexico, Taiwan, Japan, South Korea, etc.)
+3. **Software/firmware** is developed and controlled by non-restricted entities
+4. **No covered services** are used in performance of federal contracts
+
+### The Four-Part Test
+
+<Callout type="info">
+**Compliance isn't just about where the product is assembled.** A camera assembled in the USA with a HiSilicon processor from China is still non-compliant. Similarly, software developed in China that runs on compliant hardware also creates compliance issues.
+</Callout>
+
+**1. Component Sourcing**
+
+The most critical factor is the bill of materials (BOM). Installers should request:
+
+- **Processor/SoC origin**: Many use HiSilicon (Huawei), Allwinner (China), or Amlogic (China). Compliant alternatives: Texas Instruments, Ambarella, Sony, or processors made in Taiwan/South Korea/Japan.
+- **Image sensor origin**: Sony, Samsung, and OmniVision are generally compliant. Some Chinese sensors (e.g., GalaxyCore) raise concerns.
+- **PCB fabrication**: Must not occur in restricted countries. Most compliant manufacturers use Taiwan, USA, or Japan.
+- **Memory/storage**: Samsung (South Korea), SK Hynix (South Korea), Micron (USA) are safe.
+- **Power ICs**: Often from Taiwan or USA.
+
+**2. Assembly Location**
+
+Assembly in the USA, Mexico, Taiwan, or other non-restricted countries provides a strong compliance signal. However:
+
+<Callout type="warning">
+**"Designed in USA" ≠ "Made in USA"**. Many brands market "US design" while manufacturing in China with Chinese components. This is insufficient for NDAA compliance.
+</Callout>
+
+**3. Software/Firmware Ownership**
+
+The software stack must be:
+
+- Developed outside restricted countries
+- Not maintained or hosted in China
+- Not using Chinese cloud services for video processing or AI analytics
+
+Some manufacturers outsource firmware development to China even if hardware design is domestic. This creates risk.
+
+**4. Manufacturer Declarations**
+
+Reputable compliant manufacturers provide:
+
+- **Supplier declarations** attesting to component origins
+- **Country of origin documentation**
+- **Third-party compliance certifications** (e.g., from TAA-compliant programs)
+- **U.S. Manufacturing (USM) compliance statements**
+
+## How to Verify Compliance as an Installer
+
+### Step 1: Ask for the BOM
+
+Request a detailed bill of materials from the manufacturer or distributor. This should list:
+
+- Part numbers for major components
+- Country of origin for each component
+- Manufacturer names
+
+If they refuse or provide vague answers, that's a red flag.
+
+### Step 2: Check the TAA List
+
+The U.S. Trade Agreements Act (TAA) list is a good proxy for NDAA compliance. TAA-compliant products are manufactured in designated countries and are eligible for federal procurement.
+
+Search the manufacturer's products on:
+- GSA Schedules (Multiple Award Schedules)
+- SAM.gov product listings
+- Manufacturer's TAA compliance declarations
+
+### Step 3: Confirm Manufacturing Location
+
+Verify where final assembly occurs. Some manufacturers have " Finish/Configuration" in the USA even if the main assembly is overseas—this may not be sufficient. The core assembly (PCB soldering, integration of core components) should happen outside restricted countries.
+
+### Step 4: Get It in Writing
+
+Before bidding a federal project:
+
+- Obtain written compliance statements from the manufacturer
+- Request email confirmations of TAA status
+- Keep documentation in project files
+
+**Oral assurances from sales reps are worthless in an audit**.
+
+## Top Compliant Brands and Product Lines (2026)
+
+The following brands have established compliance track records:
+
+### Tier 1: Full Compliance (Established U.S./Allied Manufacturing)
+
+| Brand | Strengths | Notes |
+|-------|-----------|-------|
+| **Axis Communications** | Made in Sweden, EU-sourced components, strong documentation | Gold standard for compliance; premium pricing |
+| **Bosch Security Systems** | Germany-based, EU supply chain | Excellent quality, fully TAA-compliant |
+| **Hanwha Techwin** | South Korea assembly, Samsung heritage | Large portfolio, good value |
+| **Motorola Solutions (Avigilon)** | USA/Canada assembly, domestic supply chain for key components | Higher-end commercial security |
+| **Vanderbilt** | UK-based, EU supply chain | Access control and alarm systems |
+| **GE Security** | USA assembly, legacy brand with strong compliance pedigree | |
+
+### Tier 2: Compliant Sub-Brands / U.S. Final Assembly
+
+| Brand | Product Lines | Caveats |
+|-------|---------------|---------|
+| **Honeywell** | Performance series, equIP | Mix of compliant and non-compliant lines—verify specific SKUs |
+| **LenelS2** | OnGuard, ELA | Mostly compliant; verify camera models |
+| **MERCURY** | Door controllers, access control | UK-based, good compliance track record |
+
+### Tier 3: Proceed with Caution / Verify Every SKU
+
+Some manufacturers have both compliant and non-compliant products:
+
+- **Ubiquiti UniFi**: Some assembly in Taiwan, but components vary by model. Get explicit confirmation per product.
+- **Reolink**: Claims some U.S. assembly but component sourcing unclear. High risk for federal work.
+- ** Night Owl**: Domestic assembly claims; request detailed BOM verification.
+
+### Brands to Avoid on Federal Projects
+
+<Callout type="warning">
+**DO NOT USE** on NDAA-covered projects:
+
+- Hikvision (all brands: Hikvision, HiWatch, Ezviz, etc.)
+- Dahua (all brands: Dahua, Lorex, Amcrest, Reolink—some overlap caution)
+- Huawei (HiSilicon-based products)
+- Hytera (radios)
+- ZTE (telecom)
+- Any product with "Powered by HiSilicon" or "Huawei HiSilicon" in specs
+</Callout>
+
+## Compliance Checklist for Installers
+
+Use this 7-point checklist before proposing equipment for any project that may fall under NDAA requirements:
+
+### ☐ 1. Identify Project Type
+
+Federal project → Must comply
+State/local project → May comply if receiving federal funds (ask about funding source)
+ Private commercial → Typically exempt, but many corporate clients adopt similar policies
+
+### ☐ 2. Choose Verified Brands
+
+Start with Tier 1 or 2 brands from this guide. If considering anything else, demand manufacturer compliance documentation before proceeding.
+
+### ☐ 3. Confirm Specific SKUs
+
+Compliance is model-specific. Even within a compliant brand, some products use non-compliant components. Verify the exact part number.
+
+### ☐ 4. Document Everything
+
+Keep emails, spec sheets, and manufacturer declarations in your project file. You're responsible for your representations to the client.
+
+### ☐ 5. Include Compliance Language in Proposals
+
+Sample: "All equipment offered for this project is verified NDAA/TAA-compliant per manufacturer documentation available upon request. Specific model compliance confirmed in writing."
+
+### ☐ 6. Plan for Audits
+
+Federal contracts may include audit rights. Ensure your supply chain can produce documentation if requested years later.
+
+### ☐ 7. Stay Updated
+
+The NDAA restricted entity list changes annually. Subscribe to FCC updates and manufacturer compliance newsletters. What's compliant today might be restricted tomorrow.
+
+## Frequently Asked Questions
+
+<Accordion>
+<AccordionItem value="assembled-usa">
+<AccordionTrigger>Does "Assembled in USA" Guarantee Compliance?</AccordionTrigger>
+<AccordionContent>
+**No.** A product can be assembled in the USA but contain a processor from Huawei or other restricted entities. Compliance requires that *core components* come from non-restricted countries. An "assembled in USA" claim alone is insufficient—you need the BOM origin verification.
+</AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="used-refurbished">
+<AccordionTrigger>Are Used or Refurbished Cameras Covered?</AccordionTrigger>
+<AccordionContent>
+The NDAA procurement ban applies to *new* equipment purchases. However, federal agencies may still use existing non-compliant systems that were lawfully acquired before restrictions took effect. For contractors, using refurbished non-compliant equipment in performance of a federal contract could violate the ban. Most integrators treat refurbished as high-risk and seek legal guidance before using on covered projects.
+</AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="existing-systems">
+<AccordionTrigger>What About Existing Systems on Federal Sites?</AccordionTrigger>
+<AccordionContent>
+Legacy systems that were lawfully installed before restrictions are generally "grandfathered" and can continue operating. However:
+- Maintenance and repair parts may be restricted if they would constitute a "substantial transformation" into new equipment
+- Software updates from restricted manufacturers could be problematic
+- Most agencies are proactively replacing non-compliant systems on a fixed timeline
+</AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="penalties">
+<AccordionTrigger>What Are the Penalties for Non-Compliance?</AccordionTrigger>
+<AccordionContent>
+Penalties can be severe:
+- **Contract termination** and debarment from future federal work
+- **False claims act liability**: Submitting false compliance certifications can trigger treble damages
+- **Criminal penalties** in cases of knowing violations
+- **Civil penalties** from the FCC
+- **Reputational damage** and loss of client trust
+Most importantly, your client (the federal agency or contractor) bears ultimate liability, but they will hold you responsible if your representations caused the violation.
+</AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="prove-compliance">
+<AccordionTrigger>How Do I Prove Compliance to Clients?</AccordionTrigger>
+<AccordionContent>
+Provide:
+1. **Manufacturer written statements** (email or letter) confirming TAA/NDAA compliance for the specific SKUs
+2. **GSA Schedule contracts** showing the products on approved lists
+3. **BOM documentation** showing component origins (if requested)
+4. **Country of origin markings** on equipment packaging
+5. **Compliance certificates** from third-party auditors (if available)
+
+The key is traceability: you should be able to show the compliance chain from component supplier to final product.
+</AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="state-projects">
+<AccordionTrigger>Do State and Local Projects Require Compliance?</AccordionTrigger>
+<AccordionContent>
+Many do, but it depends on funding. If a project receives federal grants or cooperative agreements (e.g., Department of Homeland Security funding for school security), NDAA restrictions often flow down. Some states have also enacted their own bans on Chinese surveillance equipment. Always ask clients whether the project is subject to TAA/NDAA requirements and get the answer in writing.
+</AccordionContent>
+</AccordionItem>
+</Accordion>
+
+## Building a Compliance-First Business
+
+The most successful installers in the NDAA era have made compliance a competitive advantage, not a burden:
+
+1. **Specialize in compliant brands** and become the expert. Your knowledge becomes a selling point.
+2. **Create standard compliance packages** for common federal project types (schools, courthouses, federal buildings).
+3. **Document your supply chain** and can produce paperwork on demand. Consider keeping compliance packets for each major vendor you use.
+4. **Stay in front of client questions**. Send periodic updates about product availability and compliance status.
+5. **Verify before you bid**. A rejected bid due to non-compliance is better than a terminated contract and debarment.
+
+## Conclusion: Action Steps for 2026
+
+NDAA compliance is here to stay. The installers who thrive will be those who:
+
+- **Know their supply chains**—down to the component level
+- **Document everything**—paperwork is your only defense
+- **Specialize in compliant brands**—don't gamble on borderline equipment
+- **Stay current**—restricted entity lists evolve annually
+
+The good news: high-quality compliant equipment is widely available from reputable manufacturers. You don't need to compromise on performance or price—just be more intentional about sourcing.
+
+**Before your next federal or state project:**
+1. Review your current product catalog for any restricted brand dependencies
+2. Build relationships with compliant manufacturers and distributors
+3. Create a standard compliance documentation package
+4. Train your sales and install teams on compliance talking points
+
+Need help evaluating specific products? Reach out to your preferred manufacturers' government sales teams—they're obligated to provide compliance documentation.
+
+---
+
+*For the most current restricted entity list, visit the FCC's Covered List at [fcc.gov/cvets](https://www.fcc.gov/cvets). This article provides general guidance and does not constitute legal advice; consult counsel for project-specific compliance determinations.*
+
+[Back to blog](/blog)
+
+/* sitemap refreshed */
