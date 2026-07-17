@@ -53,6 +53,29 @@ export default async function Footer({
             <h4 className="font-semibold">{t("connect")}</h4>
             <div className="mt-4 space-y-2" />
           </div>
+          <div>
+            <h4 className="font-semibold">{t("legal")}</h4>
+            <nav className="mt-4 space-y-2">
+              <Link
+                href={`/${locale}/about`}
+                className="hover:text-primary block text-sm"
+              >
+                {t("about")}
+              </Link>
+              <Link
+                href={`/${locale}/contact`}
+                className="hover:text-primary block text-sm"
+              >
+                {t("contact")}
+              </Link>
+              <Link
+                href={`/${locale}/privacy`}
+                className="hover:text-primary block text-sm"
+              >
+                {t("privacy")}
+              </Link>
+            </nav>
+          </div>
         </div>
         <div className="border-border/40 text-muted-foreground mt-8 border-t pt-8 text-center text-sm">
           <p>

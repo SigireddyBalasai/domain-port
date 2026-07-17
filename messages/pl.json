@@ -30,6 +30,35 @@
     "notFoundDescription": "Przepraszamy, strona której szukasz nie istnieje lub została przeniesiona.",
     "notFoundGoHome": "Przejdź do Strony Głównej",
     "notFoundBrowseBlog": "Przeglądaj Blog",
-    "notFoundReport": "Jeśli uważasz, że to błąd, skontaktuj się z nami."
+    "notFoundReport": "Jeśli uważasz, że to błąd, skontaktuj się z nami.",
+    "legal": "Informacje prawne",
+    "about": "O nas",
+    "contact": "Kontakt",
+    "privacy": "Polityka prywatności"
+  },
+  "legal": {
+    "privacy": "Polityka prywatności",
+    "about": "O nas",
+    "contact": "Kontakt",
+    "privacyTitle": "Polityka prywatności",
+    "aboutTitle": "O nas",
+    "contactTitle": "Skontaktuj się",
+    "privacyDescription": "Jak CCTV Name gromadzi, wykorzystuje i chroni Twoje dane, w tym pliki cookie i reklamy.",
+    "aboutDescription": "Poznaj CCTV Name — niezależne recenzje, poradniki i wskazówki o monitoringu.",
+    "contactDescription": "Skontaktuj się z zespołem CCTV Name w razie pytań lub uwag.",
+    "copyrightNote": "Wszelkie prawa zastrzeżone."
+  },
+  "consent": {
+    "title": "Szanujemy Twoją prywatność",
+    "description": "Używamy plików cookie, aby poprawić jakość korzystania ze strony i wyświetlać trafne reklamy. Możesz zaakceptować lub odrzucić pliki niebędące niezbędnymi.",
+    "accept": "Akceptuj wszystkie",
+    "reject": "Odrzuć nieistotne",
+    "save": "Zapisz preferencje",
+    "ads": "Pliki reklamowe",
+    "adsDesc": "Używane do wyświetlania spersonalizowanych reklam i mierzenia ich skuteczności.",
+    "analytics": "Pliki analityczne",
+    "analyticsDesc": "Pomagają zrozumieć, jak odwiedzający korzystają ze strony.",
+    "necessary": "Niezbędne",
+    "necessaryDesc": "Wymagane do działania strony. Zawsze włączone."
   }
 }

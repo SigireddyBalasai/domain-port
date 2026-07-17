@@ -30,6 +30,35 @@
     "notFoundDescription": "抱歉，您查找的页面不存在或已被移动。",
     "notFoundGoHome": "返回首页",
     "notFoundBrowseBlog": "浏览博客",
-    "notFoundReport": "如果您认为这是一个错误，请联系我们。"
+    "notFoundReport": "如果您认为这是一个错误，请联系我们。",
+    "legal": "法律",
+    "about": "关于我们",
+    "contact": "联系我们",
+    "privacy": "隐私政策"
+  },
+  "legal": {
+    "privacy": "隐私政策",
+    "about": "关于我们",
+    "contact": "联系我们",
+    "privacyTitle": "隐私政策",
+    "aboutTitle": "关于我们",
+    "contactTitle": "联系我们",
+    "privacyDescription": "CCTV Name 如何收集、使用和保护您的数据，包括 Cookie 和广告。",
+    "aboutDescription": "了解 CCTV Name —— 独立的监控摄像头评测、指南与技巧。",
+    "contactDescription": "如有问题或反馈，请联系 CCTV Name 团队。",
+    "copyrightNote": "版权所有。"
+  },
+  "consent": {
+    "title": "我们重视您的隐私",
+    "description": "我们使用 Cookie 来改善体验并展示相关广告。您可以接受或拒绝非必要 Cookie。",
+    "accept": "接受全部",
+    "reject": "拒绝非必要项",
+    "save": "保存偏好",
+    "ads": "广告 Cookie",
+    "adsDesc": "用于展示个性化广告并衡量其效果。",
+    "analytics": "分析 Cookie",
+    "analyticsDesc": "帮助我们了解访客如何使用网站。",
+    "necessary": "绝对必要",
+    "necessaryDesc": "网站运行所需，始终开启。"
   }
 }

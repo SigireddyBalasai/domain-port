@@ -6,11 +6,11 @@
     "featuredPosts": "Featured Posts",
     "latestPosts": "Latest Posts",
     "latestListings": "Latest Listings",
-    "viewAll": "View all \u2192",
+    "viewAll": "View all →",
     "noPosts": "No posts yet.",
     "published": "Published",
     "updated": "Updated",
-    "backToBlog": "\u2190 Back to Blog",
+    "backToBlog": "← Back to Blog",
     "viewAllArticlesBy": "View all articles by {author}",
     "articlesPublished": "{count} article published",
     "articlesPublished_plural": "{count} articles published",
@@ -30,6 +30,35 @@
     "notFoundDescription": "Sorry, the page you are looking for does not exist or has been moved.",
     "notFoundGoHome": "Go Home",
     "notFoundBrowseBlog": "Browse Blog",
-    "notFoundReport": "If you believe this is an error, please contact us."
+    "notFoundReport": "If you believe this is an error, please contact us.",
+    "legal": "Legal",
+    "about": "About",
+    "contact": "Contact",
+    "privacy": "Privacy Policy"
+  },
+  "legal": {
+    "privacy": "Privacy Policy",
+    "about": "About",
+    "contact": "Contact",
+    "privacyTitle": "Privacy Policy",
+    "aboutTitle": "About Us",
+    "contactTitle": "Contact Us",
+    "privacyDescription": "How CCTV Name collects, uses, and protects your data, including cookies and advertising.",
+    "aboutDescription": "Learn about CCTV Name — independent CCTV and surveillance reviews, guides, and tips.",
+    "contactDescription": "Get in touch with the CCTV Name team with questions or feedback.",
+    "copyrightNote": "All rights reserved."
+  },
+  "consent": {
+    "title": "We value your privacy",
+    "description": "We use cookies to improve your experience and to show relevant ads. You can accept or reject non-essential cookies.",
+    "accept": "Accept all",
+    "reject": "Reject non-essential",
+    "save": "Save preferences",
+    "ads": "Advertising cookies",
+    "adsDesc": "Used to show personalized ads and measure their performance.",
+    "analytics": "Analytics cookies",
+    "analyticsDesc": "Help us understand how visitors use the site.",
+    "necessary": "Strictly necessary",
+    "necessaryDesc": "Required for the site to function. Always on."
   }
 }

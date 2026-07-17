@@ -5,6 +5,9 @@ import { getMessages, setRequestLocale } from "next-intl/server"
 import type { ReactNode } from "react"
 import type { JSX } from "react/jsx-runtime"
 import Footer from "@/components/footer"
+import { ConsentBanner } from "@/components/consent-banner"
+import { ConsentProvider } from "@/components/consent-provider"
+import { AdLoader } from "@/components/ad-loader"
 import { GoogleAnalyticsLazy } from "@/components/google-analytics-lazy"
 import Header from "@/components/header"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -48,13 +51,17 @@ export default async function LocaleLayout({
           </a>
           <ThemeProvider>
             <NextIntlClientProvider locale={locale} messages={messages}>
-              <div className="flex min-h-screen flex-col">
-                <Header locale={locale} />
-                <main id="main-content" className="flex-1">
-                  {children}
-                </main>
-                <Footer locale={locale} />
-              </div>
+              <ConsentProvider>
+                <div className="flex min-h-screen flex-col">
+                  <Header locale={locale} />
+                  <main id="main-content" className="flex-1">
+                    {children}
+                  </main>
+                  <Footer locale={locale} />
+                </div>
+                <ConsentBanner />
+                <AdLoader />
+              </ConsentProvider>
             </NextIntlClientProvider>
             {process.env.NEXT_PUBLIC_GA4_ID ? (
               <GoogleAnalyticsLazy gaId={process.env.NEXT_PUBLIC_GA4_ID} />

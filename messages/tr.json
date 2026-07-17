@@ -30,6 +30,35 @@
     "notFoundDescription": "Üzgünüz, aradığınız sayfa mevcut değil veya taşınmış.",
     "notFoundGoHome": "Ana Sayfaya Git",
     "notFoundBrowseBlog": "Blogu Tara",
-    "notFoundReport": "Bunun bir hata olduğunu düşünüyorsanız, lütfen bizimle iletişime geçin."
+    "notFoundReport": "Bunun bir hata olduğunu düşünüyorsanız, lütfen bizimle iletişime geçin.",
+    "legal": "Yasal",
+    "about": "Hakkımızda",
+    "contact": "İletişim",
+    "privacy": "Gizlilik Politikası"
+  },
+  "legal": {
+    "privacy": "Gizlilik Politikası",
+    "about": "Hakkımızda",
+    "contact": "İletişim",
+    "privacyTitle": "Gizlilik Politikası",
+    "aboutTitle": "Hakkımızda",
+    "contactTitle": "Bize Ulaşın",
+    "privacyDescription": "CCTV Name verilerinizi nasıl toplar, kullanır ve korur; çerezler ve reklamlar dahil.",
+    "aboutDescription": "CCTV Name'i tanıyın — bağımsız CCTV ve gözetim incelemeleri, rehberler ve ipuçları.",
+    "contactDescription": "Sorularınız veya geri bildirimleriniz için CCTV Name ekibiyle iletişime geçin.",
+    "copyrightNote": "Tüm hakları saklıdır."
+  },
+  "consent": {
+    "title": "Gizliliğinize önem veriyoruz",
+    "description": "Deneyiminizi iyileştirmek ve ilgili reklamları göstermek için çerez kullanıyoruz. İsteğe bağlı olmayan çerezleri kabul edebilir veya reddedebilirsiniz.",
+    "accept": "Tümünü kabul et",
+    "reject": "İsteğe bağlı olanları reddet",
+    "save": "Tercihleri kaydet",
+    "ads": "Reklam çerezleri",
+    "adsDesc": "Kişiselleştirilmiş reklamları göstermek ve performanslarını ölçmek için kullanılır.",
+    "analytics": "Analiz çerezleri",
+    "analyticsDesc": "Ziyaretçilerin siteyi nasıl kullandığını anlamamıza yardımcı olur.",
+    "necessary": "Kesinlikle gerekli",
+    "necessaryDesc": "Sitenin çalışması için gerekli. Her zaman açık."
   }
 }

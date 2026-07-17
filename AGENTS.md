@@ -55,7 +55,7 @@ Oxc (`oxlint` + `oxfmt`) replaces ESLint + Prettier + Biome. Configs: `.oxlintrc
 
 ## Env
 
-No `.env.example`. Required vars: `DATABASE_URL`, `BETTER_AUTH_SECRET`, `BETTER_AUTH_URL`. Optional: `NEXT_PUBLIC_GA4_ID`, `INDEXNOW_KEY`, `INDEXNOW_SITE_URL`.
+No `.env.example`. Required vars: `DATABASE_URL`, `BETTER_AUTH_SECRET`, `BETTER_AUTH_URL`. Optional: `NEXT_PUBLIC_GA4_ID`, `INDEXNOW_KEY`, `INDEXNOW_SITE_URL`, `NEXT_PUBLIC_ADSENSE_CLIENT_ID` (AdSense publisher id; ad scripts load only after ad consent).
 
 ## Sitemaps
 

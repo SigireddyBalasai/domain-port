@@ -30,6 +30,35 @@
     "notFoundDescription": "Maaf, halaman yang Anda cari tidak ada atau telah dipindahkan.",
     "notFoundGoHome": "Ke Beranda",
     "notFoundBrowseBlog": "Telusuri Blog",
-    "notFoundReport": "Jika Anda menganggap ini adalah kesalahan, silakan hubungi kami."
+    "notFoundReport": "Jika Anda menganggap ini adalah kesalahan, silakan hubungi kami.",
+    "legal": "Legal",
+    "about": "Tentang",
+    "contact": "Kontak",
+    "privacy": "Kebijakan Privasi"
+  },
+  "legal": {
+    "privacy": "Kebijakan Privasi",
+    "about": "Tentang",
+    "contact": "Kontak",
+    "privacyTitle": "Kebijakan Privasi",
+    "aboutTitle": "Tentang Kami",
+    "contactTitle": "Hubungi Kami",
+    "privacyDescription": "Cara CCTV Name mengumpulkan, menggunakan, dan melindungi data Anda, termasuk cookie dan iklan.",
+    "aboutDescription": "Kenali CCTV Name — ulasan, panduan, dan tips CCTV serta pengawasan independen.",
+    "contactDescription": "Hubungi tim CCTV Name untuk pertanyaan atau masukan.",
+    "copyrightNote": "Hak cipta dilindungi."
+  },
+  "consent": {
+    "title": "Kami menjaga privasi Anda",
+    "description": "Kami menggunakan cookie untuk meningkatkan pengalaman dan menampilkan iklan yang relevan. Anda dapat menerima atau menolak cookie yang tidak esensial.",
+    "accept": "Terima semua",
+    "reject": "Tolak yang tidak esensial",
+    "save": "Simpan preferensi",
+    "ads": "Cookie iklan",
+    "adsDesc": "Digunakan untuk menampilkan iklan yang dipersonalisasi dan mengukur kinerjanya.",
+    "analytics": "Cookie analitik",
+    "analyticsDesc": "Membantu kami memahami cara pengunjung menggunakan situs.",
+    "necessary": "Sangat diperlukan",
+    "necessaryDesc": "Diperlukan agar situs berfungsi. Selalu aktif."
   }
 }

@@ -30,6 +30,35 @@
     "notFoundDescription": "Siamo spiacenti, la pagina che stai cercando non esiste o è stata spostata.",
     "notFoundGoHome": "Vai alla Home",
     "notFoundBrowseBlog": "Sfoglia il Blog",
-    "notFoundReport": "Se ritieni che questo sia un errore, contattaci."
+    "notFoundReport": "Se ritieni che questo sia un errore, contattaci.",
+    "legal": "Note legali",
+    "about": "Chi siamo",
+    "contact": "Contatti",
+    "privacy": "Informativa sulla privacy"
+  },
+  "legal": {
+    "privacy": "Informativa sulla privacy",
+    "about": "Chi siamo",
+    "contact": "Contatti",
+    "privacyTitle": "Informativa sulla privacy",
+    "aboutTitle": "Chi siamo",
+    "contactTitle": "Contattaci",
+    "privacyDescription": "Come CCTV Name raccoglie, usa e protegge i tuoi dati, incluse cookie e pubblicità.",
+    "aboutDescription": "Scopri CCTV Name — recensioni, guide e consigli indipendenti su videosorveglianza.",
+    "contactDescription": "Contatta il team di CCTV Name per domande o feedback.",
+    "copyrightNote": "Tutti i diritti riservati."
+  },
+  "consent": {
+    "title": "Rispettiamo la tua privacy",
+    "description": "Usiamo i cookie per migliorare l'esperienza e mostrare annunci pertinenti. Puoi accettare o rifiutare i cookie non essenziali.",
+    "accept": "Accetta tutto",
+    "reject": "Rifiuta non essenziali",
+    "save": "Salva preferenze",
+    "ads": "Cookie pubblicitari",
+    "adsDesc": "Usati per mostrare annunci personalizzati e misurarne le prestazioni.",
+    "analytics": "Cookie analitici",
+    "analyticsDesc": "Ci aiutano a capire come i visitatori usano il sito.",
+    "necessary": "Strettamente necessari",
+    "necessaryDesc": "Necessari al funzionamento del sito. Sempre attivi."
   }
 }

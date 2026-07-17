@@ -30,6 +30,35 @@
     "notFoundDescription": "Sorry, de pagina die u zoekt bestaat niet of is verplaatst.",
     "notFoundGoHome": "Ga naar Home",
     "notFoundBrowseBlog": "Blader door Blog",
-    "notFoundReport": "Als u denkt dat dit een fout is, neem dan contact met ons op."
+    "notFoundReport": "Als u denkt dat dit een fout is, neem dan contact met ons op.",
+    "legal": "Juridisch",
+    "about": "Over ons",
+    "contact": "Contact",
+    "privacy": "Privacybeleid"
+  },
+  "legal": {
+    "privacy": "Privacybeleid",
+    "about": "Over ons",
+    "contact": "Contact",
+    "privacyTitle": "Privacybeleid",
+    "aboutTitle": "Over ons",
+    "contactTitle": "Neem contact op",
+    "privacyDescription": "Hoe CCTV Name je gegevens verzamelt, gebruikt en beschermt, inclusief cookies en advertenties.",
+    "aboutDescription": "Maak kennis met CCTV Name — onafhankelijke CCTV- en bewakingsreviews, gidsen en tips.",
+    "contactDescription": "Neem contact op met het CCTV Name-team met vragen of feedback.",
+    "copyrightNote": "Alle rechten voorbehouden."
+  },
+  "consent": {
+    "title": "Wij beschermen je privacy",
+    "description": "We gebruiken cookies om je ervaring te verbeteren en relevante advertenties te tonen. Je kunt niet-essentiële cookies accepteren of weigeren.",
+    "accept": "Alles accepteren",
+    "reject": "Niet-essentiële weigeren",
+    "save": "Voorkeuren opslaan",
+    "ads": "Advertentiecookies",
+    "adsDesc": "Gebruikt om gepersonaliseerde advertenties te tonen en prestaties te meten.",
+    "analytics": "Analytische cookies",
+    "analyticsDesc": "Helpen ons te begrijpen hoe bezoekers de site gebruiken.",
+    "necessary": "Strikt noodzakelijk",
+    "necessaryDesc": "Nodig om de site te laten werken. Altijd aan."
   }
 }

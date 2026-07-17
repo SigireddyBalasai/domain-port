@@ -30,6 +30,35 @@
     "notFoundDescription": "申し訳ありません。お探しのページは存在しないか、移動されました。",
     "notFoundGoHome": "ホームに戻る",
     "notFoundBrowseBlog": "ブログを閲覧",
-    "notFoundReport": "これがエラーであると思われる場合は、お問い合わせください。"
+    "notFoundReport": "これがエラーであると思われる場合は、お問い合わせください。",
+    "legal": "法定",
+    "about": "概要",
+    "contact": "お問い合わせ",
+    "privacy": "プライバシーポリシー"
+  },
+  "legal": {
+    "privacy": "プライバシーポリシー",
+    "about": "概要",
+    "contact": "お問い合わせ",
+    "privacyTitle": "プライバシーポリシー",
+    "aboutTitle": "私たちについて",
+    "contactTitle": "お問い合わせ",
+    "privacyDescription": "CCTV Name がお客様のデータをどのように収集・利用・保護するか（Cookie や広告を含む）。",
+    "aboutDescription": "CCTV Name について — 独立した防犯カメラのレビュー、ガイド、ヒント。",
+    "contactDescription": "ご質問やフィードバックは CCTV Name チームまで。",
+    "copyrightNote": "全著作権所有。"
+  },
+  "consent": {
+    "title": "お客様のプライバシーを大切にします",
+    "description": "当サイトは体験向上と関連広告表示のため Cookie を使用します。非必須 Cookie は受け入れまたは拒否できます。",
+    "accept": "すべて承諾",
+    "reject": "非必須を拒否",
+    "save": "設定を保存",
+    "ads": "広告 Cookie",
+    "adsDesc": "パーソナライズされた広告の表示と効果測定に使用します。",
+    "analytics": "分析 Cookie",
+    "analyticsDesc": "訪問者がサイトをどのように利用するかを理解するのに役立ちます。",
+    "necessary": "必須",
+    "necessaryDesc": "サイト稼働に必要。常にオン。"
   }
 }

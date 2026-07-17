@@ -30,6 +30,35 @@
     "notFoundDescription": "Xin lỗi, trang bạn đang tìm kiếm không tồn tại hoặc đã được di chuyển.",
     "notFoundGoHome": "Về Trang chủ",
     "notFoundBrowseBlog": "Duyệt Blog",
-    "notFoundReport": "Nếu bạn cho rằng đây là lỗi, vui lòng liên hệ với chúng tôi."
+    "notFoundReport": "Nếu bạn cho rằng đây là lỗi, vui lòng liên hệ với chúng tôi.",
+    "legal": "Pháp lý",
+    "about": "Giới thiệu",
+    "contact": "Liên hệ",
+    "privacy": "Chính sách bảo mật"
+  },
+  "legal": {
+    "privacy": "Chính sách bảo mật",
+    "about": "Giới thiệu",
+    "contact": "Liên hệ",
+    "privacyTitle": "Chính sách bảo mật",
+    "aboutTitle": "Về chúng tôi",
+    "contactTitle": "Liên hệ với chúng tôi",
+    "privacyDescription": "CCTV Name thu thập, sử dụng và bảo vệ dữ liệu của bạn như thế nào, bao gồm cookie và quảng cáo.",
+    "aboutDescription": "Tìm hiểu về CCTV Name — đánh giá, hướng dẫn và mẹo giám sát độc lập.",
+    "contactDescription": "Liên hệ với đội ngũ CCTV Name nếu có câu hỏi hoặc góp ý.",
+    "copyrightNote": "Bảo lưu mọi quyền."
+  },
+  "consent": {
+    "title": "Chúng tôi tôn trọng quyền riêng tư của bạn",
+    "description": "Chúng tôi dùng cookie để cải thiện trải nghiệm và hiển thị quảng cáo phù hợp. Bạn có thể chấp nhận hoặc từ chối cookie không thiết yếu.",
+    "accept": "Chấp nhận tất cả",
+    "reject": "Từ chối không thiết yếu",
+    "save": "Lưu tùy chọn",
+    "ads": "Cookie quảng cáo",
+    "adsDesc": "Dùng để hiển thị quảng cáo cá nhân hóa và đo lường hiệu quả.",
+    "analytics": "Cookie phân tích",
+    "analyticsDesc": "Giúp chúng tôi hiểu cách khách truy cập sử dụng trang.",
+    "necessary": "Thiết yếu",
+    "necessaryDesc": "Cần để trang hoạt động. Luôn bật."
   }
 }
