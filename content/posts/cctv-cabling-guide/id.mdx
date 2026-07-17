@@ -5,7 +5,17 @@ description: "Panduan lengkap kabel CCTV untuk kamera keamanan IP — Cat5e vs C
 author: "CCTV Name Author"
 updatedAt: "2026-05-25"
 image: "/og.svg"
-tags: ["cctv", "kabel", "cat6", "poe", "ethernet", "instalasi", "perlindungan lonjakan arus", "pengkabelan"]
+tags:
+  [
+    "cctv",
+    "kabel",
+    "cat6",
+    "poe",
+    "ethernet",
+    "instalasi",
+    "perlindungan lonjakan arus",
+    "pengkabelan",
+  ]
 postType: "howto"
 howTo:
   - name: "Pilih Kabel yang Tepat"
@@ -38,70 +48,88 @@ Pengkabelan yang buruk bertanggung jawab atas lebih banyak kegagalan CCTV daripa
 Panduan ini mencakup semua yang Anda butuhkan untuk memasang kabel sistem kamera keamanan PoE dengan benar: pemilihan kabel, terminasi, conduit, perlindungan lonjakan arus, alat yang dibutuhkan, dan kesalahan yang membedakan instalasi profesional dari yang bermasalah.
 
 <Callout type="info" title="40% Masalah PoE Terkait Kabel">
-  Data industri menunjukkan bahwa sekitar 40% tiket "kamera offline" disebabkan oleh masalah kabel — ukuran salah, kabel dalam ruangan digunakan di luar, Cat6 palsu yang sebenarnya CCA Cat5e, atau terminasi buruk. Mendapatkan kabel yang benar dari hari pertama menghilangkan mode kegagalan paling umum.
+  Data industri menunjukkan bahwa sekitar 40% tiket "kamera offline" disebabkan
+  oleh masalah kabel — ukuran salah, kabel dalam ruangan digunakan di luar, Cat6
+  palsu yang sebenarnya CCA Cat5e, atau terminasi buruk. Mendapatkan kabel yang
+  benar dari hari pertama menghilangkan mode kegagalan paling umum.
 </Callout>
 
 ## Pemilihan Kabel
 
 ### Kategori Kabel
 
-| Kabel | Ukuran | Bandwidth Maks | Daya PoE Maks | Terbaik Untuk |
-|---|---|---|---|---|
-| Cat5e | 24 AWG | 1 Gbps pada 100 m | PoE/PoE+ (30W) | 1080p hemat, jarak di bawah 50 m |
-| Cat6 | 23 AWG | 1 Gbps pada 100 m, 10 Gbps pada 55 m | PoE/PoE+/PoE++ (60W) | Direkomendasikan untuk semua instalasi baru |
-| Cat6A | 23 AWG | 10 Gbps pada 100 m | Semua standar PoE termasuk PoE++ Tipe 4 (100W) | Kamera 4K, jarak lebih dari 70 m, PTZ daya tinggi |
-| Cat7 | 22 AWG | 10 Gbps pada 100 m | Semua standar PoE | Instalasi komersial tahan masa depan |
+| Kabel | Ukuran | Bandwidth Maks                       | Daya PoE Maks                                  | Terbaik Untuk                                     |
+| ----- | ------ | ------------------------------------ | ---------------------------------------------- | ------------------------------------------------- |
+| Cat5e | 24 AWG | 1 Gbps pada 100 m                    | PoE/PoE+ (30W)                                 | 1080p hemat, jarak di bawah 50 m                  |
+| Cat6  | 23 AWG | 1 Gbps pada 100 m, 10 Gbps pada 55 m | PoE/PoE+/PoE++ (60W)                           | Direkomendasikan untuk semua instalasi baru       |
+| Cat6A | 23 AWG | 10 Gbps pada 100 m                   | Semua standar PoE termasuk PoE++ Tipe 4 (100W) | Kamera 4K, jarak lebih dari 70 m, PTZ daya tinggi |
+| Cat7  | 22 AWG | 10 Gbps pada 100 m                   | Semua standar PoE                              | Instalasi komersial tahan masa depan              |
 
 <Callout type="tip" title="Cat6 Adalah Pilihan Terbaik untuk 2026">
-  Cat6 adalah pilihan serba terbaik untuk instalasi kamera keamanan. Konduktor 23 AWG mengurangi penurunan tegangan dan panas terkait PoE dibandingkan Cat5e. Bandwidth 250 MHz menyediakan ruang headroom yang besar untuk streaming video 4K. Premi biaya dibandingkan Cat5e biasanya hanya $0,04-0,10 per kaki — pada sistem 8 kamera, itu menambah total $30-80. Untuk premi kecil itu, Anda mendapatkan kinerja PoE yang lebih baik secara terukur dan ruang bandwidth untuk upgrade kamera di masa depan.
+  Cat6 adalah pilihan serba terbaik untuk instalasi kamera keamanan. Konduktor
+  23 AWG mengurangi penurunan tegangan dan panas terkait PoE dibandingkan Cat5e.
+  Bandwidth 250 MHz menyediakan ruang headroom yang besar untuk streaming video
+  4K. Premi biaya dibandingkan Cat5e biasanya hanya $0,04-0,10 per kaki — pada
+  sistem 8 kamera, itu menambah total $30-80. Untuk premi kecil itu, Anda
+  mendapatkan kinerja PoE yang lebih baik secara terukur dan ruang bandwidth
+  untuk upgrade kamera di masa depan.
 </Callout>
 
 ### Tembaga Padat vs. CCA
 
 Ini adalah keputusan kabel tunggal terpenting yang akan Anda buat.
 
-| Properti | Tembaga Padat 100% | Aluminium Berlapis Tembaga (CCA) |
-|---|---|---|
-| Resistansi | Rendah | 40-60% lebih tinggi |
-| Keandalan PoE | Sangat baik | Menyebabkan penurunan tegangan di atas 30 m |
-| Panas di bawah beban PoE+ | Rendah | Signifikan |
-| Fleksibilitas | Baik | Rapuh, patah saat ditarik |
-| Biaya per kaki | ~$0,30-0,50 | ~$0,10-0,15 |
-| Masa pakai di luar ruangan | 10+ tahun | 2-3 tahun |
+| Properti                   | Tembaga Padat 100% | Aluminium Berlapis Tembaga (CCA)            |
+| -------------------------- | ------------------ | ------------------------------------------- |
+| Resistansi                 | Rendah             | 40-60% lebih tinggi                         |
+| Keandalan PoE              | Sangat baik        | Menyebabkan penurunan tegangan di atas 30 m |
+| Panas di bawah beban PoE+  | Rendah             | Signifikan                                  |
+| Fleksibilitas              | Baik               | Rapuh, patah saat ditarik                   |
+| Biaya per kaki             | ~$0,30-0,50        | ~$0,10-0,15                                 |
+| Masa pakai di luar ruangan | 10+ tahun          | 2-3 tahun                                   |
 
 <Callout type="danger" title="Jangan Pernah Gunakan CCA untuk PoE">
-  Kabel CCA memiliki resistansi lebih tinggi daripada tembaga murni, yang berarti lebih banyak penurunan tegangan, lebih banyak panas, dan kegagalan daya kamera intermiten. Di bawah beban PoE+ (30W), kabel CCA dapat memanas cukup untuk merusak jaket seiring waktu. Jika penjual tidak secara eksplisit menyatakan "tembaga murni 100%" atau "tembaga telanjang", anggap itu CCA. Untuk instalasi profesional apa pun, bersikeraslah pada tembaga padat.
+  Kabel CCA memiliki resistansi lebih tinggi daripada tembaga murni, yang
+  berarti lebih banyak penurunan tegangan, lebih banyak panas, dan kegagalan
+  daya kamera intermiten. Di bawah beban PoE+ (30W), kabel CCA dapat memanas
+  cukup untuk merusak jaket seiring waktu. Jika penjual tidak secara eksplisit
+  menyatakan "tembaga murni 100%" atau "tembaga telanjang", anggap itu CCA.
+  Untuk instalasi profesional apa pun, bersikeraslah pada tembaga padat.
 </Callout>
 
 ### Kabel Dalam Ruangan vs. Luar Ruangan
 
-| Properti | Dalam Ruangan (CM/CMR) | Luar Ruangan (CMX/Tanam Langsung) |
-|---|---|---|
-| Bahan jaket | PVC (lunak, fleksibel) | LLDPE (keras, tahan UV) |
-| Tahan air | Tidak ada | Diisi gel atau pita pemblokir air |
-| Perlindungan UV | Rendah (retak dalam 1-2 tahun) | Tinggi (tahan 10+ tahun) |
-| Kisaran suhu | 0°C hingga 60°C | -40°C hingga 75°C |
+| Properti           | Dalam Ruangan (CM/CMR)                          | Luar Ruangan (CMX/Tanam Langsung)  |
+| ------------------ | ----------------------------------------------- | ---------------------------------- |
+| Bahan jaket        | PVC (lunak, fleksibel)                          | LLDPE (keras, tahan UV)            |
+| Tahan air          | Tidak ada                                       | Diisi gel atau pita pemblokir air  |
+| Perlindungan UV    | Rendah (retak dalam 1-2 tahun)                  | Tinggi (tahan 10+ tahun)           |
+| Kisaran suhu       | 0°C hingga 60°C                                 | -40°C hingga 75°C                  |
 | Penggunaan terbaik | Di dalam dinding, loteng, conduit dalam ruangan | Jalur luar terbuka, tanam langsung |
 
 Jika sebagian dari jalur kabel terkena cuaca, sinar matahari, atau kelembaban, gunakan kabel tahan luar ruangan atau jalankan kabel dalam ruangan standar melalui conduit tahan UV.
 
 ## Alat yang Dibutuhkan
 
-| Alat | Tujuan | Perkiraan Biaya |
-|---|---|---|
-| Alat crimping Cat6 (kompatibel pass-through) | Menyambung konektor RJ45 | $25-50 |
-| Konektor RJ45 pass-through | Terminasi lebih mudah dan andal | $15-25 per 50-pak |
-| Penguji kabel (kontinuitas + peta kabel) | Memverifikasi terminasi | $15-30 |
-| Selotip ikan atau batang cahaya | Menarik kabel melalui dinding/conduit | $20-40 |
-| Pelumas kabel | Tarikan conduit panjang | $10-15 |
-| Penguji PoE | Memverifikasi pengiriman daya di jarak jauh | $50-150 |
-| Alat punch-down | Menyambung panel patch | $15-30 |
-| Label kabel | Menandai kedua ujung setiap jalur | $5-10 |
-| Pengupas kabel | Mengupas jaket kabel | $10-20 |
-| Bor impact + mata bor batu | Memasang kamera di bata/beton | Bervariasi |
+| Alat                                         | Tujuan                                      | Perkiraan Biaya   |
+| -------------------------------------------- | ------------------------------------------- | ----------------- |
+| Alat crimping Cat6 (kompatibel pass-through) | Menyambung konektor RJ45                    | $25-50            |
+| Konektor RJ45 pass-through                   | Terminasi lebih mudah dan andal             | $15-25 per 50-pak |
+| Penguji kabel (kontinuitas + peta kabel)     | Memverifikasi terminasi                     | $15-30            |
+| Selotip ikan atau batang cahaya              | Menarik kabel melalui dinding/conduit       | $20-40            |
+| Pelumas kabel                                | Tarikan conduit panjang                     | $10-15            |
+| Penguji PoE                                  | Memverifikasi pengiriman daya di jarak jauh | $50-150           |
+| Alat punch-down                              | Menyambung panel patch                      | $15-30            |
+| Label kabel                                  | Menandai kedua ujung setiap jalur           | $5-10             |
+| Pengupas kabel                               | Mengupas jaket kabel                        | $10-20            |
+| Bor impact + mata bor batu                   | Memasang kamera di bata/beton               | Bervariasi        |
 
 <Callout type="note" title="Kabel Pre-Terminasi Adalah Pilihan">
-  Untuk instalasi kecil (1-4 kamera) dengan jalur kabel yang dapat diakses, kabel Cat6 pre-terminasi dalam panjang terukur menghemat waktu dan menghindari kesalahan terminasi. Untuk instalasi lebih besar atau jalur melalui conduit, terminasi kabel sendiri dengan konektor RJ45 pass-through lebih andal dan hemat biaya.
+  Untuk instalasi kecil (1-4 kamera) dengan jalur kabel yang dapat diakses,
+  kabel Cat6 pre-terminasi dalam panjang terukur menghemat waktu dan menghindari
+  kesalahan terminasi. Untuk instalasi lebih besar atau jalur melalui conduit,
+  terminasi kabel sendiri dengan konektor RJ45 pass-through lebih andal dan
+  hemat biaya.
 </Callout>
 
 ## Standar Terminasi
@@ -111,6 +139,7 @@ Jika sebagian dari jalur kabel terkena cuaca, sinar matahari, atau kelembaban, g
 Standar T568B adalah pola pengkabelan dominan untuk instalasi kamera keamanan di Amerika Utara. Kedua ujung setiap kabel harus menggunakan standar yang sama.
 
 **Urutan kabel (pin 1 ke pin 8):**
+
 1. Putih/Oranye
 2. Oranye
 3. Putih/Hijau
@@ -128,20 +157,24 @@ Standar T568B adalah pola pengkabelan dominan untuk instalasi kamera keamanan di
 - **Punch down ke panel patch di ujung NVR**: Untuk jarak jauh, terminasi ke panel patch lebih andal daripada crimping RJ45 langsung. Ini juga membuat pemecahan masalah dan terminasi ulang jauh lebih mudah.
 
 <Callout type="warning" title="Uji Setiap Terminasi">
-  Gunakan penguji kabel untuk memverifikasi peta kabel, kontinuitas, dan korsleting pada setiap jalur sebelum menghubungkan kamera. Tes 30 detik menangkap masalah yang membutuhkan waktu berjam-jam untuk didiagnosis nanti. Untuk jalur luar ruangan panjang, uji juga dengan penguji PoE untuk memverifikasi pengiriman daya di ujung kamera.
+  Gunakan penguji kabel untuk memverifikasi peta kabel, kontinuitas, dan
+  korsleting pada setiap jalur sebelum menghubungkan kamera. Tes 30 detik
+  menangkap masalah yang membutuhkan waktu berjam-jam untuk didiagnosis nanti.
+  Untuk jalur luar ruangan panjang, uji juga dengan penguji PoE untuk
+  memverifikasi pengiriman daya di ujung kamera.
 </Callout>
 
 ## Conduit dan Manajemen Kabel
 
 ### Kapan Menggunakan Conduit
 
-| Skenario | Jenis Conduit | Alasan |
-|---|---|---|
-| Jalur luar terbuka | PVC Schedule 40 | Tahan cuaca, tahan UV |
-| Tanam bawah tanah | PVC Schedule 40 atau 80 | Perlindungan fisik, persyaratan kode |
-| Antar bangunan | Baja fleksibel | Sambungan gerak, perlindungan fisik |
-| Bundel kabel dalam ruangan | Tray kabel atau kait-J | Organisasi, pembuangan panas |
-| Penembusan dinding | Selongsong PVC pendek | Perlindungan dari tepi |
+| Skenario                   | Jenis Conduit           | Alasan                               |
+| -------------------------- | ----------------------- | ------------------------------------ |
+| Jalur luar terbuka         | PVC Schedule 40         | Tahan cuaca, tahan UV                |
+| Tanam bawah tanah          | PVC Schedule 40 atau 80 | Perlindungan fisik, persyaratan kode |
+| Antar bangunan             | Baja fleksibel          | Sambungan gerak, perlindungan fisik  |
+| Bundel kabel dalam ruangan | Tray kabel atau kait-J  | Organisasi, pembuangan panas         |
+| Penembusan dinding         | Selongsong PVC pendek   | Perlindungan dari tepi               |
 
 ### Aturan Conduit
 
@@ -155,15 +188,19 @@ Standar T568B adalah pola pengkabelan dominan untuk instalasi kamera keamanan di
 
 Ketika beberapa kabel PoE berjalan bersama dalam satu bundel atau conduit, panas menumpuk dari resistansi listrik di konduktor. Ini adalah masalah serius untuk instalasi PoE daya tinggi.
 
-| Jumlah Kabel dalam Bundel | Kenaikan Suhu di Atas Ambien | Tindakan yang Direkomendasikan |
-|---|---|---|
-| 1-6 | 0% (tidak perlu penurunan peringkat) | Instalasi standar |
-| 7-15 | 15-25% | Kurangi ukuran bundel atau tingkatkan jarak |
-| 16-30 | 30-40% | Bagi menjadi bundel yang lebih kecil |
-| 31+ | 40-55% | Gunakan Cat6A, kurangi ukuran bundel, pastikan ventilasi |
+| Jumlah Kabel dalam Bundel | Kenaikan Suhu di Atas Ambien         | Tindakan yang Direkomendasikan                           |
+| ------------------------- | ------------------------------------ | -------------------------------------------------------- |
+| 1-6                       | 0% (tidak perlu penurunan peringkat) | Instalasi standar                                        |
+| 7-15                      | 15-25%                               | Kurangi ukuran bundel atau tingkatkan jarak              |
+| 16-30                     | 30-40%                               | Bagi menjadi bundel yang lebih kecil                     |
+| 31+                       | 40-55%                               | Gunakan Cat6A, kurangi ukuran bundel, pastikan ventilasi |
 
 <Callout type="tip" title="Manajemen Panas untuk Bundel Besar">
-  ISO/IEC merekomendasikan ukuran bundel maksimum 24 kabel terlepas dari pertimbangan PoE. Untuk instalasi PoE++ daya tinggi, gunakan konduktor Cat6A (23 AWG) yang membuang panas lebih efektif. Hindari menjalankan kabel PoE di ruang tanpa ventilasi seperti plafon tertutup atau conduit tersegel tanpa penurunan peringkat termal yang tepat.
+  ISO/IEC merekomendasikan ukuran bundel maksimum 24 kabel terlepas dari
+  pertimbangan PoE. Untuk instalasi PoE++ daya tinggi, gunakan konduktor Cat6A
+  (23 AWG) yang membuang panas lebih efektif. Hindari menjalankan kabel PoE di
+  ruang tanpa ventilasi seperti plafon tertutup atau conduit tersegel tanpa
+  penurunan peringkat termal yang tepat.
 </Callout>
 
 ## Perlindungan Lonjakan Arus
@@ -182,30 +219,40 @@ Kamera pada jalur PoE panjang rentan terhadap lonjakan akibat petir, bahkan dari
 - UPS dengan perlindungan lonjakan untuk NVR dan switch PoE
 
 <Callout type="danger" title="Grounding Tidak Opsional">
-  Pelindung lonjakan yang tidak di-ground dengan benar tidak memberikan perlindungan. Pastikan pelindung lonjakan Anda terhubung ke ground bumi gedung. Dalam instalasi komersial, grounding harus memenuhi persyaratan kode listrik setempat.
+  Pelindung lonjakan yang tidak di-ground dengan benar tidak memberikan
+  perlindungan. Pastikan pelindung lonjakan Anda terhubung ke ground bumi
+  gedung. Dalam instalasi komersial, grounding harus memenuhi persyaratan kode
+  listrik setempat.
 </Callout>
 
 ## Kesalahan Kabel Umum
 
 ### 1. Titik Jepit Kabel
+
 Belokan tajam merusak kualitas data pada jarak jauh. Pertahankan radius tekuk minimal 5 cm. Jangan pernah menjepret kabel langsung ke dinding — gunakan klip kabel yang tepat atau ikatan velcro.
 
 ### 2. Terminasi Ceroboh
+
 Kontak RJ45 longgar menyebabkan kegagalan intermiten yang menjengkelkan untuk didiagnosis. Gunakan penguji setelah setiap terminasi. Untuk jarak jauh, terminasi ke panel patch daripada crimping langsung.
 
 ### 3. Kabel di Conduit Sama dengan Listrik AC
+
 Menginduksi interferensi dan menurunkan sinyal. Jaga jarak 30 cm dari kabel listrik AC. Jika harus melintasi, lakukan pada 90 derajat.
 
 ### 4. Kabel Dalam Ruangan Digunakan di Luar
+
 Kabel PVC dalam ruangan yang terpapar UV rusak dalam 2-3 tahun. Jaket retak, kelembaban meresap ke dalam kabel melalui aksi kapiler, dan kamera gagal. Gunakan kabel tahan luar (CMX) atau conduit untuk bagian eksterior apa pun.
 
 ### 5. Kelonggaran Tergulung di Kamera
+
 Menggulung kelebihan kabel pre-terminasi di lokasi kamera menangkap interferensi listrik dan bertindak sebagai antena. Gunakan panjang kabel yang sesuai dengan jalur sebenarnya, atau gulung longgar dengan rapi di ujung NVR.
 
 ### 6. Tidak Ada Tetesan Loop
+
 Saat kabel mencapai kamera, biarkan menggantung dalam bentuk "U" kecil sebelum memasuki kamera atau dinding. Ini memastikan air menetes dari bagian bawah lengkungan daripada mengalir ke konektor.
 
 ### 7. Label Hilang
+
 Kabel tanpa label mengubah pekerjaan pemecahan masalah 30 menit menjadi cobaan 3 jam. Beri label kedua ujung setiap kabel dengan skema penamaan yang konsisten (mis., "Cam-01-PintuDepan").
 
 ## Daftar Periksa Instalasi Luar Ruangan
@@ -234,46 +281,87 @@ Sebelum menyatakan instalasi selesai:
 6. **Verifikasi perekaman**: Setelah 7 hari, periksa timeline NVR tidak ada celah perekaman
 
 <Callout type="tip" title="Batas Keras 100 Meter">
-  Standar IEEE 802.3 membatasi jarak Ethernet hingga 100 meter (328 kaki) termasuk semua kabel patch. Dalam praktiknya, dengan Cat6 tembaga murni, Anda dapat mencapai 95 meter dengan andal. Di luar itu, penurunan tegangan bahkan pada kabel yang baik menyebabkan reset kamera intermiten. Rencanakan ekstender PoE atau backhaul serat untuk setiap jalur yang melebihi 90 meter.
+  Standar IEEE 802.3 membatasi jarak Ethernet hingga 100 meter (328 kaki)
+  termasuk semua kabel patch. Dalam praktiknya, dengan Cat6 tembaga murni, Anda
+  dapat mencapai 95 meter dengan andal. Di luar itu, penurunan tegangan bahkan
+  pada kabel yang baik menyebabkan reset kamera intermiten. Rencanakan ekstender
+  PoE atau backhaul serat untuk setiap jalur yang melebihi 90 meter.
 </Callout>
 
 ## Pertanyaan yang Sering Diajukan
 
 <Accordion>
   <AccordionItem>
-    <AccordionTrigger>Haruskah saya menggunakan Cat5e atau Cat6 untuk kamera keamanan?</AccordionTrigger>
+    <AccordionTrigger>
+      Haruskah saya menggunakan Cat5e atau Cat6 untuk kamera keamanan?
+    </AccordionTrigger>
     <AccordionContent>
-      Cat6 adalah dasar yang direkomendasikan untuk instalasi baru apa pun. Konduktor 23 AWG mengurangi penurunan tegangan dibandingkan Cat5e 24 AWG, yang penting untuk pengiriman daya PoE — terutama pada jarak lebih dari 50 meter dan untuk kamera dengan LED IR atau pemanas. Perbedaan biaya minimal ($0,04-0,10 per kaki) dibandingkan dengan tenaga kerja memasang kabel. Cadangkan Cat5e hanya untuk jarak pendek di bawah 30 meter dengan kamera 1080p.
+      Cat6 adalah dasar yang direkomendasikan untuk instalasi baru apa pun.
+      Konduktor 23 AWG mengurangi penurunan tegangan dibandingkan Cat5e 24 AWG,
+      yang penting untuk pengiriman daya PoE — terutama pada jarak lebih dari 50
+      meter dan untuk kamera dengan LED IR atau pemanas. Perbedaan biaya minimal
+      ($0,04-0,10 per kaki) dibandingkan dengan tenaga kerja memasang kabel.
+      Cadangkan Cat5e hanya untuk jarak pendek di bawah 30 meter dengan kamera
+      1080p.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Seberapa panjang kabel PoE bisa dipasang?</AccordionTrigger>
+    <AccordionTrigger>
+      Seberapa panjang kabel PoE bisa dipasang?
+    </AccordionTrigger>
     <AccordionContent>
-      Standar IEEE 802.3 membatasi jarak Ethernet hingga total 100 meter (328 kaki), termasuk kabel patch. Di luar 100 meter, sinyal data menurun dan pengiriman daya PoE turun di bawah minimum kamera. Untuk jarak lebih panjang, gunakan ekstender PoE (menambah 100 m per unit, hingga 4 unit), backhaul serat dengan switch PoE jarak jauh, atau pindahkan NVR lebih dekat.
+      Standar IEEE 802.3 membatasi jarak Ethernet hingga total 100 meter (328
+      kaki), termasuk kabel patch. Di luar 100 meter, sinyal data menurun dan
+      pengiriman daya PoE turun di bawah minimum kamera. Untuk jarak lebih
+      panjang, gunakan ekstender PoE (menambah 100 m per unit, hingga 4 unit),
+      backhaul serat dengan switch PoE jarak jauh, atau pindahkan NVR lebih
+      dekat.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Bisakah saya mencampur kabel CCA dan tembaga padat dalam instalasi yang sama?</AccordionTrigger>
+    <AccordionTrigger>
+      Bisakah saya mencampur kabel CCA dan tembaga padat dalam instalasi yang
+      sama?
+    </AccordionTrigger>
     <AccordionContent>
-      Tidak. Mencampur CCA dan tembaga padat menciptakan titik korosi galvanik pada sambungan, yang meningkatkan resistansi dan menyebabkan sambungan gagal seiring waktu. Pilih satu jenis kabel dan gunakan di seluruh instalasi. Untuk PoE, itu harus selalu tembaga padat.
+      Tidak. Mencampur CCA dan tembaga padat menciptakan titik korosi galvanik
+      pada sambungan, yang meningkatkan resistansi dan menyebabkan sambungan
+      gagal seiring waktu. Pilih satu jenis kabel dan gunakan di seluruh
+      instalasi. Untuk PoE, itu harus selalu tembaga padat.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Apakah saya perlu kabel terlindung (STP)?</AccordionTrigger>
+    <AccordionTrigger>
+      Apakah saya perlu kabel terlindung (STP)?
+    </AccordionTrigger>
     <AccordionContent>
-      Hanya jika berjalan di dekat interferensi listrik yang signifikan — motor besar, ballast fluorescent, mesin industri, atau panel listrik. Untuk sebagian besar instalasi rumah dan kantor, Cat6 tidak terlindung (UTP) sudah cukup. Jika menggunakan STP, Anda harus menggunakan konektor terlindung dan grounding yang tepat hanya di satu ujung, atau pelindung menjadi tidak efektif.
+      Hanya jika berjalan di dekat interferensi listrik yang signifikan — motor
+      besar, ballast fluorescent, mesin industri, atau panel listrik. Untuk
+      sebagian besar instalasi rumah dan kantor, Cat6 tidak terlindung (UTP)
+      sudah cukup. Jika menggunakan STP, Anda harus menggunakan konektor
+      terlindung dan grounding yang tepat hanya di satu ujung, atau pelindung
+      menjadi tidak efektif.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>Berapa radius tekuk minimum untuk Cat6?</AccordionTrigger>
     <AccordionContent>
-      Radius tekuk minimum untuk Cat6 adalah 4x diameter kabel, atau sekitar 5 cm (2 inci). Tekukan tajam meremukkan puntiran pasangan internal dan menurunkan kualitas sinyal. Untuk instalasi permanen, gunakan tikungan sweep atau siku 45 derajat daripada belokan tajam 90 derajat.
+      Radius tekuk minimum untuk Cat6 adalah 4x diameter kabel, atau sekitar 5
+      cm (2 inci). Tekukan tajam meremukkan puntiran pasangan internal dan
+      menurunkan kualitas sinyal. Untuk instalasi permanen, gunakan tikungan
+      sweep atau siku 45 derajat daripada belokan tajam 90 derajat.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Seberapa dalam saya harus mengubur kabel Ethernet untuk kamera luar ruangan?</AccordionTrigger>
+    <AccordionTrigger>
+      Seberapa dalam saya harus mengubur kabel Ethernet untuk kamera luar
+      ruangan?
+    </AccordionTrigger>
     <AccordionContent>
-      Menurut National Electrical Code (NEC), conduit PVC harus dikubur setidaknya 18 inci (45 cm). Conduit logam hanya membutuhkan 6 inci (15 cm). Kabel tahan tanam langsung dalam conduit lebih disukai untuk jalur bawah tanah. Selalu hubungi pelacak utilitas sebelum menggali.
+      Menurut National Electrical Code (NEC), conduit PVC harus dikubur
+      setidaknya 18 inci (45 cm). Conduit logam hanya membutuhkan 6 inci (15
+      cm). Kabel tahan tanam langsung dalam conduit lebih disukai untuk jalur
+      bawah tanah. Selalu hubungi pelacak utilitas sebelum menggali.
     </AccordionContent>
   </AccordionItem>
 </Accordion>

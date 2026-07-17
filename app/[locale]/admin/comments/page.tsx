@@ -22,14 +22,14 @@ export default async function AdminCommentsPage(): Promise<JSX.Element> {
       <h1 className="text-2xl font-bold">
         Comment Moderation
         {pendingCount > 0 && (
-          <span className="ml-2 inline-flex items-center rounded-full bg-destructive/10 px-2.5 py-0.5 text-sm font-medium text-destructive">
+          <span className="bg-destructive/10 text-destructive ml-2 inline-flex items-center rounded-full px-2.5 py-0.5 text-sm font-medium">
             {pendingCount} pending
           </span>
         )}
       </h1>
       <div className="mt-8 space-y-4">
         {comments.length === 0 && (
-          <p className="text-sm text-muted-foreground">No comments yet.</p>
+          <p className="text-muted-foreground text-sm">No comments yet.</p>
         )}
         <CommentModerationClient comments={comments} />
       </div>

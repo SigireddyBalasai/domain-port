@@ -13,6 +13,7 @@
 ### Task 1: Install next-intl and create i18n config
 
 **Files:**
+
 - Modify: `package.json`
 - Create: `i18n/routing.ts`
 - Create: `i18n/request.ts`
@@ -65,6 +66,7 @@ git commit -m "feat: install next-intl and create i18n config"
 ### Task 2: Create translation JSON files
 
 **Files:**
+
 - Create: `messages/en.json`
 - Create: `messages/es.json`
 - Create: `messages/fr.json`
@@ -123,6 +125,7 @@ git commit -m "feat: add translation JSON files for en, es, fr"
 ### Task 3: Update proxy.ts with next-intl middleware
 
 **Files:**
+
 - Modify: `proxy.ts`
 
 **Step 1: Replace `proxy.ts`**
@@ -134,7 +137,9 @@ import { routing } from "./i18n/routing"
 
 const intlMiddleware = createMiddleware(routing)
 
-export const proxy = (request: NextRequest): NextResponse | Promise<NextResponse> => {
+export const proxy = (
+  request: NextRequest
+): NextResponse | Promise<NextResponse> => {
   if (request.nextUrl.pathname.startsWith("/keystatic")) {
     const sessionToken = request.cookies.get("better-auth.session_token")
 
@@ -165,6 +170,7 @@ git commit -m "feat: add next-intl middleware to proxy.ts"
 ### Task 4: Create [locale] layout and update root layout
 
 **Files:**
+
 - Create: `app/[locale]/layout.tsx`
 - Modify: `app/layout.tsx`
 
@@ -221,6 +227,7 @@ git commit -m "feat: add locale layout with next-intl provider"
 ### Task 5: Move home page under [locale]
 
 **Files:**
+
 - Create: `app/[locale]/page.tsx`
 - Delete: `app/page.tsx`
 
@@ -242,6 +249,7 @@ git commit -m "feat: move home page under [locale] with translations"
 ### Task 6: Move blog listing under [locale]
 
 **Files:**
+
 - Create: `app/[locale]/blog/page.tsx`
 - Delete: `app/blog/page.tsx`
 
@@ -263,6 +271,7 @@ git commit -m "feat: move blog listing under [locale]"
 ### Task 7: Move blog post detail under [locale]
 
 **Files:**
+
 - Create: `app/[locale]/blog/[slug]/page.tsx`
 - Delete: `app/blog/[slug]/page.tsx`
 
@@ -284,6 +293,7 @@ git commit -m "feat: move blog post detail under [locale]"
 ### Task 8: Move FAQ page under [locale]
 
 **Files:**
+
 - Create: `app/[locale]/faq/page.tsx`
 - Delete: `app/faq/page.tsx`
 
@@ -305,6 +315,7 @@ git commit -m "feat: move FAQ page under [locale]"
 ### Task 9: Move author page under [locale]
 
 **Files:**
+
 - Create: `app/[locale]/author/[name]/page.tsx`
 - Delete: `app/author/[name]/page.tsx`
 
@@ -326,6 +337,7 @@ git commit -m "feat: move author page under [locale]"
 ### Task 10: Update Header and Footer to use translations
 
 **Files:**
+
 - Modify: `components/header.tsx`
 - Modify: `components/footer.tsx`
 
@@ -349,6 +361,7 @@ git commit -m "feat: update Header and Footer to use translations"
 ### Task 11: Update next-sitemap config for multilingual
 
 **Files:**
+
 - Modify: `next-sitemap.config.ts`
 
 **Step 1: Update config**
@@ -409,7 +422,8 @@ const config: IConfig = {
 
     return {
       loc: path,
-      changefreq: path === "/en" || path === "/es" || path === "/fr" ? "daily" : "weekly",
+      changefreq:
+        path === "/en" || path === "/es" || path === "/fr" ? "daily" : "weekly",
       priority,
       lastmod: postLastmodByPath.get(path) ?? new Date().toISOString(),
     }
@@ -431,6 +445,7 @@ git commit -m "feat: update sitemap config for multilingual locales"
 ### Task 12: Update robots.ts
 
 **Files:**
+
 - Modify: `app/robots.ts`
 
 No changes needed — sitemap URL remains the same (`/sitemap.xml`).
@@ -440,6 +455,7 @@ No changes needed — sitemap URL remains the same (`/sitemap.xml`).
 ### Task 13: Add language switcher component
 
 **Files:**
+
 - Create: `components/language-switcher.tsx`
 - Modify: `components/header.tsx`
 
@@ -511,6 +527,7 @@ git commit -m "feat: add language switcher component"
 ### Task 14: Update markdoc-demo route
 
 **Files:**
+
 - Move: `app/markdoc-demo/page.tsx` to `app/[locale]/markdoc-demo/page.tsx`
 
 Same pattern as other pages — add locale params.
@@ -532,6 +549,7 @@ npm run dev
 ```
 
 Visit:
+
 - `/en` — English home
 - `/es` — Spanish home
 - `/fr` — French home
@@ -545,6 +563,8 @@ Verify language switcher navigates correctly.
 
 ```bash
 npm run build
+```
+
 ```
 
 ```

@@ -31,10 +31,12 @@ content/posts/
 ## Page Routing
 
 ### Listing (`app/[locale]/blog/page.tsx`)
+
 - Filter: `posts.filter(p => p.locale === currentLocale)`
 - Only shows posts with a translation in the current locale
 
 ### Single Post (`app/[locale]/blog/[slug]/page.tsx`)
+
 - Primary query: `posts.find(p => p.slug === params.slug && p.locale === currentLocale)`
 - Fallback: `posts.find(p => p.slug === params.slug && p.locale === "en")`
 - Shows `<Badge variant="secondary">Showing English version</Badge>` when fallback is used
@@ -43,6 +45,7 @@ content/posts/
 ## Fallback Strategy
 
 When a post lacks a translation for the requested locale:
+
 1. Serve the English version (`locale === "en"`)
 2. Display a subtle badge: "Showing English version"
 3. Listing page only shows posts with translations in the current locale
@@ -50,21 +53,22 @@ When a post lacks a translation for the requested locale:
 ## Migration
 
 Existing flat files are moved into folders:
+
 ```
 content/posts/<slug>.mdx → content/posts/<slug>/en.mdx
 ```
 
 ## Files to Modify
 
-| File | Change |
-|---|---|
-| `velite.config.ts` | Glob pattern → `posts/*/*.mdx`; add `locale` field; derive slug from folder |
-| `app/[locale]/blog/page.tsx` | Filter posts by locale |
-| `app/[locale]/blog/[slug]/page.tsx` | Query by slug + locale; add EN fallback; locale-aware structured data |
-| `components/blog/blog-card.tsx` | Pass locale for any translation-status UI |
-| `keystatic.config.ts` | Update to include locale support |
-| `.velite/index.d.ts` | Auto-regen after schema change |
-| `content/posts/*.mdx` | Migrate existing 3 posts into folders as `en.mdx` |
+| File                                | Change                                                                      |
+| ----------------------------------- | --------------------------------------------------------------------------- |
+| `velite.config.ts`                  | Glob pattern → `posts/*/*.mdx`; add `locale` field; derive slug from folder |
+| `app/[locale]/blog/page.tsx`        | Filter posts by locale                                                      |
+| `app/[locale]/blog/[slug]/page.tsx` | Query by slug + locale; add EN fallback; locale-aware structured data       |
+| `components/blog/blog-card.tsx`     | Pass locale for any translation-status UI                                   |
+| `keystatic.config.ts`               | Update to include locale support                                            |
+| `.velite/index.d.ts`                | Auto-regen after schema change                                              |
+| `content/posts/*.mdx`               | Migrate existing 3 posts into folders as `en.mdx`                           |
 
 ## Demo Content
 

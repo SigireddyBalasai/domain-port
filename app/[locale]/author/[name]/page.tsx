@@ -146,7 +146,7 @@ export default async function AuthorPage({
       <div className="flex-1">
         <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
           <h1 className="mb-2 text-4xl font-bold">{authorName}</h1>
-          <p className="mb-8 text-muted-foreground">
+          <p className="text-muted-foreground mb-8">
             {sorted.length} article{sorted.length === 1 ? "" : "s"} published
           </p>
           <div className="space-y-6">

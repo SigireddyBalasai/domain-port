@@ -500,7 +500,7 @@ export default async function PostPage({
               Showing English version
             </Badge>
           )}
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground text-sm">
             Published{" "}
             <time dateTime={post.publishedAt}>
               {new Date(post.publishedAt).toLocaleDateString(locale, {
@@ -511,7 +511,7 @@ export default async function PostPage({
             </time>
           </p>
           <h1 className="mt-2 text-4xl font-bold">{post.title}</h1>
-          <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+          <div className="text-muted-foreground mt-3 flex flex-wrap items-center gap-3 text-sm">
             <span>{post.author ?? siteConfig.name}</span>
             <span aria-hidden="true">•</span>
             <time dateTime={post.updatedAt ?? post.publishedAt}>
@@ -527,14 +527,14 @@ export default async function PostPage({
             </time>
           </div>
           {post.description && (
-            <p className="mt-4 text-lg text-muted-foreground">
+            <p className="text-muted-foreground mt-4 text-lg">
               {post.description}
             </p>
           )}
           {post.author && (
             <Link
               href={`/${locale}/author/${post.author.toLowerCase().replaceAll(/\s+/g, "-")}`}
-              className="mt-2 inline-block text-sm text-primary hover:underline"
+              className="text-primary mt-2 inline-block text-sm hover:underline"
             >
               View all articles by {post.author}
             </Link>
@@ -565,12 +565,12 @@ export default async function PostPage({
                       <CardHeader>
                         <CardTitle>{item.name}</CardTitle>
                         {item.brand && (
-                          <p className="text-xs tracking-wide text-muted-foreground uppercase">
+                          <p className="text-muted-foreground text-xs tracking-wide uppercase">
                             {item.brand}
                           </p>
                         )}
                         {item.price && (
-                          <p className="text-sm text-muted-foreground">
+                          <p className="text-muted-foreground text-sm">
                             {item.priceCurrency ? `${item.priceCurrency} ` : ""}
                             {item.price}
                           </p>
@@ -578,12 +578,12 @@ export default async function PostPage({
                       </CardHeader>
                       <CardContent>
                         {item.description && (
-                          <p className="text-sm text-muted-foreground">
+                          <p className="text-muted-foreground text-sm">
                             {item.description}
                           </p>
                         )}
                         {item.ratingValue !== undefined && (
-                          <p className="mt-3 text-sm text-muted-foreground">
+                          <p className="text-muted-foreground mt-3 text-sm">
                             Rating: {String(item.ratingValue)}
                             {item.ratingCount
                               ? ` (${String(item.ratingCount)})`
@@ -605,18 +605,18 @@ export default async function PostPage({
                           </ul>
                         )}
                         {item.cons && item.cons.length > 0 && (
-                          <ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+                          <ul className="text-muted-foreground mt-4 list-disc space-y-1 pl-5 text-sm">
                             {item.cons.map((con) => (
                               <li key={con}>{con}</li>
                             ))}
                           </ul>
                         )}
                         {item.specs && Object.keys(item.specs).length > 0 && (
-                          <div className="mt-4 text-sm text-muted-foreground">
+                          <div className="text-muted-foreground mt-4 text-sm">
                             {Object.entries(item.specs).map(([key, value]) => {
                               return (
                                 <p key={key}>
-                                  <span className="font-medium text-foreground">
+                                  <span className="text-foreground font-medium">
                                     {key}:
                                   </span>{" "}
                                   {value}
@@ -627,7 +627,7 @@ export default async function PostPage({
                         )}
                         {primaryLink && (
                           <div className="mt-4">
-                            <Button asChild>
+                            <Button asChild={true}>
                               <a
                                 href={primaryLink}
                                 target="_blank"
@@ -661,7 +661,7 @@ export default async function PostPage({
           </div>
           <Suspense
             fallback={
-              <div className="mt-16 border-t border-border pt-10 text-muted-foreground">
+              <div className="border-border text-muted-foreground mt-16 border-t pt-10">
                 Loading comments…
               </div>
             }

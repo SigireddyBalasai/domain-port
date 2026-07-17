@@ -47,12 +47,12 @@ export function CommentModerationClient({
                     {comment.author_email}
                   </span>
                   {!comment.is_approved && (
-                    <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-xs text-destructive">
+                    <span className="bg-destructive/10 text-destructive rounded-full px-2 py-0.5 text-xs">
                       Pending
                     </span>
                   )}
                 </div>
-                <div className="mt-1 flex flex-wrap gap-2 text-xs text-muted-foreground">
+                <div className="text-muted-foreground mt-1 flex flex-wrap gap-2 text-xs">
                   <span>
                     {comment.locale} / {comment.post_slug}
                   </span>

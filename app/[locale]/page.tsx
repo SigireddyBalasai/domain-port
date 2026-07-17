@@ -133,19 +133,19 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
       />
       <div className="flex-1">
         {/* Hero Section */}
-        <section className="border-b border-border/40 py-24 sm:py-32">
+        <section className="border-border/40 border-b py-24 sm:py-32">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h1 className="font-display text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
                 {siteConfig.name}
               </h1>
-              <p className="mt-6 text-lg text-muted-foreground sm:text-xl">
+              <p className="text-muted-foreground mt-6 text-lg sm:text-xl">
                 {siteConfig.description}
               </p>
               <div className="mt-10 flex justify-center gap-4">
                 <Link
                   href={`/${locale}/blog`}
-                  className="inline-flex items-center rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground hover:bg-primary/90"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center rounded-lg px-6 py-3 font-medium"
                 >
                   {t("readBlog")}
                 </Link>
@@ -156,7 +156,7 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
 
         {/* Featured Posts */}
         {featuredPosts.length > 0 && (
-          <section className="border-b border-border/40 py-24 sm:py-32">
+          <section className="border-border/40 border-b py-24 sm:py-32">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <h2 className="font-display text-3xl font-bold">
                 {t("featuredPosts")}
@@ -190,7 +190,7 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
                 </h2>
                 <Link
                   href={`/${locale}/blog`}
-                  className="text-sm font-medium hover:text-primary"
+                  className="hover:text-primary text-sm font-medium"
                 >
                   {t("viewAll")}
                 </Link>
@@ -224,7 +224,7 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
                 </h2>
                 <Link
                   href={`/${locale}/blog`}
-                  className="text-sm font-medium hover:text-primary"
+                  className="hover:text-primary text-sm font-medium"
                 >
                   {t("viewAll")}
                 </Link>

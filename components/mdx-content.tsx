@@ -50,7 +50,7 @@ const sharedComponents: Record<string, React.ComponentType<any>> = {
     if (src.endsWith(".svg") || src.startsWith("http")) {
       return (
         <Image
-          unoptimized
+          unoptimized={true}
           src={src}
           alt={alt ?? ""}
           width={0}
@@ -63,7 +63,7 @@ const sharedComponents: Record<string, React.ComponentType<any>> = {
     return (
       <div className="relative my-6 w-full" style={{ aspectRatio: "16/9" }}>
         <Image
-          fill
+          fill={true}
           src={src}
           alt={alt ?? ""}
           className="rounded-lg object-cover"

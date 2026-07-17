@@ -50,15 +50,15 @@ GSC data (Jun 24, 2026) shows 56 impressions, 0 clicks, avg position 7.7. The si
 
 ## Files Changed
 
-| File | Change |
-|------|--------|
-| `app/[locale]/blog/[slug]/page.tsx` | Enhanced `generateMetadata`, add breadcrumbs + related posts |
-| `app/[locale]/listing/[slug]/page.tsx` | Add breadcrumbs |
-| `app/[locale]/blog/page.tsx` | Enhanced `generateMetadata` |
-| `app/[locale]/faq/page.tsx` | Enhanced `generateMetadata` |
-| `app/[locale]/page.tsx` | Enhanced `generateMetadata` |
-| `components/breadcrumbs.tsx` | New component |
-| `components/blog/related-posts.tsx` | New component |
-| `components/blog/table-of-contents.tsx` | New component |
-| `app/api/og/post/[slug]/route.tsx` | New OG image route |
-| `lib/seo.ts` | New — shared SEO utilities |
+| File                                    | Change                                                       |
+| --------------------------------------- | ------------------------------------------------------------ |
+| `app/[locale]/blog/[slug]/page.tsx`     | Enhanced `generateMetadata`, add breadcrumbs + related posts |
+| `app/[locale]/listing/[slug]/page.tsx`  | Add breadcrumbs                                              |
+| `app/[locale]/blog/page.tsx`            | Enhanced `generateMetadata`                                  |
+| `app/[locale]/faq/page.tsx`             | Enhanced `generateMetadata`                                  |
+| `app/[locale]/page.tsx`                 | Enhanced `generateMetadata`                                  |
+| `components/breadcrumbs.tsx`            | New component                                                |
+| `components/blog/related-posts.tsx`     | New component                                                |
+| `components/blog/table-of-contents.tsx` | New component                                                |
+| `app/api/og/post/[slug]/route.tsx`      | New OG image route                                           |
+| `lib/seo.ts`                            | New — shared SEO utilities                                   |

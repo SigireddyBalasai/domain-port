@@ -5,7 +5,17 @@ description: "Guida completa al cablaggio CCTV per telecamere di sicurezza IP �
 author: "CCTV Name Author"
 updatedAt: "2026-05-25"
 image: "/og.svg"
-tags: ["cctv", "cablaggio", "cat6", "poe", "ethernet", "installazione", "protezione contro le sovratensioni", "cablaggio"]
+tags:
+  [
+    "cctv",
+    "cablaggio",
+    "cat6",
+    "poe",
+    "ethernet",
+    "installazione",
+    "protezione contro le sovratensioni",
+    "cablaggio",
+  ]
 postType: "howto"
 howTo:
   - name: "Scegliere il Cavo Giusto"
@@ -38,70 +48,90 @@ Un cablaggio scadente è responsabile di più guasti CCTV di qualsiasi altro sin
 Questa guida copre tutto ciò di cui hai bisogno per cablare correttamente un sistema di telecamere di sicurezza PoE: selezione del cavo, terminazione, conduit, protezione contro le sovratensioni, gli strumenti necessari e gli errori che separano un'installazione professionale da una problematica.
 
 <Callout type="info" title="Il 40% dei Problemi PoE Sono Correlati ai Cavi">
-  I dati del settore mostrano che circa il 40% dei ticket "telecamera offline" è riconducibile a problemi di cavo — calibro sbagliato, cavo interno usato all'esterno, Cat6 contraffatto che in realtà è CCA Cat5e, o terminazioni scadenti. Ottenere il cavo giusto dal primo giorno elimina la modalità di guasto più comune.
+  I dati del settore mostrano che circa il 40% dei ticket "telecamera offline" è
+  riconducibile a problemi di cavo — calibro sbagliato, cavo interno usato
+  all'esterno, Cat6 contraffatto che in realtà è CCA Cat5e, o terminazioni
+  scadenti. Ottenere il cavo giusto dal primo giorno elimina la modalità di
+  guasto più comune.
 </Callout>
 
 ## Selezione del Cavo
 
 ### Categoria del Cavo
 
-| Cavo | Calibro | Larghezza di Banda Max | Potenza PoE Max | Migliore Per |
-|---|---|---|---|---|
-| Cat5e | 24 AWG | 1 Gbps a 100 m | PoE/PoE+ (30W) | 1080p economico, percorsi sotto 50 m |
-| Cat6 | 23 AWG | 1 Gbps a 100 m, 10 Gbps a 55 m | PoE/PoE+/PoE++ (60W) | Raccomandato per tutte le nuove installazioni |
-| Cat6A | 23 AWG | 10 Gbps a 100 m | Tutti gli standard PoE incluso PoE++ Tipo 4 (100W) | Telecamere 4K, percorsi oltre 70 m, PTZ ad alta potenza |
-| Cat7 | 22 AWG | 10 Gbps a 100 m | Tutti gli standard PoE | Installazioni commerciali a prova di futuro |
+| Cavo  | Calibro | Larghezza di Banda Max         | Potenza PoE Max                                    | Migliore Per                                            |
+| ----- | ------- | ------------------------------ | -------------------------------------------------- | ------------------------------------------------------- |
+| Cat5e | 24 AWG  | 1 Gbps a 100 m                 | PoE/PoE+ (30W)                                     | 1080p economico, percorsi sotto 50 m                    |
+| Cat6  | 23 AWG  | 1 Gbps a 100 m, 10 Gbps a 55 m | PoE/PoE+/PoE++ (60W)                               | Raccomandato per tutte le nuove installazioni           |
+| Cat6A | 23 AWG  | 10 Gbps a 100 m                | Tutti gli standard PoE incluso PoE++ Tipo 4 (100W) | Telecamere 4K, percorsi oltre 70 m, PTZ ad alta potenza |
+| Cat7  | 22 AWG  | 10 Gbps a 100 m                | Tutti gli standard PoE                             | Installazioni commerciali a prova di futuro             |
 
 <Callout type="tip" title="Cat6 È il Punto Ottimale per il 2026">
-  Cat6 è la scelta migliore polivalente per le installazioni di telecamere di sicurezza. I conduttori 23 AWG riducono la caduta di tensione e il calore correlati al PoE rispetto a Cat5e. La larghezza di banda di 250 MHz fornisce un'ampia riserva per flussi video 4K. Il premio di costo rispetto a Cat5e è tipicamente solo $0,04-0,10 per piede — su un sistema a 8 telecamere aggiunge $30-80 totali. Per quel piccolo premio, ottieni prestazioni PoE misurabilmente migliori e riserva di larghezza di banda per futuri aggiornamenti delle telecamere.
+  Cat6 è la scelta migliore polivalente per le installazioni di telecamere di
+  sicurezza. I conduttori 23 AWG riducono la caduta di tensione e il calore
+  correlati al PoE rispetto a Cat5e. La larghezza di banda di 250 MHz fornisce
+  un'ampia riserva per flussi video 4K. Il premio di costo rispetto a Cat5e è
+  tipicamente solo $0,04-0,10 per piede — su un sistema a 8 telecamere aggiunge
+  $30-80 totali. Per quel piccolo premio, ottieni prestazioni PoE misurabilmente
+  migliori e riserva di larghezza di banda per futuri aggiornamenti delle
+  telecamere.
 </Callout>
 
 ### Rame Massiccio vs. CCA
 
 Questa è la decisione sui cavi più importante che prenderai.
 
-| Proprietà | Rame Massiccio 100% | Alluminio Ramato (CCA) |
-|---|---|---|
-| Resistenza | Bassa | 40-60% più alta |
-| Affidabilità PoE | Eccellente | Causa caduta di tensione oltre 30 m |
-| Calore sotto carico PoE+ | Basso | Significativo |
-| Flessibilità | Buona | Fragile, si rompe quando tirato |
-| Costo per piede | ~$0,30-0,50 | ~$0,10-0,15 |
-| Durata in uso esterno | 10+ anni | 2-3 anni |
+| Proprietà                | Rame Massiccio 100% | Alluminio Ramato (CCA)              |
+| ------------------------ | ------------------- | ----------------------------------- |
+| Resistenza               | Bassa               | 40-60% più alta                     |
+| Affidabilità PoE         | Eccellente          | Causa caduta di tensione oltre 30 m |
+| Calore sotto carico PoE+ | Basso               | Significativo                       |
+| Flessibilità             | Buona               | Fragile, si rompe quando tirato     |
+| Costo per piede          | ~$0,30-0,50         | ~$0,10-0,15                         |
+| Durata in uso esterno    | 10+ anni            | 2-3 anni                            |
 
 <Callout type="danger" title="Non Usare Mai CCA per PoE">
-  Il cavo CCA ha una resistenza maggiore del rame puro, il che significa più caduta di tensione, più calore e guasti intermittenti di alimentazione della telecamera. Sotto carico PoE+ (30W), i cavi CCA possono surriscaldarsi abbastanza da degradare la guaina nel tempo. Se il venditore non dichiara esplicitamente "rame puro 100%" o "rame nudo", presumi che sia CCA. Per qualsiasi installazione professionale, insisti sul rame massiccio.
+  Il cavo CCA ha una resistenza maggiore del rame puro, il che significa più
+  caduta di tensione, più calore e guasti intermittenti di alimentazione della
+  telecamera. Sotto carico PoE+ (30W), i cavi CCA possono surriscaldarsi
+  abbastanza da degradare la guaina nel tempo. Se il venditore non dichiara
+  esplicitamente "rame puro 100%" o "rame nudo", presumi che sia CCA. Per
+  qualsiasi installazione professionale, insisti sul rame massiccio.
 </Callout>
 
 ### Cavo Interno vs. Esterno
 
-| Proprietà | Interno (CM/CMR) | Esterno (CMX/Interramento Diretto) |
-|---|---|---|
-| Materiale della guaina | PVC (morbido, flessibile) | LLDPE (duro, resistente ai UV) |
-| Impermeabilizzazione | Nessuna | Riempito di gel o nastro bloccante |
-| Protezione UV | Bassa (crepe in 1-2 anni) | Alta (dura 10+ anni) |
-| Intervallo di temperatura | 0°C a 60°C | -40°C a 75°C |
-| Uso migliore | Dentro le pareti, soffitta, conduit interni | Percorsi esterni esposti, interramento diretto |
+| Proprietà                 | Interno (CM/CMR)                            | Esterno (CMX/Interramento Diretto)             |
+| ------------------------- | ------------------------------------------- | ---------------------------------------------- |
+| Materiale della guaina    | PVC (morbido, flessibile)                   | LLDPE (duro, resistente ai UV)                 |
+| Impermeabilizzazione      | Nessuna                                     | Riempito di gel o nastro bloccante             |
+| Protezione UV             | Bassa (crepe in 1-2 anni)                   | Alta (dura 10+ anni)                           |
+| Intervallo di temperatura | 0°C a 60°C                                  | -40°C a 75°C                                   |
+| Uso migliore              | Dentro le pareti, soffitta, conduit interni | Percorsi esterni esposti, interramento diretto |
 
 Se qualsiasi parte del percorso del cavo è esposta a intemperie, luce solare o umidità, usa cavo per esterni o fai passare il cavo interno standard attraverso un conduit resistente ai UV.
 
 ## Strumenti Necessari
 
-| Strumento | Scopo | Costo Approssimativo |
-|---|---|---|
-| Pinza crimpadora Cat6 (compatibile pass-through) | Terminare connettori RJ45 | $25-50 |
-| Connettori RJ45 pass-through | Terminazioni più facili e affidabili | $15-25 per confezione da 50 |
-| Tester di cavi (continuità + mappa cavi) | Verificare le terminazioni | $15-30 |
-| Nastro pescatore o aste luminescenti | Tirare cavi attraverso pareti/conduit | $20-40 |
-| Lubrificante per cavi | Tiri lunghi in conduit | $10-15 |
-| Tester PoE | Verificare l'alimentazione a distanza | $50-150 |
-| Attrezzo punch-down | Terminare pannelli di permutazione | $15-30 |
-| Etichette per cavi | Marcare entrambe le estremità di ogni percorso | $5-10 |
-| Spellacavi | Spellare la guaina del cavo | $10-20 |
-| Trapano a percussione + punte per muratura | Montare telecamere su mattoni/cemento | Varia |
+| Strumento                                        | Scopo                                          | Costo Approssimativo        |
+| ------------------------------------------------ | ---------------------------------------------- | --------------------------- |
+| Pinza crimpadora Cat6 (compatibile pass-through) | Terminare connettori RJ45                      | $25-50                      |
+| Connettori RJ45 pass-through                     | Terminazioni più facili e affidabili           | $15-25 per confezione da 50 |
+| Tester di cavi (continuità + mappa cavi)         | Verificare le terminazioni                     | $15-30                      |
+| Nastro pescatore o aste luminescenti             | Tirare cavi attraverso pareti/conduit          | $20-40                      |
+| Lubrificante per cavi                            | Tiri lunghi in conduit                         | $10-15                      |
+| Tester PoE                                       | Verificare l'alimentazione a distanza          | $50-150                     |
+| Attrezzo punch-down                              | Terminare pannelli di permutazione             | $15-30                      |
+| Etichette per cavi                               | Marcare entrambe le estremità di ogni percorso | $5-10                       |
+| Spellacavi                                       | Spellare la guaina del cavo                    | $10-20                      |
+| Trapano a percussione + punte per muratura       | Montare telecamere su mattoni/cemento          | Varia                       |
 
 <Callout type="note" title="I Cavi Pre-Terminati Sono Un'Opzione">
-  Per installazioni piccole (1-4 telecamere) con percorsi di cavi accessibili, i cavi Cat6 pre-terminati in lunghezze misurate fanno risparmiare tempo ed evitano errori di terminazione. Per installazioni più grandi o percorsi attraverso conduit, terminare il proprio cavo con connettori RJ45 pass-through è più affidabile ed economico.
+  Per installazioni piccole (1-4 telecamere) con percorsi di cavi accessibili, i
+  cavi Cat6 pre-terminati in lunghezze misurate fanno risparmiare tempo ed
+  evitano errori di terminazione. Per installazioni più grandi o percorsi
+  attraverso conduit, terminare il proprio cavo con connettori RJ45 pass-through
+  è più affidabile ed economico.
 </Callout>
 
 ## Standard di Terminazione
@@ -111,6 +141,7 @@ Se qualsiasi parte del percorso del cavo è esposta a intemperie, luce solare o 
 Lo standard T568B è il modello di cablaggio dominante per le installazioni di telecamere di sicurezza in Nord America. Entrambe le estremità di ogni cavo devono usare lo stesso standard.
 
 **Ordine dei fili (pin 1 a pin 8):**
+
 1. Bianco/Arancione
 2. Arancione
 3. Bianco/Verde
@@ -128,20 +159,24 @@ Lo standard T568B è il modello di cablaggio dominante per le installazioni di t
 - **Punch-down su un pannello di permutazione all'estremità dell'NVR**: Per percorsi lunghi, terminare su un pannello di permutazione è più affidabile che crimpare un RJ45 direttamente. Rende anche la risoluzione dei problemi e la ri-terminazione molto più facili.
 
 <Callout type="warning" title="Testa Ogni Terminazione">
-  Usa un tester di cavi per verificare la mappa dei cavi, la continuità e i cortocircuiti su ogni singolo percorso prima di collegare una telecamera. Un test di 30 secondi cattura problemi che richiederebbero ore per essere diagnosticati in seguito. Per percorsi esterni lunghi, testa anche con un tester PoE per verificare l'alimentazione all'estremità della telecamera.
+  Usa un tester di cavi per verificare la mappa dei cavi, la continuità e i
+  cortocircuiti su ogni singolo percorso prima di collegare una telecamera. Un
+  test di 30 secondi cattura problemi che richiederebbero ore per essere
+  diagnosticati in seguito. Per percorsi esterni lunghi, testa anche con un
+  tester PoE per verificare l'alimentazione all'estremità della telecamera.
 </Callout>
 
 ## Conduit e Gestione dei Cavi
 
 ### Quando Usare il Conduit
 
-| Scenario | Tipo di Conduit | Motivo |
-|---|---|---|
-| Percorsi esterni esposti | PVC Schedule 40 | Impermeabile, resistente ai UV |
-| Interramento sotterraneo | PVC Schedule 40 o 80 | Protezione fisica, requisito normativo |
-| Tra edifici | Armorflessibile | Giunti di movimento, protezione fisica |
-| Fasci di cavi interni | Canalina portacavi o ganci a J | Organizzazione, dissipazione del calore |
-| Attraversamenti pareti | Breve manicotto PVC | Protezione dai bordi |
+| Scenario                 | Tipo di Conduit                | Motivo                                  |
+| ------------------------ | ------------------------------ | --------------------------------------- |
+| Percorsi esterni esposti | PVC Schedule 40                | Impermeabile, resistente ai UV          |
+| Interramento sotterraneo | PVC Schedule 40 o 80           | Protezione fisica, requisito normativo  |
+| Tra edifici              | Armorflessibile                | Giunti di movimento, protezione fisica  |
+| Fasci di cavi interni    | Canalina portacavi o ganci a J | Organizzazione, dissipazione del calore |
+| Attraversamenti pareti   | Breve manicotto PVC            | Protezione dai bordi                    |
 
 ### Regole per il Conduit
 
@@ -155,15 +190,19 @@ Lo standard T568B è il modello di cablaggio dominante per le installazioni di t
 
 Quando più cavi PoE corrono insieme in un fascio o conduit, il calore si accumula per resistenza elettrica nei conduttori. Questa è una seria preoccupazione per le installazioni PoE ad alta potenza.
 
-| Numero di Cavi nel Fascio | Aumento di Temperatura Sopra l'Ambiente | Azione Raccomandata |
-|---|---|---|
-| 1-6 | 0% (nessuna derating necessaria) | Installazione standard |
-| 7-15 | 15-25% | Ridurre la dimensione del fascio o aumentare la spaziatura |
-| 16-30 | 30-40% | Dividere in fasci più piccoli |
-| 31+ | 40-55% | Usare Cat6A, ridurre la dimensione del fascio, garantire ventilazione |
+| Numero di Cavi nel Fascio | Aumento di Temperatura Sopra l'Ambiente | Azione Raccomandata                                                   |
+| ------------------------- | --------------------------------------- | --------------------------------------------------------------------- |
+| 1-6                       | 0% (nessuna derating necessaria)        | Installazione standard                                                |
+| 7-15                      | 15-25%                                  | Ridurre la dimensione del fascio o aumentare la spaziatura            |
+| 16-30                     | 30-40%                                  | Dividere in fasci più piccoli                                         |
+| 31+                       | 40-55%                                  | Usare Cat6A, ridurre la dimensione del fascio, garantire ventilazione |
 
 <Callout type="tip" title="Gestione del Calore per Fasci Grandi">
-  ISO/IEC raccomanda una dimensione massima del fascio di 24 cavi indipendentemente dalle considerazioni PoE. Per installazioni PoE++ ad alta potenza, usa conduttori Cat6A (23 AWG) che dissipano il calore più efficacemente. Evita di far passare cavi PoE in spazi non ventilati come controsoffitti chiusi o conduit sigillati senza un adeguato derating termico.
+  ISO/IEC raccomanda una dimensione massima del fascio di 24 cavi
+  indipendentemente dalle considerazioni PoE. Per installazioni PoE++ ad alta
+  potenza, usa conduttori Cat6A (23 AWG) che dissipano il calore più
+  efficacemente. Evita di far passare cavi PoE in spazi non ventilati come
+  controsoffitti chiusi o conduit sigillati senza un adeguato derating termico.
 </Callout>
 
 ## Protezione contro le Sovratensioni
@@ -182,30 +221,40 @@ Le telecamere su lunghi percorsi PoE sono vulnerabili a sovratensioni indotte da
 - UPS con protezione contro le sovratensioni per NVR e switch PoE
 
 <Callout type="danger" title="La Messa a Terra Non È Opzionale">
-  Un protector di sovratensione non correttamente messo a terra non fornisce alcuna protezione. Assicurati che i tuoi protector siano collegati alla terra dell'edificio. Nelle installazioni commerciali, la messa a terra deve soddisfare i requisiti del codice elettrico locale.
+  Un protector di sovratensione non correttamente messo a terra non fornisce
+  alcuna protezione. Assicurati che i tuoi protector siano collegati alla terra
+  dell'edificio. Nelle installazioni commerciali, la messa a terra deve
+  soddisfare i requisiti del codice elettrico locale.
 </Callout>
 
 ## Errori Comuni di Cablaggio
 
 ### 1. Punti di Pizzicatura del Cavo
+
 Le curve strette rovinano la qualità dei dati sui percorsi lunghi. Mantieni un raggio di curvatura di almeno 5 cm. Non fissare mai il cavo direttamente alle pareti — usa clip per cavi appropriate o fascette in velcro.
 
 ### 2. Terminazioni Sciatte
+
 I contatti RJ45 allentati causano guasti intermittenti che sono frustranti da diagnosticare. Usa un tester dopo ogni terminazione. Per percorsi lunghi, termina su un pannello di permutazione invece di crimpare direttamente.
 
 ### 3. Cavo nello Stesso Conduit dell'Alimentazione CA
+
 Induce interferenze e degrada il segnale. Mantieni 30 cm di separazione dalle linee CA. Se devi incrociare, fallo a 90 gradi.
 
 ### 4. Cavo Interno Usato all'Esterno
+
 Il cavo PVC interno esposto ai UV si degrada in 2-3 anni. La guaina si crepa, l'umidità penetra nel cavo per azione capillare e la telecamera si guasta. Usa cavo per esterni (CMX) o conduit per qualsiasi sezione esterna.
 
 ### 5. Riccio di Cavo alla Telecamera
+
 Arrotolare il cavo pre-terminato in eccesso alla posizione della telecamera capta interferenze elettriche e agisce come un'antenna. Usa lunghezze di cavo corrispondenti al percorso effettivo o arrotola ordinatamente il riccio all'estremità dell'NVR.
 
 ### 6. Nessun Gocciolatoio
+
 Quando il cavo raggiunge la telecamera, lascialo pendere in una piccola forma a "U" prima di entrare nella telecamera o nel muro. Questo garantisce che l'acqua goccioli dal fondo della curva invece di entrare nel connettore.
 
 ### 7. Etichette Mancanti
+
 I cavi non etichettati trasformano un lavoro di risoluzione dei problemi di 30 minuti in un'odissea di 3 ore. Etichetta entrambe le estremità di ogni cavo con uno schema di denominazione coerente (es., "Cam-01-PortaIngresso").
 
 ## Lista di Controllo per Installazione Esterna
@@ -234,46 +283,85 @@ Prima di dichiarare l'installazione completa:
 6. **Verifica registrazione**: Dopo 7 giorni, controlla che la timeline dell'NVR non mostri lacune di registrazione
 
 <Callout type="tip" title="Il Limite Massimo di 100 Metri">
-  Lo standard IEEE 802.3 limita i percorsi Ethernet a 100 metri (328 piedi) inclusi tutti i cavi di permutazione. In pratica, con Cat6 in rame puro, puoi raggiungere affidabilmente 95 metri. Oltre, la caduta di tensione anche su un buon cavo causa reset intermittenti della telecamera. Pianifica estensori PoE o backhaul in fibra per qualsiasi percorso che superi i 90 metri.
+  Lo standard IEEE 802.3 limita i percorsi Ethernet a 100 metri (328 piedi)
+  inclusi tutti i cavi di permutazione. In pratica, con Cat6 in rame puro, puoi
+  raggiungere affidabilmente 95 metri. Oltre, la caduta di tensione anche su un
+  buon cavo causa reset intermittenti della telecamera. Pianifica estensori PoE
+  o backhaul in fibra per qualsiasi percorso che superi i 90 metri.
 </Callout>
 
 ## Domande Frequenti
 
 <Accordion>
   <AccordionItem>
-    <AccordionTrigger>Dovrei usare Cat5e o Cat6 per le telecamere di sicurezza?</AccordionTrigger>
+    <AccordionTrigger>
+      Dovrei usare Cat5e o Cat6 per le telecamere di sicurezza?
+    </AccordionTrigger>
     <AccordionContent>
-      Cat6 è la linea di base raccomandata per qualsiasi nuova installazione. I conduttori 23 AWG riducono la caduta di tensione rispetto al 24 AWG di Cat5e, il che conta per l'alimentazione PoE — specialmente su percorsi oltre 50 metri e per telecamere con LED IR o riscaldatori. La differenza di costo è minima ($0,04-0,10 per piede) rispetto alla manodopera di posa dei cavi. Riserva Cat5e solo per percorsi brevi sotto i 30 metri con telecamere 1080p.
+      Cat6 è la linea di base raccomandata per qualsiasi nuova installazione. I
+      conduttori 23 AWG riducono la caduta di tensione rispetto al 24 AWG di
+      Cat5e, il che conta per l'alimentazione PoE — specialmente su percorsi
+      oltre 50 metri e per telecamere con LED IR o riscaldatori. La differenza
+      di costo è minima ($0,04-0,10 per piede) rispetto alla manodopera di posa
+      dei cavi. Riserva Cat5e solo per percorsi brevi sotto i 30 metri con
+      telecamere 1080p.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>Quanto può essere lungo un cavo PoE?</AccordionTrigger>
     <AccordionContent>
-      Lo standard IEEE 802.3 limita i percorsi Ethernet a 100 metri (328 piedi) totali, inclusi i cavi di permutazione. Oltre 100 metri, il segnale dati si degrada e l'alimentazione PoE scende sotto il minimo della telecamera. Per percorsi più lunghi, usa un estensore PoE (aggiunge 100 m per unità, fino a 4 unità), backhaul in fibra con uno switch PoE remoto o avvicina l'NVR.
+      Lo standard IEEE 802.3 limita i percorsi Ethernet a 100 metri (328 piedi)
+      totali, inclusi i cavi di permutazione. Oltre 100 metri, il segnale dati
+      si degrada e l'alimentazione PoE scende sotto il minimo della telecamera.
+      Per percorsi più lunghi, usa un estensore PoE (aggiunge 100 m per unità,
+      fino a 4 unità), backhaul in fibra con uno switch PoE remoto o avvicina
+      l'NVR.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Posso mescolare cavi CCA e rame massiccio nella stessa installazione?</AccordionTrigger>
+    <AccordionTrigger>
+      Posso mescolare cavi CCA e rame massiccio nella stessa installazione?
+    </AccordionTrigger>
     <AccordionContent>
-      No. Mescolare CCA e rame massiccio crea un punto di corrosione galvanica alla connessione, che aumenta la resistenza e causa il guasto della connessione nel tempo. Scegli un tipo di cavo e usalo dappertutto. Per PoE, dovrebbe sempre essere rame massiccio.
+      No. Mescolare CCA e rame massiccio crea un punto di corrosione galvanica
+      alla connessione, che aumenta la resistenza e causa il guasto della
+      connessione nel tempo. Scegli un tipo di cavo e usalo dappertutto. Per
+      PoE, dovrebbe sempre essere rame massiccio.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>Ho bisogno di cavo schermato (STP)?</AccordionTrigger>
     <AccordionContent>
-      Solo se si passa vicino a interferenze elettriche significative — grandi motori, reattori fluorescenti, macchinari industriali o quadri elettrici. Per la maggior parte delle installazioni residenziali e per ufficio, il Cat6 non schermato (UTP) è perfettamente adeguato. Se usi STP, devi usare connettori schermati e una corretta messa a terra solo a un'estremità, altrimenti la schermatura diventa inefficace.
+      Solo se si passa vicino a interferenze elettriche significative — grandi
+      motori, reattori fluorescenti, macchinari industriali o quadri elettrici.
+      Per la maggior parte delle installazioni residenziali e per ufficio, il
+      Cat6 non schermato (UTP) è perfettamente adeguato. Se usi STP, devi usare
+      connettori schermati e una corretta messa a terra solo a un'estremità,
+      altrimenti la schermatura diventa inefficace.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Qual è il raggio di curvatura minimo per Cat6?</AccordionTrigger>
+    <AccordionTrigger>
+      Qual è il raggio di curvatura minimo per Cat6?
+    </AccordionTrigger>
     <AccordionContent>
-      Il raggio di curvatura minimo per Cat6 è 4x il diametro del cavo, o circa 5 cm (2 pollici). Le curve strette schiacciano la torsione interna delle coppie e degradano la qualità del segnale. Per installazioni permanenti, usa curve dolci o gomiti a 45 gradi invece di curve strette a 90 gradi.
+      Il raggio di curvatura minimo per Cat6 è 4x il diametro del cavo, o circa
+      5 cm (2 pollici). Le curve strette schiacciano la torsione interna delle
+      coppie e degradano la qualità del segnale. Per installazioni permanenti,
+      usa curve dolci o gomiti a 45 gradi invece di curve strette a 90 gradi.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Quanto in profondità devo interrare il cavo Ethernet per telecamere esterne?</AccordionTrigger>
+    <AccordionTrigger>
+      Quanto in profondità devo interrare il cavo Ethernet per telecamere
+      esterne?
+    </AccordionTrigger>
     <AccordionContent>
-      Secondo il National Electrical Code (NEC), il conduit in PVC deve essere interrato ad almeno 18 pollici (45 cm) di profondità. Il conduit metallico richiede solo 6 pollici (15 cm). Il cavo per interramento diretto in conduit è preferito per percorsi sotterranei. Chiama sempre i localizzatori di servizi prima di scavare.
+      Secondo il National Electrical Code (NEC), il conduit in PVC deve essere
+      interrato ad almeno 18 pollici (45 cm) di profondità. Il conduit metallico
+      richiede solo 6 pollici (15 cm). Il cavo per interramento diretto in
+      conduit è preferito per percorsi sotterranei. Chiama sempre i
+      localizzatori di servizi prima di scavare.
     </AccordionContent>
   </AccordionItem>
 </Accordion>

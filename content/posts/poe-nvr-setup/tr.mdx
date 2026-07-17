@@ -5,7 +5,16 @@ description: "2026'da ev ve küçük işletme için PoE NVR güvenlik kamera sis
 author: "CCTV Name Author"
 updatedAt: "2026-05-25"
 image: "/og.svg"
-tags: ["cctv", "nvr", "poe", "güvenlik kamerası", "ip kamera", "görüntülü kayıt", "ağ video kaydedici"]
+tags:
+  [
+    "cctv",
+    "nvr",
+    "poe",
+    "güvenlik kamerası",
+    "ip kamera",
+    "görüntülü kayıt",
+    "ağ video kaydedici",
+  ]
 postType: "howto"
 howTo:
   - name: "Sistem düzenini planlayın"
@@ -38,12 +47,17 @@ faq:
   - question: "Kameralarım neden gece yeniden başlıyor?"
     answer: "Bu genellikle yetersiz PoE bütçesini gösterir. Gece IR LED'leri açıldığında kamera güç tüketimi artar. PoE anahtarınızın toplam kamera yükünün en az %20-30 üzerinde marjı olduğundan emin olun."
 ---
+
 PoE (Ethernet Üzerinden Güç) ile NVR sistemi, modern IP güvenlik kamerası kurulumlarının bel kemiğidir. Güvenlik kameralarına tek bir Ethernet kablosuyla hem güç hem de veri sağlayarak eski kurulumlardaki güç adaptörlerini ve kablolama karmaşasını ortadan kaldırır. Küçük işletmeler, perakende mağazaları ve ev sahipleri için iyi planlanmış bir PoE NVR kurulumu, aylık bulut ücreti olmadan güvenilir yerel kayıt sunar.
 
 Bu kılavuz, kablo seçimi ve güç bütçesi hesaplamadan NVR yapılandırması ve güvenlik önlemlerine kadar her adımda size rehberlik edecektir — 2026 donanım standartlarına ve gerçek dünya kurulum pratiklerine dayanmaktadır.
 
 <Callout type="info" title="2026'da Ne Değişti">
-  24TB güvenlik kamerası sürücüleri, tüketici NVR'lerinde H.266 (VVC) sıkıştırma ve olgun Matter kamera desteği, depolama maliyetlerini her zamankinden daha düşük ve uyumluluğu daha iyi hale getiriyor. Akıllı H.265+ codec'leri artık H.264'e kıyasla %50 tasarruf sağlıyor ve ONVIF Profile T/G benimsemesi markaları özgürce karıştırmanıza izin veriyor.
+  24TB güvenlik kamerası sürücüleri, tüketici NVR'lerinde H.266 (VVC) sıkıştırma
+  ve olgun Matter kamera desteği, depolama maliyetlerini her zamankinden daha
+  düşük ve uyumluluğu daha iyi hale getiriyor. Akıllı H.265+ codec'leri artık
+  H.264'e kıyasla %50 tasarruf sağlıyor ve ONVIF Profile T/G benimsemesi
+  markaları özgürce karıştırmanıza izin veriyor.
 </Callout>
 
 ## Sistem Planlaması
@@ -54,30 +68,37 @@ Başarılı her kurulum bir planla başlar. Güç bütçelerini, kablo uzunlukla
 
 Kameraları bağlamak için iki ana seçeneğiniz vardır:
 
-| Mimari | En uygun | Ödünleşimler |
-|---|---|---|
-| Dahili PoE portlu NVR | Yeni başlayanlar, küçük kurulumlar (4-8 kamera) | Port sayısı ve güç bütçesiyle sınırlı |
-| PoE anahtarı + ayrı NVR | Büyük kurulumlar, esnek yapılandırmalar | Daha fazla bileşen, ancak ölçeklendirmesi ve değiştirmesi daha kolay |
+| Mimari                  | En uygun                                        | Ödünleşimler                                                         |
+| ----------------------- | ----------------------------------------------- | -------------------------------------------------------------------- |
+| Dahili PoE portlu NVR   | Yeni başlayanlar, küçük kurulumlar (4-8 kamera) | Port sayısı ve güç bütçesiyle sınırlı                                |
+| PoE anahtarı + ayrı NVR | Büyük kurulumlar, esnek yapılandırmalar         | Daha fazla bileşen, ancak ölçeklendirmesi ve değiştirmesi daha kolay |
 
 <Callout type="tip" title="Profesyonel İpucu">
-  Her zaman mevcut kamera planınızın **en az iki katı kanallı** bir NVR satın alın. 4 kameralı bir kurulum 8 kanallı NVR kullanmalıdır. Genişletme her zaman olur ve NVR yükseltmek baştan büyük almaktan daha pahalıdır.
+  Her zaman mevcut kamera planınızın **en az iki katı kanallı** bir NVR satın
+  alın. 4 kameralı bir kurulum 8 kanallı NVR kullanmalıdır. Genişletme her zaman
+  olur ve NVR yükseltmek baştan büyük almaktan daha pahalıdır.
 </Callout>
 
 ### Kablo Seçimi
 
 Kablo en kritik fiziksel bileşendir. Yanlış kablo seçimi, teşhisi zor olan aralıklı yeniden başlatmalara, voltaj düşüşüne ve veri kaybına neden olur.
 
-| Kablo Tipi | En iyi kullanım | Neden |
-|---|---|---|
-| Cat5e | 1080p kameralar, 50 m'ye kadar hatlar | En ucuz, ancak 24 AWG teller daha yüksek direnç anlamına gelir |
-| Cat6 | Çoğu modern IP kamera | 23 AWG teller voltaj düşüşünü azaltır; yeni kurulumlar için önerilen taban çizgisi |
-| Cat6A | 4K kameralar, 70 m üzeri hatlar, yüksek güçlü PTZ | En kalın teller, en iyi ısı dağılımı, PoE++ desteği |
+| Kablo Tipi | En iyi kullanım                                   | Neden                                                                              |
+| ---------- | ------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| Cat5e      | 1080p kameralar, 50 m'ye kadar hatlar             | En ucuz, ancak 24 AWG teller daha yüksek direnç anlamına gelir                     |
+| Cat6       | Çoğu modern IP kamera                             | 23 AWG teller voltaj düşüşünü azaltır; yeni kurulumlar için önerilen taban çizgisi |
+| Cat6A      | 4K kameralar, 70 m üzeri hatlar, yüksek güçlü PTZ | En kalın teller, en iyi ısı dağılımı, PoE++ desteği                                |
 
 <Callout type="warning" title="Bakır Kaplamalı Alüminyumdan (CCA) Kaçının">
-  CCA kablo daha ucuzdur ancak katı bakırdan önemli ölçüde daha yüksek dirence sahiptir. Voltaj düşüşüne, ısınmaya ve aralıklı kamera sıfırlamalarına neden olur — özellikle gece IR LED'leri açıldığında. Profesyonel kurulumlar için güvenilir markalardan (Monoprice, Cable Matters, Belden) **katı bakır** kullanın.
+  CCA kablo daha ucuzdur ancak katı bakırdan önemli ölçüde daha yüksek dirence
+  sahiptir. Voltaj düşüşüne, ısınmaya ve aralıklı kamera sıfırlamalarına neden
+  olur — özellikle gece IR LED'leri açıldığında. Profesyonel kurulumlar için
+  güvenilir markalardan (Monoprice, Cable Matters, Belden) **katı bakır**
+  kullanın.
 </Callout>
 
 **Temel Kablo Döşeme Kuralları:**
+
 - Maksimum uzunluk: 100 metre (328 fit), patch kablolar dahil
 - Bükülme yarıçapı: En az 5 cm — keskin kıvrımlar sinyali bozar
 - AC kablolardan uzaklık: Paraziti önlemek için en az 30 cm
@@ -88,18 +109,22 @@ Kablo en kritik fiziksel bileşendir. Yanlış kablo seçimi, teşhisi zor olan 
 
 PoE standartlarını anlamak, kurulumların en yaygın hatasını önler: gündüz çalışan ancak gece IR LED'leri maksimum güç çektiğinde yeniden başlayan kameralar.
 
-| Standart | Port başına güç | Tipik kamera tüketimi |
-|---|---|---|
-| IEEE 802.3af (PoE) | 15,4W | Sabit 1080p/4MP kameralar (4-8W) |
-| IEEE 802.3at (PoE+) | 30W | 4K kameralar, iç mekan PTZ (8-15W) |
-| IEEE 802.3bt Tip 3 (PoE++) | 60W | Dış mekan PTZ ısıtıcılı (20-40W) |
-| IEEE 802.3bt Tip 4 (PoE++) | 100W | Çok sensörlü kameralar, yüksek güçlü PTZ |
+| Standart                   | Port başına güç | Tipik kamera tüketimi                    |
+| -------------------------- | --------------- | ---------------------------------------- |
+| IEEE 802.3af (PoE)         | 15,4W           | Sabit 1080p/4MP kameralar (4-8W)         |
+| IEEE 802.3at (PoE+)        | 30W             | 4K kameralar, iç mekan PTZ (8-15W)       |
+| IEEE 802.3bt Tip 3 (PoE++) | 60W             | Dış mekan PTZ ısıtıcılı (20-40W)         |
+| IEEE 802.3bt Tip 4 (PoE++) | 100W            | Çok sensörlü kameralar, yüksek güçlü PTZ |
 
 <Callout type="danger" title="Gece Tuzağı">
-  Gündüz 5W tüketen bir kamera, gece IR LED'leri açıldığında 12W'a fırlayabilir. Bütçeyi her zaman spesifikasyondaki **maksimum tüketimi** kullanarak hesaplayın, tipik değeri değil. Ardından PoE anahtar bütçenize **%30 marj** ekleyin.
+  Gündüz 5W tüketen bir kamera, gece IR LED'leri açıldığında 12W'a fırlayabilir.
+  Bütçeyi her zaman spesifikasyondaki **maksimum tüketimi** kullanarak
+  hesaplayın, tipik değeri değil. Ardından PoE anahtar bütçenize **%30 marj**
+  ekleyin.
 </Callout>
 
 Örnek güç bütçesi — her biri 12W tepe tüketimli 8 kamera:
+
 - Toplam yük: 96W
 - %30 marjla: **Minimum 125W PoE bütçesi**
 - Önerilen: 150W+ 16 port PoE+ anahtar
@@ -116,12 +141,15 @@ Depolama, çoğu sistemin sessizce yetersiz kaldığı alandır. Kağıt üzerin
 | 4K (8MP) | 30-50 GB |
 
 **4 adet 4K kamera, 30 gün depolama için gerçek hesaplama:**
+
 - Sürekli kayıt: 4 × 40 GB × 30 = 4,8 TB → 6 TB sürücü alın
 - Sadece hareket kaydı: 4 × 12 GB × 30 = 1,44 TB → 2 TB sürücü yeterli
 - Hibrit (sürekli düşük çözünürlük, hareket yüksek çözünürlük): her iki dünyanın en iyisi
 
 <Callout type="tip" title="Depolama Önerisi">
-  Çoğu 4 kameralı ev sistemi için: H.265 ve sadece hareket kaydı ile 4 TB güvenlik kamerası sürücüsü 30 gün geçmiş sağlar. Sürekli kayıt yapan 8 adet 4K kamera için 10-12 TB'a geçin.
+  Çoğu 4 kameralı ev sistemi için: H.265 ve sadece hareket kaydı ile 4 TB
+  güvenlik kamerası sürücüsü 30 gün geçmiş sağlar. Sürekli kayıt yapan 8 adet 4K
+  kamera için 10-12 TB'a geçin.
 </Callout>
 
 **Her zaman güvenlik kamerası sürücüleri kullanın:**
@@ -150,7 +178,9 @@ Standart sürücüler, sürekli yazma yükü altında güvenlik kamerası sürü
 NVR'yi güvenli, iklimlendirilmiş, iyi havalandırılan bir yere koyun. Diğer elektronik cihazlarla bir araya istiflemekten kaçının. Hava akışı için etrafında en az 2 cm boşluk bırakın. Kısa bir Ethernet kablosuyla LAN portu üzerinden yönlendiricinize bağlayın.
 
 <Callout type="note" title="UPS Önerilir">
-  NVR, yönlendirici ve PoE anahtarı için bir UPS kesintisiz güç kaynağı, elektrik kesintilerinde sisteminizin kayda devam etmesini sağlar. İşletmeler için özellikle önemlidir.
+  NVR, yönlendirici ve PoE anahtarı için bir UPS kesintisiz güç kaynağı,
+  elektrik kesintilerinde sisteminizin kayda devam etmesini sağlar. İşletmeler
+  için özellikle önemlidir.
 </Callout>
 
 ### Adım 2: Kabloları Döşeyin ve Takın
@@ -164,7 +194,11 @@ Her kamera konumundan NVR'ye veya PoE anahtarına kablo döşeyin. Süpürgelik,
 5. 70 metreden uzun hatlar için voltaj düşüşünü en aza indirmek amacıyla Cat6 veya Cat6A kullanın
 
 <Callout type="warning" title="Kablo Demeti Isınması">
-  Bir demet veya kanalda birden çok PoE kablosu döşerken, tellerdeki direnç nedeniyle ısı birikir. 10+ kablolu demetler için 23 AWG Cat6 veya Cat6A kullanın ve kanal doluluğunu %40'ın altında tutun. Yalıtımsız (UTP) Cat6 çoğu ev ve ofis için uygundur — ekranlı (STP) kabloyu yalnızca büyük motorlar veya endüstriyel ekipman yanında kullanın.
+  Bir demet veya kanalda birden çok PoE kablosu döşerken, tellerdeki direnç
+  nedeniyle ısı birikir. 10+ kablolu demetler için 23 AWG Cat6 veya Cat6A
+  kullanın ve kanal doluluğunu %40'ın altında tutun. Yalıtımsız (UTP) Cat6 çoğu
+  ev ve ofis için uygundur — ekranlı (STP) kabloyu yalnızca büyük motorlar veya
+  endüstriyel ekipman yanında kullanın.
 </Callout>
 
 ### Adım 3: Kameraları Monte Edin
@@ -172,6 +206,7 @@ Her kamera konumundan NVR'ye veya PoE anahtarına kablo döşeyin. Süpürgelik,
 Her kamerayı planlanan konuma monte edin, düz ve güvenli olduğundan emin olun. Dış mekan kameraları su geçirmez bağlantı gerektirir — RJ45 konektöründe dielektrik gres ve kamerayla gelmediyse su geçirmez kapak kullanın.
 
 **Kamera Yerleştirme İpuçları:**
+
 - Önce tüm giriş noktalarını kapatın (kapılar, alt kat pencereleri, garaj)
 - Pencerelerden veya parlak ışıktan doğrudan parlamadan kaçının
 - En iyi yüz yakalama için kameraları 2,5-3 metre yüksekliğe monte edin
@@ -182,11 +217,13 @@ Her kamerayı planlanan konuma monte edin, düz ve güvenli olduğundan emin olu
 Her Ethernet kablosunu NVR veya PoE anahtarındaki bir PoE portuna takın. Kamera bu tek bağlantı üzerinden hem güç hem de veri alır. Kamera 30-60 saniye içinde açılır.
 
 **Dahili PoE portlu NVR için:**
+
 - Doğrudan NVR arkasındaki işaretli PoE portlarına bağlayın
 - Kameralar 30-60 saniye içinde otomatik olarak algılanır
 - Ek yapılandırma gerekmez
 
 **PoE anahtarı + NVR yapılandırmaları için:**
+
 - Kameraları PoE anahtarına bağlayın
 - Anahtar ve NVR'nin aynı yerel ağda olduğundan emin olun
 - NVR menüsünde Camera > Add Cameras > Auto Search veya ONVIF aramasına gidin
@@ -202,7 +239,10 @@ NVR'yi açın ve HDMI üzerinden bir monitör bağlayın. Kurulum sihirbazı siz
 5. **Üzerine yazmayı etkinleştirin** — NVR'nin disk dolduğunda eski kayıtların üzerine yazacağını onaylayın
 
 <Callout type="danger" title="Varsayılan Kimlik Bilgileri Sorumluluktur">
-  Birçok NVR, admin/admin gibi varsayılan kimlik bilgileriyle gelir. Hemen değiştirin. CISA'nın Bilinen İstismar Edilen Güvenlik Açıkları kataloğu, eski ürün yazılımıyla satılan cihazları etkileyen 2021-2024 NVR web arayüzü güvenlik açıklarını içerir. Kolay hedef olmayın.
+  Birçok NVR, admin/admin gibi varsayılan kimlik bilgileriyle gelir. Hemen
+  değiştirin. CISA'nın Bilinen İstismar Edilen Güvenlik Açıkları kataloğu, eski
+  ürün yazılımıyla satılan cihazları etkileyen 2021-2024 NVR web arayüzü
+  güvenlik açıklarını içerir. Kolay hedef olmayın.
 </Callout>
 
 ## Kamera ve Kayıt Yapılandırması
@@ -221,24 +261,28 @@ NVR arayüzü üzerinden her kameranın ayarlarına erişin:
 Standart hareket algılama neredeyse her zaman çok hassastır. Geçen her yaprak, gölge veya far bir uyarıyı tetikler.
 
 Her kamera için:
+
 1. Camera Settings > Motion Detection'ı açın
 2. Hassasiyeti yaklaşık %50'ye ayarlayın
 3. Hareket algılama bölgelerini tanımlayın — ağaçları, işlek yolları ve komşu bahçelerini maskeleyin
 4. NVR'niz destekliyorsa **Akıllı Algılama**'yı etkinleştirin (insan, araç, hayvan)
 
 <Callout type="tip" title="Akıllı Algılama Sahte Alarmları %80+ Azaltır">
-  Yerleşik AI'ya sahip NVR'ler (Reolink, Hikvision AcuSense, Dahua WizSense) hareket olaylarını türe göre filtreleyebilir. Pencerenizin önünden geçen bir araba, insan uyarısını tetiklemez. Bu, kayıtları incelemeyi çok daha hızlı hale getirir.
+  Yerleşik AI'ya sahip NVR'ler (Reolink, Hikvision AcuSense, Dahua WizSense)
+  hareket olaylarını türe göre filtreleyebilir. Pencerenizin önünden geçen bir
+  araba, insan uyarısını tetiklemez. Bu, kayıtları incelemeyi çok daha hızlı
+  hale getirir.
 </Callout>
 
 ### Adım 8: Kayıt Programı
 
 NVR Settings > Storage > Record Schedule'da çok katmanlı bir kayıt stratejisi ayarlayın:
 
-| Bölge | Önerilen program | Neden |
-|---|---|---|
-| Giriş noktaları (kapılar, araba yolu) | Sürekli kayıt | Kritik bölgelerde boşluk yok |
-| Çevre (bahçe, otopark) | Sadece hareket | Depolamadan tasarruf, düşük riskli alanları kapsar |
-| İç mekan (ofis, depo) | Ön kayıtlı hareket | Olay öncesi ve sonrası bağlamı yakalayın |
+| Bölge                                 | Önerilen program   | Neden                                              |
+| ------------------------------------- | ------------------ | -------------------------------------------------- |
+| Giriş noktaları (kapılar, araba yolu) | Sürekli kayıt      | Kritik bölgelerde boşluk yok                       |
+| Çevre (bahçe, otopark)                | Sadece hareket     | Depolamadan tasarruf, düşük riskli alanları kapsar |
+| İç mekan (ofis, depo)                 | Ön kayıtlı hareket | Olay öncesi ve sonrası bağlamı yakalayın           |
 
 Saklama süresini ayarlayın (işletmeler için genellikle 30 gün, ev için 7-14 gün). NVR'nin disk alanını kendi başına yönetmesi için 'Dolduğunda üzerine yaz'ı etkinleştirin.
 
@@ -255,7 +299,9 @@ Yönlendiricinizde WireGuard veya OpenVPN kurun. VPN üzerinden ev veya ofis ağ
 80 veya 443 portlarını asla NVR web arayüzüne yönlendirmeyin. NVR web arayüzünü asla doğrudan genel internete açmayın. Bu, NVR güvenliğini ihlal etmek için en büyük saldırı vektörüdür.
 
 <Callout type="danger" title="NVR'nizi Asla Port Yönlendirmeyin">
-  CISA'nın Bilinen İstismar Edilen Güvenlik Açıkları listesi, Hikvision, Dahua ve diğer büyük markaların NVR web arayüzü güvenlik açıklarını içerir. Bunlar aktif olarak istismar edilmektedir. Uzaktan erişim için VPN kullanın. Nokta.
+  CISA'nın Bilinen İstismar Edilen Güvenlik Açıkları listesi, Hikvision, Dahua
+  ve diğer büyük markaların NVR web arayüzü güvenlik açıklarını içerir. Bunlar
+  aktif olarak istismar edilmektedir. Uzaktan erişim için VPN kullanın. Nokta.
 </Callout>
 
 ### Ek Güvenlik Güçlendirmeleri
@@ -269,31 +315,34 @@ Yönlendiricinizde WireGuard veya OpenVPN kurun. VPN üzerinden ev veya ofis ağ
 
 ## Yaygın Sorun Giderme
 
-| Sorun | En olası neden | Çözüm |
-|---|---|---|
-| Kamera algılanmadı | Arızalı kablo veya PoE portu | Bilinen iyi kabloyla ve farklı PoE portuyla test edin. Kamera LED'ini kontrol edin |
-| Canlı yayın gecikmeli | NVR canlı yayında ana akışı (4K) gösteriyor | Canlı yayın için alt akışa (1080p) geçin. Ana akış yalnızca kayıt için |
-| Kameralar gece yeniden başlıyor | Yetersiz PoE bütçesi | IR LED'ler güç tüketimini artırır. PoE anahtar marjını kontrol edin |
-| Hareket uyarısı spamı | Algılama bölgesi çok geniş | Bölgeleri daraltın, akıllı algılamayı açın, hassasiyeti ~%50'ye düşürün |
-| Uygulama uzaktan bağlanamıyor | NVR'de internet yok veya yanlış saat | NTP senkronizasyonu, bulut hesabı yapılandırması ve internet bağlantısını kontrol edin |
-| Sabit disk hataları | 7/24 hizmette tüketici sürücüsü | Hemen güvenlik kamerası sürücüsüyle değiştirin |
+| Sorun                               | En olası neden                                   | Çözüm                                                                                                 |
+| ----------------------------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| Kamera algılanmadı                  | Arızalı kablo veya PoE portu                     | Bilinen iyi kabloyla ve farklı PoE portuyla test edin. Kamera LED'ini kontrol edin                    |
+| Canlı yayın gecikmeli               | NVR canlı yayında ana akışı (4K) gösteriyor      | Canlı yayın için alt akışa (1080p) geçin. Ana akış yalnızca kayıt için                                |
+| Kameralar gece yeniden başlıyor     | Yetersiz PoE bütçesi                             | IR LED'ler güç tüketimini artırır. PoE anahtar marjını kontrol edin                                   |
+| Hareket uyarısı spamı               | Algılama bölgesi çok geniş                       | Bölgeleri daraltın, akıllı algılamayı açın, hassasiyeti ~%50'ye düşürün                               |
+| Uygulama uzaktan bağlanamıyor       | NVR'de internet yok veya yanlış saat             | NTP senkronizasyonu, bulut hesabı yapılandırması ve internet bağlantısını kontrol edin                |
+| Sabit disk hataları                 | 7/24 hizmette tüketici sürücüsü                  | Hemen güvenlik kamerası sürücüsüyle değiştirin                                                        |
 | Zaman çizelgesinde kayıt boşlukları | Üzerine yazma kapalı veya bant genişliği darlığı | 'Dolduğunda üzerine yaz'ın açık olduğunu kontrol edin. Anahtardan NVR'ye bağlantı hızını kontrol edin |
-| Gece görüşü bulanık | Kamera yansıtıcı yüzeye bakıyor | Kamera açısını duvarlardan, pencerelerden veya parlak yüzeylerden hafifçe uzağa ayarlayın |
+| Gece görüşü bulanık                 | Kamera yansıtıcı yüzeye bakıyor                  | Kamera açısını duvarlardan, pencerelerden veya parlak yüzeylerden hafifçe uzağa ayarlayın             |
 
 ## Depolama Senaryoları: Gerçek Dünya Örnekleri
 
-| Senaryo | Kameralar | Çözünürlük | Kayıt | Saklama | Gerekli depolama |
-|---|---|---|---|---|---|
-| Küçük ev | 4 | 1080p | Sadece hareket | 14 gün | 1 TB |
-| 4K ev | 4 | 4K | Sadece hareket (H.265) | 30 gün | 4 TB |
-| Küçük ofis | 8 | 4MP | Sürekli (H.265) | 30 gün | 12 TB |
-| Perakende mağazası | 16 | 4K | Hibrit sürekli+hareket | 30 gün | 24 TB |
-| Depo | 32 | 4MP | Sürekli (H.265+) | 60 gün | 60 TB (RAID 6) |
+| Senaryo            | Kameralar | Çözünürlük | Kayıt                  | Saklama | Gerekli depolama |
+| ------------------ | --------- | ---------- | ---------------------- | ------- | ---------------- |
+| Küçük ev           | 4         | 1080p      | Sadece hareket         | 14 gün  | 1 TB             |
+| 4K ev              | 4         | 4K         | Sadece hareket (H.265) | 30 gün  | 4 TB             |
+| Küçük ofis         | 8         | 4MP        | Sürekli (H.265)        | 30 gün  | 12 TB            |
+| Perakende mağazası | 16        | 4K         | Hibrit sürekli+hareket | 30 gün  | 24 TB            |
+| Depo               | 32        | 4MP        | Sürekli (H.265+)       | 60 gün  | 60 TB (RAID 6)   |
 
 Dosya sistemi, yoğun günler ve gelecekteki büyüme için tüm depolama hesaplamalarına %20 marj ekleyin.
 
 <Callout type="note" title="H.266 (VVC) Geliyor">
-  Bir sonraki nesil sıkıştırma standardı H.266 (Versatile Video Coding), H.265'e kıyasla yaklaşık %50 ek tasarruf sağlar. 2026 NVR'lerinin bazıları zaten destekliyor. Yeni bir NVR satın alıyorsanız H.266 uyumluluğunu kontrol edin — disk eklemeden depolamayı fiilen iki katına çıkarır.
+  Bir sonraki nesil sıkıştırma standardı H.266 (Versatile Video Coding), H.265'e
+  kıyasla yaklaşık %50 ek tasarruf sağlar. 2026 NVR'lerinin bazıları zaten
+  destekliyor. Yeni bir NVR satın alıyorsanız H.266 uyumluluğunu kontrol edin —
+  disk eklemeden depolamayı fiilen iki katına çıkarır.
 </Callout>
 
 ## Son Kontrol Listesi
@@ -320,52 +369,94 @@ Kurulumu tamamlamadan önce:
 - [ ] Saklama süresi 7 günlük çalışmadan sonra doğrulandı
 
 <Callout type="tip" title="Her Şeyi Belgeleyin">
-  Kamera konumları, IP adresleri, kablo uzunlukları ve yönetici kimlik bilgilerinin basit bir kaydını tutun (bir şifre yöneticisinde, çıkartmada değil). Gelecekteki siz ve sistemi devralacak herhangi bir teknisyen bunu takdir edecektir.
+  Kamera konumları, IP adresleri, kablo uzunlukları ve yönetici kimlik
+  bilgilerinin basit bir kaydını tutun (bir şifre yöneticisinde, çıkartmada
+  değil). Gelecekteki siz ve sistemi devralacak herhangi bir teknisyen bunu
+  takdir edecektir.
 </Callout>
 
 ## Sıkça Sorulan Sorular
 
 <Accordion>
   <AccordionItem>
-    <AccordionTrigger>PoE kamera kablosu en fazla ne kadar uzun olabilir?</AccordionTrigger>
+    <AccordionTrigger>
+      PoE kamera kablosu en fazla ne kadar uzun olabilir?
+    </AccordionTrigger>
     <AccordionContent>
-      IEEE 802.3 standardı, Ethernet kablosunu patch kablolar dahil 100 metre (328 fit) ile sınırlar. Daha uzun mesafeler için PoE genişletici (cihaz başına 100 m ekler, toplam 500 m için 4 cihaza kadar), uzak anahtarlı fiber optik kullanın veya NVR'yi kameralara yaklaştırın.
+      IEEE 802.3 standardı, Ethernet kablosunu patch kablolar dahil 100 metre
+      (328 fit) ile sınırlar. Daha uzun mesafeler için PoE genişletici (cihaz
+      başına 100 m ekler, toplam 500 m için 4 cihaza kadar), uzak anahtarlı
+      fiber optik kullanın veya NVR'yi kameralara yaklaştırın.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>NVR'nin çalışması için internet bağlantısı gerekli mi?</AccordionTrigger>
+    <AccordionTrigger>
+      NVR'nin çalışması için internet bağlantısı gerekli mi?
+    </AccordionTrigger>
     <AccordionContent>
-      Yerel kayıt internet olmadan mükemmel çalışır. İnternet yalnızca uzaktan izleme (uygulama veya web üzerinden), push bildirimleri ve ürün yazılımı güncellemeleri için gereklidir. Güvenlik öncelikse NVR, izole bir ağda tamamen çevrimdışı çalışabilir.
+      Yerel kayıt internet olmadan mükemmel çalışır. İnternet yalnızca uzaktan
+      izleme (uygulama veya web üzerinden), push bildirimleri ve ürün yazılımı
+      güncellemeleri için gereklidir. Güvenlik öncelikse NVR, izole bir ağda
+      tamamen çevrimdışı çalışabilir.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Kamera markalarını NVR'mle karıştırabilir miyim?</AccordionTrigger>
+    <AccordionTrigger>
+      Kamera markalarını NVR'mle karıştırabilir miyim?
+    </AccordionTrigger>
     <AccordionContent>
-      Evet, kameralar ve NVR ONVIF'i destekliyorsa. En iyi sonuçlar için ONVIF Profile T (H.265 akışı, gelişmiş hareket algılama, çift yönlü ses) ve Profile G (geri oynatma protokolleri, depolama araması) destekli kameralar seçin. Bu, Hikvision, Dahua, Reolink ve Amcrest gibi markalar arasında uyumluluğu garanti eder.
+      Evet, kameralar ve NVR ONVIF'i destekliyorsa. En iyi sonuçlar için ONVIF
+      Profile T (H.265 akışı, gelişmiş hareket algılama, çift yönlü ses) ve
+      Profile G (geri oynatma protokolleri, depolama araması) destekli kameralar
+      seçin. Bu, Hikvision, Dahua, Reolink ve Amcrest gibi markalar arasında
+      uyumluluğu garanti eder.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Güvenlik kamerası sabit diskleri ne kadar dayanır?</AccordionTrigger>
+    <AccordionTrigger>
+      Güvenlik kamerası sabit diskleri ne kadar dayanır?
+    </AccordionTrigger>
     <AccordionContent>
-      Güvenlik kamerası sürücüleri (WD Purple, Seagate SkyHawk) 7/24 yazma yükü için tasarlanmıştır ve genellikle 3-5 yıl dayanır. Standart sürücüler, sürekli yazma akışlarını işleyecek ürün yazılımına sahip olmadıklarından sürekli kayıt altında 1-2 yıl içinde arızalanabilir. Ciddi kurulumlar için ilk günden itibaren güvenlik kamerası sürücüleri kullanın.
+      Güvenlik kamerası sürücüleri (WD Purple, Seagate SkyHawk) 7/24 yazma yükü
+      için tasarlanmıştır ve genellikle 3-5 yıl dayanır. Standart sürücüler,
+      sürekli yazma akışlarını işleyecek ürün yazılımına sahip olmadıklarından
+      sürekli kayıt altında 1-2 yıl içinde arızalanabilir. Ciddi kurulumlar için
+      ilk günden itibaren güvenlik kamerası sürücüleri kullanın.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>Sabit disk dolduğunda ne olur?</AccordionTrigger>
     <AccordionContent>
-      Çoğu NVR, disk dolduğunda eski kayıtların üzerine yazar — bu beklenen davranıştır. Ancak bazı NVR'ler varsayılan olarak 'dolduğunda kaydı durdur' ayarıyla gelir. İlk kurulumda bu ayarı her zaman kontrol edin. Diski dolduğu için sessizce kaydı durduran bir sistem tüm amacı boşa çıkarır.
+      Çoğu NVR, disk dolduğunda eski kayıtların üzerine yazar — bu beklenen
+      davranıştır. Ancak bazı NVR'ler varsayılan olarak 'dolduğunda kaydı
+      durdur' ayarıyla gelir. İlk kurulumda bu ayarı her zaman kontrol edin.
+      Diski dolduğu için sessizce kaydı durduran bir sistem tüm amacı boşa
+      çıkarır.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>PoE kameralarım neden gece yeniden başlıyor?</AccordionTrigger>
+    <AccordionTrigger>
+      PoE kameralarım neden gece yeniden başlıyor?
+    </AccordionTrigger>
     <AccordionContent>
-      Bu klasik bir PoE güç bütçesi hatasıdır. Gece IR LED'leri açıldığında her kameranın güç tüketimi keskin bir şekilde artar (bazen iki katına çıkar). PoE anahtarınız veya NVR'niz marj bırakmazsa kameralar güç kaybeder ve yeniden başlar. Çözüm: her kameranın spesifikasyondaki maksimum tüketimini toplayın, %30 marj ekleyin ve PoE anahtarınızın bu sayıyı aştığından emin olun.
+      Bu klasik bir PoE güç bütçesi hatasıdır. Gece IR LED'leri açıldığında her
+      kameranın güç tüketimi keskin bir şekilde artar (bazen iki katına çıkar).
+      PoE anahtarınız veya NVR'niz marj bırakmazsa kameralar güç kaybeder ve
+      yeniden başlar. Çözüm: her kameranın spesifikasyondaki maksimum tüketimini
+      toplayın, %30 marj ekleyin ve PoE anahtarınızın bu sayıyı aştığından emin
+      olun.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>PoE kameralar için Cat5e mi Cat6 mı kullanmalıyım?</AccordionTrigger>
+    <AccordionTrigger>
+      PoE kameralar için Cat5e mi Cat6 mı kullanmalıyım?
+    </AccordionTrigger>
     <AccordionContent>
-      Yeni kurulumlar için Cat6 kullanın. 23 AWG teller, Cat5e 24 AWG'ye kıyasla voltaj düşüşünü azaltır — bu, PoE güç dağıtımı için özellikle 50 metreden uzun hatlarda ve IR LED'li veya ısıtıcılı kameralar için önemlidir. Fiyat farkı fit başına yaklaşık $0,04-0,10'dur, 8 kameralı bir sistem için belki $30-80 ekler. Kablo çekme işçilik maliyetine kıyasla önemsizdir.
+      Yeni kurulumlar için Cat6 kullanın. 23 AWG teller, Cat5e 24 AWG'ye kıyasla
+      voltaj düşüşünü azaltır — bu, PoE güç dağıtımı için özellikle 50 metreden
+      uzun hatlarda ve IR LED'li veya ısıtıcılı kameralar için önemlidir. Fiyat
+      farkı fit başına yaklaşık $0,04-0,10'dur, 8 kameralı bir sistem için belki
+      $30-80 ekler. Kablo çekme işçilik maliyetine kıyasla önemsizdir.
     </AccordionContent>
   </AccordionItem>
 </Accordion>

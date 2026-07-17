@@ -7,6 +7,10 @@
       "environment": {
         "GOOGLE_GSC_CREDENTIALS_PATH": "/home/balasai/agency_initial_stage/domain_port/domain_port/openroutersbs-bf50b4f78202.json"
       }
+    },
+    "pagespeed": {
+      "type": "local",
+      "command": ["npx", "-y", "pagespeed-mcp-server"]
     }
   }
 }

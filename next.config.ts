@@ -1,6 +1,6 @@
-import createNextIntlPlugin from "next-intl/plugin"
-import type { NextConfig } from "next"
 import { withSerwist } from "@serwist/turbopack"
+import type { NextConfig } from "next"
+import createNextIntlPlugin from "next-intl/plugin"
 
 const withNextIntl = createNextIntlPlugin()
 
@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     webpackBuildWorker: true,
+    useTypeScriptCli: true,
     optimizePackageImports: ["@remixicon/react", "@base-ui/react"],
   },
   async redirects() {

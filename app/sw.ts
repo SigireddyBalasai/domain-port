@@ -1,7 +1,8 @@
 /// <reference lib="esnext" />
 /// <reference lib="webworker" />
-import { type PrecacheEntry, Serwist, type SerwistGlobalConfig } from "serwist"
+
 import { defaultCache } from "@serwist/turbopack/worker"
+import { type PrecacheEntry, Serwist, type SerwistGlobalConfig } from "serwist"
 
 declare global {
   interface WorkerGlobalScope extends SerwistGlobalConfig {

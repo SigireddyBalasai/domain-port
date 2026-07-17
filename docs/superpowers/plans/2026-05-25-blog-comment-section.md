@@ -12,17 +12,17 @@
 
 ## File Structure
 
-| File | Responsibility |
-|---|---|
-| `lib/comment-db.ts` | Neon Postgres queries for comments (CRUD, count) |
-| `lib/comment-spam.ts` | Spam detection (honeypot, rate limiting, URL filter) |
-| `app/api/comments/route.ts` | POST endpoint — submit comment |
-| `app/api/comments/[id]/route.ts` | PATCH approve / DELETE reject |
-| `components/blog/comments.tsx` | Server component — renders comment list + form |
-| `components/blog/comment-form.tsx` | Client form component (name, email, comment, honeypot) |
-| `components/blog/comment-form-lazy.tsx` | Lazy wrapper for comment form |
-| `app/[locale]/admin/comments/page.tsx` | Moderation dashboard |
-| `app/[locale]/blog/[slug]/page.tsx` | Modified — add Comments + interactionStatistic |
+| File                                    | Responsibility                                         |
+| --------------------------------------- | ------------------------------------------------------ |
+| `lib/comment-db.ts`                     | Neon Postgres queries for comments (CRUD, count)       |
+| `lib/comment-spam.ts`                   | Spam detection (honeypot, rate limiting, URL filter)   |
+| `app/api/comments/route.ts`             | POST endpoint — submit comment                         |
+| `app/api/comments/[id]/route.ts`        | PATCH approve / DELETE reject                          |
+| `components/blog/comments.tsx`          | Server component — renders comment list + form         |
+| `components/blog/comment-form.tsx`      | Client form component (name, email, comment, honeypot) |
+| `components/blog/comment-form-lazy.tsx` | Lazy wrapper for comment form                          |
+| `app/[locale]/admin/comments/page.tsx`  | Moderation dashboard                                   |
+| `app/[locale]/blog/[slug]/page.tsx`     | Modified — add Comments + interactionStatistic         |
 
 ### Task 1: Database module — `lib/comment-db.ts`
 
@@ -208,27 +208,15 @@ export async function POST(request: Request) {
   const { postSlug, locale, authorName, authorEmail, content, website } = body
 
   if (checkHoneypot(website)) {
-    return NextResponse.json(
-      { error: "Comment rejected." },
-      { status: 400 }
-    )
+    return NextResponse.json({ error: "Comment rejected." }, { status: 400 })
   }
 
-  if (
-    typeof postSlug !== "string" ||
-    postSlug.trim().length === 0
-  ) {
-    return NextResponse.json(
-      { error: "Invalid post slug." },
-      { status: 400 }
-    )
+  if (typeof postSlug !== "string" || postSlug.trim().length === 0) {
+    return NextResponse.json({ error: "Invalid post slug." }, { status: 400 })
   }
 
   if (typeof locale !== "string" || !locales.includes(locale)) {
-    return NextResponse.json(
-      { error: "Invalid locale." },
-      { status: 400 }
-    )
+    return NextResponse.json({ error: "Invalid locale." }, { status: 400 })
   }
 
   if (
@@ -242,20 +230,14 @@ export async function POST(request: Request) {
     )
   }
 
-  if (
-    typeof authorEmail !== "string" ||
-    !validateEmail(authorEmail)
-  ) {
+  if (typeof authorEmail !== "string" || !validateEmail(authorEmail)) {
     return NextResponse.json(
       { error: "Please enter a valid email address." },
       { status: 400 }
     )
   }
 
-  if (
-    typeof content !== "string" ||
-    content.trim().length < 10
-  ) {
+  if (typeof content !== "string" || content.trim().length < 10) {
     return NextResponse.json(
       { error: "Comment must be at least 10 characters." },
       { status: 400 }
@@ -360,7 +342,9 @@ export function CommentForm({
   const [authorName, setAuthorName] = useState("")
   const [authorEmail, setAuthorEmail] = useState("")
   const [content, setContent] = useState("")
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle")
   const [errorMessage, setErrorMessage] = useState("")
 
   const handleSubmit = async (e: FormEvent): Promise<void> => {
@@ -369,9 +353,8 @@ export function CommentForm({
     setErrorMessage("")
 
     const form = e.currentTarget as HTMLFormElement
-    const website = (
-      form.elements.namedItem("website") as HTMLInputElement
-    )?.value
+    const website = (form.elements.namedItem("website") as HTMLInputElement)
+      ?.value
 
     try {
       const res = await fetch("/api/comments", {
@@ -414,10 +397,7 @@ export function CommentForm({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <div
-        aria-hidden="true"
-        className="absolute -left-[9999px] -top-[9999px]"
-      >
+      <div aria-hidden="true" className="absolute -left-[9999px] -top-[9999px]">
         <label htmlFor="website">Website</label>
         <input
           id="website"
@@ -430,10 +410,7 @@ export function CommentForm({
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-1.5">
-          <label
-            htmlFor="author-name"
-            className="text-sm font-medium"
-          >
+          <label htmlFor="author-name" className="text-sm font-medium">
             Name <span className="text-destructive">*</span>
           </label>
           <Input
@@ -447,10 +424,7 @@ export function CommentForm({
           />
         </div>
         <div className="space-y-1.5">
-          <label
-            htmlFor="author-email"
-            className="text-sm font-medium"
-          >
+          <label htmlFor="author-email" className="text-sm font-medium">
             Email <span className="text-destructive">*</span>
           </label>
           <Input
@@ -464,10 +438,7 @@ export function CommentForm({
         </div>
       </div>
       <div className="space-y-1.5">
-        <label
-          htmlFor="comment-content"
-          className="text-sm font-medium"
-        >
+        <label htmlFor="comment-content" className="text-sm font-medium">
           Comment <span className="text-destructive">*</span>
         </label>
         <textarea
@@ -550,9 +521,7 @@ export async function Comments({
 
   return (
     <section className="mt-16 border-t border-border pt-10">
-      <h2 className="text-2xl font-bold">
-        Comments ({count})
-      </h2>
+      <h2 className="text-2xl font-bold">Comments ({count})</h2>
       {comments.length > 0 && (
         <div className="mt-8 space-y-6">
           {comments.map((comment) => {
@@ -566,15 +535,15 @@ export async function Comments({
                     {comment.author_name}
                   </span>
                   <span aria-hidden="true">·</span>
-                  <time
-                    className="dt-published"
-                    dateTime={comment.created_at}
-                  >
-                    {new Date(comment.created_at).toLocaleDateString(undefined, {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                    })}
+                  <time className="dt-published" dateTime={comment.created_at}>
+                    {new Date(comment.created_at).toLocaleDateString(
+                      undefined,
+                      {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      }
+                    )}
                   </time>
                 </div>
                 <div className="e-content mt-3 text-sm leading-relaxed">
@@ -608,6 +577,7 @@ git commit -m "feat: add comments server component with h-entry microformat"
 - [ ] **Add the Comments import**
 
 After line 26 (`import { JsonLd } from "@/lib/json-ld"`), add:
+
 ```ts
 import { Comments } from "@/components/blog/comments"
 ```
@@ -615,6 +585,7 @@ import { Comments } from "@/components/blog/comments"
 - [ ] **Add interactionStatistic to the BlogPosting JSON-LD**
 
 In the BlogPosting schema (around line 186), add `interactionStatistic` after `dateModified`:
+
 ```json
 datePublished: post.publishedAt,
 dateModified: post.updatedAt ?? post.publishedAt,
@@ -665,6 +636,7 @@ import type {
 ```
 
 And in the BlogPosting object, add:
+
 ```ts
 interactionStatistic: [
   {
@@ -676,22 +648,26 @@ interactionStatistic: [
 ```
 
 But wait, we don't have the comment count at render time since the component is async. We could either:
+
 1. Fetch the count in the page component and pass it
 2. Use a placeholder value (e.g., 0) and let Google pick it up later
 
-Actually, the page component is server-side. We could call `getCommentCount` in the page component. But that would make the page dynamic. 
+Actually, the page component is server-side. We could call `getCommentCount` in the page component. But that would make the page dynamic.
 
 Actually, let me think about this differently. The comment count changes frequently (each time a comment is approved). So we should:
+
 - Not make the entire page dynamic just for comment count
 - Either use ISR or keep it static and update via revalidation
 
 Actually, looking at how the page works:
+
 1. It's statically generated at build time via `generateStaticParams`
 2. Comments component is async - it fetches from Neon at request time
 
 Since `Comments` is a server component, and Next.js App Router supports mixed static + dynamic, the page itself is static but the Comments component makes a dynamic fetch at request time.
 
 For the `interactionStatistic`, we need the count at page render time. We could:
+
 - Add the interactionStatistic dynamically (but that would make the JSON-LD partial)
 - Use a separate client component to add interactionStatistic
 
@@ -720,6 +696,7 @@ Actually, let me look at this from a practical standpoint:
 3. This means no pre-built HTML - server must render on each request
 
 For a blog site, this is actually fine since:
+
 - It's a small site
 - Comments add dynamic content anyway
 - We can add ISR (revalidate) later if needed
@@ -752,16 +729,21 @@ import { getCommentCount } from "@/lib/comment-db"
 const commentCount = await getCommentCount(slug, post.locale)
 
 // In BlogPosting JSON-LD:
-interactionStatistic: [
+interactionStatistic: ([
   {
     "@type": "InteractionCounter",
     interactionType: "https://schema.org/CommentAction",
     userInteractionCount: commentCount,
   },
 ],
-
-// In the JSX:
-<Comments postSlug={slug} locale={post.locale} initialCount={commentCount} />
+  (
+    // In the JSX:
+    <Comments
+      postSlug={slug}
+      locale={post.locale}
+      initialCount={commentCount}
+    />
+  ))
 ```
 
 Actually, let me just pass the count in the Comments component. Even simpler.
@@ -769,6 +751,7 @@ Actually, let me just pass the count in the Comments component. Even simpler.
 OK, let me write the plan step properly.
 
 For the page modification, I need to:
+
 1. Add import for `getCommentCount` and `Comments`
 2. Add `commentCount` variable after finding the post
 3. Add `interactionStatistic` to BlogPosting schema
@@ -777,12 +760,14 @@ For the page modification, I need to:
 Let me write the actual code modifications.
 
 For the import, it should be added after line 25:
+
 ```ts
 import { Comments } from "@/components/blog/comments"
 import { getCommentCount } from "@/lib/comment-db"
 ```
 
 After line 147 (`const isFallback = post.locale !== locale`), add:
+
 ```ts
 const commentCount = await getCommentCount(slug, locale)
 ```
@@ -790,6 +775,7 @@ const commentCount = await getCommentCount(slug, locale)
 Then in the BlogPosting JSON-LD, add `interactionStatistic` after `dateModified`.
 
 Then after line 459 (after `</ShareButtons>`), add:
+
 ```tsx
 <Comments postSlug={slug} locale={locale} />
 ```
@@ -843,17 +829,17 @@ Let me finalize the plan.<｜end▁of▁thinking｜>
 
 ## File Structure
 
-| File | Responsibility |
-|---|---|
-| `lib/comment-db.ts` | Neon Postgres queries (CRUD, count) |
-| `lib/comment-spam.ts` | Spam detection (honeypot, rate limit, URL filter) |
-| `app/api/comments/route.ts` | POST endpoint — submit comment |
-| `app/api/comments/[id]/route.ts` | PATCH approve / DELETE reject |
-| `components/blog/comments.tsx` | Server component — renders comment list + form |
-| `components/blog/comment-form.tsx` | Client form (name, email, comment, honeypot) |
-| `components/blog/comment-form-lazy.tsx` | Lazy wrapper for comment form |
-| `app/[locale]/admin/comments/page.tsx` | Moderation dashboard |
-| `app/[locale]/blog/[slug]/page.tsx` | Modified — add Comments + interactionStatistic |
+| File                                    | Responsibility                                    |
+| --------------------------------------- | ------------------------------------------------- |
+| `lib/comment-db.ts`                     | Neon Postgres queries (CRUD, count)               |
+| `lib/comment-spam.ts`                   | Spam detection (honeypot, rate limit, URL filter) |
+| `app/api/comments/route.ts`             | POST endpoint — submit comment                    |
+| `app/api/comments/[id]/route.ts`        | PATCH approve / DELETE reject                     |
+| `components/blog/comments.tsx`          | Server component — renders comment list + form    |
+| `components/blog/comment-form.tsx`      | Client form (name, email, comment, honeypot)      |
+| `components/blog/comment-form-lazy.tsx` | Lazy wrapper for comment form                     |
+| `app/[locale]/admin/comments/page.tsx`  | Moderation dashboard                              |
+| `app/[locale]/blog/[slug]/page.tsx`     | Modified — add Comments + interactionStatistic    |
 
 ### Task 1: Database module — `lib/comment-db.ts`
 
@@ -1050,7 +1036,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid locale." }, { status: 400 })
   }
 
-  if (typeof authorName !== "string" || authorName.trim().length < 2 || containsUrl(authorName)) {
+  if (
+    typeof authorName !== "string" ||
+    authorName.trim().length < 2 ||
+    containsUrl(authorName)
+  ) {
     return NextResponse.json(
       { error: "Please enter a valid name." },
       { status: 400 }
@@ -1169,7 +1159,9 @@ export function CommentForm({
   const [authorName, setAuthorName] = useState("")
   const [authorEmail, setAuthorEmail] = useState("")
   const [content, setContent] = useState("")
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle")
   const [errorMessage, setErrorMessage] = useState("")
 
   const handleSubmit = async (e: FormEvent): Promise<void> => {
@@ -1178,9 +1170,8 @@ export function CommentForm({
     setErrorMessage("")
 
     const form = e.currentTarget as HTMLFormElement
-    const website = (
-      form.elements.namedItem("website") as HTMLInputElement
-    )?.value
+    const website = (form.elements.namedItem("website") as HTMLInputElement)
+      ?.value
 
     try {
       const res = await fetch("/api/comments", {
@@ -1347,9 +1338,7 @@ export async function Comments({
 
   return (
     <section className="mt-16 border-t border-border pt-10" id="comments">
-      <h2 className="text-2xl font-bold">
-        Comments ({count})
-      </h2>
+      <h2 className="text-2xl font-bold">Comments ({count})</h2>
       {comments.length > 0 && (
         <div className="mt-8 space-y-6">
           {comments.map((comment) => {
@@ -1363,15 +1352,15 @@ export async function Comments({
                     {comment.author_name}
                   </span>
                   <span aria-hidden="true">·</span>
-                  <time
-                    className="dt-published"
-                    dateTime={comment.created_at}
-                  >
-                    {new Date(comment.created_at).toLocaleDateString(undefined, {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                    })}
+                  <time className="dt-published" dateTime={comment.created_at}>
+                    {new Date(comment.created_at).toLocaleDateString(
+                      undefined,
+                      {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      }
+                    )}
                   </time>
                 </div>
                 <div className="e-content mt-3 text-sm leading-relaxed">
@@ -1403,6 +1392,7 @@ git commit -m "feat: add comments server component with h-entry microformat"
 **Modify:** `app/[locale]/blog/[slug]/page.tsx`
 
 Changes:
+
 1. Add imports for `Comments` and `getCommentCount`
 2. Add `InteractionCounter` to schema-dts imports
 3. Fetch comment count after post lookup
@@ -1412,6 +1402,7 @@ Changes:
 - [ ] **Add `InteractionCounter` to the schema-dts import block (line 7-23)**
 
 Replace the import block to add `InteractionCounter`:
+
 ```ts
 import type {
   Article,
@@ -1436,6 +1427,7 @@ import type {
 - [ ] **Add imports for Comments and getCommentCount**
 
 After line 26 (`import { JsonLd } from "@/lib/json-ld"`):
+
 ```ts
 import { Comments } from "@/components/blog/comments"
 import { getCommentCount } from "@/lib/comment-db"
@@ -1444,6 +1436,7 @@ import { getCommentCount } from "@/lib/comment-db"
 - [ ] **Fetch comment count**
 
 After line 147 (`const isFallback = post.locale !== locale`):
+
 ```ts
 const commentCount = await getCommentCount(slug, locale)
 ```
@@ -1451,6 +1444,7 @@ const commentCount = await getCommentCount(slug, locale)
 - [ ] **Add interactionStatistic to BlogPosting JSON-LD**
 
 After line 185 (`dateModified: post.updatedAt ?? post.publishedAt,`):
+
 ```ts
 interactionStatistic: [
   {
@@ -1464,6 +1458,7 @@ interactionStatistic: [
 - [ ] **Add Comments component after ShareButtons**
 
 After line 459 (`</ShareButtons>`):
+
 ```tsx
 <Comments postSlug={slug} locale={locale} />
 ```
@@ -1643,6 +1638,7 @@ git commit -m "feat: add comment moderation dashboard"
 ```bash
 npx tsc --noEmit
 ```
+
 Expected: No type errors.
 
 - [ ] **Run lint**
@@ -1650,6 +1646,7 @@ Expected: No type errors.
 ```bash
 npx next lint
 ```
+
 Expected: No lint errors.
 
 - [ ] **Commit any fixes**

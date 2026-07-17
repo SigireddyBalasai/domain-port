@@ -105,7 +105,7 @@ export default function LoginPage(): JSX.Element {
                 Email
               </label>
               <input
-                required
+                required={true}
                 id="email"
                 type="email"
                 value={email}
@@ -124,7 +124,7 @@ export default function LoginPage(): JSX.Element {
                 Password
               </label>
               <input
-                required
+                required={true}
                 id="password"
                 type="password"
                 value={password}
@@ -154,7 +154,7 @@ export default function LoginPage(): JSX.Element {
                 TOTP Code
               </label>
               <input
-                required
+                required={true}
                 ref={totpRef}
                 id="totp"
                 type="text"

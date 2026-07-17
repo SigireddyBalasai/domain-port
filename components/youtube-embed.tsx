@@ -31,9 +31,10 @@ export function YouTubeEmbed({
     >
       {isLoaded ? (
         <iframe
-          allowFullScreen
+          allowFullScreen={true}
           src={src}
           title={title}
+          sandbox="allow-scripts allow-presentation"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           style={{
             position: "absolute",

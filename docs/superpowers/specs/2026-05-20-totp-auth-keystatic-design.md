@@ -99,13 +99,13 @@ ADMIN_EMAIL=<admin email address>
 
 ## Files to Create/Modify
 
-| File | Action | Purpose |
-|------|--------|---------|
-| `lib/auth.ts` | Create | Better Auth server instance |
-| `app/api/auth/[...all]/route.ts` | Create | Auth API handler |
-| `app/api/auth/totp-verify/route.ts` | Create | Custom TOTP verification endpoint |
-| `middleware.ts` | Create | Route protection |
-| `app/keystatic/login/page.tsx` | Create | Login UI |
-| `app/api/keystatic/[...params]/route.ts` | Modify | Session validation via middleware |
-| `.env` | Modify | Add `BETTER_AUTH_SECRET`, `TOTP_SECRET`, `ADMIN_EMAIL` |
-| `package.json` | Modify | Add `better-auth`, `otpauth` |
+| File                                     | Action | Purpose                                                |
+| ---------------------------------------- | ------ | ------------------------------------------------------ |
+| `lib/auth.ts`                            | Create | Better Auth server instance                            |
+| `app/api/auth/[...all]/route.ts`         | Create | Auth API handler                                       |
+| `app/api/auth/totp-verify/route.ts`      | Create | Custom TOTP verification endpoint                      |
+| `middleware.ts`                          | Create | Route protection                                       |
+| `app/keystatic/login/page.tsx`           | Create | Login UI                                               |
+| `app/api/keystatic/[...params]/route.ts` | Modify | Session validation via middleware                      |
+| `.env`                                   | Modify | Add `BETTER_AUTH_SECRET`, `TOTP_SECRET`, `ADMIN_EMAIL` |
+| `package.json`                           | Modify | Add `better-auth`, `otpauth`                           |

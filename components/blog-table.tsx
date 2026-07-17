@@ -99,7 +99,7 @@ export function BlogTable({
                   } & React.ThHTMLAttributes<HTMLTableCellElement>
                 >
 
-                let ariaSort: "ascending" | "descending" | undefined = undefined
+                let ariaSort: "ascending" | "descending" | undefined
                 let sortIcon = ""
 
                 if (isActive) {
@@ -151,7 +151,7 @@ export function BlogTable({
           const numA = parseFloat(aVal)
           const numB = parseFloat(bVal)
           const cmp =
-            !isNaN(numA) && !isNaN(numB)
+            !Number.isNaN(numA) && !Number.isNaN(numB)
               ? numA - numB
               : aVal.localeCompare(bVal)
 
@@ -163,7 +163,7 @@ export function BlogTable({
 
       return c
     })
-  }, [childrenArray, sort])
+  }, [childrenArray, sort, handleSort])
 
   return (
     <div className="relative w-full overflow-x-auto">

@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server"
 import { createComment } from "@/lib/comment-db"
 import {
-  checkRateLimit,
   checkHoneypot,
+  checkRateLimit,
   containsUrl,
   validateEmail,
 } from "@/lib/comment-spam"

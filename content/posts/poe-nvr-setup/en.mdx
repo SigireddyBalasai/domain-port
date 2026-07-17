@@ -5,7 +5,16 @@ description: "Complete 2026 PoE NVR setup guide for homes and small businesses �
 author: "CCTV Name Author"
 updatedAt: "2026-05-25"
 image: "/og.svg"
-tags: ["cctv", "nvr", "poe", "security camera", "ip camera", "surveillance", "network video recorder"]
+tags:
+  [
+    "cctv",
+    "nvr",
+    "poe",
+    "security camera",
+    "ip camera",
+    "surveillance",
+    "network video recorder",
+  ]
 postType: "howto"
 howTo:
   - name: "Plan Your System Layout"
@@ -44,7 +53,10 @@ A PoE (Power over Ethernet) NVR system is the backbone of modern IP surveillance
 This guide walks through every step — from cable selection and power budgeting to NVR configuration and security hardening — based on real-world installation practices and 2026 hardware standards.
 
 <Callout type="info" title="What Changed in 2026">
-  24 TB surveillance drives, H.266 (VVC) compression in consumer NVRs, and mature Matter camera support mean storage costs are lower and compatibility is better than ever. H.265+ smart codecs now deliver 50% storage savings over H.264, and ONVIF Profile T/G adoption lets you mix brands freely.
+  24 TB surveillance drives, H.266 (VVC) compression in consumer NVRs, and
+  mature Matter camera support mean storage costs are lower and compatibility is
+  better than ever. H.265+ smart codecs now deliver 50% storage savings over
+  H.264, and ONVIF Profile T/G adoption lets you mix brands freely.
 </Callout>
 
 ## How do you plan your PoE NVR system?
@@ -55,32 +67,40 @@ Every successful installation starts with a plan. Rushing to buy hardware withou
 
 If you are deciding between NVR and DVR, read our [NVR vs DVR comparison](/blog/nvr-vs-dvr) first. You have two primary options for connecting cameras:
 
-| Architecture | Best For | Tradeoffs |
-|---|---|---|
-| NVR with built-in PoE ports | Beginners, small installs (4-8 cameras) | Locked into port count and power budget |
-| PoE switch + separate NVR | Larger installs, flexible layouts | More components, but easier to scale and replace individually |
+| Architecture                | Best For                                | Tradeoffs                                                     |
+| --------------------------- | --------------------------------------- | ------------------------------------------------------------- |
+| NVR with built-in PoE ports | Beginners, small installs (4-8 cameras) | Locked into port count and power budget                       |
+| PoE switch + separate NVR   | Larger installs, flexible layouts       | More components, but easier to scale and replace individually |
 
 <Callout type="tip" title="Pro Tip">
-  Always buy an NVR with at least **2x the channel count** of your current camera plan. A 4-camera install should use an 8-channel NVR. Expansion always happens, and upgrading an NVR is more expensive than buying one size up from the start.
+  Always buy an NVR with at least **2x the channel count** of your current
+  camera plan. A 4-camera install should use an 8-channel NVR. Expansion always
+  happens, and upgrading an NVR is more expensive than buying one size up from
+  the start.
 </Callout>
 
 ### Cable Selection
 
 The cable is the single most important physical component. A poor cable choice causes intermittent reboots, voltage drop, and data loss that are maddening to diagnose.
 
-| Cable Type | Best Use | Why |
-|---|---|---|---|
-| Cat5e | 1080p cameras, runs under 50 m | Cheapest, but 24 AWG conductors mean higher resistance |
-| Cat6 | Most modern IP cameras | 23 AWG conductors reduce voltage drop; recommended baseline for any new install |
-| Cat6A | 4K cameras, runs over 70 m, high-wattage PTZ | Thickest conductors, best heat dissipation, supports PoE++ |
+| Cable Type | Best Use                                     | Why                                                                             |
+| ---------- | -------------------------------------------- | ------------------------------------------------------------------------------- |
+| Cat5e      | 1080p cameras, runs under 50 m               | Cheapest, but 24 AWG conductors mean higher resistance                          |
+| Cat6       | Most modern IP cameras                       | 23 AWG conductors reduce voltage drop; recommended baseline for any new install |
+| Cat6A      | 4K cameras, runs over 70 m, high-wattage PTZ | Thickest conductors, best heat dissipation, supports PoE++                      |
 
 For a comprehensive guide on cabling including termination, conduit, and surge protection, see our [CCTV Cabling Guide](/blog/cctv-cabling-guide).
 
 <Callout type="warning" title="Avoid Copper-Clad Aluminum (CCA)">
-  CCA cable is cheaper but has significantly higher resistance than solid copper. It causes voltage drop, heat buildup, and intermittent camera resets — especially when IR LEDs activate at night. For any professional install, insist on **solid copper** from a reputable brand (Monoprice, Cable Matters, Belden).
+  CCA cable is cheaper but has significantly higher resistance than solid
+  copper. It causes voltage drop, heat buildup, and intermittent camera resets —
+  especially when IR LEDs activate at night. For any professional install,
+  insist on **solid copper** from a reputable brand (Monoprice, Cable Matters,
+  Belden).
 </Callout>
 
 **Key cabling rules:**
+
 - Maximum run: 100 meters (328 feet) including patch cords
 - Bend radius: minimum 5 cm — sharp kinks kill signal quality
 - Separation from AC power: minimum 30 cm to avoid interference
@@ -93,18 +113,22 @@ For camera recommendations that work well with PoE NVR systems, see our [Best Po
 
 Understanding PoE standards prevents the most common installation failure: cameras that work during the day but reboot at night when IR LEDs draw maximum power.
 
-| Standard | Power per Port | Typical Camera Draw |
-|---|---|---|
-| IEEE 802.3af (PoE) | 15.4 W | Fixed 1080p/4MP cameras (4-8 W) |
-| IEEE 802.3at (PoE+) | 30 W | 4K cameras, indoor PTZ (8-15 W) |
-| IEEE 802.3bt Type 3 (PoE++) | 60 W | Outdoor PTZ with heater (20-40 W) |
-| IEEE 802.3bt Type 4 (PoE++) | 100 W | Multi-sensor cameras, high-power PTZ |
+| Standard                    | Power per Port | Typical Camera Draw                  |
+| --------------------------- | -------------- | ------------------------------------ |
+| IEEE 802.3af (PoE)          | 15.4 W         | Fixed 1080p/4MP cameras (4-8 W)      |
+| IEEE 802.3at (PoE+)         | 30 W           | 4K cameras, indoor PTZ (8-15 W)      |
+| IEEE 802.3bt Type 3 (PoE++) | 60 W           | Outdoor PTZ with heater (20-40 W)    |
+| IEEE 802.3bt Type 4 (PoE++) | 100 W          | Multi-sensor cameras, high-power PTZ |
 
 <Callout type="danger" title="The Nighttime Gotcha">
-  A camera that draws 5 W during the day can spike to 12 W at night when its IR LEDs turn on. Always budget using the **maximum power draw** from the datasheet, not the typical value. Then add **30% headroom** on your PoE switch budget.
+  A camera that draws 5 W during the day can spike to 12 W at night when its IR
+  LEDs turn on. Always budget using the **maximum power draw** from the
+  datasheet, not the typical value. Then add **30% headroom** on your PoE switch
+  budget.
 </Callout>
 
 Power budget example — 8 cameras at 12 W peak each:
+
 - Total load: 96 W
 - With 30% headroom: **125 W minimum PoE budget**
 - Recommended: A 16-port PoE+ switch rated for 150+ W
@@ -121,12 +145,15 @@ Storage is where most systems silently under-deliver. A system sized for 30 days
 | 4K (8MP) | 30-50 GB |
 
 **Real-world math for a 4-camera 4K system, 30-day retention:**
+
 - Continuous recording: 4 × 40 GB × 30 = 4.8 TB → buy a 6 TB drive
 - Motion-only recording: 4 × 12 GB × 30 = 1.44 TB → a 2 TB drive works
 - Hybrid (continuous low-res, motion high-res): best of both worlds
 
 <Callout type="tip" title="Storage Recommendation">
-  For most 4-camera 4K home systems: a 4 TB surveillance-rated drive with H.265 and motion-only recording gives 30 days of history. For 8 cameras at 4K with continuous recording, step up to 10-12 TB.
+  For most 4-camera 4K home systems: a 4 TB surveillance-rated drive with H.265
+  and motion-only recording gives 30 days of history. For 8 cameras at 4K with
+  continuous recording, step up to 10-12 TB.
 </Callout>
 
 **Always use surveillance-rated drives:**
@@ -155,7 +182,9 @@ Standard desktop drives fail at 2-3x the rate of surveillance drives under conti
 Place the NVR in a secure, climate-controlled location with good ventilation. Avoid stacking it with other electronics. Leave at least 2 cm of space around it for airflow. Connect it to your router via the LAN port using a short Ethernet cable.
 
 <Callout type="note" title="UPS Recommended">
-  A UPS battery backup for the NVR, router, and PoE switch ensures your system keeps recording during power outages. This is especially important for businesses.
+  A UPS battery backup for the NVR, router, and PoE switch ensures your system
+  keeps recording during power outages. This is especially important for
+  businesses.
 </Callout>
 
 ### Step 2: Run and Terminate Cables
@@ -169,7 +198,11 @@ Run cables from each camera location back to the NVR or PoE switch location. Use
 5. For runs over 70 meters, use Cat6 or Cat6A to minimize voltage drop
 
 <Callout type="warning" title="Cable Bundle Heat">
-  When running multiple PoE cables in a bundle or conduit, heat builds up from resistance in the conductors. For bundles of 10+ cables, use 23 AWG Cat6 or Cat6A and avoid filling conduit beyond 40% capacity. Unshielded (UTP) Cat6 is fine for most residential and office environments — only use shielded (STP) near large motors or industrial equipment.
+  When running multiple PoE cables in a bundle or conduit, heat builds up from
+  resistance in the conductors. For bundles of 10+ cables, use 23 AWG Cat6 or
+  Cat6A and avoid filling conduit beyond 40% capacity. Unshielded (UTP) Cat6 is
+  fine for most residential and office environments — only use shielded (STP)
+  near large motors or industrial equipment.
 </Callout>
 
 ### Step 3: Mount Cameras
@@ -177,6 +210,7 @@ Run cables from each camera location back to the NVR or PoE switch location. Use
 Mount each camera at the planned location, ensuring it is level and secure. Outdoor cameras need weatherproof connections — use dielectric grease on the RJ45 connector and a waterproof boot if the camera didn't ship with one.
 
 **Camera placement tips:**
+
 - Cover all entry points first (doors, ground-floor windows, garage)
 - Avoid direct glare from windows or bright lights
 - Position cameras 2.5-3 meters high for optimal face capture
@@ -187,11 +221,13 @@ Mount each camera at the planned location, ensuring it is level and secure. Outd
 Plug each Ethernet cable into a PoE port on the NVR or PoE switch. The camera receives both power and data through this single connection. The camera will boot within 30-60 seconds.
 
 **For NVRs with built-in PoE ports:**
+
 - Plug directly into the labeled PoE ports on the back of the NVR
 - Cameras are auto-detected within 30-60 seconds
 - No additional configuration needed
 
 **For PoE switch + NVR setups:**
+
 - Connect cameras to the PoE switch
 - Ensure the switch and NVR are on the same local network
 - In the NVR menu, go to Camera > Add Cameras > Auto Search or ONVIF Search
@@ -207,7 +243,10 @@ Power on the NVR and connect a monitor via HDMI. The setup wizard will guide you
 5. **Enable overwrite** — confirm the NVR will overwrite old footage when the drive is full
 
 <Callout type="danger" title="Default Credentials Are a Liability">
-  Many NVRs ship with default credentials like admin/admin. Change these immediately. The CISA Known Exploited Vulnerabilities catalog includes multiple NVR web UI vulnerabilities from 2021-2024 that affect retail units shipped with outdated firmware. Do not make yourself an easy target.
+  Many NVRs ship with default credentials like admin/admin. Change these
+  immediately. The CISA Known Exploited Vulnerabilities catalog includes
+  multiple NVR web UI vulnerabilities from 2021-2024 that affect retail units
+  shipped with outdated firmware. Do not make yourself an easy target.
 </Callout>
 
 ## How do you configure cameras and recording?
@@ -226,24 +265,27 @@ Access each camera's settings through the NVR interface:
 Default motion detection is almost always too sensitive. Every passing leaf, shadow, or headlight triggers an alert.
 
 For each camera:
+
 1. Open Camera Settings > Motion Detection
 2. Set sensitivity to approximately 50%
 3. Define motion detection zones — mask out trees, busy roads, and neighbor yards
 4. Enable **smart detection** if your NVR supports it (Person, Vehicle, Animal)
 
 <Callout type="tip" title="Smart Detection Reduces False Alarms by 80%+">
-  NVRs with onboard AI (Reolink, Hikvision AcuSense, Dahua WizSense) can filter motion events by type. A car driving past your window won't trigger a person alert. This makes reviewing footage vastly faster.
+  NVRs with onboard AI (Reolink, Hikvision AcuSense, Dahua WizSense) can filter
+  motion events by type. A car driving past your window won't trigger a person
+  alert. This makes reviewing footage vastly faster.
 </Callout>
 
 ### Step 8: Recording Schedule
 
 Set up a tiered recording strategy in NVR Settings > Storage > Recording Schedule:
 
-| Zone | Recommended Schedule | Why |
-|---|---|---|
-| Entry points (doors, driveway) | Continuous recording | No gaps in critical areas |
-| Perimeter (yard, parking) | Motion-triggered only | Saves storage while covering low-risk areas |
-| Interior (office, warehouse) | Motion-triggered with pre-record | Capture context before and after events |
+| Zone                           | Recommended Schedule             | Why                                         |
+| ------------------------------ | -------------------------------- | ------------------------------------------- |
+| Entry points (doors, driveway) | Continuous recording             | No gaps in critical areas                   |
+| Perimeter (yard, parking)      | Motion-triggered only            | Saves storage while covering low-risk areas |
+| Interior (office, warehouse)   | Motion-triggered with pre-record | Capture context before and after events     |
 
 Set your retention period (typically 30 days for businesses, 7-14 days for homes). Enable "Overwrite when full" so the NVR self-manages disk space.
 
@@ -260,7 +302,9 @@ Set up WireGuard or OpenVPN on your router. Connect to your home or office netwo
 Never forward ports 80 or 443 to your NVR's web interface. Never expose the NVR's web UI directly to the public internet. This is the single largest attack vector for NVR compromise.
 
 <Callout type="danger" title="Never Port-Forward Your NVR">
-  The CISA Known Exploited Vulnerabilities list includes NVR web UI vulnerabilities from Hikvision, Dahua, and other major brands. These are actively exploited. Use VPN for remote access. Period.
+  The CISA Known Exploited Vulnerabilities list includes NVR web UI
+  vulnerabilities from Hikvision, Dahua, and other major brands. These are
+  actively exploited. Use VPN for remote access. Period.
 </Callout>
 
 ### Additional Security Hardening
@@ -274,31 +318,34 @@ Never forward ports 80 or 443 to your NVR's web interface. Never expose the NVR'
 
 ## What are common PoE NVR issues and fixes?
 
-| Problem | Most Likely Cause | Fix |
-|---|---|---|
-| Camera not detected | Bad cable or PoE port | Test with a known-good cable and different PoE port. Check the camera LED |
-| Live view delayed or laggy | NVR showing main stream (4K) on live view | Switch to sub-stream (1080p) for live view. Main stream is for recording only |
-| Cameras reboot at night | Undersized PoE budget | IR LED activation increases power draw. Validate your PoE switch has headroom |
-| Motion alert spam | Detection zone too broad | Narrow zones, enable smart detection, reduce sensitivity to ~50% |
-| App cannot connect remotely | NVR has no internet or time is wrong | Verify NTP sync, cloud account configuration, and internet connectivity |
-| Hard drive errors | Consumer drive in 24/7 duty | Replace with surveillance-rated drive immediately |
-| Footage gaps on timeline | Overwrite disabled or bandwidth bottleneck | Check that "overwrite when full" is enabled. Verify uplink speed from switch to NVR |
-| Night vision washed out | Camera pointed at reflective surface | Slightly adjust camera angle away from walls, windows, or glossy surfaces |
+| Problem                     | Most Likely Cause                          | Fix                                                                                 |
+| --------------------------- | ------------------------------------------ | ----------------------------------------------------------------------------------- |
+| Camera not detected         | Bad cable or PoE port                      | Test with a known-good cable and different PoE port. Check the camera LED           |
+| Live view delayed or laggy  | NVR showing main stream (4K) on live view  | Switch to sub-stream (1080p) for live view. Main stream is for recording only       |
+| Cameras reboot at night     | Undersized PoE budget                      | IR LED activation increases power draw. Validate your PoE switch has headroom       |
+| Motion alert spam           | Detection zone too broad                   | Narrow zones, enable smart detection, reduce sensitivity to ~50%                    |
+| App cannot connect remotely | NVR has no internet or time is wrong       | Verify NTP sync, cloud account configuration, and internet connectivity             |
+| Hard drive errors           | Consumer drive in 24/7 duty                | Replace with surveillance-rated drive immediately                                   |
+| Footage gaps on timeline    | Overwrite disabled or bandwidth bottleneck | Check that "overwrite when full" is enabled. Verify uplink speed from switch to NVR |
+| Night vision washed out     | Camera pointed at reflective surface       | Slightly adjust camera angle away from walls, windows, or glossy surfaces           |
 
 ## What storage do you need for real-world scenarios?
 
-| Scenario | Cameras | Resolution | Recording | Retention | Required Storage |
-|---|---|---|---|---|---|
-| Small home | 4 | 1080p | Motion-only | 14 days | 1 TB |
-| Home with 4K | 4 | 4K | Motion-only (H.265) | 30 days | 4 TB |
-| Small office | 8 | 4MP | Continuous (H.265) | 30 days | 12 TB |
-| Retail store | 16 | 4K | Hybrid continuous+motion | 30 days | 24 TB |
-| Warehouse | 32 | 4MP | Continuous (H.265+) | 60 days | 60 TB (RAID 6) |
+| Scenario     | Cameras | Resolution | Recording                | Retention | Required Storage |
+| ------------ | ------- | ---------- | ------------------------ | --------- | ---------------- |
+| Small home   | 4       | 1080p      | Motion-only              | 14 days   | 1 TB             |
+| Home with 4K | 4       | 4K         | Motion-only (H.265)      | 30 days   | 4 TB             |
+| Small office | 8       | 4MP        | Continuous (H.265)       | 30 days   | 12 TB            |
+| Retail store | 16      | 4K         | Hybrid continuous+motion | 30 days   | 24 TB            |
+| Warehouse    | 32      | 4MP        | Continuous (H.265+)      | 60 days   | 60 TB (RAID 6)   |
 
 Add 20% overhead to all storage calculations for file system, peak activity days, and future growth.
 
 <Callout type="note" title="H.266 (VVC) Is Coming">
-  The next-generation compression standard H.266 (Versatile Video Coding) delivers roughly 50% further savings over H.265. Some 2026 NVRs already support it. If you are buying a new NVR, check for H.266 compatibility — it effectively doubles your retention without adding drives.
+  The next-generation compression standard H.266 (Versatile Video Coding)
+  delivers roughly 50% further savings over H.265. Some 2026 NVRs already
+  support it. If you are buying a new NVR, check for H.266 compatibility — it
+  effectively doubles your retention without adding drives.
 </Callout>
 
 ## What should be on your installation checklist?
@@ -325,7 +372,9 @@ Before declaring the installation complete:
 - [ ] Retention period verified after 7 days of operation
 
 <Callout type="tip" title="Document Everything">
-  Keep a simple record of camera locations, IP addresses, cable lengths, and admin credentials (in a password manager, not on a sticky note). Future-you and any technician who inherits the system will appreciate it.
+  Keep a simple record of camera locations, IP addresses, cable lengths, and
+  admin credentials (in a password manager, not on a sticky note). Future-you
+  and any technician who inherits the system will appreciate it.
 </Callout>
 
 ## Frequently Asked Questions
@@ -334,43 +383,78 @@ Before declaring the installation complete:
   <AccordionItem>
     <AccordionTrigger>How long can a PoE camera cable run be?</AccordionTrigger>
     <AccordionContent>
-      The IEEE 802.3 standard limits Ethernet runs to 100 meters (328 feet) including patch cords. Beyond that, use a PoE extender (adds 100 m per unit, up to 4 units for 500 m total), a fiber backhaul with a remote switch, or move the NVR closer to the cameras.
+      The IEEE 802.3 standard limits Ethernet runs to 100 meters (328 feet)
+      including patch cords. Beyond that, use a PoE extender (adds 100 m per
+      unit, up to 4 units for 500 m total), a fiber backhaul with a remote
+      switch, or move the NVR closer to the cameras.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Do I need an internet connection for my NVR to work?</AccordionTrigger>
+    <AccordionTrigger>
+      Do I need an internet connection for my NVR to work?
+    </AccordionTrigger>
     <AccordionContent>
-      Local recording works perfectly without internet. You need a connection only for remote viewing (via app or web), push notifications, and firmware updates. If security is your priority, the NVR can operate fully offline on an isolated network.
+      Local recording works perfectly without internet. You need a connection
+      only for remote viewing (via app or web), push notifications, and firmware
+      updates. If security is your priority, the NVR can operate fully offline
+      on an isolated network.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>Can I mix camera brands with my NVR?</AccordionTrigger>
     <AccordionContent>
-      Yes, if both the cameras and NVR support ONVIF. For best results, select cameras that support ONVIF Profile T (H.265 streaming, advanced motion detection, bi-directional audio) and Profile G (playback protocols, storage search). This ensures compatibility even across brands like Hikvision, Dahua, Reolink, and Amcrest.
+      Yes, if both the cameras and NVR support ONVIF. For best results, select
+      cameras that support ONVIF Profile T (H.265 streaming, advanced motion
+      detection, bi-directional audio) and Profile G (playback protocols,
+      storage search). This ensures compatibility even across brands like
+      Hikvision, Dahua, Reolink, and Amcrest.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>How long do surveillance hard drives last?</AccordionTrigger>
+    <AccordionTrigger>
+      How long do surveillance hard drives last?
+    </AccordionTrigger>
     <AccordionContent>
-      Surveillance-rated drives (WD Purple, Seagate SkyHawk) are designed for 24/7 write loads and typically last 3-5 years. Standard desktop drives may fail in 1-2 years under continuous recording because they lack the firmware to handle sustained write streams. For any serious install, use surveillance-rated drives from day one.
+      Surveillance-rated drives (WD Purple, Seagate SkyHawk) are designed for
+      24/7 write loads and typically last 3-5 years. Standard desktop drives may
+      fail in 1-2 years under continuous recording because they lack the
+      firmware to handle sustained write streams. For any serious install, use
+      surveillance-rated drives from day one.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>What happens when the hard drive fills up?</AccordionTrigger>
+    <AccordionTrigger>
+      What happens when the hard drive fills up?
+    </AccordionTrigger>
     <AccordionContent>
-      Most NVRs overwrite the oldest footage when the drive is full — this is the expected behavior. However, some NVRs ship with "stop recording when full" as the default setting. Always verify this setting during initial setup. A system that silently stops recording because the drive filled up defeats the entire purpose.
+      Most NVRs overwrite the oldest footage when the drive is full — this is
+      the expected behavior. However, some NVRs ship with "stop recording when
+      full" as the default setting. Always verify this setting during initial
+      setup. A system that silently stops recording because the drive filled up
+      defeats the entire purpose.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>Why do my PoE cameras reboot at night?</AccordionTrigger>
     <AccordionContent>
-      This is the classic PoE power budget failure. When IR LEDs activate at night, each camera's power draw spikes (sometimes doubling). If your PoE switch or NVR lacks headroom, cameras lose power and reboot. Fix: add up the maximum power draw of every camera from the datasheet, add 30% headroom, and ensure your PoE switch exceeds that number.
+      This is the classic PoE power budget failure. When IR LEDs activate at
+      night, each camera's power draw spikes (sometimes doubling). If your PoE
+      switch or NVR lacks headroom, cameras lose power and reboot. Fix: add up
+      the maximum power draw of every camera from the datasheet, add 30%
+      headroom, and ensure your PoE switch exceeds that number.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Should I use Cat5e or Cat6 for PoE cameras?</AccordionTrigger>
+    <AccordionTrigger>
+      Should I use Cat5e or Cat6 for PoE cameras?
+    </AccordionTrigger>
     <AccordionContent>
-      For any new installation, use Cat6. The 23 AWG conductors reduce voltage drop compared to Cat5e's 24 AWG, which matters for PoE power delivery — especially on runs over 50 meters and for cameras with IR LEDs or heaters. The cost difference is roughly $0.04-0.10 per foot, which adds maybe $30-80 for an 8-camera system. That is negligible compared to the labor cost of running cable.
+      For any new installation, use Cat6. The 23 AWG conductors reduce voltage
+      drop compared to Cat5e's 24 AWG, which matters for PoE power delivery —
+      especially on runs over 50 meters and for cameras with IR LEDs or heaters.
+      The cost difference is roughly $0.04-0.10 per foot, which adds maybe
+      $30-80 for an 8-camera system. That is negligible compared to the labor
+      cost of running cable.
     </AccordionContent>
   </AccordionItem>
 </Accordion>

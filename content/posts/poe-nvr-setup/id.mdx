@@ -5,7 +5,16 @@ description: "Panduan komprehensif untuk merencanakan, memasang kabel, mengonfig
 author: "CCTV Name Author"
 updatedAt: "2026-05-25"
 image: "/og.svg"
-tags: ["cctv", "nvr", "poe", "kamera keamanan", "kamera ip", "pengawasan", "perekam video jaringan"]
+tags:
+  [
+    "cctv",
+    "nvr",
+    "poe",
+    "kamera keamanan",
+    "kamera ip",
+    "pengawasan",
+    "perekam video jaringan",
+  ]
 postType: "howto"
 howTo:
   - name: "Rencanakan Tata Letak Sistem Anda"
@@ -38,12 +47,17 @@ faq:
   - question: "Mengapa kamera saya reboot di malam hari?"
     answer: "Ini biasanya menunjukkan anggaran PoE yang tidak mencukupi. Saat LED IR aktif di malam hari, konsumsi daya kamera melonjak. Pastikan sakelar PoE Anda memiliki setidaknya 20-30% ruang di atas total beban kamera."
 ---
+
 Sistem NVR PoE (Power over Ethernet) adalah tulang punggung pengawasan IP modern. Ia mengirimkan daya dan data ke kamera keamanan melalui satu kabel Ethernet, menghilangkan adaptor dinding dan kabel berantakan yang mengganggu instalasi lama. Untuk usaha kecil, toko ritel, dan pemilik rumah, pengaturan NVR PoE yang terencana dengan baik menyediakan perekaman lokal yang andal tanpa biaya cloud bulanan.
 
 Panduan ini memandu setiap langkah — dari pemilihan kabel dan penganggaran daya hingga konfigurasi NVR dan penguatan keamanan — berdasarkan praktik instalasi dunia nyata dan standar perangkat keras 2026.
 
 <Callout type="info" title="Apa yang Berubah di 2026">
-  Drive pengawasan 24 TB, kompresi H.266 (VVC) di NVR konsumen, dan dukungan kamera Matter yang matang berarti biaya penyimpanan lebih rendah dan kompatibilitas lebih baik dari sebelumnya. Codec pintar H.265+ kini memberikan penghematan penyimpanan 50% dibandingkan H.264, dan adopsi ONVIF Profile T/G memungkinkan Anda mencampur merek dengan bebas.
+  Drive pengawasan 24 TB, kompresi H.266 (VVC) di NVR konsumen, dan dukungan
+  kamera Matter yang matang berarti biaya penyimpanan lebih rendah dan
+  kompatibilitas lebih baik dari sebelumnya. Codec pintar H.265+ kini memberikan
+  penghematan penyimpanan 50% dibandingkan H.264, dan adopsi ONVIF Profile T/G
+  memungkinkan Anda mencampur merek dengan bebas.
 </Callout>
 
 ## Merencanakan Sistem Anda
@@ -54,30 +68,38 @@ Setiap instalasi yang sukses dimulai dengan rencana. Membeli perangkat keras tan
 
 Anda memiliki dua opsi utama untuk menghubungkan kamera:
 
-| Arsitektur | Terbaik Untuk | Kekurangan |
-|---|---|---|
-| NVR dengan port PoE bawaan | Pemula, instalasi kecil (4-8 kamera) | Terbatas pada jumlah port dan anggaran daya |
+| Arsitektur                 | Terbaik Untuk                         | Kekurangan                                                                         |
+| -------------------------- | ------------------------------------- | ---------------------------------------------------------------------------------- |
+| NVR dengan port PoE bawaan | Pemula, instalasi kecil (4-8 kamera)  | Terbatas pada jumlah port dan anggaran daya                                        |
 | Sakelar PoE + NVR terpisah | Instalasi besar, tata letak fleksibel | Lebih banyak komponen, tetapi lebih mudah diskalakan dan diganti secara individual |
 
 <Callout type="tip" title="Kiat Pro">
-  Selalu beli NVR dengan setidaknya **2x jumlah saluran** dari rencana kamera Anda saat ini. Instalasi 4 kamera harus menggunakan NVR 8 saluran. Ekspansi selalu terjadi, dan meningkatkan NVR lebih mahal daripada membeli satu ukuran lebih besar dari awal.
+  Selalu beli NVR dengan setidaknya **2x jumlah saluran** dari rencana kamera
+  Anda saat ini. Instalasi 4 kamera harus menggunakan NVR 8 saluran. Ekspansi
+  selalu terjadi, dan meningkatkan NVR lebih mahal daripada membeli satu ukuran
+  lebih besar dari awal.
 </Callout>
 
 ### Pemilihan Kabel
 
 Kabel adalah komponen fisik terpenting. Pilihan kabel yang buruk menyebabkan reboot terputus-putus, penurunan tegangan, dan kehilangan data yang sulit didiagnosis.
 
-| Tipe Kabel | Penggunaan Terbaik | Mengapa |
-|---|---|---|
-| Cat5e | Kamera 1080p, kabel di bawah 50 m | Termurah, tetapi konduktor 24 AWG berarti resistansi lebih tinggi |
-| Cat6 | Sebagian besar kamera IP modern | Konduktor 23 AWG mengurangi penurunan tegangan; garis dasar yang direkomendasikan untuk instalasi baru |
-| Cat6A | Kamera 4K, kabel di atas 70 m, PTZ daya tinggi | Konduktor paling tebal, pembuangan panas terbaik, mendukung PoE++ |
+| Tipe Kabel | Penggunaan Terbaik                             | Mengapa                                                                                                |
+| ---------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| Cat5e      | Kamera 1080p, kabel di bawah 50 m              | Termurah, tetapi konduktor 24 AWG berarti resistansi lebih tinggi                                      |
+| Cat6       | Sebagian besar kamera IP modern                | Konduktor 23 AWG mengurangi penurunan tegangan; garis dasar yang direkomendasikan untuk instalasi baru |
+| Cat6A      | Kamera 4K, kabel di atas 70 m, PTZ daya tinggi | Konduktor paling tebal, pembuangan panas terbaik, mendukung PoE++                                      |
 
 <Callout type="warning" title="Hindari Aluminium Berlapis Tembaga (CCA)">
-  Kabel CCA lebih murah tetapi memiliki resistansi yang jauh lebih tinggi daripada tembaga padat. Ini menyebabkan penurunan tegangan, penumpukan panas, dan reset kamera terputus-putus — terutama saat LED IR aktif di malam hari. Untuk instalasi profesional, gunakan **tembaga padat** dari merek terkemuka (Monoprice, Cable Matters, Belden).
+  Kabel CCA lebih murah tetapi memiliki resistansi yang jauh lebih tinggi
+  daripada tembaga padat. Ini menyebabkan penurunan tegangan, penumpukan panas,
+  dan reset kamera terputus-putus — terutama saat LED IR aktif di malam hari.
+  Untuk instalasi profesional, gunakan **tembaga padat** dari merek terkemuka
+  (Monoprice, Cable Matters, Belden).
 </Callout>
 
 **Aturan pemasangan kabel utama:**
+
 - Panjang maksimal: 100 meter (328 kaki) termasuk kabel patch
 - Radius tekuk: minimal 5 cm — tekukan tajam merusak kualitas sinyal
 - Jarak dari listrik AC: minimal 30 cm untuk menghindari interferensi
@@ -88,18 +110,22 @@ Kabel adalah komponen fisik terpenting. Pilihan kabel yang buruk menyebabkan reb
 
 Memahami standar PoE mencegah kegagalan instalasi paling umum: kamera yang berfungsi di siang hari tetapi reboot di malam hari saat LED IR menarik daya maksimum.
 
-| Standar | Daya per Port | Konsumsi Kamera Khas |
-|---|---|---|
-| IEEE 802.3af (PoE) | 15,4 W | Kamera tetap 1080p/4MP (4-8 W) |
-| IEEE 802.3at (PoE+) | 30 W | Kamera 4K, PTZ dalam ruangan (8-15 W) |
-| IEEE 802.3bt Tipe 3 (PoE++) | 60 W | PTZ luar ruangan dengan pemanas (20-40 W) |
-| IEEE 802.3bt Tipe 4 (PoE++) | 100 W | Kamera multi-sensor, PTZ daya tinggi |
+| Standar                     | Daya per Port | Konsumsi Kamera Khas                      |
+| --------------------------- | ------------- | ----------------------------------------- |
+| IEEE 802.3af (PoE)          | 15,4 W        | Kamera tetap 1080p/4MP (4-8 W)            |
+| IEEE 802.3at (PoE+)         | 30 W          | Kamera 4K, PTZ dalam ruangan (8-15 W)     |
+| IEEE 802.3bt Tipe 3 (PoE++) | 60 W          | PTZ luar ruangan dengan pemanas (20-40 W) |
+| IEEE 802.3bt Tipe 4 (PoE++) | 100 W         | Kamera multi-sensor, PTZ daya tinggi      |
 
 <Callout type="danger" title="Jebakan Malam Hari">
-  Kamera yang menarik 5 W di siang hari dapat melonjak hingga 12 W di malam hari saat LED IR menyala. Selalu buat anggaran menggunakan **konsumsi daya maksimum** dari lembar data, bukan nilai tipikal. Kemudian tambahkan **30% ruang** pada anggaran sakelar PoE Anda.
+  Kamera yang menarik 5 W di siang hari dapat melonjak hingga 12 W di malam hari
+  saat LED IR menyala. Selalu buat anggaran menggunakan **konsumsi daya
+  maksimum** dari lembar data, bukan nilai tipikal. Kemudian tambahkan **30%
+  ruang** pada anggaran sakelar PoE Anda.
 </Callout>
 
 Contoh anggaran daya — 8 kamera pada puncak 12 W masing-masing:
+
 - Total beban: 96 W
 - Dengan ruang 30%: **setidaknya 125 W anggaran PoE**
 - Direkomendasikan: Sakelar PoE+ 16 port 150+ W
@@ -116,12 +142,15 @@ Penyimpanan adalah area di mana sebagian besar sistem secara diam-diam kekuranga
 | 4K (8MP) | 30-50 GB |
 
 **Perhitungan dunia nyata untuk sistem 4 kamera 4K, retensi 30 hari:**
+
 - Perekaman terus menerus: 4 × 40 GB × 30 = 4,8 TB → beli drive 6 TB
 - Perekaman hanya gerakan: 4 × 12 GB × 30 = 1,44 TB → drive 2 TB berfungsi
 - Hybrid (terus menerus resolusi rendah, gerakan resolusi tinggi): terbaik dari keduanya
 
 <Callout type="tip" title="Rekomendasi Penyimpanan">
-  Untuk sebagian besar sistem rumah 4 kamera 4K: drive 4 TB khusus pengawasan dengan H.265 dan perekaman hanya gerakan memberikan riwayat 30 hari. Untuk 8 kamera 4K dengan perekaman terus menerus, tingkatkan ke 10-12 TB.
+  Untuk sebagian besar sistem rumah 4 kamera 4K: drive 4 TB khusus pengawasan
+  dengan H.265 dan perekaman hanya gerakan memberikan riwayat 30 hari. Untuk 8
+  kamera 4K dengan perekaman terus menerus, tingkatkan ke 10-12 TB.
 </Callout>
 
 **Selalu gunakan drive khusus pengawasan:**
@@ -150,7 +179,8 @@ Drive desktop standar gagal 2-3x lebih sering daripada drive pengawasan di bawah
 Tempatkan NVR di lokasi yang aman, terkontrol iklimnya, dan memiliki ventilasi baik. Hindari menumpuknya dengan elektronik lain. Sisakan setidaknya 2 cm ruang di sekelilingnya untuk aliran udara. Hubungkan ke router Anda melalui port LAN menggunakan kabel Ethernet pendek.
 
 <Callout type="note" title="UPS Direkomendasikan">
-  Cadangan baterai UPS untuk NVR, router, dan sakelar PoE memastikan sistem Anda tetap merekam selama pemadaman listrik. Ini sangat penting untuk bisnis.
+  Cadangan baterai UPS untuk NVR, router, dan sakelar PoE memastikan sistem Anda
+  tetap merekam selama pemadaman listrik. Ini sangat penting untuk bisnis.
 </Callout>
 
 ### Langkah 2: Pasang dan Terminasi Kabel
@@ -164,7 +194,12 @@ Taruh kabel dari setiap lokasi kamera kembali ke lokasi NVR atau sakelar PoE. Gu
 5. Untuk kabel di atas 70 meter, gunakan Cat6 atau Cat6A untuk meminimalkan penurunan tegangan
 
 <Callout type="warning" title="Panas Bundel Kabel">
-  Saat memasang beberapa kabel PoE dalam satu bundel atau conduit, panas menumpuk dari resistansi di konduktor. Untuk bundel 10+ kabel, gunakan Cat6 atau Cat6A 23 AWG dan hindari mengisi conduit di atas 40% kapasitas. Cat6 tanpa pelindung (UTP) baik untuk sebagian besar lingkungan perumahan dan kantor — hanya gunakan yang dilindungi (STP) di dekat motor besar atau peralatan industri.
+  Saat memasang beberapa kabel PoE dalam satu bundel atau conduit, panas
+  menumpuk dari resistansi di konduktor. Untuk bundel 10+ kabel, gunakan Cat6
+  atau Cat6A 23 AWG dan hindari mengisi conduit di atas 40% kapasitas. Cat6
+  tanpa pelindung (UTP) baik untuk sebagian besar lingkungan perumahan dan
+  kantor — hanya gunakan yang dilindungi (STP) di dekat motor besar atau
+  peralatan industri.
 </Callout>
 
 ### Langkah 3: Pasang Kamera
@@ -172,6 +207,7 @@ Taruh kabel dari setiap lokasi kamera kembali ke lokasi NVR atau sakelar PoE. Gu
 Pasang setiap kamera di lokasi yang direncanakan, pastikan kamera rata dan aman. Kamera luar ruangan memerlukan sambungan tahan cuaca — gunakan gemuk dielektrik pada konektor RJ45 dan sepatu tahan air jika kamera tidak dilengkapi dengannya.
 
 **Tips penempatan kamera:**
+
 - Tutupi semua titik masuk terlebih dahulu (pintu, jendela lantai dasar, garasi)
 - Hindari silau langsung dari jendela atau lampu terang
 - Posisikan kamera setinggi 2,5-3 meter untuk pengambilan wajah optimal
@@ -182,11 +218,13 @@ Pasang setiap kamera di lokasi yang direncanakan, pastikan kamera rata dan aman.
 Colokkan setiap kabel Ethernet ke port PoE di NVR atau sakelar PoE. Kamera menerima daya dan data melalui satu sambungan ini. Kamera akan boot dalam 30-60 detik.
 
 **Untuk NVR dengan port PoE bawaan:**
+
 - Colokkan langsung ke port PoE berlabel di bagian belakang NVR
 - Kamera terdeteksi otomatis dalam 30-60 detik
 - Tidak diperlukan konfigurasi tambahan
 
 **Untuk pengaturan sakelar PoE + NVR:**
+
 - Hubungkan kamera ke sakelar PoE
 - Pastikan sakelar dan NVR berada di jaringan lokal yang sama
 - Di menu NVR, buka Kamera > Tambah Kamera > Cari Otomatis atau Cari ONVIF
@@ -202,7 +240,10 @@ Nyalakan NVR dan hubungkan monitor melalui HDMI. Wisaya pengaturan akan memandu 
 5. **Aktifkan timpa** — konfirmasi bahwa NVR akan menimpa rekaman lama saat drive penuh
 
 <Callout type="danger" title="Kredensial Default Adalah Kewajiban">
-  Banyak NVR datang dengan kredensial default seperti admin/admin. Ubah segera. Katalog Kerentanan yang Dieksploitasi Diketahui CISA mencakup beberapa kerentanan antarmuka web NVR dari 2021-2024 yang memengaruhi unit ritel yang dikirim dengan firmware usang. Jangan jadikan diri Anda target yang mudah.
+  Banyak NVR datang dengan kredensial default seperti admin/admin. Ubah segera.
+  Katalog Kerentanan yang Dieksploitasi Diketahui CISA mencakup beberapa
+  kerentanan antarmuka web NVR dari 2021-2024 yang memengaruhi unit ritel yang
+  dikirim dengan firmware usang. Jangan jadikan diri Anda target yang mudah.
 </Callout>
 
 ## Konfigurasi Kamera dan Perekaman
@@ -221,24 +262,28 @@ Akses pengaturan setiap kamera melalui antarmuka NVR:
 Deteksi gerakan default hampir selalu terlalu sensitif. Setiap daun, bayangan, atau lampu depan yang lewat memicu peringatan.
 
 Untuk setiap kamera:
+
 1. Buka Pengaturan Kamera > Deteksi Gerakan
 2. Atur sensitivitas ke sekitar 50%
 3. Tentukan zona deteksi gerakan — tutupi pohon, jalan sibuk, dan halaman tetangga
 4. Aktifkan **deteksi cerdas** jika NVR Anda mendukungnya (Orang, Kendaraan, Hewan)
 
 <Callout type="tip" title="Deteksi Cerdas Mengurangi Peringatan Palsu 80%+">
-  NVR dengan AI onboard (Reolink, Hikvision AcuSense, Dahua WizSense) dapat menyaring peristiwa gerakan berdasarkan jenis. Mobil yang lewat di jendela Anda tidak akan memicu peringatan orang. Ini membuat peninjauan rekaman jauh lebih cepat.
+  NVR dengan AI onboard (Reolink, Hikvision AcuSense, Dahua WizSense) dapat
+  menyaring peristiwa gerakan berdasarkan jenis. Mobil yang lewat di jendela
+  Anda tidak akan memicu peringatan orang. Ini membuat peninjauan rekaman jauh
+  lebih cepat.
 </Callout>
 
 ### Langkah 8: Jadwal Perekaman
 
 Tetapkan strategi perekaman berjenjang di Pengaturan NVR > Penyimpanan > Jadwal Perekaman:
 
-| Zona | Jadwal yang Direkomendasikan | Mengapa |
-|---|---|---|
-| Titik masuk (pintu, jalan masuk) | Perekaman terus menerus | Tidak ada celah di area kritis |
-| Perimeter (halaman, parkir) | Hanya dipicu gerakan | Menghemat penyimpanan sambil mencakup area berisiko rendah |
-| Interior (kantor, gudang) | Dipicu gerakan dengan pra-rekam | Tangkap konteks sebelum dan sesudah peristiwa |
+| Zona                             | Jadwal yang Direkomendasikan    | Mengapa                                                    |
+| -------------------------------- | ------------------------------- | ---------------------------------------------------------- |
+| Titik masuk (pintu, jalan masuk) | Perekaman terus menerus         | Tidak ada celah di area kritis                             |
+| Perimeter (halaman, parkir)      | Hanya dipicu gerakan            | Menghemat penyimpanan sambil mencakup area berisiko rendah |
+| Interior (kantor, gudang)        | Dipicu gerakan dengan pra-rekam | Tangkap konteks sebelum dan sesudah peristiwa              |
 
 Atur periode retensi Anda (biasanya 30 hari untuk bisnis, 7-14 hari untuk rumah). Aktifkan "Timpa saat penuh" sehingga NVR mengelola ruang disk sendiri.
 
@@ -255,7 +300,9 @@ Siapkan WireGuard atau OpenVPN di router Anda. Hubungkan ke jaringan rumah atau 
 Jangan pernah meneruskan port 80 atau 443 ke antarmuka web NVR Anda. Jangan pernah mengekspos antarmuka web NVR langsung ke internet publik. Ini adalah vektor serangan tunggal terbesar untuk kompromi NVR.
 
 <Callout type="danger" title="Jangan Pernah Port-Forward NVR Anda">
-  Daftar Kerentanan yang Dieksploitasi Diketahui CISA mencakup kerentanan antarmuka web NVR dari Hikvision, Dahua, dan merek besar lainnya. Ini sedang dieksploitasi secara aktif. Gunakan VPN untuk akses jarak jauh. Titik.
+  Daftar Kerentanan yang Dieksploitasi Diketahui CISA mencakup kerentanan
+  antarmuka web NVR dari Hikvision, Dahua, dan merek besar lainnya. Ini sedang
+  dieksploitasi secara aktif. Gunakan VPN untuk akses jarak jauh. Titik.
 </Callout>
 
 ### Penguatan Keamanan Tambahan
@@ -269,31 +316,34 @@ Jangan pernah meneruskan port 80 atau 443 ke antarmuka web NVR Anda. Jangan pern
 
 ## Pemecahan Masalah Umum
 
-| Masalah | Penyebab Paling Mungkin | Perbaikan |
-|---|---|---|
-| Kamera tidak terdeteksi | Kabel atau port PoE rusak | Uji dengan kabel yang baik dan port PoE berbeda. Periksa LED kamera |
-| Tampilan langsung tertunda atau lambat | NVR menampilkan aliran utama (4K) di tampilan langsung | Beralih ke sub-aliran (1080p) untuk tampilan langsung. Aliran utama hanya untuk perekaman |
-| Kamera reboot di malam hari | Anggaran PoE tidak mencukupi | Aktivasi LED IR meningkatkan konsumsi daya. Validasi sakelar PoE Anda memiliki ruang |
-| Peringatan gerakan spam | Zona deteksi terlalu lebar | Persempit zona, aktifkan deteksi cerdas, kurangi sensitivitas ke ~50% |
-| Aplikasi tidak dapat terhubung jarak jauh | NVR tidak punya internet atau waktu salah | Verifikasi sinkronisasi NTP, konfigurasi akun cloud, dan konektivitas internet |
-| Kesalahan hard drive | Drive konsumen dalam tugas 24/7 | Segera ganti dengan drive khusus pengawasan |
-| Celah rekaman di garis waktu | Timpa dinonaktifkan atau hambatan bandwidth | Periksa bahwa "timpa saat penuh" diaktifkan. Verifikasi kecepatan uplink dari sakelar ke NVR |
-| Visi malam pudar | Kamera diarahkan ke permukaan reflektif | Sesuaikan sedikit sudut kamera menjauh dari dinding, jendela, atau permukaan mengkilap |
+| Masalah                                   | Penyebab Paling Mungkin                                | Perbaikan                                                                                    |
+| ----------------------------------------- | ------------------------------------------------------ | -------------------------------------------------------------------------------------------- |
+| Kamera tidak terdeteksi                   | Kabel atau port PoE rusak                              | Uji dengan kabel yang baik dan port PoE berbeda. Periksa LED kamera                          |
+| Tampilan langsung tertunda atau lambat    | NVR menampilkan aliran utama (4K) di tampilan langsung | Beralih ke sub-aliran (1080p) untuk tampilan langsung. Aliran utama hanya untuk perekaman    |
+| Kamera reboot di malam hari               | Anggaran PoE tidak mencukupi                           | Aktivasi LED IR meningkatkan konsumsi daya. Validasi sakelar PoE Anda memiliki ruang         |
+| Peringatan gerakan spam                   | Zona deteksi terlalu lebar                             | Persempit zona, aktifkan deteksi cerdas, kurangi sensitivitas ke ~50%                        |
+| Aplikasi tidak dapat terhubung jarak jauh | NVR tidak punya internet atau waktu salah              | Verifikasi sinkronisasi NTP, konfigurasi akun cloud, dan konektivitas internet               |
+| Kesalahan hard drive                      | Drive konsumen dalam tugas 24/7                        | Segera ganti dengan drive khusus pengawasan                                                  |
+| Celah rekaman di garis waktu              | Timpa dinonaktifkan atau hambatan bandwidth            | Periksa bahwa "timpa saat penuh" diaktifkan. Verifikasi kecepatan uplink dari sakelar ke NVR |
+| Visi malam pudar                          | Kamera diarahkan ke permukaan reflektif                | Sesuaikan sedikit sudut kamera menjauh dari dinding, jendela, atau permukaan mengkilap       |
 
 ## Skenario Penyimpanan: Contoh Dunia Nyata
 
-| Skenario | Kamera | Resolusi | Perekaman | Retensi | Penyimpanan Diperlukan |
-|---|---|---|---|---|---|
-| Rumah kecil | 4 | 1080p | Hanya gerakan | 14 hari | 1 TB |
-| Rumah dengan 4K | 4 | 4K | Hanya gerakan (H.265) | 30 hari | 4 TB |
-| Kantor kecil | 8 | 4MP | Terus menerus (H.265) | 30 hari | 12 TB |
-| Toko ritel | 16 | 4K | Hibrida terus+mgerakan | 30 hari | 24 TB |
-| Gudang | 32 | 4MP | Terus menerus (H.265+) | 60 hari | 60 TB (RAID 6) |
+| Skenario        | Kamera | Resolusi | Perekaman              | Retensi | Penyimpanan Diperlukan |
+| --------------- | ------ | -------- | ---------------------- | ------- | ---------------------- |
+| Rumah kecil     | 4      | 1080p    | Hanya gerakan          | 14 hari | 1 TB                   |
+| Rumah dengan 4K | 4      | 4K       | Hanya gerakan (H.265)  | 30 hari | 4 TB                   |
+| Kantor kecil    | 8      | 4MP      | Terus menerus (H.265)  | 30 hari | 12 TB                  |
+| Toko ritel      | 16     | 4K       | Hibrida terus+mgerakan | 30 hari | 24 TB                  |
+| Gudang          | 32     | 4MP      | Terus menerus (H.265+) | 60 hari | 60 TB (RAID 6)         |
 
 Tambahkan 20% overhead ke semua perhitungan penyimpanan untuk sistem file, hari aktivitas puncak, dan pertumbuhan masa depan.
 
 <Callout type="note" title="H.266 (VVC) Akan Datang">
-  Standar kompresi generasi berikutnya H.266 (Versatile Video Coding) memberikan penghematan sekitar 50% lebih lanjut dibandingkan H.265. Beberapa NVR 2026 sudah mendukungnya. Jika Anda membeli NVR baru, periksa kompatibilitas H.266 — ini secara efektif menggandakan retensi Anda tanpa menambahkan drive.
+  Standar kompresi generasi berikutnya H.266 (Versatile Video Coding) memberikan
+  penghematan sekitar 50% lebih lanjut dibandingkan H.265. Beberapa NVR 2026
+  sudah mendukungnya. Jika Anda membeli NVR baru, periksa kompatibilitas H.266 —
+  ini secara efektif menggandakan retensi Anda tanpa menambahkan drive.
 </Callout>
 
 ## Daftar Periksa Akhir
@@ -320,52 +370,96 @@ Sebelum menyatakan instalasi selesai:
 - [ ] Periode retensi diverifikasi setelah 7 hari operasi
 
 <Callout type="tip" title="Dokumentasikan Semuanya">
-  Simpan catatan sederhana tentang lokasi kamera, alamat IP, panjang kabel, dan kredensial admin (di manajer kata sandi, bukan di catatan tempel). Diri Anda di masa depan dan teknisi yang mewarisi sistem akan menghargainya.
+  Simpan catatan sederhana tentang lokasi kamera, alamat IP, panjang kabel, dan
+  kredensial admin (di manajer kata sandi, bukan di catatan tempel). Diri Anda
+  di masa depan dan teknisi yang mewarisi sistem akan menghargainya.
 </Callout>
 
 ## Pertanyaan yang Sering Diajukan
 
 <Accordion>
   <AccordionItem>
-    <AccordionTrigger>Berapa panjang kabel kamera PoE maksimal?</AccordionTrigger>
+    <AccordionTrigger>
+      Berapa panjang kabel kamera PoE maksimal?
+    </AccordionTrigger>
     <AccordionContent>
-      Standar IEEE 802.3 membatasi kabel Ethernet hingga 100 meter (328 kaki) termasuk kabel patch. Di atas itu, gunakan ekstender PoE (menambah 100 m per unit, hingga 4 unit untuk total 500 m), backhaul serat dengan sakelar jarak jauh, atau pindahkan NVR lebih dekat ke kamera.
+      Standar IEEE 802.3 membatasi kabel Ethernet hingga 100 meter (328 kaki)
+      termasuk kabel patch. Di atas itu, gunakan ekstender PoE (menambah 100 m
+      per unit, hingga 4 unit untuk total 500 m), backhaul serat dengan sakelar
+      jarak jauh, atau pindahkan NVR lebih dekat ke kamera.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Apakah saya perlu koneksi internet untuk NVR saya berfungsi?</AccordionTrigger>
+    <AccordionTrigger>
+      Apakah saya perlu koneksi internet untuk NVR saya berfungsi?
+    </AccordionTrigger>
     <AccordionContent>
-      Perekaman lokal berfungsi sempurna tanpa internet. Anda hanya memerlukan koneksi untuk tampilan jarak jauh (melalui aplikasi atau web), notifikasi push, dan pembaruan firmware. Jika keamanan adalah prioritas Anda, NVR dapat beroperasi sepenuhnya offline di jaringan terisolasi.
+      Perekaman lokal berfungsi sempurna tanpa internet. Anda hanya memerlukan
+      koneksi untuk tampilan jarak jauh (melalui aplikasi atau web), notifikasi
+      push, dan pembaruan firmware. Jika keamanan adalah prioritas Anda, NVR
+      dapat beroperasi sepenuhnya offline di jaringan terisolasi.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Bisakah saya mencampur merek kamera dengan NVR saya?</AccordionTrigger>
+    <AccordionTrigger>
+      Bisakah saya mencampur merek kamera dengan NVR saya?
+    </AccordionTrigger>
     <AccordionContent>
-      Ya, jika kamera dan NVR mendukung ONVIF. Untuk hasil terbaik, pilih kamera yang mendukung ONVIF Profile T (streaming H.265, deteksi gerakan lanjutan, audio dua arah) dan Profile G (protokol pemutaran, pencarian penyimpanan). Ini memastikan kompatibilitas bahkan di seluruh merek seperti Hikvision, Dahua, Reolink, dan Amcrest.
+      Ya, jika kamera dan NVR mendukung ONVIF. Untuk hasil terbaik, pilih kamera
+      yang mendukung ONVIF Profile T (streaming H.265, deteksi gerakan lanjutan,
+      audio dua arah) dan Profile G (protokol pemutaran, pencarian penyimpanan).
+      Ini memastikan kompatibilitas bahkan di seluruh merek seperti Hikvision,
+      Dahua, Reolink, dan Amcrest.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Berapa lama hard drive pengawasan bertahan?</AccordionTrigger>
+    <AccordionTrigger>
+      Berapa lama hard drive pengawasan bertahan?
+    </AccordionTrigger>
     <AccordionContent>
-      Drive khusus pengawasan (WD Purple, Seagate SkyHawk) dirancang untuk beban tulis 24/7 dan biasanya bertahan 3-5 tahun. Drive desktop standar dapat gagal dalam 1-2 tahun di bawah perekaman terus menerus karena mereka tidak memiliki firmware untuk menangani aliran tulis berkelanjutan. Untuk instalasi serius, gunakan drive khusus pengawasan sejak hari pertama.
+      Drive khusus pengawasan (WD Purple, Seagate SkyHawk) dirancang untuk beban
+      tulis 24/7 dan biasanya bertahan 3-5 tahun. Drive desktop standar dapat
+      gagal dalam 1-2 tahun di bawah perekaman terus menerus karena mereka tidak
+      memiliki firmware untuk menangani aliran tulis berkelanjutan. Untuk
+      instalasi serius, gunakan drive khusus pengawasan sejak hari pertama.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Apa yang terjadi ketika hard drive penuh?</AccordionTrigger>
+    <AccordionTrigger>
+      Apa yang terjadi ketika hard drive penuh?
+    </AccordionTrigger>
     <AccordionContent>
-      Sebagian besar NVR menimpa rekaman terlama saat drive penuh — ini adalah perilaku yang diharapkan. Namun, beberapa NVR datang dengan "berhenti merekam saat penuh" sebagai pengaturan default. Selalu verifikasi pengaturan ini selama pengaturan awal. Sistem yang diam-diam berhenti merekam karena drive penuh mengalahkan seluruh tujuan.
+      Sebagian besar NVR menimpa rekaman terlama saat drive penuh — ini adalah
+      perilaku yang diharapkan. Namun, beberapa NVR datang dengan "berhenti
+      merekam saat penuh" sebagai pengaturan default. Selalu verifikasi
+      pengaturan ini selama pengaturan awal. Sistem yang diam-diam berhenti
+      merekam karena drive penuh mengalahkan seluruh tujuan.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Mengapa kamera PoE saya reboot di malam hari?</AccordionTrigger>
+    <AccordionTrigger>
+      Mengapa kamera PoE saya reboot di malam hari?
+    </AccordionTrigger>
     <AccordionContent>
-      Ini adalah kegagalan anggaran daya PoE klasik. Saat LED IR aktif di malam hari, konsumsi daya setiap kamera melonjak (kadang berlipat ganda). Jika sakelar PoE atau NVR Anda kekurangan ruang, kamera kehilangan daya dan reboot. Perbaikan: jumlahkan konsumsi daya maksimum setiap kamera dari lembar data, tambahkan 30% ruang, dan pastikan sakelar PoE Anda melebihi angka itu.
+      Ini adalah kegagalan anggaran daya PoE klasik. Saat LED IR aktif di malam
+      hari, konsumsi daya setiap kamera melonjak (kadang berlipat ganda). Jika
+      sakelar PoE atau NVR Anda kekurangan ruang, kamera kehilangan daya dan
+      reboot. Perbaikan: jumlahkan konsumsi daya maksimum setiap kamera dari
+      lembar data, tambahkan 30% ruang, dan pastikan sakelar PoE Anda melebihi
+      angka itu.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Haruskah saya menggunakan Cat5e atau Cat6 untuk kamera PoE?</AccordionTrigger>
+    <AccordionTrigger>
+      Haruskah saya menggunakan Cat5e atau Cat6 untuk kamera PoE?
+    </AccordionTrigger>
     <AccordionContent>
-      Untuk instalasi baru, gunakan Cat6. Konduktor 23 AWG mengurangi penurunan tegangan dibandingkan Cat5e 24 AWG, yang penting untuk pengiriman daya PoE — terutama pada kabel di atas 50 meter dan untuk kamera dengan LED IR atau pemanas. Perbedaan biaya sekitar $0,04-0,10 per kaki, yang mungkin menambah $30-80 untuk sistem 8 kamera. Itu dapat diabaikan dibandingkan dengan biaya tenaga kerja pemasangan kabel.
+      Untuk instalasi baru, gunakan Cat6. Konduktor 23 AWG mengurangi penurunan
+      tegangan dibandingkan Cat5e 24 AWG, yang penting untuk pengiriman daya PoE
+      — terutama pada kabel di atas 50 meter dan untuk kamera dengan LED IR atau
+      pemanas. Perbedaan biaya sekitar $0,04-0,10 per kaki, yang mungkin
+      menambah $30-80 untuk sistem 8 kamera. Itu dapat diabaikan dibandingkan
+      dengan biaya tenaga kerja pemasangan kabel.
     </AccordionContent>
   </AccordionItem>
 </Accordion>

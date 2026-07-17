@@ -1,6 +1,6 @@
+import database from "bun:sqlite"
 import path from "node:path"
 import { auth } from "@/lib/auth"
-import database from "bun:sqlite"
 
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "admin@example.com"
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "admin123"

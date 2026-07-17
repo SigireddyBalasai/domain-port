@@ -168,7 +168,7 @@ export default async function FaqPage({ params }: Props): Promise<JSX.Element> {
           <h1 className="mb-2 text-4xl font-bold">
             Frequently Asked Questions
           </h1>
-          <p className="mb-8 text-muted-foreground">
+          <p className="text-muted-foreground mb-8">
             {sortedFaqs.length} question{sortedFaqs.length === 1 ? "" : "s"}{" "}
             answered
           </p>
@@ -180,7 +180,7 @@ export default async function FaqPage({ params }: Props): Promise<JSX.Element> {
                 <a
                   key={category}
                   href={`#${category}`}
-                  className="rounded-full border border-border/40 px-3 py-1 text-sm capitalize hover:border-primary hover:text-primary"
+                  className="border-border/40 hover:border-primary hover:text-primary rounded-full border px-3 py-1 text-sm capitalize"
                 >
                   {category}
                 </a>
@@ -200,12 +200,12 @@ export default async function FaqPage({ params }: Props): Promise<JSX.Element> {
                     return (
                       <div
                         key={faq.slug}
-                        className="border-b border-border/40 pb-6"
+                        className="border-border/40 border-b pb-6"
                       >
                         <h3 className="text-xl font-semibold">
                           {faq.question}
                         </h3>
-                        <div className="faq-content mt-3 text-muted-foreground">
+                        <div className="faq-content text-muted-foreground mt-3">
                           <MdxContent
                             code={faq.answer}
                             localePrefix={localePrefix}
@@ -217,7 +217,7 @@ export default async function FaqPage({ params }: Props): Promise<JSX.Element> {
                               return (
                                 <span
                                   key={tag}
-                                  className="rounded bg-muted px-2 py-0.5 text-xs text-muted-foreground"
+                                  className="bg-muted text-muted-foreground rounded px-2 py-0.5 text-xs"
                                 >
                                   {tag}
                                 </span>

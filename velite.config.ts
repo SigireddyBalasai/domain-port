@@ -1,3 +1,4 @@
+import rehypeShiki from "@shikijs/rehype"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypeExternalLinks from "rehype-external-links"
 import rehypeRaw from "rehype-raw"
@@ -6,7 +7,6 @@ import remarkEmoji from "remark-emoji"
 import remarkGfm from "remark-gfm"
 import type { PluggableList } from "unified"
 import { defineCollection, defineConfig, s } from "velite"
-import rehypeShiki from "@shikijs/rehype"
 
 const faqItem = s.object({
   question: s.string(),

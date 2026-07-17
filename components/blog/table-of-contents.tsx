@@ -70,7 +70,7 @@ export default function TableOfContents(): JSX.Element | null {
 
   return (
     <nav aria-label="Table of contents" className="mb-10">
-      <h2 className="mb-3 text-sm font-semibold tracking-wide text-muted-foreground uppercase">
+      <h2 className="text-muted-foreground mb-3 text-sm font-semibold tracking-wide uppercase">
         On this page
       </h2>
       <ul className="space-y-2 text-sm">
@@ -79,9 +79,9 @@ export default function TableOfContents(): JSX.Element | null {
             <li key={item.id} className={item.level === 3 ? "pl-4" : ""}>
               <a
                 href={`#${item.id}`}
-                className={`block transition-colors hover:text-primary ${
+                className={`hover:text-primary block transition-colors ${
                   activeId === item.id
-                    ? "font-medium text-primary"
+                    ? "text-primary font-medium"
                     : "text-muted-foreground"
                 }`}
                 onClick={(e) => {

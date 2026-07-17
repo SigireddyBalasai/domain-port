@@ -13,6 +13,7 @@
 ### Task 1: Create `ListingCard` Component
 
 **Files:**
+
 - Create: `components/listing/listing-card.tsx`
 
 - [ ] **Step 1: Write `ListingCard` implementation**
@@ -64,6 +65,7 @@ git commit -m "feat: create ListingCard component"
 ### Task 2: Register `ListingCard` in `mdx-components.tsx`
 
 **Files:**
+
 - Modify: `components/mdx-components.tsx`
 
 - [ ] **Step 1: Import and add to sharedComponents**
@@ -94,6 +96,7 @@ git commit -m "feat: register ListingCard in MDX"
 ### Task 3: Integrate "Latest Listings" on Homepage
 
 **Files:**
+
 - Modify: `app/[locale]/page.tsx`
 
 - [ ] **Step 1: Fetch and sort listings**
@@ -113,36 +116,38 @@ const latestListings = sortedListings.slice(0, 3)
 
 ```tsx
 // Inside Page component return, after Latest Posts section
-{latestListings.length > 0 && (
-  <section className="py-24 sm:py-32">
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div className="flex items-center justify-between">
-        <h2 className="font-display text-3xl font-bold">
-          {t("latestListings")}
-        </h2>
-        <Link
-          href={`/${locale}/listing`}
-          className="text-sm font-medium hover:text-primary"
-        >
-          {t("viewAll")}
-        </Link>
+{
+  latestListings.length > 0 && (
+    <section className="py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between">
+          <h2 className="font-display text-3xl font-bold">
+            {t("latestListings")}
+          </h2>
+          <Link
+            href={`/${locale}/listing`}
+            className="text-sm font-medium hover:text-primary"
+          >
+            {t("viewAll")}
+          </Link>
+        </div>
+        <div className="mt-12 space-y-6">
+          {latestListings.map((listing) => {
+            return (
+              <ListingCard
+                key={listing.slug}
+                title={listing.title}
+                description={listing.description}
+                slug={listing.slug}
+                locale={locale}
+              />
+            )
+          })}
+        </div>
       </div>
-      <div className="mt-12 space-y-6">
-        {latestListings.map((listing) => {
-          return (
-            <ListingCard
-              key={listing.slug}
-              title={listing.title}
-              description={listing.description}
-              slug={listing.slug}
-              locale={locale}
-            />
-          )
-        })}
-      </div>
-    </div>
-  </section>
-)}
+    </section>
+  )
+}
 ```
 
 - [ ] **Step 3: Update Translations**

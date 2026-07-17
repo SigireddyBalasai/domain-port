@@ -12,7 +12,7 @@ interface BreadcrumbsProps {
 
 export default function Breadcrumbs({ items }: BreadcrumbsProps): JSX.Element {
   return (
-    <nav aria-label="Breadcrumb" className="mb-6 text-sm text-muted-foreground">
+    <nav aria-label="Breadcrumb" className="text-muted-foreground mb-6 text-sm">
       <ol className="flex flex-wrap items-center gap-1.5">
         {items.map((item, index) => {
           const isLast = index === items.length - 1
@@ -27,7 +27,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps): JSX.Element {
               ) : (
                 <Link
                   href={item.href}
-                  className="transition-colors hover:text-primary"
+                  className="hover:text-primary transition-colors"
                 >
                   {item.label}
                 </Link>

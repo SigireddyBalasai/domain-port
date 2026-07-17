@@ -1,0 +1,97 @@
+---
+title: "1080p vs 5MP vs 4K: którą rozdzielczość kamery bezpieczeństwa wybrać"
+publishedAt: "2026-07-16"
+description: "1080p, 5MP czy 4K do kamer bezpieczeństwa? Porównaj trzy poziomy pod kątem szczegółowości, dystansu identyfikacji, pracy w słabym świetle, pamięci i kosztu, aby dobrać właściwą rozdzielczość do miejsca."
+author: "CCTV Name Author"
+updatedAt: "2026-07-16"
+image: "/og.svg"
+tags:
+  [
+    "cctv",
+    "kamera ip",
+    "1080p",
+    "5mp",
+    "4k",
+    "rozdzielczość kamery",
+    "kamera bezpieczeństwa",
+    "megapixel",
+  ]
+postType: "howto"
+speakable:
+  - "blog-content"
+howTo:
+  - name: "Przypisz każdy poziom do zastosowania"
+    text: "1080p (2MP) do bliskiego pokrycia wewnątrz, 5MP jako wyważony środek do ogólnego pokrycia, a 4K (8MP) do rozległych lub ryzykownych obszarów wymagających identyfikacji z dystansu."
+  - name: "Porównaj dystans identyfikacji"
+    text: "Według DORI 1080p identyfikuje twarz na 4,5-7,5 m, 5MP na 7,5-13,5 m, a 4K na 15-24 m przy typowym obiektywie."
+  - name: "Zważ pracę w słabym świetle"
+    text: "Niższe rozdzielczości na danym sensorze radzą sobie lepiej w ciemności. 4K potrzebuje większego sensora (1/1,8 cala lub lepszego), by dorównać 5MP lub 1080p w nocy."
+  - name: "Dobierz pamięć i przepustowość"
+    text: "4K zużywa około 2,5x danych 1080p i około 1,6x danych 5MP. Użyj H.265+ i nagrywania na ruch, by utrzymać rozsądny rozmiar NVR."
+  - name: "Mieszaj poziomy według stref"
+    text: "Wdrażaj 4K w strefach wejść i wysokiego ryzyka, 5MP do ogólnego pokrycia, a 1080p w ograniczonych wnętrzach, by zoptymalizować koszt i retencję."
+faq:
+  - question: "Czy 5MP jest lepsze niż 1080p?"
+    answer: "Tak, w większości scen zewnętrznych i ogólnego pokrycia. 5MP (ok. 5 milionów pikseli, ok. 2880x1620) rejestruje ok. 2,5x więcej szczegółów niż 1080p i zwiększa dystans identyfikacji do ok. 7,5-13,5 m, zużywając znacznie mniej pamięci niż 4K."
+  - question: "Czy 4K jest lepsze niż 5MP?"
+    answer: "4K (8MP) rejestruje około dwukrotnie więcej szczegółów niż 5MP i sprawdza się, gdy musisz identyfikować twarze lub tablice na 15-24 m. Ale 5MP często radzi sobie lepiej w słabym świetle i kosztuje znacznie mniej pamięci i przepustowości, będąc praktycznym kompromisem dla większości instalacji."
+  - question: "O ile więcej pamięci zużywa 4K niż 1080p?"
+    answer: "Około 2,5x. Kamera 4K przy ciągłym nagrywaniu H.265 zużywa ok. 30-50 GB/dzień, wobec 10-15 GB/dzień dla 1080p. Nagrywanie tylko na ruch zmniejsza obie wartości o 60-70 %."
+  - question: "Jakiej rozdzielczości potrzebuję, by odczytać tablicę rejestracyjną?"
+    answer: "Do tablic na 4,5-7,5 m zwykle wystarczy 1080p lub 5MP. Do tablic na 12-21 m (np. wjazd do garażu) zaleca się 4K z odpowiednim obiektywem. Ogniskowa i kąt liczą się tak samo jak megapiksele."
+---
+
+Wybierając kamery, trzy rozdzielczości, które naprawdę zobaczysz, to **1080p (2MP)**, **5MP** i **4K (8MP)**. Każdy poziom służy innemu celowi, a poprawna odpowiedź to niemal nigdy „najwyższa wszędzie". Ten przewodnik porównuje wszystkie trzy, byś mógł przypisać właściwą rozdzielczość do każdej lokalizacji kamery.
+
+## Szybka odpowiedź
+
+| Poziom      | Piksele (ok.) | Dystans ID twarzy | Względna pamięć | Najlepsze do                              |
+| ----------- | ------------- | ----------------- | --------------- | ----------------------------------------- |
+| 1080p (2MP) | 1920 × 1080   | 4,5-7,5 m         | 1×              | Bliskie pokrycie wewnątrz                 |
+| 5MP         | ~2880 × 1620  | 7,5-13,5 m        | ~1,6×           | Ogólne pokrycie (punkt optymalny)         |
+| 4K (8MP)    | 3840 × 2160   | 15-24 m           | ~2,5×           | Rozległe/ryzykowne obszary, daleki zasięg |
+
+**5MP to wyważony standard** dla większości pokrycia; zejdź do 1080p wewnątrz i przejdź na 4K tylko tam, gdzie liczy się identyfikacja z dystansu.
+
+## Szczegółowość i dystans identyfikacji
+
+Według norm DORI z typowym obiektywem 4 mm:
+
+- **1080p:** identyfikuje twarz na ~4,5-7,5 m.
+- **5MP:** identyfikuje twarz na ~7,5-13,5 m.
+- **4K:** identyfikuje twarz na 15-24 m.
+
+Więc 4K nie jest „nieco ostrzejsze" — mniej więcej podwaja użyteczny zasięg 5MP. Dlatego 4K opłaca się przy wejściach, bramach i wjazdach na parking, podczas gdy 1080p marnuje się na szerokim podjeździe.
+
+## Praca w słabym świetle
+
+Jakość nocna zależy od wielkości sensora i piksela, nie od megapikseli. Na małym sensorze 1080p i 5MP często biją 4K w nocy. Praktyczne zasady:
+
+- Słabo oświetlone wnętrze → kamera **Starlight 1080p** lub **Starlight 5MP**.
+- Oświetlony teren zewnętrzny → **5MP** to punkt optymalny.
+- Duży, jasny teren zewnętrzny z ID z dystansu → **4K** z sensorem co najmniej 1/1,8" (szukaj Starlight/ColorVu).
+
+## Pamięć i przepustowość
+
+Względna dzienna pamięć (H.265, ciągłe):
+
+- 1080p: ~10-15 GB/dzień
+- 5MP: ~16-25 GB/dzień
+- 4K: ~30-50 GB/dzień
+
+4K zużywa około 2,5x danych 1080p. Użyj kompresji **H.265+** i **nagrywania tylko na ruch** (zmniejsza o 60-70 %), by utrzymać rozsądny rozmiar NVR, zwłaszcza w instalacjach w pełni 4K.
+
+## Mieszanie poziomów według stref (zalecane)
+
+Nowoczesny NVR bez problemu miesza rozdzielczości. Sensowny plan:
+
+- **Wejście, brama, obwód:** 4K dla nagrań poziomu identyfikacji.
+- **Ogólne pokrycie (pomieszczenia, piętra, podwórka):** 5MP — najlepszy stosunek szczegółów do kosztu.
+- **Ograniczone wnętrza (korytarze, małe pokoje):** 1080p, by oszczędzać pamięć.
+
+## Powiązane przewodniki
+
+- Pełny podział każdego poziomu: [Przewodnik rozdzielczości kamer IP](/blog/camera-resolution-guide).
+- Porównania parami: [2MP vs 4MP](/blog/2mp-vs-4mp) i [4MP vs 1080p](/blog/4mp-vs-1080p).
+- Decyzja najwyższej klasy: [4K vs 5MP](/blog/4k-vs-5mp-resolution-guide).
+- Planujesz przepustowość i pamięć? Zobacz [przewodnik konfiguracji PoE NVR](/blog/poe-nvr-setup).

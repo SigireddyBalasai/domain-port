@@ -5,7 +5,16 @@ description: "Kompletny przewodnik po rozdzielczości kamer IP 2026: 2MP vs 4MP 
 author: "CCTV Name Author"
 updatedAt: "2026-05-25"
 image: "/og.svg"
-tags: ["cctv", "kamera ip", "rozdzielczość kamery", "4k", "1080p", "kamera bezpieczeństwa", "megapiksel"]
+tags:
+  [
+    "cctv",
+    "kamera ip",
+    "rozdzielczość kamery",
+    "4k",
+    "1080p",
+    "kamera bezpieczeństwa",
+    "megapiksel",
+  ]
 postType: "howto"
 howTo:
   - name: "Zrozumienie poziomów rozdzielczości"
@@ -26,7 +35,7 @@ faq:
   - question: "Jak daleko kamera 4K może zidentyfikować twarz?"
     answer: "Według standardów DORI, kamera 4K może niezawodnie zidentyfikować twarz z odległości 15-25 metrów (50-80 stóp), w zależności od ogniskowej obiektywu i warunków oświetleniowych. Kamera 1080p jest zwykle ograniczona do 4,5-7,5 metra przy tym samym zadaniu."
   - question: "Czy wyższa rozdzielczość oznacza lepsze widzenie nocne?"
-    answer: "Nie. Wydajność przy słabym oświetleniu zależy głównie od rozmiaru matrycy i rozmiaru piksela, nie od rozdzielczości. Kamera 4MP Starlight z dużą matrycą przewyższy kamerę 4K z małą matrycą przy słabym świetle. Zawsze sprawdzaj rozmiar matrycy (1/2.8\", 1/1.8\", itp.) i szukaj technologii Starlight lub ColorVu."
+    answer: 'Nie. Wydajność przy słabym oświetleniu zależy głównie od rozmiaru matrycy i rozmiaru piksela, nie od rozdzielczości. Kamera 4MP Starlight z dużą matrycą przewyższy kamerę 4K z małą matrycą przy słabym świetle. Zawsze sprawdzaj rozmiar matrycy (1/2.8", 1/1.8", itp.) i szukaj technologii Starlight lub ColorVu.'
   - question: "Czy mogę mieszać kamery o różnych rozdzielczościach na tym samym NVR?"
     answer: "Tak. Nowoczesne rejestratory NVR obsługują mieszane rozdzielczości. To najlepsza praktyka — użyj 4K dla wejścia i stref wysokiego ryzyka, 4MP dla ogólnego pokrycia i 1080p dla ograniczonych przestrzeni wewnętrznych."
   - question: "Ile pamięci zużywa kamera 4K dziennie?"
@@ -38,21 +47,27 @@ Rozdzielczość to pierwszy parametr, na który wszyscy patrzą przy zakupie kam
 Ten przewodnik analizuje każdy poziom rozdzielczości — 2MP (1080p), 4MP, 5MP i 4K (8MP) — według czynników, które mają rzeczywiste znaczenie: odległości identyfikacji, kosztów przechowywania, wydajności przy słabym oświetleniu i doboru obiektywu.
 
 <Callout type="info" title="Kluczowy wniosek">
-  Najlepszy system kamer używa **mieszanych rozdzielczości** — 4K dla szerokich stref zewnętrznych, gdzie identyfikacja twarzy i tablic rejestracyjnych jest ważna, 4MP dla ogólnego pokrycia i 1080p dla ciasnych przestrzeni wewnętrznych. Jedna rozdzielczość nie pasuje do każdej sceny.
+  Najlepszy system kamer używa **mieszanych rozdzielczości** — 4K dla szerokich
+  stref zewnętrznych, gdzie identyfikacja twarzy i tablic rejestracyjnych jest
+  ważna, 4MP dla ogólnego pokrycia i 1080p dla ciasnych przestrzeni
+  wewnętrznych. Jedna rozdzielczość nie pasuje do każdej sceny.
 </Callout>
 
 ## Porównanie poziomów rozdzielczości
 
-| Poziom | Liczba pikseli | Proporcje obrazu | Odległość ID (DORI) | Przechowywanie dziennie | Przechowywanie miesięcznie (8 kamer) |
-|---|---|---|---|---|---|
-| 2MP (1080p) | 1920 × 1080 | 16:9 | 4,5-7,5 m | 10-15 GB | ~500 GB |
-| 4MP (2K) | 2560 × 1440 | 16:9 | 7,5-12 m | 20-30 GB | ~1 TB |
-| 5MP | 2592 × 1944 | 4:3 | 9-15 m | 25-35 GB | ~1,3 TB |
-| 8MP (4K) | 3840 × 2160 | 16:9 | 15-25 m | 30-50 GB | ~2 TB |
-| 12MP | 4000 × 3000 | 4:3 | 21-33 m | 50-80 GB | ~3 TB |
+| Poziom      | Liczba pikseli | Proporcje obrazu | Odległość ID (DORI) | Przechowywanie dziennie | Przechowywanie miesięcznie (8 kamer) |
+| ----------- | -------------- | ---------------- | ------------------- | ----------------------- | ------------------------------------ |
+| 2MP (1080p) | 1920 × 1080    | 16:9             | 4,5-7,5 m           | 10-15 GB                | ~500 GB                              |
+| 4MP (2K)    | 2560 × 1440    | 16:9             | 7,5-12 m            | 20-30 GB                | ~1 TB                                |
+| 5MP         | 2592 × 1944    | 4:3              | 9-15 m              | 25-35 GB                | ~1,3 TB                              |
+| 8MP (4K)    | 3840 × 2160    | 16:9             | 15-25 m             | 30-50 GB                | ~2 TB                                |
+| 12MP        | 4000 × 3000    | 4:3              | 21-33 m             | 50-80 GB                | ~3 TB                                |
 
 <Callout type="warning" title="Ostrzeżenie o przechowywaniu">
-  Pojedyncza kamera 4K nagrywająca 24/7 przy 30 kl./s z H.265 zużywa około **1 TB miesięcznie**. System 8 kamer 4K z ciągłym nagrywaniem potrzebuje 8+ TB na 30 dni retencji. Zawsze uwzględniaj cel retencji w decyzjach dotyczących rozdzielczości.
+  Pojedyncza kamera 4K nagrywająca 24/7 przy 30 kl./s z H.265 zużywa około **1
+  TB miesięcznie**. System 8 kamer 4K z ciągłym nagrywaniem potrzebuje 8+ TB na
+  30 dni retencji. Zawsze uwzględniaj cel retencji w decyzjach dotyczących
+  rozdzielczości.
 </Callout>
 
 ## 2MP (1080p) — Podstawa budżetowa
@@ -60,19 +75,24 @@ Ten przewodnik analizuje każdy poziom rozdzielczości — 2MP (1080p), 4MP, 5MP
 2MP to podstawowa rozdzielczość nowoczesnych kamer IP. Rejestruje wideo Full HD w rozdzielczości 1920 × 1080 pikseli.
 
 **Najlepsze do:**
+
 - Kamer przy drzwiach i na ganku w odległości poniżej 3 m od obiektu
 - Małych przestrzeni wewnętrznych (korytarze, klatki schodowe, wnętrza wind)
 - Instalacji z ograniczonym budżetem, gdzie monitoring z bliskiej odległości wystarcza
 - Kamer pomocniczych pokrywających obszary niskiego ryzyka
 
 **Ograniczenia:**
+
 - Identyfikacja twarzy zawodna powyżej 4,5-7,5 m
 - Rejestracja tablicy rejestracyjnej wymaga pojazdu w odległości 3-4,5 m
 - Zoom cyfrowy prawie natychmiast ujawnia pikselizację
 - Obciążenie na monitorach 40+ cali
 
 <Callout type="tip" title="Kiedy 1080p wystarcza">
-  Dla kamery pokrywającej 3-metrowy korytarz, drzwi na klatkę schodową lub stały widok kasy fiskalnej, rozdzielczość 4K nie dodaje niczego użytecznego. Obiekt wypełnia kadr na tyle, że 1080p rejestruje wszystkie niezbędne szczegóły. To tutaj kamery 2MP oszczędzają pamięć bez poświęcania efektów bezpieczeństwa.
+  Dla kamery pokrywającej 3-metrowy korytarz, drzwi na klatkę schodową lub stały
+  widok kasy fiskalnej, rozdzielczość 4K nie dodaje niczego użytecznego. Obiekt
+  wypełnia kadr na tyle, że 1080p rejestruje wszystkie niezbędne szczegóły. To
+  tutaj kamery 2MP oszczędzają pamięć bez poświęcania efektów bezpieczeństwa.
 </Callout>
 
 ## 4MP (2K) — Zalecany standard
@@ -80,6 +100,7 @@ Ten przewodnik analizuje każdy poziom rozdzielczości — 2MP (1080p), 4MP, 5MP
 4MP stał się domyślną rozdzielczością dla większości instalacji mieszkaniowych i komercyjnych w 2026 roku. Zapewnia około 75% więcej szczegółów niż 1080p przy tylko około 25-30% większym zużyciu pamięci.
 
 **Najlepsze do:**
+
 - Pokrycia drzwi wejściowych i wejścia
 - Monitorowania podjazdu i garażu
 - Ogólnych przestrzeni handlowych i biurowych
@@ -87,6 +108,7 @@ Ten przewodnik analizuje każdy poziom rozdzielczości — 2MP (1080p), 4MP, 5MP
 - Podstawowej rozdzielczości dla większości systemów 8-kamerowych
 
 **Zalety:**
+
 - Wyraźna identyfikacja twarzy z odległości 5-8 metrów
 - Rejestracja tablicy rejestracyjnej z bliskiej odległości (poniżej 5 metrów)
 - Dobra wydajność przy słabym oświetleniu z nowoczesnymi matrycami
@@ -94,7 +116,11 @@ Ten przewodnik analizuje każdy poziom rozdzielczości — 2MP (1080p), 4MP, 5MP
 - Najlepszy stosunek jakości do ceny spośród wszystkich poziomów
 
 <Callout type="note" title="Dlaczego 4MP to optymalny wybór">
-  Instalatorzy branżowi konsekwentnie zalecają 4MP jako standard. Zapewnia wystarczającą gęstość pikseli do identyfikacji na typowych odległościach mieszkaniowych bez kar za pamięć i przepustowość 4K. W systemie mieszanym 4MP obsługuje większość kamer, podczas gdy 4K jest zarezerwowany dla stref krytycznych.
+  Instalatorzy branżowi konsekwentnie zalecają 4MP jako standard. Zapewnia
+  wystarczającą gęstość pikseli do identyfikacji na typowych odległościach
+  mieszkaniowych bez kar za pamięć i przepustowość 4K. W systemie mieszanym 4MP
+  obsługuje większość kamer, podczas gdy 4K jest zarezerwowany dla stref
+  krytycznych.
 </Callout>
 
 ## 4K (8MP) — Maksymalna szczegółowość
@@ -102,6 +128,7 @@ Ten przewodnik analizuje każdy poziom rozdzielczości — 2MP (1080p), 4MP, 5MP
 Kamery 4K rejestrują 3840 × 2160 pikseli — cztery razy więcej pikseli niż 1080p. Ta rozdzielczość jest uzasadniona w konkretnych scenariuszach, gdzie szczegóły z daleka są krytyczne.
 
 **Najlepsze do:**
+
 - Parkingów i dużych otwartych przestrzeni
 - Holów budynków i atrium
 - Szerokokątnych widoków ogólnych powierzchni handlowych
@@ -109,12 +136,14 @@ Kamery 4K rejestrują 3840 × 2160 pikseli — cztery razy więcej pikseli niż 
 - Każdej sceny, gdzie potrzebny jest zoom cyfrowy podczas odtwarzania
 
 **Wymagania:**
+
 - Rejestrator NVR z wystarczającą przepustowością i wydajnością dekodowania
 - Dysk HDD przystosowany do monitoringu, 4x większy niż w systemie 1080p
 - Okablowanie Cat6 lub Cat6A dla stabilnej przepływności na odległość
 - Odpowiednie oświetlenie lub technologia matrycy Starlight/ColorVu
 
 **Kompromisy:**
+
 - Pamięć: ~40 GB/dzień na kamerę vs ~12 GB/dzień dla 1080p
 - Przepustowość: 8-12 Mbps na kamerę vs 2-4 Mbps dla 1080p
 - Słabe światło: Mniejsze piksele zbierają mniej światła niż większe piksele
@@ -123,42 +152,49 @@ Kamery 4K rejestrują 3840 × 2160 pikseli — cztery razy więcej pikseli niż 
 
 DORI (Detekcja, Obserwacja, Rozpoznanie, Identyfikacja) to standard branżowy do pomiaru, co kamera faktycznie widzi w danej odległości. Rozdzielczość to jeden czynnik — ogniskowa obiektywu jest równie ważna.
 
-| Poziom DORI | Wymagane piksele | Co możesz zrobić |
-|---|---|---|
-| Detekcja | 25 PPM (pikseli na metr) | Zobaczyć, że osoba lub pojazd jest obecny |
-| Obserwacja | 63 PPM | Zobaczyć wzorce ruchu i kierunek |
-| Rozpoznanie | 125 PPM | Określić, czy znasz tę osobę |
-| Identyfikacja | 250 PPM | Niezawodnie zidentyfikować twarz lub odczytać tablicę |
+| Poziom DORI   | Wymagane piksele         | Co możesz zrobić                                      |
+| ------------- | ------------------------ | ----------------------------------------------------- |
+| Detekcja      | 25 PPM (pikseli na metr) | Zobaczyć, że osoba lub pojazd jest obecny             |
+| Obserwacja    | 63 PPM                   | Zobaczyć wzorce ruchu i kierunek                      |
+| Rozpoznanie   | 125 PPM                  | Określić, czy znasz tę osobę                          |
+| Identyfikacja | 250 PPM                  | Niezawodnie zidentyfikować twarz lub odczytać tablicę |
 
 **Przykład z życia:** Kamera 4K z obiektywem 4 mm może zidentyfikować twarz z odległości około 15-18 m. Ta sama kamera z obiektywem 2,8 mm pokrywa szerszą scenę, ale zmniejsza zasięg identyfikacji do około 10,5 m, ponieważ ta sama liczba pikseli jest rozłożona na większym obszarze.
 
 <Callout type="warning" title="Obiektyw jest ważniejszy niż myślisz">
-  Kamera 4K z szerokim obiektywem 2,8 mm rejestruje mniej szczegółów identyfikacyjnych z odległości 15 m niż kamera 4MP z obiektywem 6 mm. Zawsze bierz pod uwagę **ogniskową obiektywu** wraz z rozdzielczością. Obiektyw zmiennoogniskowy (2,8-12 mm) pozwala na regulację podczas instalacji i jest wart niewielkiej dopłaty.
+  Kamera 4K z szerokim obiektywem 2,8 mm rejestruje mniej szczegółów
+  identyfikacyjnych z odległości 15 m niż kamera 4MP z obiektywem 6 mm. Zawsze
+  bierz pod uwagę **ogniskową obiektywu** wraz z rozdzielczością. Obiektyw
+  zmiennoogniskowy (2,8-12 mm) pozwala na regulację podczas instalacji i jest
+  wart niewielkiej dopłaty.
 </Callout>
 
 ## Ogniskowa obiektywu według sceny
 
-| Scena | Zalecana ogniskowa | Najlepsza rozdzielczość |
-|---|---|---|
-| Ganek, drzwi wejściowe (1,5-3 m) | 2,8 mm | 2MP wystarcza |
-| Podjazd, boczny ogród (4,5-9 m) | 4 mm | 4MP lub 4K |
-| Tylne podwórko, parking (9-15 m) | 6 mm | 4K zalecany |
-| Długi podjazd, teren (15-25 m) | 8 mm | 4K minimum |
-| Ulica, zaułek (25+ m) | 12 mm+ | 4K z obiektywem zmiennoogniskowym/PTZ |
+| Scena                            | Zalecana ogniskowa | Najlepsza rozdzielczość               |
+| -------------------------------- | ------------------ | ------------------------------------- |
+| Ganek, drzwi wejściowe (1,5-3 m) | 2,8 mm             | 2MP wystarcza                         |
+| Podjazd, boczny ogród (4,5-9 m)  | 4 mm               | 4MP lub 4K                            |
+| Tylne podwórko, parking (9-15 m) | 6 mm               | 4K zalecany                           |
+| Długi podjazd, teren (15-25 m)   | 8 mm               | 4K minimum                            |
+| Ulica, zaułek (25+ m)            | 12 mm+             | 4K z obiektywem zmiennoogniskowym/PTZ |
 
 ## Słabe oświetlenie: Ukryty kompromis
 
 Wyższa rozdzielczość często oznacza mniejsze pojedyncze piksele na tym samym rozmiarze matrycy. Mniejsze piksele zbierają mniej światła, co oznacza, że kamery 4K często gorzej radzą sobie przy słabym oświetleniu niż porównywalne kamery 4MP.
 
-| Rozdzielczość | Typowa matryca | Rozmiar piksela | Wydajność przy słabym świetle |
-|---|---|---|---|
-| 2MP (1080p) | 1/2,8" | ~3,0 µm | Dobra |
-| 4MP | 1/2,7" | ~2,0 µm | Bardzo dobra (modele Starlight doskonałe) |
-| 4K (8MP) | 1/2,5" | ~1,45 µm | Umiarkowana |
-| 4K (8MP) Starlight | 1/1,8" | ~2,4 µm | Doskonała |
+| Rozdzielczość      | Typowa matryca | Rozmiar piksela | Wydajność przy słabym świetle             |
+| ------------------ | -------------- | --------------- | ----------------------------------------- |
+| 2MP (1080p)        | 1/2,8"         | ~3,0 µm         | Dobra                                     |
+| 4MP                | 1/2,7"         | ~2,0 µm         | Bardzo dobra (modele Starlight doskonałe) |
+| 4K (8MP)           | 1/2,5"         | ~1,45 µm        | Umiarkowana                               |
+| 4K (8MP) Starlight | 1/1,8"         | ~2,4 µm         | Doskonała                                 |
 
 <Callout type="tip" title="Sprawdź rozmiar matrycy, nie tylko megapiksele">
-  Kamera 4MP z matrycą 1/1,8\" przewyższy kamerę 4K z matrycą 1/2,8\" przy słabym oświetleniu, mimo że 4MP ma mniej pikseli. Szukaj technologii **Starlight, ColorVu lub Full Color** i rozmiaru matrycy 1/1,8\" lub większej do wydajności nocnej.
+  Kamera 4MP z matrycą 1/1,8\" przewyższy kamerę 4K z matrycą 1/2,8\" przy
+  słabym oświetleniu, mimo że 4MP ma mniej pikseli. Szukaj technologii
+  **Starlight, ColorVu lub Full Color** i rozmiaru matrycy 1/1,8\" lub większej
+  do wydajności nocnej.
 </Callout>
 
 ## Przechowywanie według rozdzielczości
@@ -166,10 +202,10 @@ Wyższa rozdzielczość często oznacza mniejsze pojedyncze piksele na tym samym
 Zakładając kompresję H.265, ciągłe nagrywanie 24/7:
 
 | Rozdzielczość | Na dzień | 7 dni (4 kamery) | 30 dni (4 kamery) | 30 dni (8 kamer) |
-|---|---|---|---|---|
-| 2MP (1080p) | 12 GB | 336 GB | 1,44 TB | 2,88 TB |
-| 4MP | 25 GB | 700 GB | 3 TB | 6 TB |
-| 4K (8MP) | 40 GB | 1,12 TB | 4,8 TB | 9,6 TB |
+| ------------- | -------- | ---------------- | ----------------- | ---------------- |
+| 2MP (1080p)   | 12 GB    | 336 GB           | 1,44 TB           | 2,88 TB          |
+| 4MP           | 25 GB    | 700 GB           | 3 TB              | 6 TB             |
+| 4K (8MP)      | 40 GB    | 1,12 TB          | 4,8 TB            | 9,6 TB           |
 
 **Przy nagrywaniu tylko po wykryciu ruchu, zmniejsz te liczby o 60-70%.**
 **Z inteligentnym kodekiem H.265+, zaoszczędź dodatkowe 30-50%.**
@@ -178,36 +214,41 @@ Zakładając kompresję H.265, ciągłe nagrywanie 24/7:
 
 Najmądrzejszym podejściem jest dopasowanie rozdzielczości do sceny:
 
-| Strefa | Rozdzielczość | Obiektyw | Uzasadnienie |
-|---|---|---|---|
-| Drzwi wejściowe | 4MP | 2,8 mm | Bliski zasięg, szerokie pokrycie |
-| Podjazd | 4K | 4-6 mm | Identyfikacja twarzy i tablicy z daleka |
-| Tylne podwórko | 4K | 4 mm | Szerokie pokrycie z identyfikacją z daleka |
-| Boczny ogród | 4MP | 4 mm | Ogólny monitoring obwodowy |
-| Korytarz (wewnątrz) | 2MP | 2,8 mm | Bliski zasięg, brak potrzeby identyfikacji z daleka |
-| Kasa fiskalna | 4MP | 2,8-4 mm | Wyraźne uchwycenie twarzy przy ladzie |
-| Parking | 4K | 6-8 mm | Duży obszar z rejestracją tablic |
-| Klatka schodowa | 2MP | 2,8 mm | Ograniczona przestrzeń, bliski obiekt |
+| Strefa              | Rozdzielczość | Obiektyw | Uzasadnienie                                        |
+| ------------------- | ------------- | -------- | --------------------------------------------------- |
+| Drzwi wejściowe     | 4MP           | 2,8 mm   | Bliski zasięg, szerokie pokrycie                    |
+| Podjazd             | 4K            | 4-6 mm   | Identyfikacja twarzy i tablicy z daleka             |
+| Tylne podwórko      | 4K            | 4 mm     | Szerokie pokrycie z identyfikacją z daleka          |
+| Boczny ogród        | 4MP           | 4 mm     | Ogólny monitoring obwodowy                          |
+| Korytarz (wewnątrz) | 2MP           | 2,8 mm   | Bliski zasięg, brak potrzeby identyfikacji z daleka |
+| Kasa fiskalna       | 4MP           | 2,8-4 mm | Wyraźne uchwycenie twarzy przy ladzie               |
+| Parking             | 4K            | 6-8 mm   | Duży obszar z rejestracją tablic                    |
+| Klatka schodowa     | 2MP           | 2,8 mm   | Ograniczona przestrzeń, bliski obiekt               |
 
 <Callout type="note" title="Mieszane rozdzielczości oszczędzają pamięć">
-  System z 2x 4K + 4x 4MP + 2x 1080p zużywa około 40% mniej pamięci niż 8x kamer 4K, zapewniając jednocześnie lepsze ogólne pokrycie, ponieważ każda kamera jest dopasowana do swojej sceny.
+  System z 2x 4K + 4x 4MP + 2x 1080p zużywa około 40% mniej pamięci niż 8x kamer
+  4K, zapewniając jednocześnie lepsze ogólne pokrycie, ponieważ każda kamera
+  jest dopasowana do swojej sceny.
 </Callout>
 
 ## Schemat decyzyjny
 
 **Wybierz 2MP (1080p), jeśli:**
+
 - Scena kamery ma głębokość mniejszą niż 4,5 m
 - Budżet lub pojemność pamięci są głównym ograniczeniem
 - Kamera pokrywa ograniczoną przestrzeń wewnętrzną (korytarz, winda, klatka schodowa)
 - Ogólne monitorowanie aktywności wystarcza (brak potrzeby identyfikacji)
 
 **Wybierz 4MP, jeśli:**
+
 - Potrzebujesz niezawodnej identyfikacji z odległości 4,5-12 m
 - To kamera ogólnego przeznaczenia dla większości systemu
 - Chcesz najlepszej równowagi szczegółowości, słabego światła i pamięci
 - Budujesz system 8-16 kamer i musisz zarządzać całkowitą pamięcią
 
 **Wybierz 4K, jeśli:**
+
 - Potrzebujesz identyfikacji twarzy lub tablicy z odległości 12-25 m
 - Kamera pokrywa duży otwarty obszar (parking, podwórko, magazyn)
 - Musisz cyfrowo przybliżać nagrania podczas odtwarzania
@@ -217,33 +258,64 @@ Najmądrzejszym podejściem jest dopasowanie rozdzielczości do sceny:
 
 <Accordion>
   <AccordionItem>
-    <AccordionTrigger>Czy 4K jest zawsze lepsze do kamer bezpieczeństwa?</AccordionTrigger>
+    <AccordionTrigger>
+      Czy 4K jest zawsze lepsze do kamer bezpieczeństwa?
+    </AccordionTrigger>
     <AccordionContent>
-      Nie. 4K wymaga cztery razy więcej pamięci niż 1080p i może gorzej radzić sobie przy słabym świetle z powodu mniejszych pikseli. Użyj 4K tam, gdzie potrzebujesz identyfikacji z daleka lub możliwości zoomu cyfrowego. Do scen z bliska, dobrze umieszczona kamera 4MP lub nawet 1080p da lepsze wyniki na gigabajt pamięci.
+      Nie. 4K wymaga cztery razy więcej pamięci niż 1080p i może gorzej radzić
+      sobie przy słabym świetle z powodu mniejszych pikseli. Użyj 4K tam, gdzie
+      potrzebujesz identyfikacji z daleka lub możliwości zoomu cyfrowego. Do
+      scen z bliska, dobrze umieszczona kamera 4MP lub nawet 1080p da lepsze
+      wyniki na gigabajt pamięci.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Czy wyższa rozdzielczość oznacza lepsze widzenie nocne?</AccordionTrigger>
+    <AccordionTrigger>
+      Czy wyższa rozdzielczość oznacza lepsze widzenie nocne?
+    </AccordionTrigger>
     <AccordionContent>
-      Zasadniczo nie. Wydajność przy słabym świetle zależy od rozmiaru matrycy i rozstawu pikseli, nie od liczby megapikseli. Kamera 4MP Starlight z matrycą 1/1,8\" przewyższy większość kamer 4K w ciemności. Jeśli wydajność nocna jest krytyczna, priorytetem jest rozmiar matrycy nad rozdzielczością i szukaj technologii Starlight, ColorVu lub Full Color.
+      Zasadniczo nie. Wydajność przy słabym świetle zależy od rozmiaru matrycy i
+      rozstawu pikseli, nie od liczby megapikseli. Kamera 4MP Starlight z
+      matrycą 1/1,8\" przewyższy większość kamer 4K w ciemności. Jeśli wydajność
+      nocna jest krytyczna, priorytetem jest rozmiar matrycy nad rozdzielczością
+      i szukaj technologii Starlight, ColorVu lub Full Color.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Czy mogę mieszać rozdzielczości na jednym NVR?</AccordionTrigger>
+    <AccordionTrigger>
+      Czy mogę mieszać rozdzielczości na jednym NVR?
+    </AccordionTrigger>
     <AccordionContent>
-      Tak. Każdy nowoczesny rejestrator NVR obsługuje kamery o mieszanych rozdzielczościach. To najlepsza praktyka: użyj 4K w strefach zewnętrznych wysokiego ryzyka, 4MP do ogólnego pokrycia i 1080p do ciasnych przestrzeni wewnętrznych. Optymalizuje to zarówno pokrycie, jak i wykorzystanie pamięci.
+      Tak. Każdy nowoczesny rejestrator NVR obsługuje kamery o mieszanych
+      rozdzielczościach. To najlepsza praktyka: użyj 4K w strefach zewnętrznych
+      wysokiego ryzyka, 4MP do ogólnego pokrycia i 1080p do ciasnych przestrzeni
+      wewnętrznych. Optymalizuje to zarówno pokrycie, jak i wykorzystanie
+      pamięci.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Czy potrzebuję 4K do rozpoznawania tablic rejestracyjnych?</AccordionTrigger>
+    <AccordionTrigger>
+      Czy potrzebuję 4K do rozpoznawania tablic rejestracyjnych?
+    </AccordionTrigger>
     <AccordionContent>
-      Niekoniecznie. Rejestracja tablic rejestracyjnych zależy bardziej od ogniskowej obiektywu i pozycjonowania kamery niż od rozdzielczości. Kamera 2MP z obiektywem 12 mm skierowana na trasę zbliżania się pojazdu zarejestruje tablice bardziej niezawodnie niż kamera 4K z szerokim obiektywem 2,8 mm. Dla dedykowanego LPR umieść kamerę równolegle do trasy pojazdu w odległości około 15 m z obiektywem 6-12 mm.
+      Niekoniecznie. Rejestracja tablic rejestracyjnych zależy bardziej od
+      ogniskowej obiektywu i pozycjonowania kamery niż od rozdzielczości. Kamera
+      2MP z obiektywem 12 mm skierowana na trasę zbliżania się pojazdu
+      zarejestruje tablice bardziej niezawodnie niż kamera 4K z szerokim
+      obiektywem 2,8 mm. Dla dedykowanego LPR umieść kamerę równolegle do trasy
+      pojazdu w odległości około 15 m z obiektywem 6-12 mm.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Ile przepustowości potrzebuje kamera 4K?</AccordionTrigger>
+    <AccordionTrigger>
+      Ile przepustowości potrzebuje kamera 4K?
+    </AccordionTrigger>
     <AccordionContent>
-      Kamera 4K przy 15 kl./s z H.265 zużywa około 8-12 Mbps. Przy 30 kl./s może osiągnąć 15-20 Mbps. System 8 kamer 4K wymaga 80+ Mbps dedykowanej przepustowości. Upewnij się, że łącze zwrotne przełącznika PoE jest gigabitowe, a rejestrator NVR może obsłużyć całkowity strumień. Porównaj to z 2-4 Mbps na kamerę dla 1080p.
+      Kamera 4K przy 15 kl./s z H.265 zużywa około 8-12 Mbps. Przy 30 kl./s może
+      osiągnąć 15-20 Mbps. System 8 kamer 4K wymaga 80+ Mbps dedykowanej
+      przepustowości. Upewnij się, że łącze zwrotne przełącznika PoE jest
+      gigabitowe, a rejestrator NVR może obsłużyć całkowity strumień. Porównaj
+      to z 2-4 Mbps na kamerę dla 1080p.
     </AccordionContent>
   </AccordionItem>
 </Accordion>

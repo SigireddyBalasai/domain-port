@@ -35,17 +35,17 @@ Flat comments (no threaded replies).
 
 ## Files
 
-| File | Purpose |
-|---|---|
-| `lib/comment-db.ts` | Neon Postgres wrapper (query, insert, list, approve, delete, count) via `@neondatabase/serverless` |
-| `lib/comment-spam.ts` | Spam detection (honeypot, rate limit, URL blocking) |
-| `app/api/comments/route.ts` | POST submit comment |
-| `app/api/comments/[id]/route.ts` | PATCH approve, DELETE reject |
-| `components/blog/comments.tsx` | Server component: renders comment list + form |
-| `components/blog/comment-form.tsx` | Client component: form with validation |
-| `components/blog/comment-form-lazy.tsx` | Lazy wrapper for comment form |
-| `app/[locale]/admin/comments/page.tsx` | Moderation dashboard |
-| `lib/comment-jsonld.tsx` | JSON-LD Comment schema generator |
+| File                                    | Purpose                                                                                            |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `lib/comment-db.ts`                     | Neon Postgres wrapper (query, insert, list, approve, delete, count) via `@neondatabase/serverless` |
+| `lib/comment-spam.ts`                   | Spam detection (honeypot, rate limit, URL blocking)                                                |
+| `app/api/comments/route.ts`             | POST submit comment                                                                                |
+| `app/api/comments/[id]/route.ts`        | PATCH approve, DELETE reject                                                                       |
+| `components/blog/comments.tsx`          | Server component: renders comment list + form                                                      |
+| `components/blog/comment-form.tsx`      | Client component: form with validation                                                             |
+| `components/blog/comment-form-lazy.tsx` | Lazy wrapper for comment form                                                                      |
+| `app/[locale]/admin/comments/page.tsx`  | Moderation dashboard                                                                               |
+| `lib/comment-jsonld.tsx`                | JSON-LD Comment schema generator                                                                   |
 
 ## Data Flow
 
@@ -59,11 +59,13 @@ Flat comments (no threaded replies).
 ## Component Architecture
 
 ### PostPage (`app/[locale]/blog/[slug]/page.tsx`)
+
 - Add `interactionStatistic` to BlogPosting JSON-LD
 - Add `<Comments postSlug={slug} locale={locale} />` after `</ShareButtons>`
 - Comments server component fetches approved comments directly from SQLite
 
 ### Comments (`components/blog/comments.tsx`)
+
 - Server component (async)
 - Accepts `postSlug` and `locale` props
 - Queries SQLite for approved comments
@@ -74,6 +76,7 @@ Flat comments (no threaded replies).
 - Includes `<CommentFormLazy>` at the bottom
 
 ### CommentForm (`components/blog/comment-form.tsx`)
+
 - Client component with `"use client"`
 - Fields: name, email, comment (textarea), honeypot (hidden)
 - Client-side validation
@@ -82,6 +85,7 @@ Flat comments (no threaded replies).
 - Uses shadcn Input and Button components
 
 ### Moderation Dashboard
+
 - Simple table listing all comments (approved + pending)
 - Approve button (PATCH), Delete button (DELETE)
 - Shows post slug, locale, author, content preview, date
@@ -118,6 +122,7 @@ Flat comments (no threaded replies).
 ## JSON-LD (post page enhancement)
 
 Add to the existing BlogPosting schema:
+
 ```json
 "interactionStatistic": [
   {

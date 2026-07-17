@@ -1,0 +1,97 @@
+---
+title: "1080p vs 5MP vs 4K: Chọn độ phân giải camera an ninh nào"
+publishedAt: "2026-07-16"
+description: "Camera an ninh nên chọn 1080p, 5MP hay 4K? So sánh ba mức độ về chi tiết, khoảng cách nhận diện, hiệu năng ánh sáng yếu, lưu trữ và chi phí để chọn đúng độ phân giải theo vị trí."
+author: "CCTV Name Author"
+updatedAt: "2026-07-16"
+image: "/og.svg"
+tags:
+  [
+    "cctv",
+    "camera ip",
+    "1080p",
+    "5mp",
+    "4k",
+    "độ phân giải camera",
+    "camera an ninh",
+    "megapixel",
+  ]
+postType: "howto"
+speakable:
+  - "blog-content"
+howTo:
+  - name: "Gán mỗi mức độ vào một trường hợp sử dụng"
+    text: "1080p (2MP) cho phủ sóng trong nhà gần, 5MP là mức cân bằng cho phủ sóng tổng quát, và 4K (8MP) cho khu vực rộng hoặc rủi ro cao cần nhận diện từ xa."
+  - name: "So sánh khoảng cách nhận diện"
+    text: "Theo DORI, với ống kính 4 mm điển hình, 1080p nhận diện khuôn mặt ở 4,5–7,5 m, 5MP ở 7,5–13,5 m và 4K ở 15–24 m."
+  - name: "Cân nhắc hiệu năng ánh sáng yếu"
+    text: "Trên cùng một cảm biến, độ phân giải thấp hoạt động tốt hơn trong tối. 4K cần cảm biến lớn hơn (1/1,8 inch trở lên) để bắt kịp 5MP hoặc 1080p ban đêm."
+  - name: "Tính toán lưu trữ và băng thông"
+    text: "4K dùng khoảng 2,5x dữ liệu của 1080p và khoảng 1,6x của 5MP. Dùng H.265+ và ghi hình theo chuyển động để giữ dung lượng NVR hợp lý."
+  - name: "Phối hợp các mức độ theo khu vực"
+    text: "Triển khai 4K ở cửa vào và khu vực rủi ro, 5MP cho phủ sóng tổng quát và 1080p trong không gian trong nhà hẹp để tối ưu chi phí và thời gian lưu."
+faq:
+  - question: "5MP có tốt hơn 1080p không?"
+    answer: "Có, với hầu hết cảnh ngoài trời và phủ sóng tổng quát. 5MP (khoảng 5 triệu điểm ảnh, khoảng 2880x1620) thu được khoảng 2,5x chi tiết hơn 1080p và mở rộng khoảng cách nhận diện lên khoảng 7,5–13,5 m, trong khi dùng ít lưu trữ hơn nhiều so với 4K."
+  - question: "4K có tốt hơn 5MP không?"
+    answer: "4K (8MP) thu được khoảng gấp đôi chi tiết của 5MP và là tốt nhất khi bạn cần nhận diện khuôn mặt hoặc biển số ở 15–24 m. Nhưng 5MP thường hoạt động tốt hơn trong ánh sáng yếu và rẻ hơn nhiều về lưu trữ và băng thông, nên là mức thỏa hiệp thực tế cho hầu hết hệ thống."
+  - question: "4K dùng nhiều lưu trữ hơn 1080p bao nhiêu?"
+    answer: "Khoảng 2,5x. Camera 4K ghi hình liên tục H.265 dùng khoảng 30–50 GB/ngày, so với 10–15 GB/ngày cho 1080p. Chỉ ghi theo chuyển động sẽ giảm cả hai khoảng 60–70 %."
+  - question: "Cần độ phân giải nào để đọc biển số?"
+    answer: "Với biển số ở 4,5–7,5 m, 1080p hoặc 5MP thường đủ. Với biển số ở 12–21 m (ví dụ lối vào ga-ra), nên dùng 4K với ống kính phù hợp. Tiêu cự và góc quay quan trọng không kém số megapixel."
+---
+
+Khi chọn camera, ba độ phân giải bạn thực sự gặp là **1080p (2MP)**, **5MP** và **4K (8MP)**. Mỗi mức phục vụ một việc khác nhau, và câu trả lời đúng hầu như không bao giờ là "cao nhất ở mọi nơi". Hướng dẫn này so sánh cả ba để bạn có thể gán đúng độ phân giải cho từng vị trí camera.
+
+## Câu trả lời nhanh
+
+| Mức         | Điểm ảnh (xấp xỉ) | Khoảng cách nhận diện khuôn mặt | Lưu trữ tương đối | Tốt nhất cho                    |
+| ----------- | ----------------- | ------------------------------- | ----------------- | ------------------------------- |
+| 1080p (2MP) | 1920 × 1080       | 4,5–7,5 m                       | 1×                | Phủ sóng trong nhà gần          |
+| 5MP         | ~2880 × 1620      | 7,5–13,5 m                      | ~1,6×             | Phủ sóng tổng quát (điểm ngọt)  |
+| 4K (8MP)    | 3840 × 2160       | 15–24 m                         | ~2,5×             | Khu vực rộng/rủi ro cao, tầm xa |
+
+**5MP là mức mặc định cân bằng** cho hầu hết phủ sóng; giảm xuống 1080p trong nhà và chỉ lên 4K nơi nhận diện từ xa quan trọng.
+
+## Chi tiết và khoảng cách nhận diện
+
+Theo tiêu chuẩn DORI với ống kính 4 mm điển hình:
+
+- **1080p:** nhận diện khuôn mặt ở ~4,5–7,5 m.
+- **5MP:** nhận diện khuôn mặt ở ~7,5–13,5 m.
+- **4K:** nhận diện khuôn mặt ở 15–24 m.
+
+Vậy 4K không "hơi sắc nét hơn" — nó gần như gấp đôi tầm hữu dụng của 5MP. Đó là lý do 4K đáng giá ở cửa vào, cổng và lối vào bãi đậu xe, trong khi 1080p lãng phí cho một lối vào rộng.
+
+## Hiệu năng ánh sáng yếu
+
+Chất lượng ban đêm phụ thuộc kích thước cảm biến và điểm ảnh, không phải megapixel. Trên cảm biến nhỏ, 1080p và 5MP thường thắng 4K ban đêm. Các quy tắc thực tế:
+
+- Khu vực trong nhà tối → camera **Starlight 1080p** hoặc **Starlight 5MP**.
+- Khu vực ngoài trời có đèn → **5MP** là điểm ngọt.
+- Khu vực ngoài trời lớn, sáng cần nhận diện tầm xa → **4K** với cảm biến tối thiểu 1/1,8" (tìm Starlight/ColorVu).
+
+## Lưu trữ và băng thông
+
+Lưu trữ hàng ngày tương đối (H.265, liên tục):
+
+- 1080p: ~10–15 GB/ngày
+- 5MP: ~16–25 GB/ngày
+- 4K: ~30–50 GB/ngày
+
+4K dùng khoảng 2,5x dữ liệu của 1080p. Dùng nén **H.265+** và **chỉ ghi theo chuyển động** (giảm 60–70 %) để giữ dung lượng NVR hợp lý, đặc biệt khi toàn bộ là 4K.
+
+## Phối hợp các mức độ theo khu vực (khuyên dùng)
+
+NVR hiện đại trộn các độ phân giải không vấn đề. Một kế hoạch hợp lý:
+
+- **Cửa vào, cổng, hàng rào:** 4K cho hình ảnh mức nhận diện.
+- **Phủ sóng tổng quát (phòng, tầng, sân):** 5MP — tỷ lệ chi tiết/giá tốt nhất.
+- **Không gian trong nhà hẹp (hành lang, phòng nhỏ):** 1080p để tiết kiệm lưu trữ.
+
+## Các hướng dẫn liên quan
+
+- Phân tích đầy đủ từng mức: [Hướng dẫn độ phân giải camera IP](/blog/camera-resolution-guide).
+- So sánh từng cặp: [2MP vs 4MP](/blog/2mp-vs-4mp) và [4MP vs 1080p](/blog/4mp-vs-1080p).
+- Quyết định cấp cao: [4K vs 5MP](/blog/4k-vs-5mp-resolution-guide).
+- Đang lên kế hoạch băng thông và lưu trữ? Xem [hướng dẫn thiết lập PoE NVR](/blog/poe-nvr-setup).

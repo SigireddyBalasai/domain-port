@@ -70,7 +70,7 @@ export function CommentForm({
 
   if (status === "success") {
     return (
-      <div className="rounded-lg border border-border bg-card p-6 text-center text-sm text-muted-foreground">
+      <div className="border-border bg-card text-muted-foreground rounded-lg border p-6 text-center text-sm">
         Comment submitted for moderation. It will appear once approved.
       </div>
     )
@@ -81,7 +81,7 @@ export function CommentForm({
       <div aria-hidden="true" className="absolute -top-[9999px] -left-[9999px]">
         <label htmlFor="website">Website</label>
         <input
-          readOnly
+          readOnly={true}
           id="website"
           name="website"
           type="text"
@@ -95,7 +95,7 @@ export function CommentForm({
             Name <span className="text-destructive">*</span>
           </label>
           <Input
-            required
+            required={true}
             id="author-name"
             type="text"
             minLength={2}
@@ -111,7 +111,7 @@ export function CommentForm({
             Email <span className="text-destructive">*</span>
           </label>
           <Input
-            required
+            required={true}
             id="author-email"
             type="email"
             placeholder="your@email.com"
@@ -127,12 +127,12 @@ export function CommentForm({
           Comment <span className="text-destructive">*</span>
         </label>
         <textarea
-          required
+          required={true}
           id="comment-content"
           minLength={10}
           rows={5}
           placeholder="Share your thoughts..."
-          className="w-full min-w-0 rounded-3xl border border-transparent bg-input/50 px-3 py-2 text-base transition-[color,box-shadow,background-color] outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30 md:text-sm"
+          className="bg-input/50 placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/30 w-full min-w-0 rounded-3xl border border-transparent px-3 py-2 text-base transition-[color,box-shadow,background-color] outline-none focus-visible:ring-3 md:text-sm"
           value={content}
           onChange={(e) => {
             setContent(e.target.value)
@@ -140,7 +140,7 @@ export function CommentForm({
         />
       </div>
       {status === "error" && (
-        <p className="text-sm text-destructive">{errorMessage}</p>
+        <p className="text-destructive text-sm">{errorMessage}</p>
       )}
       <Button type="submit" disabled={status === "loading"}>
         {status === "loading" ? "Submitting..." : "Submit Comment"}

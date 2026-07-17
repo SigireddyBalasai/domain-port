@@ -1,6 +1,6 @@
 import { spawnSync } from "node:child_process"
-import crypto from "crypto"
 import { createSerwistRoute } from "@serwist/turbopack"
+import crypto from "crypto"
 
 const revision =
   spawnSync("git", ["rev-parse", "HEAD"], {

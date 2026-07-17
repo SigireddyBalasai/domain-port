@@ -5,15 +5,16 @@ Package manager: **bun** (bun@1.3.0). Path alias `@/*` → root (`./*`).
 
 ## Commands
 
-| Command | What it runs |
-|---------|-------------|
-| `bun run dev` | `next dev --turbopack` + `velite --watch` (concurrent via npm-run-all) |
-| `bun run build` | `velite --clean` → `next build` → `scripts/generate-sitemaps.ts` (postbuild) |
-| `bun run lint` | eslint |
-| `bun run typecheck` | `tsc --noEmit` |
-| `bun run format` | `prettier --write \"**/*.{ts,tsx}\"` |
-| `bun run knip` | dead file / unused export analysis |
-| `bun run seed` | seeds a user for auth |
+| Command             | What it runs                                                                 |
+| ------------------- | ---------------------------------------------------------------------------- |
+| `bun run dev`       | `next dev --turbopack` + `velite --watch` (concurrent via npm-run-all)       |
+| `bun run build`     | `velite --clean` → `next build` → `scripts/generate-sitemaps.ts` (postbuild) |
+| `bun run lint`      | `oxlint` (Oxc linter — replaces ESLint/Prettier/Biome)                       |
+| `bun run lint:fix`  | `oxlint --fix`                                                               |
+| `bun run typecheck` | `tsc --noEmit`                                                               |
+| `bun run format`    | `oxfmt --write` (Oxc formatter)                                              |
+| `bun run knip`      | dead file / unused export analysis                                           |
+| `bun run seed`      | seeds a user for auth                                                        |
 
 Always run **format → lint → typecheck** before committing. Build locally to catch content issues.
 
@@ -23,7 +24,7 @@ Always run **format → lint → typecheck** before committing. Build locally to
 - **Content (Velite)**: `content/posts/<slug>/<locale>.mdx` — blog posts, 21 locale files per slug. `content/faqs/<slug>.mdx` — English-only single files. Velite output: `.velite/` (JSON data) + `public/static/` (hashed assets).
 - **Auth**: better-auth (email/password + 2FA, `username` additional field) with Neon PostgreSQL via `pg` pool in `lib/auth.ts`.
 - **Comments**: `blog_comments` table via `@neondatabase/serverless` in `lib/comment-db.ts`.
-- **UI**: `components/ui/` (shadcn, eslint-ignored). `components/ui/` is ignored by eslint — do not lint.
+- **UI**: `components/ui/` (shadcn, ignored by oxc). `components/ui/` is ignored by oxlint/oxfmt — do not lint.
 
 ## Content Authoring
 
@@ -39,13 +40,18 @@ Frontmatter: `question`, `answer` (MDX), `category`, `order`, `tags`.
 
 `Callout` (type: note/tip/warning/info/danger), `Badge` (variant: default/secondary/destructive/outline/ghost/link), `Card`/`CardHeader`/`CardTitle`/`CardDescription`/`CardContent`, `Tabs`/`TabsList`/`TabsTrigger`/`TabsContent`, `Accordion`/`AccordionItem`/`AccordionTrigger`/`AccordionContent`, `Kbd`, `KbdGroup`, `YouTubeEmbed` (id + title + optional start), `Alert`.
 
-## ESLint
+## Linting & Formatting (Oxc)
 
-Uses `eslint-config-sheriff` (strict). Ignored: `components/ui/**`, `scripts/**`, `**/route.ts`, `next.config.ts`, `lib/utils.ts`, `components/theme-provider.tsx`, `public/sw.js`.
+Oxc (`oxlint` + `oxfmt`) replaces ESLint + Prettier + Biome. Configs: `.oxlintrc.json` (linter), `.oxfmtrc.json` (formatter, migrated from Biome).
 
-## Prettier
-
-`semi: false`, `singleQuote: false`, `tabWidth: 2`, `trailingComma: es5`, `printWidth: 80`. Plugin: `prettier-plugin-tailwindcss`.
+- `bun run lint` → `oxlint` (linter only). `bun run lint:fix` → `oxlint --fix`.
+- `bun run format` → `oxfmt --write`. `oxfmt` sorts Tailwind classes (a capability Biome lacked) and parses `@apply`/`@tailwind` in CSS natively.
+- Style matches the old Prettier setup: `semi: false`, `singleQuote: false`, `tabWidth: 2`, `trailingComma: es5`, `printWidth: 80`.
+- Ignored (no lint/format): `components/ui/**`, `components/theme-provider.tsx`, `lib/utils.ts`, `**/route.ts`, `**/route.tsx`, `next.config.ts`, `postcss.config.mjs`, `scripts/**`, `public/sw.js`, `public/blog-manifest.json`.
+- oxlint categories: `correctness` + `suspicious` = error; `style` + `perf` + `pedantic` = off (too noisy for this codebase).
+- Disabled rules (false positives / React-Next idioms): `react-in-jsx-scope` (Next uses automatic JSX runtime), `react-hooks/exhaustive-deps`, `import/no-unassigned-import` (CSS side-effect imports), `no-underscore-dangle` (`__SW_MANIFEST`), `no-explicit-any`, `no-non-null-assertion`.
+- `no-console` runs at `warn` (surfaces but does not block). `no-unused-vars` is error; disabled for `**/loading.tsx`.
+- `oxlint` fails only on errors; `warn`-level rules (console) surface but don't block CI.
 
 ## Env
 

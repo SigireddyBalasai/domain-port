@@ -20,9 +20,9 @@ export default function BlogCard({
   tags,
 }: BlogCardProps): JSX.Element {
   return (
-    <article className="group rounded-lg border p-6 transition-colors hover:border-primary">
+    <article className="group hover:border-primary rounded-lg border p-6 transition-colors">
       <Link href={`/${locale}/blog/${slug}`} className="block">
-        <span className="text-sm text-muted-foreground">
+        <span className="text-muted-foreground text-sm">
           Published{" "}
           <time dateTime={publishedAt}>
             {new Date(publishedAt).toLocaleDateString(
@@ -35,11 +35,11 @@ export default function BlogCard({
             )}
           </time>
         </span>
-        <h2 className="mt-2 text-xl font-semibold group-hover:text-primary">
+        <h2 className="group-hover:text-primary mt-2 text-xl font-semibold">
           {title}
         </h2>
         {description && (
-          <p className="mt-2 text-muted-foreground">{description}</p>
+          <p className="text-muted-foreground mt-2">{description}</p>
         )}
         {tags && tags.length > 0 && (
           <div className="mt-3 flex flex-wrap gap-2">
@@ -47,7 +47,7 @@ export default function BlogCard({
               return (
                 <span
                   key={tag}
-                  className="rounded-full bg-secondary px-2.5 py-0.5 text-xs text-secondary-foreground"
+                  className="bg-secondary text-secondary-foreground rounded-full px-2.5 py-0.5 text-xs"
                 >
                   {tag}
                 </span>

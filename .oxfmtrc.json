@@ -1,0 +1,31 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "useTabs": false,
+  "tabWidth": 2,
+  "printWidth": 80,
+  "singleQuote": false,
+  "jsxSingleQuote": false,
+  "quoteProps": "as-needed",
+  "trailingComma": "es5",
+  "semi": false,
+  "arrowParens": "always",
+  "bracketSameLine": false,
+  "bracketSpacing": true,
+  "sortTailwindcss": true,
+  "ignorePatterns": [
+    "**/node_modules",
+    "**/.next",
+    "**/.velite",
+    "**/public/static",
+    "components/ui",
+    "components/theme-provider.tsx",
+    "lib/utils.ts",
+    "**/route.ts",
+    "**/route.tsx",
+    "next.config.ts",
+    "postcss.config.mjs",
+    "scripts",
+    "public/sw.js",
+    "public/blog-manifest.json"
+  ]
+}

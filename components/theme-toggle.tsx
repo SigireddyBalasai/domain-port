@@ -16,11 +16,11 @@ export default function ThemeToggle(): JSX.Element {
       aria-label="Toggle theme"
       title="Toggle theme"
       aria-pressed={resolvedTheme === "dark"}
-      className="flex size-6 items-center justify-center rounded-md text-sm hover:bg-accent"
+      className="hover:bg-accent flex size-6 items-center justify-center rounded-md text-sm"
       onClick={toggle}
     >
       <span className="sr-only">Toggle theme</span>
-      <span aria-hidden>{resolvedTheme === "dark" ? "🌙" : "☀️"}</span>
+      <span aria-hidden={true}>{resolvedTheme === "dark" ? "🌙" : "☀️"}</span>
     </button>
   )
 }

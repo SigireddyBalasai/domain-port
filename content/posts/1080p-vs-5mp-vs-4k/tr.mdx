@@ -1,0 +1,97 @@
+---
+title: "1080p vs 5MP vs 4K: hangi güvenlik kamerası çözünürlüğü seçilmeli"
+publishedAt: "2026-07-16"
+description: "Güvenlik kameraları için 1080p, 5MP veya 4K mı? Detay, kimlik tespit mesafesi, düşük ışık performansı, depolama ve maliyet açısından üç seviyeyi karşılaştırın; doğru çözünürlüğü konuma göre seçin."
+author: "CCTV Name Author"
+updatedAt: "2026-07-16"
+image: "/og.svg"
+tags:
+  [
+    "cctv",
+    "ip kamera",
+    "1080p",
+    "5mp",
+    "4k",
+    "kamera çözünürlüğü",
+    "güvenlik kamerası",
+    "megapiksel",
+  ]
+postType: "howto"
+speakable:
+  - "blog-content"
+howTo:
+  - name: "Her seviyeyi bir kullanım durumuyla eşleyin"
+    text: "1080p (2MP) yakın iç mekan kapsamı, 5MP genel kapsam için dengeli orta yol ve 4K (8MP) mesafeden kimlik tespiti gerektiren geniş veya yüksek riskli alanlar için."
+  - name: "Kimlik tespit mesafesini karşılaştırın"
+    text: "DORI'ye göre 1080p bir yüzü 4,5-7,5 m'de, 5MP 7,5-13,5 m'de ve 4K 15-24 m'de tipik bir lensle tanır."
+  - name: "Düşük ışık performansını tartın"
+    text: "Verilen bir sensörde daha düşük çözünürlükler karanlıkta daha iyi performans gösterir. 4K, gece 5MP veya 1080p'ye yetişmek için daha büyük bir sensör gerektirir (1/1,8 inç veya daha iyisi)."
+  - name: "Depolama ve bant genişliğini boyutlandırın"
+    text: "4K, 1080p'nin verisinin yaklaşık 2,5x'i ve 5MP'ninkinin yaklaşık 1,6x'i kadarını kullanır. NVR boyutunu yönetilebilir tutmak için H.265+ ve hareketli kayıt kullanın."
+  - name: "Seviyeleri bölgeye göre karıştırın"
+    text: "Giriş ve yüksek riskli bölgeler için 4K, genel kapsam için 5MP ve kısıtlı iç mekanlar için 1080p dağıtarak maliyeti ve saklama süresini optimize edin."
+faq:
+  - question: "5MP, 1080p'den daha mı iyi?"
+    answer: "Çoğu dış mekan ve genel kapsama sahnesi için evet. 5MP (yaklaşık 5 milyon piksel, yaklaşık 2880x1620), 1080p'den yaklaşık 2,5x daha fazla ayrıntı yakalar ve kimlik tespit mesafesini yaklaşık 7,5-13,5 m'ye çıkarırken 4K'dan çok daha az depolama kullanır."
+  - question: "4K, 5MP'den daha mı iyi?"
+    answer: "4K (8MP), 5MP'den yaklaşık iki kat daha fazla ayrıntı yakalar ve yüzleri veya plakaları 15-24 m'de tanımlamanız gerektiğinde en iyisidir. Ancak 5MP genellikle düşük ışıkta daha iyi performans gösterir ve depolama ile bant genişliğinde çok daha az maliyetlidir; bu da onu çoğu kurulum için pratik orta yol yapar."
+  - question: "4K, 1080p'den ne kadar daha fazla depolama kullanır?"
+    answer: "Yaklaşık 2,5x. Sürekli H.265 kaydı yapan bir 4K kamera günde yaklaşık 30-50 GB, 1080p için 10-15 GB kullanır. Yalnızca hareketli kayıt her iki değeri de %60-70 düşürür."
+  - question: "Bir plakayı okumak için ne kadar çözünürlük gerekir?"
+    answer: "4,5-7,5 m'deki plakalar için genellikle 1080p veya 5MP yeterlidir. 12-21 m'deki plakalar için (örneğin bir garaj girişi) uygun lensli 4K önerilir. Odak uzaklığı ve açı, megapikseller kadar önemlidir."
+---
+
+Kamera seçerken gerçekten karşılaşacağınız üç çözünürlük **1080p (2MP)**, **5MP** ve **4K (8MP)**'dir. Her seviyenin farklı bir işi vardır ve doğru yanıt neredeyse hiçbir zaman "her yerde en yüksek olanı" değildir. Bu kılavuz, her kamera konumuna doğru çözünürlüğü atayabilmeniz için üçünü karşılaştırır.
+
+## Hızlı yanıt
+
+| Seviye      | Piksel (yaklaşık) | Yüz kimlik mesafesi | Göreli depolama | En iyi olduğu yer                        |
+| ----------- | ----------------- | ------------------- | --------------- | ---------------------------------------- |
+| 1080p (2MP) | 1920 × 1080       | 4,5-7,5 m           | 1×              | Yakın iç mekan kapsamı                   |
+| 5MP         | ~2880 × 1620      | 7,5-13,5 m          | ~1,6×           | Genel kapsam (tatlı nokta)               |
+| 4K (8MP)    | 3840 × 2160       | 15-24 m             | ~2,5×           | Geniş/yüksek riskli alanlar, uzun menzil |
+
+**5MP, çoğu kapsama için dengeli varsayılandır**; iç mekanlarda 1080p'ye inin ve yalnızca uzaktan kimlik tespiti önemliyse 4K'ya çıkın.
+
+## Ayrıntı ve kimlik tespit mesafesi
+
+Tipik 4 mm lensle DORI standartlarına göre:
+
+- **1080p:** bir yüzü ~4,5-7,5 m'de tanır.
+- **5MP:** bir yüzü ~7,5-13,5 m'de tanır.
+- **4K:** bir yüzü 15-24 m'de tanır.
+
+Yani 4K "biraz daha keskin" değildir; 5MP'nin yararlı menzilini yaklaşık olarak ikiye katlar. Bu yüzden 4K, girişlerde, kapılarda ve otopark girişlerinde kendini amorti ederken, 1080p geniş bir yolda boşa gider.
+
+## Düşük ışık performansı
+
+Gece kalitesi megapikseller değil, sensör ve piksel boyutunu izler. Küçük bir sensörde 1080p ve 5MP, 4K'yı gece sıklıkla yener. Pratik kurallar:
+
+- Loş iç mekan → bir **Starlight 1080p** veya **Starlight 5MP** kamera.
+- Aydınlatılmış dış mekan → **5MP** tatlı noktadır.
+- Uzaktan kimlik gerektiren büyük, aydınlık dış mekan → en az 1/1,8" sensörlü **4K** (Starlight/ColorVu arayın).
+
+## Depolama ve bant genişliği
+
+Göreli günlük depolama (H.265, sürekli):
+
+- 1080p: ~10-15 GB/gün
+- 5MP: ~16-25 GB/gün
+- 4K: ~30-50 GB/gün
+
+4K, 1080p'nin verisinin yaklaşık 2,5x'i kadarını kullanır. Özellikle tamamen 4K kurulumlarda NVR boyutunu makul tutmak için **H.265+** sıkıştırması ve **yalnızca hareketli kayıt** (%60-70 düşürür) kullanın.
+
+## Seviyeleri bölgeye göre karıştırın (önerilen)
+
+Modern bir NVR sorunsuz şekilde çözünürlükleri karıştırır. Mantıklı bir plan:
+
+- **Giriş, kapı, çevre:** kimlik seviyesinde görüntüler için 4K.
+- **Genel kapsam (odalar, katlar, avlular):** 5MP — en iyi ayrıntı-maliyet oranı.
+- **Kısıtlı iç mekanlar (koridorlar, küçük odalar):** depolamadan tasarruf için 1080p.
+
+## İlgili kılavuzlar
+
+- Her seviyenin tam dökümü: [IP Kamera Çözünürlük Kılavuzu](/blog/camera-resolution-guide).
+- İkili karşılaştırmalar: [2MP vs 4MP](/blog/2mp-vs-4mp) ve [4MP vs 1080p](/blog/4mp-vs-1080p).
+- Üst düzey karar: [4K vs 5MP](/blog/4k-vs-5mp-resolution-guide).
+- Bant genişliği ve depolama mı planlıyorsunuz? [PoE NVR kurulum kılavuzuna](/blog/poe-nvr-setup) bakın.

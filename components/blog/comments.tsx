@@ -17,7 +17,7 @@ export async function Comments({
   ])
 
   return (
-    <section className="mt-16 border-t border-border pt-10" id="comments">
+    <section className="border-border mt-16 border-t pt-10" id="comments">
       <h2 className="text-2xl font-bold">Comments ({count})</h2>
       {comments.length > 0 && (
         <div className="mt-8 space-y-6">
@@ -25,10 +25,10 @@ export async function Comments({
             return (
               <div
                 key={comment.id}
-                className="h-entry rounded-lg border border-border bg-card p-5"
+                className="h-entry border-border bg-card rounded-lg border p-5"
               >
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <span className="p-author font-medium text-foreground">
+                <div className="text-muted-foreground flex items-center gap-2 text-sm">
+                  <span className="p-author text-foreground font-medium">
                     {comment.author_name}
                   </span>
                   <span aria-hidden="true">·</span>

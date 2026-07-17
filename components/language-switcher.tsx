@@ -130,7 +130,7 @@ export default function LanguageSwitcher({
                             href={href}
                             role="option"
                             aria-selected={currentLocale === lang.code}
-                            className={`flex items-center justify-between rounded-md px-3 py-2 text-sm hover:bg-accent ${
+                            className={`hover:bg-accent flex items-center justify-between rounded-md px-3 py-2 text-sm ${
                               currentLocale === lang.code
                                 ? "bg-accent font-medium"
                                 : ""
@@ -140,7 +140,7 @@ export default function LanguageSwitcher({
                             }}
                           >
                             <span>{lang.nativeName}</span>
-                            <span className="text-xs text-muted-foreground">
+                            <span className="text-muted-foreground text-xs">
                               {lang.name}
                             </span>
                           </Link>
@@ -151,7 +151,7 @@ export default function LanguageSwitcher({
                 )
               })}
               {filteredLanguages.length === 0 && (
-                <div className="px-3 py-2 text-sm text-muted-foreground">
+                <div className="text-muted-foreground px-3 py-2 text-sm">
                   No languages found
                 </div>
               )}

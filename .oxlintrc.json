@@ -1,0 +1,51 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "react", "unicorn", "oxc", "import"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error",
+    "style": "off",
+    "perf": "off",
+    "pedantic": "off"
+  },
+  "env": {
+    "builtin": true,
+    "browser": true,
+    "node": true,
+    "es2024": true
+  },
+  "ignorePatterns": [
+    "node_modules",
+    ".next",
+    ".velite",
+    "public/static",
+    "components/ui",
+    "components/theme-provider.tsx",
+    "lib/utils.ts",
+    "**/route.ts",
+    "**/route.tsx",
+    "next.config.ts",
+    "postcss.config.mjs",
+    "scripts",
+    "public/sw.js",
+    "public/blog-manifest.json"
+  ],
+  "rules": {
+    "no-console": "warn",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "react-in-jsx-scope": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "import/no-unassigned-import": "off",
+    "no-underscore-dangle": "off"
+  },
+  "overrides": [
+    {
+      "files": ["**/loading.tsx"],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": "off"
+      }
+    }
+  ]
+}

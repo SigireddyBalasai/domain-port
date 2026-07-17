@@ -26,25 +26,25 @@ bun add -d next-sitemap
 
 ### Create (7 files)
 
-| File | Purpose |
-|---|---|
-| `lib/site-config.ts` | Central site config: name, URL, description, social links |
-| `lib/json-ld.tsx` | Reusable `<JsonLd>` component with `schema-dts` types |
-| `components/google-analytics.tsx` | GA4 wrapper via `@next/third-parties` |
-| `components/blog/share-buttons.tsx` | Social share buttons (Twitter, LinkedIn, copy link) |
-| `app/feed.xml/route.ts` | RSS 2.0 feed from Velite posts |
-| `app/robots.ts` | Robots.txt with sitemap reference |
-| `next-sitemap.config.js` | Post-build sitemap config |
+| File                                | Purpose                                                   |
+| ----------------------------------- | --------------------------------------------------------- |
+| `lib/site-config.ts`                | Central site config: name, URL, description, social links |
+| `lib/json-ld.tsx`                   | Reusable `<JsonLd>` component with `schema-dts` types     |
+| `components/google-analytics.tsx`   | GA4 wrapper via `@next/third-parties`                     |
+| `components/blog/share-buttons.tsx` | Social share buttons (Twitter, LinkedIn, copy link)       |
+| `app/feed.xml/route.ts`             | RSS 2.0 feed from Velite posts                            |
+| `app/robots.ts`                     | Robots.txt with sitemap reference                         |
+| `next-sitemap.config.js`            | Post-build sitemap config                                 |
 
 ### Modify (5 files)
 
-| File | Changes |
-|---|---|
-| `app/layout.tsx` | Add `metadata` export with title template, description, canonical; add GA4 |
-| `app/page.tsx` | Add metadata, add `Organization` + `Blog` JSON-LD |
-| `app/blog/page.tsx` | Add metadata, add `BreadcrumbList` + `CollectionPage` JSON-LD |
+| File                       | Changes                                                                       |
+| -------------------------- | ----------------------------------------------------------------------------- |
+| `app/layout.tsx`           | Add `metadata` export with title template, description, canonical; add GA4    |
+| `app/page.tsx`             | Add metadata, add `Organization` + `Blog` JSON-LD                             |
+| `app/blog/page.tsx`        | Add metadata, add `BreadcrumbList` + `CollectionPage` JSON-LD                 |
 | `app/blog/[slug]/page.tsx` | Add `generateMetadata` per post, add `BlogPosting` + `BreadcrumbList` JSON-LD |
-| `package.json` | Add `postbuild` script: `next-sitemap` |
+| `package.json`             | Add `postbuild` script: `next-sitemap`                                        |
 
 ## Sections
 

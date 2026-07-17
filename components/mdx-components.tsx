@@ -50,6 +50,5 @@ function Callout({
   )
 }
 
-export { Callout }
-
 export { ListingCard } from "@/components/listing/listing-card"
+export { Callout }

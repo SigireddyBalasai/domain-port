@@ -95,12 +95,12 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: `/${locale}`,
       languages: {
-        en: '/en',
-        es: '/es',
-        fr: '/fr',
-        'x-default': '/en',
-      }
-    }
+        en: "/en",
+        es: "/es",
+        fr: "/fr",
+        "x-default": "/en",
+      },
+    },
   }
 }
 ```

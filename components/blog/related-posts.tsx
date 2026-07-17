@@ -42,17 +42,17 @@ export default function RelatedPosts({
             <Link
               key={post.slug}
               href={`/${locale}/blog/${post.slug}`}
-              className="group rounded-lg border p-5 transition-colors hover:border-primary"
+              className="group hover:border-primary rounded-lg border p-5 transition-colors"
             >
-              <h3 className="font-semibold transition-colors group-hover:text-primary">
+              <h3 className="group-hover:text-primary font-semibold transition-colors">
                 {post.title}
               </h3>
               {post.description && (
-                <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">
+                <p className="text-muted-foreground mt-2 line-clamp-2 text-sm">
                   {post.description}
                 </p>
               )}
-              <p className="mt-3 text-xs text-muted-foreground">
+              <p className="text-muted-foreground mt-3 text-xs">
                 {new Date(post.publishedAt).toLocaleDateString(locale, {
                   year: "numeric",
                   month: "long",

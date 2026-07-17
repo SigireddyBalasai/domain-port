@@ -5,7 +5,17 @@ description: "Volledige gids voor CCTV-bekabeling voor IP-beveiligingscamera's �
 author: "CCTV Name Author"
 updatedAt: "2026-05-25"
 image: "/og.svg"
-tags: ["cctv", "bekabeling", "cat6", "poe", "ethernet", "installatie", "overspanningsbeveiliging", "bedrading"]
+tags:
+  [
+    "cctv",
+    "bekabeling",
+    "cat6",
+    "poe",
+    "ethernet",
+    "installatie",
+    "overspanningsbeveiliging",
+    "bedrading",
+  ]
 postType: "howto"
 howTo:
   - name: "Kies de Juiste Kabel"
@@ -38,70 +48,89 @@ Slechte bekabeling is verantwoordelijk voor meer CCTV-storingen dan enige andere
 Deze gids behandelt alles wat u nodig hebt om een PoE-beveiligingscamerasysteem correct te bekabelen: kabelselectie, terminering, kabelgoten, overspanningsbeveiliging, de benodigde gereedschappen en de fouten die een professionele installatie scheiden van een problematische.
 
 <Callout type="info" title="40% van PoE-problemen zijn kabelgerelateerd">
-  Industriegegevens tonen aan dat ongeveer 40% van de "camera offline" tickets terug te voeren zijn op kabelproblemen — verkeerde diameter, binnenkabel gebruikt buiten, nagemaakte Cat6 die eigenlijk CCA Cat5e is, of slechte termineringen. De juiste kabel vanaf dag één elimineert de meest voorkomende storingsmodus.
+  Industriegegevens tonen aan dat ongeveer 40% van de "camera offline" tickets
+  terug te voeren zijn op kabelproblemen — verkeerde diameter, binnenkabel
+  gebruikt buiten, nagemaakte Cat6 die eigenlijk CCA Cat5e is, of slechte
+  termineringen. De juiste kabel vanaf dag één elimineert de meest voorkomende
+  storingsmodus.
 </Callout>
 
 ## Kabelselectie
 
 ### Kabelcategorie
 
-| Kabel | Diameter | Maximale bandbreedte | Maximaal PoE-vermogen | Best voor |
-|---|---|---|---|---|
-| Cat5e | 24 AWG | 1 Gbps bij 100 m | PoE/PoE+ (30W) | Budget 1080p, trajecten onder 50 m |
-| Cat6 | 23 AWG | 1 Gbps bij 100 m, 10 Gbps bij 55 m | PoE/PoE+/PoE++ (60W) | Aanbevolen voor alle nieuwe installaties |
-| Cat6A | 23 AWG | 10 Gbps bij 100 m | Alle PoE-standaarden inclusief PoE++ Type 4 (100W) | 4K-camera's, trajecten boven 70 m, hoogvermogen PTZ |
-| Cat7 | 22 AWG | 10 Gbps bij 100 m | Alle PoE-standaarden | Toekomstbestendige commerciële installaties |
+| Kabel | Diameter | Maximale bandbreedte               | Maximaal PoE-vermogen                              | Best voor                                           |
+| ----- | -------- | ---------------------------------- | -------------------------------------------------- | --------------------------------------------------- |
+| Cat5e | 24 AWG   | 1 Gbps bij 100 m                   | PoE/PoE+ (30W)                                     | Budget 1080p, trajecten onder 50 m                  |
+| Cat6  | 23 AWG   | 1 Gbps bij 100 m, 10 Gbps bij 55 m | PoE/PoE+/PoE++ (60W)                               | Aanbevolen voor alle nieuwe installaties            |
+| Cat6A | 23 AWG   | 10 Gbps bij 100 m                  | Alle PoE-standaarden inclusief PoE++ Type 4 (100W) | 4K-camera's, trajecten boven 70 m, hoogvermogen PTZ |
+| Cat7  | 22 AWG   | 10 Gbps bij 100 m                  | Alle PoE-standaarden                               | Toekomstbestendige commerciële installaties         |
 
 <Callout type="tip" title="Cat6 is de zoete plek voor 2026">
-  Cat6 is de beste allround keuze voor beveiligingscamerainstallaties. De 23 AWG-geleiders verminderen PoE-gerelateerde spanningsval en warmte in vergelijking met Cat5e. De 250 MHz-bandbreedte biedt ruime reserve voor 4K-videostreams. De kostenpremie ten opzichte van Cat5e is typisch slechts $0,04-0,10 per voet — bij een 8-camerasysteem komt dat neer op $30-80 totaal. Voor die kleine premie krijgt u meetbaar betere PoE-prestaties en bandbreedtereserve voor toekomstige camera-upgrades.
+  Cat6 is de beste allround keuze voor beveiligingscamerainstallaties. De 23
+  AWG-geleiders verminderen PoE-gerelateerde spanningsval en warmte in
+  vergelijking met Cat5e. De 250 MHz-bandbreedte biedt ruime reserve voor
+  4K-videostreams. De kostenpremie ten opzichte van Cat5e is typisch slechts
+  $0,04-0,10 per voet — bij een 8-camerasysteem komt dat neer op $30-80 totaal.
+  Voor die kleine premie krijgt u meetbaar betere PoE-prestaties en
+  bandbreedtereserve voor toekomstige camera-upgrades.
 </Callout>
 
 ### Massief koper vs. CCA
 
 Dit is de belangrijkste kabelbeslissing die u zult nemen.
 
-| Eigenschap | 100% Massief koper | Koper-geplateerd aluminium (CCA) |
-|---|---|---|
-| Weerstand | Laag | 40-60% hoger |
-| PoE-betrouwbaarheid | Uitstekend | Veroorzaakt spanningsval boven 30 m |
-| Warmte onder PoE+-belasting | Laag | Aanzienlijk |
-| Flexibiliteit | Goed | Bros, breekt bij trekken |
-| Kosten per voet | ~$0,30-0,50 | ~$0,10-0,15 |
-| Levensduur buitengebruik | 10+ jaar | 2-3 jaar |
+| Eigenschap                  | 100% Massief koper | Koper-geplateerd aluminium (CCA)    |
+| --------------------------- | ------------------ | ----------------------------------- |
+| Weerstand                   | Laag               | 40-60% hoger                        |
+| PoE-betrouwbaarheid         | Uitstekend         | Veroorzaakt spanningsval boven 30 m |
+| Warmte onder PoE+-belasting | Laag               | Aanzienlijk                         |
+| Flexibiliteit               | Goed               | Bros, breekt bij trekken            |
+| Kosten per voet             | ~$0,30-0,50        | ~$0,10-0,15                         |
+| Levensduur buitengebruik    | 10+ jaar           | 2-3 jaar                            |
 
 <Callout type="danger" title="Gebruik Nooit CCA voor PoE">
-  CCA-kabel heeft hogere weerstand dan puur koper, wat betekent meer spanningsval, meer warmte en intermitterende camera-stroomuitval. Onder PoE+-belasting (30W) kunnen CCA-kabels warm genoeg worden om de mantel na verloop van tijd aan te tasten. Als de verkoper niet expliciet "100% puur koper" of "blank koper" vermeldt, neem dan aan dat het CCA is. Sta voor elke professionele installatie op massief koper.
+  CCA-kabel heeft hogere weerstand dan puur koper, wat betekent meer
+  spanningsval, meer warmte en intermitterende camera-stroomuitval. Onder
+  PoE+-belasting (30W) kunnen CCA-kabels warm genoeg worden om de mantel na
+  verloop van tijd aan te tasten. Als de verkoper niet expliciet "100% puur
+  koper" of "blank koper" vermeldt, neem dan aan dat het CCA is. Sta voor elke
+  professionele installatie op massief koper.
 </Callout>
 
 ### Binnen- vs. Buitenkabel
 
-| Eigenschap | Binnen (CM/CMR) | Buiten (CMX/Directe begraving) |
-|---|---|---|
-| Mantelmateriaal | PVC (zacht, flexibel) | LLDPE (hard, UV-bestendig) |
-| Waterdichtheid | Geen | Gelgevuld of waterblokkerende tape |
-| UV-bescherming | Laag (scheuren in 1-2 jaar) | Hoog (gaat 10+ jaar mee) |
-| Temperatuurbereik | 0°C tot 60°C | -40°C tot 75°C |
-| Best gebruik | Binnen muren, zolder, kabelgoten binnen | Blootgestelde buitentrajecten, directe begraving |
+| Eigenschap        | Binnen (CM/CMR)                         | Buiten (CMX/Directe begraving)                   |
+| ----------------- | --------------------------------------- | ------------------------------------------------ |
+| Mantelmateriaal   | PVC (zacht, flexibel)                   | LLDPE (hard, UV-bestendig)                       |
+| Waterdichtheid    | Geen                                    | Gelgevuld of waterblokkerende tape               |
+| UV-bescherming    | Laag (scheuren in 1-2 jaar)             | Hoog (gaat 10+ jaar mee)                         |
+| Temperatuurbereik | 0°C tot 60°C                            | -40°C tot 75°C                                   |
+| Best gebruik      | Binnen muren, zolder, kabelgoten binnen | Blootgestelde buitentrajecten, directe begraving |
 
 Als een deel van het kabeltraject wordt blootgesteld aan weer, zonlicht of vocht, gebruik dan buitenkabel of leid standaard binnenkabel door UV-bestendige kabelgoten.
 
 ## Benodigd gereedschap
 
-| Gereedschap | Doel | Geschatte kosten |
-|---|---|---|
-| Cat6-krimptang (pass-through compatibel) | RJ45-connectoren termineren | $25-50 |
-| Pass-through RJ45-connectoren | Gemakkelijkere, betrouwbaardere termineringen | $15-25 per 50-stuks |
-| Kabeltester (doorlaat + draadkaart) | Termineringen verifiëren | $15-30 |
-| Vislijn of gloeistaven | Kabel trekken door muren/goten | $20-40 |
-| Kabelglijmiddel | Lange goottrajecten | $10-15 |
-| PoE-tester | Stroomlevering op afstand verifiëren | $50-150 |
-| Ponsgereedschap | Patchpanelen termineren | $15-30 |
-| Kabellabels | Beide uiteinden van elk traject markeren | $5-10 |
-| Draadstripper | Kabelmantel strippen | $10-20 |
-| Klopboor + metselboren | Camera's monteren op baksteen/beton | Varieert |
+| Gereedschap                              | Doel                                          | Geschatte kosten    |
+| ---------------------------------------- | --------------------------------------------- | ------------------- |
+| Cat6-krimptang (pass-through compatibel) | RJ45-connectoren termineren                   | $25-50              |
+| Pass-through RJ45-connectoren            | Gemakkelijkere, betrouwbaardere termineringen | $15-25 per 50-stuks |
+| Kabeltester (doorlaat + draadkaart)      | Termineringen verifiëren                      | $15-30              |
+| Vislijn of gloeistaven                   | Kabel trekken door muren/goten                | $20-40              |
+| Kabelglijmiddel                          | Lange goottrajecten                           | $10-15              |
+| PoE-tester                               | Stroomlevering op afstand verifiëren          | $50-150             |
+| Ponsgereedschap                          | Patchpanelen termineren                       | $15-30              |
+| Kabellabels                              | Beide uiteinden van elk traject markeren      | $5-10               |
+| Draadstripper                            | Kabelmantel strippen                          | $10-20              |
+| Klopboor + metselboren                   | Camera's monteren op baksteen/beton           | Varieert            |
 
 <Callout type="note" title="Voorgetermineerde kabels zijn een optie">
-  Voor kleine installaties (1-4 camera's) met toegankelijke kabelpaden besparen voorgetermineerde Cat6-kabels in gemeten lengtes tijd en voorkomen terminatiefouten. Voor grotere installaties of trajecten door kabelgoten is het zelf termineren van uw kabel met pass-through RJ45-connectoren betrouwbaarder en kosteneffectiever.
+  Voor kleine installaties (1-4 camera's) met toegankelijke kabelpaden besparen
+  voorgetermineerde Cat6-kabels in gemeten lengtes tijd en voorkomen
+  terminatiefouten. Voor grotere installaties of trajecten door kabelgoten is
+  het zelf termineren van uw kabel met pass-through RJ45-connectoren
+  betrouwbaarder en kosteneffectiever.
 </Callout>
 
 ## Termineringsnormen
@@ -111,6 +140,7 @@ Als een deel van het kabeltraject wordt blootgesteld aan weer, zonlicht of vocht
 De T568B-standaard is het dominante bedradingspatroon voor beveiligingscamerainstallaties in Noord-Amerika. Beide uiteinden van elke kabel moeten dezelfde standaard gebruiken.
 
 **Draadvolgorde (pin 1 tot pin 8):**
+
 1. Wit/Oranje
 2. Oranje
 3. Wit/Groen
@@ -128,20 +158,24 @@ De T568B-standaard is het dominante bedradingspatroon voor beveiligingscamerains
 - **Pons neer op een patchpaneel aan de NVR-zijde**: Voor lange trajecten is termineren op een patchpaneel betrouwbaarder dan direct een RJ45 krimpen. Het maakt ook probleemoplossing en herterminering veel gemakkelijker.
 
 <Callout type="warning" title="Test Elke Terminering">
-  Gebruik een kabeltester om draadkaart, doorlaat en kortsluiting op elk afzonderlijk traject te verifiëren voordat u een camera aansluit. Een test van 30 seconden vangt problemen op die later uren zouden kosten om te diagnosticeren. Test voor lange buitentrajecten ook met een PoE-tester om de stroomlevering aan de camerazijde te verifiëren.
+  Gebruik een kabeltester om draadkaart, doorlaat en kortsluiting op elk
+  afzonderlijk traject te verifiëren voordat u een camera aansluit. Een test van
+  30 seconden vangt problemen op die later uren zouden kosten om te
+  diagnosticeren. Test voor lange buitentrajecten ook met een PoE-tester om de
+  stroomlevering aan de camerazijde te verifiëren.
 </Callout>
 
 ## Kabelgoten en Kabelbeheer
 
 ### Wanneer Kabelgoten Gebruiken
 
-| Scenario | Goottype | Reden |
-|---|---|---|
-| Blootgestelde buitentrajecten | PVC Schedule 40 | Weerbestendig, UV-bestendig |
-| Ondergrondse begraving | PVC Schedule 40 of 80 | Fysieke bescherming, codevereiste |
-| Tussen gebouwen | Flexibel gepantserd | Bewegingsvoegen, fysieke bescherming |
-| Binnen kabelbundels | Kabelgoot of J-haken | Organisatie, warmteafvoer |
-| Muurdoorvoeringen | Korte PVC-huls | Bescherming tegen randen |
+| Scenario                      | Goottype              | Reden                                |
+| ----------------------------- | --------------------- | ------------------------------------ |
+| Blootgestelde buitentrajecten | PVC Schedule 40       | Weerbestendig, UV-bestendig          |
+| Ondergrondse begraving        | PVC Schedule 40 of 80 | Fysieke bescherming, codevereiste    |
+| Tussen gebouwen               | Flexibel gepantserd   | Bewegingsvoegen, fysieke bescherming |
+| Binnen kabelbundels           | Kabelgoot of J-haken  | Organisatie, warmteafvoer            |
+| Muurdoorvoeringen             | Korte PVC-huls        | Bescherming tegen randen             |
 
 ### Gootregels
 
@@ -155,15 +189,19 @@ De T568B-standaard is het dominante bedradingspatroon voor beveiligingscamerains
 
 Wanneer meerdere PoE-kabels samen in een bundel of goot lopen, bouwt warmte zich op door elektrische weerstand in de geleiders. Dit is een serieuze zorg voor hoogvermogen PoE-installaties.
 
-| Aantal kabels in bundel | Temperatuurstijging boven omgeving | Aanbevolen actie |
-|---|---|---|
-| 1-6 | 0% (geen derating nodig) | Standaard installatie |
-| 7-15 | 15-25% | Bundelgrootte verkleinen of afstand vergroten |
-| 16-30 | 30-40% | Splitsen in kleinere bundels |
-| 31+ | 40-55% | Cat6A gebruiken, bundelgrootte verkleinen, ventilatie garanderen |
+| Aantal kabels in bundel | Temperatuurstijging boven omgeving | Aanbevolen actie                                                 |
+| ----------------------- | ---------------------------------- | ---------------------------------------------------------------- |
+| 1-6                     | 0% (geen derating nodig)           | Standaard installatie                                            |
+| 7-15                    | 15-25%                             | Bundelgrootte verkleinen of afstand vergroten                    |
+| 16-30                   | 30-40%                             | Splitsen in kleinere bundels                                     |
+| 31+                     | 40-55%                             | Cat6A gebruiken, bundelgrootte verkleinen, ventilatie garanderen |
 
 <Callout type="tip" title="Warmtebeheer voor Grote Bundels">
-  ISO/IEC beveelt een maximale bundelgrootte van 24 kabels aan, ongeacht PoE-overwegingen. Gebruik voor hoogvermogen PoE++-installaties Cat6A (23 AWG)-geleiders die warmte effectiever afvoeren. Vermijd het leggen van PoE-kabels in ongeventileerde ruimtes zoals gesloten plafonds of verzegelde goten zonder adequate thermische derating.
+  ISO/IEC beveelt een maximale bundelgrootte van 24 kabels aan, ongeacht
+  PoE-overwegingen. Gebruik voor hoogvermogen PoE++-installaties Cat6A (23
+  AWG)-geleiders die warmte effectiever afvoeren. Vermijd het leggen van
+  PoE-kabels in ongeventileerde ruimtes zoals gesloten plafonds of verzegelde
+  goten zonder adequate thermische derating.
 </Callout>
 
 ## Overspanningsbeveiliging
@@ -182,30 +220,40 @@ Camera's op lange PoE-trajecten zijn kwetsbaar voor door bliksem geïnduceerde o
 - UPS met overspanningsbeveiliging voor de NVR en PoE-switch
 
 <Callout type="danger" title="Aarding is niet optioneel">
-  Een overspanningsbeveiliger die niet correct is geaard, biedt geen bescherming. Zorg ervoor dat uw overspanningsbeveiligers zijn aangesloten op de aardingsverbinding van het gebouw. In commerciële installaties moet aarding voldoen aan de lokale elektrische codevereisten.
+  Een overspanningsbeveiliger die niet correct is geaard, biedt geen
+  bescherming. Zorg ervoor dat uw overspanningsbeveiligers zijn aangesloten op
+  de aardingsverbinding van het gebouw. In commerciële installaties moet aarding
+  voldoen aan de lokale elektrische codevereisten.
 </Callout>
 
 ## Veelvoorkomende kabelfouten
 
 ### 1. Kabelknijppunten
+
 Scherpe bochten vernietigen de datakwaliteit over lange trajecten. Houd een buigradius van minimaal 5 cm aan. Nieten kabels nooit direct aan muren — gebruik geschikte kabelclips of klittenband.
 
 ### 2. Slordige termineringen
+
 Losse RJ45-contacten veroorzaken intermitterende storingen die frustrerend zijn om te diagnosticeren. Gebruik een tester na elke terminering. Termineer voor lange trajecten op een patchpaneel in plaats van direct te krimpen.
 
 ### 3. Kabel in dezelfde goot als wisselstroom
+
 Induceert interferentie en verslechtert het signaal. Houd 30 cm afstand van wisselstroomkabels. Als u moet kruisen, doe dit dan in een 90°-hoek.
 
 ### 4. Binnenkabel gebruikt buiten
+
 Binnen-PVC-kabel blootgesteld aan UV degradeert in 2-3 jaar. De mantel barst, vocht trekt via capillaire werking in de kabel en de camera valt uit. Gebruik buitenkabel (CMX) of kabelgoten voor elk buitengedeelte.
 
 ### 5. Opgerolde overlengte bij camera
+
 Het oprollen van overtollige voorgetermineerde kabel bij de camera pikt elektrische interferentie op en werkt als een antenne. Gebruik kabellengtes die overeenkomen met het werkelijke traject, of rol de overlengte netjes op aan de NVR-zijde.
 
 ### 6. Geen druiplus
+
 Wanneer de kabel de camera bereikt, laat hem dan in een kleine "U"-vorm hangen voordat u de camera of muur binnengaat. Dit zorgt ervoor dat water van de onderkant van de boog druipt in plaats van in de connector te lopen.
 
 ### 7. Ontbrekende labels
+
 Ongelabelde kabels veranderen een troubleshootingsklus van 30 minuten in een 3-uur durende beproeving. Label beide uiteinden van elke kabel met een consistente naamgevingsschema (bijv. "Cam-01-Voordeur").
 
 ## Buiteninstallatie Checklijst
@@ -234,46 +282,84 @@ Voordat u de installatie als voltooid verklaart:
 6. **Opnameverificatie**: Na 7 dagen controleren of de NVR-tijdlijn geen opnamehiaten vertoont
 
 <Callout type="tip" title="De harde 100-meterlimiet">
-  De IEEE 802.3-standaard beperkt Ethernet-trajecten tot 100 meter (328 voet) inclusief alle patchkabels. In de praktijk haalt u met zuiver koperen Cat6 betrouwbaar 95 meter. Daarboven veroorzaakt spanningsval, zelfs op goede kabel, intermitterende camera-resets. Plan voor PoE-extenders of glasvezelbackhaul voor elk traject dat 90 meter overschrijdt.
+  De IEEE 802.3-standaard beperkt Ethernet-trajecten tot 100 meter (328 voet)
+  inclusief alle patchkabels. In de praktijk haalt u met zuiver koperen Cat6
+  betrouwbaar 95 meter. Daarboven veroorzaakt spanningsval, zelfs op goede
+  kabel, intermitterende camera-resets. Plan voor PoE-extenders of
+  glasvezelbackhaul voor elk traject dat 90 meter overschrijdt.
 </Callout>
 
 ## Veelgestelde vragen
 
 <Accordion>
   <AccordionItem>
-    <AccordionTrigger>Moet ik Cat5e of Cat6 gebruiken voor beveiligingscamera's?</AccordionTrigger>
+    <AccordionTrigger>
+      Moet ik Cat5e of Cat6 gebruiken voor beveiligingscamera's?
+    </AccordionTrigger>
     <AccordionContent>
-      Cat6 is de aanbevolen basislijn voor elke nieuwe installatie. De 23 AWG-geleiders verminderen spanningsval in vergelijking met Cat5e's 24 AWG, wat ertoe doet voor PoE-stroomlevering — vooral op trajecten langer dan 50 meter en voor camera's met IR-LED's of verwarmingselementen. Het kostenverschil is minimaal ($0,04-0,10 per voet) in vergelijking met de arbeid van het leggen van kabel. Reserveer Cat5e alleen voor korte trajecten onder 30 meter met 1080p-camera's.
+      Cat6 is de aanbevolen basislijn voor elke nieuwe installatie. De 23
+      AWG-geleiders verminderen spanningsval in vergelijking met Cat5e's 24 AWG,
+      wat ertoe doet voor PoE-stroomlevering — vooral op trajecten langer dan 50
+      meter en voor camera's met IR-LED's of verwarmingselementen. Het
+      kostenverschil is minimaal ($0,04-0,10 per voet) in vergelijking met de
+      arbeid van het leggen van kabel. Reserveer Cat5e alleen voor korte
+      trajecten onder 30 meter met 1080p-camera's.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>Hoe lang kan een PoE-kabeltraject zijn?</AccordionTrigger>
     <AccordionContent>
-      De IEEE 802.3-standaard beperkt Ethernet-trajecten tot in totaal 100 meter (328 voet), inclusief patchkabels. Boven 100 meter verslechtert het datasignaal en daalt de PoE-stroomlevering onder het cameraminimum. Gebruik voor langere trajecten een PoE-extender (voegt 100 m per eenheid toe, tot 4 eenheden), glasvezelbackhaul met een externe PoE-switch of verplaats de NVR dichterbij.
+      De IEEE 802.3-standaard beperkt Ethernet-trajecten tot in totaal 100 meter
+      (328 voet), inclusief patchkabels. Boven 100 meter verslechtert het
+      datasignaal en daalt de PoE-stroomlevering onder het cameraminimum.
+      Gebruik voor langere trajecten een PoE-extender (voegt 100 m per eenheid
+      toe, tot 4 eenheden), glasvezelbackhaul met een externe PoE-switch of
+      verplaats de NVR dichterbij.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Kan ik CCA- en massief koperkabel mengen in dezelfde installatie?</AccordionTrigger>
+    <AccordionTrigger>
+      Kan ik CCA- en massief koperkabel mengen in dezelfde installatie?
+    </AccordionTrigger>
     <AccordionContent>
-      Nee. Het mengen van CCA en massief koper creëert een galvanisch corrosiepunt bij de verbinding, wat de weerstand verhoogt en de verbinding na verloop van tijd doet falen. Kies één kabeltype en gebruik het overal. Voor PoE moet dat altijd massief koper zijn.
+      Nee. Het mengen van CCA en massief koper creëert een galvanisch
+      corrosiepunt bij de verbinding, wat de weerstand verhoogt en de verbinding
+      na verloop van tijd doet falen. Kies één kabeltype en gebruik het overal.
+      Voor PoE moet dat altijd massief koper zijn.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>Heb ik afgeschermde (STP) kabel nodig?</AccordionTrigger>
     <AccordionContent>
-      Alleen als u in de buurt van aanzienlijke elektrische interferentie legt — grote motoren, tl-ballasten, industriële machines of elektriciteitspanelen. Voor de meeste residentiële en kantoorinstallaties is ongeafschermde (UTP) Cat6 perfect voldoende. Als u STP gebruikt, moet u afgeschermde connectoren en correcte aarding aan slechts één uiteinde gebruiken, anders wordt de afscherming ineffectief.
+      Alleen als u in de buurt van aanzienlijke elektrische interferentie legt —
+      grote motoren, tl-ballasten, industriële machines of
+      elektriciteitspanelen. Voor de meeste residentiële en kantoorinstallaties
+      is ongeafschermde (UTP) Cat6 perfect voldoende. Als u STP gebruikt, moet u
+      afgeschermde connectoren en correcte aarding aan slechts één uiteinde
+      gebruiken, anders wordt de afscherming ineffectief.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Wat is de minimale buigradius voor Cat6?</AccordionTrigger>
+    <AccordionTrigger>
+      Wat is de minimale buigradius voor Cat6?
+    </AccordionTrigger>
     <AccordionContent>
-      De minimale buigradius voor Cat6 is 4x de kabeldiameter, of ongeveer 5 cm (2 inch). Scherpe bochten verpletteren de interne paartwisting en verslechteren de signaalkwaliteit. Gebruik voor permanente installaties flauwe bochten of 45-graden ellebogen in plaats van scherpe 90-graden bochten.
+      De minimale buigradius voor Cat6 is 4x de kabeldiameter, of ongeveer 5 cm
+      (2 inch). Scherpe bochten verpletteren de interne paartwisting en
+      verslechteren de signaalkwaliteit. Gebruik voor permanente installaties
+      flauwe bochten of 45-graden ellebogen in plaats van scherpe 90-graden
+      bochten.
     </AccordionContent>
   </AccordionItem>
   <AccordionItem>
-    <AccordionTrigger>Hoe diep moet ik Ethernet-kabel begraven voor buitencamera's?</AccordionTrigger>
+    <AccordionTrigger>
+      Hoe diep moet ik Ethernet-kabel begraven voor buitencamera's?
+    </AccordionTrigger>
     <AccordionContent>
-      Volgens de National Electrical Code (NEC) moet PVC-goot minimaal 18 inch (45 cm) diep worden begraven. Metalen goot heeft slechts 6 inch (15 cm) nodig. Direct-begraafbare kabel in een goot heeft de voorkeur voor ondergrondse trajecten. Bel altijd nutsbedrijven voordat u gaat graven.
+      Volgens de National Electrical Code (NEC) moet PVC-goot minimaal 18 inch
+      (45 cm) diep worden begraven. Metalen goot heeft slechts 6 inch (15 cm)
+      nodig. Direct-begraafbare kabel in een goot heeft de voorkeur voor
+      ondergrondse trajecten. Bel altijd nutsbedrijven voordat u gaat graven.
     </AccordionContent>
   </AccordionItem>
 </Accordion>

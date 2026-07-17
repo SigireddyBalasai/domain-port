@@ -1,6 +1,5 @@
 "use client"
 
-import type { JSX } from "react/jsx-runtime"
 import {
   RiBlueskyFill,
   RiFacebookFill,
@@ -12,6 +11,7 @@ import {
   RiTwitterXFill,
   RiWhatsappFill,
 } from "@remixicon/react"
+import type { JSX } from "react/jsx-runtime"
 import { Button } from "@/components/ui/button"
 import { siteConfig } from "@/lib/site-config"
 
@@ -93,7 +93,7 @@ export function ShareButtons({
 
   return (
     <div className="flex flex-wrap items-center gap-2 pt-6">
-      <span className="text-sm text-muted-foreground">Share:</span>
+      <span className="text-muted-foreground text-sm">Share:</span>
       {shareLinks.map((link) => {
         return (
           <Button

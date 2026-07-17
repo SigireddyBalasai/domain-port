@@ -27,12 +27,14 @@
 ### Task 1: Install dependencies
 
 **Files:**
+
 - Modify: `package.json`
 - (bun install)
 
 **Step 1: Install runtime and dev deps**
 
 Run:
+
 ```bash
 bun add schema-dts @next/third-parties
 bun add -d next-sitemap
@@ -54,6 +56,7 @@ git commit -m "chore: add schema-dts, @next/third-parties, next-sitemap"
 ### Task 2: Create `lib/site-config.ts`
 
 **Files:**
+
 - Create: `lib/site-config.ts`
 
 **Step 1: Write the site config**
@@ -63,8 +66,15 @@ export const siteConfig = {
   name: "CCTV Name",
   url: "https://cctv.name",
   ogImage: `${url}/og.png`,
-  description: "Expert CCTV and surveillance solutions — reviews, installation guides, and security tips for your home and business.",
-  keywords: ["CCTV", "surveillance", "security cameras", "home security", "business surveillance"],
+  description:
+    "Expert CCTV and surveillance solutions — reviews, installation guides, and security tips for your home and business.",
+  keywords: [
+    "CCTV",
+    "surveillance",
+    "security cameras",
+    "home security",
+    "business surveillance",
+  ],
   links: {
     twitter: "https://twitter.com/cctvname",
   },
@@ -88,6 +98,7 @@ git commit -m "feat: add central site configuration"
 ### Task 3: Add metadata to root layout
 
 **Files:**
+
 - Modify: `app/layout.tsx`
 
 **Step 1: Write the metadata export**
@@ -95,6 +106,7 @@ git commit -m "feat: add central site configuration"
 Add `import type { Metadata } from "next"` and `import { siteConfig } from "@/lib/site-config"`.
 
 Add before `export default function RootLayout`:
+
 ```ts
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -143,6 +155,7 @@ git commit -m "feat: add global metadata and OpenGraph tags"
 ### Task 4: Create `app/robots.ts`
 
 **Files:**
+
 - Create: `app/robots.ts`
 
 **Current state:** already implemented.
@@ -182,6 +195,7 @@ git commit -m "feat: add robots.txt"
 ### Task 5: Create `next-sitemap.config.js` + update package.json
 
 **Files:**
+
 - Create: `next-sitemap.config.js`
 - Modify: `package.json`
 
@@ -219,6 +233,7 @@ module.exports = {
 **Step 2: Update package.json build scripts**
 
 Change `"build": "run-s build:*"` to:
+
 ```json
 "build": "run-s build:*",
 "postbuild": "next-sitemap"
@@ -236,6 +251,7 @@ git commit -m "feat: add next-sitemap config and postbuild hook"
 ### Task 6: Add metadata to homepage
 
 **Files:**
+
 - Modify: `app/page.tsx`
 
 **Current state:** already implemented.
@@ -274,6 +290,7 @@ git commit -m "feat: add metadata to homepage"
 ### Task 7: Add metadata to blog listing page
 
 **Files:**
+
 - Modify: `app/blog/page.tsx`
 
 **Step 1: Add metadata export**
@@ -310,6 +327,7 @@ git commit -m "feat: add metadata to blog listing"
 ### Task 8: Add generateMetadata to blog post page
 
 **Files:**
+
 - Modify: `app/blog/[slug]/page.tsx`
 
 **Step 1: Add generateMetadata function**
@@ -328,12 +346,14 @@ export const generateMetadata = async ({
 
   return {
     title: post.title,
-    description: post.description ?? `Read about ${post.title} on ${siteConfig.name}`,
+    description:
+      post.description ?? `Read about ${post.title} on ${siteConfig.name}`,
     openGraph: {
       type: "article",
       url: `${siteConfig.url}/blog/${post.slug}`,
       title: post.title,
-      description: post.description ?? `Read about ${post.title} on ${siteConfig.name}`,
+      description:
+        post.description ?? `Read about ${post.title} on ${siteConfig.name}`,
       publishedTime: post.publishedAt,
       tags: post.tags,
     },
@@ -358,6 +378,7 @@ git commit -m "feat: add generateMetadata per blog post"
 ### Task 9: Create `lib/json-ld.tsx`
 
 **Files:**
+
 - Create: `lib/json-ld.tsx`
 
 **Step 1: Write the JsonLd component**
@@ -398,6 +419,7 @@ git commit -m "feat: add typed JsonLd component"
 ### Task 10: Add JSON-LD to homepage
 
 **Files:**
+
 - Modify: `app/page.tsx`
 
 **Step 1: Add Organization and Blog structured data**
@@ -449,6 +471,7 @@ git commit -m "feat: add Organization and Blog JSON-LD to homepage"
 ### Task 11: Add JSON-LD to blog listing
 
 **Files:**
+
 - Modify: `app/blog/page.tsx`
 
 **Step 1: Add BreadcrumbList and CollectionPage**
@@ -458,14 +481,24 @@ import { JsonLd } from "@/lib/json-ld"
 import type { BreadcrumbList, CollectionPage } from "schema-dts"
 
 // Inside BlogPage return:
-<>
+;<>
   <JsonLd<BreadcrumbList>
     schema={{
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
-        { "@type": "ListItem", position: 2, name: "Blog", item: `${siteConfig.url}/blog` },
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: siteConfig.url,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Blog",
+          item: `${siteConfig.url}/blog`,
+        },
       ],
     }}
   />
@@ -499,6 +532,7 @@ git commit -m "feat: add BreadcrumbList and CollectionPage JSON-LD"
 ### Task 12: Add JSON-LD to blog post page
 
 **Files:**
+
 - Modify: `app/blog/[slug]/page.tsx`
 
 **Step 1: Add BlogPosting and BreadcrumbList**
@@ -508,15 +542,30 @@ import { JsonLd } from "@/lib/json-ld"
 import type { BlogPosting, BreadcrumbList } from "schema-dts"
 
 // Inside PostPage return:
-<>
+;<>
   <JsonLd<BreadcrumbList>
     schema={{
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
-        { "@type": "ListItem", position: 2, name: "Blog", item: `${siteConfig.url}/blog` },
-        { "@type": "ListItem", position: 3, name: post.title, item: `${siteConfig.url}/blog/${post.slug}` },
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: siteConfig.url,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Blog",
+          item: `${siteConfig.url}/blog`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: post.title,
+          item: `${siteConfig.url}/blog/${post.slug}`,
+        },
       ],
     }}
   />
@@ -552,6 +601,7 @@ git commit -m "feat: add BlogPosting and BreadcrumbList JSON-LD to posts"
 ### Task 13: Add GA4 analytics
 
 **Files:**
+
 - Create: `components/google-analytics.tsx`
 - Modify: `app/layout.tsx`
 - Modify: `.env.local` (create if not exists)
@@ -603,6 +653,7 @@ git commit -m "feat: add GA4 analytics component"
 ### Task 14: Create RSS feed
 
 **Files:**
+
 - Create: `app/feed.xml/route.ts`
 
 **Step 1: Write RSS feed route**
@@ -615,7 +666,10 @@ export const dynamic = "force-static"
 
 export async function GET() {
   const items = posts
-    .toSorted((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+    .toSorted(
+      (a, b) =>
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    )
     .map(
       (post) => `
     <item>
@@ -663,6 +717,7 @@ git commit -m "feat: add RSS feed at /feed.xml"
 ### Task 15: Create social share buttons
 
 **Files:**
+
 - Create: `components/blog/share-buttons.tsx`
 
 **Step 1: Write share buttons component**
@@ -759,11 +814,13 @@ git commit -m "feat: add social share buttons to blog posts"
 ### Task 16: Add skip-to-content accessibility link
 
 **Files:**
+
 - Modify: `app/layout.tsx`
 
 **Step 1: Add skip-to-content link**
 
 Add before `<ThemeProvider>` in root layout:
+
 ```tsx
 <a
   href="#main-content"
@@ -792,6 +849,7 @@ git commit -m "feat: add skip-to-content accessibility link"
 ### Task 17: Build and verify
 
 **Files:**
+
 - N/A
 
 **Step 1: Run full build**
