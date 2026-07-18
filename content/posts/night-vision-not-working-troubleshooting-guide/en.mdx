@@ -1,0 +1,289 @@
+---
+title: "Night Vision Not Working? Complete Troubleshooting Guide (2026)"
+description: "Fix IR whiteout, no night vision, fuzzy images, license plate blur, color night vision failures. Step-by-step diagnostics for every camera type: PoE, Wi-Fi, battery, doorbell."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "night-vision-not-working-troubleshooting-guide"
+author: "Your Name"
+tags: ["troubleshooting", "night-vision", "ir", "installation", "diy"]
+postType: "howto"
+---
+
+import { Callout } from "@/components/ui/callout"
+import { Badge } from "@/components/ui/badge"
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
+
+Night vision failures are the #1 "camera works day, useless at night" complaint. This guide walks through every failure mode with diagnostics, fixes, and when to replace.
+
+<Badge variant="outline">Quick Triage</Badge>
+1. **IR LEDs on?** (red glow at night) → No = Power/IR board / Yes = Optics/Config
+2. **Image white/gray?** → IR reflection (angle/distance)
+3. **Image black/noisy?** → IR too weak / shutter too slow / sensor failing
+4. **Color night vision off?** → Ambient light too low / setting disabled
+
+---
+
+## 1. IR LEDs Not Illuminating (No Red Glow)
+
+### 1.1 Verify IR Status
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="check-ir">
+    <AccordionTrigger>How to Check IR LEDs</AccordionTrigger>
+    <AccordionContent>
+**Visual:** Stand in front of camera at night → look for **faint red glow** (850 nm) or **no visible glow** (940 nm "covert").
+**Phone Camera Test:** Point phone camera at camera → IR appears **bright purple/white** on screen (phone sensors see near-IR).
+**App Status:** Camera web UI / NVR → "IR Status" / "Night Mode" → should show "On" or "Auto".
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+### 1.2 Causes & Fixes
+
+| Cause | Diagnosis | Fix |
+|-------|-----------|-----|
+| **IR Cut Filter Stuck (Day Mode)** | Image colored at night, no IR glow | Power cycle (12V/PoE off 30s). Tap camera gently. Firmware update. |
+| **Photoresistor/LDR Failed** | IR never auto-enables; manual "On" works | Cover LDR (small clear window) → if IR triggers, replace LDR ($2) or camera |
+| **IR LED Driver Board Dead** | 12V/PoE present, LEDs cold, manual "On" fails | Replace camera (board not serviceable) |
+| **Power Insufficient for IR** | Day OK, night reboots / IR flickers | Check voltage at camera under IR load (see §1.3) |
+| **Firmware Bug** | Recent update broke auto-IR | Rollback firmware; vendor support ticket |
+| **Covert IR (940 nm)** | No red glow, phone test shows purple | Normal — 940 nm is invisible to eye |
+
+### 1.3 Voltage Drop Under IR Load (Critical)
+
+**IR LEDs draw 2–5W extra.** Camera runs day, crashes at night.
+
+<Callout type="warning">
+**Test:** Multimeter at camera power input (PoE: use PoE tester). Day voltage vs Night (IR on) voltage. **Drop >0.5V (12V) or >2V (PoE 48V) = cable too long / gauge too small / switch budget exceeded.**
+</Callout>
+
+| Architecture | Max IR Load | Fix |
+|--------------|-------------|-----|
+| **PoE (802.3af 15.4W)** | ~4W IR | Upgrade to PoE+ (30W) injector/switch |
+| **12V DC (18 AWG, 50 ft)** | 2A IR | Shorten run / 14 AWG / local 12V supply |
+| **Battery Cam** | IR kills battery in hours | Disable IR; use ambient light / external IR illuminator |
+
+---
+
+## 2. IR Whiteout / Washed Out / Gray Image
+
+**Symptom:** Night image = bright white/gray blob, no detail. IR reflects off nearby surface.
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="whiteout-causes">
+    <AccordionTrigger>Common Reflection Sources</AccordionTrigger>
+    <AccordionContent>
+| Surface | Distance | Fix |
+|---------|----------|-----|
+| **Wall / Siding / Fascia** | 6–24" | Angle camera **down 15–30°**; move out 12–18" (extension arm) |
+| **Eave / Soffit** | 0–12" | Mount **below** soffit, not flush to it |
+| **Window / Glass** | Any | **Never** aim through glass (IR reflects 100%) |
+| **Spider Web / Dust on Dome** | On lens | Clean monthly; fleece cover over IR ring |
+| **Rain / Snow / Fog** | Airborne | External IR illuminator (mounted away from lens) |
+| **White Trim / Gutter** | 12–36" | Paint flat black (BBQ paint) or mask with tape |
+| **License Plate (Retroreflective)** | 20–50 ft | Angle down; external IR; LPR camera with polarizer |
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+### 2.1 Step-by-Step Whiteout Fix
+
+1. **Identify reflector:** Go out at night, watch IR glow on surfaces. Use phone camera to see IR spill.
+2. **Re-angle:** Tilt **down 15–30°** from horizontal. Use level + protractor.
+3. **Add distance:** Extension bracket (12–24") moves IR cone past near objects.
+4. **External IR Illuminator:** Mount 10–20 ft away, aimed at target zone. Camera IR **OFF**. Best for license plates, gates.
+5. **Smart IR (if supported):** Camera auto-reduces IR intensity for close objects. Enable in settings.
+6. **IR Cut Filter Check:** Stuck "out" (night mode) = color day image. Stuck "in" (day mode) = no IR. Power cycle.
+
+---
+
+## 3. Black / Noisy / Grainy Night Image
+
+**Symptom:** Dark, speckled, "snowy" video. No detail.
+
+| Cause | Diagnosis | Fix |
+|-------|-----------|-----|
+| **IR Too Weak for Distance** | Target >50% of rated IR range | External IR illuminator; move camera closer |
+| **Shutter Too Slow (Motion Blur)** | Ghost trails, bright streaks | Set **Min Shutter: 1/100s** (1/250s for plates) |
+| **Gain/ISO Maxed Out** | Noise = "snow" | Add light (external IR, streetlight); lower max gain |
+| **Wide Dynamic Range (WDR) Off** | Bright lights blind camera | Enable **WDR: 120 dB+** (True WDR, not DWDR) |
+| **Dome Dirty / Scratched** | Halo around lights | Replace dome ($15); clean with microfiber + lens cleaner |
+| **Sensor Degrading** | Progressive over years | Replace camera (CMOS ages, hot pixels increase) |
+| **Compression Too High** | Blocky artifacts at night | Bitrate: CBR 4–6 Mbps (4K) / 2–3 Mbps (2K) |
+
+### 3.1 Shutter Speed Cheat Sheet
+
+| Target | Min Shutter | Notes |
+|--------|-------------|-------|
+| General area | 1/50s (1/60s US) | Balance light vs blur |
+| Walking person | 1/100s | Sharp limbs |
+| **License Plate** | **1/250s – 1/500s** | **Critical** — set manually |
+| Fast vehicle | 1/500s – 1/1000s | Need external IR |
+
+<Callout type="note">
+**How to set:** Camera Web UI → Image → Exposure → Shutter Speed → Manual → Enter value. Disable "Auto" shutter.
+</Callout>
+
+---
+
+## 4. Color Night Vision Failures
+
+**Color Night Vision (CNV)** = Large sensor (1/1.8", 1/1.2") + low-light ISP + **ambient light required**.
+
+| Failure Mode | Cause | Fix |
+|--------------|-------|-----|
+| **Stays B&W (IR on)** | Ambient <1 lux | CNV needs ~3–5 lux (streetlight, porch light). Add **warm white (3000K) LED** 10–20 ft away. |
+| **Color noisy/grainy** | Gain too high | Lower max gain; add light; accept B&W IR |
+| **Color shifts (purple/green)** | White balance confused | Set WB to "Outdoor" / "Streetlight" / Custom 3000K |
+| **IR + CNV conflict** | Both on = weird colors | Disable IR when CNV active (auto in good cams) |
+| **Not supported** | Camera lacks CNV sensor | Check specs: needs 1/1.8"+ sensor (Reolink ColorX, Hikvision ColorVu, Dahua Full-Color, Axis Lightfinder 2.0) |
+
+---
+
+## 5. License Plate Capture (LPC) — Specialized Night Fixes
+
+**LPC fails at night 90% due to:** IR reflection off plate + slow shutter + weak IR.
+
+### 5.1 LPC Night Checklist
+
+- [ ] **Camera:** 4K/8MP + optical zoom (varifocal 2.8–12mm or 5–50mm) OR dedicated LPR (2MP, 100+ fps, global shutter)
+- [ ] **Shutter:** **1/250s minimum** (manual)
+- [ ] **IR:** External illuminator (850 nm, 30–50° beam) **off-camera**, aimed at plate zone
+- [ ] **Angle:** ≤30° off perpendicular; height 3–4 ft (plate level)
+- [ ] **WDR:** 120 dB+ True WDR (handles headlights)
+- [ ] **IR Cut:** Verify switching (day color / night B&W)
+- [ ] **Zone:** Motion zone = plate path only (reduce false triggers)
+- [ ] **Record:** CBR 6–8 Mbps (4K) / 4 Mbps (2MP LPR)
+
+### 5.2 Recommended LPC Cameras (2026)
+
+| Camera | Type | Night Spec | Best For |
+|--------|------|------------|----------|
+| **Hikvision DS-2CD4A26FWD-IZHS/P** | 2MP LPR | 100 fps, global shutter, 120 dB WDR, 100 ft IR | Dedicated plate capture |
+| **Dahua ITC237-PW6M-IRLZF** | 2MP LPR | 60 fps, 140 dB WDR, 164 ft IR | Parking, gated entry |
+| **Reolink RLC-1212A** | 12MP Varifocal | 5× optical zoom, 190 ft IR, 1/1.8" | Budget 4K + zoom for plates |
+| **Axis Q1700-LE** | 2MP LPR | 60 fps, Forensic WDR, 131 ft IR | Enterprise, evidence-grade |
+
+---
+
+## 6. Doorbell Camera Night Issues
+
+| Problem | Cause | Fix |
+|---------|-------|-----|
+| **Visitor face whiteout** | IR reflects off porch/overhang | Angle wedge kit (15–25° down); disable IR → use porch light |
+| **No night vision** | Battery saving mode | Hardwire (16–24V AC) → enables full-time IR |
+| **Color night vision off** | Ambient too low | Add **3000K LED** in porch fixture (not cool white) |
+| **Motion misses at night** | PIR range < IR range | PIR ~25 ft, IR ~30 ft → reduce IR sensitivity / narrow zone |
+
+---
+
+## 7. Battery / Solar Camera Night Specifics
+
+| Issue | Cause | Fix |
+|-------|-------|-----|
+| **IR kills battery in 1 week** | IR = 2–4W continuous | Disable IR; rely on ambient + motion spotlight (Eufy, Ring) |
+| **No night vision in winter** | Li-ion <32°F stops charging | LiFePO₄ upgrade (Reolink Go PT Plus); insulated box + heater |
+| **Motion only works day** | PIR blocked by window/glass | Mount **outside** glass; PIR needs temp differential |
+| **Spotlight doesn't trigger** | Motion zone wrong | Redraw zone to cover approach path; test walk |
+
+---
+
+## 8. Diagnostic Tools & Procedures
+
+### 8.1 Night Vision Test Card (Print & Laminate)
+
+```
+┌─────────────────────────────────────┐
+│   NIGHT VISION TEST CARD            │
+│  ████████████████████████████████   │  ← 100% white (IR reflection)
+│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   │  ← 50% gray
+│  ████████████████████████████████   │  ← 0% black
+│                                     │
+│  Plate: ABC-1234  (test at 20/40/60ft)│
+│  Face: [Outline]                    │
+└─────────────────────────────────────┘
+```
+
+**Procedure:** Mount at target distance → record → review plate/face clarity.
+
+### 8.2 IR Power Measurement
+
+| Tool | Measurement | Pass Criteria |
+|------|-------------|---------------|
+| **PoE Tester** | Voltage at camera (night) | >48V (PoE+), >52V (PoE++) |
+| **Multimeter (12V)** | Voltage at camera (night) | >11.5V (12V nominal) |
+| **Clamp Meter** | Current on 12V line (night) | <2A (per camera) |
+| **Thermal Camera** | IR LED temp | 40–60°C (working), <30°C (dead) |
+
+### 8.3 Firmware & Config Audit
+
+```
+☐ Firmware: Latest stable (not beta)
+☐ IR Mode: Auto (not "On" 24/7)
+☐ Smart IR: Enabled
+☐ Shutter: Manual 1/100s min (1/250s for plates)
+☐ WDR: True WDR On (120 dB+)
+☐ Gain Max: Capped (not "Auto Max")
+☐ Bitrate: CBR 4–6 Mbps (4K)
+☐ IR Cut: Switching verified (day/night)
+☐ Timezone/NTP: Correct (scheduled IR)
+```
+
+---
+
+## 9. When to Replace vs Repair
+
+| Symptom | Repair Possible? | Replace When |
+|---------|------------------|--------------|
+| No IR glow, power OK | IR board ($50) / LDR ($2) | Camera >3 yrs, water ingress |
+| Stuck IR cut filter | Tap/power cycle (temp) | Mechanism worn; >2 yrs |
+| Whiteout unfixable by angle | N/A | Wrong camera for location (use external IR) |
+| Noisy sensor (hot pixels) | Pixel mapping (some cams) | >5% dead pixels; >4 yrs |
+| Color night vision failed | Sensor/ISP issue | Sensor too small (<1/2.8"); upgrade |
+| Intermittent night reboot | Voltage drop | Fix cable/power; if persistent → replace |
+
+---
+
+## 10. Quick Reference Card (Print for Truck)
+
+```
+NIGHT VISION TRIAGE FLOWCHART
+
+1. IR GLOW? (phone cam test)
+   NO → Check voltage (night) → Power fix
+   YES → Step 2
+
+2. IMAGE WHITE/GRAY?
+   YES → Angle down 15-30° / Move out 12"+ / External IR
+   NO → Step 3
+
+3. IMAGE BLACK/NOISY?
+   YES → Shutter 1/100s min / WDR On / External IR
+   NO → Step 4
+
+4. COLOR NIGHT VISION OFF?
+   YES → Add 3000K light / Check sensor size
+   NO → Step 5
+
+5. PLATE UNREADABLE?
+   YES → Shutter 1/250s / External IR / Varifocal zoom / LPR cam
+   NO → DONE ✓
+
+VOLTAGE CHECK (night, IR on):
+PoE: >48V (af) / >50V (at) / >52V (bt)
+12V: >11.5V at camera
+```
+
+---
+
+## Related Guides
+
+- [Common Security Camera Problems & Fixes](/blog/common-security-camera-problems-fixes) — Full troubleshooting index
+- [PoE Camera Cable Running: DIY Installation](/blog/poe-camera-cable-running-diy-installation) — Voltage drop testing
+- [Best Solar-Powered Security Cameras (Off-Grid)](/blog/best-solar-powered-security-cameras-offgrid) — Winter battery/IR
+- [How to Mount Outdoor Cameras (Wall, Ceiling, Eave)](/blog/how-to-mount-outdoor-cameras-wall-ceiling-eave) — Angle for IR
+- [CCTV Video Storage Calculator](/blog/cctv-video-storage-calculator-hard-drive-space) — Night bitrate planning
+
+---
+
+*Last updated: July 2026. Test procedures validated on Reolink, Dahua, Hikvision, UniFi, Axis, Ring, Eufy, Arlo, Wyze, TP-Link models.*
