@@ -12,5 +12,20 @@
       "type": "local",
       "command": ["npx", "-y", "pagespeed-mcp-server"]
     }
+  },
+  "provider": {
+    "ofox": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ofox",
+      "options": {
+        "baseURL": "https://api.ofox.ai/v1",
+        "apiKey": "{env:OFOX_API_KEY}"
+      },
+      "models": {
+        "z-ai/glm-4.7-flash:free": {
+          "name": "GLM 4.7 Flash (Free)"
+        }
+      }
+    }
   }
 }

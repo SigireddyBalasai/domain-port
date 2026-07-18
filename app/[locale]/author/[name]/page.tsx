@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
-import { getTranslations, setRequestLocale } from "next-intl/server"
+import { notFound } from "next/navigation"
+import { setRequestLocale } from "next-intl/server"
 import type { JSX } from "react"
 import type { BreadcrumbList, Person, ProfilePage } from "schema-dts"
 import { posts } from "@/.velite"
@@ -85,12 +86,16 @@ export default async function AuthorPage({
   const { locale, name } = await params
 
   setRequestLocale(locale)
-  const t = await getTranslations("common")
 
   const authorName = name.replaceAll("-", " ")
   const authorPosts = posts.filter(
     (post) => post.author?.toLowerCase() === authorName.toLowerCase()
   )
+
+  if (authorPosts.length === 0) {
+    notFound()
+  }
+
   const sorted = [...authorPosts].toSorted(
     (a, b) =>
       new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
@@ -163,9 +168,6 @@ export default async function AuthorPage({
                 />
               )
             })}
-            {sorted.length === 0 && (
-              <p className="text-muted-foreground">{t("noArticles")}</p>
-            )}
           </div>
         </div>
       </div>

@@ -37,11 +37,11 @@ Modern color night vision cameras often combine both approaches: a starlight sen
 
 To provide an objective comparison, we tested four camera models spanning both technology types:
 
-| Model | Technology | Key Specs |
-|-------|------------|-----------|
-| Reolink Argus 4 | IR (budget) | 4MP, 18m IR range |
-| Amcrest IP8M-TB9798EW | IR (mid) | 4K, 30m IR |
-| Hikvision DS-2CD2347G2 | ColorVu (white light) | 4MP, built-in white LEDs |
+| Model                  | Technology                   | Key Specs                            |
+| ---------------------- | ---------------------------- | ------------------------------------ |
+| Reolink Argus 4        | IR (budget)                  | 4MP, 18m IR range                    |
+| Amcrest IP8M-TB9798EW  | IR (mid)                     | 4K, 30m IR                           |
+| Hikvision DS-2CD2347G2 | ColorVu (white light)        | 4MP, built-in white LEDs             |
 | Dahua IPC-HDBW5849H-AS | Starlight+ (low-light color) | 8MP, starlight sensor + optional LED |
 
 Our testing environment was a dedicated outdoor surveillance testing range with controlled lighting conditions. We evaluated each camera at three standardized light levels:
@@ -65,27 +65,31 @@ The test results reveal a clear pattern: IR cameras maintain consistent performa
 
 ### Performance Summary Table
 
-| Light Level | Camera Model | Clarity Score (1-5) | Color Accuracy | Effective Range (m) | Motion Blur Incidents/100 |
-|-------------|--------------|---------------------|----------------|---------------------|--------------------------|
-| 0.001 lux (moonless) | Reolink Argus 4 | 4 | No (monochrome) | 12 | 3 |
-| 0.001 lux | Amcrest IP8M-TB9798EW | 4 | No (monochrome) | 18 | 2 |
-| 0.001 lux | Hikvision DS-2CD2347G2 | 2 | Partial (with LEDs) | 8 | 8 |
-| 0.001 lux | Dahua IPC-HDBW5849H-AS | 1 | No (too dark) | 3 | 15 |
-| 0.01 lux (starlight) | Reolink Argus 4 | 4 | No (monochrome) | 14 | 3 |
-| 0.01 lux | Amcrest IP8M-TB9798EW | 4 | No (monochrome) | 20 | 2 |
-| 0.01 lux | Hikvision DS-2CD2347G2 | 4 | Yes (with LEDs) | 15 | 5 |
-| 0.01 lux | Dahua IPC-HDBW5849H-AS | 3 | Yes | 12 | 7 |
-| 0.1 lux (dim urban) | Reolink Argus 4 | 4 | No (monochrome) | 15 | 3 |
-| 0.1 lux | Amcrest IP8M-TB9798EW | 4 | No (monochrome) | 22 | 2 |
-| 0.1 lux | Hikvision DS-2CD2347G2 | 5 | Yes | 20 | 2 |
-| 0.1 lux | Dahua IPC-HDBW5849H-AS | 5 | Yes | 18 | 2 |
+| Light Level          | Camera Model           | Clarity Score (1-5) | Color Accuracy      | Effective Range (m) | Motion Blur Incidents/100 |
+| -------------------- | ---------------------- | ------------------- | ------------------- | ------------------- | ------------------------- |
+| 0.001 lux (moonless) | Reolink Argus 4        | 4                   | No (monochrome)     | 12                  | 3                         |
+| 0.001 lux            | Amcrest IP8M-TB9798EW  | 4                   | No (monochrome)     | 18                  | 2                         |
+| 0.001 lux            | Hikvision DS-2CD2347G2 | 2                   | Partial (with LEDs) | 8                   | 8                         |
+| 0.001 lux            | Dahua IPC-HDBW5849H-AS | 1                   | No (too dark)       | 3                   | 15                        |
+| 0.01 lux (starlight) | Reolink Argus 4        | 4                   | No (monochrome)     | 14                  | 3                         |
+| 0.01 lux             | Amcrest IP8M-TB9798EW  | 4                   | No (monochrome)     | 20                  | 2                         |
+| 0.01 lux             | Hikvision DS-2CD2347G2 | 4                   | Yes (with LEDs)     | 15                  | 5                         |
+| 0.01 lux             | Dahua IPC-HDBW5849H-AS | 3                   | Yes                 | 12                  | 7                         |
+| 0.1 lux (dim urban)  | Reolink Argus 4        | 4                   | No (monochrome)     | 15                  | 3                         |
+| 0.1 lux              | Amcrest IP8M-TB9798EW  | 4                   | No (monochrome)     | 22                  | 2                         |
+| 0.1 lux              | Hikvision DS-2CD2347G2 | 5                   | Yes                 | 20                  | 2                         |
+| 0.1 lux              | Dahua IPC-HDBW5849H-AS | 5                   | Yes                 | 18                  | 2                         |
 
 ### Key Observations
 
 **IR cameras (Reolink and Amcrest)** demonstrated remarkable consistency. Their clarity scores remained steady at 4 across all light levels, and effective ranges improved slightly as ambient light increased (from 12-18m at 0.001 lux to 15-22m at 0.1 lux). The Amcrest's 4K sensor extended its effective range by approximately 50% compared to the budget Reolink model. Motion blur was minimal, averaging just 2.5 incidents per 100 clips.
 
 <Callout type="info">
-The white-light LEDs on the Hikvision ColorVu camera provide excellent color imaging when needed, but they also consume more power and may disturb neighbors if triggered frequently. Consider scheduling LED activation only during late-night hours or enabling it only on detected human activity rather than all motion.
+  The white-light LEDs on the Hikvision ColorVu camera provide excellent color
+  imaging when needed, but they also consume more power and may disturb
+  neighbors if triggered frequently. Consider scheduling LED activation only
+  during late-night hours or enabling it only on detected human activity rather
+  than all motion.
 </Callout>
 
 **Color night vision cameras** showed more variability. At 0.001 lux (complete darkness without IR assistance), both models struggled. The Hikvision with its white LEDs produced partial color but with significant noise and motion blur. The Dahua's starlight sensor could not capture usable color without any ambient light, scoring only 1 for clarity.
@@ -98,18 +102,18 @@ At 0.1 lux (dim urban), both color cameras achieved excellent results (score 5) 
 
 Understanding the fundamental trade-offs between these technologies helps frame the decision:
 
-| Aspect | IR Night Vision | Color Night Vision |
-|--------|-----------------|-------------------|
-| **Visibility in complete darkness** | Excellent – IR illuminators work anywhere | Limited – requires ambient light or white LEDs |
-| **Color information** | None – monochrome only | Yes – true color with sufficient light |
-| **Power consumption** | Low – IR LEDs use minimal power | Higher – starlight sensors + optional white LEDs |
-| **Weather performance** | Good in clear conditions, degraded in fog/rain | Similar to IR; white LEDs may help slightly |
-| **Subject identification** | Shape and movement only | Color clothing, vehicles, objects |
-| **Privacy concerns** | No visible light emitted | White LEDs reveal camera location |
-| **Cost** | Budget-friendly ($50-150 for decent models) | Premium ($150-400+) |
-| **Installation complexity** | Simple – no aiming required for IR | Some models need ambient light consideration |
-| **Motion detection** | Reliable – high contrast | Can struggle with camouflage in low light |
-| **Lifespan** | IR LEDs rated 50,000+ hours | Similar; white LEDs may have shorter rated life |
+| Aspect                              | IR Night Vision                                | Color Night Vision                               |
+| ----------------------------------- | ---------------------------------------------- | ------------------------------------------------ |
+| **Visibility in complete darkness** | Excellent – IR illuminators work anywhere      | Limited – requires ambient light or white LEDs   |
+| **Color information**               | None – monochrome only                         | Yes – true color with sufficient light           |
+| **Power consumption**               | Low – IR LEDs use minimal power                | Higher – starlight sensors + optional white LEDs |
+| **Weather performance**             | Good in clear conditions, degraded in fog/rain | Similar to IR; white LEDs may help slightly      |
+| **Subject identification**          | Shape and movement only                        | Color clothing, vehicles, objects                |
+| **Privacy concerns**                | No visible light emitted                       | White LEDs reveal camera location                |
+| **Cost**                            | Budget-friendly ($50-150 for decent models)    | Premium ($150-400+)                              |
+| **Installation complexity**         | Simple – no aiming required for IR             | Some models need ambient light consideration     |
+| **Motion detection**                | Reliable – high contrast                       | Can struggle with camouflage in low light        |
+| **Lifespan**                        | IR LEDs rated 50,000+ hours                    | Similar; white LEDs may have shorter rated life  |
 
 The choice between IR and color night vision isn't simply about which technology is "better"—it's about which better suits your specific environment and requirements.
 
@@ -172,8 +176,9 @@ If cost is the primary constraint, IR technology offers excellent value with no 
 Choosing between IR and color night vision comes down to your specific environment, budget, and identification requirements. Here's a simple decision flowchart:
 
 **Start:** Do you have ANY ambient light at night? (streetlights, building lights, moonlight)
+
 - **No** → Choose IR night vision
-- **Yes** → Do you need to identify clothing/vehicle colors for forensic evidence?  
+- **Yes** → Do you need to identify clothing/vehicle colors for forensic evidence?
   - **No** → IR is sufficient, saves money
   - **Yes** → Does your budget exceed $200 per camera?
     - **No** → Consider hybrid IR+color LED cameras (midrange $150-200)
@@ -188,6 +193,7 @@ Finally, remember that night vision is only one component of a complete security
 ---
 
 **Further reading:**
+
 - For understanding resolution trade-offs: [4MP vs 8MP: Which Resolution is Right for Your Security Camera?](/posts/resolution-guide-8mp-vs-12mp-vs-4k)
 - For installation guidance: [Complete CCTV Cabling Guide for DIY installers](/posts/cctv-cabling-guide)
 - For NVR/DVR selection: [NVR vs DVR: Which Recording System is Best?](/posts/nvr-vs-dvr)

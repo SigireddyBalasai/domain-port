@@ -1,6 +1,6 @@
 "use client"
 
-import { useTheme } from "next-themes"
+import { useTheme } from "@wrksz/themes/client/use-theme"
 import * as React from "react"
 import type { JSX } from "react/jsx-runtime"
 

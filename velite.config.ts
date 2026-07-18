@@ -1,4 +1,3 @@
-import rehypeShiki from "@shikijs/rehype"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypeExternalLinks from "rehype-external-links"
 import rehypeRaw from "rehype-raw"
@@ -138,6 +137,7 @@ const posts = defineCollection({
       tags: s.array(s.string()).optional(),
       locale: s.string().optional(),
       content: s.mdx(),
+      html: s.markdown(),
       postType: s
         .enum([
           "blog",
@@ -205,7 +205,6 @@ export default defineConfig({
         rehypeExternalLinks,
         { target: "_blank", rel: ["nofollow", "noopener", "noreferrer"] },
       ],
-      [rehypeShiki, { theme: "github-dark" }],
     ] as PluggableList,
   },
 })

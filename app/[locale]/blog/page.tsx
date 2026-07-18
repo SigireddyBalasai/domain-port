@@ -1,16 +1,19 @@
 import type { Metadata } from "next"
 import { getTranslations, setRequestLocale } from "next-intl/server"
+import Link from "next/link"
 import type { JSX } from "react/jsx-runtime"
 import type { BreadcrumbList, CollectionPage, ItemList } from "schema-dts"
 import { posts } from "@/.velite"
 import BlogCard from "@/components/blog/blog-card"
 import { PopularTagsSidebar } from "@/components/blog/popular-tags-sidebar"
+import { Badge } from "@/components/ui/badge"
 import { JsonLd } from "@/lib/json-ld"
 import { defaultLocale, locales } from "@/lib/locales"
 import { siteConfig } from "@/lib/site-config"
 
 interface Props {
   params: Promise<{ locale: string }>
+  searchParams: Promise<{ tag?: string }>
 }
 
 export const generateMetadata = async ({
@@ -72,18 +75,22 @@ export const generateMetadata = async ({
 
 export default async function BlogPage({
   params,
+  searchParams,
 }: Props): Promise<JSX.Element> {
   const { locale } = await params
+  const { tag } = await searchParams
 
   setRequestLocale(locale)
   const t = await getTranslations("common")
 
-  const sorted = [...posts]
+  const allPosts = [...posts]
     .filter((p) => p.locale === locale)
     .toSorted(
       (a, b) =>
         new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
     )
+
+  const filteredPosts = tag ? allPosts.filter((p) => (p.tags || []).includes(tag)) : allPosts
 
   return (
     <>
@@ -123,8 +130,8 @@ export default async function BlogPage({
           name: `Blog | ${siteConfig.name}`,
           description: `Latest CCTV and surveillance insights from ${siteConfig.name}.`,
           url: `${siteConfig.url}/${locale}/blog`,
-          numberOfItems: sorted.length,
-          itemListElement: sorted.map((post, index) => {
+          numberOfItems: filteredPosts.length,
+          itemListElement: filteredPosts.map((post, index) => {
             const postPrefix = locale === defaultLocale ? "" : `/${locale}`
 
             return {
@@ -141,7 +148,15 @@ export default async function BlogPage({
             {/* Main content */}
             <div className="lg:col-span-3 space-y-6">
               <h1 className="mb-8 text-4xl font-bold">{t("blog")}</h1>
-              {sorted.map((post) => {
+              {tag && (
+                <div className="flex items-center gap-2 mb-4">
+                  <Badge variant="default">Filter: {tag}</Badge>
+                  <Link href="/blog" className="text-sm underline">
+                    Clear
+                  </Link>
+                </div>
+              )}
+              {filteredPosts.map((post) => {
                 return (
                   <BlogCard
                     key={post.slug}
@@ -154,13 +169,13 @@ export default async function BlogPage({
                   />
                 )
               })}
-              {sorted.length === 0 && (
-                <p className="text-muted-foreground">{t("noPosts")}</p>
-              )}
+               {filteredPosts.length === 0 && (
+                 <p className="text-muted-foreground">{t("noPosts")}</p>
+               )}
             </div>
             {/* Sidebar */}
             <aside className="lg:col-span-1 space-y-8">
-              <PopularTagsSidebar posts={sorted} />
+               <PopularTagsSidebar posts={allPosts} />
             </aside>
           </div>
         </div>

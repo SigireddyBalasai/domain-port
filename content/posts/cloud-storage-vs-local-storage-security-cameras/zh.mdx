@@ -1,0 +1,294 @@
+---
+title: "安防摄像头云存储 vs 本地存储 (2026)"
+description: "对比每种存储选项: 云订阅 (Ring、Arlo、Nest、Eufy)、NVR/DVR、microSD、NAS、S3/Wasabi/Backblaze B2、混合方案。每 TB-年成本、留存、隐私、带宽和恢复。"
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "cloud-storage-vs-local-storage-security-cameras"
+author: "Your Name"
+tags: ["cloud-storage", "local-storage", "nvr", "buying-guide", "privacy"]
+postType: "review"
+---
+
+import { Callout } from "@/components/ui/callout"
+import { Badge } from "@/components/ui/badge"
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
+
+存储是摄像头系统生死线。丢录像 = 丢证据。云端提供便利但永久付费且隐私风险。本地 (NVR、microSD、NAS) 前期投入大但数据归您。混合方案两全其美 — 前提是配置得当。本指南用 2026 年真实定价、带宽数学、决策框架拆解每种选项。
+
+<Badge variant="outline">快速回答</Badge> **多数家庭:** PoE NVR (本地 24/7) + 仅警报片段云备份。**公寓/租房:** 摄像头带 microSD + 可选云订阅。**企业:** NVR + NAS + 异地 (Wasabi/Backblaze B2) + 警报片段云存。
+
+## 2026 存储格局
+
+| 类别 | 示例 | 成本模式 | 留存 | 隐私 | 需互联网 |
+|----------|----------|------------|-----------|---------|-------------------|
+| **云订阅** | Ring Protect, Arlo Secure, Nest Aware, Eufy Cloud, Blink | $/摄像头/月 | 7–60 天 | 厂商持钥 | 是 (24/7 上传) |
+| **NVR/DVR (本地)** | Reolink RLK, Amcrest NV, Dahua, Hikvision, UniFi Protect | 硬件一次性 | 月–年 | 你持钥 | 否 (仅本地) |
+| **microSD (边缘)** | 所有无线摄像头, 部分 PoE | 卡一次性 | 天–周 | 你持钥 | 否 (仅本地) |
+| **NAS / 服务器** | Synology, QNAP, TrueNAS, Unraid + Frigate/Scrypted | 硬盘 + 硬件 | 年 | 你持钥 | 可选 |
+| **云对象存储** | Wasabi, Backblaze B2, AWS S3, Cloudflare R2 | $/TB/月 | 无限 | 你加密 | 是 (仅备份) |
+| **混合** | UniFi Protect + 云备份, Reolink NVR + FTP, Frigate + rclone | 混合 | 分级 | 你控制 | 部分 |
+
+<Callout type="warning">
+**带宽现实:** 8× 4K 摄像头 @ 8 Mbps H.265 = 64 Mbps **持续上传**。多数家庭上传 10–35 Mbps。**典型网络无法全天候 4K 全云。** 云端 = 仅运动片段, 或子流。
+</Callout>
+
+## 云订阅: 真实成本 (2026 定价)
+
+| 服务 | 月费 (1 摄像头) | 年费 (1 摄像头) | 5 摄像头/年 | 留存 | 2K/4K | 关键限制 |
+|---------|-----------------|----------------|-----------|-----------|-------|------------|
+| **Ring Protect Basic** | $4.99 | $49.99 | $49.99* | 180 天 | 1080p | *同一地址不限摄像头 |
+| **Ring Protect Plus** | $14.99 | $149.99 | $149.99 | 180 天 | 1080p | 专业监控, LTE 备用 |
+| **Arlo Secure** | $7.99 | $79.99 | $179.99 (5) | 30 天 | 2K/4K | AI 检测、活动区域 |
+| **Arlo Secure Plus** | $17.99 | $179.99 | $299.99 (5) | 60 天 | 4K | 4K 云、紧急响应 |
+| **Nest Aware** | $8 | $80 | $80* | 30 天 | 1080p/2K | *不限摄像头, 事件片段 |
+| **Nest Aware Plus** | $15 | $150 | $150* | 60 天 | 4K | 10 天 24/7 历史 |
+| **Eufy Cloud** | $2.99 | $29.99 | $29.99* | 30 天 | 2K | *不限摄像头, 本地优先 |
+| **Blink Subscription** | $3 | $30 | $30* | 60 天 | 1080p | *不限摄像头 |
+| **UniFi Protect 云备份** | $0.50/摄 | $6/摄 | $30 (5) | 7–30 天 | 4K | 仅备份, 非主存 |
+
+**5 年 TCO (5 摄像头, 4K, 30 天留存):**
+- Ring Protect Basic: $250
+- Arlo Secure: $900
+- Nest Aware: $400
+- Eufy Cloud: $150
+- **本地 NVR (8TB): ~$600 一次性** — 第 2 年后胜出
+
+<Callout type="info">
+**云 ≠ 备份。** 云是无线摄像头的*主存储*。断网摄像头不录 (或仅存 microSD)。真备份 = 本地 24/7 + 事件片段云副本。
+</Callout>
+
+## 本地存储: NVR 深度解析
+
+### NVR vs DVR (2026: 仅 NVR)
+- **DVR:** 模拟同轴 (CVBS/AHD/TVI/CVI) → 淘汰。最高 5MP。无 PoE。
+- **NVR:** IP 摄像头经以太网 (PoE) → 4K/8K/12MP+、PoE、ONVIF、NVR/摄像头侧 AI。
+
+### NVR 容量计算器
+
+| 摄像头 | 分辨率 | 码率 (H.265) | 日 GB | 14 天 | 30 天 | 90 天 | 推荐硬盘 |
+|---------|------------|-----------------|----------|---------|---------|---------|-----------------|
+| 4 | 4K (8MP) | 4 Mbps | 173 GB | 2.4 TB | 5.2 TB | 15.6 TB | 2× 8TB (RAID 1) |
+| 8 | 4K | 4 Mbps | 346 GB | 4.8 TB | 10.4 TB | 31 TB | 4× 10TB (RAID 5/6) |
+| 16 | 4K | 4 Mbps | 691 GB | 9.7 TB | 20.7 TB | 62 TB | 8× 10TB (RAID 6) |
+| 8 | 5MP | 3 Mbps | 260 GB | 3.6 TB | 7.8 TB | 23 TB | 3× 8TB (RAID 5) |
+| 16 | 2MP (1080p) | 1.5 Mbps | 130 GB | 1.8 TB | 3.9 TB | 11.7 TB | 2× 8TB (RAID 1) |
+
+**公式:** `GB/天 = 摄像头数 × Mbps × 86400 秒 ÷ 8 ÷ 1024 ÷ 1024`
+
+### NVR 专用 RAID: 选什么
+
+| RAID | 最少盘位 | 可用容量 | 容忍故障 | 重建风险 | 最适合 |
+|------|------------|-----------------|----------|--------------|----------|
+| **RAID 1 (镜像)** | 2 | 50% | 1 盘 | 低 | 2–4 盘位, 关键录像 |
+| **RAID 5** | 3 | (N-1)/N | 1 盘 | 中 (URE) | 4–8 盘位, 平衡 |
+| **RAID 6** | 4 | (N-2)/N | 2 盘 | 低 | 6+ 盘位, 最大保护 |
+| **RAID 10** | 4 (偶数) | 50% | 1–2 盘 | 极低 | 性能 + 安全 |
+| **SHR (Synology)** | 2+ | 灵活 | 1–2 | 低 | 混合硬盘尺寸 |
+
+**建议:** **6+ 盘位用 RAID 6**。**2 盘位用 RAID 1**。>8TB 硬盘避免 RAID 5 (重建时 URE 风险)。
+
+### NVR 硬件分级 (2026)
+
+| 梯队 | 示例 | PoE 口 | 最大摄像头 | 硬盘仓 | RAID | AI/分析 | 价格 |
+|------|---------|-----------|----------|------------|------|--------------|-------|
+| **入门** | Reolink RLN8-410 | 8 | 8 | 1 (SATA) | 无 | 摄像头侧 | $200 |
+| **入门+** | Amcrest NV4108E-HS | 8 | 8 | 2 | RAID 1 | 摄像头侧 | $280 |
+| **中端** | Dahua NVR5216-16P-I | 16 | 16 | 2 | RAID 1/5/10 | NVR 侧 (WizSense) | $450 |
+| **中高端** | Hikvision DS-7716NI-I4/16P | 16 | 16 | 4 | RAID 1/5/6/10 | NVR 侧 (AcuSense) | $600 |
+| **专业** | UniFi UNVR / UNVR Pro | 0 (交换机) | 50/100+ | 4/7 | RAID 1/5/6/10 | Protect AI (人/车/LPR) | $500/$1,000 |
+| **企业级** | Synology DVA3221 + Surveillance Station | 0 | 40+ | 2 (M.2) + 12 | SHR/RAID | 深度学习 (人/车/脸) | $1,500+ |
+
+**关键区别:** UniFi Protect / Synology 跑通用 OS (App 生态、Docker、API)。Dahua/Hikvision/Reolink 是设备固件 (更简、少灵活)。
+
+## microSD: 边缘存储现实核查
+
+| 卡规格 | 持续写入 | 4K @ 15fps (4 Mbps) | 4K @ 30fps (8 Mbps) | 2K @ 15fps (3 Mbps) |
+|-----------|-----------------|---------------------|---------------------|---------------------|
+| **UHS-I U3 / V30** (SanDisk Extreme, Samsung Pro) | 30 MB/s = 240 Mbps | ✅ 60× 余量 | ✅ 30× 余量 | ✅ 80× 余量 |
+| **UHS-I U1 / V10** (SanDisk Ultra, 廉价) | 10 MB/s = 80 Mbps | ⚠️ 10× | ❌ 10× (掉帧) | ✅ 26× |
+| **Application Class A1/A2** | 随机 IOPS 优化 | ✅ | ✅ | ✅ |
+
+**现实限制:**
+- **热度:** 阳光下摄像头 4K 持续写 = 6–12 个月卡挂
+- **耐久:** 128GB TLC = ~600 TBW。4K @ 4 Mbps = 43 GB/天 = **理论 38 年** 但热度砍到 2–3 年
+- **文件系统:** FAT32 (32GB 限制) vs exFAT (无限制)。摄像头内部格式化 — 信其格式。
+- **容量甜点:** **128GB–256GB** (耐久 + 成本)。512GB+ = 边际收益递减。
+
+<Callout type="tip">
+**microSD 不是备份。** 它在摄像头里 — 偷窃/火灾毁两者。用于: 断网缓冲、NVR 挂了最后 24–72h、租房/临时安装。
+</Callout>
+
+## NAS / 服务器: 发烧友/专业选择
+
+### 软件选项 (2026)
+
+| 软件 | 平台 | 摄像头支持 | AI/分析 | UI/UX | 许可 |
+|----------|----------|----------------|--------------|-------|---------|
+| **Frigate** | Docker (Linux) | ONVIF, RTSP, Go2RTC | Google Coral TPU (人/车/宠物), OpenCV | Web, HA 集成 | 免费 (OSS) |
+| **Scrypted** | Docker, Node.js | HomeKit, ONVIF, RTSP, Wyze, Ring, Arlo | TensorFlow, Coral, CPU | Web, HomeKit, HA | 免费 (OSS) |
+| **Shinobi** | Docker, Node.js | ONVIF, RTSP | OpenCV, TensorFlow | Web | 免费 (OSS) / Pro $ |
+| **Blue Iris** | Windows | ONVIF, RTSP, 3000+ 配置 | DeepStack AI, CodeProject AI | Windows 桌面 | $69.95 一次性 |
+| **Security Spy** | macOS | ONVIF, RTSP | 内置 AI (人/车) | macOS 原生 | $89–$499 |
+| **UniFi Protect** | UniFi OS (UNVR, Cloud Key) | 仅 UniFi 摄像头 | Protect AI (人/车/LPR) | Web, 移动端 | 免费 (硬件) |
+| **Synology Surveillance Station** | DSM | 8300+ ONVIF | 深度学习 (人/车/脸) | Web, 移动端 | 免费 (4 摄像头), $50/摄像头 |
+
+### 24/7 录制 + AI 硬件
+
+| 组建 | CPU | RAM | 硬盘 | AI 加速器 | 功耗 | 估算成本 |
+|-------|-----|-----|--------|----------------|-------|----------|
+| **预算 Frigate** | Intel N100 (4C/4T) | 16GB | 2× 8TB (RAID 1) | Google Coral USB ($60) | 15W | $350 |
+| **中端 Frigate/Scrypted** | i5-1235U / i3-N305 | 32GB | 4× 10TB (RAID 5) | Coral M.2 E-key ($40) | 25W | $600 |
+| **专业 Blue Iris** | i5-13400 / Ryzen 5700G | 32GB | 6× 14TB (RAID 6) | CodeProject AI (GPU) | 65W | $1,000 |
+| **Synology DVA3221** | Ryzen V1500B | 8GB (32GB max) | 2 M.2 + 12 盘位 | 内置 NPU | 65W | $1,500+ |
+| **UNVR Pro** | 四核 ARM | 8GB | 7× 3.5" | Protect AI (ARM NPU) | 40W | $1,000 |
+
+**推荐:** **Frigate + Coral TPU 跑在 Intel N100/N305 迷你主机** = 8–16 摄像头最佳 $/性能。加 **Scrypted** 桥接 HomeKit/Home Assistant。
+
+## 云对象存储: 异地备份做对
+
+| 提供商 | 存储 $/TB/月 | 出站 $/TB | 最低账单 | API | 加密 | 最适合 |
+|----------|-----------------|-------------|----------|-----|------------|----------|
+| **Wasabi** | $6.99 | **$0** (免费) | 1 TB/月 | S3 | SSE-S3, SSE-C | **首选** — 可预测、无出站费 |
+| **Backblaze B2** | $6.00 | $0.01 (免费 3×/月) | $7/月 | S3, B2 原生 | SSE-B2, SSE-C | 最便宜且低出站 |
+| **Cloudflare R2** | $0.015/GB = $15 | **$0** | $0 | S3 | SSE-S3 | Workers 集成、零出站 |
+| **AWS S3 Standard** | $23 | $0.09 | $0 | S3 | SSE-S3, SSE-KMS | 企业、生命周期策略 |
+| **AWS S3 Glacier IR** | $4 | $0.01 | 90 天最低 | S3 | SSE-S3 | 归档层 (极少访问) |
+| **IDrive e2** | $4 | $0 | $0 | S3 | SSE-S3 | 简单扁平定价 |
+| **Storj DCS** | $4 | $7 | $0 | S3, libuplink | 客户端加密 (你持钥) | **极致隐私** — 加密分片 |
+
+**备份策略 (rclone / duplicacy / restic):**
+```
+本地 NVR (24/7) → 每日增量到 Wasabi (加密)
+              → 每周全量到 Backblaze B2 (地理冗余)
+留存: 90 天本地, 1 年云, 7 年归档 (Glacier IR)
+```
+
+<Callout type="note">
+**上传前加密。** 用 `rclone crypt` 或 `restic` — 你的钥匙、你的数据。提供商永不见明文。Wasabi/B2/R2 都支持 SSE-C (客户提供密钥) 但客户端加密更安全。
+</Callout>
+
+## 混合架构: 两全其美
+
+### 1. UniFi Protect + 云备份 (最简专业消费级)
+- **本地:** UNVR (7× HDD, RAID 6) → 24/7 4K 录制
+- **云端:** Protect 云备份 ($0.50/摄像头/月) → 仅事件片段
+- **警报:** 经 UniFi 云推送 (无端口转发)
+- **成本:** $1,000 硬件 + $30/年 (5 摄像头) = **$1,150 首年, $30/年**
+
+### 2. Reolink NVR + FTP/S3 上传 (预算混合)
+- **本地:** RLN16-410 (16 通道, 2× SATA) → 24/7
+- **云端:** NVR 固件 → FTP/S3 (Wasabi/B2) 触发上传
+- **配置:** 仅事件上传, H.265, 7 天云留存
+- **成本:** $300 NVR + $84/年 Wasabi (1TB) = **$384 首年, $84/年**
+
+### 3. Frigate + rclone (DIY 最大控制)
+- **本地:** Frigate (Intel N100 + 4× 10TB RAID 5) → 24/7 + AI 事件
+- **云端:** `rclone sync /media/frigate/clips wasabi:cctv-backup --encrypt` cron 每日
+- **警报:** Frigate MQTT → Home Assistant → Push/Telegram
+- **成本:** $600 硬件 + $84/年 Wasabi = **$684 首年, $84/年**
+
+### 4. Synology Surveillance Station + C2 / Hyper Backup
+- **本地:** DS923+ / DS1821+ + 硬盘 → 24/7 + AI
+- **云端:** Hyper Backup → C2 Storage ($0.035/GB = $35/TB) 或 Wasabi/B2 经 Cloud Sync
+- **成本:** $600 NAS + $100 硬盘 + $35/年 = **$700 首年, $35/年**
+
+## 决策矩阵: 选您的架构
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="homeowner">
+    <AccordionTrigger>房主 (自有房产, 4–8 摄像头, 掌控网络)</AccordionTrigger>
+    <AccordionContent>
+**推荐:** PoE NVR (Reolink RLN8 / Amcrest NV4108E / UniFi UNVR) + 2× 8TB RAID 1
+- 24/7 本地录制, 零月费
+- 经 NVR FTP/S3 或树莓派 rclone 加 Wasabi/B2 备份
+- 若 UniFi: Protect 云备份存事件片段 ($0.50/摄像头/月)
+- **5 年成本: ~$800** vs 云端 $2,000+
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="renter">
+    <AccordionTrigger>租房/公寓 (2–4 摄像头, 无布线)</AccordionTrigger>
+    <AccordionContent>
+**推荐:** 电池/无线摄像头 (EufyCam 3, Reolink Argus 4 Pro, Ring Stick Up) + microSD (128GB)
+- 无布线, 搬家带走
+- Eufy: 本地 HomeBase 3 (16GB + SSD) + 可选云 $30/年
+- Ring/Arlo: 需云订阅录像 ($50–180/年)
+- **5 年成本: $300–$900** (硬件 + 可选订阅)
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="business">
+    <AccordionTrigger>中小企业 (8–24 摄像头, 合规, 多站点)</AccordionTrigger>
+    <AccordionContent>
+**推荐:** UniFi Protect (UNVR Pro × 站点) + Site-to-Site VPN + Wasabi 异地
+- 经 UniFi Site Manager 集中管理
+- 每 UNVR RAID 6, 30–90 天本地
+- rclone 每日加密推 Wasabi 留存 7 年
+- LPR、人数统计、占用率经 Protect AI
+- **5 年成本: $3,000–$8,000** (硬件 + 硬盘 + 云)
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="enthusiast">
+    <AccordionTrigger>发烧友 / DIY (Home Assistant, 自定义 AI, 极致隐私)</AccordionTrigger>
+    <AccordionContent>
+**推荐:** Frigate + Scrypted 跑在 Intel N100/N305 迷你主机 + Coral TPU + 4× 10TB RAID 5
+- 完整本地 AI (人/车/宠物/车牌/自定义)
+- 经 Scrypted 桥接 HomeKit Secure Video (Apple 加密)
+- MQTT → Home Assistant → 自定义自动化
+- rclone → Wasabi/B2/R2 (加密) 异地
+- **5 年成本: $1,200–$2,000** (硬件 + 硬盘 + 云)
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+## 带宽规划: 隐形杀手
+
+| 流类型 | 分辨率 | 编码 | 码率 | 8 摄像头上传 | 16 摄像头上传 |
+|-------------|------------|-------|---------|---------------|----------------|
+| **主流 (录制)** | 4K | H.265 | 4–6 Mbps | 32–48 Mbps | 64–96 Mbps |
+| **子流 (实时看)** | 1080p/D1 | H.265 | 0.5–1.5 Mbps | 4–12 Mbps | 8–24 Mbps |
+| **云上传 (事件)** | 1080p | H.265 | 1–2 Mbps | 突发 8–16 Mbps | 突发 16–32 Mbps |
+| **云上传 (24/7)** | 4K | H.265 | 4–6 Mbps | **32–48 Mbps 持续** | **64–96 Mbps 持续** |
+
+**家庭上传现实:**
+- 有线: 10–35 Mbps 上传
+- 光纤 (对称): 300–1000 Mbps 上传
+- DSL: 1–5 Mbps 上传
+- Starlink: 10–25 Mbps 上传
+- 5G 家庭: 20–100 Mbps 上传
+
+**原则:** 上传 < 50 Mbps，**绝不** 上传主流 24/7。用子流云备份, 或仅事件片段。
+
+## 隐私与法律: 谁握钥匙?
+
+| 存储 | 加密 | 厂商可访问 | 传票风险 | GDPR/CCPA |
+|---------|------------|------------------|---------------|-----------|
+| **云端 (Ring/Arlo/Nest)** | 静态 (厂商钥匙) | 是 (可解密) | 高 — 厂商配合 | 处理者 |
+| **云端 (Eufy)** | 静态 (厂商钥匙) | 可选 (本地优先) | 中 | 处理者 |
+| **NVR 本地** | 无 (或自管) | 否 | 低 — 你控制 | 控制者 |
+| **NAS (Frigate/Scrypted)** | 自管 (LUKS, VeraCrypt) | 否 | 低 | 控制者 |
+| **对象存储 (Wasabi/B2)** | SSE-S3 (厂商) / SSE-C (你) / 客户端 (你) | 仅 SSE-S3 时 | 中 (若厂商钥匙) | 处理者 (若厂商钥匙) |
+| **对象存储 + 客户端加密** | **你持钥** | **永不** | **极低** | **控制者** |
+
+**最佳实践:** 客户端加密 (rclone crypt, restic, duplicacy) → 传 Wasabi/B2/R2。厂商只见加密块。你握钥。传票拿到乱码。
+
+## 总结: 5 年存储 TCO (8 摄像头, 4K, 30 天留存)
+
+| 架构 | 第 1 年 | 第 2–5 年 (年均) | 5 年合计 | 隐私 | 精力 |
+|--------------|--------|-------------------|--------------|---------|--------|
+| **Ring Protect Basic** | $250 | $250 | **$1,250** | 低 | 零 |
+| **Arlo Secure** | $900 | $900 | **$4,500** | 低 | 零 |
+| **Nest Aware** | $400 | $400 | **$2,000** | 低 | 零 |
+| **Eufy Cloud** | $150 | $150 | **$750** | 中 | 低 |
+| **Reolink NVR (DIY)** | $600 | $0 | **$600** | **高** | 中 |
+| **UniFi Protect + 云备份** | $1,150 | $30 | **$1,270** | 高 | 低 |
+| **Frigate + Wasabi (DIY)** | $684 | $84 | **$1,020** | **极致** | 高 |
+| **Synology + C2/Wasabi** | $700 | $35 | **$840** | 高 | 中 |
+
+---
+
+## 相关指南
+
+- [电池寿命与供电选项: 有线 vs 电池 vs 太阳能](/blog/battery-life-power-options-corded-battery-solar) — 为存储供电
+- [最佳中小企业安防摄像头系统](/blog/best-small-business-security-camera-systems) — 业务 NVR 定型
+- [DIY 安防摄像头安装完整指南](/blog/diy-security-camera-installation-complete-guide) — 布线、安装、配置
+- [CCTV 视频存储计算器: 硬盘多大](/blog/cctv-video-storage-calculator-hard-drive-space) — 交互式计算器
+- [各州 CCTV 隐私法](/blog/privacy-laws-by-state-cctv-guide) — 留存法律要求

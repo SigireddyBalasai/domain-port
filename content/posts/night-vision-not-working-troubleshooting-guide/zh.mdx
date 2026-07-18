@@ -1,0 +1,289 @@
+---
+title: "夜视不工作? 完整故障排查指南 (2026)"
+description: "修复 IR 白化、无夜视、模糊图像、车牌模糊、彩色夜视失效。针对各类摄像头的分步诊断: PoE、Wi-Fi、电池、门铃。"
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "night-vision-not-working-troubleshooting-guide"
+author: "Your Name"
+tags: ["troubleshooting", "night-vision", "ir", "installation", "diy"]
+postType: "howto"
+---
+
+import { Callout } from "@/components/ui/callout"
+import { Badge } from "@/components/ui/badge"
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
+
+夜视故障是"白天好用、晚上废"的头号投诉。本指南逐一拆解每种故障模式，提供诊断、修复及何时更换建议。
+
+<Badge variant="outline">快速分诊</Badge>
+1. **IR 灯亮?** (夜间红光) → 否 = 供电/IR 板 / 是 = 光学/配置
+2. **画面发白/灰?** → IR 反射 (角度/距离)
+3. **画面黑/噪点多?** → IR 太弱 / 快门太慢 / 传感器老化
+4. **彩色夜视关?** → 环境光太低 / 设置未开
+
+---
+
+## 1. IR 灯不亮 (无红光)
+
+### 1.1 验证 IR 状态
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="check-ir">
+    <AccordionTrigger>如何检查 IR 灯</AccordionTrigger>
+    <AccordionContent>
+**目视:** 夜间站在摄像头前 → 找 **微弱红光** (850 nm) 或 **无可见光** (940 nm "隐蔽")。
+**手机相机测试:** 用手机摄像头对准摄像头 → IR 在屏幕上显示 **亮紫/白** (手机传感器能见近红外)。
+**App 状态:** 摄像头 Web UI / NVR → "IR Status" / "Night Mode" → 应显示 "On" 或 "Auto"。
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+### 1.2 原因与修复
+
+| 原因 | 诊断 | 修复 |
+|-------|-----------|-----|
+| **IR Cut 滤镜卡住 (日间模式)** | 夜间画面有色、无红光 | 断电重启 (12V/PoE 断 30 秒)。轻敲摄像头。升级固件。 |
+| **光敏电阻/LDR 故障** | IR 从不自动开启; 手动 "开" 有效 | 遮住 LDR (小透明窗) → 若 IR 触发, 换 LDR ($2) 或换摄像头 |
+| **IR LED 驱动板坏** | 12V/PoE 正常, 灯冷, 手动 "开" 无效 | 换摄像头 (板子不可修) |
+| **供电不足以驱动 IR** | 白天正常, 夜里重启/IR 闪烁 | 查摄像头端 IR 负载下电压 (见 §1.3) |
+| **固件 Bug** | 近期更新破坏了自动 IR | 回滚固件; 厂商工单 |
+| **隐蔽 IR (940 nm)** | 无红光, 手机测试显紫 | 正常 — 940 nm 肉眼不可见 |
+
+### 1.3 IR 负载下压降 (关键)
+
+**IR LED 额外抽 2–5W。** 白天跑, 晚上挂。
+
+<Callout type="warning">
+**测试:** 万用表量摄像头供电输入 (PoE: 用 PoE 测试仪)。白天电压 vs 夜间 (IR 开) 电压。**跌 >0.5V (12V) 或 >2V (PoE 48V) = 线太长 / 线径太细 / 交换机预算超。**
+</Callout>
+
+| 架构 | 最大 IR 负载 | 修复 |
+|--------------|-------------|-----|
+| **PoE (802.3af 15.4W)** | ~4W IR | 升级 PoE+ (30W) 注入器/交换机 |
+| **12V DC (18 AWG, 50 英尺)** | 2A IR | 缩短走线 / 14 AWG / 就地 12V 供电 |
+| **电池摄像头** | IR 几小时耗尽 | 关 IR; 用环境光 / 外置 IR 补光 |
+
+---
+
+## 2. IR 白化 / 灰蒙 / 洗白
+
+**症状:** 夜间图像 = 亮白/灰团, 无细节。IR 反射自附近表面。
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="whiteout-causes">
+    <AccordionTrigger>常见反射源</AccordionTrigger>
+    <AccordionContent>
+| 表面 | 距离 | 修复 |
+|---------|----------|-----|
+| **墙面 / 侧板 / 筋板** | 6–24" | 向下倾 **15–30°**; 外移 12–18" (延伸臂) |
+| **屋檐 / 屋檐板** | 0–12" | 安装在 **檐板下方**, 别贴着 |
+| **窗户 / 玻璃** | 任意 | **永不** 穿玻璃对准 (IR 100% 反射) |
+| **球罩上的蜘蛛网/灰尘** | 镜头上 | 每月清洁; IR 环上套抓绒罩 |
+| **雨 / 雪 / 雾** | 空气中 | 外置 IR 补光灯 (离镜头远装) |
+| **白色装饰条 / 雨槽** | 12–36" | 喷哑光黑 (烧烤漆) 或胶带遮挡 |
+| **车牌 (再反射)** | 20–50 ft | 向下倾斜; 外置 IR; LPR 摄像头 + 偏振镜 |
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+### 2.1 白化修复分步
+
+1. **找反射体:** 夜间出门, 看 IR 在表面的光斑。用手机相机看 IR 溢出。
+2. **重新调角:** 向下倾 **15–30°**。水平仪 + 量角器。
+3. **加距离:** 延伸支架 (12–24") 让 IR 锥体越过近处物体。
+3. **外置 IR 补光灯:** 装在 10–20 英尺外, 瞄准目标区。摄像头 IR **关**。最适合车牌、大门。
+4. **Smart IR (如支持):** 摄像头自动按距离降 IR 强度。设置里开启。
+5. **IR Cut 滤镜检查:** 卡 "出" (夜间模式) = 白天有色。卡 "入" (日间模式) = 无 IR。断电重启。
+
+---
+
+## 3. 黑屏 / 噪点 / 颗粒感夜间画面
+
+**症状:** 暗、满屏雪花、无细节。
+
+| 原因 | 诊断 | 修复 |
+|-------|-----------|-----|
+| **IR 对距离太弱** | 目标 > 额定 IR 范围 50% | 外置 IR 补光灯; 移近摄像头 |
+| **快门太慢 (动态模糊)** | 鬼影拖尾, 亮条纹 | 设 **最小快门: 1/100s** (车牌 1/250s) |
+| **增益/ISO 拉满** | 噪点 = "雪花" | 加光 (外置 IR, 路灯); 降最大增益 |
+| **宽动态范围 (WDR) 关** | 强光致盲 | 开 **WDR: 120 dB+** (True WDR, 非 DWDR) |
+| **球罩脏/划伤** | 光源周围光环 | 换球罩 ($15); 超细纤维 + 镜头清洁剂 |
+| **传感器老化** | 逐年恶化 | 换摄像头 (CMOS 老化, 热像素增多) |
+| **压缩过高** | 夜间块状伪影 | 码率: CBR 4–6 Mbps (4K) / 2–3 Mbps (2K) |
+
+### 3.1 快门速度备忘表
+
+| 目标 | 最小快门 | 备注 |
+|--------|-------------|-------|
+| 一般区域 | 1/50s (1/60s 美) | 光 vs 模糊平衡 |
+| 行人 | 1/100s | 四肢锐利 |
+| **车牌** | **1/250s – 1/500s** | **关键** — 手动设置 |
+| 快车 | 1/500s – 1/1000s | 需外置 IR |
+
+<Callout type="note">
+**如何设置:** 摄像头 Web UI → Image → Exposure → Shutter Speed → Manual → 填值。关 "Auto" 快门。
+</Callout>
+
+---
+
+## 4. 彩色夜视失败
+
+**彩色夜视 (CNV)** = 大底传感器 (1/1.8", 1/1.2") + 低光 ISP + **需环境光**。
+
+| 失效模式 | 原因 | 修复 |
+|--------------|-------|-----|
+| **全程黑白 (IR 开)** | 环境光 <1 lux | CNV 需 ~3–5 lux (路灯、门廊灯)。加 **暖白 (3000K) LED** 10–20 英尺外。 |
+| **彩色噪点/颗粒** | 增益过高 | 降最大增益; 加光; 接受黑白 IR |
+| **色彩偏移 (紫/绿)** | 白平衡困惑 | WB 设 "Outdoor" / "Streetlight" / 自定义 3000K |
+| **IR + CNV 冲突** | 同时开 = 怪色 | CNV 激活时关 IR (好摄像头自动) |
+| **不支持** | 传感器无 CNV | 查规格: 需 1/1.8"+ (Reolink ColorX, Hikvision ColorVu, Dahua Full-Color, Axis Lightfinder 2.0) |
+
+---
+
+## 5. 车牌识别 (LPC) — 专用夜间修复
+
+**LPC 夜间 90% 因:** 车牌反射 IR + 快门慢 + IR 弱。
+
+### 5.1 LPC 夜间清单
+
+- [ ] **摄像头:** 4K/8MP + 光学变焦 (变焦 2.8–12mm 或 5–50mm) **或** 专用 LPR (2MP, 100+ fps, 全局快门)
+- [ ] **快门:** **1/250s 起** (手动)
+- [ ] **IR:** 外置补光灯 (850 nm, 30–50° 束角) **离机身**, 瞄准车牌区
+- [ ] **角度:** ≤30° 离垂直; 高度 3–4 英尺 (车牌高度)
+- [ ] **WDR:** 120 dB+ True WDR (抗车灯)
+- [ ] **IR Cut:** 验证切换 (白天彩 / 夜间黑白)
+- [ ] **区域:** 动检区 = 车牌路径 (减误触)
+- [ ] **录制:** CBR 6–8 Mbps (4K) / 4 Mbps (2MP LPR)
+
+### 5.2 推荐 LPC 摄像头 (2026)
+
+| 摄像头 | 类型 | 夜间规格 | 适用 |
+|--------|------|------------|----------|
+| **Hikvision DS-2CD4A26FWD-IZHS/P** | 2MP LPR | 100 fps, 全局快门, 120 dB WDR, 100 ft IR | 专用车牌捕获 |
+| **Dahua ITC237-PW6M-IRLZF** | 2MP LPR | 60 fps, 140 dB WDR, 164 ft IR | 停车场, 门禁 |
+| **Reolink RLC-1212A** | 12MP 变焦 | 5× 光学变焦, 190 ft IR, 1/1.8" | 预算 4K + 变焦抓牌 |
+| **Axis Q1700-LE** | 2MP LPR | 60 fps, Forensic WDR, 131 ft IR | 企业级, 证据级 |
+
+---
+
+## 6. 门铃摄像头夜间问题
+
+| 问题 | 原因 | 修复 |
+|---------|-------|-----|
+| **访客脸白化** | IR 反射门廊/檐口 | 楔形套件倾斜 15–25° 向下; 关 IR → 用门廊灯 |
+| **无夜视** | 省电模式 | 硬接线 (16–24V AC) → 启用全天 IR |
+| **彩色夜视关** | 环境光太低 | 加 **3000K LED** 门廊灯具 (非冷白) |
+| **夜间动检漏报** | PIR 范围 < IR 范围 | PIR ~25 ft, IR ~30 ft → 降 IR 灵敏度 / 窄区域 |
+
+---
+
+## 7. 电池/太阳能摄像头夜间专属
+
+| 问题 | 原因 | 修复 |
+|-------|-------|-----|
+| **IR 一周耗光电池** | IR = 2–4W 持续 | 关 IR; 靠环境光 + 动触发聚光灯 (Eufy, Ring) |
+| **冬天无夜视** | Li-ion <32°F 停充 | LiFePO₄ 升级 (Reolink Go PT Plus); 保温箱 + 加热垫 |
+| **动检仅白天有效** | 玻璃/窗挡 PIR | **玻璃外**装; PIR 需温差 |
+| **聚光灯不触发** | 动作区域不对 | 重画区域覆盖进路径; 实地走测 |
+
+---
+
+## 8. 诊断工具与流程
+
+### 8.1 夜视测试卡 (打印塑封)
+
+```
+┌─────────────────────────────────────┐
+│   NIGHT VISION TEST CARD            │
+│  ████████████████████████████████   │  ← 100% white (IR 反射)
+│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   │  ← 50% gray
+│  ████████████████████████████████   │  ← 0% black
+│                                     │
+│  Plate: ABC-1234  (test at 20/40/60ft)│
+│  Face: [Outline]                    │
+└─────────────────────────────────────┘
+```
+
+**步骤:** 挂在目标距离 → 录像 → 回看车牌/人脸清晰度。
+
+### 8.2 IR 功率测量
+
+| 工具 | 测量 | 合格标准 |
+|------|-------------|---------------|
+| **PoE 测试仪** | 摄像头端电压 (夜间) | >48V (PoE+), >52V (PoE++) |
+| **万用表 (12V)** | 摄像头端电压 (夜间) | >11.5V (12V 标称) |
+| **钳形表** | 12V 线电流 (夜间) | <2A (单摄像头) |
+| **热成像仪** | IR LED 温度 | 40–60°C (工作), <30°C (死) |
+
+### 8.3 固件与配置审计
+
+```
+☐ Firmware: Latest stable (not beta)
+☐ IR Mode: Auto (not "On" 24/7)
+☐ Smart IR: Enabled
+☐ Shutter: Manual 1/100s min (1/250s for plates)
+☐ WDR: True WDR On (120 dB+)
+☐ Gain Max: Capped (not "Auto Max")
+☐ Bitrate: CBR 4–6 Mbps (4K)
+☐ IR Cut: Switching verified (day/night)
+☐ Timezone/NTP: Correct (scheduled IR)
+```
+
+---
+
+## 9. 修还是换
+
+| 症状 | 能修? | 何时换 |
+|---------|------------------|--------------|
+| 供电正常无 IR 光 | IR 板 ($50) / LDR ($2) | >3 年, 进水 |
+| IR 切片卡住 | 敲/断电重启 (暂时) | 机构磨损; >2 年 |
+| 调角度无法修白化 | 否 | 选错位置 (用外置 IR) |
+| 噪点传感器 (热像素) | 像素映射 (部分摄像头) | >5% 死像素; >4 年 |
+| 彩色夜视挂了 | 传感器/ISP 问题 | 传感器太小 (<1/2.8"); 升级 |
+| 间歇性夜间重启 | 压降 | 修线/供电; 持续则换 |
+
+---
+
+## 10. 速查卡 (打印放卡车)
+
+```
+NIGHT VISION TRIAGE FLOWCHART
+
+1. IR GLOW? (phone cam test)
+   NO → Check voltage (night) → Power fix
+   YES → Step 2
+
+2. IMAGE WHITE/GRAY?
+   YES → Angle down 15-30° / Move out 12"+ / External IR
+   NO → Step 3
+
+3. IMAGE BLACK/NOISY?
+   YES → Shutter 1/100s min / WDR On / External IR
+   NO → Step 4
+
+4. COLOR NIGHT VISION OFF?
+   YES → Add 3000K light / Check sensor size
+   NO → Step 5
+
+5. PLATE UNREADABLE?
+   YES → Shutter 1/250s / External IR / Varifocal zoom / LPR cam
+   NO → DONE ✓
+
+VOLTAGE CHECK (night, IR on):
+PoE: >48V (af) / >50V (at) / >52V (bt)
+12V: >11.5V at camera
+```
+
+---
+
+## 相关指南
+
+- [常见安防摄像头问题 & 修复](/blog/common-security-camera-problems-fixes) — 全故障排查索引
+- [PoE 摄像头走线: DIY 安装](/blog/poe-camera-cable-running-diy-installation) — 压降测试深度
+- [最佳太阳能安防摄像头 (离网)](/blog/best-solar-powered-security-cameras-offgrid) — 冬季电池/IR
+- [户外摄像头安装 (墙、顶、檐)](/blog/how-to-mount-outdoor-cameras-wall-ceiling-eave) — IR 角度
+- [CCTV 视频存储计算器](/blog/cctv-video-storage-calculator-hard-drive-space) — 夜间码率规划
+
+---
+
+*最后更新: 2026 年 7 月. 在 Reolink, Dahua, Hikvision, UniFi, Axis, Ring, Eufy, Arlo, Wyze, TP-Link 型号上验证测试流程。*

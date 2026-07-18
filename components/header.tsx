@@ -1,11 +1,13 @@
 import Image from "next/image"
 import Link from "next/link"
 import { getTranslations } from "next-intl/server"
+import dynamic from "next/dynamic"
 import type { JSX } from "react"
-import LanguageSwitcher from "@/components/language-switcher"
 import { ThemeToggleLazy as ThemeToggle } from "@/components/theme-toggle-lazy"
 import { locales } from "@/lib/locales"
 import { siteConfig } from "@/lib/site-config"
+
+const LanguageSwitcher = dynamic(() => import("@/components/language-switcher"))
 
 interface HeaderProps {
   locale: string
