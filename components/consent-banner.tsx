@@ -6,6 +6,7 @@ import { useConsent } from "@/components/consent-provider"
 export function ConsentBanner(): React.ReactElement | null {
   const {
     ready,
+    consent,
     acceptAll,
     rejectAll,
     save,
@@ -14,7 +15,7 @@ export function ConsentBanner(): React.ReactElement | null {
   } = useConsent()
   const t = useTranslations("consent")
 
-  if (!ready) {
+  if (!ready || consent) {
     return null
   }
 
