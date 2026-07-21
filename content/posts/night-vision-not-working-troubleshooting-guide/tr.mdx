@@ -1,0 +1,202 @@
+---
+title: "Gece Görüşü Çalışmıyor: Sorun Giderme Kılavuzu (2026)"
+description: "Güvenlik kamerası gece görüşü sorunlarını teşhis edin ve düzeltin. IR LED arızası, loş görüntü, titreme, karanlıkta çalışmama ve daha fazlası."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "night-vision-not-working-troubleshooting-guide"
+author: "Your Name"
+tags: ["night-vision", "troubleshooting", "guide", "fixes"]
+postType: "howto"
+---
+
+## Gece Görüşü Sorun Giderme
+
+Bu kılavuz, güvenlik kameralarınızda gece görüşü sorunlarını teşhis etmenize ve düzeltmenize yardımcı olur.
+
+## Yaygın Gece Görüşü Sorunları
+
+| Sorun                    | Olası Neden                      | Zorluk |
+| ------------------------ | -------------------------------- | ------ |
+| Hiç çalışmıyor           | IR LED arızası, ayar kapalı      | Kolay  |
+| Loş / zayıf görüntü      | Lens kirli, IR LED gücü düşük    | Kolay  |
+| Sadece yarım kare        | Kısmi engel, lens buğusu         | Orta   |
+| Titreme / yanıp sönme    | Güç dalgalanması, IR LED arızası | Orta   |
+| Karanlıkta çalışmıyor    | Sensör arızalı, ortam ışığı çok  | Kolay  |
+| Kırmızı ışıklar yanmıyor | IR LED arızalı, güç yetersiz     | Orta   |
+| Sisli / puslu görüntü    | Lens buğusu, nem                 | Kolay  |
+| Beyaz / aşırı pozlanmış  | Refleks, yakın yüzey             | Kolay  |
+
+## 1. Gece Görüşü Hiç Çalışmıyor
+
+### Kontrol Edilecekler:
+
+1. **Gece görüşü ayarı**: Kamera ayarlarında gece görüşünün açık olduğundan emin olun
+2. **IR LED'ler**: Kameraya karanlıkta bakın—kırmızı ışıklar yanıyor mu?
+3. **Gün/gece modu**: Kameranın otomatik modda olduğunu kontrol edin
+4. **Yazılım**: Kamerayı yeniden başlatın
+
+### Çözüm:
+
+- Ayar kapalıysa açın
+- Kamerayı yeniden başlatın
+- IR LED'leri arızalıysa kamera değişimi gerekebilir
+
+## 2. Loş / Zayıf Gece Görüşü
+
+### Kontrol Edilecekler:
+
+1. **Lens temizliği**: Lens üzerinde kir, toz, örümcek ağı var mı?
+2. **IR yansıması**: Kamera bir duvara veya pencereye çok yakın mı?
+3. **IR menzili**: Nesne IR menzilinin dışında mı (tipik 10-30 metre)?
+4. **Güç**: IR LED'ler yeterli güç alıyor mu? (PoE için voltaj düşümü kontrolü)
+
+### Çözüm:
+
+- Lensi mikrofiber bezle temizleyin
+- Kamerayı duvardan/pencereye uzaklaştırın
+- Nesneyi yaklaştırın veya IR aydınlatıcı ekleyin
+- PoE kablosunda voltaj düşümü kontrol edin
+
+## 3. Gece Görüşünde Sadece Yarım Kare Görünüyor
+
+### Kontrol Edilecekler:
+
+1. **Engel**: Lens önünde kısmi engel var mı? (örümcek ağı, yaprak)
+2. **Lens buğusu**: Sıcaklık değişiminden lens buğulanmış mı?
+3. **IR engeli**: IR LED'lerin önünde bir şey var mı?
+
+### Çözüm:
+
+- Engel temizleyin
+- Lens kurulayın
+- Nemlenmeyi önlemek için silikon jel paketi ekleyin
+
+## 4. Gece Görüşü Titriyor / Yanıp Sönüyor
+
+### Kontrol Edilecekler:
+
+1. **Güç kaynağı**: Güç dalgalanması veya yetersiz güç
+2. **IR LED ömrü**: IR LED'ler ömrünün sonunda olabilir
+3. **Sıcaklık**: Aşırı sıcak/soğuk IR performansını etkiliyor mu?
+
+### Çözüm:
+
+- Farklı güç kaynağı deneyin
+- Kamerayı yeniden başlatın
+- IR LED modülü değişimi veya yeni kamera
+
+## 5. Gece Görüşü Karanlıkta Çalışmıyor (Ama Alacakaranlıkta Çalışıyor)
+
+### Kontrol Edilecekler:
+
+1. **Geçiş eşiği**: Kamera karanlıkta IR'ye geçiyor mu?
+2. **Ortam ışığı**: Sensör hala ortam ışığı algılıyor olabilir
+3. **IR kesici (IR cut filter)**: Mekanik IR kesici sıkışmış olabilir
+
+### Çözüm:
+
+- Geçiş eşiğini ayarlayın
+- Kamerayı yeniden başlatın (IR kesiciyi sıfırlar)
+- IR kesici arızalıysa değişim gerekebilir
+
+## 6. IR LED'ler Yanmıyor
+
+### Kontrol Edilecekler:
+
+1. **Fiziksel hasar**: IR LED'lerde görünür hasar var mı?
+2. **Güç**: Kameraya yeterli güç geliyor mu?
+3. **PoE gücü**: PoE+ gerekli olabilir (özellikle 4K kameralar için)
+
+### Çözüm:
+
+- PoE anahtarını yükseltin (PoE+)
+- Güç kaynağını değiştirin
+- IR LED değişimi veya yeni kamera
+
+## 7. Sisli / Puslu Gece Görüşü
+
+### Kontrol Edilecekler:
+
+1. **Nem lensi buğuluyor** (sıcaklık değişiminde yaygın)
+2. **Toz / kir**: Lens üzerinde ince tabaka
+3. **Hava koşulları**: Sis, yağmur, kar
+
+### Çözüm:
+
+- Lensi temizleyin
+- Kameraya silikon jel paketi ekleyin
+- Kamerayı kapalı bir alana taşıyın (saçak altı)
+- Sadece hava koşullarından kaynaklanıyorsa bekleyin
+
+## 8. Beyaz / Aşırı Pozlanmış Gece Görüşü
+
+### Kontrol Edilecekler:
+
+1. **Refleks**: IR ışığı yakın bir yüzeyden yansıyor mu?
+2. **Yakın engel**: Kameranın hemen önünde bir şey var mı?
+3. **Kar / yağmur**: Yakın mesafede karla kaplı yüzey
+
+### Çözüm:
+
+- Kamerayı yeniden konumlandırın
+- Engel kaldırın
+- IR güç ayarı varsa azaltın
+
+## Önleyici Bakım
+
+- **Lensleri düzenli temizleyin**: Ayda bir
+- **Nem kontrolü**: Kamera içine silikon jel paketleri ekleyin
+- **Kablo kontrolü**: Aşınma, kemirgen hasarı
+- **Ürün yazılımı güncellemeleri**: Gece görüşü iyileştirmeleri içerebilir
+- **IR LED testi**: 6 ayda bir gece görüşü testi yapın
+
+## Gece Görüşü Türleri
+
+| Tür                | Menzil   | Renk   | Güç Tüketimi | En İyi Kullanım          |
+| ------------------ | -------- | ------ | ------------ | ------------------------ |
+| Standart IR        | 10-30m   | S/B    | Düşük        | Çoğu konut               |
+| Starlight          | 15-50m   | Renkli | Orta         | Düşük ışık, renk gerekli |
+| Renkli (projektör) | 10-20m   | Renkli | Yüksek       | Caydırıcılık, detay      |
+| Termal             | 100-300m | Termal | Orta         | Karanlıkta tam algılama  |
+
+---
+
+**İlgili Okumalar:**
+
+- [Yaygın Kamera Sorunları ve Çözümleri](/blog/common-security-camera-problems-fixes)
+- [Dış Mekan Kamerası Montaj Rehberi](/blog/how-to-mount-outdoor-cameras-wall-ceiling-eave)
+- [DIY Kamera Kurulum Kılavuzu](/blog/diy-security-camera-installation-complete-guide)
+- [En İyi Güneş Enerjili Güvenlik Kameraları](/blog/best-solar-powered-security-cameras-offgrid)
+
+## Gece Plaka Yakalama (LPC) — Özelleşmiş Gece Düzeltmeleri
+
+**LPC geceleri %90 şu nedenle başarısız olur:** Plakadan IR yansıması + yavaş enstantane + zayıf IR.
+
+### LPC Gece Kontrol Listesi
+
+- [ ] **Kamera:** 4K/8MP + optik zoom (2.8-12mm veya 5-50mm değişken odaklı) VEYA özel LPR (2MP, 100+ fps, global deklanşör)
+- [ ] **Enstantane:** **En az 1/250s** (manuel)
+- [ ] **IR:** Harici aydınlatıcı (850 nm, 30-50° ışın) **kameradan ayrı**, plaka bölgesine hedeflenmiş
+- [ ] **Açı:** Dikeyden ≤30°; yükseklik 3-4 ft (plaka seviyesi)
+- [ ] **WDR:** 120 dB+ Gerçek WDR (farları yönetir)
+- [ ] **IR Kesici:** Geçiş doğrulandı (gündüz renk / gece S/B)
+- [ ] **Bölge:** Hareket bölgesi = yalnızca plaka yolu (yanlış tetikleyicileri azaltır)
+- [ ] **Kayıt:** CBR 6-8 Mbps (4K) / 4 Mbps (2MP LPR)
+
+## Kapı Zili Kamerası Gece Sorunları
+
+| Sorun                              | Neden                         | Çözüm                                                               |
+| ---------------------------------- | ----------------------------- | ------------------------------------------------------------------- |
+| **Ziyaretçi yüzü aşırı pozlanmış** | IR sundurma/saçaktan yansıyor | Açılı takoz (15-25° aşağı); IR'yi kapat → sundurma ışığını kullan   |
+| **Gece görüşü yok**                | Pil tasarrufu modu            | Kablolu bağlayın (16-24V AC) → tam zamanlı IR'yi etkinleştirir      |
+| **Renkli gece görüşü kapalı**      | Ortam çok düşük               | Sundurma armatürüne **3000K LED** ekleyin (soğuk beyaz değil)       |
+| **Geceleri hareket kaçırma**       | PIR menzili < IR menzili      | PIR ~25 ft, IR ~30 ft → IR hassasiyetini azaltın / bölgeyi daraltın |
+
+## Pil / Güneş Enerjili Kamera Gece Özellikleri
+
+| Sorun                               | Neden                                  | Çözüm                                                      |
+| ----------------------------------- | -------------------------------------- | ---------------------------------------------------------- |
+| **IR pili 1 haftada bitiriyor**     | IR = 2-4W sürekli                      | IR'yi kapatın; ortam ışığı + hareket projektörüne güvenin  |
+| **Kışın gece görüşü yok**           | Li-ion <32°F şarjı durdurur            | LiFePO₄ yükseltmesi; yalıtımlı kutu + ısıtıcı              |
+| **Hareket yalnızca gündüz çalışır** | PIR pencere/cam tarafından engellenmiş | Camın **dışına** monte edin; PIR sıcaklık farkı gerektirir |
+| **Projektör tetiklenmiyor**         | Hareket bölgesi yanlış                 | Yaklaşma yolunu kapsayacak şekilde bölgeyi yeniden çizin   |

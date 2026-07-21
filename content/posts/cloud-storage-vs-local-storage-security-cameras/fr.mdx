@@ -1,0 +1,206 @@
+---
+title: "Stockage Cloud vs Stockage Local pour Caméras de Sécurité (2026)"
+description: "Comparez chaque option de stockage : abonnements cloud (Ring, Arlo, Nest, Eufy), NVR/DVR, microSD, NAS, S3/Wasabi/Backblaze B2, hybride. Coût par To-an, rétention, vie privée, bande passante et récupération."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "cloud-storage-vs-local-storage-security-cameras"
+author: "Your Name"
+tags: ["cloud-storage", "local-storage", "nvr", "buying-guide", "privacy"]
+postType: "review"
+---
+
+Le stockage est là où les systèmes de caméras réussissent ou échouent. Perdre des séquences = perdre des preuves. Le cloud offre de la commodité mais coûte éternellement et risque la vie privée. Le local (NVR, microSD, NAS) coûte upfront mais vous le possédez. L'hybride donne les deux — si vous le configurez correctement. Ce guide détaille chaque option avec les vrais prix 2026, les calculs de bande passante et les cadres de décision.
+
+<Badge variant="outline">Réponse Rapide</Badge> **La plupart des foyers :** NVR
+PoE (local 24/7) + sauvegarde cloud pour les alertes uniquement.
+**Appartements/locataires :** Caméra avec microSD + abonnement cloud optionnel.
+**Entreprise :** NVR + NAS + hors site (Wasabi/Backblaze B2) + clips d'alerte
+cloud.
+
+## Le Paysage du Stockage (2026)
+
+| Catégorie                | Exemples                                                              | Modèle de Coût     | Rétention      | Vie Privée                      | Internet Requis             |
+| ------------------------ | --------------------------------------------------------------------- | ------------------ | -------------- | ------------------------------- | --------------------------- |
+| **Abonnement Cloud**     | Ring Protect, Arlo Secure, Nest Aware, Eufy Cloud, Blink              | $/cam/mois         | 7–60 jours     | Le fournisseur détient les clés | Oui (upload 24/7)           |
+| **NVR/DVR (Local)**      | Reolink RLK, Amcrest NV, Dahua, Hikvision, UniFi Protect              | Matériel une fois  | Mois–Années    | Vous détenez les clés           | Non (local uniquement)      |
+| **microSD (Périphérie)** | Toutes les caméras sans fil, certaines PoE                            | Carte une fois     | Jours–Semaines | Vous détenez les clés           | Non (local uniquement)      |
+| **NAS / Serveur**        | Synology, QNAP, TrueNAS, Unraid + Frigate/Scrypted                    | Matériel + disques | Années         | Vous détenez les clés           | Optionnel                   |
+| **Stockage Objet Cloud** | Wasabi, Backblaze B2, AWS S3, Cloudflare R2                           | $/To/mois          | Infini         | Vous chiffrez                   | Oui (sauvegarde uniquement) |
+| **Hybride**              | UniFi Protect + Sauvegarde Cloud, Reolink NVR + FTP, Frigate + rclone | Mixte              | Par niveaux    | Vous contrôlez                  | Partiel                     |
+
+<Callout type="warning">
+
+<strong>Réalité de la Bande Passante :</strong> 8× caméras 4K à 8 Mbps H.265 =
+64 Mbps
+<strong>d'upload continu</strong>. La plupart des uploads résidentiels sont de
+10–35 Mbps.
+<strong>Le cloud 24/7 complet est impossible sur Internet typique.</strong>
+Cloud = clips de mouvement uniquement, ou sous-flux.
+
+</Callout>
+
+## Abonnements Cloud : Le Vrai Coût (Prix 2026)
+
+| Service                        | Mensuel (1 cam) | Annuel (1 cam) | 5 cam/an     | Rétention  | 2K/4K    | Limites Clés                            |
+| ------------------------------ | --------------- | -------------- | ------------ | ---------- | -------- | --------------------------------------- |
+| **Ring Protect Basic**         | 4,99 $          | 49,99 $        | 49,99 $\*    | 180 jours  | 1080p    | \*Caméras illimitées à une adresse      |
+| **Arlo Secure**                | 7,99 $          | 79,99 $        | 179,99 $ (5) | 30 jours   | 2K/4K    | Détection IA, zones d'activité          |
+| **Nest Aware**                 | 8 $             | 80 $           | 80 $\*       | 30 jours   | 1080p/2K | \*Caméras illimitées, clips d'événement |
+| **Eufy Cloud**                 | 2,99 $          | 29,99 $        | 29,99 $\*    | 30 jours   | 2K       | \*Caméras illimitées, local d'abord     |
+| **UniFi Protect Cloud Backup** | 0,50 $/cam      | 6 $/cam        | 30 $ (5)     | 7–30 jours | 4K       | Sauvegarde uniquement, pas principale   |
+
+**Coût sur 5 Ans (5 caméras, 4K, rétention 30 jours) :**
+
+- Ring Protect Basic : 250 $
+- Arlo Secure : 900 $
+- Nest Aware : 400 $
+- Eufy Cloud : 150 $
+- **NVR local (8 To) : ~600 $ une fois** — rentabilisé après l'année 2
+
+<Callout type="info">
+
+<strong>Cloud ≠ Sauvegarde.</strong> Le cloud est le stockage _principal_ pour
+les caméras sans fil. Si Internet tombe, la caméra n'enregistre rien (ou
+seulement sur microSD si supporté). La vraie sauvegarde = local 24/7 + copie
+cloud des événements.
+
+</Callout>
+
+## Stockage Local : Analyse Approfondie du NVR
+
+### Calculateur de Dimensionnement NVR
+
+| Caméras | Résolution | Débit (H.265) | Go/Jour | 14 Jours | 30 Jours | 90 Jours | DD Recommandé       |
+| ------- | ---------- | ------------- | ------- | -------- | -------- | -------- | ------------------- |
+| 4       | 4K (8MP)   | 4 Mbps        | 173 Go  | 2,4 To   | 5,2 To   | 15,6 To  | 2× 8 To (RAID 1)    |
+| 8       | 4K         | 4 Mbps        | 346 Go  | 4,8 To   | 10,4 To  | 31 To    | 4× 10 To (RAID 5/6) |
+| 16      | 4K         | 4 Mbps        | 691 Go  | 9,7 To   | 20,7 To  | 62 To    | 8× 10 To (RAID 6)   |
+
+### RAID pour NVR : Ce Dont Vous Avez Besoin
+
+| RAID                | Disques Min | Capacité Utilisable | Survit à    | Risque de Reconstruction | Idéal Pour                     |
+| ------------------- | ----------- | ------------------- | ----------- | ------------------------ | ------------------------------ |
+| **RAID 1 (Miroir)** | 2           | 50 %                | 1 disque    | Faible                   | 2–4 baies, séquences critiques |
+| **RAID 5**          | 3           | (N-1)/N             | 1 disque    | Moyen (URE)              | 4–8 baies, équilibre           |
+| **RAID 6**          | 4           | (N-2)/N             | 2 disques   | Faible                   | 6+ baies, protection max       |
+| **RAID 10**         | 4 (pair)    | 50 %                | 1–2 disques | Très Faible              | Performance + sécurité         |
+
+**Recommandation :** **RAID 6** pour 6+ baies. **RAID 1** pour 2 baies. Évitez RAID 5 sur les disques >8 To (risque URE pendant la reconstruction).
+
+## microSD : Vérification Réaliste du Stockage en Périphérie
+
+**Limites réelles :**
+
+- **Chaleur :** Écriture continue 4K dans une caméra exposée au soleil = panne de carte en 6–12 mois
+- **Endurance :** 128 Go TLC = ~600 TBW. 4K à 4 Mbps = 43 Go/jour = **38 ans théorique** mais la chaleur réduit à 2–3 ans
+- **Système de fichiers :** FAT32 (limite 32 Go) vs exFAT (pas de limite). Les caméras formatent en interne — faites confiance à leur format.
+- **Capacité optimale :** **128 Go–256 Go** (endurance + coût). 512 Go+ = rendements décroissants
+
+<Callout type="tip">
+
+<strong>microSD n'est PAS une sauvegarde.</strong> Elle est dans la caméra — le
+vol/incendie détruit les deux. Utilisez-la pour : tampon pendant une panne
+Internet, dernières 24–72 h si le NVR tombe en panne, locations/installations
+temporaires.
+
+</Callout>
+
+## NAS / Serveur : Le Choix Passionné/Pro
+
+### Options Logicielles (2026)
+
+| Logiciel                          | Plateforme      | Support Caméra                         | IA/Analytique                                       | Licence                   |
+| --------------------------------- | --------------- | -------------------------------------- | --------------------------------------------------- | ------------------------- |
+| **Frigate**                       | Docker (Linux)  | ONVIF, RTSP, Go2RTC                    | Google Coral TPU (personne/véhicule/animal), OpenCV | Gratuit (OSS)             |
+| **Scrypted**                      | Docker, Node.js | HomeKit, ONVIF, RTSP, Wyze, Ring, Arlo | TensorFlow, Coral, CPU                              | Gratuit (OSS)             |
+| **Blue Iris**                     | Windows         | ONVIF, RTSP, 3000+ profils             | DeepStack AI, CodeProject AI                        | 69,95 $ une fois          |
+| **Synology Surveillance Station** | DSM             | 8300+ ONVIF                            | Deep Learning (personne/véhicule/visage)            | Gratuit (4 cam), 50 $/cam |
+
+## Stockage Objet Cloud : Sauvegarde Hors Site Bien Faite
+
+| Fournisseur       | Stockage $/To/mois | Sortie $/To              | Facture Min | Chiffrement                         | Idéal Pour                                     |
+| ----------------- | ------------------ | ------------------------ | ----------- | ----------------------------------- | ---------------------------------------------- |
+| **Wasabi**        | 6,99 $             | **0 $** (gratuit)        | 1 To/mois   | SSE-S3, SSE-C                       | **Meilleur choix** — prévisible, pas de sortie |
+| **Backblaze B2**  | 6,00 $             | 0,01 $ (gratuit 3×/mois) | 7 $/mois    | SSE-B2, SSE-C                       | Moins cher avec faible sortie                  |
+| **Cloudflare R2** | 0,015 $/Go = 15 $  | **0 $**                  | 0 $         | SSE-S3                              | Intégration Workers, sortie zéro               |
+| **Storj DCS**     | 4 $                | 7 $                      | 0 $         | Côté client (vous détenez les clés) | **Vie privée max** — fragments chiffrés        |
+
+**Stratégie de sauvegarde (rclone / duplicacy / restic) :**
+
+```
+NVR local (24/7) → Incrémental quotidien vers Wasabi (chiffré)
+                  → Complet hebdomadaire vers Backblaze B2 (redondance géographique)
+Rétention : 90 jours local, 1 an cloud, 7 ans archive (Glacier IR)
+```
+
+<Callout type="note">
+
+<strong>Chiffrez avant l'upload.</strong> Utilisez `rclone crypt` ou `restic` —
+vos clés, vos données. Le fournisseur ne voit jamais le texte clair.
+
+</Callout>
+
+## Architectures Hybrides : Le Meilleur des Deux Mondes
+
+### 1. UniFi Protect + Sauvegarde Cloud (Prosumer le Plus Facile)
+
+- **Local :** UNVR (7× DD, RAID 6) → enregistrement 24/7 4K
+- **Cloud :** Protect Cloud Backup (0,50 $/cam/mois) → clips d'événement uniquement
+- **Coût :** 1 000 $ matériel + 30 $/an (5 cam) = **1 150 $ Année 1, 30 $/an après**
+
+### 2. Reolink NVR + FTP/S3 Upload (Hybride Budget)
+
+- **Local :** RLN16-410 (16 ch, 2× SATA) → 24/7
+- **Cloud :** Firmware NVR → FTP/S3 (Wasabi/B2) sur mouvement
+- **Coût :** 300 $ NVR + 84 $/an Wasabi (1 To) = **384 $ Année 1, 84 $/an**
+
+### 3. Frigate + rclone (DIY Contrôle Max)
+
+- **Local :** Frigate (Intel N100 + 4× 10 To RAID 5) → 24/7 + événements IA
+- **Cloud :** `rclone sync /media/frigate/clips wasabi:cctv-backup --encrypt` cron quotidien
+- **Coût :** 600 $ matériel + 84 $/an Wasabi = **684 $ Année 1, 84 $/an**
+
+## Planification de la Bande Passante : Le Tueur Caché
+
+| Type de Flux                   | Résolution | Codec | Débit        | Upload 8 Cam            | Upload 16 Cam           |
+| ------------------------------ | ---------- | ----- | ------------ | ----------------------- | ----------------------- |
+| **Principal (Enregistrement)** | 4K         | H.265 | 4–6 Mbps     | 32–48 Mbps              | 64–96 Mbps              |
+| **Secondaire (Vue en direct)** | 1080p/D1   | H.265 | 0,5–1,5 Mbps | 4–12 Mbps               | 8–24 Mbps               |
+| **Upload Cloud (Événements)**  | 1080p      | H.265 | 1–2 Mbps     | Rafale 8–16 Mbps        | Rafale 16–32 Mbps       |
+| **Upload Cloud (24/7)**        | 4K         | H.265 | 4–6 Mbps     | **32–48 Mbps constant** | **64–96 Mbps constant** |
+
+**Règle :** Si l'upload < 50 Mbps, **n'uploadez jamais** le flux principal 24/7. Utilisez le sous-flux pour la sauvegarde cloud, ou les clips d'événement uniquement.
+
+## Vie Privée et Légal : Qui Détient les Clés ?
+
+| Stockage                                | Chiffrement                 | Accès par le Fournisseur  | Risque de Subpoena                 | RGPD/CCPA       |
+| --------------------------------------- | --------------------------- | ------------------------- | ---------------------------------- | --------------- |
+| **Cloud (Ring/Arlo/Nest)**              | Au repos (clé fournisseur)  | Oui (déchiffrable)        | Élevé — le fournisseur se conforme | Sous-traitant   |
+| **Cloud (Eufy)**                        | Au repos (clé fournisseur)  | Optionnel (local d'abord) | Moyen                              | Sous-traitant   |
+| **NVR Local**                           | Aucun (ou auto-géré)        | Non                       | Faible — vous contrôlez            | Responsable     |
+| **NAS (Frigate/Scrypted)**              | Auto-géré (LUKS, VeraCrypt) | Non                       | Faible                             | Responsable     |
+| **Stockage Objet + Chiffrement Client** | **Vous détenez les clés**   | **Jamais**                | **Minimal**                        | **Responsable** |
+
+**Meilleure Pratique :** Chiffrement côté client (rclone crypt, restic, duplicacy) → upload vers Wasabi/B2/R2. Le fournisseur ne voit que des blobs chiffrés. Vous détenez les clés. Un subpoena obtient du charabia.
+
+## Résumé : Coût Total de Possession sur 5 Ans (8 Caméras, 4K, Rétention 30 Jours)
+
+| Architecture                     | Année 1 | Années 2–5 (annuel) | Total 5 Ans | Vie Privée | Effort |
+| -------------------------------- | ------- | ------------------- | ----------- | ---------- | ------ |
+| **Ring Protect Basic**           | 250 $   | 250 $               | **1 250 $** | Faible     | Zéro   |
+| **Arlo Secure**                  | 900 $   | 900 $               | **4 500 $** | Faible     | Zéro   |
+| **Nest Aware**                   | 400 $   | 400 $               | **2 000 $** | Faible     | Zéro   |
+| **Eufy Cloud**                   | 150 $   | 150 $               | **750 $**   | Moyen      | Faible |
+| **Reolink NVR (DIY)**            | 600 $   | 0 $                 | **600 $**   | **Élevé**  | Moyen  |
+| **UniFi Protect + Cloud Backup** | 1 150 $ | 30 $                | **1 270 $** | Élevé      | Faible |
+| **Frigate + Wasabi (DIY)**       | 684 $   | 84 $                | **1 020 $** | **Max**    | Élevé  |
+
+---
+
+## Guides Connexes
+
+- [Autonomie et Options d'Alimentation : Filaire vs Batterie vs Solaire](/blog/battery-life-power-options-corded-battery-solar) — Alimentez aussi votre stockage
+- [Meilleurs Systèmes de Caméras de Sécurité pour Petites Entreprises](/blog/best-small-business-security-camera-systems) — Dimensionnement NVR pour entreprise
+- [Installation DIY de Caméras de Sécurité : Guide Complet](/blog/diy-security-camera-installation-complete-guide) — Câble, montage, configuration
+- [Calculateur de Stockage Vidéo CCTV](/blog/cctv-video-storage-calculator-hard-drive-space) — Calculateur interactif
+- [Lois sur la Vie Privée par État pour la Vidéosurveillance](/blog/privacy-laws-by-state-cctv-guide) — Exigences légales de rétention

@@ -48,10 +48,12 @@ Bad cabling is responsible for more CCTV failures than any other single factor. 
 This guide covers everything you need to cable a PoE security camera system correctly: cable selection, termination, conduit, surge protection, the tools you need, and the mistakes that separate a professional install from a problematic one.
 
 <Callout type="info" title="40% of PoE Issues Are Cable-Related">
-  Industry data shows that roughly 40% of "camera offline" tickets trace back to
-  cable problems — wrong gauge, indoor cable run outdoors, counterfeit Cat6 that
-  is really CCA Cat5e, or poor terminations. Getting the cable right from day
-  one eliminates the most common failure mode.
+
+Industry data shows that roughly 40% of "camera offline" tickets trace back to
+cable problems — wrong gauge, indoor cable run outdoors, counterfeit Cat6 that
+is really CCA Cat5e, or poor terminations. Getting the cable right from day
+one eliminates the most common failure mode.
+
 </Callout>
 
 ## What cable should you use for CCTV?
@@ -66,14 +68,16 @@ This guide covers everything you need to cable a PoE security camera system corr
 | Cat7  | 22 AWG | 10 Gbps at 100 m                 | All PoE standards                               | Future-proof commercial installs             |
 
 <Callout type="tip" title="Cat6 Is the Sweet Spot for 2026">
-  Cat6 is the best all-around choice for security camera installations. The 23
-  AWG conductors reduce PoE-related voltage drop and heat compared to Cat5e. The
-  250 MHz bandwidth provides generous headroom for 4K video streams. The cost
-  premium over Cat5e is typically only $0.04-0.10 per foot — on an 8-camera
-  system that adds $30-80 total. For that small premium, you get measurably
-  better PoE performance and bandwidth headroom for future camera upgrades. Pair
-  this with our [Best PoE Cameras](/blog/best-poe-cameras) guide to complete
-  your system.
+
+Cat6 is the best all-around choice for security camera installations. The 23
+AWG conductors reduce PoE-related voltage drop and heat compared to Cat5e. The
+250 MHz bandwidth provides generous headroom for 4K video streams. The cost
+premium over Cat5e is typically only $0.04-0.10 per foot — on an 8-camera
+system that adds $30-80 total. For that small premium, you get measurably
+better PoE performance and bandwidth headroom for future camera upgrades. Pair
+this with our [Best PoE Cameras](/blog/best-poe-cameras) guide to complete
+your system.
+
 </Callout>
 
 ### Solid Copper vs. CCA
@@ -90,11 +94,13 @@ This is the single most important cable decision you will make.
 | Lifespan in outdoor use | 10+ years         | 2-3 years                     |
 
 <Callout type="danger" title="Never Use CCA for PoE">
-  CCA cable has higher resistance than pure copper, which means more voltage
-  drop, more heat, and intermittent camera power failures. Under PoE+ load
-  (30W), CCA cables can heat up enough to degrade the jacket over time. If the
-  seller does not explicitly state "100% pure copper" or "bare copper," assume
-  it is CCA. For any professional install, insist on solid copper.
+
+CCA cable has higher resistance than pure copper, which means more voltage
+drop, more heat, and intermittent camera power failures. Under PoE+ load
+(30W), CCA cables can heat up enough to degrade the jacket over time. If the
+seller does not explicitly state "100% pure copper" or "bare copper," assume
+it is CCA. For any professional install, insist on solid copper.
+
 </Callout>
 
 ### Indoor vs. Outdoor Cable
@@ -125,10 +131,12 @@ If any portion of the cable run is exposed to weather, sunlight, or moisture, us
 | Impact drill + masonry bits                  | Mounting cameras on brick/concrete   | Varies             |
 
 <Callout type="note" title="Pre-Terminated Cables Are an Option">
-  For small installations (1-4 cameras) with accessible cable paths,
-  pre-terminated Cat6 cables in measured lengths save time and avoid termination
-  errors. For larger installs or runs through conduit, terminating your own
-  cable with pass-through RJ45 connectors is more reliable and cost-effective.
+
+For small installations (1-4 cameras) with accessible cable paths,
+pre-terminated Cat6 cables in measured lengths save time and avoid termination
+errors. For larger installs or runs through conduit, terminating your own
+cable with pass-through RJ45 connectors is more reliable and cost-effective.
+
 </Callout>
 
 ## How do you terminate Ethernet cables?
@@ -156,10 +164,12 @@ The T568B standard is the dominant wiring pattern for security camera installati
 - **Punch down to a patch panel at the NVR end**: For long runs, terminating to a patch panel is more reliable than crimping an RJ45 directly. It also makes troubleshooting and re-termination much easier.
 
 <Callout type="warning" title="Test Every Termination">
-  Use a cable tester to verify wire map, continuity, and shorts on every single
-  run before connecting a camera. A 30-second test catches problems that would
-  take hours to diagnose later. For long outdoor runs, also test with a PoE
-  tester to verify power delivery at the camera end.
+
+Use a cable tester to verify wire map, continuity, and shorts on every single
+run before connecting a camera. A 30-second test catches problems that would
+take hours to diagnose later. For long outdoor runs, also test with a PoE
+tester to verify power delivery at the camera end.
+
 </Callout>
 
 ## When and how should you use conduit?
@@ -194,11 +204,13 @@ When multiple PoE cables run together in a bundle or conduit, heat builds up fro
 | 31+                        | 40-55%                         | Use Cat6A, reduce bundle size, ensure ventilation |
 
 <Callout type="tip" title="Heat Management for Large Bundles">
-  ISO/IEC recommends a maximum bundle size of 24 cables regardless of PoE
-  considerations. For high-power PoE++ installations, use Cat6A (23 AWG)
-  conductors which dissipate heat more effectively. Avoid running PoE cables in
-  unventilated spaces like closed ceiling plenums or sealed conduits without
-  proper thermal derating.
+
+ISO/IEC recommends a maximum bundle size of 24 cables regardless of PoE
+considerations. For high-power PoE++ installations, use Cat6A (23 AWG)
+conductors which dissipate heat more effectively. Avoid running PoE cables in
+unventilated spaces like closed ceiling plenums or sealed conduits without
+proper thermal derating.
+
 </Callout>
 
 ## Do you need surge protection for PoE cameras?
@@ -217,9 +229,11 @@ Cameras on long PoE runs are vulnerable to lightning-induced surges, even from n
 - UPS with surge protection for the NVR and PoE switch
 
 <Callout type="danger" title="Grounding Is Not Optional">
-  A surge protector that is not properly grounded provides no protection. Ensure
-  your surge protectors are connected to building earth ground. In commercial
-  installations, grounding should meet local electrical code requirements.
+
+A surge protector that is not properly grounded provides no protection. Ensure
+your surge protectors are connected to building earth ground. In commercial
+installations, grounding should meet local electrical code requirements.
+
 </Callout>
 
 ## What are the most common cable mistakes?
@@ -278,12 +292,14 @@ Before declaring the install complete:
 6. **Retention verification**: After 7 days, check the NVR timeline shows no recording gaps
 
 <Callout type="tip" title="The 100-Meter Hard Limit">
-  The IEEE 802.3 standard limits Ethernet runs to 100 meters (328 feet)
-  including all patch cords. In practice, with pure copper Cat6, you can
-  reliably hit 95 meters. Beyond that, voltage drop on even good cable causes
-  intermittent camera resets. Plan for PoE extenders or fiber backhaul for any
-  run exceeding 90 meters. For a deeper look at how NVRs handle PoE, see our
-  [What Is an NVR?](/blog/what-is-nvr-guide) guide.
+
+The IEEE 802.3 standard limits Ethernet runs to 100 meters (328 feet)
+including all patch cords. In practice, with pure copper Cat6, you can
+reliably hit 95 meters. Beyond that, voltage drop on even good cable causes
+intermittent camera resets. Plan for PoE extenders or fiber backhaul for any
+run exceeding 90 meters. For a deeper look at how NVRs handle PoE, see our
+[What Is an NVR?](/blog/what-is-nvr-guide) guide.
+
 </Callout>
 
 ## Frequently Asked Questions
@@ -294,66 +310,84 @@ Before declaring the install complete:
       Should I use Cat5e or Cat6 for security cameras?
     </AccordionTrigger>
     <AccordionContent>
+
       Cat6 is the recommended baseline for any new install. The 23 AWG
       conductors reduce voltage drop compared to Cat5e's 24 AWG, which matters
       for PoE power delivery — especially on runs over 50 meters and for cameras
       with IR LEDs or heaters. The cost difference is minimal ($0.04-0.10 per
       foot) compared to the labor of running cable. Reserve Cat5e only for short
       runs under 30 meters with 1080p cameras.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>How long can a PoE cable run be?</AccordionTrigger>
     <AccordionContent>
+
       The IEEE 802.3 standard limits Ethernet runs to 100 meters (328 feet)
       total, including patch cords. Beyond 100 meters, the data signal degrades
       and PoE power delivery drops below the camera minimum. For longer runs,
       use a PoE extender (adds 100 m per unit, up to 4 units), fiber backhaul
       with a remote PoE switch, or move the NVR closer.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Can I mix CCA and solid copper cable in the same install?
     </AccordionTrigger>
     <AccordionContent>
+
       No. Mixing CCA and solid copper creates a galvanic corrosion point at the
       connection, which increases resistance and causes the connection to fail
       over time. Pick one cable type and use it throughout. For PoE, that should
       always be solid copper.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>Do I need shielded (STP) cable?</AccordionTrigger>
     <AccordionContent>
+
       Only if running near significant electrical interference — large motors,
       fluorescent ballasts, industrial machinery, or electrical panels. For most
       residential and office installations, unshielded (UTP) Cat6 is perfectly
       adequate. If you use STP, you must use shielded connectors and proper
       grounding at one end only, or the shielding becomes ineffective.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       What is the minimum bend radius for Cat6?
     </AccordionTrigger>
     <AccordionContent>
+
       The minimum bend radius for Cat6 is 4x the cable diameter, or
       approximately 5 cm (2 inches). Sharp bends crush the internal pair
       twisting and degrade signal quality. For permanent installations, use
       sweep bends or 45-degree elbows rather than sharp 90-degree turns.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       How deep should I bury Ethernet cable for outdoor cameras?
     </AccordionTrigger>
     <AccordionContent>
+
       Per the National Electrical Code (NEC), PVC conduit should be buried at
       least 18 inches (45 cm) deep. Metal conduit requires only 6 inches (15
       cm). Direct-burial rated cable in conduit is preferred for underground
       runs. Always call utility locators before digging.
+
     </AccordionContent>
+
   </AccordionItem>
 </Accordion>
 

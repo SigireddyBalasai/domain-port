@@ -1,0 +1,339 @@
+---
+title: "Instalação DIY de Cabo PoE para Câmeras: Guia Completo (2026)"
+description: "Guia completo para passar cabos Cat5e/6 para câmeras PoE. Tipos de cabo, planejamento de caminho, terminação, teste, conformidade com código e dicas profissionais para instalações limpas e confiáveis."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "poe-camera-cable-running-diy-installation"
+author: "Your Name"
+tags: ["diy", "poe", "cable-running", "installation", "termination"]
+postType: "howto"
+---
+
+Passar cabos é 70% do trabalho de instalação de câmeras PoE. Faça certo de uma vez: cobre sólido, caminhos adequados, terminação correta, teste verificado. Este guia cobre cada etapa, do carretel ao switch.
+
+<Badge variant="outline">Escolha do Cabo</Badge> **Use Cat6 cobre sólido
+(CMR/CMP).** Não CCA (alumínio revestido de cobre). Não trançado. Não Cat5e para
+novas instalações. Cat6 cobre sólido = 100m a 1Gbps PoE+ sem problemas de queda
+de tensão.
+
+---
+
+## Seleção de Cabo: O Que Comprar (E Evitar)
+
+| Tipo de Cabo                             | Condutor           | PoE+ (30W) Máx | PoE++ (60/90W) Máx | Classificação          | Caso de Uso             |
+| ---------------------------------------- | ------------------ | -------------- | ------------------ | ---------------------- | ----------------------- |
+| **Cat6 Cobre Sólido (CMR)**              | 23 AWG Cu Sólido   | 100 m (328 ft) | 80 m (262 ft)      | Riser (em parede)      | **Escolha padrão**      |
+| **Cat6 Cobre Sólido (CMP)**              | 23 AWG Cu Sólido   | 100 m          | 80 m               | Plenum (dutos de ar)   | Necessário em plenums   |
+| **Cat6a Cobre Sólido**                   | 23 AWG Cu Sólido   | 100 m          | 100 m              | Riser/Plenum           | À prova de futuro 10G   |
+| **Enterro Direto Externo**               | 23 AWG Cu Sólido   | 100 m          | 80 m               | Preenchido com gel, UV | Subterrâneo, aéreo      |
+| **❌ Cat5e**                             | 24 AWG             | 100 m          | 50 m               | Riser                  | Apenas legado           |
+| **❌ CCA (Cobre Revestido de Alumínio)** | Núcleo de alumínio | **FALHA**      | **FALHA**          | Qualquer               | **Nunca para PoE**      |
+| **❌ Trançado / Patch**                  | Cu Trançado        | 10 m (33 ft)   | 5 m                | Patch                  | Apenas cabos de manobra |
+
+<Callout type="danger">
+
+**CCA (Cobre Revestido de Alumínio) falha no PoE.** Alumínio tem 60% mais
+resistência → queda de tensão → câmera reinicia à noite (IR ligado).
+**Verifique "Cobre Nu Sólido" na impressão da capa.**
+
+</Callout>
+
+**Marcas Recomendadas (2026):**
+
+- **Econômico:** Cable Matters Cat6 CMR (305 m $120)
+- **Médio:** Southwire Cat6 CMR (305 m $150)
+- **Profissional:** Belden 2413 / General Cable GenSPEED 6000 (305 m $220)
+- **Externo:** Superior Essex 04-001-59 (Enterro Direto, $180)
+
+---
+
+## Planejamento de Caminho: Antes de Furar
+
+### 1. Mapeie Cada Rota
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="mapping">
+    <AccordionTrigger>Crie uma Planilha de Cronograma de Cabos</AccordionTrigger>
+    <AccordionContent>
+
+| Câmera | Localização     | Caminho                        | Comprimento (m) | Tipo de Cabo | Terminação      | Classe PoE     |
+| ------ | --------------- | ------------------------------ | --------------- | ------------ | --------------- | -------------- |
+| CAM-01 | Porta da Frente | Sótão → Sofito → Fachada       | 20              | Cat6 CMR     | RJ45 + Keystone | Classe 4 (30W) |
+| CAM-02 | Garagem         | Sótão → Parede Externa → Poste | 29              | Cat6 Externo | RJ45 Direto     | Classe 4       |
+| CAM-03 | Quintal         | Porão → Viga de Borda → Beiral | 24              | Cat6 CMR     | Keystone        | Classe 3 (15W) |
+
+<p>
+  <strong>Regra:</strong> Meça <strong>duas vezes</strong>, adicione{" "}
+  <strong>3 m de folga</strong> por rota (loops de serviço em ambas as pontas).
+</p>
+
+  </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+### 2. Identifique Caminhos (Melhor → Pior)
+
+| Caminho                                  | Dificuldade | Máx. de Rotas  | Notas de Código                                                |
+| ---------------------------------------- | ----------- | -------------- | -------------------------------------------------------------- |
+| **Sótão → Sofito/Beiral**                | Fácil       | Ilimitado      | Evite contato com isolamento (reduz capacidade)                |
+| **Porão/Crawl → Viga de Borda → Parede** | Médio       | Ilimitado      | Fure através da soleira, barreira corta-fogo                   |
+| **Parede Interna → Externa**             | Médio       | 1–2 por parede | Barreira corta-fogo na placa superior/inferior                 |
+| **Conduto (EMT/PVC) Superfície**         | Fácil       | Ilimitado      | Melhor para reformas, permitido exposto                        |
+| **Enterro Direto (Vala)**                | Difícil     | Ilimitado      | 45 cm de profundidade (60 cm sob garagem), fita de advertência |
+| **Aéreo (Poste a Poste)**                | Médio       | 1–2            | Cabo mensageiro, loops de gotejamento, 3 m de folga            |
+
+---
+
+## Técnicas de Perfuração e Passagem de Cabo
+
+### Sótão para Sofito (Mais Comum)
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="attic-soffit">
+    <AccordionTrigger>Passo a Passo: Sótão → Câmera no Sofito</AccordionTrigger>
+    <AccordionContent>
+
+<p>
+  <strong>Ferramentas:</strong> Broca pá/auger de 22 mm, varas brilhantes de 15
+  m, lanterna de cabeça, joelheiras, máscara contra poeira
+</p>
+
+<ol>
+  <li>
+    <strong>Localize a posição da câmera</strong> de dentro do sótão — meça a
+    partir de um ponto de referência conhecido (ventilação, chaminé)
+  </li>
+  <li>
+    <strong>Faça furo de 22 mm</strong> através da placa superior + placa do
+    sofito (ângulo ligeiramente para baixo para drenagem de água)
+  </li>
+  <li>
+    <strong>Empurre as varas brilhantes</strong> do sótão para baixo através do
+    furo até o exterior do sofito
+  </li>
+  <li>
+    <strong>Prenda o cabo</strong> na ponta da vara: dobre 15 cm para trás, fita
+    isolante lisa (sem enganchar)
+  </li>
+  <li>
+    <strong>Puxe suavemente</strong> — trabalho de 2 pessoas: um alimenta, um
+    puxa
+  </li>
+  <li>
+    <strong>Deixe 90 cm de folga</strong> no sótão (loop de serviço), 60 cm na
+    câmera
+  </li>
+  <li>
+    <strong>Vede:</strong> Silicone ao redor do cabo na penetração do sofito
+    (interno + externo)
+  </li>
+  <li>
+    <strong>Grampeie</strong> o cabo nas vigas a cada 1,2 m (grampos isolados
+    T25)
+  </li>
+</ol>
+
+  </AccordionContent>
+   </AccordionItem>
+</Accordion>
+
+### Porão/Crawl para Parede Externa
+
+- **Fure através da viga de borda** (não da fundação) — furo de 22 mm, 30 cm acima do nível mínimo
+- **Barreira corta-fogo:** Preencha com lã mineral + calafeto corta-fogo ao redor do cabo na penetração
+- **Externo:** Corpo de conduto LB → ½" LFMC até a caixa da câmera
+
+### Parede Interna para Externa (Reforma)
+
+1. **Corte furo para caixa de parede** na altura da câmera (dentro)
+2. **Fure para baixo** através da placa inferior até o porão/crawl (broca auger 22 mm)
+3. **Puxe para cima** do porão com varas brilhantes
+4. **Proteja:** Placas de prego nos montantes onde o cabo passa (NEC 300.4)
+
+---
+
+## Conduto e Proteção
+
+| Situação                         | Tipo de Conduto                     | Tamanho | Notas                                             |
+| -------------------------------- | ----------------------------------- | ------- | ------------------------------------------------- |
+| **Parede externa superfície**    | LFMC (Liquidtight Flexible Metal)   | ½"      | Classificado UV, máx. 1,2 m entre suportes        |
+| **Subterrâneo**                  | PVC Schedule 40 / HDPE              | ¾"      | 45 cm de cobertura, cotovelos largos, fio puxador |
+| **Sótão (exposto)**              | Nenhum necessário (Cat6 CMR)        | —       | Grampeie a cada 1,2 m, sem grampo no cabo         |
+| **Teto plenum**                  | EMT / Cabo classificado para plenum | ½"      | Cabo CMP necessário se não houver conduto         |
+| **Através de parede corta-fogo** | Manga corta-fogo + massa            | —       | Hilti CFS-SL / 3M CP25                            |
+
+---
+
+## Terminação: RJ45 Pass-Through (Mais Rápido, Mais Confiável)
+
+<Callout type="note">
+
+**Use conectores pass-through.** RJ45 padrão requer corte preciso.
+Pass-through permite verificar a ordem das cores _antes_ de cravar.
+**Ferramenta:** Alicate de crimpagem pass-through ratcheteado (Klein
+VDV226-110, $45).
+
+</Callout>
+
+### Pinagem T568B (Padrão para PoE)
+
+| Pino | Par | Cor            | Função PoE      |
+| ---- | --- | -------------- | --------------- |
+| 1    | 2   | Laranja/Branco | Dados + PoE (+) |
+| 2    | 2   | Laranja        | Dados + PoE (+) |
+| 3    | 3   | Verde/Branco   | Dados + PoE (-) |
+| 4    | 1   | Azul           | PoE (+) Reserva |
+| 5    | 1   | Azul/Branco    | PoE (+) Reserva |
+| 6    | 3   | Verde          | Dados + PoE (-) |
+| 7    | 4   | Marrom/Branco  | PoE (-) Reserva |
+| 8    | 4   | Marrom         | PoE (-) Reserva |
+
+**PoE usa TODOS os 4 pares** (802.3bt). **Todos os 8 condutores devem estar perfeitos.**
+
+### Procedimento de Crimpagem (Pass-Through)
+
+1. **Descasque 3,8 cm** da capa — não danifique os condutores
+2. **Destorça os pares** apenas o necessário — mantenha as torções próximas ao conector
+3. **Organize T568B** — alise, verifique a ordem da esquerda para a direita
+4. **Insira completamente** — condutores visíveis na face frontal
+5. **Verifique a ordem** — olhe através do conector transparente
+6. **Crimpe** — ferramenta ratcheteada, um aperto firme
+7. **Teste de tração** — 2,2 kg de puxão, sem movimento
+
+---
+
+## Keystone Jacks (Terminação em Placa de Parede)
+
+**Quando:** Câmera conecta a patch panel / tomada de parede → cabo patch para câmera
+
+**Punch-Down (110/Keystone):**
+
+1. Descasque 5 cm da capa
+2. Assente os fios nos slots codificados por cores (T568B impresso no jack)
+3. **Puncione diretamente para baixo** — ferramenta 110, um golpe por fio
+4. Corte o excesso rente
+5. Encaixe na placa de parede
+
+**Teste:** Continuidade + tensão PoE no jack antes de conectar a câmera.
+
+---
+
+## Teste: Verifique Cada Rota
+
+<Callout type="warning">
+
+**Nunca confie em um cabo não testado.** 30% das "falhas de câmera" são
+defeitos de cabo. Teste _antes_ de montar a câmera.
+
+</Callout>
+
+### Nível 1: Continuidade + Wiremap (Cada Cabo)
+
+**Ferramenta:** Testador básico (NF-8601, $25) — 8 LEDs + blindagem
+
+- **Todos os 8 verdes** = aprovado
+- **Qualquer vermelho/aberto/cruzado** = re-terminar
+
+### Nível 2: Tensão PoE Sob Carga (Crítico)
+
+**Ferramenta:** Testador PoE (LINKSYS PTPoE, $35) ou Multímetro + Injetor PoE
+
+1. Conecte injetor → cabo → testador (ou câmera)
+2. Meça **na ponta da câmera**:
+
+- **PoE (802.3af):** 44–57V CC
+- **PoE+ (802.3at):** 50–57V CC
+- **PoE++ (802.3bt):** 52–57V CC
+
+3. **Sob carga** (câmera ligada) — queda de tensão &lt;3V do injetor
+
+### Nível 3: Validação de Taxa de Dados (Profissional)
+
+**Ferramenta:** Certificador de Cabo (Fluke DSX-5000) — aluguel $150/dia
+
+- **Cat6:** 250 MHz, 1 Gbps garantido
+- **Cat6a:** 500 MHz, 10 Gbps garantido
+- **Imprima relatório** para garantia
+
+---
+
+## Calculadora de Queda de Tensão PoE
+
+**Fórmula:** `Vdrop = (2 × Comprimento_m × Corrente_A × Resistência_Ω_por_1000m) / 1000`
+
+| Cabo               | Resistência (Ω/1000m) | Máx 30W (0,6A) | Máx 60W (1,2A) | Máx 90W (1,8A) |
+| ------------------ | --------------------- | -------------- | -------------- | -------------- |
+| **Cat6 (23 AWG)**  | 21,7                  | **100 m**      | **50 m**       | **33 m**       |
+| **Cat6a (23 AWG)** | 21,7                  | 100 m          | 100 m          | 66 m           |
+| **Cat5e (24 AWG)** | 28,0                  | 76 m           | 38 m           | 25 m           |
+
+**Regra:** Fique abaixo de **80% do máximo** para margem. Para PoE++ (60/90W), use Cat6a ou limite a 30 m em Cat6.
+
+---
+
+## Falhas Comuns e Correções
+
+| Sintoma                                 | Causa                               | Correção                                         |
+| --------------------------------------- | ----------------------------------- | ------------------------------------------------ |
+| **Câmera reinicia à noite (IR ligado)** | Queda de tensão >3V                 | Encurtar cabo / Cat6a / Injetor PoE++ na câmera  |
+| **Link oscila 100/1000 Mbps**           | Par único aberto / alta resistência | Re-terminar ambas as pontas; teste cada par      |
+| **Sem link, testador mostra 7/8 fios**  | Um condutor quebrado/solto          | Re-crimpar; verifique esmagamento por grampo     |
+| **Pares cruzados (1↔3, 2↔6)**           | T568A em uma ponta, T568B na outra  | Padronize T568B em ambas as pontas               |
+| **Água no cabo (corrosão)**             | Cabo externo sem gel / vedação ruim | Substitua com cabo enterro direto; vede entradas |
+| **Ruído EMI (artefatos de vídeo)**      | Paralelo a Romex / HVAC             | Separe 30 cm+ ; cruze a 90° ; Cat6 blindado      |
+
+---
+
+## Referência Rápida de Conformidade com Código (NEC 2023)
+
+| Artigo      | Requisito                            | Resumo Prático                            |
+| ----------- | ------------------------------------ | ----------------------------------------- |
+| **300.4**   | Proteção contra danos físicos        | Placas de prego, conduto, 3,2 cm da borda |
+| **300.11**  | Fixação e suporte                    | Grampos a cada 1,2 m, a 30 cm da caixa    |
+| **300.22**  | Espaços plenum                       | Cabo CMP ou conduto                       |
+| **411.4**   | Iluminação de baixa tensão (câmeras) | Classe 2/3, equipamento listado           |
+| **725.133** | Separação de cabos Classe 2/3        | 5 cm de cabos de energia (ou barreira)    |
+| **800.170** | Aterramento (externo)                | Unidade de descarga de antena se aéreo    |
+| **Local**   | Limite de licença                    | Frequentemente >$500 ou >1,8 m de altura  |
+
+---
+
+## Dicas Profissionais de Mais de 100 Instalações
+
+1. **Identifique ambas as pontas** antes de puxar — Sharpie + etiqueta de cabo (Brother PT-E110)
+2. **Puxe o barbante primeiro** — Deixe linha de pedreiro para futuras passagens
+3. **Loops de serviço** — 90 cm na câmera, 1,8 m no NVR/switch
+4. **Código de cores** — Cores de capa diferentes por zona (Azul=Frente, Verde=Costas, Amarelo=Lado)
+5. **Documente** — Foto de cada terminação, PDF do cronograma de cabos, diagrama conforme construído
+6. **Teste antes de montar** — Câmera na escada = 10× mais difícil de corrigir
+7. **Orçamento PoE** — Orçamento total PoE do switch ≥ Σ consumo máximo da câmera × 1,2
+8. **Proteção contra surtos** — Rotas externas: Protetor de surto PoE (Transtector, $30) na entrada do edifício
+
+---
+
+## Lista de Compras de Ferramentas (Compra Única)
+
+| Ferramenta                            | Modelo                              | Preço   | Notas                      |
+| ------------------------------------- | ----------------------------------- | ------- | -------------------------- |
+| **Alicate de Crimpagem Pass-Through** | Klein VDV226-110                    | $45     | Ratcheteado, tudo em um    |
+| **Testador de Cabo (Básico)**         | NF-8601 / TRENDnetworks TC-NT2      | $25–$60 | Continuidade + wiremap     |
+| **Testador PoE**                      | LINKSYS PTPoE / Ubiquiti POE-Tester | $35     | Tensão sob carga           |
+| **Ferramenta Punch-Down**             | Fluke D914S / Klein VDV427-800      | $40     | Lâmina 110/66              |
+| **Varas Brilhantes**                  | Klein 56107 / Jonard GR-20          | $35     | Conjunto de 7,5–15 m       |
+| **Broca Auger de 22 mm**              | Irwin Speedbor / Milwaukee          | $15     | Furos limpos em madeira    |
+| **Martelo Perfurador (SDS+)**         | Bosch GBH2-28L / DeWalt DCH273      | $180    | Para alvenaria             |
+| **Etiquetadora**                      | Brother PT-E110 / PT-H110           | $50     | Etiquetas termoencolhíveis |
+| **Fita de Puxar**                     | Klein 56007 30 m                    | $30     | Aço, ponta não condutora   |
+
+---
+
+## Guias Relacionados
+
+- [Instalação DIY de Câmeras de Segurança: Guia Completo](/blog/diy-security-camera-installation-complete-guide) — Fluxo de trabalho completo de instalação
+- [Como Montar Câmeras Externas (Parede, Teto, Beiral)](/blog/how-to-mount-outdoor-cameras-wall-ceiling-eave) — Hardware específico por superfície
+- [Melhores Sistemas de Câmeras de Segurança para Pequenas Empresas](/blog/best-small-business-security-camera-systems) — Dimensionamento de NVR, orçamento PoE
+- [Calculadora de Armazenamento de Vídeo CCTV](/blog/cctv-video-storage-calculator-hard-drive-space) — Dimensionamento de armazenamento para suas rotas
+
+---
+
+_Última atualização: Julho de 2026. Referências NEC baseadas na edição de 2023 — verifique emendas locais._

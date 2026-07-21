@@ -1,0 +1,381 @@
+---
+title: "Problèmes et Solutions Courants des Caméras de Sécurité (2026)"
+description: "Réparez les 25 problèmes de caméra les plus courants : hors ligne, vision nocturne, alertes de mouvement, trous d'enregistrement, chutes Wi-Fi, alimentation PoE, erreurs NVR. Diagnostics pas à pas pour chaque type de caméra : PoE, Wi-Fi, batterie, sonnette."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "common-security-camera-problems-fixes"
+author: "Your Name"
+tags: ["troubleshooting", "fixes", "problems", "maintenance", "diy"]
+postType: "howto"
+---
+
+Tout système de caméra développe des problèmes. Ce guide couvre les 25 problèmes les plus courants avec des diagnostics pas à pas et des solutions — organisés par symptôme pour que vous trouviez la solution rapidement.
+
+<Badge variant="outline">Méthode de Diagnostic</Badge> **Commencez simple :**
+Alimentation → Câble → Réseau → Paramètres → Matériel. 80% des problèmes sont
+l'alimentation ou le câble.
+
+---
+
+## Organigramme de Diagnostic Rapide
+
+```
+Caméra ne fonctionne pas ?
+    │
+    ├─ Pas de LED d'alimentation ? → Alimentation / PoE / Batterie (Section 1)
+    ├─ Alimentation OK, pas d'image ? → Câble / Liaison / Conflit IP (Section 2)
+    ├─ Image OK, pas d'enregistrement ? → NVR / Stockage / Planification (Section 3)
+    ├─ Image OK, fausses alertes ? → Zones de Mouvement / Sensibilité / IA (Section 4)
+    ├─ Vision nocturne mauvaise ? → IR / Réflexion / Obturateur (Section 5)
+    └─ Accès à distance échoue ? → Redirection Port / VPN / Cloud Fournisseur (Section 6)
+```
+
+---
+
+## 1. Problèmes d'Alimentation et de Démarrage
+
+### 1.1 Caméra Morte — Aucune LED, Aucune Réponse
+
+| Étape | Vérification                      | Solution                                                                           |
+| ----- | --------------------------------- | ---------------------------------------------------------------------------------- |
+| 1     | **LED du port Switch PoE**        | Éteinte = port mort / budget dépassé → Déplacez sur un port connu bon              |
+| 2     | **LED de l'injecteur PoE**        | Éteinte = injecteur défectueux / pas de CA → Remplacez l'injecteur (25$)           |
+| 3     | **Tension à la caméra**           | Multimètre : 44–57V (PoE), 12V±10% (CC) → Basse = chute de tension / mauvais câble |
+| 4     | **Continuité du Câble**           | Testeur : tous les 8 fils → Paire ouverte = re-terminez les deux extrémités        |
+| 5     | **Réinitialisation de la caméra** | Maintenez reset 10–30s (vérifiez le manuel) → Ré-adoptez dans l'app/NVR            |
+
+**Caméras à Batterie :** Chargez 24 h via USB-C avant de déclarer morte. Le BMS Li-ion se verrouille après une décharge profonde.
+
+### 1.2 La Caméra Redémarre la Nuit (IR Allumé)
+
+**Cause :** Chute de tension quand les LED IR s'allument (ajoute 1–2W).
+
+| Diagnostic                              | Solution                                                                    |
+| --------------------------------------- | --------------------------------------------------------------------------- |
+| Switch PoE à la limite du budget        | Déplacez la caméra vers un injecteur ; mettez à niveau le switch            |
+| Câble >250 pi sur Cat6                  | Raccourcissez le trajet ; Cat6a ; Injecteur PoE++ à la caméra               |
+| Câble CCA (cuivre plaqué aluminium)     | **Remplacez par du Cat6 cuivre massif**                                     |
+| Caméra batterie : l'i-ion chute à froid | Mise à niveau LiFePO₄ ; boîtier isolé ; apportez à l'intérieur pour charger |
+
+### 1.3 Surchauffe du Switch PoE / Ports qui Battent
+
+- **Vérifiez le Budget PoE :** Σ consommation max des caméras ≤ budget du switch × 0.8
+- **Thermique :** Switch dans une armoire fermée → ajoutez un ventilateur ou déplacez dans un rack ventilé
+- **Firmware :** Mettez à jour le firmware du switch (bugs de négociation PoE courants)
+
+---
+
+## 2. Réseau et Connectivité
+
+### 2.1 Caméra "Hors Ligne" dans l'App/NVR
+
+| Étape | Test                                         | Solution                                          |
+| ----- | -------------------------------------------- | ------------------------------------------------- |
+| 1     | Ping IP de la caméra depuis le PC            | Timeout = Problème couche 1/2 (câble, switch, IP) |
+| 2     | Ping passerelle depuis la caméra (shell NVR) | Timeout = VLAN / pare-feu / routage               |
+| 3     | `arp -a` → MAC correspond à la caméra ?      | Conflit IP → IP statique / Réservation DHCP       |
+| 4     | Bail DHCP expiré                             | IP statique ou réservation DHCP (routeur)         |
+| 5     | Conflit IP                                   | Deux appareils même IP → Réservez des IP uniques  |
+
+### 2.2 La Caméra Wi-Fi Chute Tous les Jours
+
+| Diagnostic                              | Solution                                                                |
+| --------------------------------------- | ----------------------------------------------------------------------- |
+| RSSI < -75 dBm                          | Rapprochez le PA ; ajoutez un PA filaire ; vérifiez le canal            |
+| Congestion 2.4 GHz                      | Canaux 1/6/11 uniquement ; largeur 20 MHz ; désactivez le band-steering |
+| Canal DFS (5 GHz)                       | Forcez le 2.4 GHz ; radar 5 GHz = déconnexion                           |
+| Mode Économie d'Énergie                 | Désactivez l'économie d'énergie Wi-Fi dans l'app de la caméra           |
+| Planification de redémarrage du routeur | Désactivez le redémarrage automatique ; UPS sur le routeur              |
+
+### 2.3 Le Flux RTSP Ne S'Ouvre Pas (VLC / Frigate / NVR)
+
+```
+URL de test : rtsp://utilisateur:motdepasse@192.168.1.100:554/stream1
+```
+
+| Erreur            | Cause                            | Solution                                                                                                                               |
+| ----------------- | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| 401 Non Autorisé  | Mauvais utilisateur/mot de passe | Vérifiez l'app/NVR : souvent `admin` / `123456` ou vide                                                                                |
+| 404 Introuvable   | Mauvais chemin                   | Chemins par marque : Hikvision `/Streaming/Channels/101`, Dahua `/cam/realmonitor?channel=1&subtype=0`, Reolink `/h264Preview_01_main` |
+| Connexion Refusée | RTSP désactivé                   | Activez dans l'interface Web de la caméra → Réseau → RTSP                                                                              |
+| Timeout           | Pare-feu / VLAN                  | Autorisez TCP 554 du VLAN NVR vers le VLAN Caméra                                                                                      |
+
+**Chemins RTSP par Marque (Courants) :**
+
+- **Reolink :** `/h264Preview_01_main` (principal), `/h264Preview_01_sub` (sous)
+- **Dahua/Amcrest :** `/cam/realmonitor?channel=1&subtype=0`
+- **Hikvision :** `/Streaming/Channels/101` (principal), `/Streaming/Channels/102` (sous)
+- **UniFi :** `rtsp://utilisateur:motdepasse@ip:7447/...` (paramètres Protect → RTSP)
+- **Amcrest :** Identique à Dahua (OEM)
+
+---
+
+## 3. Enregistrement et Stockage
+
+### 3.1 Le NVR N'Enregistre Pas / Trous dans la Timeline
+
+| Vérification                     | Solution                                                                                       |
+| -------------------------------- | ---------------------------------------------------------------------------------------------- |
+| Santé HDD (S.M.A.R.T.)           | Secteurs réalloués >0 → **Remplacez immédiatement**                                            |
+| HDD Plein / Écrasement Désactivé | Activez "Écraser le Plus Ancien" dans les paramètres de stockage                               |
+| Planification Mal Configurée     | Vérifiez : Continu 24/7 sur Flux Principal ; Mouvement sur Sous-flux                           |
+| Flux Non Correspondant           | NVR attend Principal ; caméra envoie Sous-flux → Faites correspondre les paramètres d'encodage |
+| Dérive d'Horodatage              | Activez NTP sur le NVR + les Caméras (même serveur : `pool.ntp.org`)                           |
+
+### 3.2 La microSD N'Enregistre Pas / Corrompue
+
+| Symptôme                       | Cause                               | Solution                                                                                           |
+| ------------------------------ | ----------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Boucle "Formatage Requis"      | Carte défectueuse / mauvais FS      | Remplacez par **U3/V30 A2** (SanDisk Extreme, Samsung Pro)                                         |
+| Fichiers 0 octets / illisibles | Perte de courant pendant l'écriture | Activez "Éjection Sécurisée" dans l'app ; UPS sur les caméras filaires                             |
+| S'arrête à 4 Go                | Limite FAT32                        | La caméra devrait auto-exFAT ; sinon, formatez en exFAT sur PC                                     |
+| Boucle ne fonctionne pas       | Carte pleine / verrouillée          | Vérifiez le commutateur de verrouillage ; supprimez les anciens fichiers ; formatez dans la caméra |
+
+### 3.3 Lecture Figée / Pixelisée / Écran Vert
+
+| Cause                               | Solution                                                                  |
+| ----------------------------------- | ------------------------------------------------------------------------- |
+| H.265/HEVC non supporté             | Le lecteur a besoin du codec HEVC (Windows : 0,99$ Store ; VLC : intégré) |
+| Sous-flux sélectionné               | Passez au Flux Principal dans la lecture                                  |
+| Intervalle d'images clés trop élevé | Définissez l'Intervalle d'Images Clés = FPS (ex. 15 fps → 15)             |
+| Pointes de débit VBR                | Définissez CBR ou Cap Max VBR (4–6 Mbps pour 4K)                          |
+
+---
+
+## 4. Détection de Mouvement et Alertes
+
+### 4.1 Trop de Fausses Alertes (Spam)
+
+| Réglage                           | Recommandé                        | Pourquoi                                                  |
+| --------------------------------- | --------------------------------- | --------------------------------------------------------- |
+| **Type de Détection**             | Personne + Véhicule uniquement    | Exclut les animaux, les arbres, les ombres, la pluie      |
+| **Zones de Mouvement**            | Dessinez UNIQUEMENT la zone cible | Exclut la rue, les arbres, le voisin, le ciel             |
+| **Sensibilité**                   | Moyenne (départ) → ajustez        | Élevée = tout déclenche                                   |
+| **Intervalle de Redéclenchement** | 30–60 secondes                    | Empêche 50 clips de la même voiture                       |
+| **Filtre de Taille d'Objet**      | Min 5% / Max 50% du cadre         | Ignore les insectes, les oiseaux, les voitures lointaines |
+| **IA/Apprentissage Profond**      | Activez (Personne/Véhicule/Colis) | Réduction des fausses alertes de 90%+                     |
+
+### 4.2 Événements Manqués (Pas d'Alerte Quand Quelque Chose s'Est Produit)
+
+| Vérification                          | Solution                                                                           |
+| ------------------------------------- | ---------------------------------------------------------------------------------- |
+| La zone couvre la zone d'événement ?  | Redessinez la zone plus large ; testez en marchant                                 |
+| Sensibilité trop basse ?              | Augmentez d'un cran ; testez                                                       |
+| "Personne" non détecté la nuit        | La réflexion IR confond l'IA → inclinez la caméra vers le bas ; ajoutez IR externe |
+| Caméra en mode "Sommeil"              | Caméras batterie : désactivez le sommeil / augmentez la sensibilité PIR            |
+| Détection de mouvement NVR DÉSACTIVÉE | Activez côté NVR (le côté caméra peut être désactivé)                              |
+
+### 4.3 Délai d'Alerte >10 Secondes
+
+| Cause                            | Solution                                               |
+| -------------------------------- | ------------------------------------------------------ |
+| Relais cloud (Ring, Arlo, Blink) | Inhérent — utilisez un NVR/Frigate local pour &lt;1s   |
+| Wi-Fi faible (RSSI < -75)        | Améliorez le signal (Section 2.2)                      |
+| CPU du NVR à fond                | Réduisez les canaux d'analyse ; mettez à niveau le NVR |
+| Latence MQTT/Webhook             | Testez d'abord la notification push directe de l'app   |
+
+---
+
+## 5. Qualité d'Image et Vision Nocturne
+
+### 5.1 Voile Blanc de la Vision Nocturne / Délavé
+
+**Cause :** Les LED IR se reflètent sur une surface proche (mur, avant-toit, verre, toile d'araignée).
+
+| Solution                        | Comment                                                                  |
+| ------------------------------- | ------------------------------------------------------------------------ |
+| **Inclinez vers le bas 15–30°** | Ajustez le support ; la caméra regarde vers le bas, pas vers le mur      |
+| **Éloignez la caméra**          | 12–18" du mur/avant-toit (bras d'extension)                              |
+| **Désactivez l'IR intégré**     | Ajoutez un **illuminateur IR externe** (séparé, visé sur la cible)       |
+| **Nettoyez le dôme/lentille**   | Toiles d'araignée = diffusion IR → microfibre + nettoyant pour lentilles |
+| **Smart IR (si supporté)**      | Ajuste automatiquement l'intensité IR par distance                       |
+
+### 5.2 Plaques d'Immatriculation Illisibles la Nuit
+
+| Exigence                 | Spécification                                                       |
+| ------------------------ | ------------------------------------------------------------------- |
+| **Vitesse d'Obturateur** | 1/100s minimum (1/250s idéal) — défini dans Exposition → Obturateur |
+| **Résolution**           | 4K/8MP + zoom optique OU caméra LPR 2MP                             |
+| **Portée IR**            | Distance de la plaque ≤ 50% de la portée IR nominale de la caméra   |
+| **WDR**                  | 120 dB+ (gère les phares)                                           |
+| **Angle**                | ≤30° par rapport à la perpendiculaire (plaque de face)              |
+
+**Solution :** Augmentez l'obturateur → image plus sombre mais plaque nette. Ajoutez IR externe si trop sombre.
+
+### 5.3 Image de Jour : Brumeuse / Faible Contraste / Teinte
+
+| Cause                              | Solution                                                                       |
+| ---------------------------------- | ------------------------------------------------------------------------------ |
+| Dôme sale / rayé                   | Nettoyez avec une microfibre ; remplacez le dôme (15$)                         |
+| Filtre IR Cut Bloqué               | Cycle d'alimentation ; mise à jour du firmware ; tapotez doucement (mécanique) |
+| Balance des Blancs Erronée         | Réglez "Extérieur" / "Auto" / Kelvin personnalisé (5500K)                      |
+| Contre-jour (soleil dans le cadre) | Repositionnez ; activez WDR ; ajoutez un pare-soleil                           |
+
+### 5.4 Scintillement / Lignes qui Défilent (50/60 Hz)
+
+| Cause                                   | Solution                                                                     |
+| --------------------------------------- | ---------------------------------------------------------------------------- |
+| **Non-adaptation Fréquence du Secteur** | Caméra réglée sur 60 Hz (US) / 50 Hz (EU) — faites correspondre votre réseau |
+| Boucle de Terre                         | Tout l'équipement à la même terre ; isolateur PoE (Transtector)              |
+| Scintillement Fluorescent/LED           | Réglez l'obturateur sur 1/100 (50 Hz) ou 1/120 (60 Hz)                       |
+
+---
+
+## 6. Accès à Distance et App Mobile
+
+### 6.1 App Fonctionne sur Wi-Fi, Échoue sur LTE/5G
+
+| Architecture                                       | Solution                                                                            |
+| -------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| **Cloud Fournisseur** (Reolink, UniFi, Eufy, Ring) | Vérifiez internet sur le téléphone ; page de statut du fournisseur                  |
+| **Redirection de Port**                            | **Ne l'utilisez pas.** CGNAT, double NAT, blocages FAI. Passez au VPN/Cloud.        |
+| **VPN (Tailscale, WireGuard)**                     | Assurez-vous que le VPN du téléphone est actif ; le split-tunnel peut exclure l'app |
+| **Cloudflare Tunnel**                              | Vérifiez que le service `cloudflared` est sain                                      |
+
+### 6.2 "Échec de Connexion" / Timeout à Distance
+
+| Test                                               | Attendu   | Solution                         |
+| -------------------------------------------------- | --------- | -------------------------------- |
+| Ping IP LAN du NVR depuis le téléphone (VPN actif) | &lt;50 ms | Problème de routage VPN          |
+| `curl http://nvr:80` depuis le téléphone           | HTML      | Port bloqué / pare-feu           |
+| Page de statut du cloud fournisseur                | Vert      | Attendez / utilisez un VPN local |
+
+### 6.3 Vue en Direct Fonctionne, Lecture Échoue à Distance
+
+- La lecture utilise un port/flux différent (souvent HTTPS/443 vs RTSP/554)
+- **Vérifiez :** NVR → Réseau → Port HTTPS (défaut 443) accessible via VPN
+- **Bande Passante :** La lecture nécessite un débit soutenu de 4–8 Mbps ; le LTE peut limiter
+
+---
+
+## 7. PTZ et Mécanique
+
+### 7.1 Le PTZ Ne Bouge Pas / Coincé / Grince
+
+| Cause                                        | Solution                                                                        |
+| -------------------------------------------- | ------------------------------------------------------------------------------- |
+| Limite mécanique atteinte                    | Vérifiez les limites des préréglages ; réinitialisez à la position d'origine    |
+| Panne du collecteur tournant (360° sans fin) | Faisceau de câbles usé → remplacez la caméra (non réparable)                    |
+| Glace / Débris                               | Chauffage défectueux ; nettoyez manuellement ; vérifiez le circuit de chauffage |
+| Non-correspondance de Protocole              | Pelco-D/P vs ONVIF PTZ → Faites correspondre le protocole NVR à la caméra       |
+
+### 7.2 La Tournée des Préréglages Ne S'Exécute Pas
+
+- Planification activée ? (NVR → PTZ → Tour Schedule)
+- Temps d'arrêt >0 ? (10–30s par préréglage)
+- Préréglage d'origine défini ? (La tournée retourne à l'origine entre les boucles)
+
+---
+
+## 8. Audio (Bidirectionnel)
+
+### 8.1 Pas d'Audio / Unidirectionnel Uniquement
+
+| Vérification                | Solution                                                     |
+| --------------------------- | ------------------------------------------------------------ |
+| Permission de l'app         | Paramètres du Téléphone → App → Microphone : ACTIVÉ          |
+| Audio de la caméra activé   | Interface Web de la caméra → Audio → Entrée/Sortie : ACTIVÉ  |
+| Non-correspondance de codec | G.711 (PCM) le plus compatible ; essayez G.726 / AAC         |
+| Semi-duplex vs Full         | La plupart des cams = PTT (semi) ; ne parlez pas en écoutant |
+
+### 8.2 Écho / Larsen / Parasites
+
+| Cause                                     | Solution                                                                       |
+| ----------------------------------------- | ------------------------------------------------------------------------------ |
+| Haut-parleur trop fort / gain micro élevé | Baissez le volume du haut-parleur dans l'app ; réduisez le gain du micro       |
+| Pas d'AEC (Annulation d'Écho Acoustique)  | Les caméras full-duplex ont besoin d'AEC ; semi-duplex = micro muet en parlant |
+| Vent sur le micro                         | Activez le filtre anti-vent ; bonnette en mousse ; repositionnez               |
+
+---
+
+## 9. Firmware et Mises à Jour
+
+### 9.1 Procédure de Mise à Jour du Firmware en Toute Sécurité
+
+1. **Lisez le changelog** — Sautez si "sécurité uniquement" et vous êtes stable
+2. **Sauvegardez la configuration** — NVR : Exportez la config ; Caméra : Capture d'écran des paramètres
+3. **Mettez à jour le NVR d'abord** — Puis les caméras (le NVR peut pousser un firmware compatible)
+4. **Une caméra à la fois** — Vérifiez chacune avant la suivante
+5. **Ne coupez pas l'alimentation** — 5–10 min par caméra
+6. **Vérifiez** — Vue en direct, enregistrement, mouvement, PTZ, audio
+
+### 9.2 Revenir en Arrière sur un Firmware Échoué
+
+| Marque              | Méthode                                                                |
+| ------------------- | ---------------------------------------------------------------------- |
+| **Reolink**         | Page firmware → Bouton "Version Précédente"                            |
+| **Dahua/Hikvision** | Récupération TFTP (démarrage + maintien reset + serveur TFTP)          |
+| **UniFi**           | Protect → Appareils → Caméra → "Revenir au Firmware"                   |
+| **Générique**       | Carte SD avec `firmware.bin` à la racine ; allumez avec reset maintenu |
+
+---
+
+## 10. Environnement et Physique
+
+### 10.1 Infiltration d'Eau / Condensation
+
+| Symptôme                   | Solution                                                                                          |
+| -------------------------- | ------------------------------------------------------------------------------------------------- |
+| Buée à l'intérieur du dôme | Sachet dessiccant (remplacez annuellement) ; vérifiez le bouchon de ventilation ouvert (Gore-Tex) |
+| Eau à l'entrée du câble    | Silicone + passe-fil ; boucle d'égouttement ; corps de conduit                                    |
+| Corrosion sur RJ45         | Graisse diélectrique sur les contacts ; remplacez le connecteur ; câble blindé                    |
+
+### 10.2 Insectes / Araignées / Oiseaux
+
+| Répulsif                                                | Efficacité                                         |
+| ------------------------------------------------------- | -------------------------------------------------- |
+| Huile de menthe poivrée (boule de coton près de la cam) | Élevée (les araignées détestent)                   |
+| Répulsif à ultrasons                                    | Moyenne                                            |
+| Pointes anti-oiseaux sur le support                     | Élevée (oiseaux)                                   |
+| Manchon en polaire sur l'anneau IR                      | Élevée (les araignées construisent sur l'IR chaud) |
+| Nettoyage régulier (mensuel)                            | Essentiel                                          |
+
+### 10.3 Vandalisme / Vol
+
+- **Vis Torx / de Sécurité** (incluses avec la plupart des cams pro)
+- **Conduit** jusqu'à la caméra (ne peut pas couper le câble facilement)
+- **Hauteur** >10 pi (nécessite une échelle)
+- **Caméra de secours** qui surveille la caméra (chevauchement)
+- **Alerte d'Effraction** (NVR : Caméra → Détection d'Effraction → Alarme)
+
+---
+
+## Liste de Vérification des Outils de Diagnostic (Gardez dans la Caisse à Outils)
+
+| Outil                                | Objectif              | Coût    |
+| ------------------------------------ | --------------------- | ------- |
+| **Testeur PoE** (LINKSYS PTPoE)      | Tension sous charge   | 35$     |
+| **Testeur de Câble** (NF-8601)       | Continuité, câblage   | 25$     |
+| **Multimètre** (Klein MM400)         | Tension, continuité   | 50$     |
+| **Caméra Thermique** (Flir ONE Pro)  | Surchauffe, fuites IR | 300$    |
+| **Pince à Sertir RJ45** (Traversant) | Re-terminer           | 45$     |
+| **Tiges Lumineuses** (25 pi)         | Passage de câble      | 35$     |
+| **Portable + VLC**                   | Tester les flux RTSP  | —       |
+| **Téléphone + WiFi Analyzer**        | Relevé du signal      | Gratuit |
+
+---
+
+## Quand Appeler un Professionnel
+
+| Situation                                     | Raison                                      |
+| --------------------------------------------- | ------------------------------------------- |
+| Passages sur toit à plusieurs étages          | Risque de chute, nacelle spécialisée        |
+| Perçage béton/brique >6 trous                 | Perceuse à percussion + forets s'usent vite |
+| Permis requis                                 | Commercial, multifamilial, >500$            |
+| Fibre optique                                 | Soudeuse de fusion, test OTDR               |
+| Protection contre la foudre / Mise à la terre | NEC 250, composants homologués UL           |
+| Installation imposée par l'assurance          | Certificat de conformité                    |
+
+---
+
+## Guides Connexes
+
+- [La Vision Nocturne Ne Fonctionne Pas ? Guide de Dépannage](/blog/night-vision-not-working-troubleshooting-guide) — Plongée dans les problèmes IR
+- [Passage de Câbles Caméra PoE : Installation DIY](/blog/poe-camera-cable-running-diy-installation) — Défauts de câble
+- [Configuration Caméra Sans Fil : Conseils d'Installation DIY](/blog/wireless-camera-setup-diy-installation-tips) — Diagnostics Wi-Fi
+- [Installation DIY de Caméras de Sécurité : Guide Complet](/blog/diy-security-camera-installation-complete-guide) — Workflow complet
+- [Calculateur de Stockage Vidéo CCTV](/blog/cctv-video-storage-calculator-hard-drive-space) — Dimensionnement du stockage
+
+---
+
+_Dernière mise à jour : juillet 2026. Les versions du firmware changent — vérifiez les étapes actuelles pour votre modèle spécifique._

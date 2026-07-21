@@ -9,16 +9,11 @@ tags: ["facial-recognition", "ai", "privacy", "buying-guide"]
 postType: "review"
 ---
 
-import { Callout } from "@/components/ui/callout"
-import { Badge } from "@/components/ui/badge"
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
-
 安防摄像头的人脸识别已从"云端 API 奢侈品"变为"端侧标配"。但并非所有人脸功能都同等：检测 ≠ 识别 ≠ 鉴别。且隐私法规 (BIPA, CCPA, GDPR, 州生物识别法) 极具威慑力。本指南拆解什么可能、什么合法、哪些摄像头做得对。
 
-<Badge variant="outline">术语核对</Badge>
-- **人脸检测:** "框里有人脸" — 无身份
-- **人脸识别:** "这张脸匹配 *我的* 库里的已知人脸" — 1:1 或 1:few
-- **人脸鉴别:** "这张脸 = 全局库里的 John Doe" — 1:many (执法级)
+<Badge variant="outline">术语核对</Badge>- **人脸检测:** "框里有人脸" — 无身份 -
+**人脸识别:** "这张脸匹配 *我的* 库里的已知人脸" — 1:1 或 1:few - **人脸鉴别:**
+"这张脸 = 全局库里的 John Doe" — 1:many (执法级)
 
 消费级摄像头仅做 **检测 + 识别 (本地库)**。鉴别需云端 + 令状。
 
@@ -28,45 +23,67 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
   <AccordionItem value="pipeline">
     <AccordionTrigger>流水线 (跑在摄像头/NPU 上)</AccordionTrigger>
     <AccordionContent>
-1. **人脸检测** (YOLO/SSD/MobileNet) → 边界框、关键点 (眼、鼻、嘴)
-2. **对齐** → 仿射变换归一化姿态
-3. **嵌入提取** (ArcFace/MobileFaceNet/ResNet) → 128–512 维向量
-4. **相似度搜索** → 余弦距离 vs 本地库已注册向量
-5. **阈值判定** → 命中 / 陌生 / 低置信度
-6. **事件触发** → 通知、录像标记、报警输出、API webhook
 
-**延迟:** 现代 NPU (Ambarella CV22/CV25, Rockchip RV1126, HiSilicon Hi3559) 上 50–200 ms  
-**数据库:** 典型 100–1,000 张人脸 (Eufy 100, Reolink 100, Ring 100, UniFi 200, Rhombus 10,000+)
-    </AccordionContent>
+<ol>
+  <li>
+    <strong>人脸检测</strong> (YOLO/SSD/MobileNet) → 边界框、关键点 (眼、鼻、嘴)
+  </li>
+  <li>
+    <strong>对齐</strong> → 仿射变换归一化姿态
+  </li>
+  <li>
+    <strong>嵌入提取</strong> (ArcFace/MobileFaceNet/ResNet) → 128–512 维向量
+  </li>
+  <li>
+    <strong>相似度搜索</strong> → 余弦距离 vs 本地库已注册向量
+  </li>
+  <li>
+    <strong>阈值判定</strong> → 命中 / 陌生 / 低置信度
+  </li>
+  <li>
+    <strong>事件触发</strong> → 通知、录像标记、报警输出、API webhook
+  </li>
+</ol>
+<strong>延迟:</strong> 现代 NPU (Ambarella CV22/CV25, Rockchip RV1126, HiSilicon
+Hi3559) 上 50–200 ms
+<strong>数据库:</strong> 典型 100–1,000 张人脸 (Eufy 100, Reolink 100, Ring 100,
+UniFi 200, Rhombus 10,000+)
+
+</AccordionContent>
+
   </AccordionItem>
   <AccordionItem value="detection-vs-recognition">
     <AccordionTrigger>检测 vs 识别: 您真正得到什么</AccordionTrigger>
     <AccordionContent>
-| 功能 | 人脸检测 | 人脸识别 |
-|---------|----------------|------------------|
-| **回答的问题** | "检测到人" | "检测到 John" |
-| **数据库** | 无 | 本地已注册人脸 |
-| **误报** | 低 (人 vs 车) | 中 (双胞胎、口罩、角度) |
-| **隐私风险** | 低 | **高 — 生物识别数据** |
-| **用例** | 减少运动警报 | VIP 提醒、熟人/陌生人分拣 |
-| **摄像头** | 几乎所有 AI 摄像头 | Eufy, Reolink, Ring, UniFi, Rhombus, Verkada, Axis |
-    </AccordionContent>
+
+| 功能                        | 人脸检测           | 人脸识别                                           |
+| --------------------------- | ------------------ | -------------------------------------------------- |
+| <strong>回答的问题</strong> | "检测到人"         | "检测到 John"                                      |
+| <strong>数据库</strong>     | 无                 | 本地已注册人脸                                     |
+| <strong>误报</strong>       | 低 (人 vs 车)      | 中 (双胞胎、口罩、角度)                            |
+| <strong>隐私风险</strong>   | 低                 | <strong>高 — 生物识别数据</strong>                 |
+| <strong>用例</strong>       | 减少运动警报       | VIP 提醒、熟人/陌生人分拣                          |
+| <strong>摄像头</strong>     | 几乎所有 AI 摄像头 | Eufy, Reolink, Ring, UniFi, Rhombus, Verkada, Axis |
+
+</AccordionContent>
   </AccordionItem>
 </Accordion>
 
 ## 2026 年端侧人脸识别摄像头精选
 
 ### 1. EufyCam 3 S330 + HomeBase 3 — 最佳消费级全能
+
 **NPU:** HomeBase 3 (双核 NPU, 2 TOPS)  
 **数据库:** 每 HomeBase 100 张人脸  
 **识别:** 1:1 (已注册) + 1:few (家庭)  
-**隐私:** **完全本地** — 识别无云端; 可选云备份 *加密*  
+**隐私:** **完全本地** — 识别无云端; 可选云备份 _加密_  
 **功能:** 人脸 + 人/车/宠物/包裹; 活动区域; Apple HomeKit Secure Video  
 **权衡:** 专有生态; HomeBase 必须常通电; 4K@15fps 上限  
 **价格:** ~$550 (2机 + HomeBase)  
 **最适合:** 想要零云人脸识别 + HomeKit 的房主
 
 ### 2. Reolink Argus 4 Pro / RLC-1212A (FW 3.0+) — 最佳本地 NVR 集成
+
 **NPU:** 摄像头侧 (Ambarella CV25)  
 **数据库:** 每摄像头 100 张人脸 (经 NVR 同步)  
 **识别:** 1:1 本地; NVR 跨摄像头聚合  
@@ -77,6 +94,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 **最适合:** 拥有 Reolink NVR、混合 PoE/无线车队的 DIY 玩家
 
 ### 3. Ubiquiti UniFi Protect (G4/G5 + AI Port) — 最佳专业消费/中小企业
+
 **NPU:** 摄像头 (G4/G5) 或 AI Port (为任意 ONVIF 摄像头添加)  
 **数据库:** 每 Protect 控制台 200 张人脸  
 **识别:** 1:1 本地; "已知/未知" 分类; 缩略图搜人脸  
@@ -87,6 +105,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 **最适合:** UniFi 网络店铺、多站点、懂 IT 的老板
 
 ### 4. Rhombus R2/R360 + Console — 最佳企业级 (零云依赖)
+
 **NPU:** 摄像头 (Ambarella CV52) + Console (Intel)  
 **数据库:** 每控制台 10,000+ 张人脸  
 **识别:** 1:1 本地; 观察名单; "首次见到" 时间戳; API/SIEM 导出  
@@ -97,6 +116,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 **最适合:** 学校、医疗、零售连锁、政府 — 合规优先
 
 ### 5. Ring Stick Up Cam Pro / Floodlight Cam Pro — 最佳生态集成
+
 **NPU:** 摄像头 (Amazon AZ2)  
 **数据库:** 每账户 100 张人脸 (跨 Ring 摄像头同步)  
 **识别:** 1:1 本地推理; 嵌入向量云同步 (加密)  
@@ -107,6 +127,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 **最适合:** Alexa 家庭、Ring 生态、接受云端权衡的用户
 
 ### 6. Axis Q1656 / Q3536-LVE + ACAP — 最佳开放平台
+
 **NPU:** ARTPEC-8 (Axis 定制)  
 **数据库:** 经 ACAP 应用 (第三方: Cognitec, Irisity, 或自建)  
 **识别:** 视应用而定; 1:1, 1:N, 观察名单  
@@ -118,33 +139,38 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 
 ## 对比矩阵
 
-| 摄像头 | NPU 位置 | 人脸库 | 仅本地? | 云同步 | ONVIF | 价格 | 最适合 |
-|--------|--------------|---------|-------------|------------|-------|-------|----------|
-| EufyCam 3 | HomeBase | 100 | ✅ | 加密可选 | ❌ | $$$ | HomeKit, 隐私 |
-| Reolink | 摄像头 | 100/机 | ✅ | ❌ | ✅ | $$ | NVR DIY |
-| UniFi | 摄像头/AI Port | 200 | ✅ | ❌ | ✅ (AI Port) | $$$ | Ubiquiti 店铺 |
-| Rhombus | 摄像头+控制台 | 10,000+ | ✅ | ❌ | ✅ | $$$$ | 企业/合规 |
-| Ring Pro | 摄像头 | 100 | ⚠️ (可退出) | ✅ 默认 | ❌ | $$ | Alexa/Ring 家庭 |
-| Axis | 摄像头 | 经 ACAP | ✅ | ❌ | ✅ | $$$$$ | 集成商 |
+| 摄像头    | NPU 位置       | 人脸库  | 仅本地?     | 云同步   | ONVIF        | 价格  | 最适合          |
+| --------- | -------------- | ------- | ----------- | -------- | ------------ | ----- | --------------- |
+| EufyCam 3 | HomeBase       | 100     | ✅          | 加密可选 | ❌           | $$$   | HomeKit, 隐私   |
+| Reolink   | 摄像头         | 100/机  | ✅          | ❌       | ✅           | $$    | NVR DIY         |
+| UniFi     | 摄像头/AI Port | 200     | ✅          | ❌       | ✅ (AI Port) | $$$   | Ubiquiti 店铺   |
+| Rhombus   | 摄像头+控制台  | 10,000+ | ✅          | ❌       | ✅           | $$$$  | 企业/合规       |
+| Ring Pro  | 摄像头         | 100     | ⚠️ (可退出) | ✅ 默认  | ❌           | $$    | Alexa/Ring 家庭 |
+| Axis      | 摄像头         | 经 ACAP | ✅          | ❌       | ✅           | $$$$$ | 集成商          |
 
 ## 隐私法合规: 您必须知道的
 
 <Callout type="warning">
-**非法律建议。** 请咨询您所在司法管辖区的律师。生物识别法承担法定赔偿 ($1,000–5,000/次违规) 和集体诉讼风险。
+
+<strong>非法律建议。</strong>
+请咨询您所在司法管辖区的律师。生物识别法承担法定赔偿 ($1,000–5,000/次违规)
+和集体诉讼风险。
+
 </Callout>
 
 ### 关键美国法律 (2026 格局)
 
-| 法律 | 司法管辖区 | 适用对象 | 关键要求 | 处罚 |
-|-----|--------------|------------|------------------|-----------|
-| **BIPA** | 伊利诺伊 | 收集生物识别标识符的私人实体 | 书面同意; 留存政策; 禁止出售; 删除权 | 过失 $1,000 / 故意 $5,000 每次违规 |
-| **CUBI** | 德克萨斯 | 商业实体 | 同意; 留存/销毁时间表; 禁止披露 | $25,000/次违规 (AG 执法) |
-| **CCPA/CPRA** | 加利福尼亚 | 营收>$25M 或 100K 消费者的企业 | 收集时通知; 选择退出出售; 删除权 | $2,500–7,500/次违规 (AG) |
-| **Washington** | 华盛顿 | 商业实体 | 同意; 留存政策; 安全保障 | $5,000/次违规 (AG) |
-| **New York SHIELD** | 纽约 | 含 NY 居民数据的实体 | 合理保障; 违规通知 | $5,000/次违规 (AG) |
-| **Arkansas / Maryland / Nebraska** | 相应州 | 商业 | 类似 BIPA/CUBI | 视情况而定 |
+| 法律                               | 司法管辖区 | 适用对象                       | 关键要求                             | 处罚                               |
+| ---------------------------------- | ---------- | ------------------------------ | ------------------------------------ | ---------------------------------- |
+| **BIPA**                           | 伊利诺伊   | 收集生物识别标识符的私人实体   | 书面同意; 留存政策; 禁止出售; 删除权 | 过失 $1,000 / 故意 $5,000 每次违规 |
+| **CUBI**                           | 德克萨斯   | 商业实体                       | 同意; 留存/销毁时间表; 禁止披露      | $25,000/次违规 (AG 执法)           |
+| **CCPA/CPRA**                      | 加利福尼亚 | 营收>$25M 或 100K 消费者的企业 | 收集时通知; 选择退出出售; 删除权     | $2,500–7,500/次违规 (AG)           |
+| **Washington**                     | 华盛顿     | 商业实体                       | 同意; 留存政策; 安全保障             | $5,000/次违规 (AG)                 |
+| **New York SHIELD**                | 纽约       | 含 NY 居民数据的实体           | 合理保障; 违规通知                   | $5,000/次违规 (AG)                 |
+| **Arkansas / Maryland / Nebraska** | 相应州     | 商业                           | 类似 BIPA/CUBI                       | 视情况而定                         |
 
 ### 国际法规
+
 - **GDPR (EU/UK):** 生物识别 = 特殊类别数据 → Art. 9 显性同意或重大公共利益; 需 DPIA; 大规模需 DPO
 - **PIPEDA (加拿大):** 同意 + 合理目的; 生物识别 = 敏感
 - **LGPD (巴西):** 类似 GDPR
@@ -155,91 +181,117 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
   <AccordionItem value="consent">
     <AccordionTrigger>1. 同意与告知</AccordionTrigger>
     <AccordionContent>
-- **标识:** 所有入口处 "使用人脸识别" (BIPA, CUBI, GDPR)
-- **书面同意:** 员工、租户、常客 — 签署豁免
-- **退出路径:** 如何申请不注册 / 删除 (CCPA, GDPR)
-- **未成年人:** 父母同意 (COPPA, 州法)
-    </AccordionContent>
+
+      <ul>
+            <li><strong>标识:</strong> 所有入口处 "使用人脸识别" (BIPA, CUBI, GDPR) - <strong>书面同意:</strong></li>
+      </ul>
+      员工、租户、常客 — 签署豁免 - <strong>退出路径:</strong> 如何申请不注册 / 删除 (CCPA,
+      GDPR) - <strong>未成年人:</strong> 父母同意 (COPPA, 州法)
+
+</AccordionContent>
+
   </AccordionItem>
   <AccordionItem value="data">
     <AccordionTrigger>2. 数据治理</AccordionTrigger>
     <AccordionContent>
-- **留存策略:** X 天后自动删除嵌入向量 (典型 30–90 天); 记录在案
-- **加密:** 静态 (AES-256) + 传输 (TLS 1.3); 密钥自管
-- **访问控制:** 基于角色; 人脸库访问审计日志
-- **禁止出售/共享:** 与供应商合同禁止 (BIPA, CCPA)
-    </AccordionContent>
+
+      <ul>
+            <li><strong>留存策略:</strong> X 天后自动删除嵌入向量 (典型 30–90 天); 记录在案 -</li>
+      </ul>
+      <strong>加密:</strong> 静态 (AES-256) + 传输 (TLS 1.3); 密钥自管 - <strong>访问控制:</strong>
+      基于角色; 人脸库访问审计日志 - <strong>禁止出售/共享:</strong> 与供应商合同禁止 (BIPA,
+      CCPA)
+
+</AccordionContent>
+
   </AccordionItem>
   <AccordionItem value="tech">
     <AccordionTrigger>3. 技术防护</AccordionTrigger>
     <AccordionContent>
-- **仅本地推理:** 选带端侧 NPU 的摄像头 (Eufy, Reolink, UniFi, Rhombus, Axis)
-- **仅存嵌入向量:** 存 512 维向量而非人脸图像 (Rhombus, Axis ACAPs)
-- **活体检测:** 防照片/视频欺骗 (眨眼、深度、纹理) — 门禁关键
-- **准确性测试:** 记录不同人群的 FAR/FRR (NIST FRVT 厂商结果)
-    </AccordionContent>
+
+      <ul>
+            <li><strong>仅本地推理:</strong> 选带端侧 NPU 的摄像头 (Eufy, Reolink, UniFi, Rhombus,</li>
+      </ul>
+      Axis) - <strong>仅存嵌入向量:</strong> 存 512 维向量而非人脸图像 (Rhombus, Axis ACAPs)
+      <ul>
+            <li><strong>活体检测:</strong> 防照片/视频欺骗 (眨眼、深度、纹理) — 门禁关键 -</li>
+      </ul>
+      <strong>准确性测试:</strong> 记录不同人群的 FAR/FRR (NIST FRVT 厂商结果)
+
+</AccordionContent>
+
   </AccordionItem>
   <AccordionItem value="vendor">
     <AccordionTrigger>4. 供应商尽职调查</AccordionTrigger>
     <AccordionContent>
-- **数据处理协议 (DPA):** GDPR, CCPA, BIPA 供应商关系必需
-- **子处理商名单:** 谁还碰数据? (云托管、AI 模型提供商)
-- **违规通知:** 合同约定 24–72 小时通知
-- **数据可携带/删除:** 能否按需导出/删除所有人脸数据?
-    </AccordionContent>
+
+      <ul>
+            <li><strong>数据处理协议 (DPA):</strong> GDPR, CCPA, BIPA 供应商关系必需 -</li>
+      </ul>
+      <strong>子处理商名单:</strong> 谁还碰数据? (云托管、AI 模型提供商) - <strong>违规通知:</strong>
+      合同约定 24–72 小时通知 - <strong>数据可携带/删除:</strong>
+      能否按需导出/删除所有人脸数据?
+
+</AccordionContent>
+
   </AccordionItem>
 </Accordion>
 
 ## 部署场景与风险等级
 
-| 场景 | 风险等级 | 推荐方案 |
-|----------|------------|---------------------|
-| **家庭: 仅家人提醒** | 低 | EufyCam 3 (本地, 无云人脸同步) |
-| **小型零售: 标记已知扒手** | 中 | UniFi Protect + 标识 + 30 天留存 |
-| **办公室: 员工入场 + 访客日志** | 高 | Rhombus/Axis + 书面同意 + DPA + 年度审计 |
-| **公寓: 租户门铃** | 高 | **避免人脸识别** — 仅用人检测; BIPA 风险 |
-| **学校: 威胁观察名单** | 关键 | Rhombus/Axis + 执法集成 + 法律顾问 + DPIA |
-| **公共场所: 人群扫描** | **极高** | **别做** — 无具体法定授权很可能违法 |
+| 场景                            | 风险等级 | 推荐方案                                  |
+| ------------------------------- | -------- | ----------------------------------------- |
+| **家庭: 仅家人提醒**            | 低       | EufyCam 3 (本地, 无云人脸同步)            |
+| **小型零售: 标记已知扒手**      | 中       | UniFi Protect + 标识 + 30 天留存          |
+| **办公室: 员工入场 + 访客日志** | 高       | Rhombus/Axis + 书面同意 + DPA + 年度审计  |
+| **公寓: 租户门铃**              | 高       | **避免人脸识别** — 仅用人检测; BIPA 风险  |
+| **学校: 威胁观察名单**          | 关键     | Rhombus/Axis + 执法集成 + 法律顾问 + DPIA |
+| **公共场所: 人群扫描**          | **极高** | **别做** — 无具体法定授权很可能违法       |
 
 <Callout type="danger">
-**公寓/房东在租户门上装人脸识别是 BIPA/CCPA 诉讼磁铁。** 2023–2025 年提起多起集体诉讼。仅用人检测 + 包裹检测。租户无人脸库。
+
+<strong>公寓/房东在租户门上装人脸识别是 BIPA/CCPA 诉讼磁铁。</strong> 2023–2025
+年提起多起集体诉讼。仅用人检测 + 包裹检测。租户无人脸库。
+
 </Callout>
 
 ## 准确性与偏见: 数字意味着什么
 
 **NIST FRVT (人脸识别供应商测试) — 2024/2025 结果:**
-- 顶级商业 SDK (Cognitec, NEC, Rank One, Paravision, Idemia): **FPIR 0.1% 时 FNIR <0.5%** (1:1 验证)
+
+- 顶级商业 SDK (Cognitec, NEC, Rank One, Paravision, Idemia): **FPIR 0.1% 时 FNIR &lt;0.5%** (1:1 验证)
 - **人口统计差异持存:** 部分算法深肤色女性误非匹配率比浅肤色男性高 2–10×
-- **口罩表现:** 2024+ 算法外科口罩恢复到 <2% FNIR; N95 仍 5–15%
+- **口罩表现:** 2024+ 算法外科口罩恢复到 &lt;2% FNIR; N95 仍 5–15%
 - **老化:** 5 年间隔 → FNIR 增 3–8%; 高安保场景每年重新注册
 
 **消费级摄像头现实:**
+
 - Eufy/Reolink/UniFi 用嵌入式 MobileFaceNet/ArcFace 变体 — **非 NIST 顶级**
 - 合理阈值下预期 **5–15% FNIR** (漏报已知人脸)
 - **误报 (陌生人 = 已知):** 100 人库下 1–3%; 随库增大上升
-- **缓解:** 阈值设保守 (对"未知"报警而非"已知"); "已知人脸"仅作 *辅助* 信号, 非唯一触发条件
+- **缓解:** 阈值设保守 (对"未知"报警而非"已知"); "已知人脸"仅作 _辅助_ 信号, 非唯一触发条件
 
 ## 欺骗与活体: 别只信人脸做门禁
 
-| 攻击 | 难度 | 防御 |
-|--------|------------|---------|
-| 打印照片 | 极易 | 纹理分析、IR 深度、眨眼挑战 |
-| 手机/视频回放 | 易 | 摩尔纹检测、深度、挑战-响应 |
-| 3D 面具 | 难 | 结构光 / ToF / 热成像 + AI |
+| 攻击          | 难度      | 防御                                     |
+| ------------- | --------- | ---------------------------------------- |
+| 打印照片      | 极易      | 纹理分析、IR 深度、眨眼挑战              |
+| 手机/视频回放 | 易        | 摩尔纹检测、深度、挑战-响应              |
+| 3D 面具       | 难        | 结构光 / ToF / 热成像 + AI               |
 | Deepfake 注入 | 中 (数字) | 安全元件、签名视频管线 (Axis Edge Vault) |
 
 **法则:** 人脸识别 = **通知/识别**。人脸 + PIN / 人脸 + 卡 / 人脸 + QR = **门禁控制**。门/闸切勿单因子人脸。
 
 ## 按用例推荐
 
-| 用例 | 摄像头 | 理由 |
-|----------|--------|-----|
-| **家庭: "告诉我孩子到家"** | EufyCam 3 | 本地, HomeKit, 无云人脸数据, 1 年电池 |
-| **家庭: "陌生人在门口报警"** | Reolink 视频门铃 (PoE) + NVR | 本地人脸库, ONVIF, 无订阅 |
-| **中小企业: "标记禁止入内扒手"** | UniFi Protect G5 + AI Port | 200 张人脸, 本地, 人脸搜索, MQTT 推 POS |
-| **企业: "合规优先, 500 张人脸"** | Rhombus R2 + Console | 零云, 1 万张人脸, SIEM, NDAA, SOC 2 |
-| **关键基建: "自定义分析, 审计追踪"** | Axis Q1656 + ACAP | 开放平台, 签名固件, 集成商生态 |
-| **租赁/Airbnb: "客人验证"** | **别做** | 法律风险 > 收益; 用智能锁 + 密码 |
+| 用例                                 | 摄像头                       | 理由                                    |
+| ------------------------------------ | ---------------------------- | --------------------------------------- |
+| **家庭: "告诉我孩子到家"**           | EufyCam 3                    | 本地, HomeKit, 无云人脸数据, 1 年电池   |
+| **家庭: "陌生人在门口报警"**         | Reolink 视频门铃 (PoE) + NVR | 本地人脸库, ONVIF, 无订阅               |
+| **中小企业: "标记禁止入内扒手"**     | UniFi Protect G5 + AI Port   | 200 张人脸, 本地, 人脸搜索, MQTT 推 POS |
+| **企业: "合规优先, 500 张人脸"**     | Rhombus R2 + Console         | 零云, 1 万张人脸, SIEM, NDAA, SOC 2     |
+| **关键基建: "自定义分析, 审计追踪"** | Axis Q1656 + ACAP            | 开放平台, 签名固件, 集成商生态          |
+| **租赁/Airbnb: "客人验证"**          | **别做**                     | 法律风险 > 收益; 用智能锁 + 密码        |
 
 ---
 

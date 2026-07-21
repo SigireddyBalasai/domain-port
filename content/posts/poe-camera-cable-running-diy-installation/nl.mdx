@@ -1,0 +1,337 @@
+---
+title: "PoE Camera Kabel Trekken: DIY Installatiegids (2026)"
+description: "Complete gids voor het trekken van Cat5e/6 voor PoE-cameras. Kabeltypes, routeplanning, afmonteren, testen, code-naleving en pro-tips voor schone, betrouwbare installaties."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "poe-camera-cable-running-diy-installation"
+author: "Your Name"
+tags: ["diy", "poe", "cable-running", "installation", "termination"]
+postType: "howto"
+---
+
+Kabel trekken is 70% van PoE-camerainstallatie arbeid. Doe het een keer goed: massief koper, juiste routes, correct afmonteren, geverifieerd testen. Deze gids behandelt elke stap van haspel tot switch.
+
+<Badge variant="outline">Kabelkeuze</Badge> **Gebruik massief koper Cat6
+(CMR/CMP).** Geen CCA (koper-gecoat aluminium). Geen gestrand. Geen Cat5e voor
+nieuwe trajecten. Massief koper Cat6 = 100m op 1Gbps PoE+ zonder
+spanningsvalproblemen.
+
+---
+
+## Kabelselectie: Wat te Kopen (En te Vermijden)
+
+| Kabeltype                    | Geleider          | PoE+ (30W) Max | PoE++ (60/90W) Max | Waardering            | Gebruik               |
+| ---------------------------- | ----------------- | -------------- | ------------------ | --------------------- | --------------------- |
+| **Cat6 Massief Koper (CMR)** | 23 AWG Massief Cu | 100 m (328 ft) | 80 m (262 ft)      | Riser (in-muur)       | **Standaard keuze**   |
+| **Cat6 Massief Koper (CMP)** | 23 AWG Massief Cu | 100 m          | 80 m               | Plenum (luchtkanalen) | Vereist in plenums    |
+| **Cat6a Massief Koper**      | 23 AWG Massief Cu | 100 m          | 100 m              | Riser/Plenum          | Toekomstbestendig 10G |
+| **Buiten Direct Ingraven**   | 23 AWG Massief Cu | 100 m          | 80 m               | Gel-gevuld, UV        | Ondergronds, lucht    |
+| **❌ Cat5e**                 | 24 AWG            | 100 m          | 50 m               | Riser                 | Alleen legacy         |
+| **❌ CCA (Koper-Gecoat Al)** | Aluminium kern    | **FAIL**       | **FAIL**           | Elke                  | **Nooit voor PoE**    |
+| **❌ Gestrand / Patch**      | Gestrand Cu       | 10 m (33 ft)   | 5 m                | Patch                 | Alleen patchkabels    |
+
+<Callout type="danger">
+
+**CCA (Koper-Gecoat Aluminium) faalt bij PoE.** Aluminium heeft 60% hogere
+weerstand → spanningsval → camera herstart 's nachts (IR aan). **Controleer
+"Solid Bare Copper" op mantel opdruk.**
+
+</Callout>
+
+**Aanbevolen Merken (2026):**
+
+- **Budget:** Cable Matters Cat6 CMR (300 m €150)
+- **Midden:** Southwire Cat6 CMR (300 m €180)
+- **Pro:** Belden 2413 / General Cable GenSPEED 6000 (300 m €260)
+- **Buiten:** Superior Essex 04-001-59 (Direct Ingraven, €210)
+
+---
+
+## Routeplanning: Voordat Je Boort
+
+### 1. Elke Run in Kaart Brengen
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="mapping">
+    <AccordionTrigger>Maak een Kabelplanning Spreadsheet</AccordionTrigger>
+    <AccordionContent>
+
+| Camera | Locatie    | Route                           | Lengte (m) | Kabeltype    | Afwerking       | PoE Klasse     |
+| ------ | ---------- | ------------------------------- | ---------- | ------------ | --------------- | -------------- |
+| CAM-01 | Voordeur   | Zolder → Soffit → Boeiboord     | 20         | Cat6 CMR     | RJ45 + Keystone | Klasse 4 (30W) |
+| CAM-02 | Oprit      | Zolder → Buitenmuur → Paal      | 29         | Cat6 Outdoor | RJ45 Direct     | Klasse 4       |
+| CAM-03 | Achtertuin | Kelder → Ringbalk → Dakoverstek | 24         | Cat6 CMR     | Keystone        | Klasse 3 (15W) |
+
+<p>
+  <strong>Regel:</strong> Meet <strong>twee keer</strong>, voeg{" "}
+  <strong>3 m speling</strong> per run toe (servicelussen aan beide uiteinden).
+</p>
+
+  </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+### 2. Routes Identificeren (Beste → Slechtste)
+
+| Route                                    | Moeilijkheid | Max Runs     | Code Opmerkingen                                  |
+| ---------------------------------------- | ------------ | ------------ | ------------------------------------------------- |
+| **Zolder → Soffit/Dakoverstek**          | Makkelijk    | Onbeperkt    | Vermijd isolatiecontact (derate ampacity)         |
+| **Kelder/Kruipruimte → Ringbalk → Muur** | Gemiddeld    | Onbeperkt    | Boor door dorpel, brandwerende afdichting         |
+| **Binnenmuur → Buiten**                  | Gemiddeld    | 1–2 per muur | Brandwerende afdichting bij boven/onder plaat     |
+| **Buis (EMT/PVC) Oppervlakte**           | Makkelijk    | Onbeperkt    | Beste voor retrofits, zichtbaar toegestaan        |
+| **Direct Ingraven (Sleuf)**              | Moeilijk     | Onbeperkt    | 45 cm diep (60 cm onder oprit), waarschuwingslint |
+| **Lucht (Paal-naar-Paal)**               | Gemiddeld    | 1–2          | Messingdraad, druppellussen, 3 m vrije hoogte     |
+
+---
+
+## Boor & Vis Technieken
+
+### Zolder naar Soffit (Meest Voorkomend)
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="attic-soffit">
+    <AccordionTrigger>Stap-voor-Stap: Zolder → Soffit Camera</AccordionTrigger>
+    <AccordionContent>
+
+<p>
+  <strong>Gereedschap:</strong> 22 mm spade/vijzelboor, 15 m glow rods,
+  hoofdlamp, kniebeschermers, stofmasker
+</p>
+
+<ol>
+  <li>
+    <strong>Bepaal camerapositie</strong> vanuit zolder — meet vanaf bekend
+    oriëntatiepunt (ventilatie, schoorsteen)
+  </li>
+  <li>
+    <strong>Boor 22 mm gat</strong> door bovenplaat + soffit bord (licht hellend
+    voor waterafvoer)
+  </li>
+  <li>
+    <strong>Duur glow rods</strong> van zolder omlaag door gat naar soffit
+    buitenzijde
+  </li>
+  <li>
+    <strong>Tape kabel</strong> aan rod einde: vouw 15 cm terug, elektrisch tape
+    glad (geen haper)
+  </li>
+  <li>
+    <strong>Trek voorzichtig</strong> — 2-persoons werk: één voert aan, één
+    trekt
+  </li>
+  <li>
+    <strong>Laat 1 m speling</strong> op zolder (servicelus), 60 cm bij camera
+  </li>
+  <li>
+    <strong>Afdichten:</strong> Siliconen rond kabel bij soffit-doorvoer (binnen
+    + buiten)
+  </li>
+  <li>
+    <strong>Niet</strong> kabel aan spanten elke 1,2 m (T25 geïsoleerde nietjes)
+  </li>
+</ol>
+
+  </AccordionContent>
+
+   </AccordionItem>
+</Accordion>
+
+### Kelder/Kruipruimte naar Buitenmuur
+
+- **Boor door ringbalk** (niet fundering) — 22 mm gat, 30 cm boven maaiveld minimum
+- **Brandwerende afdichting:** Stop steenwol + brandkit rond kabel bij doorvoer
+- **Buitenzijde:** LB buis → ½" LFMC naar cameradoos
+
+### Binnenmuur naar Buiten (Retrofit)
+
+1. **Snij oud-werk doos gat** op camerah oogte (binnen)
+2. **Boor omlaag** door onderplaat in kelder/kruipruimte (22 mm vijzel)
+3. **Vis omhoog** vanuit kelder met glow rods
+4. **Bescherm:** Nagelplaten op balken waar kabel passeert (NEC 300.4)
+
+---
+
+## Buis & Bescherming
+
+| Situatie                 | Buis Type                         | Maat | Opmerkingen                            |
+| ------------------------ | --------------------------------- | ---- | -------------------------------------- |
+| **Buitenmuur oppervlak** | LFMC (Liquidtight Flexible Metal) | ½"   | UV-bestendig, max 1,2 m tussen steunen |
+| **Ondergronds**          | PVC Schedule 40 / HDPE            | ¾"   | 45 cm dekking, bochtstukken, trekdraad |
+| **Zolder (zichtbaar)**   | Niet nodig (Cat6 CMR)             | —    | Elke 1,2 m nieten, geen niet op kabel  |
+| **Plenum plafond**       | EMT / Plenum-gewaardeerde kabel   | ½"   | CMP kabel vereist indien geen buis     |
+| **Door brandmuur**       | Brandwerende huls + pu            | —    | Hilti CFS-SL / 3M CP25                 |
+
+---
+
+## Afmonteren: RJ45 Pass-Through (Snelste, Meest Betrouwbaar)
+
+<Callout type="note">
+
+**Gebruik pass-through connectoren.** Standaard RJ45 vereist precies
+bijsnijden. Pass-through laat je kleurvolgorde verifiëren _vóór_ crimpen.
+**Gereedschap:** Ratel pass-through crimptang (Klein VDV226-110, €45).
+
+</Callout>
+
+### T568B Pinout (Standaard voor PoE)
+
+| Pin | Pair | Kleur      | PoE Functie    |
+| --- | ---- | ---------- | -------------- |
+| 1   | 2    | Oranje/Wit | Data + PoE (+) |
+| 2   | 2    | Oranje     | Data + PoE (+) |
+| 3   | 3    | Groen/Wit  | Data + PoE (-) |
+| 4   | 1    | Blauw      | PoE (+) Spare  |
+| 5   | 1    | Blauw/Wit  | PoE (+) Spare  |
+| 6   | 3    | Groen      | Data + PoE (-) |
+| 7   | 4    | Bruin/Wit  | PoE (-) Spare  |
+| 8   | 4    | Bruin      | PoE (-) Spare  |
+
+**PoE gebruikt ALLE 4 paren** (802.3bt). **Alle 8 geleiders moeten perfect zijn.**
+
+### Crimp Procedure (Pass-Through)
+
+1. **Strip 38 mm** mantel — beschadig geen geleiders
+2. **Ontdraai paren** alleen indien nodig — houd twists dicht bij connector
+3. **Rangschik T568B** — waaier plat, verifieer volgorde links-naar-rechts
+4. **Steek volledig** — geleiders zichtbaar aan voorzijde
+5. **Verifieer volgorde** — kijk door heldere connector
+6. **Crimp** — ratel gereedschap, één stevige kneep
+7. **Trek test** — 2,3 kg trekkracht, geen beweging
+
+---
+
+## Keystone Jacks (Wandplaat Afwerking)
+
+**Wanneer:** Camera verbindt met patchpaneel / wandcontactdoos → patchkabel naar camera
+
+**Punch-Down (110/Keystone):**
+
+1. Strip 50 mm mantel
+2. Plaats draden in kleurgecodeerde sleuven (T568B gedrukt op jack)
+3. **Punch recht omlaag** — 110 tool, één slag per draad
+4. Knip overtollig af
+5. Klik in wandplaat
+
+**Test:** Continuïteit + PoE spanning bij jack voordat camera wordt aangesloten.
+
+---
+
+## Testen: Elke Run Verifiëren
+
+<Callout type="warning">
+
+**Vertrouw nooit op een ongeteste kabel.** 30% van "camerastoringen" zijn
+kabelfouten. Test _vóór_ het monteren van de camera.
+
+</Callout>
+
+### Niveau 1: Continuïteit + Wiremap (Elke Kabel)
+
+**Gereedschap:** Basis tester (NF-8601, €25) — 8 LEDs + afscherming
+
+- **Alle 8 groen** = geslaagd
+- **Elke rood/open/kruis** = herbeëindigen
+
+### Niveau 2: PoE Spanning onder Belasting (Kritiek)
+
+**Gereedschap:** PoE Tester (LINKSYS PTPoE, €35) of Multimeter + PoE Injector
+
+1. Sluit injector → kabel → tester (of camera)
+2. Meet **aan camera einde**:
+
+- **PoE (802.3af):** 44–57V DC
+- **PoE+ (802.3at):** 50–57V DC
+- **PoE++ (802.3bt):** 52–57V DC
+
+3. **Onder belasting** (camera ingeschakeld) — spanningsval &lt;3V van injector
+
+### Niveau 3: Data Rate Validatie (Pro)
+
+**Gereedschap:** Kabelcertificeerder (Fluke DSX-5000, €8k) — huur €150/dag
+
+- **Cat6:** 250 MHz, 1 Gbps gegarandeerd
+- **Cat6a:** 500 MHz, 10 Gbps gegarandeerd
+- **Print rapport** voor garantie
+
+---
+
+## PoE Spanningsval Calculator
+
+**Formule:** `Vdrop = (2 × Lengte_ft × Stroom_A × Weerstand_Ω_per_1000ft) / 1000`
+
+| Kabel              | Weerstand (Ω/1000ft) | Max 30W (0,6A) | Max 60W (1,2A) | Max 90W (1,8A) |
+| ------------------ | -------------------- | -------------- | -------------- | -------------- |
+| **Cat6 (23 AWG)**  | 6,6                  | **100 m**      | **50 m**       | **33 m**       |
+| **Cat6a (23 AWG)** | 6,6                  | 100 m          | 100 m          | 66 m           |
+| **Cat5e (24 AWG)** | 8,5                  | 76 m           | 38 m           | 25 m           |
+
+**Regel:** Blijf onder **80% van max** voor marge. Voor PoE++ (60/90W), gebruik Cat6a of beperk tot 30 m op Cat6.
+
+---
+
+## Veelvoorkomende Fouten & Oplossingen
+
+| Symptoom                               | Oorzaak                                          | Oplossing                                       |
+| -------------------------------------- | ------------------------------------------------ | ----------------------------------------------- |
+| **Camera herstart 's nachts (IR aan)** | Spanningsval >3V                                 | Verkort run / Cat6a / PoE++ injector bij camera |
+| **Link flapt 100/1000 Mbps**           | Enkel paar open / hoge weerstand                 | Herbeëindig beide uiteinden; test elk paar      |
+| **Geen link, tester toont 7/8 draden** | Eén geleider gebroken / los                      | Her-crimp; controleer op niet kneuzing          |
+| **Gekruiste paren (1↔3, 2↔6)**         | T568A ene uiteinde, T568B andere                 | Standaardiseer T568B beide uiteinden            |
+| **Water in kabel (corrosie)**          | Buitenkabel niet gel-gevuld / slechte afdichting | Vervang met direct ingraven; dicht ingangen aan |
+| **EMI ruis (video artefacten)**        | Parallel aan Romex / HVAC                        | Scheid 30+ cm ; kruis op 90° ; afgeschermd Cat6 |
+
+---
+
+## Code Naleving Snelreferentie (NEC 2023)
+
+| Artikel     | Vereiste                           | Praktische Les                         |
+| ----------- | ---------------------------------- | -------------------------------------- |
+| **300.4**   | Bescherming tegen fysieke schade   | Nagelplaten, buis, 32 mm van rand      |
+| **300.11**  | Bevestigen & ondersteunen          | Nieten 1,2 m OC, binnen 30 cm van doos |
+| **300.22**  | Plenum ruimten                     | CMP kabel of buis                      |
+| **411.4**   | Laagspanningsverlichting (cameras) | Klasse 2/3, gecertificeerde apparatuur |
+| **725.133** | Klasse 2/3 kabel scheiding         | 50 mm van stroom (of barrière)         |
+| **800.170** | Aarding (buiten)                   | Antenne ontladingseenheid indien lucht |
+| **Lokaal**  | Vergunningsdrempel                 | Vaak >€500 of >1,8 m hoogte            |
+
+---
+
+## Pro Tips van 100+ Installaties
+
+1. **Label beide uiteinden** vóór trekken — Stift + kabellabel (Brother PT-E110)
+2. **Trekdraad eerst** — Laat metseldraad voor toekomstige runs
+3. **Servicelussen** — 1 m bij camera, 2 m bij NVR/switch
+4. **Kleurcode** — Verschillende mantelkleuren per zone (Blauw=Voor, Groen=Achter, Geel=Zij)
+5. **Documenteer** — Foto van elke afwerking, kabelplanning PDF, as-built diagram
+6. **Test voor montage** — Camera op ladder = 10× moeilijker te repareren
+7. **PoE budget** — Switch totaal PoE budget ≥ Σ camera max opname × 1,2
+8. **Overspanningsbeveiliging** — Buitenruns: PoE overspanningsbeveiliging (Transtector, €30) bij gebouwingang
+
+---
+
+## Gereedschap Boodschappenlijst (Eenmalige Aankoop)
+
+| Gereedschap                | Model                               | Prijs   | Opmerkingen                  |
+| -------------------------- | ----------------------------------- | ------- | ---------------------------- |
+| **Pass-through Crimptang** | Klein VDV226-110                    | €45     | Ratel, alles-in-één          |
+| **Kabel Tester (Basis)**   | NF-8601 / TRENDnetworks TC-NT2      | €25–€60 | Continuïteit + wiremap       |
+| **PoE Tester**             | LINKSYS PTPoE / Ubiquiti POE-Tester | €35     | Spanning onder belasting     |
+| **Punch-Down Tool**        | Fluke D914S / Klein VDV427-800      | €40     | 110/66 blad                  |
+| **Glow Rods**              | Klein 56107 / Jonard GR-20          | €35     | 8–15 m set                   |
+| **22 mm Vijzelboor**       | Irwin Speedbor / Milwaukee          | €15     | Schone gaten in hout         |
+| **Hammerboor (SDS+)**      | Bosch GBH2-28L / DeWalt DCH273      | €180    | Voor metselwerk              |
+| **Label Maker**            | Brother PT-E110 / PT-H110           | €50     | Krimpkous labels             |
+| **Visband**                | Klein 56007 30 m                    | €30     | Stalen, niet-geleidende punt |
+
+---
+
+## Gerelateerde Gidsen
+
+- [DIY Security Camera Installation: Complete Guide](/blog/diy-security-camera-installation-complete-guide) — Volledige installatieworkflow
+- [How to Mount Outdoor Cameras (Wall, Ceiling, Eave)](/blog/how-to-mount-outdoor-cameras-wall-ceiling-eave) — Oppervlaktespecifiek materiaal
+- [Best Small Business Security Camera Systems](/blog/best-small-business-security-camera-systems) — NVR-formaten, PoE budget
+- [CCTV Video Storage Calculator](/blog/cctv-video-storage-calculator-hard-drive-space) — Opslagformaten voor uw runs
+
+---
+
+_Laatst bijgewerkt: juli 2026. NEC-referenties gebaseerd op 2023 editie — controleer lokale wijzigingen._

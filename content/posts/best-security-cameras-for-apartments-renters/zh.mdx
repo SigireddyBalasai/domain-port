@@ -9,10 +9,6 @@ tags: ["apartment-dwellers", "buying-guide", "wireless"]
 postType: "review"
 ---
 
-import { Badge } from "@/components/ui/badge"
-import { Callout } from "@/components/ui/callout"
-import { Accordion } from "@/components/ui/accordion"
-
 ## 简介：无麻烦的租房者友好型安防
 
 住在公寓或租赁房产不应意味着牺牲安防。然而，传统安防摄像头通常需要打孔、布线或永久安装——这些都违反大多数租赁协议，且危及您的押金。
@@ -43,14 +39,14 @@ import { Accordion } from "@/components/ui/accordion"
 
 ## 对比表
 
-| 摄像头 | 分辨率 | 视野 | 存储 | 供电 | 价格 | 显著特性 |
-|--------|--------|-------|---------|-------|-------|------------------|
-| **Reolink Argus 3 Pro** | 2K | 160° | microSD (高达 128GB) | 电池 / 太阳能 | $99.99 | 聚光灯、PIR 运动、智能检测 |
-| **Eufy Security SoloCam S340** | 2K | 135° (双镜头) | microSD (高达 256GB) | 电池 / 太阳能 | $129.99 | 双镜头 (广角+远摄)、彩色夜视 |
-| **TP-Link Tapo C210** | 1080p | 114° (水平360°, 垂直90°) | microSD (高达 512GB) | WiFi + microUSB | $49.99 | 云台、星光夜视、室内 |
-| **Arlo Pro 5S 2K** | 2K | 160° | Arlo Secure 订阅 / microSD | 电池 / 太阳能 | $199.99 | 磁性安装、160° 视野、耐候 |
-| **Blink Outdoor 4** | 1080p | 110° | Blink 订阅 / USB 驱动器 | 电池 (2年) | $119.99 | 长续航、同步模块可选 |
-| **Ring Battery Doorbell** | 1080p | 150° (水平) | Ring 订阅 (可选) | 电池 | $99.99 | Alexa 集成、HD+ 视频、预录 |
+| 摄像头                         | 分辨率 | 视野                     | 存储                       | 供电            | 价格    | 显著特性                     |
+| ------------------------------ | ------ | ------------------------ | -------------------------- | --------------- | ------- | ---------------------------- |
+| **Reolink Argus 3 Pro**        | 2K     | 160°                     | microSD (高达 128GB)       | 电池 / 太阳能   | $99.99  | 聚光灯、PIR 运动、智能检测   |
+| **Eufy Security SoloCam S340** | 2K     | 135° (双镜头)            | microSD (高达 256GB)       | 电池 / 太阳能   | $129.99 | 双镜头 (广角+远摄)、彩色夜视 |
+| **TP-Link Tapo C210**          | 1080p  | 114° (水平360°, 垂直90°) | microSD (高达 512GB)       | WiFi + microUSB | $49.99  | 云台、星光夜视、室内         |
+| **Arlo Pro 5S 2K**             | 2K     | 160°                     | Arlo Secure 订阅 / microSD | 电池 / 太阳能   | $199.99 | 磁性安装、160° 视野、耐候    |
+| **Blink Outdoor 4**            | 1080p  | 110°                     | Blink 订阅 / USB 驱动器    | 电池 (2年)      | $119.99 | 长续航、同步模块可选         |
+| **Ring Battery Doorbell**      | 1080p  | 150° (水平)              | Ring 订阅 (可选)           | 电池            | $99.99  | Alexa 集成、HD+ 视频、预录   |
 
 ## 详细评测
 
@@ -262,7 +258,10 @@ import { Accordion } from "@/components/ui/accordion"
 ## 安装技巧：不损坏的临时安装
 
 <Callout type="warning">
-  **重要：** 租房友好安装关键在于正确粘胶和表面处理。安装前务必用异丙醇彻底清洁表面并测试支架。
+
+**重要：**
+租房友好安装关键在于正确粘胶和表面处理。安装前务必用异丙醇彻底清洁表面并测试支架。
+
 </Callout>
 
 作为租房者，安装方式与摄像头选择同等重要。您需要真正临时、无损的安装。
@@ -328,7 +327,10 @@ import { Accordion } from "@/components/ui/accordion"
 ## 法律考量：知晓您的权利与责任
 
 <Callout type="warning">
-  **法律免责声明：** 本指南提供一般信息，非法律建议。请咨询律师或当地租房者权益组织获取针对您情况的具体指导。
+
+**法律免责声明：**
+本指南提供一般信息，非法律建议。请咨询律师或当地租房者权益组织获取针对您情况的具体指导。
+
 </Callout>
 
 在租赁房安装任何安防摄像头前，了解法律与合同环境：
@@ -371,32 +373,70 @@ import { Accordion } from "@/components/ui/accordion"
   <AccordionItem value="expectations">
     <AccordionTrigger>您能得到的 (好消息)</AccordionTrigger>
     <AccordionContent>
+
       <ul className="my-4 space-y-2">
-        <li><strong>灵活安装</strong> 无需工具或永久损坏</li>
-        <li><strong>电池或太阳能供电</strong> 真正摆脱插座</li>
-        <li><strong>本地录制</strong> 到 microSD — 无强制云订阅</li>
-        <li><strong>合理分辨率</strong> (1080p-2K) 足够多数门口和院子</li>
-        <li><strong>运动检测</strong> 配手机推送提醒</li>
-        <li><strong>夜视</strong> (IR 或聚光灯彩色)</li>
-        <li><strong>双向音频</strong> 多数型号支持</li>
-        <li><strong>手机 App</strong> 实时预览和回放</li>
+        <li>
+          <strong>灵活安装</strong> 无需工具或永久损坏
+        </li>
+        <li>
+          <strong>电池或太阳能供电</strong> 真正摆脱插座
+        </li>
+        <li>
+          <strong>本地录制</strong> 到 microSD — 无强制云订阅
+        </li>
+        <li>
+          <strong>合理分辨率</strong> (1080p-2K) 足够多数门口和院子
+        </li>
+        <li>
+          <strong>运动检测</strong> 配手机推送提醒
+        </li>
+        <li>
+          <strong>夜视</strong> (IR 或聚光灯彩色)
+        </li>
+        <li>
+          <strong>双向音频</strong> 多数型号支持
+        </li>
+        <li>
+          <strong>手机 App</strong> 实时预览和回放
+        </li>
       </ul>
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem value="limitations">
     <AccordionTrigger>您得不到的 (局限)</AccordionTrigger>
     <AccordionContent>
+
       <ul className="my-4 space-y-2">
-        <li><strong>电池款无 24/7 连续录制</strong> — 仅运动事件唤醒，事件间有间隙</li>
-        <li><strong>需定期充电</strong> 视用量每 1-12 个月一次</li>
-        <li><strong>分辨率低于</strong> 有线专业系统 (此价位无 4K/8MP)</li>
-        <li><strong>AI 功能有限</strong> — 人员检测不如高端系统复杂</li>
-        <li><strong>WiFi 依赖</strong> — 差 WiFi = 差摄像头表现</li>
-        <li><strong>存储限制</strong> — microSD 会满；需自行管理旧录像</li>
-        <li><strong>天气影响</strong> — 极寒极热可能影响电池寿命</li>
-        <li><strong>无集成</strong> 专业监控服务 (极少例外)</li>
+        <li>
+          <strong>电池款无 24/7 连续录制</strong> — 仅运动事件唤醒，事件间有间隙
+        </li>
+        <li>
+          <strong>需定期充电</strong> 视用量每 1-12 个月一次
+        </li>
+        <li>
+          <strong>分辨率低于</strong> 有线专业系统 (此价位无 4K/8MP)
+        </li>
+        <li>
+          <strong>AI 功能有限</strong> — 人员检测不如高端系统复杂
+        </li>
+        <li>
+          <strong>WiFi 依赖</strong> — 差 WiFi = 差摄像头表现
+        </li>
+        <li>
+          <strong>存储限制</strong> — microSD 会满；需自行管理旧录像
+        </li>
+        <li>
+          <strong>天气影响</strong> — 极寒极热可能影响电池寿命
+        </li>
+        <li>
+          <strong>无集成</strong> 专业监控服务 (极少例外)
+        </li>
       </ul>
+
     </AccordionContent>
+
   </AccordionItem>
 </Accordion>
 

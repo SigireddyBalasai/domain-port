@@ -48,11 +48,13 @@ Un mauvais câblage est responsable de plus de pannes CCTV que tout autre facteu
 Ce guide couvre tout ce dont vous avez besoin pour câbler correctement un système de caméras de sécurité PoE : choix du câble, terminaison, conduits, protection contre les surtensions, les outils nécessaires et les erreurs qui distinguent une installation professionnelle d'une installation problématique.
 
 <Callout type="info" title="40 % des problèmes PoE sont liés au câble">
-  Les données de l'industrie montrent qu'environ 40 % des tickets « caméra hors
-  ligne » sont liés à des problèmes de câble — mauvais calibre, câble intérieur
-  utilisé à l'extérieur, Cat6 contrefait qui est en réalité du CCA Cat5e, ou
-  mauvaises terminaisons. Bien câbler dès le premier jour élimine le mode de
-  défaillance le plus courant.
+
+Les données de l'industrie montrent qu'environ 40 % des tickets « caméra hors
+ligne » sont liés à des problèmes de câble — mauvais calibre, câble intérieur
+utilisé à l'extérieur, Cat6 contrefait qui est en réalité du CCA Cat5e, ou
+mauvaises terminaisons. Bien câbler dès le premier jour élimine le mode de
+défaillance le plus courant.
+
 </Callout>
 
 ## Choix du câble
@@ -67,14 +69,16 @@ Ce guide couvre tout ce dont vous avez besoin pour câbler correctement un syst�
 | Cat7  | 22 AWG  | 10 Gbit/s à 100 m                  | Toutes les normes PoE                           | Installations commerciales évolutives                    |
 
 <Callout type="tip" title="Le Cat6 est le choix idéal pour 2026">
-  Le Cat6 est le meilleur choix polyvalent pour les installations de caméras de
-  sécurité. Les conducteurs 23 AWG réduisent la chute de tension et la chaleur
-  liées au PoE par rapport au Cat5e. La bande passante de 250 MHz offre une
-  marge généreuse pour les flux vidéo 4K. La prime de coût par rapport au Cat5e
-  n'est typiquement que de 0,04-0,10 $ par pied — sur un système de 8 caméras,
-  cela ajoute 30-80 $ au total. Pour cette petite prime, vous obtenez des
-  performances PoE mesurablement meilleures et une marge de bande passante pour
-  les futures mises à niveau de caméras.
+
+Le Cat6 est le meilleur choix polyvalent pour les installations de caméras de
+sécurité. Les conducteurs 23 AWG réduisent la chute de tension et la chaleur
+liées au PoE par rapport au Cat5e. La bande passante de 250 MHz offre une
+marge généreuse pour les flux vidéo 4K. La prime de coût par rapport au Cat5e
+n'est typiquement que de 0,04-0,10 $ par pied — sur un système de 8 caméras,
+cela ajoute 30-80 $ au total. Pour cette petite prime, vous obtenez des
+performances PoE mesurablement meilleures et une marge de bande passante pour
+les futures mises à niveau de caméras.
+
 </Callout>
 
 ### Cuivre massif vs. CCA
@@ -91,13 +95,15 @@ C'est la décision de câble la plus importante que vous prendrez.
 | Durée de vie en extérieur | 10+ ans             | 2-3 ans                                       |
 
 <Callout type="danger" title="N'utilisez jamais de CCA pour le PoE">
-  Le câble CCA a une résistance plus élevée que le cuivre pur, ce qui signifie
-  plus de chute de tension, plus de chaleur et des pannes d'alimentation
-  intermittentes de la caméra. Sous charge PoE+ (30 W), les câbles CCA peuvent
-  chauffer suffisamment pour dégrader la gaine avec le temps. Si le vendeur ne
-  mentionne pas explicitement « cuivre pur à 100 % » ou « cuivre nu », supposez
-  qu'il s'agit de CCA. Pour toute installation professionnelle, exigez du cuivre
-  massif.
+
+Le câble CCA a une résistance plus élevée que le cuivre pur, ce qui signifie
+plus de chute de tension, plus de chaleur et des pannes d'alimentation
+intermittentes de la caméra. Sous charge PoE+ (30 W), les câbles CCA peuvent
+chauffer suffisamment pour dégrader la gaine avec le temps. Si le vendeur ne
+mentionne pas explicitement « cuivre pur à 100 % » ou « cuivre nu », supposez
+qu'il s'agit de CCA. Pour toute installation professionnelle, exigez du cuivre
+massif.
+
 </Callout>
 
 ### Câble intérieur vs. extérieur
@@ -128,11 +134,13 @@ Si une partie du câble est exposée aux intempéries, au soleil ou à l'humidit
 | Perforateur + mèches maçonnerie                 | Monter les caméras sur brique/béton          | Varie                 |
 
 <Callout type="note" title="Les câbles pré-terminés sont une option">
-  Pour les petites installations (1-4 caméras) avec des chemins de câbles
-  accessibles, les câbles Cat6 pré-terminés en longueurs mesurées font gagner du
-  temps et évitent les erreurs de terminaison. Pour les installations plus
-  grandes ou les trajets dans des conduits, terminer votre propre câble avec des
-  connecteurs RJ45 pass-through est plus fiable et plus rentable.
+
+Pour les petites installations (1-4 caméras) avec des chemins de câbles
+accessibles, les câbles Cat6 pré-terminés en longueurs mesurées font gagner du
+temps et évitent les erreurs de terminaison. Pour les installations plus
+grandes ou les trajets dans des conduits, terminer votre propre câble avec des
+connecteurs RJ45 pass-through est plus fiable et plus rentable.
+
 </Callout>
 
 ## Normes de terminaison
@@ -160,11 +168,13 @@ La norme T568B est le schéma de câblage dominant pour les installations de cam
 - **Perforer un panneau de brassage côté NVR** : Pour les longues distances, la terminaison sur un panneau de brassage est plus fiable que le sertissage direct d'un RJ45. Cela facilite également le dépannage et la reterminaison.
 
 <Callout type="warning" title="Testez chaque terminaison">
-  Utilisez un testeur de câble pour vérifier le plan de câblage, la continuité
-  et les courts-circuits sur chaque trajet avant de connecter une caméra. Un
-  test de 30 secondes détecte des problèmes qui prendraient des heures à
-  diagnostiquer plus tard. Pour les longs trajets extérieurs, testez également
-  avec un testeur PoE pour vérifier l'alimentation à l'extrémité de la caméra.
+
+Utilisez un testeur de câble pour vérifier le plan de câblage, la continuité
+et les courts-circuits sur chaque trajet avant de connecter une caméra. Un
+test de 30 secondes détecte des problèmes qui prendraient des heures à
+diagnostiquer plus tard. Pour les longs trajets extérieurs, testez également
+avec un testeur PoE pour vérifier l'alimentation à l'extrémité de la caméra.
+
 </Callout>
 
 ## Conduits et gestion des câbles
@@ -199,12 +209,14 @@ Lorsque plusieurs câbles PoE sont regroupés dans un faisceau ou un conduit, la
 | 31+                               | 40-55 %                                          | Utiliser du Cat6A, réduire la taille du faisceau, assurer la ventilation |
 
 <Callout type="tip" title="Gestion thermique des grands faisceaux">
-  L'ISO/IEC recommande une taille maximale de faisceau de 24 câbles,
-  indépendamment des considérations PoE. Pour les installations PoE++ haute
-  puissance, utilisez des conducteurs Cat6A (23 AWG) qui dissipent la chaleur
-  plus efficacement. Évitez de faire passer les câbles PoE dans des espaces non
-  ventilés comme les plafonds fermés ou les conduits scellés sans déclassement
-  thermique approprié.
+
+L'ISO/IEC recommande une taille maximale de faisceau de 24 câbles,
+indépendamment des considérations PoE. Pour les installations PoE++ haute
+puissance, utilisez des conducteurs Cat6A (23 AWG) qui dissipent la chaleur
+plus efficacement. Évitez de faire passer les câbles PoE dans des espaces non
+ventilés comme les plafonds fermés ou les conduits scellés sans déclassement
+thermique approprié.
+
 </Callout>
 
 ## Protection contre les surtensions
@@ -223,10 +235,12 @@ Les caméras sur de longues liaisons PoE sont vulnérables aux surtensions indui
 - UPS avec protection contre les surtensions pour le NVR et le commutateur PoE
 
 <Callout type="danger" title="La mise à la terre n'est pas optionnelle">
-  Un parasurtenseur qui n'est pas correctement mis à la terre n'offre aucune
-  protection. Assurez-vous que vos parasurtenseurs sont connectés à la terre du
-  bâtiment. Dans les installations commerciales, la mise à la terre doit
-  répondre aux exigences du code électrique local.
+
+Un parasurtenseur qui n'est pas correctement mis à la terre n'offre aucune
+protection. Assurez-vous que vos parasurtenseurs sont connectés à la terre du
+bâtiment. Dans les installations commerciales, la mise à la terre doit
+répondre aux exigences du code électrique local.
+
 </Callout>
 
 ## Erreurs de câblage courantes
@@ -285,12 +299,14 @@ Avant de déclarer l'installation terminée :
 6. **Vérification de l'enregistrement** : Après 7 jours, vérifier que la timeline du NVR ne présente pas de lacunes d'enregistrement
 
 <Callout type="tip" title="La limite stricte des 100 mètres">
-  La norme IEEE 802.3 limite les liaisons Ethernet à 100 mètres (328 pieds) y
-  compris tous les cordons de brassage. En pratique, avec du Cat6 en cuivre pur,
-  vous pouvez atteindre 95 mètres de manière fiable. Au-delà, la chute de
-  tension, même sur un bon câble, provoque des réinitialisations intermittentes
-  de la caméra. Prévoyez des répéteurs PoE ou un lien fibre optique pour tout
-  trajet dépassant 90 mètres.
+
+La norme IEEE 802.3 limite les liaisons Ethernet à 100 mètres (328 pieds) y
+compris tous les cordons de brassage. En pratique, avec du Cat6 en cuivre pur,
+vous pouvez atteindre 95 mètres de manière fiable. Au-delà, la chute de
+tension, même sur un bon câble, provoque des réinitialisations intermittentes
+de la caméra. Prévoyez des répéteurs PoE ou un lien fibre optique pour tout
+trajet dépassant 90 mètres.
+
 </Callout>
 
 ## Questions fréquentes
@@ -301,6 +317,7 @@ Avant de déclarer l'installation terminée :
       Dois-je utiliser du Cat5e ou du Cat6 pour les caméras de sécurité ?
     </AccordionTrigger>
     <AccordionContent>
+
       Le Cat6 est la référence recommandée pour toute nouvelle installation. Les
       conducteurs 23 AWG réduisent la chute de tension par rapport au 24 AWG du
       Cat5e, ce qui compte pour l'alimentation PoE — surtout sur les trajets de
@@ -308,20 +325,25 @@ Avant de déclarer l'installation terminée :
       différence de coût est minime (0,04-0,10 $ par pied) comparée à la
       main-d'œuvre de tirage des câbles. Réservez le Cat5e uniquement pour les
       courts trajets de moins de 30 mètres avec des caméras 1080p.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Quelle peut être la longueur d'un câble PoE ?
     </AccordionTrigger>
     <AccordionContent>
+
       La norme IEEE 802.3 limite les liaisons Ethernet à 100 mètres (328 pieds)
       au total, y compris les cordons de brassage. Au-delà de 100 mètres, le
       signal de données se dégrade et l'alimentation PoE tombe en dessous du
       minimum de la caméra. Pour les trajets plus longs, utilisez un répéteur
       PoE (ajoute 100 m par appareil, jusqu'à 4), un lien fibre optique avec un
       commutateur PoE distant, ou rapprochez le NVR.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
@@ -329,15 +351,19 @@ Avant de déclarer l'installation terminée :
       ?
     </AccordionTrigger>
     <AccordionContent>
+
       Non. Mélanger du CCA et du cuivre massif crée un point de corrosion
       galvanique à la connexion, ce qui augmente la résistance et fait échouer
       la connexion avec le temps. Choisissez un type de câble et utilisez-le
       partout. Pour le PoE, ce doit toujours être du cuivre massif.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>Ai-je besoin d'un câble blindé (STP) ?</AccordionTrigger>
     <AccordionContent>
+
       Uniquement si vous êtes à proximité d'interférences électriques
       importantes — gros moteurs, ballasts fluorescents, machines industrielles
       ou tableaux électriques. Pour la plupart des installations résidentielles
@@ -345,19 +371,24 @@ Avant de déclarer l'installation terminée :
       utilisez du STP, vous devez utiliser des connecteurs blindés et une mise à
       la terre correcte à une seule extrémité, sinon le blindage devient
       inefficace.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Quel est le rayon de courbure minimum pour le Cat6 ?
     </AccordionTrigger>
     <AccordionContent>
+
       Le rayon de courbure minimum pour le Cat6 est de 4x le diamètre du câble,
       soit environ 5 cm (2 pouces). Les coudes serrés écrasent la torsion
       interne des paires et dégradent la qualité du signal. Pour les
       installations permanentes, utilisez des coudes larges ou des coudes à 45
       degrés plutôt que des virages serrés à 90 degrés.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
@@ -365,12 +396,15 @@ Avant de déclarer l'installation terminée :
       extérieures ?
     </AccordionTrigger>
     <AccordionContent>
+
       Selon le National Electrical Code (NEC), le conduit PVC doit être enterré
       à au moins 18 pouces (45 cm) de profondeur. Le conduit métallique ne
       nécessite que 6 pouces (15 cm). Un câble d'enterré direct dans un conduit
       est préférable pour les trajets souterrains. Appelez toujours les
       localisateurs de services publics avant de creuser.
+
     </AccordionContent>
+
   </AccordionItem>
 </Accordion>
 

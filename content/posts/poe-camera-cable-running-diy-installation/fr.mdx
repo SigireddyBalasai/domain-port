@@ -1,0 +1,343 @@
+---
+title: "Passage de Câbles Caméra PoE : Guide d'Installation DIY (2026)"
+description: "Guide complet du câblage Cat5e/6 pour caméras PoE. Types de câbles, planification des chemins, terminaison, test, conformité au code et conseils de pro pour des installations propres et fiables."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "poe-camera-cable-running-diy-installation"
+author: "Your Name"
+tags: ["diy", "poe", "cable-running", "installation", "termination"]
+postType: "howto"
+---
+
+Le passage des câbles représente 70% de la main-d'œuvre d'installation d'une caméra PoE. Faites-le correctement une fois : cuivre massif, chemins appropriés, terminaison correcte, test vérifié. Ce guide couvre chaque étape, de la bobine au switch.
+
+<Badge variant="outline">Choix du Câble</Badge> **Utilisez du Cat6 en cuivre
+massif (CMR/CMP).** Pas de CCA (cuivre plaqué aluminium). Pas de toronné. Pas de
+Cat5e pour les nouvelles installations. Le Cat6 cuivre massif = 100 m à 1 Gbps
+PoE+ sans problèmes de chute de tension.
+
+---
+
+## Sélection du Câble : Quoi Acheter (Et Quoi Éviter)
+
+| Type de Câble                    | Conducteur       | PoE+ (30W) Max | PoE++ (60/90W) Max | Classification          | Utilisation                   |
+| -------------------------------- | ---------------- | -------------- | ------------------ | ----------------------- | ----------------------------- |
+| **Cat6 Cuivre Massif (CMR)**     | 23 AWG Cu Massif | 100 m (328 pi) | 80 m (262 pi)      | Riser (dans le mur)     | **Choix standard**            |
+| **Cat6 Cuivre Massif (CMP)**     | 23 AWG Cu Massif | 100 m          | 80 m               | Plenum (conduits d'air) | Requis dans les plénums       |
+| **Cat6a Cuivre Massif**          | 23 AWG Cu Massif | 100 m          | 100 m              | Riser/Plenum            | Prêt pour le futur 10G        |
+| **Extérieur Enterrement Direct** | 23 AWG Cu Massif | 100 m          | 80 m               | Rempli de gel, UV       | Souterrain, aérien            |
+| **❌ Cat5e**                     | 24 AWG           | 100 m          | 50 m               | Riser                   | Héritage uniquement           |
+| **❌ CCA (Cuivre Plaqué Alu)**   | Noyau aluminium  | **ÉCHEC**      | **ÉCHEC**          | Quelconque              | **Jamais pour le PoE**        |
+| **❌ Toronné / Brassage**        | Cuivre toronné   | 10 m (33 pi)   | 5 m                | Brassage                | Câbles de brassage uniquement |
+
+<Callout type="danger">
+
+**Le CCA (Cuivre Plaqué Aluminium) échoue en PoE.** L'aluminium a une
+résistance 60% plus élevée → chute de tension → redémarrage de la caméra la
+nuit (IR allumé). **Vérifiez "Solid Bare Copper" sur l'impression de la
+gaine.**
+
+</Callout>
+
+**Marques Recommandées (2026) :**
+
+- **Budget :** Cable Matters Cat6 CMR (1000 pi 120$)
+- **Moyen :** Southwire Cat6 CMR (1000 pi 150$)
+- **Pro :** Belden 2413 / General Cable GenSPEED 6000 (1000 pi 220$)
+- **Extérieur :** Superior Essex 04-001-59 (Enterrement Direct, 180$)
+
+---
+
+## Planification du Chemin : Avant de Percer
+
+### 1. Cartographiez Chaque Trajet
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="mapping">
+    <AccordionTrigger>Créez un Tableau de Planification des Câbles</AccordionTrigger>
+    <AccordionContent>
+
+| Caméra | Emplacement    | Chemin                                 | Longueur (pi) | Type de Câble  | Terminaison     | Classe PoE     |
+| ------ | -------------- | -------------------------------------- | ------------- | -------------- | --------------- | -------------- |
+| CAM-01 | Porte d'Entrée | Grenier → Larmier → Fasce              | 65            | Cat6 CMR       | RJ45 + Keystone | Classe 4 (30W) |
+| CAM-02 | Allée          | Grenier → Mur Extérieur → Poteau       | 95            | Cat6 Extérieur | RJ45 Direct     | Classe 4       |
+| CAM-03 | Arrière-cour   | Sous-sol → Solive de Rive → Avant-toit | 80            | Cat6 CMR       | Keystone        | Classe 3 (15W) |
+
+<p>
+  <strong>Règle :</strong> Mesurez <strong>deux fois</strong>, ajoutez{" "}
+  <strong>10 pi de mou</strong> par trajet (boucles de service aux deux
+  extrémités).
+</p>
+
+  </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### 2. Identifiez les Chemins (Meilleur → Pire)
+
+| Chemin                                             | Difficulté | Max Trajets | Notes Code                                                            |
+| -------------------------------------------------- | ---------- | ----------- | --------------------------------------------------------------------- |
+| **Grenier → Larmier/Avant-toit**                   | Facile     | Illimité    | Évitez le contact avec l'isolant (déclassement du courant admissible) |
+| **Sous-sol/Vide sanitaire → Solive de Rive → Mur** | Moyen      | Illimité    | Percez à travers la plaque de seuil, coupe-feu                        |
+| **Mur Intérieur → Extérieur**                      | Moyen      | 1–2 par mur | Coupe-feu aux plaques haut/bas                                        |
+| **Conduit (EMT/PVC) Surface**                      | Facile     | Illimité    | Meilleur pour les rénovations, apparent autorisé                      |
+| **Enterrement Direct (Tranchée)**                  | Difficile  | Illimité    | 18" de profondeur (24" sous allée), ruban avertisseur                 |
+| **Aérien (Poteau-à-Poteau)**                       | Moyen      | 1–2         | Fil porteur, boucles d'égouttement, dégagement de 10'                 |
+
+---
+
+## Techniques de Perçage et de Passage
+
+### Grenier vers Larmier (Le Plus Courant)
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="attic-soffit">
+    <AccordionTrigger>Pas à Pas : Grenier → Caméra Sous Larmier</AccordionTrigger>
+    <AccordionContent>
+
+<p>
+  <strong>Outils :</strong> Mèche plate/tarière ⅞", tiges lumineuses 50', lampe
+  frontale, genouillères, masque anti-poussière
+</p>
+
+<ol>
+  <li>
+    <strong>Localisez la position de la caméra</strong> depuis l'intérieur du
+    grenier — mesurez depuis un point de repère connu (ventilation, cheminée)
+  </li>
+  <li>
+    <strong>Percez un trou de ⅞"</strong> à travers la plaque supérieure + la
+    planche de larmier (angle légèrement vers le bas pour l'évacuation de l'eau)
+  </li>
+  <li>
+    <strong>Poussez les tiges lumineuses</strong> du grenier à travers le trou
+    jusqu'à l'extérieur du larmier
+  </li>
+  <li>
+    <strong>Scotchez le câble</strong> à l'extrémité de la tige : repliez 6" en
+    arrière, ruban électrique lisse (pas d'accroche)
+  </li>
+  <li>
+    <strong>Tirez doucement</strong> — travail à 2 personnes : une alimente, une
+    tire
+  </li>
+  <li>
+    <strong>Laissez 3 pi de mou</strong> dans le grenier (boucle de service), 2
+    pi à la caméra
+  </li>
+  <li>
+    <strong>Scellez :</strong> Silicone autour du câble à la pénétration du
+    larmier (intérieur + extérieur)
+  </li>
+  <li>
+    <strong>Agrafez</strong> le câble aux chevrons tous les 4 pi (agrafes
+    isolées T25)
+  </li>
+</ol>
+
+  </AccordionContent>
+   </AccordionItem>
+</Accordion>
+
+### Sous-sol/Vide Sanitaire vers Mur Extérieur
+
+- **Percez à travers la solive de rive** (pas la fondation) — trou de ⅞", 12" au-dessus du sol minimum
+- **Coupe-feu :** Bourrez de laine minérale + mastic coupe-feu autour du câble à la pénétration
+- **Extérieur :** Boîtier LB → ½" LFMC vers le boîtier de la caméra
+
+### Mur Intérieur vers Extérieur (Rénovation)
+
+1. **Découpez un trou de boîte à rénover** à la hauteur de la caméra (intérieur)
+2. **Percez vers le bas** à travers la plaque de fond dans le sous-sol/vide sanitaire (tarière ⅞")
+3. **Passez par le bas** avec des tiges lumineuses
+4. **Protégez :** Plaques de protection sur les montants là où le câble passe (NEC 300.4)
+
+---
+
+## Conduit et Protection
+
+| Situation                      | Type de Conduit                            | Taille | Remarques                                              |
+| ------------------------------ | ------------------------------------------ | ------ | ------------------------------------------------------ |
+| **Surface mur extérieur**      | LFMC (Métal Flexible Étanche aux Liquides) | ½"     | Résistant aux UV, max 4 pi entre supports              |
+| **Souterrain**                 | PVC Schedule 40 / HDPE                     | ¾"     | 18" de couverture, coudes à grand rayon, fil de tirage |
+| **Grenier (exposé)**           | Aucun nécessaire (Cat6 CMR)                | —      | Agrafez tous les 4 pi                                  |
+| **Plafond plénum**             | EMT / Câble homologué plénum               | ½"     | Câble CMP requis si pas de conduit                     |
+| **À travers un mur coupe-feu** | Manchon coupe-feu + mastic                 | —      | Hilti CFS-SL / 3M CP25                                 |
+
+---
+
+## Terminaison : RJ45 Traversant (Le Plus Rapide, Le Plus Fiable)
+
+<Callout type="note">
+
+**Utilisez des connecteurs traversants.** Le RJ45 standard nécessite une coupe
+précise. Le traversant vous permet de vérifier l'ordre des couleurs _avant_ le
+sertissage. **Outil :** Pince à sertir traversante à cliquet (Klein
+VDV226-110, 45$).
+
+</Callout>
+
+### Brochage T568B (Standard pour le PoE)
+
+| Pin | Paire | Couleur      | Fonction PoE      |
+| --- | ----- | ------------ | ----------------- |
+| 1   | 2     | Orange/Blanc | Données + PoE (+) |
+| 2   | 2     | Orange       | Données + PoE (+) |
+| 3   | 3     | Vert/Blanc   | Données + PoE (-) |
+| 4   | 1     | Bleu         | PoE (+) Réserve   |
+| 5   | 1     | Bleu/Blanc   | PoE (+) Réserve   |
+| 6   | 3     | Vert         | Données + PoE (-) |
+| 7   | 4     | Brun/Blanc   | PoE (-) Réserve   |
+| 8   | 4     | Brun         | PoE (-) Réserve   |
+
+**Le PoE utilise LES 4 PAIRES** (802.3bt). **Les 8 conducteurs doivent être parfaits.**
+
+### Procédure de Sertissage (Traversant)
+
+1. **Dénudez 1.5"** de gaine — n'endommagez pas les conducteurs
+2. **Détordez les paires** uniquement ce qui est nécessaire — gardez les torsions près du connecteur
+3. **Disposez T568B** — à plat, vérifiez l'ordre de gauche à droite
+4. **Insérez complètement** — conducteurs visibles à la face avant
+5. **Vérifiez l'ordre** — regardez à travers le connecteur transparent
+6. **Sertissez** — outil à cliquet, une seule pression ferme
+7. **Test de traction** — 5 lb de traction, pas de mouvement
+
+---
+
+## Prises Keystone (Terminaison sur Plaque Murale)
+
+**Quand :** La caméra se connecte au panneau de brassage / à la prise murale → câble de brassage vers la caméra
+
+**Repiquage (110/Keystone) :**
+
+1. Dénudez 2" de gaine
+2. Placez les fils dans les fentes codées par couleur (T568B imprimé sur la prise)
+3. **Repiquez droit vers le bas** — outil 110, un coup par fil
+4. Coupez l'excédent à ras
+5. Enclenchez dans la plaque murale
+
+**Test :** Continuité + tension PoE à la prise avant de connecter la caméra.
+
+---
+
+## Test : Vérifiez Chaque Trajet
+
+<Callout type="warning">
+
+**Ne faites jamais confiance à un câble non testé.** 30% des "pannes de
+caméra" sont des défauts de câble. Testez _avant_ de monter la caméra.
+
+</Callout>
+
+### Niveau 1 : Continuité + Câblage (Chaque Câble)
+
+**Outil :** Testeur basique (NF-8601, 25$) — 8 LED + blindage
+
+- **Les 8 vertes** = réussi
+- **Une rouge/ouverte/croisée** = re-terminer
+
+### Niveau 2 : Tension PoE Sous Charge (Critique)
+
+**Outil :** Testeur PoE (LINKSYS PTPoE, 35$) ou Multimètre + Injecteur PoE
+
+1. Connectez l'injecteur → câble → testeur (ou caméra)
+2. Mesurez **à l'extrémité de la caméra** :
+
+- **PoE (802.3af) :** 44–57V DC
+- **PoE+ (802.3at) :** 50–57V DC
+- **PoE++ (802.3bt) :** 52–57V DC
+
+3. **Sous charge** (caméra allumée) — chute de tension &lt;3V par rapport à l'injecteur
+
+### Niveau 3 : Validation du Débit de Données (Pro)
+
+**Outil :** Certifieur de câble (Fluke DSX-5000, 8k$) — location 150$/jour
+
+- **Cat6 :** 250 MHz, 1 Gbps garanti
+- **Cat6a :** 500 MHz, 10 Gbps garanti
+- **Imprimez le rapport** pour la garantie
+
+---
+
+## Calculateur de Chute de Tension PoE
+
+**Formule :** `Vchute = (2 × Longueur_pi × Courant_A × Résistance_Ω_par_1000pi) / 1000`
+
+| Câble              | Résistance (Ω/1000pi) | Max 30W (0.6A) | Max 60W (1.2A) | Max 90W (1.8A) |
+| ------------------ | --------------------- | -------------- | -------------- | -------------- |
+| **Cat6 (23 AWG)**  | 6.6                   | **328 pi**     | **164 pi**     | **109 pi**     |
+| **Cat6a (23 AWG)** | 6.6                   | 328 pi         | 328 pi         | 218 pi         |
+| **Cat5e (24 AWG)** | 8.5                   | 250 pi         | 125 pi         | 83 pi          |
+
+**Règle :** Restez sous **80% du maximum** pour la marge. Pour PoE++ (60/90W), utilisez Cat6a ou limitez à 100 pi sur Cat6.
+
+---
+
+## Défauts Courants et Solutions
+
+| Symptôme                                    | Cause                                             | Solution                                                      |
+| ------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------- |
+| **La caméra redémarre la nuit (IR allumé)** | Chute de tension >3V                              | Raccourcissez le trajet / Cat6a / Injecteur PoE++ à la caméra |
+| **La liaison saute entre 100/1000 Mbps**    | Paire unique ouverte / haute résistance           | Re-terminez les deux extrémités ; testez chaque paire         |
+| **Pas de liaison, testeur montre 7/8 fils** | Un conducteur cassé / desserré                    | Re-sertissez ; vérifiez l'écrasement par agrafe               |
+| **Paires croisées (1↔3, 2↔6)**              | T568A à une extrémité, T568B à l'autre            | Standardisez T568B aux deux extrémités                        |
+| **Eau dans le câble (corrosion)**           | Câble extérieur non rempli de gel / mauvais joint | Remplacez par de l'enternement direct ; scellez les entrées   |
+| **Bruit EMI (artefacts vidéo)**             | Parallèle au Romex / HVAC                         | Séparez de 12"+ ; croisez à 90° ; Cat6 blindé                 |
+
+---
+
+## Référence Rapide de Conformité au Code (NEC 2023)
+
+| Article     | Exigence                                 | Conséquence Pratique                                 |
+| ----------- | ---------------------------------------- | ---------------------------------------------------- |
+| **300.4**   | Protection contre les dommages physiques | Plaques de protection, conduit, 1.25" du bord        |
+| **300.11**  | Fixation et support                      | Agrafes à 4' d'entre-axe, à moins de 12" d'une boîte |
+| **300.22**  | Espaces plénums                          | Câble CMP ou conduit                                 |
+| **411.4**   | Éclairage basse tension (caméras)        | Classe 2/3, équipement homologué                     |
+| **725.133** | Séparation des câbles Classe 2/3         | 2" du secteur (ou barrière)                          |
+| **800.170** | Mise à la terre (extérieur)              | Unité de décharge d'antenne si aérien                |
+| **Local**   | Seuil de permis                          | Souvent >500$ ou >6 pi de hauteur                    |
+
+---
+
+## Conseils de Pro de 100+ Installations
+
+1. **Étiquetez les deux extrémités** avant le tirage — Marqueur + étiquette de câble (Brother PT-E110)
+2. **Tirez d'abord une ficelle** — Laissez de la ficelle de maçon pour les futurs trajets
+3. **Boucles de service** — 3 pi à la caméra, 6 pi au NVR/switch
+4. **Code couleur** — Différentes couleurs de gaine par zone (Bleu=Avant, Vert=Arrière, Jaune=Côté)
+5. **Documentez** — Photo de chaque terminaison, PDF du tableau de câbles, schéma comme construit
+6. **Testez avant le montage** — Caméra sur l'échelle = 10× plus difficile à réparer
+7. **Budget PoE** — Budget PoE total du switch ≥ Σ consommation max des caméras × 1.2
+8. **Protection contre les surtensions** — Trajets extérieurs : protecteur de surtension PoE (Transtector, 30$) à l'entrée du bâtiment
+
+---
+
+## Liste de Courses des Outils (Achat Unique)
+
+| Outil                            | Modèle                              | Prix    | Remarques                     |
+| -------------------------------- | ----------------------------------- | ------- | ----------------------------- |
+| **Pince à Sertir Traversante**   | Klein VDV226-110                    | 45$     | Cliquet, tout-en-un           |
+| **Testeur de Câble (Basique)**   | NF-8601 / TRENDnet TC-NT2           | 25$–60$ | Continuité + câblage          |
+| **Testeur PoE**                  | LINKSYS PTPoE / Ubiquiti POE-Tester | 35$     | Tension sous charge           |
+| **Outil de Repiquage**           | Fluke D914S / Klein VDV427-800      | 40$     | Lame 110/66                   |
+| **Tiges Lumineuses**             | Klein 56107 / Jonard GR-20          | 35$     | Ensemble 25–50 pi             |
+| **Mèche Tarière ⅞"**             | Irwin Speedbor / Milwaukee          | 15$     | Trous propres dans le bois    |
+| **Perceuse à Percussion (SDS+)** | Bosch GBH2-28L / DeWalt DCH273      | 180$    | Pour maçonnerie               |
+| **Étiqueteuse**                  | Brother PT-E110 / PT-H110           | 50$     | Étiquettes thermorétractables |
+| **Tire-fil**                     | Klein 56007 100pi                   | 30$     | Acier, embout non conducteur  |
+
+---
+
+## Guides Connexes
+
+- [Installation DIY de Caméras de Sécurité : Guide Complet](/blog/diy-security-camera-installation-complete-guide) — Workflow d'installation complet
+- [Comment Monter des Caméras Extérieures (Mur, Plafond, Avant-toit)](/blog/how-to-mount-outdoor-cameras-wall-ceiling-eave) — Quincaillerie spécifique aux surfaces
+- [Meilleurs Systèmes de Caméras de Sécurité pour Petites Entreprises](/blog/best-small-business-security-camera-systems) — Dimensionnement NVR, budget PoE
+- [Calculateur de Stockage Vidéo CCTV](/blog/cctv-video-storage-calculator-hard-drive-space) — Dimensionnement du stockage pour vos trajets
+- [Problèmes et Solutions Courants des Caméras de Sécurité](/blog/common-security-camera-problems-fixes) — Défauts de câble
+
+---
+
+_Dernière mise à jour : juillet 2026. Références NEC basées sur l'édition 2023 — vérifiez les amendements locaux._

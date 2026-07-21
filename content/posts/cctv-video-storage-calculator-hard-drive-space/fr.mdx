@@ -1,0 +1,304 @@
+---
+title: "Calculateur de Stockage Vidéo CCTV : De Quel Espace Disque Dur Avez-Vous Besoin ? (2026)"
+description: "Calculez les besoins exacts de stockage de votre système de caméras. Formule, calculateur, H.265 vs H.264, résolution, fréquence d'images, mouvement vs continu, surcharge RAID et recommandations de disques."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "cctv-video-storage-calculator-hard-drive-space"
+author: "Your Name"
+tags: ["storage", "calculator", "nvr", "hard-drive", "planning"]
+postType: "howto"
+---
+
+Le stockage est la raison n°1 pour laquelle les systèmes de caméras échouent. Des disques sous-dimensionnés = des trous dans les images quand vous en avez le plus besoin. Ce guide vous donne la formule exacte, un calculateur mental et des recommandations de disques pour acheter une fois et enregistrer pendant des années.
+
+<Badge variant="outline">Formule Rapide</Badge> **Go par jour = Caméras × Mbps ×
+108** (pour H.265). Exemple : 8 cams × 4 Mbps × 108 = **3 456 Go/jour** = **3.4
+To/jour**.
+
+---
+
+## La Formule de Stockage (Mémorisez Ceci)
+
+### Équation de Base
+
+```
+Go par Jour = (Caméras × Débit_Mbps × 3600 × 24) / (8 × 1024)
+            = Caméras × Débit_Mbps × 10.547
+```
+
+**Simplifié (H.265) :** `Caméras × Mbps × 108 = Go/jour` (à 3% près)
+
+**Simplifié (H.264) :** `Caméras × Mbps × 216 = Go/jour` (H.264 ≈ 2× H.265)
+
+### Tableau de Référence des Débits (2026 Typique)
+
+| Résolution      | Codec | FPS | Complexité de Scène   | Débit (Mbps) |
+| --------------- | ----- | --- | --------------------- | ------------ |
+| **4K (8MP)**    | H.265 | 15  | Faible (statique)     | 3–4          |
+| 4K (8MP)        | H.265 | 15  | Moyenne               | 4–6          |
+| 4K (8MP)        | H.265 | 15  | Élevée (arbres/pluie) | 6–8          |
+| 4K (8MP)        | H.265 | 30  | Moyenne               | 8–12         |
+| **2K (4MP)**    | H.265 | 15  | Moyenne               | 2–3          |
+| 2K (4MP)        | H.265 | 30  | Moyenne               | 4–6          |
+| **1080p (2MP)** | H.265 | 15  | Moyenne               | 1–2          |
+| 1080p (2MP)     | H.265 | 30  | Moyenne               | 2–4          |
+| **4K (8MP)**    | H.264 | 15  | Moyenne               | 8–12         |
+| **1080p (2MP)** | H.264 | 30  | Moyenne               | 4–8          |
+
+<Callout type="tip">
+
+**Conseil Pro :** Activez **H.265 (HEVC)** sur chaque caméra/NVR. Il divise
+par deux le stockage par rapport au H.264. Toutes les caméras 2020+ le
+supportent. Si votre NVR ne le fait pas, mettez à niveau le NVR.
+
+</Callout>
+
+---
+
+## Calculateur Mental Rapide (Pas de Tableur Nécessaire)
+
+### Méthode : "Caméras × Mbps × Jours × 0.1 = To"
+
+| Caméras | Résolution | Codec | FPS | Mbps (est) | 7 Jours    | 14 Jours | 30 Jours | 60 Jours | 90 Jours |
+| ------- | ---------- | ----- | --- | ---------- | ---------- | -------- | -------- | -------- | -------- |
+| **4**   | 4K         | H.265 | 15  | 4          | **1.1 To** | 2.3 To   | 4.9 To   | 9.8 To   | 14.7 To  |
+| **8**   | 4K         | H.265 | 15  | 4          | **2.3 To** | 4.6 To   | 9.8 To   | 19.6 To  | 29.4 To  |
+| **16**  | 4K         | H.265 | 15  | 4          | **4.6 To** | 9.2 To   | 19.7 To  | 39.3 To  | 59 To    |
+| **8**   | 2K         | H.265 | 15  | 3          | **1.7 To** | 3.5 To   | 7.4 To   | 14.7 To  | 22 To    |
+| **16**  | 2K         | H.265 | 15  | 3          | **3.5 To** | 7.0 To   | 14.9 To  | 29.3 To  | 44 To    |
+| **8**   | 1080p      | H.265 | 30  | 2          | **1.2 To** | 2.3 To   | 4.9 To   | 9.8 To   | 14.7 To  |
+
+**Vérification de formule :** 8 cams × 4 Mbps × 30 jours × 0.108 = **10.4 To** (correspond au tableau : 9.8 To ≈ assez proche)
+
+---
+
+## Ce Qui Modifie les Chiffres (Multiplicateurs)
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="motion">
+    <AccordionTrigger>Enregistrement par Mouvement Uniquement (Économise 50–80%)</AccordionTrigger>
+    <AccordionContent>
+
+**Comment ça marche :** Enregistrement continu sur le sous-flux (basse résolution), pleine résolution uniquement sur mouvement.
+
+| Scénario                           | Stockage vs Continu          |
+| ---------------------------------- | ---------------------------- |
+| Résidentiel calme (5 événements/h) | **15–25%** du continu        |
+| Commerce animé (50 événements/h)   | **40–60%**                   |
+| Autoroute / parking                | **70–90%** (presque continu) |
+
+**Formule :** `Continu_Go × Facteur_Mouvement = Go_Réels`
+
+- Conservateur : **× 0.3** (calme)
+- Typique : **× 0.5** (modéré)
+- Animé : **× 0.75** (fort trafic)
+
+**Mise en garde :** Mouvement manqué = pas d'images. Utilisez **continu + marqueurs de mouvement** (le NVR enregistre 24/7, marque les événements de mouvement).
+
+</AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="substream">
+    <AccordionTrigger>Sous-flux (Vue en Direct Sans Impact sur le Stockage)</AccordionTrigger>
+    <AccordionContent>
+
+**Sous-flux** = Flux basse résolution (D1/720p) pour la vue en direct / mobile. **N'enregistre pas** (ou enregistre à un débit minuscule).
+
+| Flux          | Résolution  | Débit        | Objectif                                   |
+| ------------- | ----------- | ------------ | ------------------------------------------ |
+| **Principal** | 4K/2K/1080p | 2–8 Mbps     | **Enregistrement** (preuve)                |
+| **Sous**      | 720p/D1/CIF | 0.5–1.5 Mbps | Vue en direct, mobile, détection mouvement |
+| **Troisième** | 480p/360p   | 0.2–0.5 Mbps | Sauvegarde mobile, 3G/4G                   |
+
+**Impact sur le stockage :** L'enregistrement du sous-flux ajoute **5–15%** s'il est activé. En général, **désactivez l'enregistrement du sous-flux** — utilisez uniquement le flux principal.
+
+</AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="raid">
+    <AccordionTrigger>Surcharge RAID (Utilisable vs Brut)</AccordionTrigger>
+    <AccordionContent>
+
+| RAID                | Disques Min | Utilisable %                            | Survit à    | Risque de Reconstruction         |
+| ------------------- | ----------- | --------------------------------------- | ----------- | -------------------------------- |
+| **RAID 1** (Miroir) | 2           | **50%**                                 | 1 disque    | Faible                           |
+| **RAID 5**          | 3           | **(N-1)/N** (67% @ 3, 75% @ 4)          | 1 disque    | Moyen (URE sur >8To)             |
+| **RAID 6**          | 4           | **(N-2)/N** (50% @ 4, 60% @ 5, 67% @ 6) | 2 disques   | **Faible** (recommandé ≥6 baies) |
+| **RAID 10**         | 4 (pair)    | **50%**                                 | 1–2 disques | Très faible                      |
+| **SHR** (Synology)  | 2+          | Flexible                                | 1–2         | Faible                           |
+
+**Règle :** Pour 4K/8+ cams / >30 jours → **RAID 6 minimum**. Pour 1080p/2K &lt;8 cams → RAID 1/5 OK.
+
+**Calcul :** `To_Brut_Requis = To_Utilisable_Requis / %_Utilisable_RAID`
+Exemple : 20 To utilisables, RAID 6 (60%) → **34 To bruts** = 6× 8To ou 4× 10To
+
+</AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="retention">
+    <AccordionTrigger>Niveaux de Rétention (Stockage Intelligent)</AccordionTrigger>
+    <AccordionContent>
+
+Toutes les images n'ont pas besoin de 90 jours.
+
+| Niveau      | Rétention     | Quoi                                                  | % Typique du Total    |
+| ----------- | ------------- | ----------------------------------------------------- | --------------------- |
+| **Chaud**   | 0–7 jours     | Toutes les caméras, pleine résolution, continu        | 30–50%                |
+| **Tiède**   | 8–30 jours    | Événements de mouvement uniquement, pleine résolution | 30–40%                |
+| **Froid**   | 31–365+ jours | Caméras critiques uniquement, ou sous-flux            | 10–20%                |
+| **Archive** | 1–7 ans       | Incidents, exportations, conservation légale          | Hors site (Wasabi/B2) |
+
+**Support NVR :** UniFi Protect, Synology Surveillance Station, Dahua DSS, Hikvision iVMS supportent la rétention par niveaux nativement.
+
+</AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+---
+
+## Guide de Sélection des Disques (2026)
+
+### Disques pour Surveillance Uniquement
+
+| Disque                  | Capacité | Charge (To/an) | Garantie | Idéal pour                        |
+| ----------------------- | -------- | -------------- | -------- | --------------------------------- |
+| **WD Purple**           | 1–18 To  | 180            | 3 ans    | NVR Standard (1–8 baies)          |
+| **Seagate SkyHawk**     | 1–20 To  | 180            | 3 ans    | NVR Standard (1–8 baies)          |
+| **Toshiba S300**        | 4–18 To  | 180            | 3 ans    | NVR Budget                        |
+| **WD Purple Pro**       | 8–22 To  | 300            | 5 ans    | RAID 5/6, 8+ baies, analyse IA    |
+| **Seagate SkyHawk AI**  | 8–24 To  | 300–550        | 5 ans    | NVR IA, 16+ baies, analyse lourde |
+| **Seagate Exos X**      | 4–24 To  | 550            | 5 ans    | Entreprise, 24 baies+, 24/7 lourd |
+| **WD Ultrastar (Gold)** | 4–26 To  | 550            | 5 ans    | Entreprise, Synology/TrueNAS      |
+
+<Callout type="warning">
+
+**N'utilisez jamais :** Disques de bureau (WD Blue, Seagate Barracuda),
+disques NAS (WD Red, Seagate IronWolf) — pas conçus pour l'écriture
+séquentielle 24/7. **Les disques de surveillance ont un firmware optimisé pour
+les flux d'écriture constants.**
+
+</Callout>
+
+### Points Doux de Capacité (Tarifs 2026)
+
+| Capacité     | $/To (env.) | Meilleure Utilisation                                      |
+| ------------ | ----------- | ---------------------------------------------------------- |
+| **8 To**     | 18–20$      | Point doux pour RAID 5/6 4–8 baies                         |
+| **10 To**    | 17–19$      | Meilleur $/To pour RAID 6 6+ baies                         |
+| **12 To**    | 18–20$      | 8+ baies, moins de disques = moins de chaleur/consommation |
+| **14–16 To** | 19–22$      | 12+ baies, capacité max par emplacement                    |
+| **18–22 To** | 22–26$      | 16+ baies, entreprise uniquement                           |
+
+**Recommandation :** **8 To ou 10 To** pour la plupart des NVR 4–8 baies. **12–14 To** pour RAID 6 8+ baies.
+
+---
+
+## Feuille de Dimensionnement Complète
+
+### Étape 1 : Listez Vos Caméras
+
+| Cam       | Emplacement     | Rés   | Codec | FPS | Débit Est. (Mbps) |
+| --------- | --------------- | ----- | ----- | --- | ----------------- |
+| 1         | Porte d'Entrée  | 4K    | H.265 | 15  | 4                 |
+| 2         | Allée           | 4K    | H.265 | 15  | 4                 |
+| 3         | Arrière-cour    | 2K    | H.265 | 15  | 3                 |
+| 4         | Portail Latéral | 2K    | H.265 | 15  | 3                 |
+| 5         | Garage          | 1080p | H.265 | 30  | 2                 |
+| **Total** |                 |       |       |     | **16 Mbps**       |
+
+### Étape 2 : Calculez les Go par Jour
+
+`Total_Mbps × 108 = Go/jour` (H.265)
+`16 × 108 = 1 728 Go/jour ≈ 1.7 To/jour`
+
+### Étape 3 : Appliquez la Rétention et le Facteur de Mouvement
+
+| Rétention                    | Facteur Mouvement | Calcul          | Requis      |
+| ---------------------------- | ----------------- | --------------- | ----------- |
+| **7 jours continu**          | 1.0               | 1.7 × 7         | **11.9 To** |
+| **14 jours continu**         | 1.0               | 1.7 × 14        | **23.8 To** |
+| **30 jours (mouvement 50%)** | 0.5               | 1.7 × 30 × 0.5  | **25.5 To** |
+| **90 jours (par niveaux)**   | 0.35 moy.         | 1.7 × 90 × 0.35 | **53.5 To** |
+
+### Étape 4 : Ajoutez la Surcharge RAID
+
+| RAID                 | Utilisable % | To Bruts Nécessaires (pour 25.5 To utilisables) |
+| -------------------- | ------------ | ----------------------------------------------- |
+| RAID 1 (2 baies)     | 50%          | **51 To** → 6× 10To                             |
+| RAID 5 (4 baies)     | 75%          | **34 To** → 4× 10To                             |
+| **RAID 6 (6 baies)** | **60%**      | **42.5 To** → **5× 10To ou 4× 12To**            |
+| RAID 10 (4 baies)    | 50%          | 51 To → 6× 10To                                 |
+
+### Étape 5 : Choisissez les Disques
+
+**Pour cet exemple (25.5 To utilisables, RAID 6) :**
+
+- **Option A :** 5× 10 To SkyHawk = 50 To bruts → 30 To utilisables ✓ (900$)
+- **Option B :** 4× 12 To SkyHawk = 48 To bruts → 28.8 To utilisables ✓ (1 000$)
+- **Option C :** 6× 8 To SkyHawk = 48 To bruts → 28.8 To utilisables ✓ (960$)
+
+---
+
+## Bande Passante vs Stockage (N'Oubliez Pas le Débit Montant)
+
+Si vous sauvegardez dans le cloud (Wasabi/B2/R2) :
+
+| Caméras | Rés | Flux Principal Mbps | Cloud 30 Jours To | Trafic Mensuel Sortant (Wasabi)  |
+| ------- | --- | ------------------- | ----------------- | -------------------------------- |
+| 8       | 4K  | 32                  | 10 To             | **Gratuit** (Wasabi) / 100$ (B2) |
+| 16      | 4K  | 64                  | 20 To             | Gratuit / 200$                   |
+| 8       | 2K  | 16                  | 5 To              | Gratuit / 50$                    |
+
+**Règle :** Stockage local = principal. Cloud = sauvegarde (événements uniquement = 5–10% du local).
+
+---
+
+## Notes Spécifiques aux NVR
+
+| NVR                                | Disques Max | RAID              | Caméras Max | Remarques Spéciales                                     |
+| ---------------------------------- | ----------- | ----------------- | ----------- | ------------------------------------------------------- |
+| **Reolink RLN8/16/36**             | 1/2/4       | Non/RAID 1/RAID 5 | 8/16/36     | Pas de RAID 6 ; utilisez 2 baies pour RAID 1 uniquement |
+| **Amcrest NV4108/4116**            | 2           | RAID 1            | 8/16        | Simple, fiable                                          |
+| **Dahua série NVR5/6**             | 2–8         | RAID 1/5/10       | 16–64       | RAID 6 sur 8 baies+                                     |
+| **Hikvision série DS-77/96**       | 4–16        | RAID 1/5/6/10     | 16–128      | Meilleur support RAID                                   |
+| **UniFi UNVR / UNVR Pro**          | 4 / 7       | RAID 1/5/6/10     | 50 / 100+   | Meilleure UI, Protect AI                                |
+| **Synology DVA/DS**                | 2–12        | SHR/RAID 1/5/6/10 | 40–80+      | Stockage par niveaux, applications                      |
+| **Frigate/Blue Iris personnalisé** | Illimité    | ZFS/RAID-Z        | 16–64+      | Contrôle total, DIY                                     |
+
+---
+
+## Carte de Référence Rapide (Imprimez Ceci)
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│              CALCUL RAPIDE STOCKAGE CCTV                    │
+├─────────────────────────────────────────────────────────────┤
+│  GO/JOUR = CAMÉRAS × MBPS × 108          (H.265)           │
+│  GO/JOUR = CAMÉRAS × MBPS × 216          (H.264)           │
+├─────────────────────────────────────────────────────────────┤
+│  4K @ 15fps H.265 ≈ 4 Mbps  │  2K @ 15fps H.265 ≈ 3 Mbps  │
+│  1080p @ 30fps H.265 ≈ 2 Mbps│  1080p @ 30fps H.264 ≈ 5 Mbps│
+├─────────────────────────────────────────────────────────────┤
+│  TO POUR N JOURS = GO/JOUR × N / 1000                       │
+│  MOUVEMENT UNIQ. ≈ ×0.3 (calme) à ×0.75 (animé)            │
+│  RAID 1 = 50%  │  RAID 5 = 75% (3 disques)  │  RAID 6 = 60%│
+├─────────────────────────────────────────────────────────────┤
+│  DISQUES : WD Purple / Seagate SkyHawk (surveillance UNIQ.) │
+│  8To/10To = point doux  │  RAID 6 pour 4K/30+ jours        │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Guides Connexes
+
+- [Stockage Cloud vs Stockage Local pour Caméras de Sécurité](/blog/cloud-storage-vs-local-storage-security-cameras) — Rétention par niveaux, Wasabi/B2, chiffrement
+- [Meilleurs Systèmes de Caméras de Sécurité pour Petites Entreprises](/blog/best-small-business-security-camera-systems) — Dimensionnement NVR, RAID, sélection des disques
+- [Installation DIY de Caméras de Sécurité : Guide Complet](/blog/diy-security-camera-installation-complete-guide) — Câble, montage, configuration
+- [Passage de Câbles Caméra PoE : Installation DIY](/blog/poe-camera-cable-running-diy-installation) — Budget d'alimentation pour switches PoE
+- [Problèmes et Solutions Courants des Caméras de Sécurité](/blog/common-security-camera-problems-fixes) — Trous d'enregistrement, pannes HDD
+
+---
+
+_Dernière mise à jour : juillet 2026. Les prix et les modèles de disques changent — vérifiez les spécifications actuelles avant d'acheter. Le H.265/HEVC est libre de droits pour l'encodage matériel depuis 2024._

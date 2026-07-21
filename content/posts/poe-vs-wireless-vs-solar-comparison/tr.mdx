@@ -1,0 +1,436 @@
+---
+title: "PoE vs Kablosuz vs Güneş Enerjisi: Tam Maliyet ve Güvenilirlik Karşılaştırması"
+description: "Hangi kamera güç yöntemi daha iyi? PoE, WiFi ve güneş enerjili kameraların kurulum maliyetini, güvenilirliğini ve uzun vadeli bakımını karşılaştırıyoruz."
+publishedAt: 2026-07-25T00:00:00.000Z
+updatedAt: 2026-07-25T00:00:00.000Z
+slug: "poe-vs-wireless-vs-solar-comparison"
+author: "CCTV Name Author"
+tags: ["installation", "buying-guide", "comparison"]
+postType: "howto"
+howTo:
+  - name: "Güç Seçeneklerini Karşılaştırın"
+    text: "Kurulum zorluğu, güvenilirlik ve mülkünüz için 3 yıllık toplam maliyet açısından PoE, WiFi ve güneş enerjisini değerlendirin."
+  - name: "Ortamınıza Uyarlayın"
+    text: "Mülk tipi, kablolama erişimi ve teknik rahatlığa göre doğru güç yöntemini seçmek için senaryo matrisini kullanın."
+  - name: "Altyapınızı Planlayın"
+    text: "Gerekli switch, kablo, pil veya güneş paneli sayısını hesaplayın. Yeni kablolama gerekiyorsa işçilik maliyetlerini göz önünde bulundurun."
+faq:
+  - question: "Hangisi daha güvenilir: PoE, WiFi veya güneş enerjisi?"
+    answer: "PoE en güvenilir olanıdır — tek bir kabloda kesintisiz güç ve veri. Güneş enerjisi ikinci sıradadır (hava durumuna bağlı ancak kablo yok). WiFi, parazit ve pil değişimi nedeniyle en az güvenilir olanıdır. Kritik kapsama için PoE'yi, uzak konumlar için güneş enerjisini, kiralık evler için WiFi'yi seçin."
+  - question: "Her güç yönteminin 3 yıllık maliyeti nedir?"
+    answer: "PoE: $150-300/kamera (kablo, switch, işçilik). Kablosuz: $100-400 (her 6-12 ayda bir pil, olası genişleticiler). Güneş enerjisi: $200-500 (panel, pil, montaj). PoE en yüksek başlangıç maliyetine ancak en düşük sürekli maliyete sahiptir."
+  - question: "Tek bir sistemde güç yöntemlerini karıştırabilir miyim?"
+    answer: "Evet. Çoğu NVR karma kamera türlerini destekler. Ana kapsama için PoE, müştemilatlar için güneş enerjisi ve kablolamanın pratik olmadığı yerler için WiFi kullanın. Uyumlu modeller için NVR Kurulum Kılavuzumuza bakın."
+  - question: "WiFi kamera bant genişliği ağımı etkiler mi?"
+    answer: "Evet — her WiFi kamera ev ağınıza 2-6 Mbps sürekli trafik ekler ve bu da oyun/akış performansını düşürebilir. PoE kameralar ayrı bir switch üzerinde çalışır ve WiFi ağınızı etkilemez. 4+ kamera için özel bir PoE switch şiddetle önerilir."
+---
+
+<Callout type="info" title="Güç Yöntemi İlk Karardır">
+
+Herhangi bir kamera satın almadan önce, nasıl güç alacağına karar verin. Bu seçim
+kurulum karmaşıklığını, sürekli bakımı ve sistem güvenilirliğini belirler. PoE,
+performans ve güvenilirlikte kazanır; Kablosuz, basitlikte kazanır; Güneş
+enerjisi, bağımsızlıkta kazanır. Gerektiğinde karıştırın — PoE kablolama
+detayları için CCTV Kablo Kılavuzumuza bakın.
+
+</Callout>
+
+## Tüm Sisteminizi Tanımlayan Güç Sorusu
+
+Garajınızda durup bir kabloyu ölçüyorsunuz ve aniden merak ediyorsunuz: bu kamera nasıl güç alacak?
+
+Bir an için çözünürlük, lens ve depolamayı unutun. Seçtiğiniz güç sağlama yöntemi — Power over Ethernet (PoE), kablosuz/WiFi pil veya güneş enerjisi — aşağıdakileri belirleyen temel karardır:
+
+- **Kurulum zorluğu**: Kendiniz yapabilir misiniz yoksa bir elektrikçiye mi ihtiyacınız var?
+- **Sürekli bakım**: Pilleri ne sıklıkta değiştirmeniz veya panellerden kar temizlemeniz gerekecek?
+- **Sistem güvenilirliği**: Elektrik kesintilerinde kameralar çevrimiçi kalacak mı?
+- **Toplam sahip olma maliyeti**: İlk donanım vs. tekrarlayan pil alımları
+
+Bu kılavuz, PoE, WiFi ve güneş enerjili kameraları yan yana karşılaştırır — yalnızca kameraların kendisini değil, her birinin gerektirdiği tüm altyapıyı — böylece mülkünüze ve bütçenize uygun bir sistem oluşturabilirsiniz.
+
+## PoE (Power over Ethernet) Nasıl Çalışır?
+
+Bir PoE kamera, PoE özellikli bir ağ switch'inden veya enjektöründen tek bir Ethernet kablosu (Cat5e/Cat6) üzerinden hem güç hem de veri alır. Switch, PoE standardına (802.3af/at/bt) bağlı olarak 15-90W sağlar ve kablo hem elektriği hem de videoyu taşır.
+
+**Gerekli altyapı:**
+
+- PoE özellikli ağ switch'i (çok kameralı sistemler için 8+ bağlantı noktası)
+- Switch'ten her kamera konumuna Ethernet kablosu (Cat6 önerilir)
+- Switch için elektrik prizi (UPS yedeklemesini düşünün)
+- İsteğe bağlı: Switch'inizde PoE yoksa PoE enjektörleri
+
+**Tipik toplam maliyet (kamera başına):**
+
+| Öğe                        | Fiyat Aralığı | Notlar                                           |
+| -------------------------- | ------------- | ------------------------------------------------ |
+| Cat6 kablo (30 m)          | $15-30        | Katı bakır, açıktaysa dış mekan sınıfı           |
+| PoE switch (bağlantı noktası) | $15-50      | 8/16/32 bağlantı noktalı switch'te bağlantı noktası başına maliyet |
+| İşçilik                    | $0-150        | DIY vs. profesyonel kurulum                      |
+| **Toplam (donanım)**       | **$30-80**    | Switch maliyeti zaten varsa hariç                |
+
+**Avantajlar:**
+
+- ✅ **Her zaman açık** — değiştirilecek pil yok
+- ✅ **Yüksek bant genişliği** — 4K video, PTZ kontrolü, gecikmesiz ses
+- ✅ **Profesyonel görünüm** — tek kablo, görünür güç adaptörü yok
+- ✅ **Ağ izolasyonu** — kameralar WiFi'ınızı tıkamaz
+- ✅ **Dalgalanma koruması** — switch'te kolayca korunur
+
+**Dezavantajlar:**
+
+- ❌ **Kablo yönlendirmesi gerekli** — her kameraya Ethernet çekilmelidir
+- ❌ **Daha az esnek** — kamerayı taşımak yeni kablo çekmek anlamına gelir
+- ❌ **Switch güç tüketimi** — 16 bağlantı noktalı PoE switch 200-300W tüketebilir
+
+**En iyi:** Yeni inşaatlar, tam ev kurulumu, ticari mülkler, kur-unut güvenilirliği isteyen herkes.
+
+## Kablosuz Sistem (WiFi/Pil) Nasıl Çalışır?
+
+Kablosuz kameralar ev WiFi ağınıza bağlanır ve ya standart bir priz kullanır (fişli) ya da şarj edilebilir pillerle çalışır (pille çalışan). Ethernet kablosu gerekmez.
+
+**Gerekli altyapı:**
+
+- Kamera konumunda güçlü WiFi sinyali (menzil için 2.4GHz, hız için 5GHz)
+- Elektrik prizi (fişli modeller) veya pil değiştirme takvimi (pilli modeller)
+- İsteğe bağlı: Sinyal zayıfsa WiFi genişletici veya mesh düğümü
+
+**Tipik toplam maliyet (kamera başına):**
+
+| Öğe                     | Fiyat Aralığı | Notlar                                           |
+| ----------------------- | ------------- | ------------------------------------------------ |
+| Kamera                  | $80-300       | PoE ile özellik eşitliği için daha yüksek        |
+| Piller (yıllık)         | $20-100       | Şarj edilebilir paketler veya tek kullanımlık AA  |
+| WiFi genişletici        | $50-150       | Kamera konumunda sinyal yetersizse               |
+| **Toplam (3 yıl)**      | **$140-550**  | Zaman içinde pil değişimlerini içerir            |
+
+**Avantajlar:**
+
+- ✅ **Kolay DIY kurulum** — monte edin ve yapılandırın, kablo çekmeye gerek yok
+- ✅ **Esnek yerleştirme** — kameraları istediğiniz zaman taşıyın
+- ✅ **Yeni kablolama yok** — kiralık evler veya çatı katı/sürünme alanı olmayan evler için ideal
+- ✅ **Daha düşük başlangıç donanım maliyeti** — toplu switch veya kablo alımı yok
+
+**Dezavantajlar:**
+
+- ❌ **Pil bakımı** — 6-12 aylık değiştirme döngüleri; bazı modeller aylık değiştirme gerektirir
+- ❌ **WiFi paraziti** — komşu ağları, mikrodalgalar, metal nesneler sinyali bozar
+- ❌ **Bant genişliği rekabeti** — kamera trafiği ev ağınızı paylaşır
+- ❌ **2.4GHz sınırlamaları** — daha dar kanallar, daha fazla tıkanıklık; 5GHz o kadar uzağa gitmez
+- ❌ **Hava sınırlamaları** — soğukta pil ömrü düşer; lityum piller daha pahalıdır
+
+**En iyi:** Kiracılar, apartman daireleri, hızlı DIY kurulumlar, kablo çekmeden mevcut sistemlere kamera ekleme.
+
+## Güneş Enerjisi Nasıl Çalışır?
+
+Güneş enerjili kameralar, küçük bir güneş panelini (10-30W), şarj edilebilir bir pili (genellikle lityum 18650) ve bir WiFi veya pil için optimize edilmiş kamerayı birleştirir. Panel gün boyunca pili yavaşça şarj eder; pil gece kamerayı çalıştırır.
+
+**Gerekli altyapı:**
+
+- Tam veya kısmi güneş alan bir yere monte edilmiş güneş paneli (kuzey yarımkürede güneye bakan)
+- Şarj edilebilir pil (dahil veya ayrı)
+- Panel için montaj donanımı (direk, duvar, çatı)
+- İsteğe bağlı: Kış/düşük güneş koşulları için daha büyük panel veya ikinci pil
+
+**Tipik toplam maliyet (kamera başına):**
+
+| Öğe                          | Fiyat Aralığı | Notlar                                           |
+| ---------------------------- | ------------- | ------------------------------------------------ |
+| Güneş paneli + kit           | $100-250      | Panel, pil, kablolar, montaj dahil               |
+| Kamera                       | $100-300      | Güneş enerjisi için optimize edilmiş, pil verimli modeller |
+| Montaj donanımı              | $30-100       | Direk, braketler, su geçirmez kutular            |
+| **Toplam (donanım)**         | **$230-650**  | Kamera başına, her şey dahil                     |
+
+**Avantajlar:**
+
+- ✅ **Gerçekten kablosuz** — AC güç yok, Ethernet yok, hendek yok
+- ✅ **Çevre dostu** — yenilenebilir enerji, şebekeden minimum tüketim
+- ✅ **Uzak konumlar** — müştemilatlar, kapılar, kablolamanın pratik olmadığı çevre bölgeler
+- ✅ **Şebekeden bağımsız** — hücresel geri bağlantı veya yerel WiFi ile çalışır
+
+**Dezavantajlar:**
+
+- ❌ **Hava durumuna bağlı** — bulutlu günler şarjı azaltır; kış güneş açıları daha kısadır
+- ❌ **Pil bozulması** — lityum piller 2-3 yıl sonra kapasite kaybeder
+- ❌ **Panel temizliği** — toz, kar, polen çıktıyı azaltır
+- ❌ **Sınırlı gece gücü** — panel/pil yerel hava koşullarına göre boyutlandırılmalıdır
+- ❌ **Daha yüksek başlangıç maliyeti** — $200-600/kamera vs. kablolu eşdeğerleri için $100-200
+
+**En iyi:** Uzak kapılar, bahçe alanları, şebekeden bağımsız kabinler, hendek kazmanın imkansız veya aşırı pahalı olduğu mülkler.
+
+## Yan Yana Karşılaştırma: PoE vs WiFi vs Güneş Enerjisi
+
+| Faktör                        | PoE                       | Kablosuz (WiFi)         | Güneş Enerjisi                                   |
+| ----------------------------- | ------------------------- | ----------------------- | ------------------------------------------------ |
+| **Kurulum zorluğu**           | Orta ila yüksek           | Düşük (DIY 30 dk)       | Orta (panel montajı)                             |
+| **Güvenilirlik**              | Çok yüksek                | Orta                    | Yüksek (hava durumuna bağlı)                     |
+| **Güç kaynağı**               | Ağ switch'i               | Piller veya priz        | Güneş + pil                                      |
+| **Bant genişliği**            | 1 Gbps+ özel              | WiFi paylaşımlı         | WiFi paylaşımlı                                  |
+| **Bakım**                     | Çok düşük                 | Yüksek (piller)         | Orta (panel/pil)                                 |
+| **Başlangıç maliyeti**        | $30-80/kamera + switch    | $80-300/kamera          | $230-650/kamera                                  |
+| **3 yıllık TCO**              | $30-80 + elektrik         | $140-550 (piller)       | $230-650 + pil değişimi (~$50 her 2-3 yılda)    |
+| **En iyi ortam**              | Kablolamalı mülkler       | Kiralık, apartman       | Güneşli uzak konumlar                             |
+
+## Ortama Göre Güvenilirlik Sıralaması
+
+Farklı mülklerin farklı kısıtlamaları vardır. Yaygın senaryolarda her yöntemin nasıl performans gösterdiği:
+
+### Çatı katı/sürünme alanı erişimi olan şehir evi
+
+**PoE:** Mükemmel. Çatı katı veya sürünme alanından kablo çekmek basittir. En iyi sonuçlar için Cat6 katı bakır kullanın.
+**Kablosuz:** Yönlendiriciniz merkezi bir konumdaysa ve ölü bölgeleriniz yoksa iyidir. Komşulardan biraz parazit bekleyin.
+**Güneş enerjisi:** Güneye maruz kalma durumunuz varsa ön/arka bahçe kameraları için iyidir. Yoğun ağaç gölgesi altında daha az güvenilir.
+
+### Müştemilatlı büyük mülk
+
+**PoE:** Ana ev ve erişilebilir garaj/atölye için mükemmel. Uzaktaki müştemilatlara hendek kazmak pahalıdır ($2-5/fit).
+**Kablosuz:** Özel mesh düğümleri kurulmadıkça müştemilatlar için kötüdür. Sinyal duvarlar/mesafe boyunca hızla düşer.
+**Güneş enerjisi:** Ethernet kurulumunun $1,000+ tutacağı uzak barakalar, kapılar veya uzak çevre için en iyisi.
+
+### Apartman dairesi veya kiralık (kablolama yok)
+
+**PoE:** Ev sahibi kablo çekmeye izin vermedikçe mümkün değil.
+**Kablosuz:** En iyi seçim — pilli veya fişli kameralar yapıştırıcı veya vidalarla monte edilir; kalıcı kablolama yok.
+**Güneş enerjisi:** Balkonda/verandada güneş varsa mümkün, ancak panel ev sahibi tarafından görülebilir.
+
+### Şebekeden bağımsız kabin veya çiftlik
+
+**PoE:** Yalnızca güneş enerjisiyle çalışan PoE switch'iniz varsa ve Ethernet kablosu kısaysa (<50 m).
+**Kablosuz:** Yerel ağ gerektirir; güç varsa mesh veya noktadan noktaya çalışabilir.
+**Güneş enerjisi:** Ana seçim — uzaktan izleme için güneş enerjili NVR veya hücresel yedekleme ile birleştirin.
+
+## Kullanım Matrisi: Hangi Yöntemi Seçmelisiniz?
+
+**PoE'yi seçin eğer:**
+
+- Tam bir kurulum yapıyorsanız (6+ kamera)
+- Maksimum güvenilirlik ve performans istiyorsanız
+- Kablo çekmek için çatı katına, sürünme alanına veya kanala erişiminiz varsa
+- Mülkte 3+ yıl kalmayı planlıyorsanız
+- Yüksek bant genişliği gerektiren 4K veya PTZ kameralara ihtiyacınız varsa
+- Sonsuza kadar pil bakımından kaçınmak istiyorsanız
+
+**Kablosuz (WiFi) seçin eğer:**
+
+- Kiracıysanız veya kablo çekemiyorsanız
+- Sadece 1-3 kameraya ihtiyacınız varsa
+- Kamera istediğiniz her yerde mükemmel WiFi kapsama alanınız varsa
+- Kameraları sık sık taşıyorsanız (örn. geçici inşaat izleme)
+- Başlangıç basitliği uzun vadeli pil maliyetlerinden ağır basıyorsa
+
+**Güneş enerjisini seçin eğer:**
+
+- Kablo çekmenin inanılmaz derecede pahalı olduğu bir yerde kapsama ihtiyacınız varsa
+- Şebekeden bağımsız veya enerji bağımsızlığı istiyorsanız
+- Engelsiz güneye bakan güneşe maruz kalma durumunuz varsa
+- Periyodik pil değişimini (2-3 yılda bir) kabul ediyorsanız
+- Çevre dostu kuruluma öncelik veriyorsanız
+
+**Hibrit yaklaşım (birçok kişi için önerilir):**
+
+- Ana ev: Tüm erişilebilir alanlar için PoE
+- Uzaktaki yapılar: Güneş enerjili kameralar
+- Kiralık birim veya geçici kapsama: Kablosuz
+
+Modern NVR'ler karma kamera türlerini destekler; hem PoE hem de WiFi akışlarını kabul eden bir kaydedici seçmek için NVR vs DVR karşılaştırmamıza bakın.
+
+## Uzun Vadeli Maliyet Dökümü (3 yıllık ufuk)
+
+8 kameralı bir sistem için 3 yılda toplam sahip olma maliyetini karşılaştıralım:
+
+| Yöntem               | Donanım (kameralar) | Altyapı                          | Bakım                          | Toplam (3 yıl)    |
+| -------------------- | ------------------- | -------------------------------- | ------------------------------ | ----------------- |
+| PoE (8x 4MP)         | $600-1,200          | $300-500 (switch + kablo)        | $0-50 (elektrik)               | **$900-1,750**    |
+| Kablosuz (8x 4MP)    | $600-1,200          | $100-300 (genişleticiler)        | $200-800 (piller)              | **$900-2,300**    |
+| Güneş (8x 4MP)       | $800-1,600          | $800-2,000 (paneller + montaj)   | $200 (pil değişimi)            | **$1,800-3,800**  |
+
+<Callout type="warning" title="Kablosuzun Gizli Maliyetleri">
+
+Pil değişimleri hızla birikir. 12 ay dayanan 50$'lık bir lityum şarj edilebilir
+paket, kamera başına 3 yılda 150$'a mal olur. 8 kamera için, bu sadece piller
+için 1,200$'dır — genellikle kameranın kendi maliyetini aşar. Kararınızda bunu
+göz önünde bulundurun.
+
+</Callout>
+
+<Callout type="tip" title="PoE'nin TCO'su Ölçekte Kazanır">
+
+6+ kamera için PoE, 3 yıllık toplam sahip olma maliyetinde neredeyse her zaman
+kazanır. Başlangıç switch'i (16 bağlantı noktası için $150-300) ve kablo
+($15-30/kamera) tek seferlik maliyetlerdir ve bakım neredeyse sıfırdır.
+Kablosuz ile karşılaştırın, piller 3 yılda kamera başına $300-800 tekrarlayan
+bir gidere dönüşür. Değerli seçenekler için en iyi PoE kameralarımıza bakın.
+
+</Callout>
+
+## Her Biri İçin Hangi Altyapı Gerekiyor?
+
+### PoE Altyapı Kontrol Listesi
+
+- [ ] PoE ağ switch'i (Gigabit, PoE olmayan switch + enjektörler de çalışır ancak daha dağınıktır)
+- [ ] Toplu Cat6 kablo (katı bakır, açıktaysa dış mekan sınıfı)
+- [ ] RJ45 konektörler ve sıkma aleti (küçük işler için önceden sonlandırılmış kablo)
+- [ ] Dış/yer altı geçişleri için kanal (PVC Schedule 40)
+- [ ] Dış kablolar için bina giriş noktasında dalgalanma koruyucusu (Kablo Kılavuzuna bakın)
+- [ ] Switch ve NVR için UPS yedeklemesi (isteğe bağlı ancak önerilir)
+
+### Kablosuz Altyapı Kontrol Listesi
+
+- [ ] Her kamera konumunda güçlü WiFi sinyali (kontrol etmek için WiFi analizör uygulaması kullanın)
+- [ ] Fişli kameralar için ek prizler (veya pilli modeller için yedek piller)
+- [ ] İsteğe bağlı: Kamerada sinyal <-70 dBm ise WiFi mesh sistemi veya genişletici
+- [ ] Yedek şarj edilebilir piller ve şarj cihazı (pilli kamera kullanıyorsanız)
+- [ ] Pil değiştirme tarihlerini etiketleyin ve takip edin
+
+### Güneş Enerjisi Altyapı Kontrol Listesi
+
+- [ ] Güneş panelleri (kamera başına minimum 10W; 7/24 kayıt için 20W+)
+- [ ] Lityum şarj edilebilir pil (kamera tüketimiyle eşleşen mAh kapasitesi)
+- [ ] Su geçirmez bağlantı kutusu ve dış mekan sınıfı kablolar
+- [ ] Montaj donanımı (güneş kolu, direk braketleri, duvar plakası)
+- [ ] Panel temizleme programı (minimum üç ayda bir)
+- [ ] Pil değiştirme planı (her 2-3 yılda bir)
+
+<Callout type="info" title="Panel Boyutlandırması Önemlidir">
+
+Kış güneş açılarını, bulutlu günleri ve pil yaşlanmasını telafi etmek için güneş
+panelinizi kamera günlük tüketiminin %30-50 üzerinde boyutlandırın. Günde 5 Wh
+tüketen bir kamera, güvenilir 3 günlük otonomi için 10-15W panel ve 20-30 Wh pil
+ile eşleştirilmelidir.
+
+</Callout>
+
+## Bir Sistemde Güç Yöntemleri Nasıl Karıştırılır
+
+Tüm mülkünüz için tek bir güç yöntemiyle sınırlı değilsiniz. Çoğu modern NVR, PoE, WiFi ve hatta bulut kameralarını aynı anda kabul eder.
+
+**Tipik hibrit yapılandırma:**
+
+| Bölge                      | Güç Yöntemi   | Neden                                            |
+| -------------------------- | ------------- | ------------------------------------------------ |
+| Ana ev dışı                | PoE           | Güvenilir, yüksek bant genişliği, pil yok        |
+| Ayrı garaj                 | Güneş         | Hendek yok; 50 m kablo pahalı olurdu             |
+| Arka bahçe                 | Kablosuz      | Kolay konumlandırma, çit üzerinden kablo çekmeye gerek yok |
+| Kapı/mülk sonu              | Güneş         | Güç yok, evden 60 m uzakta                       |
+
+**Nasıl karıştırılır:**
+
+1. PoE ve WiFi kamera eklemeyi destekleyen bir NVR seçin (çoğu 2024+ modeli destekler)
+2. Önce akıllı telefon uygulaması üzerinden WiFi kameraları yapılandırın, ardından eşleştirme yoluyla NVR'ye ekleyin
+3. Ağınızın WiFi kamera bant genişliğini kaldırabildiğinden emin olun (mümkünse ayrı SSID kullanın)
+4. Bakım planlaması için kamera başına güç kaynağını belgeleyin
+
+PoE ve WiFi kamera entegrasyonu için adım adım talimatlar için NVR Kurulum Kılavuzumuza bakın.
+
+## Sıkça Sorulan Sorular
+
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>
+      PoE switch yerine PoE enjektörü kullanabilir miyim?
+    </AccordionTrigger>
+    <AccordionContent>
+
+      Evet, küçük kurulumlar için (1-4 kamera). Bir PoE enjektörü, PoE olmayan
+      switch'inizle kamera arasına bağlanarak Ethernet kablosuna güç ekler. Ancak
+      her enjektör kendi elektrik prizini gerektirir ve kablo karmaşası yaratır.
+      4+ kamera için tek bir PoE switch daha temiz ve güvenilirdir. Ayrıntılı
+      kablolama yardımı için CCTV Kablo Kılavuzumuza bakın.
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>
+      WiFi kameralar 5GHz ağlarda çalışır mı?
+    </AccordionTrigger>
+    <AccordionContent>
+
+      Birçok yeni WiFi kamera, daha hızlı hızlar ve daha az parazit sunan ancak
+      daha kısa menzile sahip (2.4GHz'in yaklaşık yarısı) 5GHz'yi destekler.
+      Yönlendiricinizden 10-15 m uzaklıktaki kameralar için 5GHz harikadır. Uzak
+      kameralar için 2.4GHz, duvarlardan daha iyi nüfuz etme ve daha uzun menzil
+      sağlar. Çoğu kamera bu nedenle varsayılan olarak 2.4GHz kullanır. Kamera
+      konumunda güçlü bir 5GHz sinyaliniz varsa, daha iyi video kalitesi için
+      kullanın.
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>
+      Güneş enerjili kamera pilleri ne kadar dayanır?
+    </AccordionTrigger>
+    <AccordionContent>
+
+      Güneş enerjili kameralardaki lityum-iyon piller, kapasite %80'in altına
+      düşmeden önce genellikle 2-3 yıl dayanır. Her birkaç yılda bir pil değişimi
+      için $30-80 harcamayı bekleyin. Güneş panelinin kendisi ara sıra temizlikle
+      10+ yıl dayanır. Panelinizi ve pilinizi yerel ikliminize göre
+      boyutlandırın — uzun kışlar veya sık bulutlu bölgeler daha büyük piller
+      gerektirir.
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>
+      PoE kameralar elektrik kesintisinde çalışır mı?
+    </AccordionTrigger>
+    <AccordionContent>
+
+      Yalnızca PoE switch'iniz ve ağ ekipmanınız bir UPS'ye (kesintisiz güç
+      kaynağı) bağlıysa. 600VA'lık bir UPS, yüke bağlı olarak 16 bağlantı
+      noktalı bir PoE switch ve NVR'yi 30-60 dakika çalıştırabilir. UPS
+      yedeklemesi olmadan, PoE kameralar herhangi bir kablolu ekipman gibi
+      kesintilerde kapanır. Gerçek kesinti dayanıklılığı için UPS'yi internet
+      bağlantınız için hücresel yedekleme ile birleştirin. NVR seçimi hakkında
+      daha fazla bilgi için çözünürlük kılavuzumuza bakın.
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>
+      Yeni başlayanlar için en iyi güç yöntemi hangisidir?
+    </AccordionTrigger>
+    <AccordionContent>
+
+      İlk kameranız için fişli bir WiFi modeliyle başlayın — kablo çekmeye gerek
+      yok, uzun vadeli pil yönetimi yok ve farklı konumları test etmek için
+      taşıyabilirsiniz. Kalıcı kapsama alanının nerede olması gerektiğini
+      öğrendiğinizde, güvenilirlik için PoE'ye dönüştürün. İdeal kamera
+      konumunuz iyi güneş alıyorsa ve yakınlarda priz yoksa güneş enerjisi
+      harikadır.
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Hava durumu PoE kablolarını etkiler mi?</AccordionTrigger>
+    <AccordionContent>
+
+      Evet. Herhangi bir açıkta kalan bölüm için dış mekan sınıfı kablo (CMX)
+      kullanın veya iç mekan kablosunu UV dereceli kanaldan geçirin. İç mekan PVC
+      kablo, güneşe maruz kaldığında 2-3 yılda bozulur. Yer altı geçişleri için,
+      45 cm derinliğe gömülü PVC Schedule 40 kanalda doğrudan gömme kablo
+      kullanın. Özellikler ve sonlandırma ipuçları için ayrıntılı kablo türü
+      karşılaştırmamıza bakın.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+## Sonuç: Gücü Önceliklerinizle Eşleştirin
+
+Her durum için tek bir en iyi güç yöntemi yoktur. Seçiminizi gerçek kısıtlamalarla eşleştirin:
+
+- **Önce güvenilirlik**: PoE, her zaman
+- **Önce basitlik**: Kablosuz (priz varsa pil yerine fişli)
+- **Önce bağımsızlık**: Güneş enerjisi + WiFi veya 4G geri bağlantı
+
+Unutmayın: güç yöntemi kamera kalitesinden bağımsızdır. Bu güç formatlarından herhangi birinde mükemmel 4K kameralar satın alabilirsiniz. Mülkünüze ve bakım isteğinize uygun güç altyapısını seçin, ardından izleme ihtiyaçlarınızı karşılayan çözünürlük, lens ve sensöre sahip bir kamera seçin. Çözünürlük yardımı için Kamera Çözünürlük Kılavuzumuza bakın; PoE kablolama için CCTV Kablo Kılavuzumuza bakın; belirli kamera önerileri için en iyi PoE kameralar ve en iyi kablosuz kameralar seçkilerimize bakın.
+
+İnşa etmeye hazır mısınız? Bir güç planıyla başlayın, ardından kameralarınızı buna göre seçin.
+
+{/* sitemap refreshed */}

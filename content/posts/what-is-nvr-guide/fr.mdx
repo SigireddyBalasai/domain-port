@@ -16,6 +16,8 @@ tags:
     "enregistrement vidéo",
   ]
 postType: "howto"
+speakable:
+  - "blog-content"
 howTo:
   - name: "Qu'est-ce qu'un NVR ?"
     text: "Un NVR (Enregistreur Vidéo Réseau) enregistre la vidéo des caméras IP via un réseau. Contrairement aux DVR, les NVR reçoivent des flux vidéo numériques déjà encodés, permettant des résolutions plus élevées, un câblage simplifié et des fonctions IA avancées."
@@ -49,13 +51,15 @@ Un NVR (Network Video Recorder) est un ordinateur spécialisé qui enregistre la
 En 2026, les NVR sont le choix standard pour la surveillance domestique et professionnelle. Ils prennent en charge les caméras 4K, 8MP et même 12MP, incluent des analyses IA intégrées qui filtrent les fausses alarmes et utilisent le Power over Ethernet (PoE) pour alimenter les caméras via un seul câble. Ce guide couvre tout ce que vous devez savoir.
 
 <Callout type="info" title="NVR en un coup d'œil">
-  Un NVR enregistre les flux vidéo numériques des caméras IP via un réseau. Il
-  stocke les séquences localement sur des disques durs (sans abonnement cloud),
-  prend en charge la résolution 4K+, permet le PoE pour une installation
-  monocâble et inclut l'analyse IA pour la détection des personnes, des
-  véhicules et des animaux. Contrairement aux DVR, le traitement vidéo
-  s'effectue dans la caméra — le NVR se contente de stocker et de gérer les flux
-  déjà encodés.
+
+Un NVR enregistre les flux vidéo numériques des caméras IP via un réseau. Il
+stocke les séquences localement sur des disques durs (sans abonnement cloud),
+prend en charge la résolution 4K+, permet le PoE pour une installation
+monocâble et inclut l'analyse IA pour la détection des personnes, des
+véhicules et des animaux. Contrairement aux DVR, le traitement vidéo
+s'effectue dans la caméra — le NVR se contente de stocker et de gérer les flux
+déjà encodés.
+
 </Callout>
 
 ## Comment fonctionnent les systèmes NVR
@@ -78,12 +82,14 @@ Un système NVR comprend trois composants principaux : les caméras IP, l'infras
 | Disque dur                          | Assure le stockage à long terme des vidéos enregistrées                    | WD Purple 6 To, Seagate SkyHawk 8 To     |
 
 <Callout type="tip" title="La différence clé avec le DVR">
-  Dans un système DVR, les caméras analogiques envoient des vidéos brutes non
-  traitées via un câble coaxial, et le DVR effectue tout l'encodage. Dans un
-  système NVR, les caméras IP effectuent leur propre encodage — c'est pourquoi
-  les NVR sont plus évolutifs (ajoutez de la puissance de traitement en
-  améliorant les caméras) et prennent en charge des résolutions plus élevées
-  nativement.
+
+Dans un système DVR, les caméras analogiques envoient des vidéos brutes non
+traitées via un câble coaxial, et le DVR effectue tout l'encodage. Dans un
+système NVR, les caméras IP effectuent leur propre encodage — c'est pourquoi
+les NVR sont plus évolutifs (ajoutez de la puissance de traitement en
+améliorant les caméras) et prennent en charge des résolutions plus élevées
+nativement.
+
 </Callout>
 
 ### Accès local vs à distance
@@ -112,11 +118,13 @@ Tous les NVR ne se valent pas. Voici comment les caractéristiques les plus impo
 | Fourchette de prix                | $80-200               | $200-500                        | $500-2000+                                  |
 
 <Callout type="note" title="Planification du nombre de canaux">
-  Achetez un NVR avec **2 fois** le nombre de canaux dont vous avez actuellement
-  besoin. Une installation de 4 caméras doit utiliser un NVR 8 canaux. Une
-  installation de 6 caméras doit utiliser un NVR 16 canaux. L'expansion arrive
-  toujours, et remplacer un NVR en cours d'utilisation est coûteux et
-  contraignant.
+
+Achetez un NVR avec **2 fois** le nombre de canaux dont vous avez actuellement
+besoin. Une installation de 4 caméras doit utiliser un NVR 8 canaux. Une
+installation de 6 caméras doit utiliser un NVR 16 canaux. L'expansion arrive
+toujours, et remplacer un NVR en cours d'utilisation est coûteux et
+contraignant.
+
 </Callout>
 
 ## Power over Ethernet (PoE) expliqué
@@ -135,11 +143,13 @@ Un commutateur PoE ou un NVR compatible PoE injecte une tension continue (géné
 | IEEE 802.3bt Type 4 (PoE++) | 100 W              | Caméras multi-capteurs, PTZ haute puissance        |
 
 <Callout type="warning" title="Piège du budget PoE">
-  Une caméra consommant 5 W le jour peut grimper à 12-15 W la nuit lorsque ses
-  LED IR s'activent. Faites toujours votre budget en utilisant la **consommation
-  électrique maximale** de la fiche technique de la caméra, puis ajoutez au
-  moins 20 à 30 % de marge. Un système de 8 caméras avec des caméras qui
-  culminent à 12 W chacune nécessite environ 125 W de budget PoE, pas 96 W.
+
+Une caméra consommant 5 W le jour peut grimper à 12-15 W la nuit lorsque ses
+LED IR s'activent. Faites toujours votre budget en utilisant la **consommation
+électrique maximale** de la fiche technique de la caméra, puis ajoutez au
+moins 20 à 30 % de marge. Un système de 8 caméras avec des caméras qui
+culminent à 12 W chacune nécessite environ 125 W de budget PoE, pas 96 W.
+
 </Callout>
 
 ### Types de câbles et limites de distance
@@ -192,11 +202,13 @@ Les NVR modernes sont livrés avec une IA embarquée qui traite la vidéo locale
 - **ANPR (Reconnaissance automatique de plaques d'immatriculation)** — lit et enregistre les plaques (modèles haut de gamme)
 
 <Callout type="info" title="L'IA réduit les fausses alarmes de 80 à 90 %">
-  La détection de mouvement traditionnelle se déclenche sur tout objet en
-  mouvement — arbres, ombres, phares, animaux. L'IA du NVR filtre ces éléments
-  et ne vous alerte que sur ce qui compte. La détection de personnes à elle
-  seule élimine la plupart des fausses alarmes et rend la révision des séquences
-  10 fois plus rapide.
+
+La détection de mouvement traditionnelle se déclenche sur tout objet en
+mouvement — arbres, ombres, phares, animaux. L'IA du NVR filtre ces éléments
+et ne vous alerte que sur ce qui compte. La détection de personnes à elle
+seule élimine la plupart des fausses alarmes et rend la révision des séquences
+10 fois plus rapide.
+
 </Callout>
 
 ### Évolutivité
@@ -242,11 +254,13 @@ C'est l'un des plus grands avantages par rapport aux caméras cloud (Ring, Nest,
 Pour une analyse détaillée, lisez notre [comparaison NVR vs DVR](/blog/nvr-vs-dvr).
 
 <Callout type="tip" title="Comparaison des coûts sur 5 ans : NVR vs Cloud">
-  Un système NVR 4K à 4 caméras coûte environ $600 à l'achat (NVR + 4 caméras +
-  disque 4 To) et $0 par mois. Un système Ring à 4 caméras coûte $500 à l'achat
-  plus $100/an d'abonnement — $1,000 sur 5 ans. Le système NVR offre une
-  résolution plus élevée, un stockage local, fonctionne hors ligne et coûte
-  moins cher à long terme.
+
+Un système NVR 4K à 4 caméras coûte environ $600 à l'achat (NVR + 4 caméras +
+disque 4 To) et $0 par mois. Un système Ring à 4 caméras coûte $500 à l'achat
+plus $100/an d'abonnement — $1,000 sur 5 ans. Le système NVR offre une
+résolution plus élevée, un stockage local, fonctionne hors ligne et coûte
+moins cher à long terme.
+
 </Callout>
 
 ## Comment choisir le bon NVR
@@ -295,13 +309,15 @@ Si vous voulez des alertes intelligentes qui fonctionnent réellement, la détec
 Additionnez la consommation électrique maximale de chaque caméra. Ajoutez 30 % de marge. Assurez-vous que le budget PoE du NVR dépasse ce nombre. Si vous utilisez un commutateur PoE séparé, le NVR lui-même n'a pas besoin de ports PoE.
 
 <Callout type="warning" title="Évitez ces erreurs">
-  - Acheter un DVR alors que vous prévoyez d'utiliser des caméras IP (ils sont
-  incompatibles) - Acheter un NVR 8 canaux pour 6 caméras sans marge de
-  croissance - Ignorer le budget PoE — les caméras qui redémarrent la nuit sont
-  inutilisables - Utiliser un disque dur de bureau standard au lieu d'un disque
-  conçu pour la surveillance - Supposer que « compatible ONVIF » signifie une
-  prise en charge complète des fonctionnalités — vérifiez toujours les profils
-  ONVIF
+
+- Acheter un DVR alors que vous prévoyez d'utiliser des caméras IP (ils sont
+
+incompatibles) - Acheter un NVR 8 canaux pour 6 caméras sans marge de
+croissance - Ignorer le budget PoE — les caméras qui redémarrent la nuit sont
+inutilisables - Utiliser un disque dur de bureau standard au lieu d'un disque
+conçu pour la surveillance - Supposer que « compatible ONVIF » signifie une
+prise en charge complète des fonctionnalités — vérifiez toujours les profils
+
 </Callout>
 
 ## Questions fréquentes
@@ -310,19 +326,23 @@ Additionnez la consommation électrique maximale de chaque caméra. Ajoutez 30 %
   <AccordionItem>
     <AccordionTrigger>Que signifie NVR ?</AccordionTrigger>
     <AccordionContent>
+
       NVR signifie Network Video Recorder (Enregistreur Vidéo Réseau). C'est un
       ordinateur spécialisé conçu pour enregistrer la vidéo des caméras IP via
       un réseau Ethernet. Contrairement à un ordinateur standard, un NVR
       comprend un logiciel de gestion vidéo dédié, des ports PoE pour alimenter
       les caméras, des processeurs IA intégrés et un matériel optimisé pour un
       enregistrement 24h/24 sans plantage ni dégradation des performances.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Quelle est la différence entre NVR et DVR ?
     </AccordionTrigger>
     <AccordionContent>
+
       La différence fondamentale réside dans l'endroit où le traitement vidéo
       s'effectue. Dans un système NVR, les caméras IP encodent elles-mêmes la
       vidéo et envoient des flux déjà numériques via Ethernet. Dans un système
@@ -332,13 +352,16 @@ Additionnez la consommation électrique maximale de chaque caméra. Ajoutez 30 %
       câblage plus simple (un seul Cat6 avec PoE) et évoluent plus facilement.
       Consultez notre [comparaison complète NVR vs DVR](/blog/nvr-vs-dvr) pour
       plus de détails.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Ai-je besoin d'Internet pour qu'un NVR enregistre ?
     </AccordionTrigger>
     <AccordionContent>
+
       Non. Les NVR enregistrent localement sur des disques durs internes et
       fonctionnent entièrement hors ligne. Vos caméras continuent d'enregistrer
       et votre NVR continue de stocker les séquences, qu'Internet fonctionne ou
@@ -347,13 +370,16 @@ Additionnez la consommation électrique maximale de chaque caméra. Ajoutez 30 %
       les mises à jour du firmware. C'est l'un des avantages les plus importants
       par rapport aux systèmes cloud — vos séquences sont toujours disponibles
       localement.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Puis-je mélanger différentes marques de caméras avec un seul NVR ?
     </AccordionTrigger>
     <AccordionContent>
+
       Oui, à condition que les caméras et le NVR soient compatibles ONVIF. ONVIF
       est une norme d'interopérabilité ouverte que la plupart des grands
       fabricants de caméras IP et de NVR prennent en charge. Pour une meilleure
@@ -362,29 +388,35 @@ Additionnez la consommation électrique maximale de chaque caméra. Ajoutez 30 %
       bidirectionnel) et le profil G (lecture et recherche dans le stockage).
       Vous pouvez mélanger Hikvision, Dahua, Reolink, Amcrest, Axis et d'autres
       marques sur le même NVR.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       De combien de stockage ai-je besoin pour un NVR ?
     </AccordionTrigger>
     <AccordionContent>
+
       Les besoins en stockage dépendent de la résolution, de la fréquence
       d'images, de la compression et du mode d'enregistrement. Une seule caméra
-      4K enregistrant 24h/24 avec compression H.265 utilise environ 30 à 50 Go
+        4K enregistrant 24h/24 avec compression H.265 utilise environ 30 à 50 Go
       par jour. L'enregistrement par détection de mouvement réduit cela de 60 à
-      70 %. Pour un système 4K à 4 caméras avec rétention de 30 jours, prévoyez
-      6 à 12 To selon le mode d'enregistrement. Utilisez toujours des disques
+        70 %. Pour un système 4K à 4 caméras avec rétention de 30 jours, prévoyez
+        6 à 12 To selon le mode d'enregistrement. Utilisez toujours des disques
       durs conçus pour la surveillance comme les WD Purple ou Seagate SkyHawk —
       ils sont conçus pour les charges d'écriture 24h/24 et incluent un firmware
       qui évite la perte d'images lors de la récupération d'erreurs.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Qu'est-ce que le PoE et pourquoi est-ce important pour le NVR ?
     </AccordionTrigger>
     <AccordionContent>
+
       Le PoE (Power over Ethernet) est une technologie qui fournit à la fois
       l'alimentation électrique et les données via un seul câble Ethernet. Un
       NVR avec ports PoE intégrés envoie l'alimentation à chaque caméra via le
@@ -394,13 +426,16 @@ Additionnez la consommation électrique maximale de chaque caméra. Ajoutez 30 %
       avec un seul onduleur. Le PoE est l'une des principales raisons pour
       lesquelles les systèmes NVR sont plus rapides et plus propres à installer
       que les systèmes DVR ou cloud.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Un NVR peut-il alimenter des caméras sans PoE ?
     </AccordionTrigger>
     <AccordionContent>
+
       Non. Un NVR envoie l'alimentation uniquement via ses ports PoE. Si vous
       avez des caméras non PoE ou si vous devez alimenter des caméras au-delà de
       la capacité PoE intégrée du NVR, vous avez besoin d'un commutateur PoE
@@ -408,11 +443,14 @@ Additionnez la consommation électrique maximale de chaque caméra. Ajoutez 30 %
       commutateur au NVR via votre réseau local. Cela fonctionne également pour
       les caméras situées loin du NVR — faites passer un long câble réseau
       jusqu'à un commutateur PoE distant près des caméras.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>Quelle est la durée de vie d'un NVR ?</AccordionTrigger>
     <AccordionContent>
+
       Un système NVR bien conçu sert généralement 7 à 10 ans avant de devoir
       être remplacé. Les disques durs doivent être remplacés tous les 3 à 5 ans
       (ils fonctionnent 24h/24 et s'usent). Les mises à jour du firmware doivent
@@ -420,8 +458,10 @@ Additionnez la consommation électrique maximale de chaque caméra. Ajoutez 30 %
       sécurité. Si vos besoins augmentent (plus de caméras, résolution plus
       élevée), vous pouvez dépasser la capacité en canaux ou la bande passante
       du NVR avant qu'il ne tombe physiquement en panne. C'est pourquoi acheter
-      2 fois votre nombre actuel de canaux est financièrement judicieux.
+        2 fois votre nombre actuel de canaux est financièrement judicieux.
+
     </AccordionContent>
+
   </AccordionItem>
 </Accordion>
 
@@ -435,12 +475,14 @@ Maintenant que vous comprenez ce qu'est un NVR et comment il fonctionne, voici d
 - Comparez [NVR vs DVR](/blog/nvr-vs-dvr) si vous hésitez entre les deux systèmes
 
 <Callout type="note" title="Encore des questions ?">
-  La technologie NVR continue d'évoluer. En 2026, nous voyons la compression
-  H.266 (VVC) offrant 50 % d'économies de stockage par rapport au H.265, des
-  processeurs IA plus rapides et moins chers, et des disques de surveillance de
-  24 To qui deviennent courants. Si vous ne savez pas quel NVR correspond à vos
-  besoins spécifiques, commencez par un plan clair du nombre de caméras dont
-  vous avez besoin et de leur emplacement — tout le reste découle de cela.
+
+La technologie NVR continue d'évoluer. En 2026, nous voyons la compression
+H.266 (VVC) offrant 50 % d'économies de stockage par rapport au H.265, des
+processeurs IA plus rapides et moins chers, et des disques de surveillance de
+24 To qui deviennent courants. Si vous ne savez pas quel NVR correspond à vos
+besoins spécifiques, commencez par un plan clair du nombre de caméras dont
+vous avez besoin et de leur emplacement — tout le reste découle de cela.
+
 </Callout>
 
 {/* sitemap refreshed */}

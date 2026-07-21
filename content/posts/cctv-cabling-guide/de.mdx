@@ -48,11 +48,13 @@ Schlechte Verkabelung ist für mehr CCTV-Ausfälle verantwortlich als jeder ande
 Dieser Leitfaden behandelt alles, was Sie für die korrekte Verkabelung eines PoE-Sicherheitskamerasystems benötigen: Kabelauswahl, Anschluss, Kabelkanäle, Überspannungsschutz, die benötigten Werkzeuge und die Fehler, die eine professionelle Installation von einer problematischen unterscheiden.
 
 <Callout type="info" title="40 % der PoE-Probleme sind kabelbedingt">
-  Branchendaten zeigen, dass etwa 40 % der Tickets mit dem Status "Kamera
-  offline" auf Kabelprobleme zurückzuführen sind — falscher Querschnitt,
-  Innenkabel im Außenbereich, gefälschtes Cat6, das eigentlich CCA Cat5e ist,
-  oder schlechte Anschlüsse. Die richtige Verkabelung von Anfang an beseitigt
-  die häufigste Fehlerursache.
+
+Branchendaten zeigen, dass etwa 40 % der Tickets mit dem Status "Kamera
+offline" auf Kabelprobleme zurückzuführen sind — falscher Querschnitt,
+Innenkabel im Außenbereich, gefälschtes Cat6, das eigentlich CCA Cat5e ist,
+oder schlechte Anschlüsse. Die richtige Verkabelung von Anfang an beseitigt
+die häufigste Fehlerursache.
+
 </Callout>
 
 ## Kabelauswahl
@@ -67,13 +69,15 @@ Dieser Leitfaden behandelt alles, was Sie für die korrekte Verkabelung eines Po
 | Cat7  | 22 AWG      | 10 Gbit/s bei 100 m                    | Alle PoE-Standards                           | Zukunftssichere gewerbliche Installationen        |
 
 <Callout type="tip" title="Cat6 ist 2026 die optimale Wahl">
-  Cat6 ist die beste Allround-Wahl für Sicherheitskamera-Installationen. Die
-  23-AWG-Leiter reduzieren PoE-bedingten Spannungsabfall und Erwärmung im
-  Vergleich zu Cat5e. Die 250-MHz-Bandbreite bietet großzügige Reserven für
-  4K-Videostreams. Der Aufpreis gegenüber Cat5e beträgt typischerweise nur
-  $0,04-0,10 pro Fuß — bei einem 8-Kamera-System sind das insgesamt $30-80. Für
-  diesen geringen Aufpreis erhalten Sie messbar bessere PoE-Leistung und
-  Bandbreitenreserven für zukünftige Kamera-Upgrades.
+
+Cat6 ist die beste Allround-Wahl für Sicherheitskamera-Installationen. Die
+23-AWG-Leiter reduzieren PoE-bedingten Spannungsabfall und Erwärmung im
+Vergleich zu Cat5e. Die 250-MHz-Bandbreite bietet großzügige Reserven für
+4K-Videostreams. Der Aufpreis gegenüber Cat5e beträgt typischerweise nur
+$0,04-0,10 pro Fuß — bei einem 8-Kamera-System sind das insgesamt $30-80. Für
+diesen geringen Aufpreis erhalten Sie messbar bessere PoE-Leistung und
+Bandbreitenreserven für zukünftige Kamera-Upgrades.
+
 </Callout>
 
 ### Massivkupfer vs. CCA
@@ -90,12 +94,14 @@ Dies ist die mit Abstand wichtigste Kabelentscheidung, die Sie treffen werden.
 | Lebensdauer im Außeneinsatz | 10+ Jahre          | 2-3 Jahre                            |
 
 <Callout type="danger" title="Verwenden Sie niemals CCA für PoE">
-  CCA-Kabel hat einen höheren Widerstand als reines Kupfer, was zu mehr
-  Spannungsabfall, mehr Hitze und zeitweiligen Kamera-Stromausfällen führt.
-  Unter PoE+-Last (30 W) können sich CCA-Kabel so stark erwärmen, dass der
-  Mantel mit der Zeit beschädigt wird. Wenn der Verkäufer nicht ausdrücklich
-  "100 % reines Kupfer" oder "Blankkupfer" angibt, gehen Sie von CCA aus.
-  Bestehen Sie bei jeder professionellen Installation auf Massivkupfer.
+
+CCA-Kabel hat einen höheren Widerstand als reines Kupfer, was zu mehr
+Spannungsabfall, mehr Hitze und zeitweiligen Kamera-Stromausfällen führt.
+Unter PoE+-Last (30 W) können sich CCA-Kabel so stark erwärmen, dass der
+Mantel mit der Zeit beschädigt wird. Wenn der Verkäufer nicht ausdrücklich
+"100 % reines Kupfer" oder "Blankkupfer" angibt, gehen Sie von CCA aus.
+Bestehen Sie bei jeder professionellen Installation auf Massivkupfer.
+
 </Callout>
 
 ### Innen- vs. Außenkabel
@@ -126,11 +132,13 @@ Wenn ein Teil der Kabelstrecke Witterung, Sonnenlicht oder Feuchtigkeit ausgeset
 | Bohrhammer + Steinbohrer                  | Kameras auf Ziegel/Beton montieren    | Variiert             |
 
 <Callout type="note" title="Konfektionierte Kabel sind eine Option">
-  Für kleine Installationen (1-4 Kameras) mit zugänglichen Kabelwegen sparen
-  konfektionierte Cat6-Kabel in gemessenen Längen Zeit und vermeiden
-  Anschlussfehler. Bei größeren Installationen oder Strecken durch Kabelkanäle
-  ist das eigene Anschließen mit Pass-Through-RJ45-Steckern zuverlässiger und
-  kosteneffizienter.
+
+Für kleine Installationen (1-4 Kameras) mit zugänglichen Kabelwegen sparen
+konfektionierte Cat6-Kabel in gemessenen Längen Zeit und vermeiden
+Anschlussfehler. Bei größeren Installationen oder Strecken durch Kabelkanäle
+ist das eigene Anschließen mit Pass-Through-RJ45-Steckern zuverlässiger und
+kosteneffizienter.
+
 </Callout>
 
 ## Anschlussstandards
@@ -158,11 +166,13 @@ Der T568B-Standard ist das vorherrschende Verdrahtungsschema für Sicherheitskam
 - **Am NVR-Ende auf ein Patchpanel auflegen**: Bei langen Strecken ist der Anschluss an ein Patchpanel zuverlässiger als das direkte Crimpen eines RJ45. Es erleichtert auch die Fehlersuche und erneute Montage erheblich.
 
 <Callout type="warning" title="Testen Sie jeden Anschluss">
-  Verwenden Sie einen Kabeltester, um Belegung, Durchgang und Kurzschlüsse auf
-  jeder einzelnen Strecke zu überprüfen, bevor Sie eine Kamera anschließen. Ein
-  30-Sekunden-Test erkennt Probleme, deren Diagnose später Stunden dauern würde.
-  Testen Sie bei langen Außenstrecken auch mit einem PoE-Tester, um die
-  Stromversorgung am Kameraende zu überprüfen.
+
+Verwenden Sie einen Kabeltester, um Belegung, Durchgang und Kurzschlüsse auf
+jeder einzelnen Strecke zu überprüfen, bevor Sie eine Kamera anschließen. Ein
+30-Sekunden-Test erkennt Probleme, deren Diagnose später Stunden dauern würde.
+Testen Sie bei langen Außenstrecken auch mit einem PoE-Tester, um die
+Stromversorgung am Kameraende zu überprüfen.
+
 </Callout>
 
 ## Kabelkanäle und Kabelmanagement
@@ -197,12 +207,14 @@ Wenn mehrere PoE-Kabel in einem Bündel oder Kanal verlaufen, baut sich durch de
 | 31+                    | 40-55 %                         | Cat6A verwenden, Bündelgröße reduzieren, Belüftung sicherstellen |
 
 <Callout type="tip" title="Wärmemanagement für große Bündel">
-  ISO/IEC empfiehlt eine maximale Bündelgröße von 24 Kabeln, unabhängig von
-  PoE-Überlegungen. Verwenden Sie für Hochleistungs-PoE++-Installationen
-  Cat6A-Leiter (23 AWG), die Wärme effektiver ableiten. Vermeiden Sie die
-  Verlegung von PoE-Kabeln in unbelüfteten Räumen wie geschlossenen
-  Deckenhohlräumen oder versiegelten Kabelkanälen ohne ausreichende thermische
-  Abminderung.
+
+ISO/IEC empfiehlt eine maximale Bündelgröße von 24 Kabeln, unabhängig von
+PoE-Überlegungen. Verwenden Sie für Hochleistungs-PoE++-Installationen
+Cat6A-Leiter (23 AWG), die Wärme effektiver ableiten. Vermeiden Sie die
+Verlegung von PoE-Kabeln in unbelüfteten Räumen wie geschlossenen
+Deckenhohlräumen oder versiegelten Kabelkanälen ohne ausreichende thermische
+Abminderung.
+
 </Callout>
 
 ## Überspannungsschutz
@@ -221,10 +233,12 @@ Kameras auf langen PoE-Strecken sind anfällig für blitzinduzierte Überspannun
 - USV mit Überspannungsschutz für NVR und PoE-Switch
 
 <Callout type="danger" title="Erdung ist nicht optional">
-  Ein nicht ordnungsgemäß geerdeter Überspannungsschutz bietet keinen Schutz.
-  Stellen Sie sicher, dass Ihre Überspannungsschutzgeräte an die Gebäudeerde
-  angeschlossen sind. Bei gewerblichen Installationen sollte die Erdung den
-  örtlichen elektrischen Vorschriften entsprechen.
+
+Ein nicht ordnungsgemäß geerdeter Überspannungsschutz bietet keinen Schutz.
+Stellen Sie sicher, dass Ihre Überspannungsschutzgeräte an die Gebäudeerde
+angeschlossen sind. Bei gewerblichen Installationen sollte die Erdung den
+örtlichen elektrischen Vorschriften entsprechen.
+
 </Callout>
 
 ## Häufige Kabelinstallationsfehler
@@ -283,11 +297,13 @@ Bevor Sie die Installation für abgeschlossen erklären:
 6. **Aufzeichnungsüberprüfung**: Nach 7 Tagen prüfen, ob die NVR-Zeitleiste keine Aufzeichnungslücken aufweist
 
 <Callout type="tip" title="Die harte 100-Meter-Grenze">
-  Der IEEE-802.3-Standard begrenzt Ethernet-Strecken auf 100 Meter (328 Fuß)
-  einschließlich aller Patchkabel. In der Praxis erreichen Sie mit reinem
-  Kupfer-Cat6 zuverlässig 95 Meter. Darüber hinaus verursacht der
-  Spannungsabfall selbst auf guten Kabeln zeitweilige Kamera-Resets. Planen Sie
-  für Strecken über 90 Meter PoE-Extender oder Glasfaser-Backhaul ein.
+
+Der IEEE-802.3-Standard begrenzt Ethernet-Strecken auf 100 Meter (328 Fuß)
+einschließlich aller Patchkabel. In der Praxis erreichen Sie mit reinem
+Kupfer-Cat6 zuverlässig 95 Meter. Darüber hinaus verursacht der
+Spannungsabfall selbst auf guten Kabeln zeitweilige Kamera-Resets. Planen Sie
+für Strecken über 90 Meter PoE-Extender oder Glasfaser-Backhaul ein.
+
 </Callout>
 
 ## Häufig gestellte Fragen
@@ -298,20 +314,24 @@ Bevor Sie die Installation für abgeschlossen erklären:
       Sollte ich Cat5e oder Cat6 für Sicherheitskameras verwenden?
     </AccordionTrigger>
     <AccordionContent>
+
       Cat6 ist die empfohlene Basislinie für jede Neuinstallation. Die
-      23-AWG-Leiter reduzieren den Spannungsabfall im Vergleich zu Cat5es 24
+        23-AWG-Leiter reduzieren den Spannungsabfall im Vergleich zu Cat5es 24
       AWG, was für die PoE-Stromversorgung wichtig ist — besonders bei Strecken
       über 50 Meter und bei Kameras mit IR-LEDs oder Heizungen. Der
       Kostenunterschied ist im Vergleich zur Verlegearbeit minimal ($0,04-0,10
       pro Fuß). Verwenden Sie Cat5e nur für kurze Strecken unter 30 Metern mit
-      1080p-Kameras.
+        1080p-Kameras.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Wie lang kann eine PoE-Kabelstrecke sein?
     </AccordionTrigger>
     <AccordionContent>
+
       Der IEEE-802.3-Standard begrenzt Ethernet-Strecken auf insgesamt 100 Meter
       (328 Fuß), einschließlich Patchkabel. Jenseits von 100 Metern
       verschlechtert sich das Datensignal und die PoE-Stromversorgung fällt
@@ -319,54 +339,68 @@ Bevor Sie die Installation für abgeschlossen erklären:
       PoE-Extender (fügt 100 m pro Gerät hinzu, bis zu 4 Geräte),
       Glasfaser-Backhaul mit einem entfernten PoE-Switch oder platzieren Sie den
       NVR näher.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Kann ich CCA- und Massivkupferkabel in derselben Installation mischen?
     </AccordionTrigger>
     <AccordionContent>
+
       Nein. Das Mischen von CCA und Massivkupfer erzeugt eine galvanische
       Korrosionsstelle an der Verbindung, die den Widerstand erhöht und die
       Verbindung mit der Zeit ausfallen lässt. Wählen Sie einen Kabeltyp und
       verwenden Sie ihn durchgängig. Bei PoE sollte dies immer Massivkupfer
       sein.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>Brauche ich abgeschirmtes (STP) Kabel?</AccordionTrigger>
     <AccordionContent>
+
       Nur wenn in der Nähe von erheblichen elektrischen Störquellen verlegt wird
       — große Motoren, Leuchtstofflampenvorschaltgeräte, Industriemaschinen oder
       Schalttafeln. Für die meisten Wohn- und Büroinstallationen ist
       ungeschirmtes (UTP) Cat6 völlig ausreichend. Wenn Sie STP verwenden,
       müssen Sie abgeschirmte Stecker und ordnungsgemäße Erdung nur an einem
       Ende verwenden, sonst wird die Abschirmung unwirksam.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Was ist der minimale Biegeradius für Cat6?
     </AccordionTrigger>
     <AccordionContent>
+
       Der minimale Biegeradius für Cat6 beträgt das 4-fache des
       Kabeldurchmessers, also etwa 5 cm (2 Zoll). Scharfe Biegungen quetschen
       die interne Paarverdrillung und beeinträchtigen die Signalqualität.
       Verwenden Sie bei festen Installationen Biegebögen oder
-      45-Grad-Winkelstücke anstelle von scharfen 90-Grad-Winkeln.
+        45-Grad-Winkelstücke anstelle von scharfen 90-Grad-Winkeln.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Wie tief sollte ich Ethernet-Kabel für Außenkameras vergraben?
     </AccordionTrigger>
     <AccordionContent>
+
       Gemäß dem National Electrical Code (NEC) sollten PVC-Kabelkanäle
       mindestens 18 Zoll (45 cm) tief vergraben werden. Metallkanäle benötigen
       nur 6 Zoll (15 cm). Für Erdverlegungen wird direktverlegbares Kabel in
       Kabelkanälen bevorzugt. Rufen Sie vor dem Graben immer die Baufirmen zur
       Leitungsortung an.
+
     </AccordionContent>
+
   </AccordionItem>
 </Accordion>
 

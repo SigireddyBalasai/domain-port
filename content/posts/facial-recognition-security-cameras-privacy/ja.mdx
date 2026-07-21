@@ -1,0 +1,313 @@
+---
+title: "顔認識防犯カメラ：機能とプライバシー (2026)"
+description: "顔検出 vs 認識 vs 識別。オンデバイスAI vs クラウド。法的状況、州ごとのプライバシー法、暗号化、データ保持。"
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "facial-recognition-security-cameras-privacy"
+author: "Your Name"
+tags: ["facial-recognition", "ai", "privacy", "buying-guide"]
+postType: "review"
+---
+
+Facial recognition in security cameras has moved from "cloud API luxury" to "on-device standard." But not all face features are equal: detection ≠ recognition ≠ identification. And privacy laws (BIPA, CCPA, GDPR, state biometric acts) carry teeth. This guide breaks down what's possible, what's legal, and which cameras do it right.
+
+<Badge variant="outline">Terminology Check</Badge>- **Face Detection:** "There
+is a face in this box" — no identity - **Face Recognition:** "This face matches
+a known face in *my* database" — 1:1 or 1:few - **Face Identification:** "This
+face = John Doe in *global* database" — 1:many (law enforcement scale)
+
+Consumer cameras do **detection + recognition (local database only)**. Identification requires cloud + warrants.
+
+## How On-Device Face Recognition Works
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="pipeline">
+    <AccordionTrigger>The Pipeline (Runs on Camera/NPU)</AccordionTrigger>
+    <AccordionContent>
+
+<ol>
+  <li>
+    <strong>Face Detection</strong> (YOLO/SSD/MobileNet) → bounding boxes,
+    landmarks (eyes, nose, mouth)
+  </li>
+  <li>
+    <strong>Alignment</strong> → warp to canonical pose (affine transform from
+    landmarks)
+  </li>
+  <li>
+    <strong>Embedding Extraction</strong> (ArcFace/MobileFaceNet/ResNet) →
+    128–512-dim vector
+  </li>
+  <li>
+    <strong>Similarity Search</strong> → cosine distance vs. enrolled vectors in
+    local DB
+  </li>
+  <li>
+    <strong>Threshold Decision</strong> → match / unknown / low-confidence
+  </li>
+  <li>
+    <strong>Event Trigger</strong> → notification, recording tag, alarm output,
+    API webhook
+  </li>
+</ol>
+<strong>Latency:</strong> 50–200 ms on modern NPU (Ambarella CV22/CV25, Rockchip
+RV1126, HiSilicon Hi3559)
+<strong>Database:</strong> 100–1,000 faces typical (Eufy 100, Reolink 100, Ring
+100, UniFi 200, Rhombus 10,000+)
+
+</AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="detection-vs-recognition">
+    <AccordionTrigger>Detection vs Recognition: What You Actually Get</AccordionTrigger>
+    <AccordionContent>
+
+| Feature                            | Face Detection       | Face Recognition                                   |
+| ---------------------------------- | -------------------- | -------------------------------------------------- |
+| <strong>Question Answered</strong> | "Person detected"    | "John detected"                                    |
+| <strong>Database</strong>          | None                 | Local enrolled faces                               |
+| <strong>False Positives</strong>   | Low (person vs car)  | Medium (twins, masks, angles)                      |
+| <strong>Privacy Risk</strong>      | Low                  | <strong>High — biometric data</strong>             |
+| <strong>Use Case</strong>          | Reduce motion alerts | VIP alerts, known/unknown sorting                  |
+| <strong>Cameras</strong>           | Almost all AI cams   | Eufy, Reolink, Ring, UniFi, Rhombus, Verkada, Axis |
+
+</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+## Top Cameras with On-Device Face Recognition (2026)
+
+### 1. EufyCam 3 S330 + HomeBase 3 — Best Consumer All-Rounder
+
+**NPU:** HomeBase 3 (dual-core NPU, 2 TOPS)  
+**Database:** 100 faces per HomeBase  
+**Recognition:** 1:1 (enrolled) + 1:few (family)  
+**Privacy:** **Fully local** — no cloud for recognition; optional cloud backup _encrypted_  
+**Features:** Face + person + vehicle + pet + package; Activity Zones; Apple HomeKit Secure Video  
+**Trade-offs:** Proprietary ecosystem; HomeBase must stay powered; 4K@15fps max  
+**Price:** ~$550 (2-cam + HomeBase)  
+**Best For:** Homeowners wanting zero-cloud face recognition + HomeKit
+
+### 2. Reolink Argus 4 Pro / RLC-1212A (FW 3.0+) — Best Local NVR Integration
+
+**NPU:** Camera-side (Ambarella CV25)  
+**Database:** 100 faces per camera (synced via NVR)  
+**Recognition:** 1:1 local; NVR aggregates across cams  
+**Privacy:** Local only; NVR stores embeddings, not images (configurable)  
+**Features:** Person/vehicle/pet; Custom detection zones; ONVIF Profile S/G/T  
+**Trade-offs:** App UX less polished; NVR required for multi-cam face sync; no HomeKit  
+**Price:** ~$130–230/cam + NVR  
+**Best For:** DIYers with Reolink NVR, mixed PoE/wireless fleets
+
+### 3. Ubiquiti UniFi Protect (G4/G5 + AI Port) — Best Prosumer/Small Business
+
+**NPU:** Camera (G4/G5) or AI Port (adds to any ONVIF cam)  
+**Database:** 200 faces per Protect console  
+**Recognition:** 1:1 local; "Known/Unknown" classification; Search by face thumbnail  
+**Privacy:** Fully local; Protect console on-prem; no cloud account required for face rec  
+**Features:** Person/vehicle/animal; License plate (LPR); Occupancy counting; MQTT/webhooks  
+**Trade-offs:** UniFi ecosystem lock-in; AI Port = $199 extra; Console hardware needed  
+**Price:** G4 Bullet $230, G5 Bullet $330, AI Port $199, Cloud Key Gen2+ $300  
+**Best For:** Ubiquiti network shops, multi-site, IT-comfortable owners
+
+### 4. Rhombus R2/R360 + Console — Best Enterprise (No Cloud Dependency)
+
+**NPU:** Camera (Ambarella CV52) + Console (Intel)  
+**Database:** 10,000+ faces per console  
+**Recognition:** 1:1 local; Watchlists; "First seen" timestamps; API/SIEM export  
+**Privacy:** **Zero cloud for recognition**; SOC 2 Type II; NDAA compliant; On-prem only  
+**Features:** Tailgating detection; Mask detection; Occupancy; LPR; Audio analytics  
+**Trade-offs:** Subscription hardware model ($10–20/cam/mo includes warranty); No consumer app  
+**Price:** Hardware $200–500/cam + subscription  
+**Best For:** Schools, healthcare, retail chains, gov — compliance-first
+
+### 5. Ring Stick Up Cam Pro / Floodlight Cam Pro — Best Ecosystem Integration
+
+**NPU:** Camera (Amazon AZ2)  
+**Database:** 100 faces per account (synced across Ring cams)  
+**Recognition:** 1:1 local inference; cloud sync of embeddings (encrypted)  
+**Privacy:** **Cloud-sync default** — opt-out in Control Center; Ring Protect required ($4–20/mo) for recording  
+**Features:** 3D Motion Detection (radar); Bird's Eye View; Alexa announcements ("John at front door")  
+**Trade-offs:** Subscription mandatory for recordings; Cloud face sync = broader attack surface; No ONVIF  
+**Price:** $180–250/cam + Protect plan  
+**Best For:** Alexa homes, Ring ecosystem, users accepting cloud trade-off
+
+### 6. Axis Q1656 / Q3536-LVE + ACAP — Best Open Platform
+
+**NPU:** ARTPEC-8 (Axis custom)  
+**Database:** Via ACAP app (third-party: Cognitec, Irisity, or custom)  
+**Recognition:** App-dependent; 1:1, 1:N, watchlists  
+**Privacy:** Fully local; Axis Edge Vault (TPM); Signed firmware; NDAA compliant  
+**Features:** Lightfinder 2.0; Forensic WDR; Zipstream; Open VAPIX API  
+**Trade-offs:** Requires ACAP dev/integrator; Expensive; No "consumer" app  
+**Price:** $800–1,500/cam + ACAP licenses  
+**Best For:** Critical infrastructure, integrators, custom analytics
+
+## Comparison Matrix
+
+| Camera    | NPU Location   | Face DB  | Local Only?  | Cloud Sync       | ONVIF        | Price | Best For              |
+| --------- | -------------- | -------- | ------------ | ---------------- | ------------ | ----- | --------------------- |
+| EufyCam 3 | HomeBase       | 100      | ✅           | Encrypted opt-in | ❌           | $$$   | HomeKit, privacy      |
+| Reolink   | Camera         | 100/cam  | ✅           | ❌               | ✅           | $$    | NVR DIY               |
+| UniFi     | Camera/AI Port | 200      | ✅           | ❌               | ✅ (AI Port) | $$$   | Ubiquiti shops        |
+| Rhombus   | Camera+Console | 10,000+  | ✅           | ❌               | ✅           | $$$$  | Enterprise/compliance |
+| Ring Pro  | Camera         | 100      | ⚠️ (opt-out) | ✅ Default       | ❌           | $$    | Alexa/Ring homes      |
+| Axis      | Camera         | Via ACAP | ✅           | ❌               | ✅           | $$$$$ | Integrators           |
+
+## Privacy Law Compliance: What You Must Know
+
+<Callout type="warning">
+
+<strong>This is not legal advice.</strong> Consult an attorney for your
+jurisdiction. Biometric laws carry statutory damages ($1,000–5,000/violation)
+and class-action risk.
+
+</Callout>
+
+### Key US Laws (2026 Landscape)
+
+| Law                                | Jurisdiction      | Applies To                                        | Key Requirements                                            | Penalties                                           |
+| ---------------------------------- | ----------------- | ------------------------------------------------- | ----------------------------------------------------------- | --------------------------------------------------- |
+| **BIPA**                           | Illinois          | Private entities collecting biometric identifiers | Written consent; Retention policy; No sale; Right to delete | $1,000 negligent / $5,000 intentional per violation |
+| **CUBI**                           | Texas             | Commercial entities                               | Consent; Retention/destruction schedule; No disclosure      | $25,000/violation (AG enforcement)                  |
+| **CCPA/CPRA**                      | California        | Businesses >$25M or 100K consumers                | Notice at collection; Opt-out of sale; Deletion right       | $2,500–7,500/violation (AG)                         |
+| **Washington**                     | Washington        | Commercial entities                               | Consent; Retention policy; Security safeguards              | $5,000/violation (AG)                               |
+| **New York SHIELD**                | New York          | Any entity with NY resident data                  | Reasonable safeguards; Breach notification                  | $5,000/violation (AG)                               |
+| **Arkansas / Maryland / Nebraska** | Respective states | Commercial                                        | Similar to BIPA/CUBI                                        | Varies                                              |
+
+### International
+
+- **GDPR (EU/UK):** Biometric = special category data → Art. 9 explicit consent or substantial public interest; DPIA required; DPO if large scale
+- **PIPEDA (Canada):** Consent + reasonable purposes; Biometric = sensitive
+- **LGPD (Brazil):** Similar to GDPR
+
+### Compliance Checklist for Face Recognition Deployments
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="consent">
+    <AccordionTrigger>1. Consent & Notice</AccordionTrigger>
+    <AccordionContent>
+
+      <ul>
+            <li><strong>Signage:</strong> "Facial recognition in use" at all entrances (BIPA, CUBI,</li>
+      </ul>
+      GDPR) - <strong>Written Consent:</strong> Employees, tenants, regular visitors — signed
+      waiver - <strong>Opt-Out Path:</strong> How to request non-enrollment / deletion (CCPA,
+      GDPR) - <strong>Minors:</strong> Parental consent (COPPA, state laws)
+
+</AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="data">
+    <AccordionTrigger>2. Data Governance</AccordionTrigger>
+    <AccordionContent>
+
+      <ul>
+            <li><strong>Retention Policy:</strong> Auto-delete embeddings after X days (30–90</li>
+      </ul>
+      typical); Document it - <strong>Encryption:</strong> At rest (AES-256) + in transit
+      (TLS 1.3); Keys managed by you - <strong>Access Control:</strong> Role-based; Audit log
+      of who accessed face DB - <strong>No Sale/Sharing:</strong> Contractual prohibition
+      with vendors (BIPA, CCPA)
+
+</AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="tech">
+    <AccordionTrigger>3. Technical Safeguards</AccordionTrigger>
+    <AccordionContent>
+
+      <ul>
+            <li><strong>Local-Only Inference:</strong> Choose cameras with on-device NPU (Eufy,</li>
+      </ul>
+      Reolink, UniFi, Rhombus, Axis) - <strong>Embedding-Only Storage:</strong> Store 512-dim
+      vectors, not face images (Rhombus, Axis ACAPs) - <strong>Liveness Detection:</strong>
+      Prevent photo/video spoofing (eye blink, depth, texture) — critical for
+      access control - <strong>Accuracy Testing:</strong> Document FAR/FRR across
+      demographics (NIST FRVT vendor results)
+
+</AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="vendor">
+    <AccordionTrigger>4. Vendor Due Diligence</AccordionTrigger>
+    <AccordionContent>
+
+      <ul>
+            <li><strong>Data Processing Agreement (DPA):</strong> Required for GDPR, CCPA, BIPA</li>
+      </ul>
+      vendor relationships - <strong>Subprocessor List:</strong> Who else touches data?
+      (Cloud hosting, AI model providers) - <strong>Breach Notification:</strong> Contractual
+        24–72 hr notice - <strong>Data Portability/Deletion:</strong> Can you export/delete all
+      face data on demand?
+
+</AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+## Deployment Scenarios & Risk Levels
+
+| Scenario                                  | Risk Level  | Recommended Approach                                            |
+| ----------------------------------------- | ----------- | --------------------------------------------------------------- |
+| **Home: Family alerts only**              | Low         | EufyCam 3 (local, no cloud face sync)                           |
+| **Small Retail: Known shoplifter alerts** | Medium      | UniFi Protect + signage + 30-day retention                      |
+| **Office: Employee entry + visitor log**  | High        | Rhombus/Axis + written consent + DPA + annual audit             |
+| **Apartment: Tenant doorbell**            | High        | **Avoid face rec** — use person detection only; BIPA risk       |
+| **School: Threat watchlist**              | Critical    | Rhombus/Axis + LE integration + legal counsel + DPIA            |
+| **Public Venue: Crowd scanning**          | **Extreme** | **Don't** — likely illegal without specific statutory authority |
+
+<Callout type="danger">
+
+**Apartment/landlord face recognition on tenant doors is a BIPA/CCPA lawsuit
+magnet.** Multiple class actions filed 2023–2025. Use person detection +
+package detection only. No face database for tenants.
+
+</Callout>
+
+## Accuracy & Bias: What the Numbers Mean
+
+**NIST FRVT (Face Recognition Vendor Test) — 2024/2025 Results:**
+
+- Top commercial SDKs (Cognitec, NEC, Rank One, Paravision, Idemia): **FNIR &lt;0.5% at FPIR 0.1%** (1:1 verification)
+- **Demographic differentials persist:** False non-match rates 2–10× higher for darker-skinned females vs lighter-skinned males on some algorithms
+- **Mask performance:** 2024+ algorithms recover to &lt;2% FNIR with surgical masks; N95 still 5–15%
+- **Aging:** 5-year gap → 3–8% FNIR increase; re-enroll annually for high-security
+
+**Consumer Camera Reality:**
+
+- Eufy/Reolink/UniFi use embedded MobileFaceNet/ArcFace variants — **not NIST-top-tier**
+- Expect **5–15% FNIR** (missed known faces) at reasonable thresholds
+- **False positives (stranger = known):** 1–3% with 100-face DB; rises with DB size
+- **Mitigation:** Set threshold conservative (alert on "unknown" not "known"); Use "known face" as _supplementary_ signal, not sole trigger
+
+## Spoofing & Liveness: Don't Trust Face Alone for Access
+
+| Attack             | Difficulty       | Defense                                                 |
+| ------------------ | ---------------- | ------------------------------------------------------- |
+| Printed photo      | Trivial          | Texture analysis, IR depth, eye blink challenge         |
+| Phone/video replay | Easy             | Moiré detection, depth, challenge-response              |
+| 3D mask            | Hard             | Structured light / ToF / thermal + AI                   |
+| Deepfake injection | Medium (digital) | Secure element, signed video pipeline (Axis Edge Vault) |
+
+**Rule:** Face recognition = **notification/identification**. Face + PIN / Face + Card / Face + QR = **access control**. Never single-factor face for doors/gates.
+
+## Recommendation by Use Case
+
+| Use Case                                            | Camera                             | Why                                                  |
+| --------------------------------------------------- | ---------------------------------- | ---------------------------------------------------- |
+| **Home: "Tell me when kids arrive"**                | EufyCam 3                          | Local, HomeKit, no cloud face data, 1-yr battery     |
+| **Home: "Alert if stranger at door"**               | Reolink Video Doorbell (PoE) + NVR | Local face DB, ONVIF, no sub                         |
+| **SMB: "Flag banned shoplifters"**                  | UniFi Protect G5 + AI Port         | 200 faces, local, search by face, MQTT to POS        |
+| **Enterprise: "Compliance-first, 500 faces"**       | Rhombus R2 + Console               | Zero cloud, 10k faces, SIEM, NDAA, SOC 2             |
+| **Critical Infra: "Custom analytics, audit trail"** | Axis Q1656 + ACAP                  | Open platform, signed firmware, integrator ecosystem |
+| **Rental/Airbnb: "Guest verification"**             | **Don't**                          | Legal risk > benefit; Use smart lock + code          |
+
+---
+
+## Related Guides
+
+- [Best Outdoor Security Cameras 2026](/blog/best-outdoor-security-cameras-2026) — Hardware specs, weatherproofing
+- [Two-Way Audio Security Cameras: Complete Guide](/blog/two-way-audio-security-cameras-complete-guide) — Audio privacy laws
+- [Privacy Laws by State for CCTV](/blog/privacy-laws-by-state-cctv-guide) — Full 50-state survey
+- [Smart Home Integration: Alexa, Google, HomeKit](/blog/smart-home-integration-alexa-google-homekit) — Face rec triggers for automations

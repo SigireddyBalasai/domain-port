@@ -1,68 +1,57 @@
 # CCTV.name — domain_port
 
-Next.js 16 (Turbopack) + Tailwind v4 + shadcn/ui. CCTV/surveillance review site at cctv.name.
+Next.js 16 (Turbopack) + Tailwind v4 + shadcn/ui (Base UI "base-luma" style). CCTV/surveillance review site at cctv.name.
 Package manager: **bun** (bun@1.3.0). Path alias `@/*` → root (`./*`).
 
 ## Commands
 
-| Command             | What it runs                                                                 |
-| ------------------- | ---------------------------------------------------------------------------- |
-| `bun run dev`       | `next dev --turbopack` + `velite --watch` (concurrent via npm-run-all)       |
-| `bun run build`     | `velite --clean` → `next build` → `scripts/generate-sitemaps.ts` (postbuild) |
-| `bun run lint`      | `oxlint` (Oxc linter — replaces ESLint/Prettier/Biome)                       |
-| `bun run lint:fix`  | `oxlint --fix`                                                               |
-| `bun run typecheck` | `tsc --noEmit`                                                               |
-| `bun run format`    | `oxfmt --write` (Oxc formatter)                                              |
-| `bun run knip`      | dead file / unused export analysis                                           |
-| `bun run seed`      | seeds a user for auth                                                        |
+| Command             | What it runs                                                                                         |
+| ------------------- | ---------------------------------------------------------------------------------------------------- |
+| `bun run dev`       | `next dev --turbopack` + `velite --watch` (concurrent via npm-run-all)                               |
+| `bun run build`     | `velite --clean` → `scripts/generate-llmstxt.ts` → `scripts/generate-indexnow-key.ts` → `next build` |
+| (postbuild)         | `scripts/generate-sitemaps.ts` (runs automatically after `next build`)                               |
+| `bun run lint`      | `oxlint`                                                                                             |
+| `bun run lint:fix`  | `oxlint --fix`                                                                                       |
+| `bun run format`    | `oxfmt --write` (sorts Tailwind classes)                                                             |
+| `bun run typecheck` | `tsc --noEmit`                                                                                       |
+| `bun run knip`      | dead file / unused export analysis                                                                   |
+| `bun run seed`      | seeds a user for auth (runs `scripts/seed-user.ts`)                                                  |
+| `bun run indexnow`  | submits URLs to IndexNow                                                                             |
+| `bun run start`     | `next start` (production server)                                                                     |
 
 Always run **format → lint → typecheck** before committing. Build locally to catch content issues.
 
 ## Architecture
 
-- **i18n middleware**: `proxy.ts` (NOT `middleware.ts`). 21 locales (`en`, `es`, `fr`, `de`, `hi`, `ar`, `zh`, `ru`, `pt`, `ja`, `ko`, `it`, `nl`, `pl`, `tr`, `bn`, `ur`, `id`, `vi`, `th`, `uk`). `localePrefix: "as-needed"` (en has no prefix).
-- **Content (Velite)**: `content/posts/<slug>/<locale>.mdx` — blog posts, 21 locale files per slug. `content/faqs/<slug>.mdx` — English-only single files. Velite output: `.velite/` (JSON data) + `public/static/` (hashed assets).
-- **Auth**: better-auth (email/password + 2FA, `username` additional field) with Neon PostgreSQL via `pg` pool in `lib/auth.ts`.
+- **i18n middleware**: `proxy.ts` (NOT `middleware.ts`). 21 locales, defined in `i18n/routing.ts`. `localePrefix: "as-needed"` (en has no prefix). Uses `next-intl` — locale messages in `messages/<locale>.json`.
+- **Content (Velite)**: `content/posts/<slug>/<locale>.mdx` — blog posts, one file per locale per slug. `content/faqs/<slug>.mdx` — English-only single files. Velite output: `.velite/` (JSON data) + `public/static/` (hashed assets). Config: `velite.config.ts`.
+- **Auth**: better-auth (email/password + 2FA, `username` additional field) with Neon PostgreSQL via `pg` pool in `lib/auth.ts`. Client in `lib/auth-client.ts`.
 - **Comments**: `blog_comments` table via `@neondatabase/serverless` in `lib/comment-db.ts`.
-- **UI**: `components/ui/` (shadcn, ignored by oxc). `components/ui/` is ignored by oxlint/oxfmt — do not lint.
-
-## Content Authoring
-
-### Blog posts — `content/posts/<slug>/<locale>.mdx`
-
-Frontmatter fields that generate JSON-LD structured data: `faq`, `howTo`, `video`, `product`, `listing`, `software`, `event`, `speakable`. Set `postType` to one of: `blog` | `article` | `review` | `faq` | `video` | `howto` | `event` | `software` | `listing`.
-
-### FAQs — `content/faqs/<slug>.mdx`
-
-Frontmatter: `question`, `answer` (MDX), `category`, `order`, `tags`.
-
-### Custom MDX components (globally available)
-
-`Callout` (type: note/tip/warning/info/danger), `Badge` (variant: default/secondary/destructive/outline/ghost/link), `Card`/`CardHeader`/`CardTitle`/`CardDescription`/`CardContent`, `Tabs`/`TabsList`/`TabsTrigger`/`TabsContent`, `Accordion`/`AccordionItem`/`AccordionTrigger`/`AccordionContent`, `Kbd`, `KbdGroup`, `YouTubeEmbed` (id + title + optional start), `Alert`.
+- **PWA**: Serwist service worker (`app/serwist/`, `app/sw.ts`, configured via `next.config.ts`).
+- **UI**: `components/ui/` (shadcn) is ignored by oxlint/oxfmt — do not lint or format.
+- **Base UI**: shadcn components use `@base-ui/react` (`"style": "base-luma"` in `components.json`), not Radix UI.
 
 ## Linting & Formatting (Oxc)
 
-Oxc (`oxlint` + `oxfmt`) replaces ESLint + Prettier + Biome. Configs: `.oxlintrc.json` (linter), `.oxfmtrc.json` (formatter, migrated from Biome).
+Config: `.oxlintrc.json` (linter), `.oxfmtrc.json` (formatter).
 
-- `bun run lint` → `oxlint` (linter only). `bun run lint:fix` → `oxlint --fix`.
-- `bun run format` → `oxfmt --write`. `oxfmt` sorts Tailwind classes (a capability Biome lacked) and parses `@apply`/`@tailwind` in CSS natively.
-- Style matches the old Prettier setup: `semi: false`, `singleQuote: false`, `tabWidth: 2`, `trailingComma: es5`, `printWidth: 80`.
-- Ignored (no lint/format): `components/ui/**`, `components/theme-provider.tsx`, `lib/utils.ts`, `**/route.ts`, `**/route.tsx`, `next.config.ts`, `postcss.config.mjs`, `scripts/**`, `public/sw.js`, `public/blog-manifest.json`.
-- oxlint categories: `correctness` + `suspicious` = error; `style` + `perf` + `pedantic` = off (too noisy for this codebase).
-- Disabled rules (false positives / React-Next idioms): `react-in-jsx-scope` (Next uses automatic JSX runtime), `react-hooks/exhaustive-deps`, `import/no-unassigned-import` (CSS side-effect imports), `no-underscore-dangle` (`__SW_MANIFEST`), `no-explicit-any`, `no-non-null-assertion`.
-- `no-console` runs at `warn` (surfaces but does not block). `no-unused-vars` is error; disabled for `**/loading.tsx`.
-- `oxlint` fails only on errors; `warn`-level rules (console) surface but don't block CI.
-
-## Env
-
-No `.env.example`. Required vars: `DATABASE_URL`, `BETTER_AUTH_SECRET`, `BETTER_AUTH_URL`. Optional: `NEXT_PUBLIC_GA4_ID`, `INDEXNOW_KEY`, `INDEXNOW_SITE_URL`, `NEXT_PUBLIC_ADSENSE_CLIENT_ID` (AdSense publisher id; ad scripts load only after ad consent).
+- `correctness` + `suspicious` = error; `style` + `perf` + `pedantic` = off.
+- Disabled rules: `react-in-jsx-scope`, `react-hooks/exhaustive-deps`, `import/no-unassigned-import`, `no-underscore-dangle`, `no-explicit-any`, `no-non-null-assertion`.
+- `no-console` = warn, `no-unused-vars` = error (disabled for `**/loading.tsx`).
+- Ignored from lint/format: `components/ui/**`, `components/theme-provider.tsx`, `lib/utils.ts`, `**/route.ts`, `**/route.tsx`, `next.config.ts`, `postcss.config.mjs`, `scripts/**`, `public/sw.js`, `public/blog-manifest.json`.
+- Formatter style: `semi: false`, `singleQuote: false`, `tabWidth: 2`, `trailingComma: es5`, `printWidth: 80`.
 
 ## Sitemaps
 
-Per-locale sitemaps generated by `scripts/generate-sitemaps.ts` (uses `next-sitemap`'s `SitemapBuilder` for XML). Output: `public/sitemap.xml` (index) → `sitemap-root.xml` + `sitemap-<locale>.xml` per locale.
+Generated by `scripts/generate-sitemaps.ts` (uses `next-sitemap`). Output: `public/sitemap.xml` (index) → `sitemap-root.xml` + `sitemap-<locale>.xml` per locale.
+
+## Env
+
+No `.env.example`. Required: `DATABASE_URL`, `BETTER_AUTH_SECRET`, `BETTER_AUTH_URL`. Optional: `NEXT_PUBLIC_BETTER_AUTH_URL`, `NEXT_PUBLIC_GA4_ID`, `INDEXNOW_KEY`, `INDEXNOW_SITE_URL`, `NEXT_PUBLIC_ADSENSE_CLIENT_ID` (ads load only after ad consent).
 
 ## Quirks
 
-- Middleware file is `proxy.ts`, not `middleware.ts` — Next.js supports this via `config.matcher` export.
+- Middleware file is `proxy.ts` — Next.js supports this via `config.matcher` export.
 - Two `[locale]` dirs exist (`[locale]` and `\[locale\]` — likely escaped/unescaped fs artifact).
-- No test framework configured. No CI workflow found.
+- No test framework configured. No CI workflow.
+- Translation task files (`AGENDA.md`, `ANCHORED_SUMMARY.md`) track per-language content work; when starting a new translation batch, create a similar tracker.

@@ -1,0 +1,304 @@
+---
+title: "CCTV-Videospeicher-Rechner: Wie viel Festplattenspeicher brauchen Sie? (2026)"
+description: "Berechnen Sie den genauen Speicherbedarf für Ihr Kamerasystem. Formel, Rechner, H.265 vs. H.264, Auflösung, Bildrate, Bewegung vs. Daueraufzeichnung, RAID-Overhead und Festplattenempfehlungen."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "cctv-video-storage-calculator-hard-drive-space"
+author: "Your Name"
+tags: ["storage", "calculator", "nvr", "hard-drive", "planning"]
+postType: "howto"
+---
+
+Speicher ist der Hauptgrund, warum Kamerasysteme versagen. Zu kleine Festplatten bedeuten Aufzeichnungslücken, wenn Sie sie am dringendsten brauchen. Dieser Leitfaden liefert die genaue Formel, einen Kopfrechner und Festplattenempfehlungen, damit Sie einmal kaufen und jahrelang aufzeichnen.
+
+<Badge variant="outline">Schnellformel</Badge> **Tägliche GB = Kameras × Mbps ×
+108** (für H.265). Beispiel: 8 Kameras × 4 Mbps × 108 = **3.456 GB/Tag** = **3,4
+TB/Tag**.
+
+---
+
+## Die Speicherformel (Merken Sie sich das)
+
+### Kernformel
+
+```
+GB pro Tag = (Kameras × Bitrate_Mbps × 3600 × 24) / (8 × 1024)
+           = Kameras × Bitrate_Mbps × 10,547
+```
+
+**Vereinfacht (H.265):** `Kameras × Mbps × 108 = GB/Tag` (innerhalb von 3 %)
+
+**Vereinfacht (H.264):** `Kameras × Mbps × 216 = GB/Tag` (H.264 ≈ 2× H.265)
+
+### Bitrate-Referenztabelle (2026 typisch)
+
+| Auflösung       | Codec | fps | Szenenkomplexität  | Bitrate (Mbps) |
+| --------------- | ----- | --- | ------------------ | -------------- |
+| **4K (8MP)**    | H.265 | 15  | Niedrig (statisch) | 3–4            |
+| 4K (8MP)        | H.265 | 15  | Mittel             | 4–6            |
+| 4K (8MP)        | H.265 | 15  | Hoch (Bäume/Regen) | 6–8            |
+| 4K (8MP)        | H.265 | 30  | Mittel             | 8–12           |
+| **2K (4MP)**    | H.265 | 15  | Mittel             | 2–3            |
+| 2K (4MP)        | H.265 | 30  | Mittel             | 4–6            |
+| **1080p (2MP)** | H.265 | 15  | Mittel             | 1–2            |
+| 1080p (2MP)     | H.265 | 30  | Mittel             | 2–4            |
+| **4K (8MP)**    | H.264 | 15  | Mittel             | 8–12           |
+| **1080p (2MP)** | H.264 | 30  | Mittel             | 4–8            |
+
+<Callout type="tip">
+
+**Profitipp:** Aktivieren Sie **H.265 (HEVC)** an jeder Kamera/jedem NVR. Es
+halbiert den Speicherverbrauch gegenüber H.264. Alle Kameras ab 2020
+unterstützen es. Wenn Ihr NVR es nicht kann, upgraden Sie den NVR.
+
+</Callout>
+
+---
+
+## Kopfrechner (Keine Tabellenkalkulation nötig)
+
+### Methode: "Kameras × Mbps × Tage × 0,1 = TB"
+
+| Kameras | Auflösung | Codec | fps | Mbps (geschätzt) | 7 Tage     | 14 Tage | 30 Tage | 60 Tage | 90 Tage |
+| ------- | --------- | ----- | --- | ---------------- | ---------- | ------- | ------- | ------- | ------- |
+| **4**   | 4K        | H.265 | 15  | 4                | **1,1 TB** | 2,3 TB  | 4,9 TB  | 9,8 TB  | 14,7 TB |
+| **8**   | 4K        | H.265 | 15  | 4                | **2,3 TB** | 4,6 TB  | 9,8 TB  | 19,6 TB | 29,4 TB |
+| **16**  | 4K        | H.265 | 15  | 4                | **4,6 TB** | 9,2 TB  | 19,7 TB | 39,3 TB | 59 TB   |
+| **8**   | 2K        | H.265 | 15  | 3                | **1,7 TB** | 3,5 TB  | 7,4 TB  | 14,7 TB | 22 TB   |
+| **16**  | 2K        | H.265 | 15  | 3                | **3,5 TB** | 7,0 TB  | 14,9 TB | 29,3 TB | 44 TB   |
+| **8**   | 1080p     | H.265 | 30  | 2                | **1,2 TB** | 2,3 TB  | 4,9 TB  | 9,8 TB  | 14,7 TB |
+
+**Formel-Check:** 8 Kameras × 4 Mbps × 30 Tage × 0,108 = **10,4 TB** (passt zur Tabelle: 9,8 TB ≈ nah genug)
+
+---
+
+## Was die Zahlen verändert (Multiplikatoren)
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="motion">
+    <AccordionTrigger>Bewegungsgesteuerte Aufzeichnung (spart 50–80 %)</AccordionTrigger>
+    <AccordionContent>
+
+**So funktioniert es:** Daueraufzeichnung im Sub-Stream (niedrige Auflösung), volle Auflösung nur bei Bewegung.
+
+| Szenario                                   | Speicher vs. Daueraufzeichnung       |
+| ------------------------------------------ | ------------------------------------ |
+| Ruhiges Wohngebiet (5 Ereignisse/Std.)     | **15–25 %** der Daueraufzeichnung    |
+| Belebter Einzelhandel (50 Ereignisse/Std.) | **40–60 %**                          |
+| Autobahn / Parkplatz                       | **70–90 %** (fast Daueraufzeichnung) |
+
+**Formel:** `Dauer_GB × Bewegungsfaktor = Tatsächliche_GB`
+
+- Konservativ: **× 0,3** (ruhig)
+- Typisch: **× 0,5** (moderat)
+- Vielverkehr: **× 0,75** (hohes Aufkommen)
+
+**Achtung:** Verpasste Bewegungen = keine Aufnahme. **Daueraufzeichnung + Bewegungsmarkierungen** verwenden (NVR zeichnet 24/7 auf, markiert Bewegungsereignisse).
+
+</AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="substream">
+    <AccordionTrigger>Sub-Streams (Live-Ansicht ohne Speicherbelastung)</AccordionTrigger>
+    <AccordionContent>
+
+**Sub-Stream** = Niedrige Auflösung (D1/720p) für Live-Ansicht/Mobilgeräte. **Wird nicht aufgezeichnet** (oder mit winziger Bitrate).
+
+| Stream    | Auflösung   | Bitrate      | Zweck                                         |
+| --------- | ----------- | ------------ | --------------------------------------------- |
+| **Main**  | 4K/2K/1080p | 2–8 Mbps     | **Aufzeichnung** (Beweismaterial)             |
+| **Sub**   | 720p/D1/CIF | 0,5–1,5 Mbps | Live-Ansicht, Mobilgeräte, Bewegungserkennung |
+| **Third** | 480p/360p   | 0,2–0,5 Mbps | Mobiles Backup, 3G/4G                         |
+
+**Speicherauswirkung:** Sub-Stream-Aufzeichnung addiert **5–15 %**, falls aktiviert. Normalerweise **Sub-Stream-Aufzeichnung deaktivieren** — nur Main-Stream verwenden.
+
+</AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="raid">
+    <AccordionTrigger>RAID-Overhead (Nutzwert vs. Rohkapazität)</AccordionTrigger>
+    <AccordionContent>
+
+| RAID                 | Min. Festplatten | Nutzbar %                                  | Überlebt    | Wiederaufbaurisiko                     |
+| -------------------- | ---------------- | ------------------------------------------ | ----------- | -------------------------------------- |
+| **RAID 1** (Spiegel) | 2                | **50 %**                                   | 1 Platte    | Niedrig                                |
+| **RAID 5**           | 3                | **(N-1)/N** (67 % @ 3, 75 % @ 4)           | 1 Platte    | Mittel (URE bei >8TB)                  |
+| **RAID 6**           | 4                | **(N-2)/N** (50 % @ 4, 60 % @ 5, 67 % @ 6) | 2 Platten   | **Niedrig** (empfohlen ab 6 Schächten) |
+| **RAID 10**          | 4 (gerade)       | **50 %**                                   | 1–2 Platten | Sehr niedrig                           |
+| **SHR** (Synology)   | 2+               | Flexibel                                   | 1–2         | Niedrig                                |
+
+**Faustregel:** Für 4K/8+ Kameras / >30 Tage → **RAID 6 Minimum**. Für 1080p/2K &lt;8 Kameras → RAID 1/5 OK.
+
+**Berechnung:** `Erforderliche_Roh_TB = Erforderliche_Nutz_TB / RAID_Nutzbar_%`
+Beispiel: 20 TB nutzbar, RAID 6 (60 %) → **34 TB roh** = 6× 8TB oder 4× 10TB
+
+</AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="retention">
+    <AccordionTrigger>Aufbewahrungsstufen (Intelligenter Speicher)</AccordionTrigger>
+    <AccordionContent>
+
+Nicht jedes Filmmaterial braucht 90 Tage.
+
+| Stufe      | Aufbewahrung | Was                                              | Typischer %-Anteil am Gesamten |
+| ---------- | ------------ | ------------------------------------------------ | ------------------------------ |
+| **Hot**    | 0–7 Tage     | Alle Kameras, volle Auflösung, Daueraufzeichnung | 30–50 %                        |
+| **Warm**   | 8–30 Tage    | Nur Bewegungsereignisse, volle Auflösung         | 30–40 %                        |
+| **Cold**   | 31–365+ Tage | Nur kritische Kameras oder Sub-Stream            | 10–20 %                        |
+| **Archiv** | 1–7 Jahre    | Vorfälle, Exporte, rechtliche Aufbewahrung       | Extern (Wasabi/B2)             |
+
+**NVR-Unterstützung:** UniFi Protect, Synology Surveillance Station, Dahua DSS, Hikvision iVMS unterstützen gestufte Aufbewahrung nativ.
+
+</AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+---
+
+## Festplattenauswahl (2026)
+
+### Nur Überwachungsfestplatten
+
+| Festplatte              | Kapazität | Arbeitslast (TB/Jahr) | Garantie | Ideal für                                 |
+| ----------------------- | --------- | --------------------- | -------- | ----------------------------------------- |
+| **WD Purple**           | 1–18 TB   | 180                   | 3 Jahre  | Standard-NVR (1–8 Schächte)               |
+| **Seagate SkyHawk**     | 1–20 TB   | 180                   | 3 Jahre  | Standard-NVR (1–8 Schächte)               |
+| **Toshiba S300**        | 4–18 TB   | 180                   | 3 Jahre  | Budget-NVR                                |
+| **WD Purple Pro**       | 8–22 TB   | 300                   | 5 Jahre  | RAID 5/6, 8+ Schächte, KI-Analytik        |
+| **Seagate SkyHawk AI**  | 8–24 TB   | 300–550               | 5 Jahre  | KI-NVR, 16+ Schächte, schwere Analytik    |
+| **Seagate Exos X**      | 4–24 TB   | 550                   | 5 Jahre  | Enterprise, 24 Schächte+, 24/7 Schwerlast |
+| **WD Ultrastar (Gold)** | 4–26 TB   | 550                   | 5 Jahre  | Enterprise, Synology/TrueNAS              |
+
+<Callout type="warning">
+
+**Nie verwenden:** Desktop-Festplatten (WD Blue, Seagate Barracuda),
+NAS-Festplatten (WD Red, Seagate IronWolf) — nicht für 24/7 sequenzielles
+Schreiben ausgelegt. **Überwachungsfestplatten haben Firmware, die für
+konstante Schreibströme optimiert ist.**
+
+</Callout>
+
+### Kapazitäts-Sweet-Spots (Preise 2026)
+
+| Kapazität    | €/TB (ca.) | Beste Verwendung                                   |
+| ------------ | ---------- | -------------------------------------------------- |
+| **8 TB**     | 18–20 €    | Sweet Spot für 4–8 Schacht RAID 5/6                |
+| **10 TB**    | 17–19 €    | Bestes €/TB für 6+ Schacht RAID 6                  |
+| **12 TB**    | 18–20 €    | 8+ Schächte, weniger Platten = weniger Hitze/Strom |
+| **14–16 TB** | 19–22 €    | 12+ Schächte, maximale Kapazität pro Slot          |
+| **18–22 TB** | 22–26 €    | 16+ Schächte, nur Enterprise                       |
+
+**Empfehlung:** **8 TB oder 10 TB** für die meisten 4–8 Schacht NVRs. **12–14 TB** für 8+ Schacht RAID 6.
+
+---
+
+## Vollständiges Dimensionierungs-Arbeitsblatt
+
+### Schritt 1: Kameras auflisten
+
+| Kam        | Standort  | Aufl. | Codec | fps | Geschätzte Mbps |
+| ---------- | --------- | ----- | ----- | --- | --------------- |
+| 1          | Haustür   | 4K    | H.265 | 15  | 4               |
+| 2          | Einfahrt  | 4K    | H.265 | 15  | 4               |
+| 3          | Hinterhof | 2K    | H.265 | 15  | 3               |
+| 4          | Seitentor | 2K    | H.265 | 15  | 3               |
+| 5          | Garage    | 1080p | H.265 | 30  | 2               |
+| **Gesamt** |           |       |       |     | **16 Mbps**     |
+
+### Schritt 2: Tägliche GB berechnen
+
+`Gesamt_Mbps × 108 = GB/Tag` (H.265)
+`16 × 108 = 1.728 GB/Tag ≈ 1,7 TB/Tag`
+
+### Schritt 3: Aufbewahrungs- & Bewegungsfaktor anwenden
+
+| Aufbewahrung                  | Bewegungsfaktor | Berechnung      | Erforderlich |
+| ----------------------------- | --------------- | --------------- | ------------ |
+| **7 Tage Daueraufzeichnung**  | 1,0             | 1,7 × 7         | **11,9 TB**  |
+| **14 Tage Daueraufzeichnung** | 1,0             | 1,7 × 14        | **23,8 TB**  |
+| **30 Tage (Bewegung 50 %)**   | 0,5             | 1,7 × 30 × 0,5  | **25,5 TB**  |
+| **90 Tage (gestaffelt)**      | 0,35 Durchschn. | 1,7 × 90 × 0,35 | **53,5 TB**  |
+
+### Schritt 4: RAID-Overhead hinzufügen
+
+| RAID                    | Nutzbar % | Roh-TB erforderlich (für 25,5 TB nutzbar) |
+| ----------------------- | --------- | ----------------------------------------- |
+| RAID 1 (2 Schächte)     | 50 %      | **51 TB** → 6× 10TB                       |
+| RAID 5 (4 Schächte)     | 75 %      | **34 TB** → 4× 10TB                       |
+| **RAID 6 (6 Schächte)** | **60 %**  | **42,5 TB** → **5× 10TB oder 4× 12TB**    |
+| RAID 10 (4 Schächte)    | 50 %      | 51 TB → 6× 10TB                           |
+
+### Schritt 5: Festplatten auswählen
+
+**Für dieses Beispiel (25,5 TB nutzbar, RAID 6):**
+
+- **Option A:** 5× 10 TB SkyHawk = 50 TB roh → 30 TB nutzbar ✓ (900 €)
+- **Option B:** 4× 12 TB SkyHawk = 48 TB roh → 28,8 TB nutzbar ✓ (1.000 €)
+- **Option C:** 6× 8 TB SkyHawk = 48 TB roh → 28,8 TB nutzbar ✓ (960 €)
+
+---
+
+## Bandbreite vs. Speicher (Upload nicht vergessen)
+
+Wenn Sie in die Cloud sichern (Wasabi/B2/R2):
+
+| Kameras | Aufl. | Main-Stream Mbps | 30-Tage-Cloud-TB | Monatlicher Egress (Wasabi)         |
+| ------- | ----- | ---------------- | ---------------- | ----------------------------------- |
+| 8       | 4K    | 32               | 10 TB            | **Kostenlos** (Wasabi) / 100 € (B2) |
+| 16      | 4K    | 64               | 20 TB            | Kostenlos / 200 €                   |
+| 8       | 2K    | 16               | 5 TB             | Kostenlos / 50 €                    |
+
+**Faustregel:** Lokaler Speicher = primär. Cloud = Backup (nur Ereignisse = 5–10 % des lokalen).
+
+---
+
+## NVR-spezifische Hinweise
+
+| NVR                          | Max. Festplatten | RAID               | Max. Kameras | Besondere Hinweise                    |
+| ---------------------------- | ---------------- | ------------------ | ------------ | ------------------------------------- |
+| **Reolink RLN8/16/36**       | 1/2/4            | Nein/RAID 1/RAID 5 | 8/16/36      | Kein RAID 6; 2-Schacht nur für RAID 1 |
+| **Amcrest NV4108/4116**      | 2                | RAID 1             | 8/16         | Einfach, zuverlässig                  |
+| **Dahua NVR5/6-Serie**       | 2–8              | RAID 1/5/10        | 16–64        | RAID 6 bei 8+ Schächten               |
+| **Hikvision DS-77/96-Serie** | 4–16             | RAID 1/5/6/10      | 16–128       | Beste RAID-Unterstützung              |
+| **UniFi UNVR / UNVR Pro**    | 4 / 7            | RAID 1/5/6/10      | 50 / 100+    | Beste Benutzeroberfläche, Protect AI  |
+| **Synology DVA/DS**          | 2–12             | SHR/RAID 1/5/6/10  | 40–80+       | Gestaffelter Speicher, Apps           |
+| **Custom Frigate/Blue Iris** | Unbegrenzt       | ZFS/RAID-Z         | 16–64+       | Volle Kontrolle, DIY                  |
+
+---
+
+## Kurzreferenzkarte (Zum Ausdrucken)
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                  CCTV-SPEICHER-SCHNELLRECHNER                │
+├─────────────────────────────────────────────────────────────┤
+│  TÄGLICHE GB = KAMERAS × MBPS × 108        (H.265)          │
+│  TÄGLICHE GB = KAMERAS × MBPS × 216        (H.264)          │
+├─────────────────────────────────────────────────────────────┤
+│  4K @ 15fps H.265 ≈ 4 Mbps    │  2K @ 15fps H.265 ≈ 3 Mbps  │
+│  1080p @ 30fps H.265 ≈ 2 Mbps │ 1080p @ 30fps H.264 ≈ 5 Mbps │
+├─────────────────────────────────────────────────────────────┤
+│  TB FÜR N TAGE = TÄGLICHE_GB × N / 1000                     │
+│  BEWEGUNGSGESTEUERT ≈ ×0,3 (ruhig) bis ×0,75 (viel Verkehr) │
+│  RAID 1 = 50 %  │  RAID 5 = 75 % (3 Platten) │ RAID 6 = 60 %│
+├─────────────────────────────────────────────────────────────┤
+│  FESTPLATTEN: WD Purple / Seagate SkyHawk (NUR Überwachung)  │
+│  8TB/10TB = Sweet Spot  │  RAID 6 für 4K/30+ Tage           │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Verwandte Leitfäden
+
+- [Cloud-Speicher vs. lokaler Speicher für Überwachungskameras](/blog/cloud-storage-vs-local-storage-security-cameras) — Gestaffelte Aufbewahrung, Wasabi/B2, Verschlüsselung
+- [Beste Überwachungskamerasysteme für kleine Unternehmen](/blog/best-small-business-security-camera-systems) — NVR-Dimensionierung, RAID, Festplattenauswahl
+- [DIY-Installation von Überwachungskameras: Komplette Anleitung](/blog/diy-security-camera-installation-complete-guide) — Kabel, Montage, Konfiguration
+- [PoE-Kamera-Kabelverlegung: DIY-Installation](/blog/poe-camera-cable-running-diy-installation) — Leistungsbudget für PoE-Switches
+- [Häufige Probleme mit Überwachungskameras & Lösungen](/blog/common-security-camera-problems-fixes) — Aufzeichnungslücken, Festplattenausfälle
+
+---
+
+_Letzte Aktualisierung: Juli 2026. Preise und Festplattenmodelle ändern sich — aktuelle Daten vor dem Kauf prüfen. H.265/HEVC-Lizenzierung ist seit 2024 lizenzgebührenfrei für Hardware-Encoding._

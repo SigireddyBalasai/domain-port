@@ -1,0 +1,204 @@
+---
+title: "PoE Kamera Kablo Çekimi: DIY Kurulum Kılavuzu (2026)"
+description: "Güvenlik kameraları için PoE kablosunu kendiniz çekin. Kablo seçimi, araçlar, duvar/tavan/çatı katı geçişleri, su yalıtımı, voltaj düşümü ve bağlantı testi."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "poe-camera-cable-running-diy-installation"
+author: "Your Name"
+tags: ["poe", "cable", "diy-installation", "guide", "wiring"]
+postType: "howto"
+---
+
+## PoE Kablo Çekme Kılavuzu
+
+Bu kılavuz, PoE (Power over Ethernet) güvenlik kameraları için kablo çekmeyi adım adım açıklar.
+
+## 1. Doğru Kabloyu Seçme
+
+### Kablo Türleri
+
+| Kablo Türü | Bant Genişliği | Maks. Mesafe | Önerilen Kullanım               |
+| ---------- | -------------- | ------------ | ------------------------------- |
+| Cat5e      | 1 Gbps         | 100m         | 1080p kameralar, eski sistemler |
+| Cat6       | 10 Gbps        | 100m         | 4K kameralar, yeni kurulumlar   |
+| Cat6a      | 10 Gbps        | 100m         | 4K kameralar, PoE+ gerekli      |
+| Cat7       | 10 Gbps        | 100m         | Endüstriyel, gelecek için       |
+
+### Dış Mekan Kablosu
+
+- **UV korumalı** dış mekan kablosu kullanın
+- **Doğrudan gömme** kablo: toprak altı için
+- **Korumalı (STP)** : Parazitli ortamlar için
+- **Korumasız (UTP)** : Çoğu ev kullanımı için yeterli
+
+## 2. Araçlar ve Malzemeler
+
+### Temel Araçlar
+
+- RJ45 kıvırma aleti
+- Kablo sıyırıcı
+- Kablo test cihazı
+- Matkap ve uç seti
+- Kablo makası
+- Boru anahtarı
+
+### Malzemeler
+
+- RJ45 konektörleri (dış mekan korumalı)
+- Kablo bağları
+- Kablo kanalı / spiral boru
+- Silikon dolgu
+- Kablo geçiş lastikleri
+- Etiketler
+
+## 3. Kablo Güzergahı Planlama
+
+### Duvarlardan Geçiş
+
+1. Kablonun NVR'den kameraya güzergahını planlayın
+2. Duvar deliklerini işaretleyin
+3. Delikleri açın (kablo çapından biraz büyük)
+4. Kablo geçiş lastikleri takın
+
+### Tavandan Geçiş
+
+1. Tavan arası erişimini kontrol edin
+2. Kamera konumundan tavan arasına delik açın
+3. Kabloyu tavan arasında sabitleyin
+4. NVR'nin bulunduğu yere kadar getirin
+
+### Dış Mekan Geçişi
+
+1. Kabloyu dış duvar boyunca sabitleyin
+2. Kablo kanalı içinde koruyun
+3. Köşelerde uygun büküm yarıçapı bırakın
+4. Güneşe maruz kalan kısımlarda UV korumalı kanal kullanın
+
+## 4. Adım Adım Kablo Çekme
+
+### Adım 1: Kabloyu Ölçme
+
+1. Güzergah boyunca kablo uzunluğunu ölçün
+2. Her iki uçta 30-60cm fazladan bırakın
+3. Kesmeden önce tekrar kontrol edin
+
+### Adım 2: Kabloyu Kesme
+
+1. Temiz, düz bir kesim yapın
+2. Kablo makası kullanın
+
+### Adım 3: Kabloyu Çekme
+
+1. Kabloyu güzergah boyunca yönlendirin
+2. Keskin köşelerden kaçının
+3. Kabloyu 30cm'de bir sabitleyin
+4. Çok sıkı çekmeyin
+
+### Adım 4: RJ45 Konektör Takma
+
+1. Kablo dış kılıfını 2.5cm sıyırın
+2. Kabloları düzeltin ve sıralayın (T568B)
+3. Kabloları konektöre yerleştirin
+4. Kıvırma aleti ile sıkıştırın
+5. Kablo test cihazı ile test edin
+
+### Adım 5: Bağlantı Testi
+
+1. Kablo test cihazı ile tüm pinleri test edin
+2. Açık devre veya kısa devre kontrolü
+3. PoE güç testi yapın
+
+## 5. Voltaj Düşümü ve Mesafe
+
+### PoE ve PoE+ Karşılaştırması
+
+| Özellik      | PoE (802.3af) | PoE+ (802.3at) |
+| ------------ | ------------- | -------------- |
+| Güç çıkışı   | 15.4W         | 30W            |
+| Kamera gücü  | 12.95W        | 25.5W          |
+| 4K kamera    | Sınırlı       | Önerilir       |
+| PTZ kamera   | Hayır         | Evet           |
+| IR projektör | Sınırlı       | Evet           |
+
+### Mesafe Limitleri
+
+- **Maksimum PoE mesafesi**: 100 metre (328 feet)
+- **90 metre** önerilen maksimum (güvenlik payı)
+- 100m'den uzun mesafeler için PoE genişletici kullanın
+- Cat6 daha uzun mesafelerde daha iyi performans gösterir
+
+## 6. Su Yalıtımı
+
+### Dış Mekan Bağlantıları
+
+1. RJ45 konektörünü taktıktan sonra su geçirmez bant sarın
+2. Konektörün üzerine silikon dolgu uygulayın
+3. Kabloyu aşağı doğru ilmekleyin (su damlaları için)
+4. Kablo bağlantı noktasını yerden yukarıda tutun
+
+### Duvar Geçişleri
+
+1. Duvar deliğine kablo geçiş lastiği takın
+2. Silikon dolgu ile kapatın
+3. Dış tarafta kablo kanalı kullanın
+
+## 7. Kablo İpuçları
+
+- **100m'yi aşmayın**: Sinyal kaybı ve voltaj düşümü
+- **Güç kablolarından uzak durun**: Paraziti önleyin
+- **Keskin bükümlerden kaçının**: Kablo hasarı
+- **Etiketleyin**: Her iki uçta da hangi kameraya ait olduğunu yazın
+- **Fazladan kablo bırakın**: Servis ve değişiklikler için
+- **Kablo test cihazı kullanın**: Kurulumdan sonra test edin
+
+---
+
+**İlgili Okumalar:**
+
+- [DIY Kamera Kurulum Kılavuzu](/blog/diy-security-camera-installation-complete-guide)
+- [Dış Mekan Kamerası Montaj Rehberi](/blog/how-to-mount-outdoor-cameras-wall-ceiling-eave)
+- [En İyi Küçük İşletme Güvenlik Kamera Sistemleri](/blog/best-small-business-security-camera-systems)
+
+## Yaygın Hatalar ve Düzeltmeler
+
+| Belirti                                        | Neden                                                 | Düzeltme                                             |
+| ---------------------------------------------- | ----------------------------------------------------- | ---------------------------------------------------- |
+| **Gece kamera yeniden başlatılıyor (IR açık)** | Voltaj düşümü >3V                                     | Kabloyu kısaltın / Cat6a / Kamerada PoE++ enjektör   |
+| **Bağlantı 100/1000 Mbps gidip geliyor**       | Tek çift açık / yüksek direnç                         | Her iki ucu yeniden sonlandırın; her çifti test edin |
+| **Bağlantı yok, test 7/8 kablo gösteriyor**    | Bir iletken kırık / gevşek                            | Yeniden kıvırın; zımba ezmesini kontrol edin         |
+| **Çapraz çiftler (1↔3, 2↔6)**                  | Bir uç T568A diğer T568B                              | Her iki uçta T568B standardize edin                  |
+| **Kabloda su (korozyon)**                      | Dış mekan kablosu jel dolgulu değil/kötü sızdırmazlık | Doğrudan gömme ile değiştirin; girişleri kapatın     |
+| **EMI gürültüsü (video artefaktları)**         | Romex/HVAC'a paralel                                  | 12"+ ayırın; 90° çaprazlayın; korumalı Cat6          |
+
+## PoE Voltaj Düşümü Hesaplayıcı
+
+**Formül:** `Vdüşümü = (2 × Uzunluk_ft × Akım_A × Direnç_Ω_per_1000ft) / 1000`
+
+| Kablo              | Direnç (Ω/1000ft) | Maks 30W (0.6A) | Maks 60W (1.2A) | Maks 90W (1.8A) |
+| ------------------ | ----------------- | --------------- | --------------- | --------------- |
+| **Cat6 (23 AWG)**  | 6.6               | **328 ft**      | **164 ft**      | **109 ft**      |
+| **Cat6a (23 AWG)** | 6.6               | 328 ft          | 328 ft          | 218 ft          |
+| **Cat5e (24 AWG)** | 8.5               | 250 ft          | 125 ft          | 83 ft           |
+
+**Kural:** Marj için maksimumun **%80'inde** kalın. PoE++ (60/90W) için Cat6a kullanın veya Cat6'da 100 ft ile sınırlayın.
+
+## Profesyonel İpuçları
+
+1. **Her iki ucu da etiketleyin** çekmeden önce — Sharpie + kablo etiketi
+2. **Önce çekme ipi geçirin** — Gelecekteki geçişler için misina bırakın
+3. **Servis ilmekleri** — Kamerada 3 ft, NVR/anahtarda 6 ft
+4. **Renk kodu** — Bölge başına farklı ceket renkleri (Mavi=Ön, Yeşil=Arka, Sarı=Yan)
+5. **Belgeleyin** — Her sonlandırmanın fotoğrafı, kablo planı PDF
+6. **Monte etmeden önce test edin** — Merdivende kamera = düzeltmesi 10× zor
+7. **PoE bütçesi** — Anahtar toplam PoE bütçesi ≥ Σ kamera maks. çekişi × 1.2
+8. **Aşırı gerilim koruması** — Dış mekan geçişleri: Bina girişinde PoE aşırı gerilim koruyucusu
+
+## Kod Uyumluluk Hızlı Referans (NEC 2023)
+
+| Madde       | Gereklilik               | Pratik Çıkarım                        |
+| ----------- | ------------------------ | ------------------------------------- |
+| **300.4**   | Fiziksel hasardan koruma | Çivi plakaları, kanal, kenardan 1.25" |
+| **300.11**  | Sabitle ve destekle      | 4' arayla zımba, kutudan 12" içinde   |
+| **300.22**  | Hava boşluğu alanları    | CMP kablosu veya kanal                |
+| **725.133** | Sınıf 2/3 kablo ayırması | Güçten 2" (veya bariyer)              |
+| **800.170** | Topraklama (dış mekan)   | Havai ise anten deşarj ünitesi        |

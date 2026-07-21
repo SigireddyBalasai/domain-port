@@ -1,0 +1,335 @@
+---
+title: "Kabel Kamera PoE: Panduan Pemasangan DIY (2026)"
+description: "Panduan lengkap menjalankan Cat5e/6 untuk kamera PoE. Jenis kabel, perencanaan jalur, terminasi, pengujian, kepatuhan kode, dan kiat profesional untuk pemasangan yang bersih dan andal."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "poe-camera-cable-running-diy-installation"
+author: "Your Name"
+tags: ["diy", "poe", "cable-running", "installation", "termination"]
+postType: "howto"
+---
+
+Menjalankan kabel adalah 70% dari tenaga kerja pemasangan kamera PoE. Lakukan sekali dengan benar: tembaga solid, jalur yang tepat, terminasi yang benar, pengujian yang terverifikasi. Panduan ini mencakup setiap langkah dari gulungan ke switch.
+
+<Badge variant="outline">Pilihan Kabel</Badge> **Gunakan tembaga solid Cat6
+(CMR/CMP).** Bukan CCA (tembaga berlapis aluminium). Bukan stranded. Bukan Cat5e
+untuk pemasangan baru. Tembaga solid Cat6 = 100m pada 1Gbps PoE+ tanpa masalah
+penurunan tegangan.
+
+---
+
+## Pemilihan Kabel: Apa yang Dibeli (Dan Dihindari)
+
+| Jenis Kabel                          | Konduktor            | PoE+ (30W) Maks  | PoE++ (60/90W) Maks | Peringkat              | Penggunaan           |
+| ------------------------------------ | -------------------- | ---------------- | ------------------- | ---------------------- | -------------------- |
+| **Cat6 Tembaga Solid (CMR)**         | 23 AWG Tembaga Solid | 100 m (328 kaki) | 80 m (262 kaki)     | Riser (dalam dinding)  | **Pilihan standar**  |
+| **Cat6 Tembaga Solid (CMP)**         | 23 AWG Tembaga Solid | 100 m            | 80 m                | Plenum (saluran udara) | Diperlukan di plenum |
+| **Cat6a Tembaga Solid**              | 23 AWG Tembaga Solid | 100 m            | 100 m               | Riser/Plenum           | Future-proof 10G     |
+| **Penguburan Langsung Luar Ruangan** | 23 AWG Tembaga Solid | 100 m            | 80 m                | Isi gel, UV            | Bawah tanah, udara   |
+| **❌ Cat5e**                         | 24 AWG               | 100 m            | 50 m                | Riser                  | Hanya warisan        |
+| **❌ CCA (Tembaga Berlapis Al)**     | Inti aluminium       | **GAGAL**        | **GAGAL**           | Apa pun                | **Jangan untuk PoE** |
+| **❌ Stranded / Patch**              | Tembaga Stranded     | 10 m (33 kaki)   | 5 m                 | Patch                  | Hanya kabel patch    |
+
+<Callout type="danger">
+
+**CCA (Tembaga Berlapis Aluminium) gagal pada PoE.** Aluminium memiliki resistansi 60% lebih tinggi → penurunan tegangan → kamera reboot di malam hari (IR menyala). **Verifikasi "Tembaga Telanjang Solid" pada cetakan jaket.**
+
+</Callout>
+
+**Merek yang Direkomendasikan (2026):**
+
+- **Anggaran:** Cable Matters Cat6 CMR (1000 kaki $120)
+- **Menengah:** Southwire Cat6 CMR (1000 kaki $150)
+- **Pro:** Belden 2413 / General Cable GenSPEED 6000 (1000 kaki $220)
+- **Luar Ruangan:** Superior Essex 04-001-59 (Penguburan Langsung, $180)
+
+---
+
+## Perencanaan Jalur: Sebelum Mengebor
+
+### 1. Petakan Setiap Jalur
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="mapping">
+    <AccordionTrigger>Buat Spreadsheet Jadwal Kabel</AccordionTrigger>
+    <AccordionContent>
+
+| Kamera | Lokasi           | Jalur                         | Panjang (kaki) | Jenis Kabel       | Terminasi       | Kelas PoE     |
+| ------ | ---------------- | ----------------------------- | -------------- | ----------------- | --------------- | ------------- |
+| CAM-01 | Pintu Depan      | Loteng → Sofit → Fasia        | 65             | Cat6 CMR          | RJ45 + Keystone | Kelas 4 (30W) |
+| CAM-02 | Jalan Masuk      | Loteng → Dinding Luar → Tiang | 95             | Cat6 Luar Ruangan | RJ45 Langsung   | Kelas 4       |
+| CAM-03 | Halaman Belakang | Basement → Balok Tepi → Atap  | 80             | Cat6 CMR          | Keystone        | Kelas 3 (15W) |
+
+<p>
+  <strong>Aturan:</strong> Ukur <strong>dua kali</strong>, tambahkan{" "}
+  <strong>10 kaki cadangan</strong> per jalur (lingkaran servis di kedua ujung).
+</p>
+
+  </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+### 2. Identifikasi Jalur (Terbaik → Terburuk)
+
+| Jalur                                           | Kesulitan | Jalur Maks      | Catatan Kode                                                      |
+| ----------------------------------------------- | --------- | --------------- | ----------------------------------------------------------------- |
+| **Loteng → Sofit/Atap**                         | Mudah     | Tak terbatas    | Hindari kontak isolasi (derating kapasitas)                       |
+| **Basement/Ruang Bawah → Balok Tepi → Dinding** | Sedang    | Tak terbatas    | Bor melalui pelat ambang, blok api                                |
+| **Dinding Dalam → Luar**                        | Sedang    | 1–2 per dinding | Blok api di pelat atas/bawah                                      |
+| **Conduit (EMT/PVC) Permukaan**                 | Mudah     | Tak terbatas    | Terbaik untuk retrofit, ekspos diizinkan                          |
+| **Penguburan Langsung (Parit)**                 | Sulit     | Tak terbatas    | 18 inci kedalaman (24 inci di bawah jalan masuk), pita peringatan |
+| **Udara (Tiang-ke-Tiang)**                      | Sedang    | 1–2             | Kabel messenger, loop tetes, jarak 10 kaki                        |
+
+---
+
+## Teknik Pengeboran & Pemancingan
+
+### Loteng ke Sofit (Paling Umum)
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="attic-soffit">
+    <AccordionTrigger>Langkah-demi-Langkah: Loteng → Kamera Sofit</AccordionTrigger>
+    <AccordionContent>
+
+<p>
+  <strong>Alat:</strong> Mata bor auger ⅞", batang bercahaya 50 kaki, senter
+  kepala, bantalan lutut, masker debu
+</p>
+
+<ol>
+  <li>
+    <strong>Temukan posisi kamera</strong> dari dalam loteng — ukur dari
+    landmark yang diketahui (ventilasi, cerobong)
+  </li>
+  <li>
+    <strong>Bor lubang ⅞"</strong> melalui pelat atas + papan sofit (miringkan
+    sedikit ke bawah untuk mengalirkan air)
+  </li>
+  <li>
+    <strong>Dorong batang bercahaya</strong> dari loteng ke bawah melalui lubang
+    ke bagian luar sofit
+  </li>
+  <li>
+    <strong>Rekatkan kabel</strong> ke ujung batang: lipat 6 inci ke belakang,
+    pita listrik halus (tidak tersangkut)
+  </li>
+  <li>
+    <strong>Tarik perlahan</strong> — pekerjaan 2 orang: satu memberi, satu
+    menarik
+  </li>
+  <li>
+    <strong>Sisakan 3 kaki cadangan</strong> di loteng (lingkaran servis), 2
+    kaki di kamera
+  </li>
+  <li>
+    <strong>Seal:</strong> Silikon di sekitar kabel di lubang sofit (dalam +
+    luar)
+  </li>
+  <li>
+    <strong>Jepit</strong> kabel ke kasau setiap 4 kaki (staples berinsulasi
+    T25)
+  </li>
+</ol>
+
+  </AccordionContent>
+   </AccordionItem>
+</Accordion>
+
+### Basement/Ruang Bawah ke Dinding Luar
+
+- **Bor melalui balok tepi** (bukan fondasi) — lubang ⅞", 12 inci di atas tingkat tanah minimum
+- **Blok api:** Isi wol mineral + dempul api di sekitar kabel di lubang tembus
+- **Luar:** Tubuh conduit LB → ½" LFMC ke kotak kamera
+
+### Dinding Dalam ke Luar (Retrofit)
+
+1. **Potong lubang kotak kerja lama** pada ketinggian kamera (dalam)
+2. **Bor ke bawah** melalui pelat bawah ke basement/ruang bawah (auger ⅞")
+3. **Pancing dari bawah** dengan batang bercahaya
+4. **Lindungi:** Pelat paku pada stud tempat kabel lewat (NEC 300.4)
+
+---
+
+## Conduit & Perlindungan
+
+| Situasi                    | Jenis Conduit                    | Ukuran | Catatan                                     |
+| -------------------------- | -------------------------------- | ------ | ------------------------------------------- |
+| **Permukaan dinding luar** | LFMC (Metal Fleksibel Tahan Air) | ½"     | Peringkat UV, maks 4 kaki antar penyangga   |
+| **Bawah tanah**            | PVC Schedule 40 / HDPE           | ¾"     | 18 inci penutup, siku sapu, tali tarik      |
+| **Loteng (ekspos)**        | Tidak perlu (Cat6 CMR)           | —      | Jepit setiap 4 kaki, jangan jepit kabel     |
+| **Plenum (langit-langit)** | EMT / Kabel peringkat plenum     | ½"     | Kabel CMP diperlukan jika tidak ada conduit |
+| **Melalui dinding api**    | Selongsong tahan api + dempul    | —      | Hilti CFS-SL / 3M CP25                      |
+
+---
+
+## Terminasi: RJ45 Pass-Through (Tercepat, Paling Andal)
+
+<Callout type="note">
+
+**Gunakan konektor pass-through.** RJ45 standar memerlukan pemotongan yang presisi.
+Pass-through memungkinkan Anda memverifikasi urutan warna _sebelum_ crimp. **Alat:** Crimper
+pass-through ratchet (Klein VDV226-110, $45).
+
+</Callout>
+
+### Pinout T568B (Standar untuk PoE)
+
+| Pin | Pasangan | Warna        | Fungsi PoE       |
+| --- | -------- | ------------ | ---------------- |
+| 1   | 2        | Putih/Oranye | Data + PoE (+)   |
+| 2   | 2        | Oranye       | Data + PoE (+)   |
+| 3   | 3        | Putih/Hijau  | Data + PoE (-)   |
+| 4   | 1        | Biru         | PoE (+) Cadangan |
+| 5   | 1        | Putih/Biru   | PoE (+) Cadangan |
+| 6   | 3        | Hijau        | Data + PoE (-)   |
+| 7   | 4        | Putih/Coklat | PoE (-) Cadangan |
+| 8   | 4        | Coklat       | PoE (-) Cadangan |
+
+**PoE menggunakan SEMUA 4 pasangan** (802.3bt). **Semua 8 konduktor harus sempurna.**
+
+### Prosedur Crimp (Pass-Through)
+
+1. **Kupas 1,5 inci** jaket — jangan gores konduktor
+2. **Buka pilinan pasangan** hanya seperlunya — jaga pilinan tetap dekat ke konektor
+3. **Susun T568B** — ratakan, verifikasi urutan kiri-ke-kanan
+4. **Masukkan sepenuhnya** — konduktor terlihat di permukaan depan
+5. **Verifikasi urutan** — lihat melalui konektor transparan
+6. **Crimp** — alat ratchet, satu tekanan kuat
+7. **Uji tarik** — tarikan 5 pon, tidak boleh bergerak
+
+---
+
+## Keystone Jacks (Terminasi Pelat Dinding)
+
+**Kapan:** Kamera terhubung ke panel patch / jack dinding → kabel patch ke kamera
+
+**Punch-Down (110/Keystone):**
+
+1. Kupas 2 inci jaket
+2. Tempatkan kabel di slot berkode warna (T568B tercetak pada jack)
+3. **Pukul lurus ke bawah** — alat 110, satu pukulan per kabel
+4. Potong kelebihan rata
+5. Jepret ke pelat dinding
+
+**Uji:** Kontinuitas + tegangan PoE di jack sebelum kamera terhubung.
+
+---
+
+## Pengujian: Verifikasi Setiap Jalur
+
+<Callout type="warning">
+
+**Jangan pernah percaya kabel yang tidak diuji.** 30% dari "kegagalan kamera" adalah kegagalan kabel. Uji _sebelum_ memasang kamera.
+
+</Callout>
+
+### Tingkat 1: Kontinuitas + Peta Kabel (Setiap Kabel)
+
+**Alat:** Tester dasar (NF-8601, $25) — 8 LED + pelindung
+
+- **Semua 8 hijau** = lulus
+- **Ada merah/terbuka/silang** = terminasi ulang
+
+### Tingkat 2: Tegangan PoE Saat Beban (Kritis)
+
+**Alat:** Tester PoE (LINKSYS PTPoE, $35) atau Multimeter + Injector PoE
+
+1. Hubungkan injector → kabel → tester (atau kamera)
+2. Ukur **di ujung kamera**:
+
+- **PoE (802.3af):** 44–57V DC
+- **PoE+ (802.3at):** 50–57V DC
+- **PoE++ (802.3bt):** 52–57V DC
+
+3. **Saat beban** (kamera menyala) — penurunan tegangan &lt;3V dari injector
+
+### Tingkat 3: Validasi Kecepatan Data (Pro)
+
+**Alat:** Certifier Kabel (Fluke DSX-5000, $8k) — sewa $150/hari
+
+- **Cat6:** 250 MHz, 1 Gbps terjamin
+- **Cat6a:** 500 MHz, 10 Gbps terjamin
+- **Cetak laporan** untuk garansi
+
+---
+
+## Kalkulator Penurunan Tegangan PoE
+
+**Rumus:** `Vdrop = (2 × Panjang_kaki × Arus_A × Resistansi_Ω_per_1000kaki) / 1000`
+
+| Kabel              | Resistansi (Ω/1000 kaki) | Maks 30W (0,6A) | Maks 60W (1,2A) | Maks 90W (1,8A) |
+| ------------------ | ------------------------ | --------------- | --------------- | --------------- |
+| **Cat6 (23 AWG)**  | 6,6                      | **328 kaki**    | **164 kaki**    | **109 kaki**    |
+| **Cat6a (23 AWG)** | 6,6                      | 328 kaki        | 328 kaki        | 218 kaki        |
+| **Cat5e (24 AWG)** | 8,5                      | 250 kaki        | 125 kaki        | 83 kaki         |
+
+**Aturan:** Tetap di bawah **80% maks** untuk margin. Untuk PoE++ (60/90W), gunakan Cat6a atau batasi 100 kaki pada Cat6.
+
+---
+
+## Masalah Umum & Perbaikan
+
+| Gejala                                             | Penyebab                                         | Perbaikan                                            |
+| -------------------------------------------------- | ------------------------------------------------ | ---------------------------------------------------- |
+| **Kamera reboot di malam hari (IR menyala)**       | Penurunan tegangan >3V                           | Perpendek / Cat6a / Injector PoE++ di kamera         |
+| **Tautan berkedip 100/1000 Mbps**                  | Pasangan tunggal terbuka / resistansi tinggi     | Terminasi ulang kedua ujung; uji setiap pasangan     |
+| **Tidak ada tautan, tester menunjukkan 7/8 kabel** | Satu konduktor putus/kendor                      | Crimp ulang; periksa jepitan staples                 |
+| **Pasangan bersilang (1↔3, 2↔6)**                  | T568A satu ujung, T568B lainnya                  | Standarisasi T568B kedua ujung                       |
+| **Air dalam kabel (korosi)**                       | Kabel luar ruangan tidak diisi gel / segel buruk | Ganti dengan penguburan langsung; segel entri        |
+| **Kebisingan EMI (artefak video)**                 | Paralel ke Romex / HVAC                          | Pisahkan 12"+ ; silangkan pada 90° ; Cat6 terlindung |
+
+---
+
+## Referensi Cepat Kepatuhan Kode (NEC 2023)
+
+| Pasal       | Persyaratan                          | Praktis                                     |
+| ----------- | ------------------------------------ | ------------------------------------------- |
+| **300.4**   | Perlindungan dari kerusakan fisik    | Pelat paku, conduit, 1,25 inci dari tepi    |
+| **300.11**  | Amankan & dukung                     | Staples 4 kaki OC, dalam 12 inci dari kotak |
+| **300.22**  | Ruang plenum                         | Kabel CMP atau conduit                      |
+| **411.4**   | Pencahayaan tegangan rendah (kamera) | Kelas 2/3, peralatan terdaftar              |
+| **725.133** | Pemisahan kabel Kelas 2/3            | 2 inci dari daya (atau penghalang)          |
+| **800.170** | Pembumian (luar ruangan)             | Unit penangkal antena jika udara            |
+| **Lokal**   | Ambang batas izin                    | Sering >$500 atau >6 kaki ketinggian        |
+
+---
+
+## Kiat Pro dari 100+ Pemasangan
+
+1. **Beri label kedua ujung** sebelum menarik — Spidol + label kabel (Brother PT-E110)
+2. **Tarik tali terlebih dahulu** — Sisakan benang tukang untuk jalur masa depan
+3. **Lingkaran servis** — 3 kaki di kamera, 6 kaki di NVR/switch
+4. **Kode warna** — Warna jaket berbeda per zona (Biru=Depan, Hijau=Belakang, Kuning=Samping)
+5. **Dokumentasi** — Foto setiap terminasi, jadwal kabel PDF, diagram sesuai pelaksanaan
+6. **Uji sebelum pasang** — Kamera di tangga = 10× lebih sulit diperbaiki
+7. **Anggaran PoE** — Total anggaran PoE switch ≥ ∑ daya maks kamera × 1,2
+8. **Perlindungan lonjakan** — Jalur luar ruangan: pelindung lonjakan PoE (Transtector, $30) di pintu masuk gedung
+
+---
+
+## Daftar Belanja Alat (Sekali Beli)
+
+| Alat                     | Model                               | Harga   | Catatan                   |
+| ------------------------ | ----------------------------------- | ------- | ------------------------- |
+| **Crimper Pass-Through** | Klein VDV226-110                    | $45     | Ratchet, semua-dalam-satu |
+| **Tester Kabel (Dasar)** | NF-8601 / TRENDnetworks TC-NT2      | $25–$60 | Kontinuitas + peta kabel  |
+| **Tester PoE**           | LINKSYS PTPoE / Ubiquiti POE-Tester | $35     | Tegangan saat beban       |
+| **Alat Punch-Down**      | Fluke D914S / Klein VDV427-800      | $40     | Pisau 110/66              |
+| **Batang Bercahaya**     | Klein 56107 / Jonard GR-20          | $35     | Set 25–50 kaki            |
+| **Mata Bor Auger ⅞"**    | Irwin Speedbor / Milwaukee          | $15     | Lubang bersih di kayu     |
+| **Bor Palu (SDS+)**      | Bosch GBH2-28L / DeWalt DCH273      | $180    | Untuk pasangan bata       |
+| **Pembuat Label**        | Brother PT-E110 / PT-H110           | $50     | Label menyusut panas      |
+| **Pita Ikan**            | Klein 56007 100 kaki                | $30     | Baja, ujung non-konduktif |
+
+---
+
+## Panduan Terkait
+
+- [Panduan Pemasangan Kamera Keamanan DIY](/blog/diy-security-camera-installation-complete-guide) — Alur kerja pemasangan lengkap
+- [Cara Memasang Kamera Luar Ruangan (Dinding, Langit-langit, Atap)](/blog/how-to-mount-outdoor-cameras-wall-ceiling-eave) — Perangkat keras khusus permukaan
+- [Sistem Kamera Keamanan Bisnis Kecil Terbaik](/blog/best-small-business-security-camera-systems) — Ukuran NVR, anggaran PoE
+- [Kalkulator Penyimpanan Video CCTV](/blog/cctv-video-storage-calculator-hard-drive-space) — Ukuran penyimpanan untuk jalur Anda
+
+---
+
+_Pembaruan terakhir: Juli 2026. Referensi NEC berdasarkan edisi 2023 — verifikasi amandemen lokal._

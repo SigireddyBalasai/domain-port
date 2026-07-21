@@ -1,0 +1,401 @@
+---
+title: "Smart Home Integratie: Alexa, Google Home, HomeKit (2026)"
+description: "Verbind beveiligingscamera's met Alexa, Google Assistant en Apple HomeKit. Vergelijk native ondersteuning, bridges, Matter en lokale aansturing. Automatiseringen: lichten bij beweging, aankondigingen, opnames, geofencing."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "smart-home-integration-alexa-google-homekit"
+author: "Your Name"
+tags: ["smart-home", "alexa", "google-home", "homekit", "matter", "automation"]
+postType: "review"
+---
+
+Beveiligingscamera's worden krachtig wanneer ze praten met je smart home: lichten flitsen bij beweging, speakers kondigen bezoekers aan, sloten ontgrendelen voor herkende gezichten, geofencing schakelt in/uit automatisch. Maar niet alle camera's werken goed met alle platforms. Deze gids brengt elk integratiepad voor 2026 in kaart.
+
+<Badge variant="outline">Platformondersteuning Spiekbriefje</Badge>
+
+| Cameramerk                            | Alexa  | Google Home | HomeKit               | Matter         | Lokale API                      |
+| ------------------------------------- | ------ | ----------- | --------------------- | -------------- | ------------------------------- |
+| **Ring**                              | Native | Native      | ❌                    | ❌             | ❌                              |
+| **Arlo**                              | Native | Native      | Native (Pro 3+)       | ❌             | ❌                              |
+| **Google Nest**                       | ❌     | Native      | ❌                    | Matter (2024+) | ❌                              |
+| **Eufy**                              | Skill  | Action      | Native (HomeBase 3)   | Matter (Cam 3) | RTSP/ONVIF                      |
+| **Reolink**                           | Skill  | Action      | ❌                    | ❌             | RTSP/ONVIF/HTTP                 |
+| **UniFi Protect**                     | Skill  | Action      | Native (Protect 3.0+) | ❌             | WebSocket/RTSP                  |
+| **Wyze**                              | Skill  | Action      | ❌                    | ❌             | RTSP (beta)                     |
+| **Blink**                             | Native | Native      | ❌                    | ❌             | ❌                              |
+| **TP-Link Tapo**                      | Skill  | Action      | Native (Matter)       | **Matter**     | RTSP                            |
+| **Axis / Hanwha / Dahua / Hikvision** | ❌     | ❌          | ❌                    | ❌             | **Volledige ONVIF/VAPIX/ISAPI** |
+
+---
+
+## Platform Diepgaand
+
+### Amazon Alexa
+
+**Native Ondersteuning:** Ring, Blink, Arlo, Echo Show (als display)
+**Skill Vereist:** Reolink, Eufy, UniFi, Wyze, Tapo, Amcrest, TP-Link Kasa
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="alexa-features">
+    <AccordionTrigger>Wat Alexa Kan met Camera's</AccordionTrigger>
+    <AccordionContent>
+
+      **Live View:** "Alexa, toon [cameranaam]" → Echo Show, Fire TV, Alexa app
+      **Aankondigingen:** "Alexa, kondig aan [camera] detecteerde een persoon" →
+      Alle Echo apparaten **Routines (Automatisering):** - Trigger: Beweging /
+      Persoon / Pakket / Deurbeldruk - Acties: Lichten aan/uit, sloten, spreek
+      aangepaste zin, speel geluid, wacht, melding **Tweeweg Gesprek:** "Alexa,
+      praat met [camera]" (half-duplex PTT) **Opnames:** Ring/Blink/Arlo → Cloud
+      (abonnement). Anderen → **Geen cloud-opname via Alexa**. **Beperkingen:**
+      Geen lokale streaming (alles cloud-relayed); 10-min timeout op Echo Show;
+      geen 4K (max 1080p getranscodeerd); routines beperkt tot 1 trigger + 1
+      actie per routine (gebruik meerdere routines).
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="alexa-setup">
+    <AccordionTrigger>Setup Tips</AccordionTrigger>
+    <AccordionContent>
+
+        1. **Schakel Skill in** → Koppel account → Ontdek apparaten 2. **Hernoem**
+      camera's in Alexa app naar natuurlijke taal ("voordeur", "oprit cam") 3.
+      **Maak Groepen** ("Buiten" = voor + achter + oprit) voor "toon buiten" 4.
+      **Routine Voorbeelden:** - **Porchlight:** Beweging bij voordeur 30 min na
+      zonsondergang → Zet porchlight aan (5 min) - **Afschrikking:** Persoon
+      gedetecteerd bij oprit → "Beveiligingscamera neemt op" op Echo +
+      Schijnwerper aan - **Welkom:** Deurbeldruk → "Er is iemand aan de
+      voordeur" op Keuken Echo - **Geofence:** "Als ik vertrek" → Camera's
+      inschakelen (indien ondersteund door skill)
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### Google Home (Google Assistant)
+
+**Native Ondersteuning:** Nest, Arlo, Blink, Ring (beperkt)
+**Action Vereist:** Eufy, Reolink, UniFi, Wyze, Tapo, Amcrest
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="google-features">
+    <AccordionTrigger>Wat Google Home Kan</AccordionTrigger>
+    <AccordionContent>
+
+      **Live View:** "Hey Google, toon [camera]" → Nest Hub, Chromecast TV,
+      telefoon **Aankondigingen:** "Hey Google, omroepen [camera] ziet een
+      persoon" → Alle Nest speakers **Automatiseringen (Home app →
+      Automatiseringen):** - Starters: Beweging, Persoon, Voertuig, Dier,
+      Pakket, Deurbel, Geluid - Acties: Lichten, stopcontacten, sloten,
+      thermostaten, speakers, TV, scripts **Tweeweg Gesprek:** "Hey Google,
+      praat met [camera]" (alleen Nest; anderen via app) **Opnames:** Nest Aware
+      (cloud). Anderen → **Geen cloud-opname via Google**. **Voordelen t.o.v.
+      Alexa:** Betere multi-camera rasterweergave op Nest Hub Max; meer
+      gedetailleerde bewegingssoorten; Home/Away routines ingebouwd;
+      script-editor voor complexe logica.
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="google-setup">
+    <AccordionTrigger>Setup Tips</AccordionTrigger>
+    <AccordionContent>
+
+        1. **Apparaat Toevoegen** → "Werkt met Google" → Zoek merk → Koppel
+      account 2. **Wijs Kamers toe** in Google Home app voor "camera's in
+      woonkamer" 3. **Automatisering Voorbeelden:** - **Nachtlampje:** Persoon
+      bij voordeur na zonsondergang → Ganglampen 50% (5 min) - **Pakket Alert:**
+      Pakket gedetecteerd → "Pakket bezorgd" op alle speakers + Log in Google
+      Sheet - **Thuis Verlaten: Telefoon aanwezigheid weg → Camera's inschakelen
+      (indien skill ondersteunt) + Deuren op slot - **Huisdier Alert:** Dier
+      gedetecteerd in tuin → "Huisdier in tuin" op Keuken speaker
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### Apple HomeKit (HomeKit Secure Video)
+
+**Native Ondersteuning:** Eufy (HomeBase 3), Arlo (Pro 3/4/5S, Ultra), Logitech Circle View, Netatmo, Eve, Aqara, TP-Link Tapo (Matter), UniFi Protect (3.0+), Onvis, Wemo
+**Bridge Vereist:** Reolink (via Homebridge/Scrypted), Ring (via Homebridge), Wyze (via Homebridge), Dahua/Hikvision (via Homebridge/Scrypted)
+
+<Callout type="info">
+
+**HomeKit Secure Video (HSV) = Beste Privacy.** Video geanalyseerd
+**op-apparaat** (Home Hub: Apple TV 4K, HomePod, iPad). **End-to-end
+versleuteld** — Apple kan niet kijken. 10-dagen rollende opslag **inbegrepen
+bij iCloud+** (50GB = 1 cam, 200GB = 5 cams, 2TB = onbeperkt). Geen apart
+abonnement.
+
+</Callout>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="hsv-features">
+    <AccordionTrigger>HSV Functies & Vereisten</AccordionTrigger>
+    <AccordionContent>
+
+**Ondersteunde Resoluties:** 1080p, 2K, 4K (geschaald naar 1080p voor analyse, opgeslagen op bronres)
+**Activiteitszones:** Per camera, instellen in Home app
+**Gezichtsherkenning:** "Persoon gedetecteerd" → "Jan gedetecteerd" (indien in Mensen album)
+**Opname Opties:** Uit / Activiteit Detecteren / Stream & Neem Op
+**Opslag:** iCloud+ (50GB/€0.99, 200GB/€2.99, 2TB/€9.99) — **niet per camera**
+**Home Hub Vereist:** Apple TV 4K (2021+), HomePod (mini/2e gen), iPad (altijd aan)
+**Lokale Streaming:** iPhone/iPad op zelfde Wi-Fi → direct (geen internet). Extern → relay via iCloud (versleuteld).
+**Beperkingen:** Max 5 camera's op 200GB plan (tenzij 2TB); geen 24/7 continu (alleen gebeurtenis); geen webweergave (alleen iOS/macOS); geen native Android.
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="homebridge">
+    <AccordionTrigger>Niet-HomeKit Camera's Bridgen (Homebridge / Scrypted / Hoobs)</AccordionTrigger>
+    <AccordionContent>
+
+**Homebridge** (Node.js, 2000+ plugins): Draait op Pi, Docker, NAS, mini PC
+
+- `homebridge-camera-ffmpeg` → RTSP → HSV (transcodeert, voegt beweging toe)
+- `homebridge-reolink` → Reolink native API (beweging, PTZ, snapshots)
+- `homebridge-dahua` / `homebridge-hikvision` → ONVIF/ISAPI
+- `homebridge-ring` → Ring camera's/deurbellen (polling, ~30s latentie)
+
+**Scrypted** (TypeScript, nieuwer, sneller): Native HomeKit, Google, Alexa plugins
+
+- Betere RTSP verwerking, lagere latentie, plugin marktplaats
+- Draait op zelfde hardware als Homebridge
+
+**Hardware voor Bridge:** Raspberry Pi 4 (4GB+) / 5, Intel N100/N305 mini PC (€120), oude laptop, Synology/QNAP Docker.
+**Latentie:** Homebridge FFmpeg ~2–5s; Scrypted ~1–3s; Native HSV ~0.5–1s.
+**HSV via Bridge:** Camera moet RTSP ondersteunen. Bridge transcodeert → HSV → iCloud. **Telt mee voor HSV cam limiet.**
+
+</AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### Matter (De Nieuwe Standaard)
+
+**Matter 1.3 (2024)** voegt **Camera** apparaattype toe. **Matter 1.4 (2025)** voegt **Deurbel** type toe.
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="matter-status">
+    <AccordionTrigger>Huidige Matter Camera Ondersteuning (2026)</AccordionTrigger>
+    <AccordionContent>
+
+**Gecertificeerde Matter Camera's:**
+
+- **TP-Link Tapo C120 / C220 / C320WS** (Matter over Wi-Fi)
+- **Nanoleaf Smart Cam** (Matter)
+- **Eve Cam** (Thread + Matter)
+- **Google Nest Cam (bedraad, 2024)** / **Nest Doorbell (bedraad, 2024)** — Matter bridge via Google Home
+- **EufyCam 3 / SoloCam S340** — Matter firmware update (2024)
+
+**Wat Matter Je Geeft:**
+
+- **Multi-admin:** Toevoegen aan Apple Home, Google Home, Alexa, SmartThings tegelijkertijd
+- **Lokale Regeling:** Geen cloud relay voor basis aan/uit/stream (Thread/Wi-Fi direct)
+- **Gestandaardiseerde Commando's:** Live stream, bewegingsgebeurtenissen, privacymodus
+
+**Wat Matter NOG NIET Doet:**
+
+- 4K streaming (max 1080p in spec)
+- PTZ regeling (niet in 1.3/1.4)
+- Gezichtsherkenning / pakketdetectie (alleen vendor extensies)
+- Continue opname (alleen gebeurtenisclips)
+- NVR integratie
+
+**Oordeel (2026):** Matter camera's werken voor **basale multi-platform live view + bewegingsalerts**. Voor opname, AI, PTZ, 4K → nog steeds native integratie of bridge nodig.
+
+</AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+---
+
+## Lokale Regeling / Geen Cloud: Het Gevorderde Pad
+
+<Callout type="tip">
+
+**Lokaal = Snel, Privé, Werkt Offline.** RTSP/ONVIF/WebSocket →
+Frigate/Scrypted/Blue Iris → Home Assistant → Dashboards/Automatiseringen.
+Geen vendor-cloud ziet ooit je video.
+
+</Callout>
+
+### Architectuur: Volledig Lokale Camera Stack
+
+```
+Camera's (PoE/RTSP)
+    │
+    ▼
+┌─────────────────────────────────────┐
+│  Frigate (Docker)                   │
+│  - RTSP ingest                      │
+│  - Bewegingsdetectie (CPU)          │
+│  - AI objectdetectie (Coral TPU)    │
+│  - Opname (MP4, gesegmenteerd)      │
+│  - MQTT gebeurtenissen (beweging, etc)│
+│  - WebRTC live view (sub-second)    │
+└─────────────────────────────────────┘
+    │                    │
+    ▼                    ▼
+┌─────────────┐    ┌─────────────┐
+│ Home Asst.  │    │  Scrypted   │
+│ (Autom.)    │    │ (HomeKit/   │
+│  - Lichten  │    │  Google/    │
+│  - Sloten   │    │  Alexa)     │
+│  - Alerts   │    │             │
+└─────────────┘    └─────────────┘
+    │                    │
+    ▼                    ▼
+Dashboard           Apple Home /
+                    Google Home /
+                    Alexa App
+```
+
+### Hardware voor Lokale Stack
+
+| Component         | Budget           | Aanbevolen                             | High-End                       |
+| ----------------- | ---------------- | -------------------------------------- | ------------------------------ |
+| **Server**        | RPi 4 4GB (€80)  | Intel N100/N305 Mini PC (€130)         | i5-13400 / Ryzen 5700G (€400)  |
+| **AI Versneller** | CPU only (traag) | **Google Coral USB (€60)** / M.2 (€40) | Coral PCIe x4 / Hailo-8 (€150) |
+| **Opslag**        | 1× 4TB HDD       | 2× 8TB RAID 1                          | 4× 14TB RAID 6 / ZFS           |
+| **Netwerk**       | 1 Gbps           | 2.5 Gbps switch + NIC                  | 10 Gbps backbone               |
+
+### Camera Vereisten voor Lokale Stack
+
+- **RTSP Ondersteuning** (standaard: `rtsp://user:pass@ip:554/stream1`)
+- **ONVIF Profile S/T/G** (detectie, PTZ, gebeurtenissen)
+- **Sub-streams** (D1/720p voor AI, 4K voor opname)
+- **Geen cloud afhankelijkheid** voor stream (sommige cams hebben cloud auth token nodig — vermijd)
+
+**Beste ONVIF/RTSP Camera's (2026):**
+
+- Reolink (alle PoE, meeste Wi-Fi): `rtsp://ip:554/h264Preview_01_main`
+- Dahua / Hikvision / Hanwha / Axis / Uniview / Vivotek / Milesight
+- UniFi G4/G5 (RTSP via Protect instellingen)
+- Amcrest / Lorex / Annke / Montavue (OEM Dahua/Hik)
+- **Vermijd:** Ring, Blink, Nest, Arlo (vóór 2024), Wyze (beperkt), Eufy (geen RTSP op accu cams)
+
+---
+
+## Automatisering Recepten (Kopieer-Plak Klaar)
+
+### Home Assistant (YAML)
+
+```yaml
+# Porchlight bij Persoon (na zonsondergang)
+automation:
+  - alias: "Porchlight - Persoon bij Voordeur"
+    trigger:
+      - platform: mqtt
+        topic: frigate/voordeur/persoon
+        payload: "on"
+    condition:
+      - condition: sun
+        after: sunset
+        after_offset: "-00:30:00"
+    action:
+      - service: light.turn_on
+        target:
+          entity_id: light.porch
+        data:
+          brightness_pct: 80
+      - delay: "00:05:00"
+      - service: light.turn_off
+        target:
+          entity_id: light.porch
+
+  # Afschrikking: Sirene + Lichten bij Persoon op Oprit (nacht)
+  - alias: "Afschrikking - Oprit Persoon Nacht"
+    trigger:
+      - platform: mqtt
+        topic: frigate/oprit/persoon
+        payload: "on"
+    condition:
+      - condition: time
+        after: "22:00:00"
+        before: "06:00:00"
+    action:
+      - service: siren.turn_on
+        target:
+          entity_id: siren.buiten
+      - service: light.turn_on
+        target:
+          entity_id: light.schijnwerpers
+        data:
+          brightness_pct: 100
+      - service: notify.mobile_app
+        data:
+          title: "Indringing Oprit"
+          message: "Persoon gedetecteerd bij oprit om {{ now().strftime('%H:%M') }}"
+```
+
+### Alexa Routine (App → Routines)
+
+```
+ALS: Smart Home Apparaat → [Voordeur Camera] → Beweging Gedetecteerd → Persoon
+ALS: Tijd → Tussen Zonsondergang en Zonsopgang
+DAN:
+    1. Smart Home → [Porchlight] → Aanzetten → 80% → 5 minuten
+    2. Alexa Zegt → "Persoon bij voordeur" → Apparaat: [Keuken Echo]
+    3. Smart Home → [Schijnwerper] → Aanzetten → 100% → 3 minuten
+```
+
+### Google Home Automatisering (Home app → Automatiseringen)
+
+```
+STARTER: Apparaat → [Oprit Camera] → Gebeurtenis → Persoon gedetecteerd
+CONDITIE: Tijd → Tussen 22:00 en 06:00
+ACTIES:
+    1. Apparaat → [Schijnwerpers] → Aanzetten → Helderheid 100%
+    2. Apparaat → [Alle Speakers] → Omroepen → "Persoon gedetecteerd bij oprit"
+    3. Script → Log naar Google Sheets (via Make/Zapier/webhook)
+```
+
+### Apple HomeKit (Home app → Automatisering)
+
+```
+WANNEER: Een Sensor Detecteert Iets → [Voordeur Camera] → Mensen Gedetecteerd
+CONDITIE: Tijd → Na Zonsondergang
+DOE:
+    1. Scenes → [Porchlichten Aan] (vooraf gemaakte scene: porch 80%, ingang 50%)
+    2. Wacht → 5 minuten
+    3. Scenes → [Porchlichten Uit]
+```
+
+---
+
+## Platform Vergelijking: Welke Moet Je Kiezen?
+
+| Prioriteit                   | Beste Platform                          | Waarom                                                       |
+| ---------------------------- | --------------------------------------- | ------------------------------------------------------------ |
+| **Privacy / Geen Cloud**     | **HomeKit (HSV) + Lokale Bridge**       | E2E versleuteling, iCloud+ inbegrepen, on-device AI          |
+| **Stem + Displays**          | **Alexa** (Echo Show ecosysteem)        | Meeste skills, beste routine UI, goedkope displays           |
+| **Automatisering Kracht**    | **Google Home** (script editor)         | Beste starter types, complexe logica, Nest Hub grid          |
+| **Lokaal + Multi-Platform**  | **Home Assistant + Frigate + Scrypted** | Totale controle, Matter bridge, geen vendor lock-in          |
+| **Makkelijkste Setup**       | **Ring / Blink / Nest** (enkel merk)    | Native, geen bridge, maar abonnement + cloud                 |
+| **Bedrijf / Multi-Site**     | **UniFi Protect**                       | Gecentraliseerd, geen cloudkosten, HSV + Alexa/Google skills |
+| **Matter Toekomstbestendig** | **TP-Link Tapo / Eve / Nanoleaf**       | Thread + Matter, werkt overal                                |
+
+---
+
+## Migratiepad: Van Cloud naar Lokaal
+
+1. **Houd cloud cams** voor nu (Ring deurbel, Blink buiten)
+2. **Voeg PoE cams toe** (Reolink, Dahua) → NVR (UniFi/Reolink) of Frigate server
+3. **Bridge cloud cams** via Homebridge/Scrypted → HomeKit/Google/Alexa
+4. **Verplaats automatiseringen** naar Home Assistant (of HA + Alexa/Google routines)
+5. **Schakel cloud-opname uit** op gebridged cams; gebruik lokale NVR/Frigate
+6. **Annuleer abonnementen** wanneer lokale opname geverifieerd
+7. **Toekomstige cams:** Koop alleen ONVIF/RTSP + Matter
+
+---
+
+## Gerelateerde Gidsen
+
+- [Two-Way Audio Security Cameras: Complete Guide](/blog/two-way-audio-security-cameras-complete-guide) — Audiogebeurtenissen voor aankondigingen
+- [Facial Recognition Security Cameras: Capabilities & Privacy](/blog/facial-recognition-security-cameras-privacy) — Gezichtsherkenning in HomeKit/HSV
+- [PoE vs Wireless vs Solar Comparison](/blog/poe-vs-wireless-vs-solar-comparison) — Stroom voor betrouwbare lokale streaming
+- [Best Outdoor Security Cameras 2026](/blog/best-outdoor-security-cameras-2026) — Hardware met beste integratie

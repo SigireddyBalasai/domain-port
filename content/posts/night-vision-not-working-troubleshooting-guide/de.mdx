@@ -1,0 +1,303 @@
+---
+title: "Nachtsicht funktioniert nicht? Vollständiger Leitfaden zur Fehlerbehebung (2026)"
+description: "Beheben Sie IR-Überstrahlung, fehlende Nachtsicht, unscharfe Bilder, Kennzeichen-Unschärfe, Farbnachtsicht-Ausfälle. Schritt-für-Schritt-Diagnose für jeden Kameratyp: PoE, Wi-Fi, Akku, Türklingel."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "night-vision-not-working-troubleshooting-guide"
+author: "Your Name"
+tags: ["troubleshooting", "night-vision", "ir", "installation", "diy"]
+postType: "howto"
+---
+
+Nachtsicht-Ausfälle sind die häufigste Beschwerde: "Kamera funktioniert tagsüber, nachts nutzlos." Dieser Leitfaden behandelt jeden Fehlermodus mit Diagnose, Lösungen und wann ersetzt werden muss.
+
+<Badge variant="outline">Schnelltriage</Badge>
+1. **IR-LEDs an?** (rotes Leuchten nachts) → Nein = Strom/IR-Platine / Ja =
+Optik/Konfiguration 2. **Bild weiß/grau?** → IR-Reflexion (Winkel/Abstand) 3.
+**Bild schwarz/verrauscht?** → IR zu schwach / Verschluss zu langsam / Sensor
+defekt 4. **Farbnachtsicht aus?** → Umgebungslicht zu niedrig / Einstellung
+deaktiviert
+
+---
+
+## 1. IR-LEDs leuchten nicht (Kein rotes Leuchten)
+
+### 1.1 IR-Status prüfen
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="check-ir">
+    <AccordionTrigger>So prüfen Sie IR-LEDs</AccordionTrigger>
+    <AccordionContent>
+
+      **Sichtprüfung:** Nachts vor die Kamera treten → nach **schwachem rotem
+      Leuchten** (850 nm) oder **keinem sichtbaren Leuchten** (940 nm "getarnt")
+      suchen. **Handy-Kamera-Test:** Handykamera auf Kamera richten → IR
+      erscheint **hell violett/weiß** auf dem Bildschirm (Handysensoren sehen
+      Nahes-IR). **App-Status:** Kamera-Web-UI / NVR → "IR-Status" /
+      "Nachtmodus" → sollte "Ein" oder "Auto" anzeigen.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### 1.2 Ursachen & Lösungen
+
+| Ursache                               | Diagnose                                                    | Lösung                                                                                  |
+| ------------------------------------- | ----------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| **IR-Sperrfilter klemmt (Tag-Modus)** | Bild nachts farbig, kein IR-Leuchten                        | Neustart (12V/PoE 30s aus). Kamera leicht antippen. Firmware-Update.                    |
+| **Fotowiderstand/LDR defekt**         | IR schaltet nie automatisch ein; manuell "Ein" funktioniert | LDR abdecken (kleines klares Fenster) → wenn IR auslöst, LDR ersetzen (2 €) oder Kamera |
+| **IR-LED-Treiberplatine defekt**      | 12V/PoE vorhanden, LEDs kalt, manuell "Ein" fehlschlägt     | Kamera ersetzen (Platine nicht reparierbar)                                             |
+| **Strom für IR unzureichend**         | Tag OK, nachts Neustarts / IR flackert                      | Spannung an Kamera unter IR-Last prüfen (siehe §1.3)                                    |
+| **Firmware-Fehler**                   | Aktuelles Update hat Auto-IR kaputt gemacht                 | Firmware zurückstufen; Hersteller-Support-Ticket                                        |
+| **Getarntes IR (940 nm)**             | Kein rotes Leuchten, Handy-Test zeigt violett               | Normal — 940 nm ist für das Auge unsichtbar                                             |
+
+### 1.3 Spannungsabfall unter IR-Last (Kritisch)
+
+**IR-LEDs verbrauchen 2–5 W extra.** Kamera läuft tagsüber, fällt nachts aus.
+
+<Callout type="warning">
+
+**Test:** Multimeter am Kamerastromeingang (PoE: PoE-Tester verwenden). Tag-Spannung vs. Nacht (IR an) Spannung. **Abfall >0,5V (12V) oder >2V (PoE 48V) = Kabel zu lang / Querschnitt zu klein / Switch-Budget überschritten.**
+
+</Callout>
+
+| Architektur               | Max. IR-Last             | Lösung                                                           |
+| ------------------------- | ------------------------ | ---------------------------------------------------------------- |
+| **PoE (802.3af 15,4W)**   | ~4W IR                   | Auf PoE+ (30W) Injektor/Switch upgraden                          |
+| **12V DC (18 AWG, 15 m)** | 2A IR                    | Kabel kürzen / 14 AWG / lokale 12V-Versorgung                    |
+| **Akku-Kamera**           | IR tötet Akku in Stunden | IR deaktivieren; Umgebungslicht / externen IR-Strahler verwenden |
+
+---
+
+## 2. IR-Überstrahlung / Ausgewaschen / Graues Bild
+
+**Symptom:** Nachtbild = heller weißer/grauer Fleck, keine Details. IR reflektiert von naher Oberfläche.
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="whiteout-causes">
+    <AccordionTrigger>Häufige Reflexionsquellen</AccordionTrigger>
+    <AccordionContent>
+
+      | Oberfläche | Abstand | Lösung | |---------|----------|-----| | **Wand /
+      Verkleidung / Faszie** | 15–60 cm | Kamera **15–30° nach unten neigen**;
+        30–45 cm abrücken (Verlängerungsarm) | | **Dachvorsprung / Traufe** | 0–30
+      cm | **Unter** der Traufe montieren, nicht bündig | | **Fenster / Glas** |
+      Beliebig | **Nie** durch Glas zielen (IR reflektiert 100 %) | |
+      **Spinnennetz / Staub auf Kuppel** | Auf Linse | Monatlich reinigen;
+      Fleece-Abdeckung über IR-Ring | | **Regen / Schnee / Nebel** |
+      Luftgetragen | Externer IR-Strahler (von der Linse weg montiert) | |
+      **Weiße Zierleiste / Dachrinne** | 30–90 cm | Matt schwarz lackieren
+      (Grillfarbe) oder mit Klebeband abdecken | | **Kennzeichen
+      (rückreflektierend)** | 6–15 m | Nach unten neigen; externes IR;
+      LPR-Kamera mit Polarisator |
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### 2.1 Schritt-für-Schritt-Überstrahlungsbehebung
+
+1. **Reflektor identifizieren:** Nachts rausgehen, IR-Leuchten auf Oberflächen beobachten. Handykamera verwenden, um IR-Licht zu sehen.
+2. **Neu ausrichten:** **15–30° von der Horizontalen nach unten neigen**. Wasserwaage + Winkelmesser verwenden.
+3. **Abstand vergrößern:** Verlängerungshalterung (30–60 cm) bewegt IR-Kegel über nahe Objekte hinweg.
+4. **Externer IR-Strahler:** 3–6 m entfernt montieren, auf Zielzone ausgerichtet. Kamera-IR **AUS**. Am besten für Kennzeichen, Tore.
+5. **Smart IR (falls unterstützt):** Kamera reduziert IR-Intensität automatisch für nahe Objekte. In Einstellungen aktivieren.
+6. **IR-Sperrfilter prüfen:** "Draußen" (Nachtmodus) fest = farbiges Tagesbild. "Drin" (Tag-Modus) fest = kein IR. Neustart.
+
+---
+
+## 3. Schwarzes / Verrauschtes / Körniges Nachtbild
+
+**Symptom:** Dunkel, gesprenkelt, "verschneites" Video. Keine Details.
+
+| Ursache                                        | Diagnose                         | Lösung                                                                     |
+| ---------------------------------------------- | -------------------------------- | -------------------------------------------------------------------------- |
+| **IR zu schwach für Entfernung**               | Ziel >50 % der IR-Nennreichweite | Externer IR-Strahler; Kamera näher platzieren                              |
+| **Verschluss zu langsam (Bewegungsunschärfe)** | Geisterbilder, helle Streifen    | **Min. Verschluss: 1/100s** (1/250s für Kennzeichen)                       |
+| **Verstärkung/ISO maximal**                    | Rauschen = "Schnee"              | Licht hinzufügen (externes IR, Straßenlaterne); max. Verstärkung begrenzen |
+| **Wide Dynamic Range (WDR) aus**               | Helle Lichter blenden Kamera     | **WDR: 120 dB+** aktivieren (echtes WDR, nicht DWDR)                       |
+| **Kuppel schmutzig / verkratzt**               | Lichthöfe                        | Kuppel ersetzen (15 €); mit Mikrofaser + Linsenreiniger säubern            |
+| **Sensor altert**                              | Fortschreitend über Jahre        | Kamera ersetzen (CMOS altert, Hotpixel nehmen zu)                          |
+| **Kompression zu hoch**                        | Blockartefakte nachts            | Bitrate: CBR 4–6 Mbps (4K) / 2–3 Mbps (2K)                                 |
+
+### 3.1 Verschlusszeit-Spickzettel
+
+| Ziel                | Min. Verschluss     | Hinweise                             |
+| ------------------- | ------------------- | ------------------------------------ |
+| Allgemeiner Bereich | 1/50s (1/60s US)    | Balance zwischen Licht und Unschärfe |
+| Gehende Person      | 1/100s              | Scharfe Gliedmaßen                   |
+| **Kennzeichen**     | **1/250s – 1/500s** | **Kritisch** — manuell einstellen    |
+| Schnelles Fahrzeug  | 1/500s – 1/1000s    | Benötigt externes IR                 |
+
+<Callout type="note">
+
+**So einstellen:** Kamera-Web-UI → Bild → Belichtung → Verschlusszeit →
+Manuell → Wert eingeben. "Auto"-Verschluss deaktivieren.
+
+</Callout>
+
+---
+
+## 4. Farbnachtsicht-Ausfälle
+
+**Farbnachtsicht (CNV)** = Großer Sensor (1/1,8", 1/1,2") + Low-Light-ISP + **Umgebungslicht erforderlich**.
+
+| Fehlermodus                      | Ursache                      | Lösung                                                                                                                       |
+| -------------------------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| **Bleibt S/W (IR an)**           | Umgebungslicht &lt;1 Lux     | CNV benötigt ~3–5 Lux (Straßenlaterne, Außenleuchte). **Warmweiße (3000K) LED** 3–6 m entfernt hinzufügen.                   |
+| **Farbe verrauscht/körnig**      | Verstärkung zu hoch          | Max. Verstärkung reduzieren; Licht hinzufügen; S/W-IR akzeptieren                                                            |
+| **Farbverschiebung (lila/grün)** | Weißabgleich verwirrt        | WB auf "Außenbereich" / "Straßenlaterne" / Benutzerdefiniert 3000K einstellen                                                |
+| **IR + CNV Konflikt**            | Beide an = seltsame Farben   | IR deaktivieren wenn CNV aktiv (Auto bei guten Kameras)                                                                      |
+| **Nicht unterstützt**            | Kamera hat keinen CNV-Sensor | Technische Daten prüfen: Benötigt 1/1,8"+ Sensor (Reolink ColorX, Hikvision ColorVu, Dahua Full-Color, Axis Lightfinder 2.0) |
+
+---
+
+## 5. Kennzeichenerfassung (LPC) — Spezielle Nachtlösungen
+
+**LPC scheitert nachts zu 90 % wegen:** IR-Reflexion am Kennzeichen + langsamem Verschluss + schwachem IR.
+
+### 5.1 LPC-Nacht-Checkliste
+
+- [ ] **Kamera:** 4K/8MP + optischer Zoom (Varifokal 2,8–12mm oder 5–50mm) ODER dedizierte LPR (2MP, 100+ fps, Global-Shutter)
+- [ ] **Verschluss:** **1/250s minimum** (manuell)
+- [ ] **IR:** Externer Strahler (850 nm, 30–50° Strahl) **abseits der Kamera**, auf Kennzeichenzone gerichtet
+- [ ] **Winkel:** ≤30° von der Senkrechten; Höhe 0,9–1,2 m (Kennzeichenhöhe)
+- [ ] **WDR:** 120 dB+ True WDR (gleicht Scheinwerfer aus)
+- [ ] **IR-Sperre:** Umschalten prüfen (Tag Farbe / Nacht S/W)
+- [ ] **Zone:** Bewegungszone = nur Kennzeichenweg (reduziert Fehlauslösungen)
+- [ ] **Aufzeichnung:** CBR 6–8 Mbps (4K) / 4 Mbps (2MP LPR)
+
+### 5.2 Empfohlene LPC-Kameras (2026)
+
+| Kamera                             | Typ            | Nacht-Spezifikation                          | Ideal für                        |
+| ---------------------------------- | -------------- | -------------------------------------------- | -------------------------------- |
+| **Hikvision DS-2CD4A26FWD-IZHS/P** | 2MP LPR        | 100 fps, Global-Shutter, 120 dB WDR, 30 m IR | Dedizierte Kennzeichenerfassung  |
+| **Dahua ITC237-PW6M-IRLZF**        | 2MP LPR        | 60 fps, 140 dB WDR, 50 m IR                  | Parkplätze, Torzufahrten         |
+| **Reolink RLC-1212A**              | 12MP Varifokal | 5× opt. Zoom, 58 m IR, 1/1,8"                | Budget 4K + Zoom für Kennzeichen |
+| **Axis Q1700-LE**                  | 2MP LPR        | 60 fps, Forensic WDR, 40 m IR                | Enterprise, beweissicher         |
+
+---
+
+## 6. Türklingel-Kamera-Nachtprobleme
+
+| Problem                           | Ursache                             | Lösung                                                                    |
+| --------------------------------- | ----------------------------------- | ------------------------------------------------------------------------- |
+| **Besuchergesicht überstrahlt**   | IR reflektiert von Veranda/Überhang | Keil-Halterung (15–25° nach unten); IR deaktivieren → Verandalicht nutzen |
+| **Keine Nachtsicht**              | Akku-Sparmodus                      | Festverkabelung (16–24V AC) → ermöglicht dauerhaftes IR                   |
+| **Farbnachtsicht aus**            | Umgebungslicht zu niedrig           | **3000K LED** in Verandalampenfassung hinzufügen (nicht kaltweiß)         |
+| **Bewegung wird nachts verpasst** | PIR-Reichweite < IR-Reichweite      | PIR ~7,5 m, IR ~9 m → IR-Empfindlichkeit reduzieren / Zone verkleinern    |
+
+---
+
+## 7. Akku-/Solar-Kamera-Nachtspezifisches
+
+| Problem                            | Ursache                          | Lösung                                                                          |
+| ---------------------------------- | -------------------------------- | ------------------------------------------------------------------------------- |
+| **IR tötet Akku in 1 Woche**       | IR = 2–4W Dauerbetrieb           | IR deaktivieren; auf Umgebungslicht + Bewegungsflutlicht verlassen (Eufy, Ring) |
+| **Keine Nachtsicht im Winter**     | Li-Ion &lt;0°C stoppt Laden      | LiFePO₄-Upgrade (Reolink Go PT Plus); isolierte Box + Heizung                   |
+| **Bewegung funktioniert nur tags** | PIR durch Fenster/Glas blockiert | **Außerhalb** von Glas montieren; PIR benötigt Temperaturunterschied            |
+| **Flutlicht löst nicht aus**       | Bewegungszone falsch             | Zone neu zeichnen, um Zugangsweg abzudecken; Testlauf                           |
+
+---
+
+## 8. Diagnosewerkzeuge & -verfahren
+
+### 8.1 Nachtsicht-Testkarte (Drucken & Laminieren)
+
+```
+┌─────────────────────────────────────┐
+│   NACHTSICHT-TESTKARTE               │
+│  ████████████████████████████████   │  ← 100 % weiß (IR-Reflexion)
+│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   │  ← 50 % grau
+│  ████████████████████████████████   │  ← 0 % schwarz
+│                                     │
+│  Kennzeichen: ABC-1234 (Test auf 6/12/18 m)│
+│  Gesicht: [Umriss]                    │
+└─────────────────────────────────────┘
+```
+
+**Vorgehen:** Auf Zielentfernung montieren → aufzeichnen → Kennzeichen-/Gesichtsschärfe prüfen.
+
+### 8.2 IR-Leistungsmessung
+
+| Werkzeug              | Messung                       | Bestehenskriterien                  |
+| --------------------- | ----------------------------- | ----------------------------------- |
+| **PoE-Tester**        | Spannung an Kamera (Nacht)    | >48V (PoE+), >52V (PoE++)           |
+| **Multimeter (12V)**  | Spannung an Kamera (Nacht)    | >11,5V (12V nominal)                |
+| **Zangenamperemeter** | Strom auf 12V-Leitung (Nacht) | &lt;2A (pro Kamera)                 |
+| **Wärmebildkamera**   | IR-LED-Temperatur             | 40–60°C (arbeitend), &lt;30°C (tot) |
+
+### 8.3 Firmware- & Konfigurationsaudit
+
+```
+☐ Firmware: Aktuelle stabile Version (nicht Beta)
+☐ IR-Modus: Auto (nicht "Ein" 24/7)
+☐ Smart IR: Aktiviert
+☐ Verschluss: Manuell 1/100s min (1/250s für Kennzeichen)
+☐ WDR: True WDR Ein (120 dB+)
+☐ Verstärkung Max: Begrenzt (nicht "Auto Max")
+☐ Bitrate: CBR 4–6 Mbps (4K)
+☐ IR-Sperre: Umschalten bestätigt (Tag/Nacht)
+☐ Zeitzone/NTP: Korrekt (geplanter IR)
+```
+
+---
+
+## 9. Wann ersetzen vs. reparieren
+
+| Symptom                                   | Reparatur möglich?              | Ersetzen wenn                                       |
+| ----------------------------------------- | ------------------------------- | --------------------------------------------------- |
+| Kein IR-Leuchten, Strom OK                | IR-Platine (50 €) / LDR (2 €)   | Kamera >3 Jahre, Wassereintritt                     |
+| IR-Sperrfilter klemmt                     | Tippen/Neustart (vorübergehend) | Mechanismus verschlissen; >2 Jahre                  |
+| Überstrahlung nicht durch Winkel behebbar | Nicht verfügbar                 | Falsche Kamera für Standort (externes IR verwenden) |
+| Verrauschter Sensor (Hotpixel)            | Pixel-Mapping (manche Kameras)  | >5 % tote Pixel; >4 Jahre                           |
+| Farbnachtsicht ausgefallen                | Sensor/ISP-Problem              | Sensor zu klein (&lt;1/2,8"); Upgrade               |
+| Nächtlicher Neustart unregelmäßig         | Spannungsabfall                 | Kabel/Strom beheben; wenn anhaltend → ersetzen      |
+
+---
+
+## 10. Kurzreferenzkarte (Zum Ausdrucken)
+
+```
+NACHTSICHT-TRIAGE-FLUSSDIAGRAMM
+
+  1. IR-LEUCHTEN? (Handy-Kamera-Test)
+   NEIN → Spannung prüfen (Nacht) → Strom beheben
+   JA → Schritt 2
+
+  2. BILD WEISS/GRAU?
+   JA → 15-30° nach unten neigen / 30 cm+ abrücken / Externes IR
+   NEIN → Schritt 3
+
+  3. BILD SCHWARZ/VERRAUSCHT?
+   JA → Verschluss 1/100s min / WDR An / Externes IR
+   NEIN → Schritt 4
+
+  4. FABRNACHTSICHT AUS?
+   JA → 3000K Licht hinzufügen / Sensorgröße prüfen
+   NEIN → Schritt 5
+
+  5. KENNZEICHEN UNLESBAR?
+   JA → Verschluss 1/250s / Externes IR / Varifokal-Zoom / LPR-Kam
+   NEIN → FERTIG ✓
+
+SPANNUNGSPRÜFUNG (Nacht, IR an):
+PoE: >48V (af) / >50V (at) / >52V (bt)
+  12V: >11,5V an Kamera
+```
+
+---
+
+## Verwandte Leitfäden
+
+- [Häufige Probleme mit Überwachungskameras & Lösungen](/blog/common-security-camera-problems-fixes) — Vollständiger Fehlerbehebungsindex
+- [PoE-Kamera-Kabelverlegung: DIY-Installation](/blog/poe-camera-cable-running-diy-installation) — Spannungsabfalltest
+- [Beste solarbetriebene Überwachungskameras (Netzunabhängig)](/blog/best-solar-powered-security-cameras-offgrid) — Winterakku/IR
+- [So montieren Sie Außenkameras (Wand, Decke, Dachvorsprung)](/blog/how-to-mount-outdoor-cameras-wall-ceiling-eave) — Winkel für IR
+- [CCTV-Videospeicher-Rechner](/blog/cctv-video-storage-calculator-hard-drive-space) — Nacht-Bitrate-Planung
+
+---
+
+_Letzte Aktualisierung: Juli 2026. Testverfahren validiert auf Reolink, Dahua, Hikvision, UniFi, Axis, Ring, Eufy, Arlo, Wyze, TP-Link Modellen._

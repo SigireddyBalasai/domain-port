@@ -1,0 +1,218 @@
+---
+title: "Bulut Depolama vs Yerel Depolama: Güvenlik Kameraları İçin Hangisi Daha İyi? (2026)"
+description: "Güvenlik kameralarınız için tüm depolama seçeneklerini karşılaştırın: bulut abonelikleri (Ring, Arlo, Nest, Eufy), NVR/DVR, microSD, NAS, S3/Wasabi/Backblaze B2, hibrit. TB-yıl maliyeti, saklama süresi, gizlilik, bant genişliği ve kurtarma."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "cloud-storage-vs-local-storage-security-cameras"
+author: "Your Name"
+tags: ["cloud-storage", "local-storage", "nvr", "buying-guide", "privacy"]
+postType: "review"
+---
+
+Depolama, kamera sistemlerinin başarılı veya başarısız olduğu yerdir. Görüntü kaybı = delil kaybı. Bulut kolaylık sunar ancak sonsuza kadar maliyet ve gizlilik riski taşır. Yerel (NVR, microSD, NAS) peşin maliyetlidir ancak size aittir. Hibrit her ikisini de sunar — doğru yapılandırırsanız. Bu kılavuz, gerçek 2026 fiyatlandırması, bant genişliği hesaplamaları ve karar çerçeveleriyle her seçeneği ayrıntılı olarak inceler.
+
+<Badge variant="outline">Hızlı Cevap</Badge> **Çoğu ev:** PoE NVR (yerel 7/24) +
+yalnızca uyarılar için bulut yedekleme. **Apartman/Kiracı:** microSD'li kamera +
+isteğe bağlı bulut aboneliği. **İşletme:** NVR + NAS + uzak site
+(Wasabi/Backblaze B2) + bulut uyarı klipleri.
+
+## Depolama Ortamı (2026)
+
+| Kategori                 | Örnekler                                                          | Maliyet Modeli    | Saklama   | Gizlilik              | İnternet Gerekli     |
+| ------------------------ | ----------------------------------------------------------------- | ----------------- | --------- | --------------------- | -------------------- |
+| **Bulut Aboneliği**      | Ring Protect, Arlo Secure, Nest Aware, Eufy Cloud, Blink          | $/kamera/ay       | 7-60 gün  | Satıcı anahtarları    | Evet (7/24 yükleme)  |
+| **NVR/DVR (Yerel)**      | Reolink RLK, Amcrest NV, Dahua, Hikvision, UniFi Protect          | Donanım bir kere  | Ay-Yıl    | Sizde anahtarlar      | Hayır (sadece yerel) |
+| **microSD (Uç)**         | Tüm kablosuz kameralar, bazı PoE                                  | Kart bir kere     | Gün-Hafta | Sizde anahtarlar      | Hayır                |
+| **NAS / Sunucu**         | Synology, QNAP, TrueNAS, Unraid + Frigate/Scrypted                | Donanım + diskler | Yıl       | Sizde anahtarlar      | İsteğe bağlı         |
+| **Bulut Nesne Depolama** | Wasabi, Backblaze B2, AWS S3, Cloudflare R2                       | $/TB/ay           | Süresiz   | Siz şifrelersiniz     | Evet (sadece yedek)  |
+| **Hibrit**               | UniFi Protect + Cloud Backup, Reolink NVR + FTP, Frigate + rclone | Karma             | Katmanlı  | Siz kontrol edersiniz | Kısmi                |
+
+<Callout type="warning">
+
+**Bant Genişliği Gerçeği:** 8× 4K kamera @ 8 Mbps H.265 = 64 Mbps **sürekli yükleme**. Çoğu konut yüklemesi 10-35 Mbps. Tam bulut 7/24 tipik internette imkansızdır. Bulut = yalnızca hareket klipleri veya alt akış.
+
+</Callout>
+
+## Bulut Abonelikleri: Gerçek Maliyet (2026 Fiyatlandırması)
+
+| Servis                         | Aylık (1 kam) | Yıllık (1 kam) | 5 kam/yıl  | Saklama  | 2K/4K    | Temel Sınırlamalar                 |
+| ------------------------------ | ------------- | -------------- | ---------- | -------- | -------- | ---------------------------------- |
+| **Ring Protect Basic**         | $4.99         | $49.99         | $49.99\*   | 180 gün  | 1080p    | \*Sınırsız kamera tek adreste      |
+| **Ring Protect Plus**          | $14.99        | $149.99        | $149.99    | 180 gün  | 1080p    | Profesyonel izleme, LTE yedek      |
+| **Arlo Secure**                | $7.99         | $79.99         | $179.99(5) | 30 gün   | 2K/4K    | AI algılama, aktivite bölgeleri    |
+| **Arlo Secure Plus**           | $17.99        | $179.99        | $299.99(5) | 60 gün   | 4K       | 4K bulut, acil müdahale            |
+| **Nest Aware**                 | $8            | $80            | $80\*      | 30 gün   | 1080p/2K | \*Sınırsız kamera, olay klipleri   |
+| **Nest Aware Plus**            | $15           | $150           | $150\*     | 60 gün   | 4K       | 10 gün 7/24 geçmiş                 |
+| **Eufy Cloud**                 | $2.99         | $29.99         | $29.99\*   | 30 gün   | 2K       | \*Sınırsız kamera, yerel öncelikli |
+| **Blink Aboneliği**            | $3            | $30            | $30\*      | 60 gün   | 1080p    | \*Sınırsız kamera                  |
+| **UniFi Protect Cloud Backup** | $0.50/kam     | $6/kam         | $30 (5)    | 7-30 gün | 4K       | Sadece yedek, birincil değil       |
+
+**5 Yıllık TCO (5 kamera, 4K, 30 gün saklama):**
+
+- Ring Protect Basic: $250
+- Arlo Secure: $900
+- Nest Aware: $400
+- Eufy Cloud: $150
+- **Yerel NVR (8TB): ~$600 bir kere** — 2. yıldan sonra kazanır
+
+<Callout type="info">
+
+**Bulut ≠ Yedek.** Bulut, kablosuz kameralar için _birincil_ depolamadır. İnternet düşerse kamera hiçbir şey kaydetmez (veya destekliyorsa sadece microSD'ye). Gerçek yedek = yerel 7/24 + olayların bulut kopyası.
+
+</Callout>
+
+## Yerel Depolama: NVR Derinlemesine
+
+### NVR vs DVR (2026: Sadece NVR)
+
+- **DVR:** Analog koaksiyel (CVBS/AHD/TVI/CVI) → güncel değil. Maks 5MP. PoE yok.
+- **NVR:** IP kameralar Ethernet üzerinden (PoE) → 4K/8K/12MP+, PoE, ONVIF, AI NVR'de veya kamerada.
+
+### NVR Boyutlandırma Hesaplayıcı
+
+| Kamera | Çözünürlük  | Bit Hızı (H.265) | Günlük GB | 14 Gün | 30 Gün  | 90 Gün  | Önerilen HDD       |
+| ------ | ----------- | ---------------- | --------- | ------ | ------- | ------- | ------------------ |
+| 4      | 4K (8MP)    | 4 Mbps           | 173 GB    | 2.4 TB | 5.2 TB  | 15.6 TB | 2× 8TB (RAID 1)    |
+| 8      | 4K          | 4 Mbps           | 346 GB    | 4.8 TB | 10.4 TB | 31 TB   | 4× 10TB (RAID 5/6) |
+| 16     | 4K          | 4 Mbps           | 691 GB    | 9.7 TB | 20.7 TB | 62 TB   | 8× 10TB (RAID 6)   |
+| 8      | 5MP         | 3 Mbps           | 260 GB    | 3.6 TB | 7.8 TB  | 23 TB   | 3× 8TB (RAID 5)    |
+| 16     | 2MP (1080p) | 1.5 Mbps         | 130 GB    | 1.8 TB | 3.9 TB  | 11.7 TB | 2× 8TB (RAID 1)    |
+
+**Formül:** `GB/gün = Kamera × Mbps × 86400 sn ÷ 8 ÷ 1024 ÷ 1024`
+
+### NVR için RAID
+
+| RAID                  | Min Disk | Kullanılabilir | Dayanır  | Yeniden Yapı Risk | En İyi İçin                 |
+| --------------------- | -------- | -------------- | -------- | ----------------- | --------------------------- |
+| **RAID 1 (Yansıtma)** | 2        | %50            | 1 disk   | Düşük             | 2-4 bölmeli, kritik görüntü |
+| **RAID 5**            | 3        | (N-1)/N        | 1 disk   | Orta (URE)        | 4-8 bölmeli, denge          |
+| **RAID 6**            | 4        | (N-2)/N        | 2 disk   | Düşük             | 6+ bölmeli, maksimum koruma |
+| **RAID 10**           | 4 (çift) | %50            | 1-2 disk | Çok düşük         | Performans + güvenlik       |
+| **SHR (Synology)**    | 2+       | Esnek          | 1-2      | Düşük             | Karma disk boyutları        |
+
+**Öneri:** 6+ bölme için **RAID 6**. 2 bölmeli için **RAID 1**. >8TB disklerde RAID 5'ten kaçının (yeniden yapıda URE riski).
+
+### NVR Donanım Kademeleri (2026)
+
+| Kademe       | Örnek                                   | PoE Port | Maks Kam | Disk Yuvası | RAID          | AI/Analitik                   | Fiyat      |
+| ------------ | --------------------------------------- | -------- | -------- | ----------- | ------------- | ----------------------------- | ---------- |
+| **Giriş**    | Reolink RLN8-410                        | 8        | 8        | 1 (SATA)    | Hayır         | Kamera tarafı                 | $200       |
+| **Giriş+**   | Amcrest NV4108E-HS                      | 8        | 8        | 2           | RAID 1        | Kamera tarafı                 | $280       |
+| **Orta**     | Dahua NVR5216-16P-I                     | 16       | 16       | 2           | RAID 1/5/10   | NVR tarafı (WizSense)         | $450       |
+| **Orta+**    | Hikvision DS-7716NI-I4/16P              | 16       | 16       | 4           | RAID 1/5/6/10 | NVR tarafı (AcuSense)         | $600       |
+| **Pro**      | UniFi UNVR / UNVR Pro                   | 0 (swch) | 50/100+  | 4/7         | RAID 1/5/6/10 | Protect AI (kişi/araç/LPR)    | $500/$1000 |
+| **Kurumsal** | Synology DVA3221 + Surveillance Station | 0        | 40+      | 2 (M.2)+12  | SHR/RAID      | Derin öğrenme (kişi/araç/yüz) | $1,500+    |
+
+## microSD: Uç Depolama Gerçekliği
+
+| Kart Özellikleri                     | Sürekli Yazma          | 4K @ 15fps (4 Mbps) | 4K @ 30fps (8 Mbps) | 2K @ 15fps (3 Mbps) |
+| ------------------------------------ | ---------------------- | ------------------- | ------------------- | ------------------- |
+| **UHS-I U3 / V30** (SanDisk Extreme) | 30 MB/s = 240 Mbps     | ✅ 60× boşluk       | ✅ 30× boşluk       | ✅ 80× boşluk       |
+| **UHS-I U1 / V10** (SanDisk Ultra)   | 10 MB/s = 80 Mbps      | ⚠️ 10×              | ❌ 10× (kare düşer) | ✅ 26×              |
+| **Uygulama Sınıfı A1/A2**            | Rastgele IOPS optimize | ✅                  | ✅                  | ✅                  |
+
+**Gerçek dünya sınırları:**
+
+- **Isı:** Güneşte sürekli 4K yazma = 6-12 ayda kart arızası
+- **Dayanıklılık:** 128GB TLC = ~600 TBW. 4K @ 4 Mbps = 43 GB/gün = **38 yıl teorik** ancak ısı 2-3 yıla düşürür
+- **Dosya sistemi:** FAT32 (32GB sınır) vs exFAT (sınırsız). Kameralar dahili biçimlendirir—onların biçimine güvenin
+- **Kapasite tatlı noktası:** **128GB-256GB** (dayanıklılık + maliyet)
+
+<Callout type="tip">
+
+**microSD YEDEK DEĞİLDİR.** Kameranın içindedir — hırsızlık veya yangın her ikisini de yok eder. Kullanım: internet kesintisinde tampon, NVR arızalanırsa son 24-72 saat, kiralık/geçici kurulumlar.
+
+</Callout>
+
+## NAS / Sunucu: Meraklı/Profesyonel Seçimi
+
+### Yazılım Seçenekleri (2026)
+
+| Yazılım                           | Platform        | Kamera Desteği                         | AI/Analitik                               | Kullanıcı Arayüzü    | Lisans                  |
+| --------------------------------- | --------------- | -------------------------------------- | ----------------------------------------- | -------------------- | ----------------------- |
+| **Frigate**                       | Docker (Linux)  | ONVIF, RTSP, Go2RTC                    | Google Coral TPU (kişi/araç/evcil hayvan) | Web, HA entegrasyonu | Ücretsiz (AÇIK)         |
+| **Scrypted**                      | Docker, Node.js | HomeKit, ONVIF, RTSP, Wyze, Ring, Arlo | TensorFlow, Coral, CPU                    | Web, HomeKit, HA     | Ücretsiz (AÇIK)         |
+| **Blue Iris**                     | Windows         | ONVIF, RTSP, 3000+ profil              | DeepStack AI, CodeProject AI              | Windows masaüstü     | $69.95 bir kere         |
+| **UniFi Protect**                 | UniFi OS        | Sadece UniFi kameraları                | Protect AI (kişi/araç/LPR)                | Web, mobil           | Ücretsiz (donanımla)    |
+| **Synology Surveillance Station** | DSM             | 8300+ ONVIF                            | Derin Öğrenme (kişi/araç/yüz)             | Web, mobil           | 4 kam ücretsiz, $50/kam |
+
+## Bulut Nesne Depolama: Uzak Yedek Doğru Yapıldı
+
+| Sağlayıcı           | Depolama $/TB/ay | Çıkış $/TB        | Min Fatura | API | Şifreleme                      | En İyi İçin                              |
+| ------------------- | ---------------- | ----------------- | ---------- | --- | ------------------------------ | ---------------------------------------- |
+| **Wasabi**          | $6.99            | **$0** (ücretsiz) | 1 TB/ay    | S3  | SSE-S3, SSE-C                  | **En iyi seçim** — tahmin edilebilir     |
+| **Backblaze B2**    | $6.00            | $0.01 (3× üc)     | $7/ay      | S3  | SSE-B2, SSE-C                  | En ucuz, düşük çıkış                     |
+| **Cloudflare R2**   | $0.015/GB = $15  | **$0**            | $0         | S3  | SSE-S3                         | Sıfır çıkış ücreti                       |
+| **AWS S3 Standart** | $23              | $0.09             | $0         | S3  | SSE-S3, SSE-KMS                | Kurumsal, yaşam döngüsü politikaları     |
+| **Storj DCS**       | $4               | $7                | $0         | S3  | İstemci tarafı (sizde anahtar) | **Maks gizlilik** — şifrelenmiş parçalar |
+
+**Yedek Stratejisi (rclone / restic):**
+
+- Yerel NVR (7/24) → Wasabi'ye günlük artımlı (şifreli)
+- → Backblaze B2'ye haftalık tam (coğrafi yedeklilik)
+- Saklama: 90 gün yerel, 1 yıl bulut, 7 yıl arşiv
+
+<Callout type="note">
+
+**Yüklemeden önce şifreleyin.** `rclone crypt` veya `restic` kullanın — sizin anahtarlarınız, sizin veriniz. Sağlayıcı düz metin görmez.
+
+</Callout>
+
+## Hibrit Mimari: En İyisi
+
+### 1. UniFi Protect + Cloud Backup (En Kolay Meraklı)
+
+- **Yerel:** UNVR (7× HDD, RAID 6) → 7/24 4K kayıt
+- **Bulut:** Protect Cloud Backup ($0.50/kam/ay) → sadece olay klipleri
+- **Maliyet:** $1,000 donanım + $30/yıl (5 kam) = **1. yıl $1,150, sonraki $30/yıl**
+
+### 2. Reolink NVR + FTP/S3 Yükleme (Bütçe Hibrit)
+
+- **Yerel:** RLN16-410 (16 kanal, 2× SATA) → 7/24
+- **Bulut:** NVR ürün yazılımı → FTP/S3 (Wasabi/B2) harekette
+- **Maliyet:** $300 NVR + $84/yıl Wasabi (1TB) = **1. yıl $384, $84/yıl**
+
+### 3. Frigate + rclone (DIY Maks Kontrol)
+
+- **Yerel:** Frigate (Intel N100 + 4× 10TB RAID 5) → 7/24 + AI olaylar
+- **Bulut:** `rclone sync` cron günlük → Wasabi (şifreli)
+- **Maliyet:** $600 donanım + $84/yıl Wasabi = **1. yıl $684, $84/yıl**
+
+## Bant Genişliği Planlaması
+
+| Akış Türü                | Çözünürlük | Kodlama | Bit Hızı     | 8 Kam Yükleme          | 16 Kam Yükleme         |
+| ------------------------ | ---------- | ------- | ------------ | ---------------------- | ---------------------- |
+| **Ana (Kayıt)**          | 4K         | H.265   | 4-6 Mbps     | 32-48 Mbps             | 64-96 Mbps             |
+| **Alt (Canlı İzleme)**   | 1080p      | H.265   | 0.5-1.5 Mbps | 4-12 Mbps              | 8-24 Mbps              |
+| **Bulut Yükleme (Olay)** | 1080p      | H.265   | 1-2 Mbps     | Anlık 8-16 Mbps        | Anlık 16-32 Mbps       |
+| **Bulut Yükleme (7/24)** | 4K         | H.265   | 4-6 Mbps     | **32-48 Mbps sürekli** | **64-96 Mbps sürekli** |
+
+## Özet: 5 Yılda Depolama TCO (8 Kamera, 4K, 30 Gün Saklama)
+
+| Mimari                          | 1. Yıl | 2-5. Yıl (yıllık) | 5 Yıl Toplam | Gizlilik   | Çaba   |
+| ------------------------------- | ------ | ----------------- | ------------ | ---------- | ------ |
+| **Ring Protect Basic**          | $250   | $250              | **$1,250**   | Düşük      | Sıfır  |
+| **Arlo Secure**                 | $900   | $900              | **$4,500**   | Düşük      | Sıfır  |
+| **Nest Aware**                  | $400   | $400              | **$2,000**   | Düşük      | Sıfır  |
+| **Eufy Cloud**                  | $150   | $150              | **$750**     | Orta       | Düşük  |
+| **Reolink NVR (DIY)**           | $600   | $0                | **$600**     | **Yüksek** | Orta   |
+| **UniFi Protect + Cloud Yedek** | $1,150 | $30               | **$1,270**   | Yüksek     | Düşük  |
+| **Frigate + Wasabi (DIY)**      | $684   | $84               | **$1,020**   | **Maks**   | Yüksek |
+| **Synology + C2/Wasabi**        | $700   | $35               | **$840**     | Yüksek     | Orta   |
+
+## Karar Matrisi: Mimarinizi Seçin
+
+**Ev Sahibi (4-8 kamera, kendi ağı):** PoE NVR (Reolink RLN8 / Amcrest NV / UniFi UNVR) + 2× 8TB RAID 1 - Aylık ücret yok - NVR FTP/S3 veya Pi üzerinde rclone ile Wasabi/B2 yedek - **5 yıllık maliyet: ~$800**
+
+**Kiracı / Apartman (2-4 kamera, kablo yok):** Pil/WiFi kameralar (EufyCam 3, Reolink Argus) + microSD (128GB) - Kablo yok, taşınırken götür - Eufy: Yerel HomeBase 3 + isteğe bağlı bulut $30/yıl - **5 yıllık maliyet: $300-$900**
+
+**Küçük İşletme (8-24 kamera, uyumluluk):** UniFi Protect (UNVR Pro) + Site-to-Site VPN + Wasabi uzak yedek - Merkezi yönetim - RAID 6, 30-90 gün yerel - rclone günlük Wasabi'ye (şifreli) - **5 yıllık maliyet: $3,000-$8,000**
+
+---
+
+**İlgili Okumalar:**
+
+- [CCTV Video Depolama Hesaplayıcı](/blog/cctv-video-storage-calculator-hard-drive-space) — Etkileşimli hesaplama
+- [Küçük İşletmeler İçin En İyi Kamera Sistemleri](/blog/best-small-business-security-camera-systems) — İşletme için NVR boyutlandırma
+- [DIY Kamera Kurulum Kılavuzu](/blog/diy-security-camera-installation-complete-guide)
+- [Eyalet Bazında Gizlilik Yasaları](/blog/privacy-laws-by-state-cctv-guide) — Saklama yasal gereklilikleri

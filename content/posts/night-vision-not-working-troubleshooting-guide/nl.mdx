@@ -1,0 +1,299 @@
+---
+title: "Nachtzicht Werkt Niet? Complete Probleemoplossingsgids (2026)"
+description: "Los IR whiteout, geen nachtzicht, wazige beelden, kentekenvervaging en kleur nachtzicht storingen op. Stapsgewijze diagnostiek voor elk cameratype: PoE, Wi-Fi, accu, deurbel."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "night-vision-not-working-troubleshooting-guide"
+author: "Your Name"
+tags: ["troubleshooting", "night-vision", "ir", "installation", "diy"]
+postType: "howto"
+---
+
+Nachtzicht storingen zijn de #1 klacht: "camera werkt overdag, 's nachts nutteloos". Deze gids behandelt elke storingsmodus met diagnostiek, oplossingen en wanneer te vervangen.
+
+<Badge variant="outline">Snelle Triage</Badge>
+1. **IR-LED's aan?** (rode gloed 's nachts) → Nee = Stroom/IR-board / Ja =
+Optiek/Config 2. **Beeld wit/grijs?** → IR-reflectie (hoek/afstand) 3. **Beeld
+zwart/ruis?** → IR te zwak / sluiter te langzaam / sensor defect 4. **Kleur
+nachtzicht uit?** → Omgevingslicht te zwak / instelling uitgeschakeld
+
+---
+
+## 1. IR-LED's Geen Verlichting (Geen Rode Gloed)
+
+### 1.1 IR Status Controleren
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="check-ir">
+    <AccordionTrigger>IR-LED's Controleren</AccordionTrigger>
+    <AccordionContent>
+
+      **Visueel:** Voor camera staan 's nachts → zoek naar **zwakke rode gloed**
+      (850 nm) of **geen zichtbare gloed** (940 nm "covert"). **Telefoon Camera
+      Test:** Richt telefooncamera op camera → IR verschijnt als **fel
+      paars/wit** op scherm (telefoonsensoren zien nabij-IR). **App Status:**
+      Camera web UI / NVR → "IR Status" / "Nachtmodus" → moet "Aan" of "Auto"
+      tonen.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### 1.2 Oorzaken & Oplossingen
+
+| Oorzaak                           | Diagnose                                           | Oplossing                                                                |
+| --------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------ |
+| **IR Cut Filter Vast (Dagmodus)** | Beeld gekleurd 's nachts, geen IR-gloed            | Power cycle (12V/PoE uit 30s). Tik camera zachtjes. Firmware-update.     |
+| **Fotoweerstand/LDR Defect**      | IR nooit auto; handmatig "Aan" werkt               | Bedek LDR (klein raampje) → als IR activeert, vervang LDR ($2) of camera |
+| **IR LED Driver Board Dood**      | 12V/PoE aanwezig, LEDs koud, handmatig "Aan" faalt | Vervang camera (board niet repareerbaar)                                 |
+| **Onvoldoende Stroom voor IR**    | Dag OK, nacht herstart / IR flikkert               | Controleer spanning bij camera onder IR-belasting (zie §1.3)             |
+| **Firmware Bug**                  | Recente update brak auto-IR                        | Rollback firmware; vendor support ticket                                 |
+| **Covert IR (940 nm)**            | Geen rode gloed, telefoontest toont paars          | Normaal — 940 nm is onzichtbaar voor het oog                             |
+
+### 1.3 Spanningsval onder IR-Belasting (Kritiek)
+
+**IR-LED's trekken 2–5W extra.** Camera werkt overdag, valt 's nachts uit.
+
+<Callout type="warning">
+
+**Test:** Multimeter bij camera stroomingang (PoE: gebruik PoE tester). Dagspanning vs Nachtspanning (IR aan). **Daling >0,5V (12V) of >2V (PoE 48V) = kabel te lang / gauge te klein / switch budget overschreden.**
+
+</Callout>
+
+| Architectuur              | Max IR Belasting      | Oplossing                                                      |
+| ------------------------- | --------------------- | -------------------------------------------------------------- |
+| **PoE (802.3af 15,4W)**   | ~4W IR                | Upgrade naar PoE+ (30W) injector/switch                        |
+| **12V DC (18 AWG, 15 m)** | 2A IR                 | Verkort traject / 14 AWG / lokale 12V voeding                  |
+| **Accucamera**            | IR doodt accu in uren | Schakel IR uit; gebruik omgevingslicht / externe IR-verlichter |
+
+---
+
+## 2. IR Whiteout / Uitgewassen / Grijs Beeld
+
+**Symptoom:** Nachtbeeld = fel wit/grijs vlek, geen detail. IR reflecteert op nabij oppervlak.
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="whiteout-causes">
+    <AccordionTrigger>Veelvoorkomende Reflectiebronnen</AccordionTrigger>
+    <AccordionContent>
+
+      | Oppervlak | Afstand | Oplossing | |-----------|----------|----------| |
+      **Muur / Gevel / Boeiboord** | 15–60 cm | Camera **15–30° omlaag**
+      richten; 30–45 cm uit (verlengarm) | | **Dakoverstek / Soffit** | 0–30 cm
+      | Monteer **onder** soffit, niet er tegenaan | | **Raam / Glas** | Elke |
+      **Nooit** door glas richten (IR reflecteert 100%) | | **Spinnenweb / Stof
+      op Dome** | Op lens | Maandelijks reinigen; fleece hoes over IR-ring | |
+      **Regen / Sneeuw / Mist** | In lucht | Externe IR-verlichter (weg van lens
+      gemonteerd) | | **Witte Trim / Goot** | 30–90 cm | Verf plat zwart
+      (BBQ-verf) of masker met tape | | **Kenteken (Retroreflecterend)** | 6–15
+      m | Naar beneden richten; externe IR; LPR-camera met polarisator |
+
+  </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+### 2.1 Stap-voor-Stap Whiteout Oplossing
+
+1. **Identificeer reflector:** Ga 's nachts naar buiten, kijk naar IR-gloed op oppervlakken. Gebruik telefooncamera om IR-overspraak te zien.
+2. **Herhoek:** Kantel **15–30° omlaag** vanaf horizontaal. Gebruik waterpas + gradenboog.
+3. **Vergroot afstand:** Verlengbeugel (30–60 cm) verplaatst IR-kegel voorbij nabije objecten.
+4. **Externe IR-verlichter:** Monteer 3–6 m verderop, gericht op doelzone. Camera IR **UIT**. Beste voor kentekens, poorten.
+5. **Smart IR (indien ondersteund):** Camera vermindert automatisch IR-intensiteit voor nabije objecten. Inschakelen in instellingen.
+6. **IR Cut Filter Controle:** Vast "uit" (nachtmodus) = kleuren dagbeeld. Vast "in" (dagmodus) = geen IR. Power cycle.
+
+---
+
+## 3. Zwart / Ruis / Korrelig Nachtbeeld
+
+**Symptoom:** Donker, gespikkeld, "sneeuw" video. Geen detail.
+
+| Oorzaak                                       | Diagnose                         | Oplossing                                                     |
+| --------------------------------------------- | -------------------------------- | ------------------------------------------------------------- |
+| **IR Te Zwak voor Afstand**                   | Doel >50% van nominale IR-bereik | Externe IR-verlichter; camera dichterbij plaatsen             |
+| **Sluiter Te Langzaam (Bewegingsonscherpte)** | Spookstrepen, felle strepen      | Stel **Min Sluiter: 1/100s** (1/250s voor kentekens)          |
+| **Gain/ISO Max**                              | Ruis = "sneeuw"                  | Voeg licht toe (externe IR, straatlantaarn); verlaag max gain |
+| **Wide Dynamic Range (WDR) Uit**              | Felle lichten verblinden camera  | Schakel **WDR: 120 dB+** in (True WDR, niet DWDR)             |
+| **Dome Vuil / Bekrast**                       | Halo rond lichten                | Vervang dome ($15); reinig met microvezel + lensreiniger      |
+| **Sensor Degradatie**                         | Progressief over jaren           | Vervang camera (CMOS veroudert, hot pixels nemen toe)         |
+| **Compressie Te Hoog**                        | Blokkerige artefacten 's nachts  | Bitrate: CBR 4–6 Mbps (4K) / 2–3 Mbps (2K)                    |
+
+### 3.1 Sluitertijd Spiekbriefje
+
+| Doel            | Min Sluiter         | Opmerkingen                       |
+| --------------- | ------------------- | --------------------------------- |
+| Algemeen gebied | 1/50s (1/60s VS)    | Balans licht vs vervaging         |
+| Lopend persoon  | 1/100s              | Scherpe ledematen                 |
+| **Kenteken**    | **1/250s – 1/500s** | **Kritiek** — handmatig instellen |
+| Snelle auto     | 1/500s – 1/1000s    | Externe IR nodig                  |
+
+<Callout type="note">
+
+**Hoe instellen:** Camera Web UI → Beeld → Belichting → Sluitertijd →
+Handmatig → Voer waarde in. Schakel "Auto" sluiter uit.
+
+</Callout>
+
+---
+
+## 4. Kleur Nachtzicht Storingen
+
+**Kleur Nachtzicht (CNV)** = Grote sensor (1/1.8", 1/1.2") + low-light ISP + **omgevingslicht vereist**.
+
+| Storing                             | Oorzaak                     | Oplossing                                                                                                                |
+| ----------------------------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| **Blijft ZW (IR aan)**              | Omgeving &lt;1 lux          | CNV heeft ~3–5 lux nodig (straatlantaarn, porchlight). Voeg **warm witte (3000K) LED** 3–6 m verderop toe.               |
+| **Kleur ruis/korrelig**             | Gain te hoog                | Verlaag max gain; voeg licht toe; accepteer ZW IR                                                                        |
+| **Kleurverschuiving (paars/groen)** | Witbalans verward           | Stel WB in op "Buiten" / "Straatlantaarn" / Aangepast 3000K                                                              |
+| **IR + CNV conflict**               | Beide aan = vreemde kleuren | Schakel IR uit wanneer CNV actief (auto in goede cameras)                                                                |
+| **Niet ondersteund**                | Camera mist CNV-sensor      | Controleer specs: heeft 1/1.8"+ sensor nodig (Reolink ColorX, Hikvision ColorVu, Dahua Full-Color, Axis Lightfinder 2.0) |
+
+---
+
+## 5. Kentekenopname (LPC) — Speciale Nacht Oplossingen
+
+**LPC faalt 's nachts 90% door:** IR-reflectie van kenteken + trage sluiter + zwakke IR.
+
+### 5.1 LPC Nacht Checklist
+
+- [ ] **Camera:** 4K/8MP + optische zoom (varifocal 2.8–12mm of 5–50mm) OF dedicated LPR (2MP, 100+ fps, global shutter)
+- [ ] **Sluiter:** **1/250s minimum** (handmatig)
+- [ ] **IR:** Externe verlichter (850 nm, 30–50° bundel) **off-camera**, gericht op kentekenzone
+- [ ] **Hoek:** ≤30° van loodrecht; hoogte 1–1,2 m (kentekenniveau)
+- [ ] **WDR:** 120 dB+ True WDR (handelt koplampen af)
+- [ ] **IR Cut:** Controleer omschakeling (dag kleur / nacht ZW)
+- [ ] **Zone:** Bewegingszone = alleen kentekenpad (minder valse triggers)
+- [ ] **Opname:** CBR 6–8 Mbps (4K) / 4 Mbps (2MP LPR)
+
+### 5.2 Aanbevolen LPC Camera's (2026)
+
+| Camera                             | Type           | Nacht Spec                                   | Beste Voor                      |
+| ---------------------------------- | -------------- | -------------------------------------------- | ------------------------------- |
+| **Hikvision DS-2CD4A26FWD-IZHS/P** | 2MP LPR        | 100 fps, global shutter, 120 dB WDR, 30 m IR | Dedicated kentekenopname        |
+| **Dahua ITC237-PW6M-IRLZF**        | 2MP LPR        | 60 fps, 140 dB WDR, 50 m IR                  | Parkeren, afgesloten ingang     |
+| **Reolink RLC-1212A**              | 12MP Varifocal | 5× optische zoom, 58 m IR, 1/1.8"            | Budget 4K + zoom voor kentekens |
+| **Axis Q1700-LE**                  | 2MP LPR        | 60 fps, Forensic WDR, 40 m IR                | Enterprise, bewijsmateriaal     |
+
+---
+
+## 6. Deurbelcamera Nacht Problemen
+
+| Probleem                      | Oorzaak                       | Oplossing                                                        |
+| ----------------------------- | ----------------------------- | ---------------------------------------------------------------- |
+| **Bezoeker gezicht whiteout** | IR reflecteert op overkapping | Hoekwigset (15–25° omlaag); IR uitschakelen → gebruik porchlight |
+| **Geen nachtzicht**           | Accu spaarstand               | Bedraad (16–24V AC) → schakelt full-time IR in                   |
+| **Kleur nachtzicht uit**      | Omgeving te donker            | Voeg **3000K LED** toe in porch armatuur (niet koel wit)         |
+| **Nacht mist bewegingen**     | PIR-bereik < IR-bereik        | PIR ~8 m, IR ~9 m → verlaag IR-gevoeligheid / vernauw zone       |
+
+---
+
+## 7. Accu / Zonnecamera Nacht Specifiek
+
+| Probleem                          | Oorzaak                        | Oplossing                                                                    |
+| --------------------------------- | ------------------------------ | ---------------------------------------------------------------------------- |
+| **IR doodt accu in 1 week**       | IR = 2–4W continu              | Schakel IR uit; vertrouw op omgevingslicht + bewegingsspotlight (Eufy, Ring) |
+| **Geen nachtzicht in winter**     | Li-ion &lt;0°C stopt laden     | LiFePO₄ upgrade (Reolink Go PT Plus); geïsoleerde doos + verwarmer           |
+| **Beweging werkt alleen overdag** | PIR geblokkeerd door raam/glas | Monteer **buiten** glas; PIR heeft temperatuurverschil nodig                 |
+| **Spotlight activeert niet**      | Bewegingszone fout             | Herteken zone om naderingspad te dekken; test loop                           |
+
+---
+
+## 8. Diagnostische Gereedschappen & Procedures
+
+### 8.1 Nachtzicht Testkaart (Print & Lamineer)
+
+```
+┌─────────────────────────────────────┐
+│   NACHTZICHT TESTKAART              │
+│  ████████████████████████████████   │  ← 100% wit (IR-reflectie)
+│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   │  ← 50% grijs
+│  ████████████████████████████████   │  ← 0% zwart
+│                                     │
+│  Kenteken: ABC-1234 (test op 6/12/18 m)│
+│  Gezicht: [Omtrek]                  │
+└─────────────────────────────────────┘
+```
+
+**Procedure:** Monteer op doelafstand → neem op → beoordeel kenteken/gezicht helderheid.
+
+### 8.2 IR Vermogen Meting
+
+| Gereedschap           | Meting                      | Slagingscriterium                  |
+| --------------------- | --------------------------- | ---------------------------------- |
+| **PoE Tester**        | Spanning bij camera (nacht) | >48V (PoE+), >52V (PoE++)          |
+| **Multimeter (12V)**  | Spanning bij camera (nacht) | >11,5V (12V nominaal)              |
+| **Stroomtang**        | Stroom op 12V lijn (nacht)  | &lt;2A (per camera)                |
+| **Thermische Camera** | IR LED temperatuur          | 40–60°C (werkend), &lt;30°C (dood) |
+
+### 8.3 Firmware & Config Audit
+
+```
+☐ Firmware: Laatste stabiel (niet beta)
+☐ IR Modus: Auto (niet "Aan" 24/7)
+☐ Smart IR: Ingeschakeld
+☐ Sluiter: Handmatig 1/100s min (1/250s voor kentekens)
+☐ WDR: True WDR Aan (120 dB+)
+☐ Gain Max: Beperkt (niet "Auto Max")
+☐ Bitrate: CBR 4–6 Mbps (4K)
+☐ IR Cut: Omschakeling geverifieerd (dag/nacht)
+☐ Tijdzone/NTP: Correct (geplande IR)
+```
+
+---
+
+## 9. Wanneer Vervangen vs Repareren
+
+| Symptoom                       | Reparatie Mogelijk?          | Vervangen Wanneer                                  |
+| ------------------------------ | ---------------------------- | -------------------------------------------------- |
+| Geen IR-gloed, stroom OK       | IR-board ($50) / LDR ($2)    | Camera >3 jaar, waterindringing                    |
+| IR cut filter vast             | Tik/power cycle (tijdelijk)  | Mechanisme versleten; >2 jaar                      |
+| Whiteout onherstelbaar         | N.v.t.                       | Verkeerde camera voor locatie (gebruik externe IR) |
+| Ruis sensor (hot pixels)       | Pixel mapping (sommige cams) | >5% dode pixels; >4 jaar                           |
+| Kleur nachtzicht defect        | Sensor/ISP probleem          | Sensor te klein (&lt;1/2.8"); upgrade              |
+| Intermitterende nacht herstart | Spanningsval                 | Repareer kabel/stroom; indien aanhoudend → vervang |
+
+---
+
+## 10. Snel Referentiekaart (Print voor in de Auto)
+
+```
+NACHTZICHT TRIAGE STROOMDIAGRAM
+
+  1. IR-GLOED? (telefoon cam test)
+   NEE → Controleer spanning (nacht) → Stroom fix
+   JA → Stap 2
+
+  2. BEELD WIT/GRIJS?
+   JA → Hoek 15-30° omlaag / 30+ cm uit / Externe IR
+   NEE → Stap 3
+
+  3. BEELD ZWART/RUIS?
+   JA → Sluiter 1/100s min / WDR Aan / Externe IR
+   NEE → Stap 4
+
+  4. KLEUR NACHTZICHT UIT?
+   JA → Voeg 3000K licht toe / Controleer sensor grootte
+   NEE → Stap 5
+
+  5. KENTEKEN ONLEESBAAR?
+   JA → Sluiter 1/250s / Externe IR / Varifocal zoom / LPR cam
+   NEE → KLAAR ✓
+
+SPANNINGSCHECK (nacht, IR aan):
+PoE: >48V (af) / >50V (at) / >52V (bt)
+  12V: >11,5V bij camera
+```
+
+---
+
+## Gerelateerde Gidsen
+
+- [Common Security Camera Problems & Fixes](/blog/common-security-camera-problems-fixes) — Volledige probleemoplossingsindex
+- [PoE Camera Cable Running: DIY Installation](/blog/poe-camera-cable-running-diy-installation) — Spanningsval testen
+- [Best Solar-Powered Security Cameras (Off-Grid)](/blog/best-solar-powered-security-cameras-offgrid) — Winter accu/IR
+- [How to Mount Outdoor Cameras (Wall, Ceiling, Eave)](/blog/how-to-mount-outdoor-cameras-wall-ceiling-eave) — Hoek voor IR
+- [CCTV Video Storage Calculator](/blog/cctv-video-storage-calculator-hard-drive-space) — Nacht bitrate planning
+
+---
+
+_Laatst bijgewerkt: juli 2026. Testprocedures gevalideerd op Reolink, Dahua, Hikvision, UniFi, Axis, Ring, Eufy, Arlo, Wyze, TP-Link modellen._

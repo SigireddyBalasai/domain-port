@@ -1,0 +1,262 @@
+---
+title: "Tendido de Cables para Cámaras PoE: Instalación DIY (2026)"
+description: "Guía completa para tender cables Ethernet a cámaras PoE. Taladrar paredes exteriores, pasar cables por el ático, terminar conectores RJ45, sellar contra la intemperie y solucionar problemas de cableado."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "poe-camera-cable-running-diy-installation"
+author: "Your Name"
+tags: ["poe", "cable", "diy", "installation", "ethernet"]
+postType: "howto"
+---
+
+Tender cables PoE es la parte más difícil de la instalación de una cámara de seguridad. No se trata solo de perforar un agujero—se trata de planificar la ruta, elegir el cable correcto, protegerlo de la intemperie y terminarlo correctamente para que la cámara reciba alimentación y datos de manera fiable durante años.
+
+<Badge variant="outline">Antes de Perforar</Badge> **Planifique la ruta
+completa.** Dónde está el switch PoE, cómo llega a la cámara, dónde perfora la
+pared exterior, cómo lo protege de los elementos. Una hora de planificación
+ahorra un día de reparaciones.
+
+---
+
+## Elegir el Cable Correcto
+
+### Cable Ethernet para Exteriores
+
+| Tipo de Cable                             | Uso                                                    | Durabilidad Exterior                 | Costo          |
+| ----------------------------------------- | ------------------------------------------------------ | ------------------------------------ | -------------- |
+| **Cat5e UTP**                             | Interior, ejecuciones cortas                           | Mala (sin protección)                | $0.10-0.15/pie |
+| **Cat6 UTP**                              | Estándar para instalaciones interiores                 | Mala                                 | $0.15-0.25/pie |
+| **Cat6 SF/UTP (blindado)**                | Ejecuciones largas, cerca de interferencias eléctricas | Media                                | $0.25-0.40/pie |
+| **Cat6 para exteriores (PE)**             | Exterior—resistente a los rayos UV                     | Buena (cubierta de polietileno)      | $0.25-0.40/pie |
+| **Cat6a blindado para exteriores**        | Ejecuciones exteriores largas, interferencias          | Buena                                | $0.40-0.60/pie |
+| **Cable de enterramiento directo (Cat6)** | Enterrado directamente sin conducto                    | Excelente (relleno de gel, blindado) | $0.50-0.80/pie |
+
+<Callout type="warning">
+
+**NO use cable Ethernet interior para exteriores.** La cubierta PVC se degrada
+con los rayos UV en 1-2 años. El agua se filtra a través de la cubierta
+agrietada y destruye el cable. Use siempre cable clasificado para exteriores
+(CMX, PE o enterramiento directo).
+
+</Callout>
+
+### Sólido vs Trenzado
+
+| Tipo                           | Mejor Para                                       | Notas                                                                |
+| ------------------------------ | ------------------------------------------------ | -------------------------------------------------------------------- |
+| **Cobre sólido (23-24 AWG)**   | Ejecuciones largas (PoE), instalación permanente | Mejor conductor, soporta mejor PoE a larga distancia                 |
+| **Cobre trenzado (26-28 AWG)** | Cables de conexión cortos (parche), interiores   | Más flexible, pero mayor resistencia—peor para PoE a larga distancia |
+
+**Para instalación PoE permanente: use SIEMPRE cobre sólido.** El cable trenzado provoca caídas de tensión en ejecuciones PoE de más de 30-50 pies.
+
+---
+
+## Rutas de Cable
+
+### Ruta 1: Ático (Ejecución Exterior)
+
+```
+                    _____
+        ┌──────────/ Ático \──────────┐
+        │         └─────────┘          │
+        ▼                              ▼
+  ┌─────────┐                   ┌─────────┐
+  │ Switch  │                   │ Cámara  │
+  │ PoE     │                   │ Exterior│
+  │ (interior)│                   └─────────┘
+  └─────────┘                         ▲
+        │                             │
+        │             ┌───────┐      │
+        └─────────────│ Pared │──────┘
+                      │ exterior      │
+                      └───────┘
+```
+
+**Pasos:**
+
+1. Monte el switch PoE en el interior (sótano, armario, cuarto de servicio)
+2. Tienda el cable a través del sótano/paredes hasta el ático
+3. En el ático, sujete el cable a las vigas con bridas
+4. En la placa de separación, taladre un agujero de 5/8" hacia abajo hasta la pared exterior
+5. Pase el cable hacia abajo hasta el lugar de montaje de la cámara
+6. Deje 12-18" de bucle de servicio
+7. Termine con un conector RJ45
+8. Selle el agujero de la pared exterior con masilla de silicona
+
+### Ruta 2: Sótano / Espacio de Arrastre
+
+```
+                    _____
+        ┌──────────/ Casa  \──────────┐
+        │                            │
+        ▼                            ▼
+  ┌─────────┐                 ┌─────────┐
+  │ Switch  │                 │ Cámara  │
+  │ PoE     │                 │ Exterior│
+  └─────────┘                 └─────────┘
+        │                         ▲
+        │                         │
+        │   ┌──────────┐         │
+        └───│ Sótano   │─────────┘
+            │ / Crawl  │
+            └──────────┘
+```
+
+**Pasos:**
+
+1. Monte el switch PoE en el sótano/crawl space
+2. Tienda el cable a lo largo de las vigas del piso (sujeto con bridas)
+3. Taladre hacia arriba a través de la placa del piso dentro de la pared exterior
+4. Pase el cable hacia arriba hasta la altura de montaje de la cámara
+5. Deje bucle de servicio
+6. Instale el conector RJ45
+7. Selle el agujero
+
+### Ruta 3: Conducto Exterior
+
+Úselo cuando no pueda pasar el cable por el interior.
+
+1. Monte el conducto (PVC o EMT) a lo largo del exterior del edificio
+2. Use accesorios de conducto (codos, conectores) para las esquinas
+3. Pase el cable a través del conducto
+4. Selle los extremos del conducto con masilla de silicona
+5. Deje bucle de servicio donde el cable sale del conducto hacia la cámara
+
+### Ruta 4: Enterrado (Entre Edificios)
+
+1. Cave una zanja de 18" de profundidad (NEC 300.5)
+2. Use cable de enterramiento directo (relleno de gel) o pase Cat6 estándar a través de conducto de PVC
+3. Marque la ruta (cinta de advertencia enterrada a 6" de profundidad)
+4. Lleve el cable hacia arriba hasta el edificio en cada extremo
+5. Deje un bucle de drenaje en la base de cada edificio
+
+---
+
+## Perforar la Pared Exterior
+
+### Herramientas
+
+- Taladro con percutor (para ladrillo/estuco)
+- Broca de mampostería (del tamaño del manguito pasamuros)
+- Broca larga (12-18") para atravesar el aislamiento
+- Manguito pasamuros (sello de pared para el cable)
+- Masilla de silicona
+
+### Pasos
+
+1. **Marque** la posición de la cámara (8-10 pies de altura típicamente)
+2. **Taladre desde el interior** hacia el exterior (si es posible) para evitar astillar el revestimiento
+3. **Incline la broca ligeramente hacia abajo** (5°) para que el agua corra hacia el exterior, no hacia el interior
+4. **Inserte un manguito pasamuros** en el agujero (evita que el cable roce con los bordes afilados)
+5. **Pase el cable** a través del manguito
+6. **Selle el exterior** con masilla de silicona alrededor del manguito
+7. **Selle el interior** con masilla de silicona o masilla para calafateo
+
+---
+
+## Terminación de Conectores RJ45
+
+### Orden T568B (Estándar)
+
+| Pin | Par | Color          |
+| --- | --- | -------------- |
+| 1   | 3   | Blanco/Naranja |
+| 2   | 3   | Naranja        |
+| 3   | 2   | Blanco/Verde   |
+| 4   | 1   | Azul           |
+| 5   | 1   | Blanco/Azul    |
+| 6   | 2   | Verde          |
+| 7   | 4   | Blanco/Marrón  |
+| 8   | 4   | Marrón         |
+
+### Pasos
+
+1. Pele 1-1.5" de cubierta exterior (use un pelacables—no muerda los pares)
+2. Desenrede y enderece los pares
+3. Ordene según T568B
+4. Corte los extremos alineados a 0.5" de la cubierta
+5. Inserte en el conector RJ45 (lengüeta hacia abajo, pines hacia usted)
+6. Asegúrese de que la cubierta entre completamente en el conector
+7. Crimpe firmemente
+8. Pruebe con un probador de cables—todos los 8 pines deben pasar
+
+### Errores Comunes
+
+| Error                                   | Síntoma                                             | Solución                                                |
+| --------------------------------------- | --------------------------------------------------- | ------------------------------------------------------- |
+| **Cables en orden incorrecto**          | El probador muestra pines abiertos o pares cruzados | Rehaga con el orden correcto T568B                      |
+| **Cables no insertados completamente**  | El probador muestra pines abiertos                  | Inserte firmemente, crimpe de nuevo                     |
+| **La cubierta no entra en el conector** | El cable se sale del conector con el tiempo         | Pele más cubierta; asegúrese de que entre al menos 1/4" |
+| **Muesca de crimpado demasaida fuerza** | Pines deformados, conectividad intermitente         | Use una crimpadora de calidad; no fuerce                |
+| **Par desenredado demasiado largo**     | Diafonía, velocidad reducida                        | Mantenga el desenredado a &lt;0.5"                      |
+
+---
+
+## Conectores y Sellado a Prueba de Agua
+
+### Conectores RJ45 para Exteriores
+
+Para conexiones exteriores, no use un conector RJ45 estándar—el agua oxidará los pines en semanas.
+
+| Tipo                                            | Impermeabilidad  | Costo       | Reutilizable |
+| ----------------------------------------------- | ---------------- | ----------- | ------------ |
+| **Cubierta de goma para RJ45 (chapada en oro)** | Buena            | $2-5        | Sí           |
+| **Conector RJ45 relleno de gel**                | Excelente        | $3-6        | No           |
+| **Acoplador RJ45 impermeable (IP67)**           | Excelente        | $5-10       | Sí           |
+| **Cinta autofundente**                          | Buena (temporal) | $5-10/rollo | No           |
+
+**Práctica recomendada:** Use conectores RJ45 chapados en oro con cubierta de goma. Para conexiones que estarán expuestas a la lluvia directa, use un acoplador IP67.
+
+### Técnicas de Sellado
+
+| Punto de Entrada                            | Método de Sellado                                                          |
+| ------------------------------------------- | -------------------------------------------------------------------------- |
+| **Agujero en la pared exterior**            | Manguito pasamuros + masilla de silicona exterior e interior               |
+| **Conector RJ45 de la cámara**              | Cubierta de goma para RJ45; bucle de goteo; apunte el conector hacia abajo |
+| **Cable que entra en el conducto**          | Preformas de conducto (duct seal) para sellar el extremo del conducto      |
+| **Cable que sale del conducto a la cámara** | Masilla de silicona alrededor del punto de salida del conducto             |
+
+---
+
+## Prueba del Cable
+
+### Prueba Básica (Probador de Cables)
+
+1. Conecte un extremo del cable al transmisor del probador
+2. Conecte el otro extremo al receptor
+3. Encienda el probador
+4. Verifique que los LEDs 1-8 se iluminen en orden (T568B coincidente)
+5. Si algún LED no se enciende: conexión abierta—vuelva a crimpar
+6. Si los LEDs están fuera de orden: pares cruzados—rehaga
+
+### Prueba PoE
+
+1. Conecte el cable a un switch PoE
+2. Conecte la cámara
+3. Verifique que la cámara se encienda (LEDs, movimiento del lente)
+4. Verifique que la cámara aparezca en el NVR/app
+
+---
+
+## Solución de Problemas de Cableado
+
+| Problema                                                                             | Causa                                                                                 | Solución                                                                                                                                                                                     |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **La cámara no se enciende (sin LEDs)**                                              | Sin alimentación—cable demasiado largo, PoE presupuesto insuficiente, o mala conexión | Pruebe con un cable de conexión corto junto al switch. Si funciona: el cable largo es el problema. Verifique la longitud (&lt;100m), use cable de cobre sólido, verifique el presupuesto PoE |
+| **La cámara se enciende pero no hay video**                                          | Problema de datos—conexión defectuosa, velocidad/ dúplex incorrecta                   | Pruebe con otro cable; verifique los pines RJ45; fuerce la cámara a 100Mbps Full Duplex                                                                                                      |
+| **La cámara se reinicia aleatoriamente**                                             | Caída de tensión PoE—bajo voltaje en el extremo de la cámara                          | Verifique el presupuesto PoE; use cable de cobre sólido más grueso (23AWG); acorte la ejecución; use PoE+ (mayor voltaje)                                                                    |
+| **Caída de velocidad (100Mbps en lugar de 1Gbps)**                                   | Cable de mala calidad, demasiado largo, o par desenredado demasiado largo             | Las cámaras solo necesitan 100Mbps—esto suele estar bien. Pero si quiere 1Gbps, use Cat6 y verifique el cable                                                                                |
+| **El probador de cables muestra todos los pines pasando pero la cámara no funciona** | Conector RJ45 dañado, conector doblado, o polaridad invertida                         | Vuelva a crimpar ambos extremos; verifique que la lengüeta del RJ45 encaje                                                                                                                   |
+
+---
+
+## Lectura Relacionada
+
+- [CCTV Guía de Cableado](/blog/cctv-cabling-guide) — Opciones detalladas de cableado
+- [Guía de Instalación de Cámaras DIY](/blog/diy-security-camera-installation-complete-guide) — Flujo de trabajo de instalación completo
+- [Configuración de NVR PoE](/blog/poe-nvr-setup) — Guía de instalación del NVR
+- [Cómo Montar Cámaras Exteriores](/blog/how-to-mount-outdoor-cameras-wall-ceiling-eave) — Técnicas de montaje
+
+---
+
+_Última actualización: Julio 2026. Siempre verifique los códigos de construcción locales antes de perforar paredes exteriores o enterrar cables. Use guantes y gafas de seguridad._

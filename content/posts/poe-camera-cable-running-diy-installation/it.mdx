@@ -1,0 +1,333 @@
+---
+title: "Cavo Telecamera PoE: Guida Installazione DIY (2026)"
+description: "Guida completa al passaggio cavi Cat5e/6 per telecamere PoE. Tipi di cavo, pianificazione percorso, terminazione, test, conformità normativa e consigli professionali per installazioni pulite e affidabili."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "poe-camera-cable-running-diy-installation"
+author: "Your Name"
+tags: ["diy", "poe", "cable-running", "installation", "termination"]
+postType: "howto"
+---
+
+La posa del cavo è il 70% della manodopera di installazione telecamera PoE. Fallo bene una volta: rame massiccio, percorsi corretti, terminazione corretta, test verificati. Questa guida copre ogni passo dalla bobina allo switch.
+
+<Badge variant="outline">Scelta Cavo</Badge> **Usa Cat6 rame massiccio
+(CMR/CMP).** Non CCA (rame rivestito alluminio). Non trefolo. Non Cat5e per
+nuove installazioni. Cat6 rame massiccio = 100m a 1Gbps PoE+ senza problemi di
+caduta tensione.
+
+---
+
+## Selezione Cavo: Cosa Comprare (Ed Evitare)
+
+| Tipo Cavo                               | Conduttore            | PoE+ (30W) Max | PoE++ (60/90W) Max | Valutazione            | Utilizzo            |
+| --------------------------------------- | --------------------- | -------------- | ------------------ | ---------------------- | ------------------- |
+| **Cat6 Rame Massiccio (CMR)**           | 23 AWG Rame Massiccio | 100 m (328 ft) | 80 m (262 ft)      | Riser (in-parete)      | **Scelta standard** |
+| **Cat6 Rame Massiccio (CMP)**           | 23 AWG Rame Massiccio | 100 m          | 80 m               | Plenum (condotti aria) | Richiesto in plenum |
+| **Cat6a Rame Massiccio**                | 23 AWG Rame Massiccio | 100 m          | 100 m              | Riser/Plenum           | Future-proof 10G    |
+| **Cavo Esterno Direttamente Interrato** | 23 AWG Rame Massiccio | 100 m          | 80 m               | Gel-fill, UV           | Sotterraneo, aereo  |
+| **❌ Cat5e**                            | 24 AWG                | 100 m          | 50 m               | Riser                  | Solo legacy         |
+| **❌ CCA (Rame Rivestito Alluminio)**   | Nucleo alluminio      | **FALLISCE**   | **FALLISCE**       | Qualsiasi              | **Mai per PoE**     |
+| **❌ Trefolo / Patch**                  | Rame trefolato        | 10 m (33 ft)   | 5 m                | Patch                  | Solo cordoni patch  |
+
+<Callout type="danger">
+
+**CCA (Rame Rivestito Alluminio) fallisce con PoE.** L'alluminio ha resistenza 60% superiore → caduta tensione → telecamera si riavvia di notte (IR acceso). **Verifica "Rame Massiccio Nudo" sulla stampa della guaina.**
+
+</Callout>
+
+**Marche Raccomandate (2026):**
+
+- **Budget:** Cable Matters Cat6 CMR (305 m €110)
+- **Medio:** Southwire Cat6 CMR (305 m €140)
+- **Pro:** Belden 2413 / General Cable GenSPEED 6000 (305 m €200)
+- **Esterno:** Superior Essex 04-001-59 (Interramento Diretto, €165)
+
+---
+
+## Pianificazione Percorso: Prima Di Forare
+
+### 1. Mappa Ogni Percorso
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="mapping">
+    <AccordionTrigger>Crea un Foglio di Calcolo Programmazione Cavi</AccordionTrigger>
+    <AccordionContent>
+
+| Telecamera | Posizione      | Percorso                                  | Lunghezza (m) | Tipo Cavo    | Terminazione    | Classe PoE     |
+| ---------- | -------------- | ----------------------------------------- | ------------- | ------------ | --------------- | -------------- |
+| CAM-01     | Porta Ingresso | Sottotetto → Aggetto → Fascia             | 20            | Cat6 CMR     | RJ45 + Keystone | Classe 4 (30W) |
+| CAM-02     | Vialetto       | Sottotetto → Muro Esterno → Palo          | 29            | Cat6 Esterno | RJ45 Diretto    | Classe 4       |
+| CAM-03     | Giardino       | Seminterrato → Trave Perimetrale → Gronda | 24            | Cat6 CMR     | Keystone        | Classe 3 (15W) |
+
+<p>
+  <strong>Regola:</strong> Misura <strong>due volte</strong>, aggiungi{" "}
+  <strong>3 m di riserva</strong> per corsa (anelli di servizio a entrambe le
+  estremità).
+</p>
+
+  </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+### 2. Identifica Percorsi (Migliore → Peggiore)
+
+| Percorso                                              | Difficoltà | Corse Max    | Note Normative                                         |
+| ----------------------------------------------------- | ---------- | ------------ | ------------------------------------------------------ |
+| **Sottotetto → Aggetto/Gronda**                       | Facile     | Illimitato   | Evita contatto isolamento (derating amperaggio)        |
+| **Seminterrato/Pavimento → Trave Perimetrale → Muro** | Media      | Illimitato   | Fora attraverso soglia, tagliafuoco                    |
+| **Muro Interno → Esterno**                            | Media      | 1–2 per muro | Tagliafuoco a piastra superiore/inferiore              |
+| **Conduit (EMT/PVC) Superficie**                      | Facile     | Illimitato   | Migliore per retrofit, consentito a vista              |
+| **Interramento Diretto (Scavo)**                      | Difficile  | Illimitato   | 45 cm profondità (60 cm sotto vialetto), nastro avviso |
+| **Aereo (Palo-a-Palo)**                               | Media      | 1–2          | Filo portante, gocce drenaggio, 3 m altezza libera     |
+
+---
+
+## Tecniche di Foratura e Pesca
+
+### Sottotetto ad Aggetto (Più Comune)
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="attic-soffit">
+    <AccordionTrigger>Passo-Passo: Sottotetto → Telecamera Aggetto</AccordionTrigger>
+    <AccordionContent>
+
+<p>
+  <strong>Strumenti:</strong> Panna 22 mm / punta scalpello, aste luminescenti
+  15 m, frontale, ginocchiere, maschera antipolvere
+</p>
+
+<ol>
+  <li>
+    <strong>Localizza posizione telecamera</strong> dal sottotetto — misura da
+    punto di riferimento noto (sfiato, camino)
+  </li>
+  <li>
+    <strong>Fora 22 mm</strong> attraverso piastra superiore + tavola aggetto
+    (angola leggermente verso il basso per scolo acqua)
+  </li>
+  <li>
+    <strong>Spingi aste luminescenti</strong> dal sottotetto giù attraverso il
+    foro all'esterno aggetto
+  </li>
+  <li>
+    <strong>Fissa cavo</strong> all'estremità asta: piega 15 cm indietro, nastro
+    isolante liscio (nessun intoppo)
+  </li>
+  <li>
+    <strong>Tira delicatamente</strong> — lavoro 2 persone: uno alimenta, uno
+    tira
+  </li>
+  <li>
+    <strong>Lascia 1 m di riserva</strong> in sottotetto (anello servizio), 60
+    cm alla telecamera
+  </li>
+  <li>
+    <strong>Sigilla:</strong> Silicone intorno al cavo alla penetrazione aggetto
+    (interno + esterno)
+  </li>
+  <li>
+    <strong>Fissa</strong> cavo ai travetti ogni 1.2 m (fascette isolate T25)
+  </li>
+</ol>
+
+  </AccordionContent>
+   </AccordionItem>
+</Accordion>
+
+### Seminterrato/Pavimento a Muro Esterno
+
+- **Fora attraverso trave perimetrale** (non fondazione) — foro 22 mm, 30 cm sopra livello terreno minimo
+- **Tagliafuoco:** Riempì lana minerale + mastice tagliafuoco intorno al cavo alla penetrazione
+- **Esterno:** Corpo conduit LB → ½" LFMC a scatola telecamera
+
+### Muro Interno a Esterno (Retrofit)
+
+1. **Taglia foro scatola retrofit** all'altezza telecamera (interno)
+2. **Fora verso il basso** attraverso piastra inferiore in seminterrato/pavimento (panna 22 mm)
+3. **Pesca dal basso** con aste luminescenti
+4. **Proteggi:** Piastre chiodo sui montanti dove passa il cavo (NEC 300.4)
+
+---
+
+## Conduit e Protezione
+
+| Situazione                        | Tipo Conduit                            | Dimensione | Note                                           |
+| --------------------------------- | --------------------------------------- | ---------- | ---------------------------------------------- |
+| **Muro esterno superficie**       | LFMC (Metallico Flessibile Liquidtight) | ½"         | UV rated, max 1.2 m tra supporti               |
+| **Sotterraneo**                   | PVC Schedule 40 / HDPE                  | ¾"         | 45 cm copertura, curve a gomito, filo tiraggio |
+| **Sottotetto (esposto)**          | Nessuno necessario (Cat6 CMR)           | —          | Fissa ogni 1.2 m, niente fascette sul cavo     |
+| **Soffitto Plenum**               | EMT / Cavo plenum-rated                 | ½"         | Cavo CMP richiesto se nessun conduit           |
+| **Attraverso parete tagliafuoco** | Guaina tagliafuoco + mastice            | —          | Hilti CFS-SL / 3M CP25                         |
+
+---
+
+## Terminazione: RJ45 Passante (Più Veloce, Più Affidabile)
+
+<Callout type="note">
+
+**Usa connettori passanti.** RJ45 standard richiede taglio preciso. Il passante ti permette di verificare l'ordine dei colori _prima_ della crimpatura. **Attrezzo:** Crimpatrice passante a cricchetto (Klein VDV226-110, €45).
+
+</Callout>
+
+### Pinout T568B (Standard per PoE)
+
+| Pin | Coppia | Colore         | Funzione PoE       |
+| --- | ------ | -------------- | ------------------ |
+| 1   | 2      | Bianco/Arancio | Dati + PoE (+)     |
+| 2   | 2      | Arancio        | Dati + PoE (+)     |
+| 3   | 3      | Bianco/Verde   | Dati + PoE (-)     |
+| 4   | 1      | Blu            | PoE (+) Di Riserva |
+| 5   | 1      | Bianco/Blu     | PoE (+) Di Riserva |
+| 6   | 3      | Verde          | Dati + PoE (-)     |
+| 7   | 4      | Bianco/Marrone | PoE (-) Di Riserva |
+| 8   | 4      | Marrone        | PoE (-) Di Riserva |
+
+**PoE usa TUTTE e 4 le coppie** (802.3bt). **Tutti gli 8 conduttori devono essere perfetti.**
+
+### Procedura Crimpatura (Passante)
+
+1. **Spella 4 cm** guaina — non intaccare conduttori
+2. **Srotola coppie** solo quanto necessario — mantieni torsioni vicine al connettore
+3. **Disponi T568B** — appiattisci, verifica ordine sinistra-destra
+4. **Inserisci completamente** — conduttori visibili sulla faccia anteriore
+5. **Verifica ordine** — guarda attraverso connettore trasparente
+6. **Crimpa** — attrezzo a cricchetto, una pressione ferma
+7. **Test tira** — tiro 2.5 kg, nessun movimento
+
+---
+
+## Keystone Jacks (Terminazione a Placca a Parete)
+
+**Quando:** La telecamera si collega a pannello di permutazione / presa a muro → cavo patch alla telecamera
+
+**Punch-Down (110/Keystone):**
+
+1. Spella 5 cm guaina
+2. Inserisci fili negli slot codificati a colori (T568B stampato sul jack)
+3. **Inserisci dritto verso il basso** — attrezzo 110, un colpo per filo
+4. Taglia eccesso a filo
+5. Scatta nella placca a parete
+
+**Test:** Continuità + tensione PoE al jack prima di collegare telecamera.
+
+---
+
+## Test: Verifica Ogni Posa
+
+<Callout type="warning">
+
+**Non fidarti mai di un cavo non testato.** Il 30% dei "guasti telecamera" sono guasti cavo. Testa _prima_ di montare la telecamera.
+
+</Callout>
+
+### Livello 1: Continuità + Mappa Fili (Ogni Cavo)
+
+**Strumento:** Tester base (NF-8601, €25) — 8 LED + schermo
+
+- **Tutti 8 verdi** = ok
+- **Qualsiasi rosso/aperto/incrociato** = ri-termina
+
+### Livello 2: Tensione PoE Sotto Carico (Critico)
+
+**Strumento:** Tester PoE (LINKSYS PTPoE, €35) o Multimetro + Iniettore PoE
+
+1. Collega iniettore → cavo → tester (o telecamera)
+2. Misura **all'estremità telecamera**:
+
+- **PoE (802.3af):** 44–57V CC
+- **PoE+ (802.3at):** 50–57V CC
+- **PoE++ (802.3bt):** 52–57V CC
+
+3. **Sotto carico** (telecamera accesa) — caduta tensione &lt;3V dall'iniettore
+
+### Livello 3: Validazione Velocità Dati (Pro)
+
+**Strumento:** Certificatore Cavi (Fluke DSX-5000, €7500) — noleggio €150/giorno
+
+- **Cat6:** 250 MHz, 1 Gbps garantito
+- **Cat6a:** 500 MHz, 10 Gbps garantito
+- **Stampa rapporto** per garanzia
+
+---
+
+## Calcolatore Caduta Tensione PoE
+
+**Formula:** `Vdrop = (2 × Lunghezza_m × Corrente_A × Resistenza_Ω_per_1000m) / 1000`
+
+| Cavo               | Resistenza (Ω/1000m) | Max 30W (0.6A) | Max 60W (1.2A) | Max 90W (1.8A) |
+| ------------------ | -------------------- | -------------- | -------------- | -------------- |
+| **Cat6 (23 AWG)**  | 21.7                 | **100 m**      | **50 m**       | **33 m**       |
+| **Cat6a (23 AWG)** | 21.7                 | 100 m          | 100 m          | 66 m           |
+| **Cat5e (24 AWG)** | 27.9                 | 76 m           | 38 m           | 25 m           |
+
+**Regola:** Rimani sotto **80% del massimo** per margine. Per PoE++ (60/90W), usa Cat6a o limita a 30 m su Cat6.
+
+---
+
+## Guasti Comuni e Soluzioni
+
+| Sintomo                                        | Causa                                      | Soluzione                                                   |
+| ---------------------------------------------- | ------------------------------------------ | ----------------------------------------------------------- |
+| **Telecamera si riavvia di notte (IR acceso)** | Caduta tensione >3V                        | Accorcia percorso / Cat6a / Iniettore PoE++ alla telecamera |
+| **Link oscilla 100/1000 Mbps**                 | Coppia singola aperta / alta resistenza    | Ri-termina entrambe le estremità; testa ogni coppia         |
+| **Nessun link, tester mostra 7/8 fili**        | Un conduttore rotto/allentato              | Ri-crimpa; controlla schiacciamento fascetta                |
+| **Coppie incrociate (1↔3, 2↔6)**               | T568A un'estremità, T568B altra            | Standardizza T568B entrambe le estremità                    |
+| **Acqua nel cavo (corrosione)**                | Cavo esterno non gel-fill / tenuta cattiva | Sostituisci con interramento diretto; sigilla entrate       |
+| **Rumore EMI (artefatti video)**               | Parallelo a Romex / HVAC                   | Separa 30 cm+ ; incrocia a 90° ; Cat6 schermato             |
+
+---
+
+## Riferimento Rapido Conformità Normativa (NEC 2023)
+
+| Articolo    | Requisito                                 | Conseguenza Pratica                            |
+| ----------- | ----------------------------------------- | ---------------------------------------------- |
+| **300.4**   | Protezione da danno fisico                | Piastre chiodo, conduit, 3 cm dal bordo        |
+| **300.11**  | Fissaggio e supporto                      | Fascette ogni 1.2 m, entro 30 cm dalla scatola |
+| **300.22**  | Spazi plenum                              | Cavo CMP o conduit                             |
+| **411.4**   | Illuminazione bassa tensione (telecamere) | Classe 2/3, apparecchiature certificate        |
+| **725.133** | Separazione cavi Classe 2/3               | 5 cm da alimentazione (o barriera)             |
+| **800.170** | Messa a terra (esterno)                   | Unità scarico antenna se aereo                 |
+| **Locale**  | Soglia permesso                           | Spesso >€500 o >1.8 m altezza                  |
+
+---
+
+## Consigli Professionali da 100+ Installazioni
+
+1. **Etichetta entrambe le estremità** prima di tirare — Pennarello + etichetta cavo (Brother PT-E110)
+2. **Tira filo di traino prima** — Lascia spago da muratore per future pose
+3. **Anelli di servizio** — 1 m alla telecamera, 2 m al NVR/switch
+4. **Codice colore** — Guaine diverse per zona (Blu=Anteriore, Verde=Posteriore, Giallo=Laterale)
+5. **Documenta** — Foto di ogni terminazione, PDF programma cavi, schema as-built
+6. **Testa prima del montaggio** — Telecamera sulla scala = 10× più difficile da riparare
+7. **Budget PoE** — Budget PoE totale switch ≥ Σ assorbimento max telecamera × 1.2
+8. **Protezione sovratensione** — Percorsi esterni: protettore PoE sovratensione (Transtector, €30) all'ingresso edificio
+
+---
+
+## Lista Spesa Attrezzi (Acquisto Una Tantum)
+
+| Attrezzo                         | Modello                             | Prezzo  | Note                          |
+| -------------------------------- | ----------------------------------- | ------- | ----------------------------- |
+| **Crimpatrice Passante**         | Klein VDV226-110                    | €45     | Cricchetto, tutto-in-uno      |
+| **Tester Cavo (Base)**           | NF-8601 / TRENDnetworks TC-NT2      | €25–€60 | Continuità + mappa fili       |
+| **Tester PoE**                   | LINKSYS PTPoE / Ubiquiti POE-Tester | €35     | Tensione sotto carico         |
+| **Attrezzo Punch-Down**          | Fluke D914S / Klein VDV427-800      | €40     | Lama 110/66                   |
+| **Aste Luminescenti**            | Klein 56107 / Jonard GR-20          | €35     | Set 7.5–15 m                  |
+| **Panna 22 mm**                  | Irwin Speedbor / Milwaukee          | €15     | Fori puliti in legno          |
+| **Trapano a Percussione (SDS+)** | Bosch GBH2-28L / DeWalt DCH273      | €180    | Per muratura                  |
+| **Etichettatrice**               | Brother PT-E110 / PT-H110           | €50     | Etichette termorestringenti   |
+| **Nastro Pesca**                 | Klein 56007 30m                     | €30     | Acciaio, punta non conduttiva |
+
+---
+
+## Guide Correlate
+
+- [Guida Installazione Telecamere Sicurezza Fai-da-Te](/blog/diy-security-camera-installation-complete-guide) — Flusso di lavoro completo
+- [Come Montare Telecamere Esterne (Muro, Soffitto, Gronda)](/blog/how-to-mount-outdoor-cameras-wall-ceiling-eave) — Hardware per superficie specifica
+- [Migliori Sistemi Telecamere Sicurezza Piccola Impresa](/blog/best-small-business-security-camera-systems) — Dimensionamento NVR, budget PoE
+- [Calcolatore Archiviazione Video CCTV](/blog/cctv-video-storage-calculator-hard-drive-space) — Dimensionamento archiviazione per tue pose
+
+---
+
+_Ultimo aggiornamento: Luglio 2026. Riferimenti NEC basati su edizione 2023 — verifica emendamenti locali._

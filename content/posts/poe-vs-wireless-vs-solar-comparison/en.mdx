@@ -26,11 +26,13 @@ faq:
 ---
 
 <Callout type="info" title="Power Method Is the First Decision">
-  Before you buy a single camera, decide how it will get power. This choice
-  dictates your installation complexity, ongoing maintenance, and system
-  reliability. PoE wins for performance and reliability; Wireless wins for
-  simplicity; Solar wins for independence. Mix and match as needed — see our
-  [CCTV Cabling Guide](/blog/cctv-cabling-guide) for PoE wiring details.
+
+Before you buy a single camera, decide how it will get power. This choice
+dictates your installation complexity, ongoing maintenance, and system
+reliability. PoE wins for performance and reliability; Wireless wins for
+simplicity; Solar wins for independence. Mix and match as needed — see our
+[CCTV Cabling Guide](/blog/cctv-cabling-guide) for PoE wiring details.
+
 </Callout>
 
 ## The power question that defines your entire system
@@ -192,7 +194,7 @@ Different properties have different constraints. Here's how each method performs
 
 ### Off-grid cabin or farm
 
-**PoE:** Only if you have solar-powered PoE switch and Ethernet run is short (<50 m).  
+**PoE:** Only if you have solar-powered PoE switch and Ethernet run is short (&lt;50 m).  
 **Wireless:** Requires local network; mesh or point-to-point can work if power is available.  
 **Solar:** Primary choice — pair with solar-powered NVR or cellular backup if remote viewing needed.
 
@@ -242,18 +244,22 @@ Let's compare total cost of ownership for an 8-camera system over 3 years:
 | Solar (8x 4MP)    | $800-1,600         | $800-2,000 (panels + mounts) | $200 (battery replacement) | **$1,800-3,800** |
 
 <Callout type="warning" title="Hidden Costs of Wireless">
-  Battery replacement adds up fast. A $50 lithium rechargeable pack lasting 12
-  months costs $150 over 3 years per camera. For 8 cameras, that is $1,200 on
-  batteries alone — often exceeding the camera cost itself. Factor this into
-  your decision.
+
+Battery replacement adds up fast. A $50 lithium rechargeable pack lasting 12
+months costs $150 over 3 years per camera. For 8 cameras, that is $1,200 on
+batteries alone — often exceeding the camera cost itself. Factor this into
+your decision.
+
 </Callout>
 
 <Callout type="tip" title="PoE TCO Wins at Scale">
-  For 6+ cameras, PoE almost always wins on 3-year total cost of ownership. The
-  upfront switch ($150-300 for 16-port) and cable run ($15-30/camera) are
-  one-time costs, with almost zero maintenance. Compare to wireless where
-  batteries turn into a recurring $300-800 expense per camera over 3 years.
-  Browse our [best PoE cameras](/blog/best-poe-cameras) for value picks.
+
+For 6+ cameras, PoE almost always wins on 3-year total cost of ownership. The
+upfront switch ($150-300 for 16-port) and cable run ($15-30/camera) are
+one-time costs, with almost zero maintenance. Compare to wireless where
+batteries turn into a recurring $300-800 expense per camera over 3 years.
+Browse our [best PoE cameras](/blog/best-poe-cameras) for value picks.
+
 </Callout>
 
 ## What infrastructure do you need for each?
@@ -285,10 +291,12 @@ Let's compare total cost of ownership for an 8-camera system over 3 years:
 - [ ] Battery replacement plan (every 2-3 years)
 
 <Callout type="info" title="Panel Sizing Matters">
-  Oversize your solar panel by 30-50% above the camera's daily draw to account
-  for winter sun angles, cloudy days, and battery aging. A camera that draws 5
-  Wh/day should have a 10-15W panel paired with a 20-30 Wh battery for reliable
-  3-day autonomy.
+
+Oversize your solar panel by 30-50% above the camera's daily draw to account
+for winter sun angles, cloudy days, and battery aging. A camera that draws 5
+Wh/day should have a 10-15W panel paired with a 20-30 Wh battery for reliable
+3-day autonomy.
+
 </Callout>
 
 ## How to mix power methods in one system
@@ -321,44 +329,54 @@ See our [NVR Setup Guide](/blog/poe-nvr-setup) for step-by-step PoE and WiFi cam
       Can I use a PoE injector instead of a PoE switch?
     </AccordionTrigger>
     <AccordionContent>
+
       Yes, for small installs (1-4 cameras). A PoE injector sits between your
       non-PoE switch and the camera, adding power to the Ethernet cable. But
       injectors require their own power outlet each and create cable clutter.
       For 4+ cameras, a single PoE switch is cleaner and more reliable. For
       detailed wiring help, see our [CCTV Cabling
       Guide](/blog/cctv-cabling-guide).
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Do WiFi cameras work with 5GHz networks?
     </AccordionTrigger>
     <AccordionContent>
+
       Many newer WiFi cameras support 5GHz, which offers faster speeds and less
       interference but shorter range (roughly half of 2.4GHz). For cameras
       within 10-15 m of your router, 5GHz is great. For distant cameras, 2.4GHz
       still provides better penetration through walls and longer reach. Most
       cameras default to 2.4GHz for this reason. If you have a strong 5GHz
       signal at the camera location, use it for better video quality.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       How long do solar camera batteries last?
     </AccordionTrigger>
     <AccordionContent>
+
       Lithium-ion batteries in solar cameras typically last 2-3 years before
       capacity drops below 80%. Expect to spend $30-80 on a replacement battery
       every few years. The solar panel itself lasts 10+ years with occasional
       cleaning. Size your panel and battery for your local climate — areas with
       long winters or frequent clouds need larger batteries.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Can PoE cameras work during a power outage?
     </AccordionTrigger>
     <AccordionContent>
+
       Only if your PoE switch and network equipment are connected to a UPS
       (uninterruptible power supply). A 600VA UPS can keep a 16-port PoE switch
       and NVR running for 30-60 minutes depending on load. Without UPS backup,
@@ -366,30 +384,38 @@ See our [NVR Setup Guide](/blog/poe-nvr-setup) for step-by-step PoE and WiFi cam
       outage resilience, pair a UPS with cellular failover for your internet
       connection. See our [resolution guide](/blog/camera-resolution-guide) for
       more on NVR selection.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Which power method is best for beginners?
     </AccordionTrigger>
     <AccordionContent>
+
       For your first camera, start with a plug-in WiFi model — no cable pulling,
       no batteries to manage long-term, and you can move it around to test
       different spots. Once you know where you want permanent coverage, convert
       to PoE for reliability. Solar is great if your ideal camera spot happens
       to get good sun and has no nearby outlet.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>Does weather affect PoE cable runs?</AccordionTrigger>
     <AccordionContent>
+
       Yes. Use outdoor-rated (CMX) cable or run indoor cable through UV-rated
       conduit for any exposed section. Indoor PVC cable degrades in 2-3 years of
       sunlight exposure. For underground runs, use direct-burial rated cable in
       Schedule 40 PVC conduit buried 18 inches deep. See our detailed [cable
       type comparison](/blog/cctv-cabling-guide) for specifications and
       termination tips.
+
     </AccordionContent>
+
   </AccordionItem>
 </Accordion>
 

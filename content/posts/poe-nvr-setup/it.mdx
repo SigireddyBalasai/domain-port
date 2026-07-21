@@ -53,11 +53,13 @@ Un sistema NVR PoE (Power over Ethernet) è la spina dorsale della sorveglianza 
 Questa guida accompagna ogni fase — dalla selezione del cavo e il budget di alimentazione alla configurazione dell'NVR e al rafforzamento della sicurezza — basata su pratiche di installazione reali e standard hardware 2026.
 
 <Callout type="info" title="Cosa è cambiato nel 2026">
-  Drive per sorveglianza da 24 TB, compressione H.266 (VVC) negli NVR consumer e
-  supporto maturo per telecamere Matter significano costi di storage inferiori e
-  compatibilità migliore che mai. I codec intelligenti H.265+ offrono ora un
-  risparmio del 50% rispetto all'H.264 e l'adozione di ONVIF Profile T/G ti
-  consente di mescolare liberamente le marche.
+
+Drive per sorveglianza da 24 TB, compressione H.266 (VVC) negli NVR consumer e
+supporto maturo per telecamere Matter significano costi di storage inferiori e
+compatibilità migliore che mai. I codec intelligenti H.265+ offrono ora un
+risparmio del 50% rispetto all'H.264 e l'adozione di ONVIF Profile T/G ti
+consente di mescolare liberamente le marche.
+
 </Callout>
 
 ## Pianificazione del sistema
@@ -74,10 +76,12 @@ Hai due opzioni principali per collegare le telecamere:
 | Switch PoE + NVR separato   | Installazioni grandi, layout flessibili              | Più componenti, ma più facile da scalare e sostituire singolarmente |
 
 <Callout type="tip" title="Consiglio da professionista">
-  Acquista sempre un NVR con almeno **il doppio del numero di canali** del tuo
-  attuale piano telecamere. Un'installazione con 4 telecamere dovrebbe usare un
-  NVR a 8 canali. L'espansione arriva sempre, e aggiornare un NVR è più costoso
-  che acquistare una taglia in più dall'inizio.
+
+Acquista sempre un NVR con almeno **il doppio del numero di canali** del tuo
+attuale piano telecamere. Un'installazione con 4 telecamere dovrebbe usare un
+NVR a 8 canali. L'espansione arriva sempre, e aggiornare un NVR è più costoso
+che acquistare una taglia in più dall'inizio.
+
 </Callout>
 
 ### Selezione del cavo
@@ -91,11 +95,13 @@ Il cavo è il componente fisico più importante. Una scelta sbagliata del cavo c
 | Cat6A        | Telecamere 4K, cavi oltre 70 m, PTZ ad alta potenza | Conduttori più spessi, migliore dissipazione del calore, supporta PoE++                                     |
 
 <Callout type="warning" title="Evita l'alluminio ramato (CCA)">
-  Il cavo CCA è più economico ma ha una resistenza significativamente maggiore
-  del rame massiccio. Causa caduta di tensione, accumulo di calore e reset
-  intermittenti della telecamera — specialmente quando i LED IR si attivano di
-  notte. Per qualsiasi installazione professionale, insisti sul **rame
-  massiccio** di un marchio rinomato (Monoprice, Cable Matters, Belden).
+
+Il cavo CCA è più economico ma ha una resistenza significativamente maggiore
+del rame massiccio. Causa caduta di tensione, accumulo di calore e reset
+intermittenti della telecamera — specialmente quando i LED IR si attivano di
+notte. Per qualsiasi installazione professionale, insisti sul **rame
+massiccio** di un marchio rinomato (Monoprice, Cable Matters, Belden).
+
 </Callout>
 
 **Regole fondamentali di cablaggio:**
@@ -118,10 +124,12 @@ Comprendere gli standard PoE previene il più comune errore di installazione: te
 | IEEE 802.3bt Tipo 4 (PoE++) | 100 W             | Telecamere multi-sensore, PTZ ad alta potenza |
 
 <Callout type="danger" title="L'insidia notturna">
-  Una telecamera che assorbe 5 W durante il giorno può salire a 12 W di notte
-  quando i suoi LED IR si accendono. Fai sempre il budget usando il **consumo
-  massimo** dalla scheda tecnica, non il valore tipico. Poi aggiungi **il 30% di
-  margine** al budget del tuo switch PoE.
+
+Una telecamera che assorbe 5 W durante il giorno può salire a 12 W di notte
+quando i suoi LED IR si accendono. Fai sempre il budget usando il **consumo
+massimo** dalla scheda tecnica, non il valore tipico. Poi aggiungi **il 30% di
+margine** al budget del tuo switch PoE.
+
 </Callout>
 
 Esempio di budget di alimentazione — 8 telecamere a 12 W di picco ciascuna:
@@ -148,10 +156,12 @@ Lo storage è l'area in cui la maggior parte dei sistemi è silenziosamente sott
 - Ibrido (continuo bassa risoluzione, movimento alta risoluzione): il meglio di entrambi i mondi
 
 <Callout type="tip" title="Raccomandazione storage">
-  Per la maggior parte dei sistemi domestici a 4 telecamere 4K: un drive da 4 TB
-  per sorveglianza con H.265 e registrazione solo su movimento fornisce 30
-  giorni di cronologia. Per 8 telecamere 4K con registrazione continua, passa a
-  10-12 TB.
+
+Per la maggior parte dei sistemi domestici a 4 telecamere 4K: un drive da 4 TB
+per sorveglianza con H.265 e registrazione solo su movimento fornisce 30
+giorni di cronologia. Per 8 telecamere 4K con registrazione continua, passa a
+10-12 TB.
+
 </Callout>
 
 **Usa sempre drive per sorveglianza:**
@@ -180,9 +190,11 @@ I drive desktop standard si guastano 2-3 volte più spesso dei drive per sorvegl
 Posiziona l'NVR in un luogo sicuro, climatizzato e ben ventilato. Evita di impilarlo con altri dispositivi elettronici. Lascia almeno 2 cm di spazio intorno per il flusso d'aria. Collegalo al router tramite la porta LAN usando un cavo Ethernet corto.
 
 <Callout type="note" title="UPS raccomandato">
-  Un gruppo di continuità UPS per NVR, router e switch PoE garantisce che il tuo
-  sistema continui a registrare durante le interruzioni di corrente. Questo è
-  particolarmente importante per le aziende.
+
+Un gruppo di continuità UPS per NVR, router e switch PoE garantisce che il tuo
+sistema continui a registrare durante le interruzioni di corrente. Questo è
+particolarmente importante per le aziende.
+
 </Callout>
 
 ### Passo 2: Installa e termina i cavi
@@ -196,12 +208,14 @@ Fai passare i cavi da ogni posizione della telecamera all'NVR o allo switch PoE.
 5. Per percorsi oltre 70 metri, usa Cat6 o Cat6A per minimizzare la caduta di tensione
 
 <Callout type="warning" title="Calore dei fasci di cavi">
-  Quando si fanno passare più cavi PoE in un fascio o tubo, il calore si
-  accumula a causa della resistenza nei conduttori. Per fasci di 10+ cavi, usa
-  Cat6 o Cat6A 23 AWG ed evita di riempire il tubo oltre il 40% della capacità.
-  Il Cat6 non schermato (UTP) va bene per la maggior parte degli ambienti
-  residenziali e d'ufficio — usa solo lo schermato (STP) vicino a grandi motori
-  o apparecchiature industriali.
+
+Quando si fanno passare più cavi PoE in un fascio o tubo, il calore si
+accumula a causa della resistenza nei conduttori. Per fasci di 10+ cavi, usa
+Cat6 o Cat6A 23 AWG ed evita di riempire il tubo oltre il 40% della capacità.
+Il Cat6 non schermato (UTP) va bene per la maggior parte degli ambienti
+residenziali e d'ufficio — usa solo lo schermato (STP) vicino a grandi motori
+o apparecchiature industriali.
+
 </Callout>
 
 ### Passo 3: Monta le telecamere
@@ -245,11 +259,13 @@ Accendi l'NVR e collega un monitor tramite HDMI. La procedura guidata ti accompa
   type="danger"
   title="Le credenziali predefinite sono una responsabilità"
 >
-  Molti NVR vengono forniti con credenziali predefinite come admin/admin.
-  Cambiale immediatamente. Il catalogo CISA delle vulnerabilità note sfruttate
-  include molteplici vulnerabilità dell'interfaccia web NVR dal 2021-2024 che
-  colpiscono unità vendute con firmware obsoleto. Non farti diventare un
-  bersaglio facile.
+
+Molti NVR vengono forniti con credenziali predefinite come admin/admin.
+Cambiale immediatamente. Il catalogo CISA delle vulnerabilità note sfruttate
+include molteplici vulnerabilità dell'interfaccia web NVR dal 2021-2024 che
+colpiscono unità vendute con firmware obsoleto. Non farti diventare un
+bersaglio facile.
+
 </Callout>
 
 ## Configurazione della telecamera e della registrazione
@@ -278,10 +294,12 @@ Per ogni telecamera:
   type="tip"
   title="Il rilevamento intelligente riduce i falsi allarmi dell'80%+"
 >
-  Gli NVR con IA integrata (Reolink, Hikvision AcuSense, Dahua WizSense) possono
-  filtrare gli eventi di movimento per tipo. Un'auto che passa davanti alla tua
-  finestra non attiverà un allarme persona. Questo rende la revisione dei
-  filmati molto più veloce.
+
+Gli NVR con IA integrata (Reolink, Hikvision AcuSense, Dahua WizSense) possono
+filtrare gli eventi di movimento per tipo. Un'auto che passa davanti alla tua
+finestra non attiverà un allarme persona. Questo rende la revisione dei
+filmati molto più veloce.
+
 </Callout>
 
 ### Passo 8: Programma di registrazione
@@ -309,9 +327,11 @@ Configura WireGuard o OpenVPN sul tuo router. Connettiti alla tua rete domestica
 Non fare mai forward delle porte 80 o 443 all'interfaccia web del tuo NVR. Non esporre mai l'interfaccia web dell'NVR direttamente a internet pubblico. Questo è il singolo vettore d'attacco più grande per la compromissione dell'NVR.
 
 <Callout type="danger" title="Non fare mai port-forward del tuo NVR">
-  L'elenco CISA delle vulnerabilità note sfruttate include vulnerabilità
-  dell'interfaccia web NVR di Hikvision, Dahua e altri grandi marchi. Queste
-  sono attivamente sfruttate. Usa la VPN per l'accesso remoto. Punto.
+
+L'elenco CISA delle vulnerabilità note sfruttate include vulnerabilità
+dell'interfaccia web NVR di Hikvision, Dahua e altri grandi marchi. Queste
+sono attivamente sfruttate. Usa la VPN per l'accesso remoto. Punto.
+
 </Callout>
 
 ### Rafforzamento aggiuntivo della sicurezza
@@ -349,10 +369,12 @@ Non fare mai forward delle porte 80 o 443 all'interfaccia web del tuo NVR. Non e
 Aggiungi il 20% di overhead a tutti i calcoli di storage per il filesystem, i giorni di attività di punta e la crescita futura.
 
 <Callout type="note" title="H.266 (VVC) sta arrivando">
-  Il prossimo standard di compressione H.266 (Versatile Video Coding) offre
-  circa il 50% di ulteriore risparmio rispetto all'H.265. Alcuni NVR del 2026 lo
-  supportano già. Se stai acquistando un nuovo NVR, verifica la compatibilità
-  con H.266 — raddoppia effettivamente la tua ritenzione senza aggiungere drive.
+
+Il prossimo standard di compressione H.266 (Versatile Video Coding) offre
+circa il 50% di ulteriore risparmio rispetto all'H.265. Alcuni NVR del 2026 lo
+supportano già. Se stai acquistando un nuovo NVR, verifica la compatibilità
+con H.266 — raddoppia effettivamente la tua ritenzione senza aggiungere drive.
+
 </Callout>
 
 ## Lista di controllo finale
@@ -379,10 +401,12 @@ Prima di dichiarare l'installazione completata:
 - [ ] Periodo di ritenzione verificato dopo 7 giorni di funzionamento
 
 <Callout type="tip" title="Documenta tutto">
-  Tieni una semplice registrazione delle posizioni delle telecamere, degli
-  indirizzi IP, delle lunghezze dei cavi e delle credenziali amministrative (in
-  un gestore di password, non su un post-it). Il te futuro e qualsiasi tecnico
-  che erediterà il sistema lo apprezzeranno.
+
+Tieni una semplice registrazione delle posizioni delle telecamere, degli
+indirizzi IP, delle lunghezze dei cavi e delle credenziali amministrative (in
+un gestore di password, non su un post-it). Il te futuro e qualsiasi tecnico
+che erediterà il sistema lo apprezzeranno.
+
 </Callout>
 
 ## Domande frequenti
@@ -393,66 +417,82 @@ Prima di dichiarare l'installazione completata:
       Quanto può essere lungo un cavo di una telecamera PoE?
     </AccordionTrigger>
     <AccordionContent>
+
       Lo standard IEEE 802.3 limita i cavi Ethernet a 100 metri (328 piedi)
       inclusi i cavi patch. Oltre, usa un estensore PoE (aggiunge 100 m per
       unità, fino a 4 unità per 500 m totali), un backhaul in fibra con uno
       switch remoto, o sposta l'NVR più vicino alle telecamere.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Ho bisogno di una connessione internet per far funzionare il mio NVR?
     </AccordionTrigger>
     <AccordionContent>
+
       La registrazione locale funziona perfettamente senza internet. Hai bisogno
       di una connessione solo per la visualizzazione remota (tramite app o web),
       le notifiche push e gli aggiornamenti del firmware. Se la sicurezza è la
       tua priorità, l'NVR può operare completamente offline su una rete isolata.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Posso mescolare marche di telecamere con il mio NVR?
     </AccordionTrigger>
     <AccordionContent>
+
       Sì, se sia le telecamere che l'NVR supportano ONVIF. Per risultati
       ottimali, seleziona telecamere che supportano ONVIF Profile T (streaming
       H.265, rilevamento movimento avanzato, audio bidirezionale) e Profile G
       (protocolli di riproduzione, ricerca storage). Questo garantisce
       compatibilità anche tra marche come Hikvision, Dahua, Reolink e Amcrest.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Quanto durano i dischi rigidi per sorveglianza?
     </AccordionTrigger>
     <AccordionContent>
+
       I drive per sorveglianza (WD Purple, Seagate SkyHawk) sono progettati per
       carichi di scrittura 24/7 e durano tipicamente 3-5 anni. I drive desktop
       standard possono guastarsi in 1-2 anni sotto registrazione continua perché
       mancano del firmware per gestire flussi di scrittura sostenuti. Per
       qualsiasi installazione seria, usa drive per sorveglianza dal primo
       giorno.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Cosa succede quando il disco rigido si riempie?
     </AccordionTrigger>
     <AccordionContent>
+
       La maggior parte degli NVR sovrascrive i filmati più vecchi quando il
       disco è pieno — questo è il comportamento previsto. Tuttavia, alcuni NVR
       vengono forniti con "interrompi registrazione quando pieno" come
       impostazione predefinita. Verifica sempre questa impostazione durante la
       configurazione iniziale. Un sistema che smette silenziosamente di
       registrare perché il disco è pieno vanifica l'intero scopo.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Perché le mie telecamere PoE si riavviano di notte?
     </AccordionTrigger>
     <AccordionContent>
+
       Questo è il classico fallimento del budget di alimentazione PoE. Quando i
       LED IR si attivano di notte, il consumo di corrente di ogni telecamera
       aumenta bruscamente (a volte raddoppiando). Se il tuo switch PoE o NVR
@@ -460,21 +500,26 @@ Prima di dichiarare l'installazione completata:
       Soluzione: somma il consumo massimo di ogni telecamera dalla scheda
       tecnica, aggiungi il 30% di margine e assicurati che il tuo switch PoE
       superi quel numero.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Dovrei usare Cat5e o Cat6 per le telecamere PoE?
     </AccordionTrigger>
     <AccordionContent>
+
       Per qualsiasi nuova installazione, usa Cat6. I conduttori 23 AWG riducono
       la caduta di tensione rispetto ai 24 AWG del Cat5e, il che è importante
       per la distribuzione di alimentazione PoE — specialmente su percorsi oltre
-      50 metri e per telecamere con LED IR o riscaldatori. La differenza di
+        50 metri e per telecamere con LED IR o riscaldatori. La differenza di
       costo è di circa $0,04-0,10 per piede, che aggiunge forse $30-80 per un
       sistema a 8 telecamere. È trascurabile rispetto al costo della manodopera
       per il cablaggio.
+
     </AccordionContent>
+
   </AccordionItem>
 </Accordion>
 

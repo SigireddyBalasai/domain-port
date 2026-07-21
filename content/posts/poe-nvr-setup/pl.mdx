@@ -53,11 +53,14 @@ System NVR PoE (Power over Ethernet) to kręgosłup nowoczesnego monitoringu IP.
 Ten przewodnik przeprowadzi Cię przez każdy krok — od wyboru kabla i budżetowania mocy po konfigurację rejestratora NVR i wzmocnienie bezpieczeństwa — w oparciu o rzeczywiste praktyki instalacyjne i standardy sprzętowe z 2026 roku.
 
 <Callout type="info" title="Co zmieniło się w 2026">
-  24-terabajtowe dyski do monitoringu, kompresja H.266 (VVC) w konsumenckich
-  rejestratorach NVR i dojrzałe wsparcie dla kamer Matter oznaczają niższe
-  koszty pamięci masowej i lepszą kompatybilność niż kiedykolwiek. Inteligentne
-  kodeki H.265+ zapewniają teraz 50% oszczędności pamięci w porównaniu do H.264,
-  a przyjęcie ONVIF Profile T/G pozwala na swobodne mieszanie marek.
+
+    24-terabajtowe dyski do monitoringu, kompresja H.266 (VVC) w konsumenckich
+
+rejestratorach NVR i dojrzałe wsparcie dla kamer Matter oznaczają niższe
+koszty pamięci masowej i lepszą kompatybilność niż kiedykolwiek. Inteligentne
+kodeki H.265+ zapewniają teraz 50% oszczędności pamięci w porównaniu do H.264,
+a przyjęcie ONVIF Profile T/G pozwala na swobodne mieszanie marek.
+
 </Callout>
 
 ## Planowanie systemu
@@ -74,10 +77,12 @@ Masz dwie główne opcje podłączenia kamer:
 | Przełącznik PoE + oddzielny NVR           | Większe instalacje, elastyczne układy     | Więcej komponentów, ale łatwiejsze skalowanie i wymiana |
 
 <Callout type="tip" title="Porada profesjonalisty">
-  Zawsze kupuj rejestrator NVR z co najmniej **2-krotną liczbą kanałów** w
-  stosunku do obecnego planu kamer. Instalacja 4 kamer powinna używać
-  rejestratora 8-kanałowego. Rozbudowa zawsze następuje, a modernizacja NVR jest
-  droższa niż kupno większego modelu od początku.
+
+Zawsze kupuj rejestrator NVR z co najmniej **2-krotną liczbą kanałów** w
+stosunku do obecnego planu kamer. Instalacja 4 kamer powinna używać
+rejestratora 8-kanałowego. Rozbudowa zawsze następuje, a modernizacja NVR jest
+droższa niż kupno większego modelu od początku.
+
 </Callout>
 
 ### Wybór kabla
@@ -91,11 +96,13 @@ Kabel jest najważniejszym elementem fizycznym. Zły wybór kabla powoduje przer
 | Cat6A     | Kamery 4K, odcinki powyżej 70 m, PTZ o dużym poborze mocy | Najgrubsze żyły, najlepsze odprowadzanie ciepła, obsługa PoE++                             |
 
 <Callout type="warning" title="Unikaj aluminium platerowanego miedzią (CCA)">
-  Kabel CCA jest tańszy, ale ma znacznie wyższą rezystancję niż lita miedź.
-  Powoduje spadki napięcia, gromadzenie się ciepła i przerywane resetowanie
-  kamer — szczególnie gdy w nocy włączą się diody IR. W przypadku każdej
-  profesjonalnej instalacji nalegaj na **litą miedź** renomowanej marki
-  (Monoprice, Cable Matters, Belden).
+
+Kabel CCA jest tańszy, ale ma znacznie wyższą rezystancję niż lita miedź.
+Powoduje spadki napięcia, gromadzenie się ciepła i przerywane resetowanie
+kamer — szczególnie gdy w nocy włączą się diody IR. W przypadku każdej
+profesjonalnej instalacji nalegaj na **litą miedź** renomowanej marki
+(Monoprice, Cable Matters, Belden).
+
 </Callout>
 
 **Kluczowe zasady okablowania:**
@@ -118,10 +125,12 @@ Zrozumienie standardów PoE zapobiega najczęstszej awarii instalacji: kamery dz
 | IEEE 802.3bt Typ 4 (PoE++) | 100 W       | Kamery wieloczujnikowe, PTZ dużej mocy |
 
 <Callout type="danger" title="Nocna pułapka">
-  Kamera pobierająca 5 W w ciągu dnia może w nocy, po włączeniu diod IR, skoczyć
-  do 12 W. Zawsze budżetuj przy użyciu **maksymalnego poboru mocy** z karty
-  katalogowej, a nie typowej wartości. Następnie dodaj **30% zapasu** do budżetu
-  przełącznika PoE.
+
+Kamera pobierająca 5 W w ciągu dnia może w nocy, po włączeniu diod IR, skoczyć
+do 12 W. Zawsze budżetuj przy użyciu **maksymalnego poboru mocy** z karty
+katalogowej, a nie typowej wartości. Następnie dodaj **30% zapasu** do budżetu
+przełącznika PoE.
+
 </Callout>
 
 Przykład budżetu mocy — 8 kamer o szczytowym poborze 12 W każda:
@@ -148,9 +157,11 @@ Pamięć masowa to obszar, w którym większość systemów po cichu zawodzi. Sy
 - Hybrydowe (ciągłe niska rozdzielczość, ruch wysoka rozdzielczość): najlepsze z obu światów
 
 <Callout type="tip" title="Zalecenie dotyczące pamięci">
-  Dla większości domowych systemów 4 kamer 4K: dysk 4 TB przystosowany do
-  monitoringu z H.265 i nagrywaniem tylko po wykryciu ruchu zapewnia 30 dni
-  historii. Dla 8 kamer 4K z ciągłym nagrywaniem przejdź na 10-12 TB.
+
+Dla większości domowych systemów 4 kamer 4K: dysk 4 TB przystosowany do
+monitoringu z H.265 i nagrywaniem tylko po wykryciu ruchu zapewnia 30 dni
+historii. Dla 8 kamer 4K z ciągłym nagrywaniem przejdź na 10-12 TB.
+
 </Callout>
 
 **Zawsze używaj dysków przystosowanych do monitoringu:**
@@ -179,9 +190,11 @@ Standardowe dyski komputerowe ulegają awarii 2-3 razy częściej niż dyski do 
 Umieść rejestrator NVR w bezpiecznym, klimatyzowanym miejscu z dobrą wentylacją. Unikaj układania go z inną elektroniką. Pozostaw co najmniej 2 cm przestrzeni wokół dla przepływu powietrza. Podłącz go do routera przez port LAN za pomocą krótkiego kabla Ethernet.
 
 <Callout type="note" title="Zalecany UPS">
-  Zasilacz awaryjny UPS dla rejestratora NVR, routera i przełącznika PoE
-  zapewnia ciągłość nagrywania podczas przerw w zasilaniu. Jest to szczególnie
-  ważne dla firm.
+
+Zasilacz awaryjny UPS dla rejestratora NVR, routera i przełącznika PoE
+zapewnia ciągłość nagrywania podczas przerw w zasilaniu. Jest to szczególnie
+ważne dla firm.
+
 </Callout>
 
 ### Krok 2: Poprowadź i zakończ kable
@@ -195,12 +208,14 @@ Poprowadź kable z każdej lokalizacji kamery do rejestratora NVR lub przełącz
 5. W przypadku tras powyżej 70 metrów użyj Cat6 lub Cat6A, aby zminimalizować spadek napięcia
 
 <Callout type="warning" title="Nagrzewanie się wiązek kabli">
-  Podczas prowadzenia wielu kabli PoE w wiązce lub rurze, ciepło gromadzi się z
-  powodu rezystancji w żyłach. W przypadku wiązek 10+ kabli używaj Cat6 lub
-  Cat6A 23 AWG i unikaj wypełniania rury powyżej 40% pojemności. Nieekranowany
-  (UTP) Cat6 jest odpowiedni dla większości środowisk mieszkalnych i biurowych —
-  używaj ekranowanego (STP) tylko w pobliżu dużych silników lub urządzeń
-  przemysłowych.
+
+Podczas prowadzenia wielu kabli PoE w wiązce lub rurze, ciepło gromadzi się z
+powodu rezystancji w żyłach. W przypadku wiązek 10+ kabli używaj Cat6 lub
+Cat6A 23 AWG i unikaj wypełniania rury powyżej 40% pojemności. Nieekranowany
+(UTP) Cat6 jest odpowiedni dla większości środowisk mieszkalnych i biurowych —
+używaj ekranowanego (STP) tylko w pobliżu dużych silników lub urządzeń
+przemysłowych.
+
 </Callout>
 
 ### Krok 3: Zamontuj kamery
@@ -241,11 +256,13 @@ Włącz rejestrator NVR i podłącz monitor przez HDMI. Kreator konfiguracji prz
 5. **Włącz nadpisywanie** — potwierdź, że rejestrator będzie nadpisywać stare nagrania, gdy dysk jest pełny
 
 <Callout type="danger" title="Domyślne dane logowania to odpowiedzialność">
-  Wiele rejestratorów NVR jest dostarczanych z domyślnymi danymi logowania,
-  takimi jak admin/admin. Zmień je natychmiast. Katalog znanych exploitowanych
-  podatności CISA zawiera wiele podatności interfejsu WWW rejestratorów NVR z
-  lat 2021-2024, które dotyczą jednostek sprzedawanych z nieaktualnym
-  oprogramowaniem. Nie stawaj się łatwym celem.
+
+Wiele rejestratorów NVR jest dostarczanych z domyślnymi danymi logowania,
+takimi jak admin/admin. Zmień je natychmiast. Katalog znanych exploitowanych
+podatności CISA zawiera wiele podatności interfejsu WWW rejestratorów NVR z
+lat 2021-2024, które dotyczą jednostek sprzedawanych z nieaktualnym
+oprogramowaniem. Nie stawaj się łatwym celem.
+
 </Callout>
 
 ## Konfiguracja kamery i nagrywania
@@ -274,10 +291,12 @@ Dla każdej kamery:
   type="tip"
   title="Inteligentne wykrywanie redukuje fałszywe alarmy o 80%+"
 >
-  Rejestratory NVR z wbudowanym AI (Reolink, Hikvision AcuSense, Dahua WizSense)
-  mogą filtrować zdarzenia ruchu według typu. Samochód przejeżdżający obok okna
-  nie wywoła alertu osoby. To sprawia, że przeglądanie nagrań jest znacznie
-  szybsze.
+
+Rejestratory NVR z wbudowanym AI (Reolink, Hikvision AcuSense, Dahua WizSense)
+mogą filtrować zdarzenia ruchu według typu. Samochód przejeżdżający obok okna
+nie wywoła alertu osoby. To sprawia, że przeglądanie nagrań jest znacznie
+szybsze.
+
 </Callout>
 
 ### Krok 8: Harmonogram nagrywania
@@ -308,9 +327,11 @@ Nigdy nie przekierowuj portów 80 lub 443 do interfejsu WWW rejestratora NVR. Ni
   type="danger"
   title="Nigdy nie przekierowuj portów swojego rejestratora NVR"
 >
-  Lista znanych exploitowanych podatności CISA zawiera podatności interfejsu WWW
-  rejestratorów NVR firm Hikvision, Dahua i innych głównych marek. Są one
-  aktywnie wykorzystywane. Używaj VPN do zdalnego dostępu. Kropka.
+
+Lista znanych exploitowanych podatności CISA zawiera podatności interfejsu WWW
+rejestratorów NVR firm Hikvision, Dahua i innych głównych marek. Są one
+aktywnie wykorzystywane. Używaj VPN do zdalnego dostępu. Kropka.
+
 </Callout>
 
 ### Dodatkowe wzmocnienie bezpieczeństwa
@@ -348,11 +369,13 @@ Nigdy nie przekierowuj portów 80 lub 443 do interfejsu WWW rejestratora NVR. Ni
 Dodaj 20% narzutu do wszystkich obliczeń pamięci dla systemu plików, dni szczytowej aktywności i przyszłego wzrostu.
 
 <Callout type="note" title="Nadchodzi H.266 (VVC)">
-  Następnej generacji standard kompresji H.266 (Versatile Video Coding) zapewnia
-  około 50% dalszych oszczędności w stosunku do H.265. Niektóre rejestratory NVR
-  z 2026 roku już go obsługują. Jeśli kupujesz nowy rejestrator, sprawdź
-  zgodność z H.266 — skutecznie podwaja on okres przechowywania bez dodawania
-  dysków.
+
+Następnej generacji standard kompresji H.266 (Versatile Video Coding) zapewnia
+około 50% dalszych oszczędności w stosunku do H.265. Niektóre rejestratory NVR
+z 2026 roku już go obsługują. Jeśli kupujesz nowy rejestrator, sprawdź
+zgodność z H.266 — skutecznie podwaja on okres przechowywania bez dodawania
+dysków.
+
 </Callout>
 
 ## Ostateczna lista kontrolna
@@ -379,9 +402,11 @@ Przed uznaniem instalacji za zakończoną:
 - [ ] Okres przechowywania zweryfikowany po 7 dniach pracy
 
 <Callout type="tip" title="Dokumentuj wszystko">
-  Prowadź prostą ewidencję lokalizacji kamer, adresów IP, długości kabli i
-  danych uwierzytelniających administratora (w menedżerze haseł, nie na
-  karteczce). Przyszły Ty i każdy technik przejmujący system będą Ci wdzięczni.
+
+Prowadź prostą ewidencję lokalizacji kamer, adresów IP, długości kabli i
+danych uwierzytelniających administratora (w menedżerze haseł, nie na
+karteczce). Przyszły Ty i każdy technik przejmujący system będą Ci wdzięczni.
+
 </Callout>
 
 ## Często zadawane pytania
@@ -390,89 +415,110 @@ Przed uznaniem instalacji za zakończoną:
   <AccordionItem>
     <AccordionTrigger>Jak długi może być kabel kamery PoE?</AccordionTrigger>
     <AccordionContent>
+
       Norma IEEE 802.3 ogranicza długość kabla Ethernet do 100 metrów (328 stóp)
       łącznie z kablami krosowymi. Powyżej tego użyj przedłużacza PoE (dodaje
-      100 m na urządzenie, do 4 urządzeń dla łącznej długości 500 m), łącza
+        100 m na urządzenie, do 4 urządzeń dla łącznej długości 500 m), łącza
       światłowodowego z przełącznikiem zdalnym lub przenieś rejestrator NVR
       bliżej kamer.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Czy potrzebuję połączenia internetowego, aby mój rejestrator NVR działał?
     </AccordionTrigger>
     <AccordionContent>
+
       Lokalne nagrywanie działa doskonale bez internetu. Połączenie jest
       potrzebne tylko do zdalnego podglądu (przez aplikację lub przeglądarkę),
       powiadomień push i aktualizacji oprogramowania układowego. Jeśli
       bezpieczeństwo jest priorytetem, rejestrator NVR może działać całkowicie
       offline w izolowanej sieci.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Czy mogę mieszać marki kamer z moim rejestratorem NVR?
     </AccordionTrigger>
     <AccordionContent>
+
       Tak, jeśli zarówno kamery, jak i rejestrator obsługują ONVIF. Aby uzyskać
       najlepsze wyniki, wybierz kamery obsługujące ONVIF Profile T
       (strumieniowanie H.265, zaawansowane wykrywanie ruchu, dwukierunkowe
       audio) i Profile G (protokoły odtwarzania, wyszukiwanie w pamięci).
       Zapewnia to kompatybilność nawet między markami takimi jak Hikvision,
       Dahua, Reolink i Amcrest.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Jak długo działają dyski twarde do monitoringu?
     </AccordionTrigger>
     <AccordionContent>
+
       Dyski przystosowane do monitoringu (WD Purple, Seagate SkyHawk) są
       zaprojektowane do ciągłego obciążenia zapisem 24/7 i zazwyczaj działają
-      3-5 lat. Standardowe dyski komputerowe mogą ulec awarii w ciągu 1-2 lat
+        3-5 lat. Standardowe dyski komputerowe mogą ulec awarii w ciągu 1-2 lat
       przy ciągłym nagrywaniu, ponieważ nie mają oprogramowania do obsługi
       ciągłych strumieni zapisu. Do każdej poważnej instalacji używaj dysków do
       monitoringu od pierwszego dnia.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Co się stanie, gdy dysk twardy się zapełni?
     </AccordionTrigger>
     <AccordionContent>
+
       Większość rejestratorów NVR nadpisuje najstarsze nagrania, gdy dysk jest
       pełny — to oczekiwane zachowanie. Jednak niektóre rejestratory są
       dostarczane z domyślnym ustawieniem "zatrzymaj nagrywanie, gdy pełny".
       Zawsze sprawdzaj to ustawienie podczas wstępnej konfiguracji. System,
       który po cichu przestaje nagrywać, ponieważ dysk się zapełnił, niweczy
       cały cel.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Dlaczego moje kamery PoE uruchamiają się ponownie w nocy?
     </AccordionTrigger>
     <AccordionContent>
+
       To klasyczna awaria budżetu mocy PoE. Gdy w nocy włączą się diody IR,
       pobór mocy każdej kamery gwałtownie wzrasta (czasami podwaja się). Jeśli
       przełącznik PoE lub rejestrator NVR nie ma zapasu, kamery tracą zasilanie
       i uruchamiają się ponownie. Rozwiązanie: zsumuj maksymalny pobór mocy
       każdej kamery z karty katalogowej, dodaj 30% zapasu i upewnij się, że
       przełącznik PoE przekracza tę wartość.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Czy powinienem użyć Cat5e czy Cat6 do kamer PoE?
     </AccordionTrigger>
     <AccordionContent>
+
       Do każdej nowej instalacji używaj Cat6. Żyły 23 AWG zmniejszają spadek
       napięcia w porównaniu do Cat5e 24 AWG, co ma znaczenie przy dostarczaniu
       zasilania PoE — szczególnie na odcinkach powyżej 50 metrów i dla kamer z
       diodami IR lub grzałkami. Różnica w cenie wynosi około 0,04-0,10 $ za
       stopę, co dodaje może 30-80 $ dla systemu 8 kamer. To zaniedbywalne w
       porównaniu z kosztem robocizny przy układaniu kabli.
+
     </AccordionContent>
+
   </AccordionItem>
 </Accordion>
 

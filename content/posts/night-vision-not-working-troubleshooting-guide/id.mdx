@@ -1,0 +1,298 @@
+---
+title: "Penglihatan Malam Tidak Berfungsi? Panduan Pemecahan Masalah Lengkap (2026)"
+description: "Perbaiki whiteout IR, tidak ada penglihatan malam, gambar buram, plat nomor buram, kegagalan penglihatan malam warna. Diagnostik langkah demi langkah untuk semua jenis kamera: PoE, Wi-Fi, baterai, bel pintu."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "night-vision-not-working-troubleshooting-guide"
+author: "Your Name"
+tags: ["troubleshooting", "night-vision", "ir", "installation", "diy"]
+postType: "howto"
+---
+
+Kegagalan penglihatan malam adalah keluhan #1 "kamera berfungsi di siang hari, tidak berguna di malam hari". Panduan ini membahas setiap mode kegagalan dengan diagnostik, perbaikan, dan kapan harus mengganti.
+
+<Badge variant="outline">Triage Cepat</Badge>
+1. **LED IR menyala?** (cahaya merah di malam hari) → Tidak = Daya/papan IR / Ya
+= Optik/konfigurasi 2. **Gambar putih/abu-abu?** → Refleksi IR (sudut/jarak) 3.
+**Gambar hitam/berisik?** → IR terlalu lemah / rana terlalu lambat / sensor
+rusak 4. **Penglihatan malam warna mati?** → Cahaya sekitar terlalu rendah /
+pengaturan dinonaktifkan
+
+---
+
+## 1. LED IR Tidak Menyala (Tidak Ada Cahaya Merah)
+
+### 1.1 Periksa Status IR
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="check-ir">
+    <AccordionTrigger>Cara Memeriksa LED IR</AccordionTrigger>
+    <AccordionContent>
+
+      **Visual:** Berdiri di depan kamera di malam hari → cari **cahaya merah
+      redup** (850 nm) atau **tidak ada cahaya** (940 nm "rahasia"). **Uji Kamera
+      Ponsel:** Arahkan kamera ponsel ke kamera → IR muncul **ungu/putih terang**
+      di layar (sensor ponsel melihat IR dekat). **Status Aplikasi:** UI web kamera / NVR
+      → "Status IR" / "Mode Malam" → harus menunjukkan "Menyala" atau "Otomatis".
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### 1.2 Penyebab & Perbaikan
+
+| Penyebab                                | Diagnosis                                                  | Perbaikan                                                                          |
+| --------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| **Filter Potong IR Macet (Mode Siang)** | Gambar berwarna di malam hari, tidak ada cahaya IR         | Siklus daya (12V/PoE mati 30s). Ketuk kamera dengan lembut. Perbarui firmware.     |
+| **Fotoresistor/LDR Rusak**              | IR tidak pernah aktif otomatis; manual "Menyala" berfungsi | Tutup LDR (jendela kecil transparan) → jika IR menyala, ganti LDR ($2) atau kamera |
+| **Papan Driver IR Mati**                | 12V/PoE ada, LED dingin, manual "Menyala" gagal            | Ganti kamera (papan tidak dapat diperbaiki)                                        |
+| **Daya Tidak Cukup untuk IR**           | Siang OK, malam reboot / IR berkedip                       | Periksa tegangan di kamera saat beban IR (lihat §1.3)                              |
+| **Bug Firmware**                        | Pembaruan baru-baru ini merusak IR otomatis                | Rollback firmware; tiket dukungan vendor                                           |
+| **IR Rahasia (940 nm)**                 | Tidak ada cahaya merah, uji ponsel menunjukkan ungu        | Normal — 940 nm tidak terlihat oleh mata                                           |
+
+### 1.3 Penurunan Tegangan Saat Beban IR (Kritis)
+
+**LED IR menarik daya 2–5W ekstra.** Kamera berfungsi siang hari, mati di malam hari.
+
+<Callout type="warning">
+
+**Uji:** Multimeter di input daya kamera (PoE: gunakan tester PoE). Tegangan siang vs tegangan malam (IR menyala). **Turun >0,5V (12V) atau >2V (PoE 48V) = kabel terlalu panjang / ukuran terlalu kecil / anggaran switch terlampaui.**
+
+</Callout>
+
+| Arsitektur                   | Beban IR Maks                              | Perbaikan                                                         |
+| ---------------------------- | ------------------------------------------ | ----------------------------------------------------------------- |
+| **PoE (802.3af 15,4W)**      | ~4W IR                                     | Upgrade ke PoE+ (30W) injector/switch                             |
+| **12V DC (18 AWG, 50 kaki)** | 2A IR                                      | Perpendek / 14 AWG / catu daya 12V lokal                          |
+| **Kamera Baterai**           | IR menghabiskan baterai dalam hitungan jam | Nonaktifkan IR; gunakan cahaya sekitar / illuminator IR eksternal |
+
+---
+
+## 2. Whiteout IR / Gambar Pudar / Abu-abu
+
+**Gejala:** Gambar malam = gumpalan putih terang/abu-abu, tidak ada detail. IR memantul dari permukaan di dekatnya.
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="whiteout-causes">
+    <AccordionTrigger>Sumber Refleksi Umum</AccordionTrigger>
+    <AccordionContent>
+
+      | Permukaan | Jarak | Perbaikan |
+      |---------|----------|-----|
+      | **Dinding / Kelongsong / Fasia** | 6–24 inci | Miringkan kamera **ke bawah 15–30°**; jauhkan 12–18 inci (lengan ekstensi) |
+      | **Atap / Sofit** | 0–12 inci | Pasang **di bawah** sofit, tidak rata |
+      | **Jendela / Kaca** | Berapa pun | **Jangan pernah** membidik melalui kaca (IR memantul 100%) |
+      | **Sarang Laba-laba / Debu pada Kubah** | Pada lensa | Bersihkan bulanan; penutup bulu domba di atas cincin IR |
+      | **Hujan / Salju / Kabut** | Udara | Illuminator IR eksternal (dipasang jauh dari lensa) |
+      | **Trim Putih / Talang** | 12–36 inci | Cat hitam doff (cat panggangan) atau tutup dengan selotip |
+      | **Plat Nomor (Retroreflektif)** | 20–50 kaki | Miringkan ke bawah; IR eksternal; kamera LPR dengan polarisator |
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### 2.1 Perbaikan Whiteout Langkah-demi-Langkah
+
+1. **Identifikasi reflektor:** Pergi ke luar di malam hari, amati cahaya IR pada permukaan. Gunakan kamera ponsel untuk melihat hamburan IR.
+2. **Ubah sudut:** Miringkan **ke bawah 15–30°** dari horizontal. Gunakan level + busur derajat.
+3. **Tambah jarak:** Braket ekstensi (12–24 inci) memindahkan kerucut IR melewati objek di dekatnya.
+4. **Illuminator IR Eksternal:** Pasang 10–20 kaki jauhnya, arahkan ke zona target. IR kamera **MATI**. Terbaik untuk plat nomor, gerbang.
+5. **Smart IR (jika didukung):** Kamera secara otomatis mengurangi intensitas IR untuk objek dekat. Aktifkan di pengaturan.
+6. **Periksa Filter Potong IR:** Macet "keluar" (mode malam) = gambar siang berwarna. Macet "masuk" (mode siang) = tidak ada IR. Siklus daya.
+
+---
+
+## 3. Gambar Hitam / Berisik / Kasar
+
+**Gejala:** Video gelap, berbintik, "bersalju". Tidak ada detail.
+
+| Penyebab                                | Diagnosis                             | Perbaikan                                                        |
+| --------------------------------------- | ------------------------------------- | ---------------------------------------------------------------- |
+| **IR Terlalu Lemah untuk Jarak**        | Target >50% dari jangkauan IR terukur | Illuminator IR eksternal; pindahkan kamera lebih dekat           |
+| **Rana Terlalu Lambat (Gerakan Buram)** | Jejak hantu, garis terang             | Atur **Rana Min: 1/100s** (1/250s untuk plat)                    |
+| **Gain/ISO Maks**                       | Kebisingan = "salju"                  | Tambah cahaya (IR eksternal, lampu jalan); turunkan gain maks    |
+| **WDR Mati**                            | Lampu terang membutakan kamera        | Aktifkan **WDR: 120 dB+** (True WDR, bukan DWDR)                 |
+| **Kubah Kotor / Tergores**              | Lingkaran cahaya di sekitar lampu     | Ganti kubah ($15); bersihkan dengan microfiber + pembersih lensa |
+| **Sensor Menurun**                      | Progresif selama bertahun-tahun       | Ganti kamera (CMOS menua, piksel panas meningkat)                |
+| **Kompresi Terlalu Tinggi**             | Artefak blok di malam hari            | Bitrate: CBR 4–6 Mbps (4K) / 2–3 Mbps (2K)                       |
+
+### 3.1 Lembar Cheat Kecepatan Rana
+
+| Target          | Rana Min            | Catatan                         |
+| --------------- | ------------------- | ------------------------------- |
+| Area umum       | 1/50s (1/60s AS)    | Seimbangkan cahaya vs buram     |
+| Orang berjalan  | 1/100s              | Anggota badan tajam             |
+| **Plat Nomor**  | **1/250s – 1/500s** | **Kritis** — atur secara manual |
+| Kendaraan cepat | 1/500s – 1/1000s    | Perlu IR eksternal              |
+
+<Callout type="note">
+
+**Cara mengatur:** UI Web Kamera → Gambar → Eksposur → Kecepatan Rana → Manual → Masukkan nilai. Nonaktifkan rana "Otomatis".
+
+</Callout>
+
+---
+
+## 4. Kegagalan Penglihatan Malam Warna
+
+**Penglihatan Malam Warna (PMW)** = Sensor besar (1/1,8", 1/1,2") + ISP cahaya redup + **cahaya sekitar diperlukan**.
+
+| Mode Kegagalan                  | Penyebab                         | Perbaikan                                                                                                             |
+| ------------------------------- | -------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| **Tetap H&W (IR menyala)**      | Cahaya sekitar &lt;1 lux         | PMW membutuhkan ~3–5 lux (lampu jalan, lampu teras). Tambah **LED putih hangat (3000K)** 10–20 kaki jauhnya.          |
+| **Warna berisik/kasar**         | Gain terlalu tinggi              | Turunkan gain maks; tambah cahaya; terima H&W IR                                                                      |
+| **Warna bergeser (ungu/hijau)** | White balance bingung            | Atur WB ke "Luar Ruangan" / "Lampu Jalan" / Kustom 3000K                                                              |
+| **Konflik IR + PMW**            | Keduanya menyala = warna aneh    | Nonaktifkan IR saat PMW aktif (otomatis di kamera bagus)                                                              |
+| **Tidak didukung**              | Kamera tidak memiliki sensor PMW | Periksa spesifikasi: perlu sensor 1/1,8"+ (Reolink ColorX, Hikvision ColorVu, Dahua Full-Color, Axis Lightfinder 2.0) |
+
+---
+
+## 5. Penangkapan Plat Nomor (PPN) — Perbaikan Malam Khusus
+
+**PPN gagal di malam hari 90% karena:** Refleksi IR dari plat + rana lambat + IR lemah.
+
+### 5.1 Daftar Periksa Malam PPN
+
+- [ ] **Kamera:** 4K/8MP + zoom optik (varifocal 2,8–12mm atau 5–50mm) ATAU LPR khusus (2MP, 100+ fps, rana global)
+- [ ] **Rana:** **1/250s minimum** (manual)
+- [ ] **IR:** Illuminator eksternal (850 nm, sinar 30–50°) **di luar kamera**, arahkan ke zona plat
+- [ ] **Sudut:** ≤30° dari tegak lurus; tinggi 3–4 kaki (setinggi plat)
+- [ ] **WDR:** 120 dB+ True WDR (menangani lampu depan)
+- [ ] **Potong IR:** Verifikasi peralihan (siang warna / malam H&W)
+- [ ] **Zona:** Zona gerakan = hanya jalur plat (kurangi pemicu palsu)
+- [ ] **Rekam:** CBR 6–8 Mbps (4K) / 4 Mbps (PPN 2MP)
+
+### 5.2 Kamera PPN yang Direkomendasikan (2026)
+
+| Kamera                             | Tipe           | Spesifikasi Malam                             | Terbaik Untuk                |
+| ---------------------------------- | -------------- | --------------------------------------------- | ---------------------------- |
+| **Hikvision DS-2CD4A26FWD-IZHS/P** | 2MP LPR        | 100 fps, rana global, 120 dB WDR, 100 kaki IR | Penangkapan plat khusus      |
+| **Dahua ITC237-PW6M-IRLZF**        | 2MP LPR        | 60 fps, 140 dB WDR, 164 kaki IR               | Parkir, pintu masuk berpagar |
+| **Reolink RLC-1212A**              | 12MP Varifokal | 5× zoom optik, 190 kaki IR, 1/1,8"            | Budget 4K + zoom untuk plat  |
+| **Axis Q1700-LE**                  | 2MP LPR        | 60 fps, Forensic WDR, 131 kaki IR             | Perusahaan, kelas bukti      |
+
+---
+
+## 6. Masalah Malam Kamera Bel Pintu
+
+| Masalah                          | Penyebab                      | Perbaikan                                                               |
+| -------------------------------- | ----------------------------- | ----------------------------------------------------------------------- |
+| **Wajah pengunjung putih**       | IR memantul dari teras/atap   | Kit wedge sudut (15–25° ke bawah); nonaktifkan IR → gunakan lampu teras |
+| **Tidak ada penglihatan malam**  | Mode hemat baterai            | Kabel (16–24V AC) → mengaktifkan IR penuh waktu                         |
+| **Penglihatan malam warna mati** | Cahaya sekitar terlalu rendah | Tambah **LED 3000K** di perlengkapan teras (bukan putih dingin)         |
+| **Gerakan terlewat di malam**    | Jangkauan PIR < jangkauan IR  | PIR ~25 kaki, IR ~30 kaki → kurangi sensitivitas IR / persempit zona    |
+
+---
+
+## 7. Spesifik Malam Kamera Baterai / Tenaga Surya
+
+| Masalah                                         | Penyebab                              | Perbaikan                                                           |
+| ----------------------------------------------- | ------------------------------------- | ------------------------------------------------------------------- |
+| **IR menghabiskan baterai dalam 1 minggu**      | IR = 2–4W terus menerus               | Nonaktifkan IR; andalkan sekitar + lampu sorot gerakan (Eufy, Ring) |
+| **Tidak ada penglihatan malam di musim dingin** | Li-ion &lt;32°F berhenti mengisi daya | Upgrade LiFePO₄ (Reolink Go PT Plus); kotak terisolasi + pemanas    |
+| **Gerakan hanya berfungsi siang hari**          | PIR terhalang jendela/kaca            | Pasang **di luar** kaca; PIR membutuhkan perbedaan suhu             |
+| **Lampu sorot tidak menyala**                   | Zona gerakan salah                    | Gambar ulang zona untuk menutupi jalur pendekatan; uji jalan        |
+
+---
+
+## 8. Alat Diagnostik & Prosedur
+
+### 8.1 Kartu Uji Penglihatan Malam (Cetak & Laminasi)
+
+```
+┌─────────────────────────────────────┐
+│   KARTU UJI PENGLIHATAN MALAM            │
+│  ████████████████████████████████   │  ← 100% putih (refleksi IR)
+│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   │  ← 50% abu-abu
+│  ████████████████████████████████   │  ← 0% hitam
+│                                     │
+│  Plat: ABC-1234  (uji pada 20/40/60 kaki)│
+│  Wajah: [Garis]                    │
+└─────────────────────────────────────┘
+```
+
+**Prosedur:** Pasang pada jarak target → rekam → tinjau kejelasan plat/wajah.
+
+### 8.2 Pengukuran Daya IR
+
+| Alat                 | Pengukuran                  | Kriteria Lulus                       |
+| -------------------- | --------------------------- | ------------------------------------ |
+| **Tester PoE**       | Tegangan di kamera (malam)  | >48V (PoE+), >52V (PoE++)            |
+| **Multimeter (12V)** | Tegangan di kamera (malam)  | >11,5V (12V nominal)                 |
+| **Clamp Meter**      | Arus pada jalur 12V (malam) | &lt;2A (per kamera)                  |
+| **Kamera Termal**    | Suhu LED IR                 | 40–60°C (berfungsi), &lt;30°C (mati) |
+
+### 8.3 Audit Firmware & Konfigurasi
+
+```
+☐ Firmware: Stabil terbaru (bukan beta)
+☐ Mode IR: Otomatis (bukan "Menyala" 24/7)
+☐ Smart IR: Diaktifkan
+☐ Rana: Manual 1/100s min (1/250s untuk plat)
+☐ WDR: True WDR On (120 dB+)
+☐ Gain Maks: Dibatasi (bukan "Otomatis Maks")
+☐ Bitrate: CBR 4–6 Mbps (4K)
+☐ Potong IR: Peralihan diverifikasi (siang/malam)
+☐ Zona Waktu/NTP: Benar (IR terjadwal)
+```
+
+---
+
+## 9. Kapan Mengganti vs Memperbaiki
+
+| Gejala                                       | Dapat Diperbaiki?                 | Ganti Saat                                       |
+| -------------------------------------------- | --------------------------------- | ------------------------------------------------ |
+| Tidak ada cahaya IR, daya OK                 | Papan IR ($50) / LDR ($2)         | Kamera >3 tahun, rembesan air                    |
+| Filter potong IR macet                       | Ketuk/siklus daya (sementara)     | Mekanisme aus; >2 tahun                          |
+| Whiteout tidak dapat diperbaiki dengan sudut | N/A                               | Kamera salah untuk lokasi (gunakan IR eksternal) |
+| Sensor berisik (piksel panas)                | Pemetaan piksel (beberapa kamera) | >5% piksel mati; >4 tahun                        |
+| Penglihatan malam warna gagal                | Masalah sensor/ISP                | Sensor terlalu kecil (&lt;1/2,8"); upgrade       |
+| Reboot malam intermiten                      | Penurunan tegangan                | Perbaiki kabel/daya; jika terus-menerus → ganti  |
+
+---
+
+## 10. Kartu Referensi Cepat (Cetak untuk Truk)
+
+```
+DIAGRAM ALUR TRIAGE PENGLIHATAN MALAM
+
+  1. CAHAYA IR? (uji kamera ponsel)
+   TIDAK → Periksa tegangan (malam) → Perbaiki daya
+   YA → Langkah 2
+
+  2. GAMBAR PUTIH/ABU-ABU?
+   YA → Miringkan ke bawah 15-30° / Jauhkan 12"+ / IR eksternal
+   TIDAK → Langkah 3
+
+  3. GAMBAR HITAM/BERISIK?
+   YA → Rana 1/100s min / WDR On / IR eksternal
+   TIDAK → Langkah 4
+
+  4. PENGLIHATAN MALAM WARNA MATI?
+   YA → Tambah cahaya 3000K / Periksa ukuran sensor
+   TIDAK → Langkah 5
+
+  5. PLAT TIDAK TERBACA?
+   YA → Rana 1/250s / IR eksternal / Zoom varifokal / Kamera LPR
+   TIDAK → SELESAI ✓
+
+PERIKSA TEGANGAN (malam, IR menyala):
+PoE: >48V (af) / >50V (at) / >52V (bt)
+  12V: >11,5V di kamera
+```
+
+---
+
+## Panduan Terkait
+
+- [Masalah & Perbaikan Kamera Keamanan Umum](/blog/common-security-camera-problems-fixes) — Indeks pemecahan masalah lengkap
+- [Kabel Kamera PoE: Pemasangan DIY](/blog/poe-camera-cable-running-diy-installation) — Pengujian penurunan tegangan
+- [Kamera Keamanan Tenaga Surya Terbaik (Off-Grid)](/blog/best-solar-powered-security-cameras-offgrid) — Baterai musim dingin/IR
+- [Cara Memasang Kamera Luar Ruangan (Dinding, Langit-langit, Atap)](/blog/how-to-mount-outdoor-cameras-wall-ceiling-eave) — Sudut untuk IR
+- [Kalkulator Penyimpanan Video CCTV](/blog/cctv-video-storage-calculator-hard-drive-space) — Perencanaan bitrate malam
+
+---
+
+_Pembaruan terakhir: Juli 2026. Prosedur uji divalidasi pada model Reolink, Dahua, Hikvision, UniFi, Axis, Ring, Eufy, Arlo, Wyze, TP-Link._

@@ -1,0 +1,144 @@
+---
+title: "Інтеграція з розумним домом: Alexa, Google Home та Apple HomeKit (2026)"
+description: "Інтегруйте камери безпеки з Alexa, Google Home та Apple HomeKit. Голосові команди, автоматизація, сумісність, усунення несправностей."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "smart-home-integration-alexa-google-homekit"
+author: "Your Name"
+tags: ["smart-home", "alexa", "google-home", "homekit", "integration"]
+postType: "review"
+---
+
+Підключення камер до системи розумного дому перетворює їх на активні інструменти автоматизації. Замість пасивного спостереження, ваша камера може вмикати світло, запускати сирену або надсилати сповіщення на колонку. У цьому посібнику ми розглядаємо інтеграцію з Amazon Alexa, Google Home та Apple HomeKit, включаючи сумісність пристроїв, налаштування автоматизації та усунення поширених проблем.
+
+## Сумісність
+
+| Платформа     | Голос | Відео     | Сповіщення | Автоматизація |
+| ------------- | ----- | --------- | ---------- | ------------- |
+| Amazon Alexa  | Так   | Echo Show | Рух        | Routines      |
+| Google Home   | Так   | Nest Hub  | Рух        | Routines      |
+| Apple HomeKit | Siri  | Apple TV  | Будь-які   | Scenes        |
+
+## Amazon Alexa
+
+### Як це працює
+
+Alexa інтегрується через **Alexa Skills** (для сторонніх камер) або **Works with Alexa** (для Ring, якою володіє Amazon). Після включення навички ви можете:
+
+- **Голосові команди:** "Alexa, show my front door camera"
+- **Автоматизація (Routines):** "When motion is detected on front door camera, turn on the porch light"
+- **Сповіщення:** "Motion detected at front door" на Echo Show або сповіщення на телефон
+
+### Підтримувані камери
+
+Ring, Arlo, Blink, Nest, Wyze, Reolink, Eufy, TP-Link Tapo, Logitech Circle.
+
+### Налаштування
+
+1. Відкрийте додаток Alexa → Devices → +
+2. Виберіть "Add Device" → "Camera"
+3. Знайдіть бренд вашої камери
+4. Увійдіть у свій обліковий запис камери
+5. Дозвольте виявлення пристроїв
+6. Призначте камеру кімнаті
+
+### Alexa Routines (Автоматизація)
+
+- "When motion is detected" → "Show camera" на Echo Show
+- "When doorbell is pressed" → "Announce 'Someone at the door'" на всіх Echo
+- "When person detected at night" → "Turn on lights" + "Send notification"
+
+## Google Home
+
+### Як це працює
+
+Google Home використовує **Works with Google Home** або **Google Nest** для інтеграції. Nest камери (Google Nest Cam, Nest Doorbell) мають найглибшу інтеграцію.
+
+### Підтримувані камери
+
+Nest (Google), Arlo, Wyze, Reolink, Eufy, TP-Link Tapo.
+
+### Голосові команди
+
+- "Hey Google, show my backyard camera"
+- "Hey Google, show the front door on the TV" (Chromecast)
+- "Hey Google, turn on the porch light" (якщо світло пов'язане з камерою)
+
+### Google Home Automations
+
+- Коли камера виявляє рух → увімкнути світло
+- Коли дзвінок у двері → сповіщення на Nest Hub
+- Розклад ввімкнення/вимкнення камери
+
+## Apple HomeKit
+
+### Як це працює
+
+HomeKit використовує **HomeKit Secure Video (HSV)** для локальної обробки відео на Apple TV, HomePod або iPad. Відео аналізується на пристрої (рух, люди, тварини, пакунки) і зберігається в iCloud (зашифроване наскрізним шифруванням).
+
+### Підтримувані камери
+
+Logitech Circle View, Eufy (деякі моделі), Netatmo, Eve, Onvis, Aqara.
+
+### Функції HomeKit Secure Video
+
+- **Наскрізне шифрування** — Apple не бачить ваше відео
+- **Локальний AI** — розпізнавання людей, тварин, транспорту, пакунків
+- **Сповіщення** з прив'язкою до зон активності
+- **Сцени** — автоматизації з іншими пристроями HomeKit
+- **До 5 камер** безкоштовно (з планом iCloud+), до необмеженої кількості з більшими планами
+
+### Налаштування
+
+1. Відскануйте код HomeKit на камері
+2. Додайте камеру в додаток Home
+3. Налаштуйте зони сповіщень
+4. Увімкніть стрімінґ та запис
+5. Налаштуйте сповіщення (коли, хто, де)
+
+## Порівняння платформ
+
+| Функція              | Alexa       | Google Home | HomeKit             |
+| -------------------- | ----------- | ----------- | ------------------- |
+| Голосове керування   | Так         | Так         | Siri                |
+| Відео на дисплеї     | Echo Show   | Nest Hub    | Apple TV, iPad      |
+| Автоматизація        | Routines    | Routines    | Scenes              |
+| Локальне відео       | Ні          | Ні          | Так (HSV)           |
+| Наскрізне шифрування | Ні          | Ні          | Так                 |
+| Сторонні камери      | Багато      | Багато      | Обмежено            |
+| Вартість             | Безкоштовно | Безкоштовно | iCloud+ ($0.99/міс) |
+
+## Поширені проблеми
+
+### Камера не відображається
+
+- Переконайтеся, що камера підтримує вашу платформу
+- Оновіть прошивку камери
+- Видаліть і додайте навичку заново
+- Перевірте з'єднання Wi-Fi
+
+### Затримка відео
+
+- Використовуйте 5 GHz Wi-Fi для камери
+- Зменште відстань між камерою та роутером
+- Перевірте швидкість інтернету
+
+### Несумісність
+
+- Деякі камери потребують міст або хаб
+- Перевірте сумісність на сайті виробника
+- Розгляньте використання Homebridge (для HomeKit)
+
+### Сповіщення не приходять
+
+- Перевірте дозволи додатку
+- Увімкніть сповіщення для платформи
+- Перевірте налаштування зон руху
+
+---
+
+## Пов'язані посібники
+
+- [Безпровідне встановлення](/blog/wireless-camera-setup-diy-installation-tips)
+- [Двостороннє аудіо](/blog/two-way-audio-security-cameras-guide)
+- [Найкращі камери безпеки 2026](/blog/best-outdoor-security-cameras-2026)

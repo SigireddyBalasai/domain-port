@@ -1,0 +1,172 @@
+---
+title: "Cách Chạy Cáp Cho Camera PoE: Hướng Dẫn Tự Lắp Đặt (2026)"
+description: "Hướng dẫn toàn diện về chạy cáp Cat5e/6 cho camera PoE. Các loại cáp, lập kế hoạch đường đi, bấm đầu, kiểm tra, tuân thủ quy tắc và mẹo chuyên nghiệp."
+publishedAt: 2026-06-01T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "poe-camera-cable-running-diy-installation"
+author: "Your Name"
+tags: ["diy", "poe", "cable-running", "installation"]
+postType: "guide"
+---
+
+Chạy cáp chiếm 70% công sức lắp đặt camera PoE. Làm đúng ngay từ đầu: đồng nguyên chất, đường đi phù hợp, bấm đầu đúng cách, kiểm tra xác nhận. Hướng dẫn này bao gồm mọi bước từ cuộn cáp đến switch.
+
+<Badge variant="outline">Chọn Cáp</Badge> **Sử dụng cáp Cat6 đồng nguyên chất
+(CMR/CMP).** Không dùng CCA (đồng bọc nhôm). Không dùng cáp bện. Không dùng
+Cat5e cho đường chạy mới. Cat6 đồng nguyên chất = 100m ở 1Gbps PoE+ mà không gặp
+vấn đề sụt áp.
+
+## Chọn Cáp: Nên Mua Gì (Và Tránh Gì)
+
+| Loại cáp                        | Ruột dẫn    | PoE+ (30W) tối đa | PoE++ (60/90W) tối đa | Xếp hạng             | Sử dụng                    |
+| ------------------------------- | ----------- | ----------------- | --------------------- | -------------------- | -------------------------- |
+| **Cat6 Đồng nguyên chất (CMR)** | 23 AWG Đồng | 100 m (328 ft)    | 80 m (262 ft)         | Riser (trong tường)  | **Lựa chọn tiêu chuẩn**    |
+| **Cat6 Đồng nguyên chất (CMP)** | 23 AWG Đồng | 100 m             | 80 m                  | Plenum (ống dẫn khí) | Yêu cầu trong ống dẫn khí  |
+| **Cat6a Đồng nguyên chất**      | 23 AWG Đồng | 100 m             | 100 m                 | Riser/Plenum         | Tương lai 10G              |
+| **Chôn trực tiếp ngoài trời**   | 23 AWG Đồng | 100 m             | 80 m                  | Gel, UV              | Dưới đất, trên không       |
+| **❌ Cat5e**                    | 24 AWG      | 100 m             | 50 m                  | Riser                | Chỉ cho hệ thống cũ        |
+| **❌ CCA (Đồng bọc nhôm)**      | Lõi nhôm    | **HỎNG**          | **HỎNG**              | Bất kỳ               | **Không bao giờ dùng PoE** |
+| **❌ Bện / Patch**              | Đồng bện    | 10 m              | 5 m                   | Patch                | Chỉ cho dây patch          |
+
+<Callout type="danger">
+
+**CCA (Đồng bọc nhôm) không hoạt động với PoE.** Nhôm có điện trở cao hơn 60% → sụt áp → camera khởi động lại vào ban đêm (khi IR bật). **Kiểm tra dòng chữ "Solid Bare Copper" trên vỏ cáp.**
+
+</Callout>
+
+## Lập Kế Hoạch Đường Đi
+
+### Tạo Bảng Tính Kế Hoạch Cáp
+
+| Camera | Vị trí    | Đường đi              | Chiều dài (ft) | Loại cáp        | Đầu nối        | PoE Class     |
+| ------ | --------- | --------------------- | -------------- | --------------- | -------------- | ------------- |
+| CAM-01 | Cửa trước | Gác xép → Mái hiên    | 65             | Cat6 CMR        | RJ45           | Class 4 (30W) |
+| CAM-02 | Đường lái | Gác xép → Tường ngoài | 95             | Cat6 Ngoài trời | RJ45 Trực tiếp | Class 4       |
+| CAM-03 | Sân sau   | Tầng hầm → Mái hiên   | 80             | Cat6 CMR        | Keystone       | Class 3 (15W) |
+
+**Quy tắc:** Đo **hai lần**, cộng thêm **10 ft dự phòng** mỗi đường chạy.
+
+### Các Loại Đường Đi (Tốt nhất → Tệ nhất)
+
+| Đường đi                      | Độ khó     | Số lượng tối đa | Ghi chú quy tắc                        |
+| ----------------------------- | ---------- | --------------- | -------------------------------------- |
+| **Gác xép → Mái hiên**        | Dễ         | Không giới hạn  | Tránh tiếp xúc với vật liệu cách nhiệt |
+| **Tầng hầm → Tường ngoài**    | Trung bình | Không giới hạn  | Khoan qua tấm đáy, chắn lửa            |
+| **Tường trong → Ngoài trời**  | Trung bình | 1–2 mỗi tường   | Chắn lửa ở tấm trên/dưới               |
+| **Ống dẫn (EMT/PVC) bề mặt**  | Dễ         | Không giới hạn  | Tốt nhất cho cải tạo                   |
+| **Chôn trực tiếp (đào rãnh)** | Khó        | Không giới hạn  | Sâu 18" (24" dưới đường lái xe)        |
+
+## Kỹ Thuật Khoan & Kéo Cáp
+
+### Gác Xép → Mái Hiên (Phổ Biến Nhất)
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="attic">
+    <AccordionTrigger>Từng Bước: Gác Xép → Camera Mái Hiên</AccordionTrigger>
+    <AccordionContent>
+
+<strong>Dụng cụ:</strong> Mũi khoan ⅞", que phát quang 50', đèn đội đầu, miếng
+lót đầu gối, khẩu trang chống bụi
+
+<ol>
+  <li><strong>Xác định vị trí camera</strong> từ trong gác xép — đo từ mốc đã biết (ống thông gió, ống khói)</li>
+  <li><strong>Khoan lỗ ⅞"</strong> qua tấm trên cùng + ván mái hiên (nghiêng xuống một chút để thoát nước)</li>
+  <li><strong>Đẩy que phát quang</strong> từ gác xép xuống qua lỗ ra ngoài mái hiên</li>
+  <li><strong>Dán cáp</strong> vào đầu que: gấp 6" lại, quấn băng dính điện mịn (không bị vướng)</li>
+  <li><strong>Kéo nhẹ nhàng</strong> — cần 2 người: một người thả, một người kéo</li>
+  <li><strong>Chừa 3 ft cáp</strong> trong gác xép (vòng dự phòng), 2 ft ở camera</li>
+  <li><strong>Bịt kín:</strong> Silicone xung quanh cáp ở lỗ mái hiên (cả trong và ngoài)</li>
+  <li><strong>Ghim cáp</strong> vào xà nhà mỗi 4 ft (ghim cách điện T25)</li>
+</ol>
+</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+## Ống Dẫn & Bảo Vệ
+
+| Tình huống             | Loại ống dẫn                       | Kích thước | Ghi chú                               |
+| ---------------------- | ---------------------------------- | ---------- | ------------------------------------- |
+| **Tường ngoài bề mặt** | LFMC (Ống kim loại mềm chống nước) | ½"         | Chống UV, tối đa 4 ft giữa các giá đỡ |
+| **Dưới đất**           | PVC Schedule 40 / HDPE             | ¾"         | Phủ 18", khuỷu quét, dây kéo          |
+| **Gác xép (lộ liễu)**  | Không cần (Cat6 CMR)               | —          | Ghim mỗi 4 ft                         |
+| **Trần ống dẫn khí**   | EMT / Cáp chịu nhiệt               | ½"         | Cần cáp CMP nếu không có ống dẫn      |
+| **Qua tường chắn lửa** | Ống bọc chống cháy + bột trét      | —          | Hilti CFS-SL / 3M CP25                |
+
+## Bấm Đầu RJ45 (Nhanh Nhất, Đáng Tin Cậy Nhất)
+
+<Callout type="note">
+
+**Sử dụng đầu nối pass-through.** RJ45 tiêu chuẩn yêu cầu cắt chính xác. Pass-through cho phép bạn kiểm tra thứ tự màu _trước khi_ bấm. **Dụng cụ:** Kìm bấm pass-through có bánh cóc (Klein VDV226-110, $45).
+
+</Callout>
+
+### Sơ Đồ Chân T568B (Tiêu Chuẩn Cho PoE)
+
+| Chân | Cặp | Màu              | Chức năng PoE     |
+| ---- | --- | ---------------- | ----------------- |
+| 1    | 2   | Trắng/Cam        | Dữ liệu + PoE (+) |
+| 2    | 2   | Cam              | Dữ liệu + PoE (+) |
+| 3    | 3   | Trắng/Xanh lá    | Dữ liệu + PoE (-) |
+| 4    | 1   | Xanh dương       | PoE (+) Dự phòng  |
+| 5    | 1   | Trắng/Xanh dương | PoE (+) Dự phòng  |
+| 6    | 3   | Xanh lá          | Dữ liệu + PoE (-) |
+| 7    | 4   | Trắng/Nâu        | PoE (-) Dự phòng  |
+| 8    | 4   | Nâu              | PoE (-) Dự phòng  |
+
+**PoE sử dụng TẤT CẢ 4 cặp** (802.3bt). **Tất cả 8 dây dẫn phải hoàn hảo.**
+
+## Kiểm Tra: Xác Nhận Mọi Đường Chạy
+
+<Callout type="warning">
+
+**Không bao giờ tin tưởng cáp chưa kiểm tra.** 30% "lỗi camera" thực chất là lỗi cáp. Hãy kiểm tra _trước khi_ gắn camera.
+
+</Callout>
+
+### Cấp 1: Kiểm Tra Liên Tục + Sơ Đồ Dây (Mọi Cáp)
+
+**Dụng cụ:** Máy kiểm tra cơ bản (NF-8601, $25) — 8 đèn LED
+
+- **Tất cả 8 xanh** = đạt
+- **Bất kỳ đỏ/hở/chéo** = bấm lại
+
+### Cấp 2: Điện Áp PoE Dưới Tải (Quan Trọng)
+
+**Dụng cụ:** Máy kiểm tra PoE (LINKSYS PTPoE, $35)
+
+1. Kết nối injector → cáp → máy kiểm tra (hoặc camera)
+2. Đo **tại đầu camera**:
+   - PoE (802.3af): 44–57V DC
+   - PoE+ (802.3at): 50–57V DC
+   - PoE++ (802.3bt): 52–57V DC
+3. **Dưới tải** (camera bật) — sụt áp &lt;3V từ injector
+
+## Lỗi Thường Gặp & Cách Khắc Phục
+
+| Triệu chứng                                  | Nguyên nhân                               | Cách khắc phục                                          |
+| -------------------------------------------- | ----------------------------------------- | ------------------------------------------------------- |
+| **Camera khởi động lại ban đêm (IR bật)**    | Sụt áp >3V                                | Rút ngắn đường chạy / Cat6a / injector PoE++ tại camera |
+| **Kết nối nhấp nháy 100/1000 Mbps**          | Một cặp dây hở / điện trở cao             | Bấm lại cả hai đầu; kiểm tra từng cặp                   |
+| **Không kết nối, máy kiểm tra thấy 7/8 dây** | Một dây dẫn đứt/lỏng                      | Bấm lại; kiểm tra ghim làm hỏng                         |
+| **Nước trong cáp (ăn mòn)**                  | Cáp ngoài trời không có gel / bịt kín kém | Thay bằng cáp chôn trực tiếp; bịt kín lỗ                |
+| **Nhiễu EMI (hình ảnh nhiễu)**               | Chạy song song với Romex/HVAC             | Tách biệt 12"+ ; bắt chéo 90°; Cat6 có bọc chống nhiễu  |
+
+## Mẹo Chuyên Nghiệp
+
+1. **Dán nhãn cả hai đầu** trước khi kéo — Bút Sharpie + nhãn cáp
+2. **Kéo dây kéo trước** — Chừa dây cho các đường chạy sau này
+3. **Vòng dự phòng** — 3 ft tại camera, 6 ft tại NVR/switch
+4. **Mã màu** — Màu vỏ khác nhau cho mỗi khu vực (Xanh=Cửa trước, Xanh lá=Sân sau, Vàng=Bên hông)
+5. **Chụp ảnh** — Ảnh của mỗi đầu nối, bảng tính cáp PDF
+6. **Kiểm tra trước khi gắn** — Camera trên thang = khó sửa gấp 10 lần
+7. **Ngân sách PoE** — Tổng ngân sách PoE của switch ≥ Σ công suất tối đa camera × 1.2
+8. **Chống sét** — Đường chạy ngoài trời: bộ chống sét PoE tại điểm vào nhà
+
+---
+
+## Hướng Dẫn Liên Quan
+
+- [Hướng Dẫn Lắp Đặt Camera An Ninh DIY Từ A Đến Z](/blog/diy-security-camera-installation-complete-guide) — Toàn bộ quy trình lắp đặt
+- [Cách Gắn Camera Ngoài Trời](/blog/how-to-mount-outdoor-cameras-wall-ceiling-eave) — Phần cứng gắn theo bề mặt
+- [Hệ Thống Camera Cho Doanh Nghiệp Nhỏ](/blog/best-small-business-security-camera-systems) — Kích thước NVR, ngân sách PoE
+- [Máy Tính Lưu Trữ Video CCTV](/blog/cctv-video-storage-calculator-hard-drive-space) — Tính toán lưu trữ cho các đường chạy của bạn

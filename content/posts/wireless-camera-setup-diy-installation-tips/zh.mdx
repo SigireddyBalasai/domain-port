@@ -9,13 +9,11 @@ tags: ["diy", "wireless", "wifi", "battery", "solar", "installation"]
 postType: "howto"
 ---
 
-import { Callout } from "@/components/ui/callout"
-import { Badge } from "@/components/ui/badge"
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
-
 无线摄像头承诺"无线缆、易安装"。现实: 盲区、电池焦虑、2.4 GHz 拥塞、冬天不充电的太阳能板。本指南将无线从令人沮丧变为可靠。
 
-<Badge variant="outline">无线 ≠ 无线缆</Badge> **插电式无线** (Reolink E1, Wyze v4, TP-Link Tapo) 需 120V 插座。**电池/太阳能** (EufyCam 3, Reolink Argus 4 Pro, Ring Stick Up) 真正无线。两者都用 Wi-Fi。都需要扎实的射频规划。
+<Badge variant="outline">无线 ≠ 无线缆</Badge> **插电式无线** (Reolink E1, Wyze
+v4, TP-Link Tapo) 需 120V 插座。**电池/太阳能** (EufyCam 3, Reolink Argus 4 Pro,
+Ring Stick Up) 真正无线。两者都用 Wi-Fi。都需要扎实的射频规划。
 
 ---
 
@@ -23,11 +21,11 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 
 ### 频段
 
-| 频段 | 信道 | 最大速度 | 穿墙 | 距离 | 最适合 |
-|------|----------|-----------|-------------|-------|----------|
-| **2.4 GHz** | 1, 6, 11 (不重叠) | 600 Mbps (ax) | ★★★★★ | 150+ 英尺 | **所有户外摄像头** |
-| **5 GHz** | 36–165 | 2.4 Gbps (ax) | ★★☆☆☆ | 50 英尺 | 室内、短距离 |
-| **6 GHz (Wi-Fi 6E/7)** | 1–233 | 5+ Gbps | ★☆☆☆☆ | 30 英尺 | 面向未来、仅室内 |
+| 频段                   | 信道              | 最大速度      | 穿墙  | 距离      | 最适合             |
+| ---------------------- | ----------------- | ------------- | ----- | --------- | ------------------ |
+| **2.4 GHz**            | 1, 6, 11 (不重叠) | 600 Mbps (ax) | ★★★★★ | 150+ 英尺 | **所有户外摄像头** |
+| **5 GHz**              | 36–165            | 2.4 Gbps (ax) | ★★☆☆☆ | 50 英尺   | 室内、短距离       |
+| **6 GHz (Wi-Fi 6E/7)** | 1–233             | 5+ Gbps       | ★☆☆☆☆ | 30 英尺   | 面向未来、仅室内   |
 
 **原则:** 强制摄像头用 **仅 2.4 GHz**。5/6 GHz 穿墙/侧板差。多数摄像头也不支持 6 GHz。
 
@@ -42,6 +40,7 @@ Width:  20 MHz each (non-overlapping)
 **先扫描:** 用 **WiFi Analyzer (Android)** 或 **AirPort Utility (iOS)** → 扫描 → 记录邻居信道。
 
 **分配:**
+
 - 您的路由器/AP: 信道 1, 6, 或 11 (最不拥挤者)
 - 摄像头 AP (若单独): 不同的不重叠信道
 - **宽度: 仅 20 MHz** (40 MHz 重叠邻居, 导致重传)
@@ -50,31 +49,34 @@ Width:  20 MHz each (non-overlapping)
 
 ## 网络架构: Mesh vs 扩展器 vs 专用 AP
 
-| 架构 | 优点 | 缺点 | 最适合 |
-|--------------|------|------|----------|
-| **Mesh (Eero Pro 6E, UniFi Dream Router, Asus ZenWiFi)** | 无缝漫游, 单 SSID, App 管理 | 成本 ($300–600), 所有流量过 Mesh | 全屋, 5+ 摄像头 |
-| **有线 AP (UniFi U6 Lite, U6+, U7 Pro)** | 最佳性能, PoE 供电, VLAN 支持 | 需布以太网 | **摄像头最佳** — 有线回程 |
-| **Powerline + Wi-Fi (TP-Link TL-WPA8630)** | 无新布线, 用电力线 | 50–200 Mbps 实测, AFCI 上噪大 | 无法布线的改造 |
-| **范围扩展器 (TP-Link RE605X)** | 便宜 ($50) | 带宽减半, 延迟增加, 单独 SSID | **摄像头避用** |
-| **户外 AP (UniFi U6 Mesh, UAP-AC-M)** | 防水, PoE, Mesh 上行 | 成本 ($180–300) | 独立车库、大门、谷仓 |
+| 架构                                                     | 优点                          | 缺点                             | 最适合                    |
+| -------------------------------------------------------- | ----------------------------- | -------------------------------- | ------------------------- |
+| **Mesh (Eero Pro 6E, UniFi Dream Router, Asus ZenWiFi)** | 无缝漫游, 单 SSID, App 管理   | 成本 ($300–600), 所有流量过 Mesh | 全屋, 5+ 摄像头           |
+| **有线 AP (UniFi U6 Lite, U6+, U7 Pro)**                 | 最佳性能, PoE 供电, VLAN 支持 | 需布以太网                       | **摄像头最佳** — 有线回程 |
+| **Powerline + Wi-Fi (TP-Link TL-WPA8630)**               | 无新布线, 用电力线            | 50–200 Mbps 实测, AFCI 上噪大    | 无法布线的改造            |
+| **范围扩展器 (TP-Link RE605X)**                          | 便宜 ($50)                    | 带宽减半, 延迟增加, 单独 SSID    | **摄像头避用**            |
+| **户外 AP (UniFi U6 Mesh, UAP-AC-M)**                    | 防水, PoE, Mesh 上行          | 成本 ($180–300)                  | 独立车库、大门、谷仓      |
 
 <Callout type="tip">
-**专业架构:** PoE 交换机 → UniFi U6+ AP (吊顶, 居中) → 2.4 GHz 专用 SSID "CAM-2G" (VLAN 20) → 所有摄像头. 隔离 IoT, 无漫游问题, 有线回程.
+
+**专业架构:** PoE 交换机 → UniFi U6+ AP (吊顶, 居中) → 2.4 GHz 专用 SSID
+"CAM-2G" (VLAN 20) → 所有摄像头. 隔离 IoT, 无漫游问题, 有线回程.
+
 </Callout>
 
 ---
 
 ## 摄像头 Wi-Fi 需求
 
-| 指标 | 最低 | 推荐 | 理由 |
-|------|---------|-------------|-----|
-| **信号 (RSSI)** | -70 dBm | **-55 dBm 或更好** | -70 = 频繁掉线; -55 = 稳如磐石 |
-| **SNR** | 15 dB | **25+ dB** | 信噪余量 |
-| **上传带宽** | 1 Mbps/机 (1080p) | 5 Mbps/机 (4K) | 持续, 非突发 |
-| **延迟** | <100 ms | <30 ms | 实时查看响应 |
-| **丢包** | <2% | <0.5% | 录像间隙、冻帧 |
+| 指标            | 最低              | 推荐               | 理由                           |
+| --------------- | ----------------- | ------------------ | ------------------------------ |
+| **信号 (RSSI)** | -70 dBm           | **-55 dBm 或更好** | -70 = 频繁掉线; -55 = 稳如磐石 |
+| **SNR**         | 15 dB             | **25+ dB**         | 信噪余量                       |
+| **上传带宽**    | 1 Mbps/机 (1080p) | 5 Mbps/机 (4K)     | 持续, 非突发                   |
+| **延迟**        | &lt;100 ms        | &lt;30 ms          | 实时查看响应                   |
+| **丢包**        | &lt;2%            | &lt;0.5%           | 录像间隙、冻帧                 |
 
-**在摄像头位置测试:** 手机连同一 SSID → Speedtest → 记录上传。走到摄像头点 → 再测。若上传 <5 Mbps, 先修 Wi-Fi。
+**在摄像头位置测试:** 手机连同一 SSID → Speedtest → 记录上传。走到摄像头点 → 再测。若上传 &lt;5 Mbps, 先修 Wi-Fi。
 
 ---
 
@@ -84,15 +86,18 @@ Width:  20 MHz each (non-overlapping)
   <AccordionItem value="placement">
     <AccordionTrigger>AP 布局规则</AccordionTrigger>
     <AccordionContent>
-1. **中心、高处** — 走廊吊顶 > 角落架子
-2. **视线** — 避开: 烟囱、砖墙、金属侧板、HVAC、镜子、鱼缸
-3. **最多穿 1 墙** — 摄像头 ↔ AP 穿 ≤1 内墙
-4. **避开角落** — RF 反射, 产生多径
-5. **高度** — 7–9 英尺 AGL (离地高度) 覆盖最佳
-6. **天线朝向** — 垂直覆盖水平; 倾 45° 覆盖多层
+
+- **中心、高处** — 走廊吊顶 > 角落架子
+- **视线** — 避开: 烟囱、砖墙、金属侧板、HVAC、镜子、鱼缸
+- **最多穿 1 墙** — 摄像头 ↔ AP 穿 ≤1 内墙
+- **避开角落** — RF 反射, 产生多径
+- **高度** — 7–9 英尺 AGL (离地高度) 覆盖最佳
+- **天线朝向** — 垂直覆盖水平; 倾 45° 覆盖多层
 
 **UniFi U6+ 例:** 走廊中心吊顶 → 2.4 GHz 覆盖 3,000 平方英尺住宅 + 50 英尺院子。摄像头 -50 到 -60 dBm。
-    </AccordionContent>
+
+</AccordionContent>
+
   </AccordionItem>
 </Accordion>
 
@@ -102,28 +107,28 @@ Width:  20 MHz each (non-overlapping)
 
 ### 太阳能 + Wi-Fi 定位
 
-| 因素 | 理想 | 避免 |
-|--------|-------|-------|
-| **太阳能板** | 真南 (北半球), 30–45° 倾斜, **9am–3pm Dec 21 无阴影** | 北面, 檐下, 树影 |
-| **摄像头** | 面板 10–15 英尺 (线长), 檐下避雨 | 镜头直射阳光 (过热), 喷淋 |
-| **Wi-Fi** | 距 AP ≤50 英尺, 穿 ≤1 墙 | 金属侧板、砖烟囱在中间 |
+| 因素         | 理想                                                  | 避免                      |
+| ------------ | ----------------------------------------------------- | ------------------------- |
+| **太阳能板** | 真南 (北半球), 30–45° 倾斜, **9am–3pm Dec 21 无阴影** | 北面, 檐下, 树影          |
+| **摄像头**   | 面板 10–15 英尺 (线长), 檐下避雨                      | 镜头直射阳光 (过热), 喷淋 |
+| **Wi-Fi**    | 距 AP ≤50 英尺, 穿 ≤1 墙                              | 金属侧板、砖烟囱在中间    |
 
 ### 电池寿命延长
 
-| 设置 | 默认 | 优化 | 节省 |
-|---------|---------|-----------|---------|
-| **运动灵敏度** | 高 | 中 / 自定义区域 | 30–50% |
-| **片段长度** | 30s | 10–15s | 40–60% |
-| **重触发间隔** | 10s | 30–60s | 20–30% |
-| **夜视** | Auto IR | 计划: 有路灯关 IR | 15–25% |
-| **实时预览** | 按需 | 禁用自动预览 | 10–20% |
-| **固件** | Auto | 手动 (月检) | 防 Bug |
+| 设置           | 默认    | 优化              | 节省   |
+| -------------- | ------- | ----------------- | ------ |
+| **运动灵敏度** | 高      | 中 / 自定义区域   | 30–50% |
+| **片段长度**   | 30s     | 10–15s            | 40–60% |
+| **重触发间隔** | 10s     | 30–60s            | 20–30% |
+| **夜视**       | Auto IR | 计划: 有路灯关 IR | 15–25% |
+| **实时预览**   | 按需    | 禁用自动预览      | 10–20% |
+| **固件**       | Auto    | 手动 (月检)       | 防 Bug |
 
 **实测:** EufyCam 3 (13,000 mAh) @ 中灵敏度, 15s 片段, 30s 重触发, 2.4 GHz -55 dBm → **4–6 个月** (宣称 1 年)。
 
 ### 冬季电池护理 (5 区及更冷)
 
-- **Li-ion <32°F (0°C) 停止充电。** 摄像头靠电池撑到死。
+- **Li-ion &lt;32°F (0°C) 停止充电。** 摄像头靠电池撑到死。
 - **对策:**
   - 每月拿进屋暖充 (痛苦但管用)
   - **LiFePO₄ 升级** (Reolink Go PT Plus, 自建) — -4°F 仍能充
@@ -136,12 +141,12 @@ Width:  20 MHz each (non-overlapping)
 
 ### 供电考量
 
-| 摄像头 | 功耗 | 插座类型 | 线缆管理 |
-|--------|------------|-------------|------------------|
-| Reolink E1 Outdoor | 5W (12V/0.5A) | 120V → 12V 适配器 | 防水盒 + 胶圈 |
-| Wyze Cam v4 | 3W (5V/0.6A) | 120V → 5V USB | USB 延长线 + 硅胶密封 |
-| TP-Link Tapo C120 | 4W (5V/0.8A) | 120V → 5V USB | 短 USB, 下垂环 |
-| Google Nest Cam (有线) | 7W (5V/1.4A) | 120V → 5V 专用 | 仅专用线缆 |
+| 摄像头                 | 功耗          | 插座类型          | 线缆管理              |
+| ---------------------- | ------------- | ----------------- | --------------------- |
+| Reolink E1 Outdoor     | 5W (12V/0.5A) | 120V → 12V 适配器 | 防水盒 + 胶圈         |
+| Wyze Cam v4            | 3W (5V/0.6A)  | 120V → 5V USB     | USB 延长线 + 硅胶密封 |
+| TP-Link Tapo C120      | 4W (5V/0.8A)  | 120V → 5V USB     | 短 USB, 下垂环        |
+| Google Nest Cam (有线) | 7W (5V/1.4A)  | 120V → 5V 专用    | 仅专用线缆            |
 
 **下垂环:** 线缆在插座下方成 **U 型** → 水滴落在环上, 不进插座。
 
@@ -159,32 +164,22 @@ Width:  20 MHz each (non-overlapping)
   <AccordionItem value="app-config">
     <AccordionTrigger>关键 App 设置</AccordionTrigger>
     <AccordionContent>
-**命名:** `CAM-FRONT-DOOR`, `CAM-DRIVEWAY`, `CAM-BACKYARD` (可排序, 可识别)
-**时区 / NTP:** Auto (手机) 或手动 — 时间戳关键
-**视频:**
-- 主流: 2K/4K @ 15 fps, H.265, VBR 4–6 Mbps
-- 子流: 720p @ 15 fps, H.265, 0.5–1 Mbps (手机实时看)
-**运动:**
-- 检测类型: Person + Vehicle (关 "All Motion")
-- 区域: **仅画目标区** (排除树、街道、邻居)
-- 灵敏度: 从 Medium 起 → 48h 复盘后调
-- 重触发: 30s 起
-**录制:**
-- 计划: 有电源 + microSD 选 24/7; 电池选仅动检
-- 预录: 5–10s (捕捉接近过程)
-- 后录: 10–15s
-**通知:**
-- Push: Person + Vehicle only
-- Email: 关 (刷屏邮箱)
-- Rich Preview: 开 (锁屏见缩略图)
-**隐私:**
-- 遮罩: 画在邻居窗户、卧室窗户上
-- 音频: 关, 除非双向需要 (合法)
-**网络:**
-- 仅 2.4 GHz (双频强制)
-- 静态 IP / DHCP 预留 (路由器侧)
-- RTSP / ONVIF: 开 (若用 NVR/Frigate)
+
+      **命名:** `CAM-FRONT-DOOR`, `CAM-DRIVEWAY`, `CAM-BACKYARD` (可排序,
+      可识别) **时区 / NTP:** Auto (手机) 或手动 — 时间戳关键 **视频:** - 主流:
+        2K/4K @ 15 fps, H.265, VBR 4–6 Mbps - 子流: 720p @ 15 fps, H.265, 0.5–1
+      Mbps (手机实时看) **运动:** - 检测类型: Person + Vehicle (关 "All Motion")
+      - 区域: **仅画目标区** (排除树、街道、邻居) - 灵敏度: 从 Medium 起 → 48h
+      复盘后调 - 重触发: 30s 起 **录制:** - 计划: 有电源 + microSD 选 24/7;
+      电池选仅动检 - 预录: 5–10s (捕捉接近过程) - 后录: 10–15s **通知:** - Push:
+      Person + Vehicle only - Email: 关 (刷屏邮箱) - Rich Preview: 开
+      (锁屏见缩略图) **隐私:** - 遮罩: 画在邻居窗户、卧室窗户上 - 音频: 关,
+      除非双向需要 (合法) **网络:** - 仅 2.4 GHz (双频强制) - 静态 IP / DHCP
+      预留 (路由器侧) - RTSP / ONVIF: 开 (若用 NVR/Frigate)
+
+
     </AccordionContent>
+
   </AccordionItem>
 </Accordion>
 
@@ -192,25 +187,29 @@ Width:  20 MHz each (non-overlapping)
 
 ## 无线摄像头故障排查
 
-| 症状 | 诊断 | 修复 |
-|---------|-----------|-----|
-| **"摄像头离线" 每天** | RSSI < -75 dBm | 移 AP 近; 加有线 AP; 查信道 |
-| **实时画面转圈/失败** | 上传 < 1 Mbps | 摄像头位 Speedtest; 升级 AP |
-| **夜间片段丢失** | IR 反射/白化 | 向下倾 15°; 离墙; 关 IR + 外置补光 |
-| **电池 2 周死** | 高流量区 / 差 RSSI | 降灵敏度; 窄区域; 加太阳能; 查 -60 dBm |
-| **实时延迟 >5 秒** | 高延迟 / bufferbloat | 路由器 QoS (优先摄像头 VLAN); 有线 AP 回程 |
-| **断电后 "无 Wi-Fi"** | 摄像头启动快于路由器 | 路由器+AP 上 UPS; 摄像头自动重连 (查固件) |
-| **连不上 2.4 GHz** | 路由器 band-steering | 关 band-steering; 分离 SSID ("HOME-2G", "HOME-5G") |
+| 症状                  | 诊断                 | 修复                                               |
+| --------------------- | -------------------- | -------------------------------------------------- |
+| **"摄像头离线" 每天** | RSSI < -75 dBm       | 移 AP 近; 加有线 AP; 查信道                        |
+| **实时画面转圈/失败** | 上传 < 1 Mbps        | 摄像头位 Speedtest; 升级 AP                        |
+| **夜间片段丢失**      | IR 反射/白化         | 向下倾 15°; 离墙; 关 IR + 外置补光                 |
+| **电池 2 周死**       | 高流量区 / 差 RSSI   | 降灵敏度; 窄区域; 加太阳能; 查 -60 dBm             |
+| **实时延迟 >5 秒**    | 高延迟 / bufferbloat | 路由器 QoS (优先摄像头 VLAN); 有线 AP 回程         |
+| **断电后 "无 Wi-Fi"** | 摄像头启动快于路由器 | 路由器+AP 上 UPS; 摄像头自动重连 (查固件)          |
+| **连不上 2.4 GHz**    | 路由器 band-steering | 关 band-steering; 分离 SSID ("HOME-2G", "HOME-5G") |
 
 ---
 
 ## 安全: 隔离您的摄像头
 
 <Callout type="danger">
-**摄像头是 IoT — 最高违规风险.** 隔离到 VLAN, **无互联网访问** (除 NTP/固件). 封禁 camera → LAN. 允许 LAN → camera (仅查看).
+
+**摄像头是 IoT — 最高违规风险.** 隔离到 VLAN, **无互联网访问** (除 NTP/固件).
+封禁 camera → LAN. 允许 LAN → camera (仅查看).
+
 </Callout>
 
 **UniFi / VLAN 例:**
+
 ```
 VLAN 10 (LAN)     192.168.10.x  → 完全访问
 VLAN 20 (CAMERAS) 192.168.20.x  → 封禁互联网, 封禁 LAN 访问
@@ -219,26 +218,27 @@ VLAN 20 (CAMERAS) 192.168.20.x  → 封禁互联网, 封禁 LAN 访问
 ```
 
 **路由器防火墙规则 (Ubiquiti / OPNsense / pfSense):**
-1. **允许** CAMERAS → 路由器 (NTP, DNS)
-2. **允许** NVR → CAMERAS (RTSP, HTTP, ONVIF)
-3. **封禁** CAMERAS → LAN
-4. **封禁** CAMERAS → WAN (互联网)
-5. **允许** LAN → CAMERAS (仅管理, 限制 IP)
+
+- **允许** CAMERAS → 路由器 (NTP, DNS)
+- **允许** NVR → CAMERAS (RTSP, HTTP, ONVIF)
+- **封禁** CAMERAS → LAN
+- **封禁** CAMERAS → WAN (互联网)
+- **允许** LAN → CAMERAS (仅管理, 限制 IP)
 
 ---
 
 ## 快速参考: 无线摄像头规格 (2026)
 
-| 摄像头 | Wi-Fi | 电池 | 太阳能 | 最大 RSSI | 最适合 |
-|--------|-------|---------|-------|----------|----------|
-| **EufyCam 3 S330** | 2.4/5 GHz (Wi-Fi 6) | 13,000 mAh | 集成 2.4W | -55 dBm | HomeKit, 本地 AI, 无订阅 |
-| **Reolink Argus 4 Pro** | 2.4/5 GHz | 9,600 mAh | 6W 面板 (含) | -60 dBm | 4K 电池, Hub 本地存储 |
-| **Ring Stick Up Cam Pro** | 2.4/5 GHz | 6,000 mAh | 4W 面板 (可选) | -65 dBm | Alexa, Ring 生态, 3D 动作 |
-| **Arlo Pro 5S 2K** | 2.4/5 GHz | 5,200 mAh | 4W 面板 (可选) | -65 dBm | Arlo Secure, 2K HDR |
-| **Wyze Cam v4** | 2.4 GHz | 插电 (5V) | — | -55 dBm | 预算室内/有顶户外 |
-| **TP-Link Tapo C120** | 2.4 GHz | 插电 (5V) | — | -55 dBm | 预算, Matter, 本地 microSD |
-| **Google Nest Cam (有线)** | 2.4/5 GHz | 插电 (5V) | — | -55 dBm | Nest Aware, HomeKit (经 Matter) |
-| **Reolink E1 Outdoor** | 2.4/5 GHz | PoE / 12V DC | — | -55 dBm | 云台, PoE 选项 |
+| 摄像头                     | Wi-Fi               | 电池         | 太阳能         | 最大 RSSI | 最适合                          |
+| -------------------------- | ------------------- | ------------ | -------------- | --------- | ------------------------------- |
+| **EufyCam 3 S330**         | 2.4/5 GHz (Wi-Fi 6) | 13,000 mAh   | 集成 2.4W      | -55 dBm   | HomeKit, 本地 AI, 无订阅        |
+| **Reolink Argus 4 Pro**    | 2.4/5 GHz           | 9,600 mAh    | 6W 面板 (含)   | -60 dBm   | 4K 电池, Hub 本地存储           |
+| **Ring Stick Up Cam Pro**  | 2.4/5 GHz           | 6,000 mAh    | 4W 面板 (可选) | -65 dBm   | Alexa, Ring 生态, 3D 动作       |
+| **Arlo Pro 5S 2K**         | 2.4/5 GHz           | 5,200 mAh    | 4W 面板 (可选) | -65 dBm   | Arlo Secure, 2K HDR             |
+| **Wyze Cam v4**            | 2.4 GHz             | 插电 (5V)    | —              | -55 dBm   | 预算室内/有顶户外               |
+| **TP-Link Tapo C120**      | 2.4 GHz             | 插电 (5V)    | —              | -55 dBm   | 预算, Matter, 本地 microSD      |
+| **Google Nest Cam (有线)** | 2.4/5 GHz           | 插电 (5V)    | —              | -55 dBm   | Nest Aware, HomeKit (经 Matter) |
+| **Reolink E1 Outdoor**     | 2.4/5 GHz           | PoE / 12V DC | —              | -55 dBm   | 云台, PoE 选项                  |
 
 ---
 
@@ -252,4 +252,4 @@ VLAN 20 (CAMERAS) 192.168.20.x  → 封禁互联网, 封禁 LAN 访问
 
 ---
 
-*最后更新: 2026 年 7 月. Wi-Fi 7 (802.11be) 推出中 — 320 MHz 信道, MLO. 摄像头仍靠 2.4 GHz 覆盖. 相应规划 AP 升级.*
+_最后更新: 2026 年 7 月. Wi-Fi 7 (802.11be) 推出中 — 320 MHz 信道, MLO. 摄像头仍靠 2.4 GHz 覆盖. 相应规划 AP 升级._

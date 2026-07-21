@@ -1,0 +1,377 @@
+---
+title: "NDAA-naleving: Wat CCTV-installateurs moeten weten in 2026"
+description: "Een uitgebreide gids voor het begrijpen van NDAA-vereisten, beperkte merken (Hikvision, Dahua) en het kiezen van conforme camera's voor federale projecten."
+publishedAt: 2026-07-20T00:00:00.000Z
+updatedAt: 2026-07-20T00:00:00.000Z
+slug: "ndaa-compliance-guide-2026"
+author: "Your Name"
+tags: ["compliance", "ndaa"]
+postType: "article"
+---
+
+<svg
+  viewBox="0 0 64 64"
+  width="48"
+  height="48"
+  fill="none"
+  stroke="#dc2626"
+  strokeWidth="2"
+  strokeLinecap="round"
+  strokeLinejoin="round"
+  style={{ float: "left", marginRight: "12px" }}
+>
+  <path d="M32 4 L32 16 M32 48 L32 60 M4 32 L16 32 M48 32 L60 32" />
+  <circle cx="32" cy="32" r="24" strokeWidth="3" opacity="0.3" />
+  <path d="M32 16 L32 48 M16 32 L48 32" strokeWidth="3" />
+</svg>
+
+De National Defense Authorization Act (NDAA) heeft het landschap voor CCTV-installateurs die werken aan federale, staats- en kritieke infrastructuurprojecten fundamenteel veranderd. Wat ooit een niche-nalevingskwestie was, is een dagelijkse realiteit geworden voor installateurs die inschrijven op scholen, overheidsgebouwen, luchthavens en zelfs veel private projecten die federale richtlijnen volgen.
+
+Als u ooit gevraagd is "Zijn deze camera's NDAA-conform?" en niet zeker wist hoe te antwoorden, dan is deze gids voor u. We snijden door de verwarring heen en geven u een praktisch kader voor het evalueren van apparatuur, praten met klanten en het beschermen van uw bedrijf tegen nalevingsrisico's.
+
+_Noot: Dit artikel weerspiegelt het juridische landschap halverwege 2026. Verifieer altijd de huidige regelgeving met juridisch adviseur voordat u apparatuurkeuzes finaliseert voor federale projecten._
+
+## Wat is de NDAA en waarom moeten installateurs erom geven?
+
+De NDAA is een jaarlijkse wet die het Amerikaanse Ministerie van Defensie financiert. Sinds 2019 bevat het bepalingen—met name Sectie 889—die bepaalde in China gemaakte technologie beperken van Amerikaanse overheidsaanbesteding en -gebruik.
+
+### Sectie 889: De kernbeperking
+
+Sectie 889 verbiedt federale agentschappen om gedekte telecommunicatieapparatuur van specifieke leveranciers die als nationale veiligheidsdreigingen worden beschouwd, aan te schaffen of te gebruiken. De beperking omvat:
+
+- **Inkoopverbod**: Federale agentschappen mogen geen gedekte apparatuur of diensten kopen of verkrijgen
+- **Aannemersverbod**: Federale aannemers mogen geen gedekte apparatuur gebruiken bij de uitvoering van federale contracten
+- **Uitbreiding naar subsidieontvangers**: Veel staats- en lokale projecten die federale financiering ontvangen, moeten ook voldoen
+
+De lijst van gedekte bedrijven (per 2026) omvat:
+
+- **Hikvision** (Hangzhou Hikvision Digital Technology)
+- **Dahua Technology** (inclusief Lorex, Amcrest en andere merken)
+- **Huawei** (inclusief HiSilicon-chips)
+- **Hytera** (portofoons)
+- **ZTE** (telecomapparatuur)
+
+Deze bedrijven zijn door de FCC aangemerkt als gedekte telecommunicatieapparatuur of -diensten (CVETs). Het verbod geldt voor kerncomponenten, niet alleen eindproducten.
+
+### Het "Waarom" achter de beperkingen
+
+De zorgen van de Amerikaanse overheid richten zich op:
+
+1. **Backdoor-kwetsbaarheden**: Inlichtingendiensten hebben systematische beveiligingsfouten en potentiële backdoors in de firmware van deze fabrikanten gedocumenteerd
+2. **Gedwongen samenwerking**: Chinese nationale inlichtingenwetten kunnen bedrijven verplichten samen te werken met overheidsinlichtingenverzameling
+3. **Transparantie van toeleveringsketen**: Gebrek aan verifieerbare traceerbaarheid in componenteninkoop
+
+Voor installateurs betekent dit: **het gaat niet alleen om het merk op de doos**. Het gaat om wat erin zit.
+
+## Wat "NDAA-conform" werkelijk betekent
+
+Naleving bestaat op een spectrum. Volledige naleving vereist aantonen dat:
+
+1. **Kerncomponenten** (sensoren, processoren, chips, PCB's) niet afkomstig zijn uit beperkte landen
+2. **Assemblage** plaatsvindt in een niet-beperkt land (VS, Mexico, Taiwan, Japan, Zuid-Korea, etc.)
+3. **Software/firmware** is ontwikkeld en gecontroleerd door niet-beperkte entiteiten
+4. **Geen gedekte diensten** worden gebruikt bij de uitvoering van federale contracten
+
+### De viertraps test
+
+<Callout type="info">
+
+**Naleving gaat niet alleen over waar het product is geassembleerd.** Een
+camera geassembleerd in de VS met een HiSilicon-processor uit China is nog
+steeds niet-conform. Evenzo creëert software ontwikkeld in China die op
+conforme hardware draait ook nalevingsproblemen.
+
+</Callout>
+
+**1. Componenteninkoop**
+
+De meest kritieke factor is de stuklijst (BOM). Installateurs moeten vragen om:
+
+- **Processor/SoC-herkomst**: Veel gebruiken HiSilicon (Huawei), Allwinner (China) of Amlogic (China). Conforme alternatieven: Texas Instruments, Ambarella, Sony of processors gemaakt in Taiwan/Zuid-Korea/Japan.
+- **Beeldsensor-herkomst**: Sony, Samsung en OmniVision zijn over het algemeen conform. Sommige Chinese sensoren (bv. GalaxyCore) roepen zorgen op.
+- **PCB-fabricage**: Mag niet plaatsvinden in beperkte landen. De meeste conforme fabrikanten gebruiken Taiwan, VS of Japan.
+- **Geheugen/opslag**: Samsung (Zuid-Korea), SK Hynix (Zuid-Korea), Micron (VS) zijn veilig.
+- **Power IC's**: Vaak uit Taiwan of VS.
+
+**2. Assemblagelocatie**
+
+Assemblage in de VS, Mexico, Taiwan of andere niet-beperkte landen geeft een sterk nalevingssignaal. Echter:
+
+<Callout type="warning">
+
+**"Ontworpen in de VS" ≠ "Gemaakt in de VS"**. Veel merken marketen "US
+design" terwijl ze produceren in China met Chinese componenten. Dit is
+onvoldoende voor NDAA- naleving.
+
+</Callout>
+
+**3. Software/Firmware-eigendom**
+
+De softwarestack moet:
+
+- Buiten beperkte landen zijn ontwikkeld
+- Niet worden onderhouden of gehost in China
+- Geen Chinese clouddiensten gebruiken voor videoverwerking of AI-analyses
+
+Sommige fabrikanten besteden firmware-ontwikkeling uit aan China, zelfs als hardware-ontwerp binnenlands is. Dit creëert risico.
+
+**4. Fabrikantverklaringen**
+
+Gerenommeerde conforme fabrikanten verstrekken:
+
+- **Leveranciersverklaringen** die componentenherkomst bevestigen
+- **Land van herkomst documentatie**
+- **Nalevingscertificeringen van derden** (bv. van TAA-conforme programma's)
+- **U.S. Manufacturing (USM) nalevingsverklaringen**
+
+## Hoe naleving te verifiëren als installateur
+
+### Stap 1: Vraag om de BOM
+
+Vraag een gedetailleerde stuklijst aan bij de fabrikant of distributeur. Deze moet bevatten:
+
+- Onderdeelnummers voor belangrijke componenten
+- Land van herkomst voor elke component
+- Fabrikantnamen
+
+Als ze weigeren of vage antwoorden geven, is dat een rode vlag.
+
+### Stap 2: Controleer de TAA-lijst
+
+De U.S. Trade Agreements Act (TAA) lijst is een goede proxy voor NDAA-naleving. TAA-conforme producten zijn vervaardigd in aangewezen landen en komen in aanmerking voor federale aanbesteding.
+
+Zoek de producten van de fabrikant op:
+
+- GSA Schedules (Multiple Award Schedules)
+- SAM.gov productvermeldingen
+- TAA-nalevingsverklaringen van de fabrikant
+
+### Stap 3: Bevestig productielocatie
+
+Verifieer waar eindassemblage plaatsvindt. Sommige fabrikanten hebben "Finish/Configuratie" in de VS, zelfs als de hoofdassemblage in het buitenland is—dit is mogelijk niet voldoende. De kernassemblage (PCB-solderen, integratie van kerncomponenten) moet buiten beperkte landen plaatsvinden.
+
+### Stap 4: Krijg het op schrift
+
+Voordat u inschrijft op een federaal project:
+
+- Verkrijg schriftelijke nalevingsverklaringen van de fabrikant
+- Vraag om e-mailbevestigingen van TAA-status
+- Bewaar documentatie in projectbestanden
+
+**Mondelinge verzekeringen van verkoopmedewerkers zijn waardeloos bij een audit**.
+
+## Top conforme merken en productlijnen (2026)
+
+De volgende merken hebben bewezen nalevingsgeschiedenissen:
+
+### Tier 1: Volledige naleving (Gevestigde VS/Geallieerde productie)
+
+| Merk                              | Sterke punten                                                                | Opmerkingen                                     |
+| --------------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------- |
+| **Axis Communications**           | Gemaakt in Zweden, EU-componenten, sterke documentatie                       | Gouden standaard voor naleving; premium prijzen |
+| **Bosch Security Systems**        | Duitsland-gebaseerd, EU-toeleveringsketen                                    | Uitstekende kwaliteit, volledig TAA-conform     |
+| **Hanwha Techwin**                | Zuid-Korea assemblage, Samsung-erfgoed                                       | Groot portfolio, goede waarde                   |
+| **Motorola Solutions (Avigilon)** | VS/Canada assemblage, binnenlandse toeleveringsketen voor sleutelcomponenten | Hogere commerciële beveiliging                  |
+| **Vanderbilt**                    | VK-gebaseerd, EU-toeleveringsketen                                           | Toegangscontrole en alarmsystemen               |
+| **GE Security**                   | VS-assemblage, legacy-merk met sterke nalevingsgeschiedenis                  |                                                 |
+
+### Tier 2: Conforme submerken / VS Eindassemblage
+
+| Merk          | Productlijnen                     | Kanttekeningen                                                     |
+| ------------- | --------------------------------- | ------------------------------------------------------------------ |
+| **Honeywell** | Performance series, equIP         | Mix van conforme en niet-conforme lijnen—verifieer specifieke SKUs |
+| **LenelS2**   | OnGuard, ELA                      | Meestal conform; verifieer cameramodellen                          |
+| **MERCURY**   | Deurcontrollers, toegangscontrole | VK-gebaseerd, goede nalevingsgeschiedenis                          |
+
+### Tier 3: Wees voorzichtig / Verifieer elke SKU
+
+Sommige fabrikanten hebben zowel conforme als niet-conforme producten:
+
+- **Ubiquiti UniFi**: Enige assemblage in Taiwan, maar componenten variëren per model. Krijg expliciete bevestiging per product.
+- **Reolink**: Claimt enige VS-assemblage maar componenteninkoop onduidelijk. Hoog risico voor federaal werk.
+- **Night Owl**: Binnenlandse assemblageclaims; vraag gedetailleerde BOM-verificatie.
+
+### Merken om te vermijden op federale projecten
+
+<Callout type="warning">
+
+<strong>NIET GEBRUIKEN</strong> op NDAA-gedekte projecten:
+
+<ul>
+  <li>Hikvision (alle merken: Hikvision, HiWatch, Ezviz, etc.)</li>
+  <li>
+    Dahua (alle merken: Dahua, Lorex, Amcrest, Reolink—enige overlap
+    voorzichtigheid)
+  </li>
+  <li>Huawei (HiSilicon-gebaseerde producten)</li>
+  <li>Hytera (portofoons)</li>
+  <li>ZTE (telecom)</li>
+  <li>
+    Elk product met "Powered by HiSilicon" of "Huawei HiSilicon" in
+    specificaties
+  </li>
+</ul>
+
+  </Callout>
+
+## Nalevingschecklist voor installateurs
+
+Gebruik deze 7-punts checklist voordat u apparatuur voorstelt voor elk project dat onder NDAA-vereisten kan vallen:
+
+### ☐ 1. Identificeer projecttype
+
+Federaal project → Moet voldoen
+Staats/lokaal project → Moet mogelijk voldoen als het federale fondsen ontvangt (vraag naar financieringsbron)
+Privaat commercieel → Doorgaans vrijgesteld, maar veel zakelijke klanten hanteren vergelijkbaar beleid
+
+### ☐ 2. Kies geverifieerde merken
+
+Begin met Tier 1 of 2 merken uit deze gids. Als u iets anders overweegt, eis dan nalevingsdocumentatie van de fabrikant voordat u verder gaat.
+
+### ☐ 3. Bevestig specifieke SKUs
+
+Naleving is modelspecifiek. Zelfs binnen een conform merk gebruiken sommige producten niet-conforme componenten. Verifieer het exacte onderdeelnummer.
+
+### ☐ 4. Documenteer alles
+
+Bewaar e-mails, specificatiebladen en fabrikantverklaringen in uw projectbestand. U bent verantwoordelijk voor uw verklaringen aan de klant.
+
+### ☐ 5. Neem nalevingstaal op in offertes
+
+Voorbeeld: "Alle apparatuur aangeboden voor dit project is geverifieerd NDAA/TAA-conform per beschikbare fabrikantdocumentatie. Specifieke modelnaleving schriftelijk bevestigd."
+
+### ☐ 6. Plan voor audits
+
+Federale contracten kunnen auditrechten omvatten. Zorg ervoor dat uw toeleveringsketen documentatie kan produceren als er jaren later om wordt gevraagd.
+
+### ☐ 7. Blijf up-to-date
+
+De NDAA-lijst van beperkte entiteiten verandert jaarlijks. Abonneer u op FCC-updates en nieuwsbrieven van fabrikanten over naleving. Wat vandaag conform is, kan morgen beperkt zijn.
+
+## Veelgestelde vragen
+
+<Accordion>
+<AccordionItem value="assembled-usa">
+<AccordionTrigger>Garandeert "Geassembleerd in de VS" naleving?</AccordionTrigger>
+<AccordionContent>
+
+**Nee.** Een product kan in de VS zijn geassembleerd maar een processor van Huawei of andere beperkte entiteiten bevatten. Naleving vereist dat _kerncomponenten_ uit niet-beperkte landen komen. Een "geassembleerd in de VS"-claim alleen is onvoldoende—u heeft BOM-herkomstverificatie nodig.
+
+</AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="used-refurbished">
+  <AccordionTrigger>
+    Vallen gebruikte of gereviseerde camera's eronder?
+  </AccordionTrigger>
+  <AccordionContent>
+
+    Het NDAA-inkoopverbod geldt voor *nieuwe* apparatuuraankopen. Echter,
+    federale agentschappen kunnen nog steeds bestaande niet-conforme systemen
+    gebruiken die rechtmatig zijn verworven voordat beperkingen van kracht
+    werden. Voor aannemers kan het gebruik van gereviseerde niet-conforme
+    apparatuur bij de uitvoering van een federaal contract het verbod schenden.
+    De meeste integratoren beschouwen gereviseerd als hoog risico en zoeken
+    juridisch advies voordat ze het gebruiken op gedekte projecten.
+
+  </AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="existing-systems">
+  <AccordionTrigger>
+    Wat met bestaande systemen op federale locaties?
+  </AccordionTrigger>
+  <AccordionContent>
+
+    Legacy-systemen die rechtmatig zijn geïnstalleerd vóór beperkingen zijn over
+    het algemeen "overgangsrecht" en kunnen blijven werken. Echter: -
+    Onderhouds- en reparatieonderdelen kunnen beperkt zijn als ze een
+    "substantiële transformatie" tot nieuwe apparatuur zouden vormen -
+    Software-updates van beperkte fabrikanten kunnen problematisch zijn - De
+    meeste agentschappen vervangen proactief niet-conforme systemen op een
+    vastgesteld tijdschema
+
+  </AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="penalties">
+  <AccordionTrigger>Wat zijn de straffen voor niet-naleving?</AccordionTrigger>
+  <AccordionContent>
+
+    Straffen kunnen streng zijn: - **Contractbeëindiging** en uitsluiting van
+    toekomstig federaal werk - **Aansprakelijkheid onder de False Claims Act**:
+    Het indienen van valse nalevingscertificeringen kan leiden tot drievoudige
+    schadevergoeding - **Strafrechtelijke straffen** in gevallen van bewuste
+    schendingen - **Civiele straffen** van de FCC - **Reputatieschade** en
+    verlies van klantvertrouwen. Het belangrijkste: uw klant (het federale
+    agentschap of de aannemer) draagt de uiteindelijke aansprakelijkheid, maar
+    zij zullen u verantwoordelijk houden als uw verklaringen de schending hebben
+    veroorzaakt.
+
+  </AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="prove-compliance">
+<AccordionTrigger>Hoe bewijs ik naleving aan klanten?</AccordionTrigger>
+<AccordionContent>
+
+Verstrek:
+
+1. **Schriftelijke verklaringen van de fabrikant** (e-mail of brief) die TAA/NDAA-naleving voor de specifieke SKUs bevestigen
+2. **GSA Schedule contracten** waaruit blijkt dat de producten op goedgekeurde lijsten staan
+3. **BOM-documentatie** waaruit componentenherkomst blijkt (indien gevraagd)
+4. **Land van herkomst markeringen** op apparatuurverpakking
+5. **Nalevingscertificaten** van externe auditors (indien beschikbaar)
+
+De sleutel is traceerbaarheid: u moet de nalevingsketen kunnen tonen van componentleverancier tot eindproduct.
+
+</AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="state-projects">
+<AccordionTrigger>Vereisen staats- en lokale projecten naleving?</AccordionTrigger>
+<AccordionContent>
+
+Velen doen dat, maar het hangt af van financiering. Als een project federale subsidies of samenwerkingsovereenkomsten ontvangt (bv. Department of Homeland Security-financiering voor schoolbeveiliging), zijn NDAA-beperkingen vaak van toepassing. Sommige staten hebben ook hun eigen verboden op Chinese bewakingsapparatuur ingevoerd. Vraag klanten altijd of het project onderworpen is aan TAA/NDAA-vereisten en krijg het antwoord op schrift.
+
+</AccordionContent>
+</AccordionItem>
+</Accordion>
+
+## Een nalevings-eerst bedrijf opbouwen
+
+De meest succesvolle installateurs in het NDAA-tijdperk hebben naleving een concurrentievoordeel gemaakt, geen last:
+
+1. **Specialiseer in conforme merken** en word de expert. Uw kennis wordt een verkoopargument.
+2. **Maak standaard nalevingspakketten** voor veelvoorkomende federale projecttypes (scholen, rechtbanken, federale gebouwen).
+3. **Documenteer uw toeleveringsketen** en kan papierwerk op verzoek produceren. Overweeg nalevingspakketten te bewaren voor elke grote leverancier die u gebruikt.
+4. **Blijf voor op klantvragen**. Stuur periodieke updates over productbeschikbaarheid en nalevingsstatus.
+5. **Verifieer voordat u inschrijft**. Een afgewezen inschrijving door niet-naleving is beter dan een beëindigd contract en uitsluiting.
+
+## Conclusie: Actiestappen voor 2026
+
+NDAA-naleving is blijvend. De installateurs die floreren, zijn zij die:
+
+- **Hun toeleveringsketens kennen**—tot op componentniveau
+- **Alles documenteren**—papierwerk is uw enige verdediging
+- **Specialiseren in conforme merken**—gok niet op grensgeval apparatuur
+- **Actueel blijven**—lijsten van beperkte entiteiten evolueren jaarlijks
+
+Het goede nieuws: hoogwaardige conforme apparatuur is breed beschikbaar van gerenommeerde fabrikanten. U hoeft geen concessies te doen aan prestaties of prijs—wees alleen bewuster over inkoop.
+
+**Voor uw volgende federale of staatsproject:**
+
+1. Doorloop uw huidige productcatalogus op afhankelijkheden van beperkte merken
+2. Bouw relaties op met conforme fabrikanten en distributeurs
+3. Maak een standaard nalevingsdocumentatiepakket
+4. Train uw verkoop- en installatieteams op nalevingsgesprekspunten
+
+Hulp nodig bij het evalueren van specifieke producten? Neem contact op met de overheidverkoopteams van uw voorkeursfabrikanten—zij zijn verplicht nalevingsdocumentatie te verstrekken.
+
+---
+
+_Voor de meest actuele lijst van beperkte entiteiten, bezoek de FCC's Covered List op [fcc.gov/cvets](https://www.fcc.gov/cvets). Dit artikel biedt algemene richtlijnen en vormt geen juridisch advies; raadpleeg juridisch adviseur voor projectspecifieke nalevingsbepalingen._
+
+[Terug naar blog](/blog)
+
+{/* sitemap refreshed */}

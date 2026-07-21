@@ -1,0 +1,168 @@
+---
+title: "Tầm Nhìn Ban Đêm Không Hoạt Động? Hướng Dẫn Khắc Phục (2026)"
+description: "Khắc phục IR trắng xóa, không có tầm nhìn ban đêm, hình ảnh mờ, biển số mờ, lỗi tầm nhìn màu ban đêm. Chẩn đoán từng bước cho mọi loại camera: PoE, Wi-Fi, pin, chuông cửa."
+publishedAt: 2026-06-01T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "night-vision-not-working-troubleshooting-guide"
+author: "Your Name"
+tags: ["khắc-phục", "tầm-nhìn-ban-đêm", "ir", "lắp-đặt", "diy"]
+postType: "howto"
+---
+
+Lỗi tầm nhìn ban đêm là khiếu nại #1 "camera hoạt động ban ngày, vô dụng ban đêm." Hướng dẫn này đi qua mọi chế độ lỗi với chẩn đoán, cách khắc phục và khi nào cần thay thế.
+
+<Badge variant="outline">Phân Loại Nhanh</Badge>
+1. **Đèn IR có sáng không?** (ánh đỏ ban đêm) → Không = Nguồn/Board IR / Có =
+Quang học/Cấu hình 2. **Hình ảnh trắng/xám?** → Phản xạ IR (góc/khoảng cách) 3.
+**Hình đen/nhiễu?** → IR yếu / màn trập chậm / cảm biến hỏng 4. **Tầm nhìn màu
+ban đêm tắt?** → Ánh sáng môi trường quá thấp / cài đặt tắt
+
+## 1. Đèn IR Không Sáng (Không Có Ánh Đỏ)
+
+### Cách Kiểm Tra Đèn IR
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="check-ir">
+    <AccordionTrigger>Cách Kiểm Tra Đèn IR</AccordionTrigger>
+    <AccordionContent>
+
+**Kiểm tra bằng mắt:** Đứng trước camera ban đêm → tìm **ánh đỏ mờ** (850 nm) hoặc **không thấy** (940 nm "ẩn"). **Kiểm tra bằng camera điện thoại:** Chỉ camera điện thoại vào camera → IR hiện **tím/trắng sáng** trên màn hình (cảm biến điện thoại thấy gần-IR). **Trạng thái ứng dụng:** Giao diện web / NVR → "Trạng thái IR" / "Chế độ đêm" → nên hiện "Bật" hoặc "Tự động."
+
+</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+### Nguyên Nhân & Cách Khắc Phục
+
+| Nguyên nhân                       | Chẩn đoán                                       | Khắc phục                                                                     |
+| --------------------------------- | ----------------------------------------------- | ----------------------------------------------------------------------------- |
+| **Kính lọc IR kẹt (Chế độ ngày)** | Ảnh có màu ban đêm, không có ánh IR             | Tắt nguồn (12V/PoE 30s). Gõ nhẹ camera. Cập nhật firmware                     |
+| **LDR (Photoresistor) hỏng**      | IR không tự bật; bật tay được                   | Che LDR (cửa sổ nhỏ trong suốt) → nếu IR kích hoạt, thay LDR ($2) hoặc camera |
+| **Board IR LED chết**             | Có nguồn 12V/PoE, LED nguội, bật tay không được | Thay camera (board không sửa được)                                            |
+| **Nguồn không đủ cho IR**         | Ngày OK, đêm khởi động lại / IR nhấp nháy       | Kiểm tra điện áp tại camera dưới tải IR                                       |
+| **Lỗi firmware**                  | Bản cập nhật gần đây làm hỏng auto-IR           | Quay lại firmware cũ; báo cáo nhà cung cấp                                    |
+| **IR 940 nm (ẩn)**                | Không ánh đỏ, kiểm tra điện thoại thấy tím      | Bình thường — 940 nm mắt người không thấy                                     |
+
+### Sụt Áp Dưới Tải IR (Quan Trọng)
+
+**Đèn IR tiêu thụ thêm 2–5W.** Camera chạy ban ngày, sập ban đêm.
+
+<Callout type="warning">
+
+**Kiểm tra:** Đồng hồ vạn năng tại đầu vào nguồn camera. Điện áp ban ngày vs ban đêm (IR bật). **Sụt >0.5V (12V) hoặc >2V (PoE 48V) = cáp quá dài / khổ quá nhỏ / vượt ngân sách switch.**
+
+</Callout>
+
+## 2. IR Trắng Xóa / Rửa Trôi / Xám
+
+**Triệu chứng:** Hình ban đêm = đốm trắng/xám sáng, không chi tiết. IR phản xạ khỏi bề mặt gần.
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="whiteout">
+    <AccordionTrigger>Nguồn Phản Xạ Thường Gặp & Cách Khắc Phục</AccordionTrigger>
+    <AccordionContent>
+
+| Bề mặt                        | Khoảng cách     | Khắc phục                                                       |
+| ----------------------------- | --------------- | --------------------------------------------------------------- |
+| **Tường / Siding / Fascia**   | 6–24"           | Nghiêng camera **xuống 15–30°**; đưa ra xa 12–18" (tay mở rộng) |
+| **Mái hiên / Soffit**         | 0–12"           | Gắn **dưới** soffit, không áp sát                               |
+| **Cửa sổ / Kính**             | Bất kỳ          | **Không bao giờ** chụp qua kính (IR phản xạ 100%)               |
+| **Mạng nhện / Bụi trên dome** | Trên ống kính   | Lau hàng tháng; dùng vải che vòng IR                            |
+| **Mưa / Tuyết / Sương mù**    | Trong không khí | Đèn IR ngoài (gắn xa ống kính)                                  |
+| **Viền trắng / Máng xối**     | 12–36"          | Sơn đen mờ (sơn BBQ) hoặc che bằng băng dính                    |
+| **Biển số (Phản quang)**      | 20–50 ft        | Nghiêng xuống; IR ngoài; camera LPR có polarizer                |
+
+</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+### Các Bước Khắc Phục Whiteout
+
+1. **Xác định bề mặt phản xạ:** Ra ngoài ban đêm, xem ánh IR trên bề mặt. Dùng camera điện thoại để thấy tia IR.
+2. **Chỉnh lại góc:** Nghiêng **xuống 15–30°** từ ngang.
+3. **Thêm khoảng cách:** Giá mở rộng (12–24") đưa hình nón IR qua vật gần.
+4. **Đèn IR ngoài:** Gắn cách 10–20 ft, hướng vào khu vực mục tiêu. Tắt IR trên camera.
+5. **Smart IR:** Camera tự giảm cường độ IR cho vật gần. Bật trong cài đặt.
+6. **Kiểm tra kính lọc IR:** Kẹt "ra" (chế độ đêm) = ảnh màu ban ngày. Kẹt "vào" (chế độ ngày) = không IR. Tắt nguồn.
+
+## 3. Hình Đen / Nhiễu / Hạt
+
+**Triệu chứng:** Tối, lốm đốm, video "tuyết." Không chi tiết.
+
+| Nguyên nhân                            | Chẩn đoán                     | Khắc phục                                               |
+| -------------------------------------- | ----------------------------- | ------------------------------------------------------- |
+| **IR quá yếu cho khoảng cách**         | Mục tiêu >50% tầm IR định mức | Đèn IR ngoài; đưa camera gần hơn                        |
+| **Màn trập quá chậm (mờ chuyển động)** | Vệt ma, vệt sáng              | Đặt **Màn trập tối thiểu: 1/100s** (1/250s cho biển số) |
+| **Gain/ISO tối đa**                    | Nhiễu = "tuyết"               | Thêm ánh sáng (IR ngoài, đèn đường); giảm gain tối đa   |
+| **WDR tắt**                            | Đèn sáng làm chói camera      | Bật **WDR: 120 dB+** (True WDR, không DWDR)             |
+| **Dome bẩn / xước**                    | Hào quang quanh đèn           | Thay dome ($15); lau microfiber + dung dịch             |
+| **Cảm biến xuống cấp**                 | Dần dần qua các năm           | Thay camera (CMOS già, điểm nóng tăng)                  |
+| **Nén quá cao**                        | Hiện tượng khối ban đêm       | Bitrate: CBR 4–6 Mbps (4K) / 2–3 Mbps (2K)              |
+
+### Tốc Độ Màn Trập Tham Khảo
+
+| Mục tiêu      | Màn trập tối thiểu  | Ghi chú                  |
+| ------------- | ------------------- | ------------------------ |
+| Khu vực chung | 1/50s (1/60s US)    | Cân bằng sáng vs mờ      |
+| Người đi bộ   | 1/100s              | Chân tay sắc nét         |
+| **Biển số**   | **1/250s – 1/500s** | **Quan trọng — đặt tay** |
+| Xe nhanh      | 1/500s – 1/1000s    | Cần IR ngoài             |
+
+## 4. Lỗi Tầm Nhìn Màu Ban Đêm
+
+**Tầm nhìn màu ban đêm (CNV)** = Cảm biến lớn (1/1.8", 1/1.2") + ISP thiếu sáng + **cần ánh sáng môi trường**.
+
+| Chế độ lỗi             | Nguyên nhân                | Khắc phục                                                                  |
+| ---------------------- | -------------------------- | -------------------------------------------------------------------------- |
+| **Ở B&W (IR bật)**     | Ánh sáng môi trường <1 lux | CNV cần ~3–5 lux. Thêm **đèn LED trắng ấm (3000K)** cách 10–20 ft          |
+| **Màu nhiễu/hạt**      | Gain quá cao               | Giảm gain tối đa; thêm ánh sáng; chấp nhận B&W IR                          |
+| **Màu sai (tím/xanh)** | Cân bằng trắng lẫn         | Đặt WB thành "Ngoài trời" / "Đèn đường" / 3000K                            |
+| **IR + CNV xung đột**  | Cả hai bật = màu lạ        | Tắt IR khi CNV hoạt động                                                   |
+| **Không hỗ trợ**       | Thiếu cảm biến CNV         | Cần cảm biến 1/1.8"+ (Reolink ColorX, Hikvision ColorVu, Dahua Full-Color) |
+
+## 5. Chụp Biển Số Ban Đêm (LPC)
+
+**LPC thất bại ban đêm 90% do:** Phản xạ IR từ biển + màn trập chậm + IR yếu.
+
+**Danh sách kiểm tra LPC ban đêm:**
+
+- Camera 4K/8MP + zoom quang (varifocal 2.8–12mm hoặc 5–50mm) hoặc LPR chuyên dụng (2MP, 100+ fps, global shutter)
+- Màn trập: **1/250s tối thiểu** (chỉnh tay)
+- IR: Đèn ngoài (850 nm, 30–50° beam) gắn xa camera, hướng vào khu vực biển số
+- Góc: ≤30° so với vuông góc; độ cao 3–4 ft (ngang biển số)
+- WDR: 120 dB+ True WDR
+
+## 6. Vấn Đề Camera Chuông Cửa Ban Đêm
+
+| Vấn đề                    | Nguyên nhân              | Khắc phục                                        |
+| ------------------------- | ------------------------ | ------------------------------------------------ |
+| Khuôn mặt khách trắng xóa | IR phản xạ từ mái hiên   | Bộ góc chêm 15–25° xuống; tắt IR → dùng đèn hiên |
+| Không tầm nhìn ban đêm    | Chế độ tiết kiệm pin     | Cắm dây (16–24V AC) → bật IR toàn thời gian      |
+| Màu ban đêm tắt           | Ánh sáng môi trường thấp | Thêm **đèn LED 3000K** trong đèn hiên            |
+| Bỏ lỡ chuyển động ban đêm | Tầm PIR < tầm IR         | Giảm độ nhạy IR / thu hẹp vùng                   |
+
+## 7. Camera Pin/Mặt Trời Ban Đêm
+
+| Vấn đề                         | Nguyên nhân            | Khắc phục                                           |
+| ------------------------------ | ---------------------- | --------------------------------------------------- |
+| IR giết pin trong 1 tuần       | IR = 2–4W liên tục     | Tắt IR; dùng đèn pha chuyển động                    |
+| Không tầm nhìn đêm mùa đông    | Li-ion <32°F ngừng sạc | LiFePO₄ (Reolink Go PT Plus); hộp cách nhiệt + sưởi |
+| Chuyển động chỉ hoạt động ngày | PIR bị chặn bởi kính   | Gắn **ngoài** kính; PIR cần chênh lệch nhiệt        |
+
+## 8. Khi Nào Nên Thay vs Sửa
+
+| Triệu chứng                      | Sửa được?                 | Thay khi                              |
+| -------------------------------- | ------------------------- | ------------------------------------- |
+| Không IR, có nguồn               | Board IR ($50) / LDR ($2) | Camera >3 năm, nước vào               |
+| Kính lọc IR kẹt                  | Gõ/tắt nguồn (tạm)        | Cơ chế mòn; >2 năm                    |
+| Trắng xóa không khắc phục được   | Không                     | Sai camera cho vị trí (dùng IR ngoài) |
+| Cảm biến nhiễu (điểm nóng)       | Ánh xạ điểm ảnh           | >5% điểm chết; >4 năm                 |
+| Khởi động lại ngắt quãng ban đêm | Sụt áp                    | Sửa cáp/nguồn; nếu vẫn → thay         |
+
+## Hướng Dẫn Liên Quan
+
+- [Vấn Đề Camera An Ninh Thường Gặp & Cách Khắc Phục](/blog/common-security-camera-problems-fixes) — Chỉ mục khắc phục đầy đủ
+- [Chạy Cáp PoE Cho Camera](/blog/poe-camera-cable-running-diy-installation) — Kiểm tra sụt áp
+- [Camera Năng Lượng Mặt Trời Tốt Nhất](/blog/best-solar-powered-security-cameras-offgrid) — Pin mùa đông/IR
+- [Cách Gắn Camera Ngoài Trời](/blog/how-to-mount-outdoor-cameras-wall-ceiling-eave) — Góc cho IR
+- [Máy Tính Lưu Trữ Video CCTV](/blog/cctv-video-storage-calculator-hard-drive-space) — Lập kế hoạch bitrate ban đêm

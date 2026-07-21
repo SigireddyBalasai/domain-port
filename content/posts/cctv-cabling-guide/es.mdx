@@ -47,9 +47,11 @@ El mal cableado es responsable de más fallos de CCTV que cualquier otro factor.
 Esta guía cubre todo lo que necesita para cablear correctamente un sistema de cámaras PoE: selección de cable, terminación, conduit, protección contra sobretensiones, las herramientas necesarias y los errores que separan una instalación profesional de una problemática.
 
 <Callout type="info" title="El 40% de los Problemas PoE Son de Cableado">
-  Datos de la industria muestran que aproximadamente el 40% de los tickets de
-  "cámara desconectada" se originan en problemas de cable. Hacer el cableado
-  correcto desde el día uno elimina el modo de fallo más común.
+
+Datos de la industria muestran que aproximadamente el 40% de los tickets de
+"cámara desconectada" se originan en problemas de cable. Hacer el cableado
+correcto desde el día uno elimina el modo de fallo más común.
+
 </Callout>
 
 ## Selección del Cable
@@ -63,10 +65,12 @@ Esta guía cubre todo lo que necesita para cablear correctamente un sistema de c
 | Cat6A | 23 AWG  | 10 Gbps a 100 m                | Todos incluyendo PoE++ Tipo 4 (100W) | Cámaras 4K, tendidos sobre 70 m, PTZ alto consumo |
 
 <Callout type="tip" title="Cat6 es el Punto Dulce para 2026">
-  Cat6 es la mejor opción general para instalaciones de cámaras de seguridad.
-  Los conductores de 23 AWG reducen la caída de voltaje y el calor relacionados
-  con PoE. El margen de ancho de banda de 250 MHz proporciona espacio para video
-  4K. El costo adicional sobre Cat5e es típicamente de solo $0.04-0.10 por pie.
+
+Cat6 es la mejor opción general para instalaciones de cámaras de seguridad.
+Los conductores de 23 AWG reducen la caída de voltaje y el calor relacionados
+con PoE. El margen de ancho de banda de 250 MHz proporciona espacio para video
+4K. El costo adicional sobre Cat5e es típicamente de solo $0.04-0.10 por pie.
+
 </Callout>
 
 ### Cobre Sólido vs. CCA
@@ -82,10 +86,12 @@ Esta es la decisión de cable más importante que tomará.
 | Costo por pie         | ~$0.30-0.50       | ~$0.10-0.15                       |
 
 <Callout type="danger" title="Nunca Use CCA para PoE">
-  El cable CCA tiene mayor resistencia que el cobre puro, lo que significa más
-  caída de voltaje, más calor y fallos de alimentación intermitentes de la
-  cámara. Si el vendedor no indica explícitamente "100% cobre puro" o "cobre
-  sólido", asuma que es CCA.
+
+El cable CCA tiene mayor resistencia que el cobre puro, lo que significa más
+caída de voltaje, más calor y fallos de alimentación intermitentes de la
+cámara. Si el vendedor no indica explícitamente "100% cobre puro" o "cobre
+sólido", asuma que es CCA.
+
 </Callout>
 
 ### Cable Interior vs. Exterior
@@ -133,9 +139,11 @@ Si cualquier parte del cable está expuesta a la intemperie, use cable para exte
 - **Termine en panel de parcheo**: Para tendidos largos, es más fiable que crimpar un RJ45 directo
 
 <Callout type="warning" title="Pruebe Cada Terminación">
-  Use un comprobador de cable para verificar el mapa de hilos, continuidad y
-  cortos en cada tendido antes de conectar una cámara. Una prueba de 30 segundos
-  detecta problemas que tomarían horas diagnosticar después.
+
+Use un comprobador de cable para verificar el mapa de hilos, continuidad y
+cortos en cada tendido antes de conectar una cámara. Una prueba de 30 segundos
+detecta problemas que tomarían horas diagnosticar después.
+
 </Callout>
 
 ## Protección Contra Sobretensiones
@@ -148,9 +156,11 @@ Las cámaras en tendidos PoE largos son vulnerables a sobretensiones inducidas p
 - Conexión a tierra del edificio
 
 <Callout type="danger" title="La Conexión a Tierra No es Opcional">
-  Un protector de sobretensión que no está correctamente conectado a tierra no
-  proporciona protección. Asegúrese de que sus protectores estén conectados a la
-  tierra del edificio.
+
+Un protector de sobretensión que no está correctamente conectado a tierra no
+proporciona protección. Asegúrese de que sus protectores estén conectados a la
+tierra del edificio.
+
 </Callout>
 
 ## Errores Comunes de Cableado
@@ -200,9 +210,11 @@ Los cables sin etiquetar convierten 30 minutos de solución en 3 horas. Etiquete
 5. **Verificación de retención**: Después de 7 días, sin espacios en la línea de tiempo
 
 <Callout type="tip" title="El Límite de 100 Metros">
-  El estándar IEEE 802.3 limita los tendidos Ethernet a 100 metros. Con Cat6 de
-  cobre puro, puede alcanzar 95 metros de forma fiable. Planifique extensores
-  PoE o fibra óptica para cualquier tendido que exceda los 90 metros.
+
+El estándar IEEE 802.3 limita los tendidos Ethernet a 100 metros. Con Cat6 de
+cobre puro, puede alcanzar 95 metros de forma fiable. Planifique extensores
+PoE o fibra óptica para cualquier tendido que exceda los 90 metros.
+
 </Callout>
 
 ## Preguntas Frecuentes
@@ -211,41 +223,53 @@ Los cables sin etiquetar convierten 30 minutos de solución en 3 horas. Etiquete
   <AccordionItem>
     <AccordionTrigger>¿Debería usar Cat5e o Cat6?</AccordionTrigger>
     <AccordionContent>
+
       Cat6 es la línea base recomendada. Los conductores de 23 AWG reducen la
       caída de voltaje, especialmente en tendidos de más de 50 metros. La
       diferencia de costo es mínima comparada con la mano de obra. Reserve Cat5e
       solo para tendidos cortos bajo 30 metros con cámaras 1080p.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       ¿Cuál es la longitud máxima de un cable PoE?
     </AccordionTrigger>
     <AccordionContent>
-      100 metros (328 pies) en total, incluyendo cables de conexión. Más allá,
+
+        100 metros (328 pies) en total, incluyendo cables de conexión. Más allá,
       use un extensor PoE (añade 100 m por unidad), fibra óptica con switch
       remoto, o acerque el NVR.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>¿Necesito cable blindado (STP)?</AccordionTrigger>
     <AccordionContent>
+
       Solo cerca de motores grandes, balastos fluorescentes o maquinaria
       industrial. Para la mayoría de instalaciones, UTP Cat6 es perfectamente
       adecuado. Si usa STP, debe usar conectores blindados y conexión a tierra
       en un solo extremo.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       ¿A qué profundidad debo enterrar el cable Ethernet?
     </AccordionTrigger>
     <AccordionContent>
+
       Según el Código Eléctrico Nacional (NEC), el conduit de PVC debe
       enterrarse al menos 45 cm (18 pulgadas). El conduit metálico requiere solo
-      15 cm (6 pulgadas). Siempre llame a los localizadores de servicios
+        15 cm (6 pulgadas). Siempre llame a los localizadores de servicios
       públicos antes de excavar.
+
     </AccordionContent>
+
   </AccordionItem>
 </Accordion>
 

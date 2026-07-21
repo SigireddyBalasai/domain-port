@@ -1,0 +1,151 @@
+---
+title: "Lưu Trữ Đám Mây vs Lưu Trữ Cục Bộ Cho Camera An Ninh (2026)"
+description: "So sánh mọi tùy chọn lưu trữ: đăng ký đám mây (Ring, Arlo, Nest, Eufy), NVR/DVR, microSD, NAS, S3/Wasabi/Backblaze B2, kết hợp. Chi phí mỗi TB-năm, thời gian lưu, quyền riêng tư, băng thông và phục hồi."
+publishedAt: 2026-06-01T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "cloud-storage-vs-local-storage-security-cameras"
+author: "Your Name"
+tags:
+  [
+    "lưu-trữ-đám-mây",
+    "lưu-trữ-cục-bộ",
+    "nvr",
+    "hướng-dẫn-mua",
+    "quyền-riêng-tư",
+  ]
+postType: "review"
+---
+
+Lưu trữ là nơi hệ thống camera sống hay chết. Mất footage = mất bằng chứng. Đám mây tiện lợi nhưng tốn phí mãi mãi và rủi ro quyền riêng tư. Cục bộ (NVR, microSD, NAS) tốn trả trước nhưng bạn sở hữu. Kết hợp cho cả hai — nếu cấu hình đúng. Hướng dẫn này phân tích mọi tùy chọn với giá 2026 thực tế, tính toán băng thông và khung quyết định.
+
+<Badge variant="outline">Câu Trả Lời Nhanh</Badge> **Hầu hết nhà ở:** NVR PoE
+(cục bộ 24/7) + sao lưu đám mây chỉ cho cảnh báo. **Căn hộ/người thuê:** Camera
+có microSD + đăng ký đám mây tùy chọn. **Doanh nghiệp:** NVR + NAS + sao lưu
+ngoại vi (Wasabi/Backblaze B2) + clip cảnh báo đám mây.
+
+## Bối Cảnh Lưu Trữ (2026)
+
+| Loại                       | Ví dụ                                  | Chi phí            | Thời gian lưu | Quyền riêng tư       | Cần internet     |
+| -------------------------- | -------------------------------------- | ------------------ | ------------- | -------------------- | ---------------- |
+| **Đám mây đăng ký**        | Ring, Arlo, Nest, Eufy, Blink          | $/cam/tháng        | 7–60 ngày     | Nhà cung cấp giữ key | Có (24/7 upload) |
+| **NVR/DVR (Cục bộ)**       | Reolink, Amcrest, Dahua, UniFi         | Phần cứng một lần  | Tháng–Năm     | Bạn giữ key          | Không            |
+| **microSD (Tại chỗ)**      | Tất cả không dây, một số PoE           | Thẻ một lần        | Ngày–Tuần     | Bạn giữ key          | Không            |
+| **NAS / Máy chủ**          | Synology, QNAP, TrueNAS + Frigate      | Phần cứng + ổ cứng | Năm           | Bạn giữ key          | Tùy chọn         |
+| **Object Storage đám mây** | Wasabi, Backblaze B2, AWS S3           | $/TB/tháng         | Vô hạn        | Bạn mã hóa           | Có (sao lưu)     |
+| **Kết hợp**                | UniFi + Cloud Backup, Frigate + rclone | Hỗn hợp            | Nhiều tầng    | Bạn kiểm soát        | Một phần         |
+
+<Callout type="warning">
+
+<strong>Thực tế băng thông:</strong> 8× camera 4K @ 8 Mbps H.265 = 64 Mbps **tải
+lên liên tục**. Hầu hết upload dân cư là 10–35 Mbps. **Đám mây 24/7 đầy đủ là
+bất khả thi trên internet điển hình.** Đám mây = clip chuyển động hoặc luồng
+phụ.
+
+</Callout>
+
+## Đăng Ký Đám Mây: Chi Phí Thực Tế (Giá 2026)
+
+| Dịch vụ                | Tháng (1 cam) | Năm (1 cam) | 5 cam/năm | Lưu       | 2K/4K    | Giới hạn chính       |
+| ---------------------- | ------------- | ----------- | --------- | --------- | -------- | -------------------- |
+| **Ring Protect Basic** | $4.99         | $49.99      | $49.99\*  | 180 ngày  | 1080p    | \*Không giới hạn cam |
+| **Ring Protect Plus**  | $14.99        | $149.99     | $149.99   | 180 ngày  | 1080p    | Giám sát, LTE        |
+| **Arlo Secure**        | $7.99         | $79.99      | $179.99   | 30 ngày   | 2K/4K    | AI, vùng hoạt động   |
+| **Nest Aware**         | $8            | $80         | $80\*     | 30 ngày   | 1080p/2K | \*Không giới hạn cam |
+| **Nest Aware Plus**    | $15           | $150        | $150\*    | 60 ngày   | 4K       | 10 ngày 24/7         |
+| **Eufy Cloud**         | $2.99         | $29.99      | $29.99\*  | 30 ngày   | 2K       | \*Không giới hạn cam |
+| **Blink**              | $3            | $30         | $30\*     | 60 ngày   | 1080p    | \*Không giới hạn cam |
+| **UniFi Cloud Backup** | $0.50/cam     | $6/cam      | $30       | 7–30 ngày | 4K       | Chỉ sao lưu          |
+
+**TCO 5 năm (5 cam, 4K, 30 ngày):** Ring Basic: $250 • Arlo: $900 • Nest: $400 • Eufy: $150 • **NVR cục bộ (8TB): ~$600 một lần** — thắng sau Năm 2.
+
+## Tiết Kiệm Băng Thông: Đám Mây Cục Bộ + Clip
+
+<Callout type="info">
+
+**Đám mây ≠ Sao lưu.** Đám mây là lưu trữ _chính_ cho camera không dây. Nếu mất internet, camera không ghi gì (hoặc chỉ vào microSD nếu hỗ trợ). Sao lưu thực sự = cục bộ 24/7 + bản sao đám mây của sự kiện.
+
+</Callout>
+
+## Lưu Trữ Cục Bộ: NVR Chi Tiết
+
+### NVR vs DVR (2026: Chỉ NVR)
+
+- **DVR:** Đồng trục analog (CVBS/AHD/TVI/CVI) → lỗi thời. Tối đa 5MP. Không PoE.
+- **NVR:** Camera IP qua Ethernet (PoE) → 4K/8K/12MP+, PoE, ONVIF, AI trên NVR hoặc camera.
+
+### Máy Tính Kích Thước NVR
+
+| Camera | Độ phân giải | Bitrate (H.265) | GB/ngày | 14 Ngày | 30 Ngày | Ổ cứng khuyến nghị |
+| ------ | ------------ | --------------- | ------- | ------- | ------- | ------------------ |
+| 4      | 4K (8MP)     | 4 Mbps          | 173     | 2.4 TB  | 5.2 TB  | 2× 8TB (RAID 1)    |
+| 8      | 4K           | 4 Mbps          | 346     | 4.8 TB  | 10.4 TB | 4× 10TB (RAID 5/6) |
+| 16     | 4K           | 4 Mbps          | 691     | 9.7 TB  | 20.7 TB | 8× 10TB (RAID 6)   |
+| 8      | 5MP          | 3 Mbps          | 260     | 3.6 TB  | 7.8 TB  | 3× 8TB (RAID 5)    |
+
+### RAID Cho NVR
+
+| RAID        | Ổ tối thiểu | Dung lượng | Sống sót | Rủi ro dựng lại |
+| ----------- | ----------- | ---------- | -------- | --------------- |
+| **RAID 1**  | 2           | 50%        | 1 ổ      | Thấp            |
+| **RAID 5**  | 3           | (N-1)/N    | 1 ổ      | Trung bình      |
+| **RAID 6**  | 4           | (N-2)/N    | 2 ổ      | Thấp            |
+| **RAID 10** | 4 (chẵn)    | 50%        | 1–2 ổ    | Rất thấp        |
+
+**Khuyến nghị:** RAID 6 cho 6+ ổ. RAID 1 cho 2 ổ. Tránh RAID 5 trên ổ >8TB.
+
+## Lưu Trữ Kết Hợp: Tốt Nhất Cả Hai Thế Giới
+
+| Kiến trúc                 | Lưu trữ chính         | Lưu trữ phụ        | Chi phí/tháng | Tổng lưu trữ             |
+| ------------------------- | --------------------- | ------------------ | ------------- | ------------------------ |
+| **UniFi Protect**         | Cloud Key Gen2+ (8TB) | Cloud Backup       | $3            | 30 ngày + 7 ngày đám mây |
+| **Reolink RLK + FTP**     | NVR (8TB)             | FTP/rsync đến NAS  | $0            | 30 ngày + 90 ngày NAS    |
+| **Frigate + rclone**      | Máy chủ cục bộ (20TB) | Wasabi/Backblaze   | $6–12         | 60 ngày + 1 năm đám mây  |
+| **Synology Surveillance** | NAS (12TB RAID 1)     | Hybrid Backup (S3) | $8            | 30 ngày + 90 ngày S3     |
+
+## Lựa Chọn Theo Trường Hợp Sử Dụng
+
+| Tình huống                     | Tùy chọn tốt nhất        | Chi phí    | Lý do                      |
+| ------------------------------ | ------------------------ | ---------- | -------------------------- |
+| **Nhà 4 cam 4K**               | NVR PoE 8TB              | ~$600      | Cục bộ, không phí, 30 ngày |
+| **Căn hộ 2 cam**               | microSD + đám mây        | $50/năm    | Không khoan tường          |
+| **Nhà dùng Eufy/Arlo**         | microSD + đám mây cơ bản | $30–80/năm | Tận dụng hệ sinh thái      |
+| **Doanh nghiệp nhỏ 8 cam**     | NVR + NAS RAID           | ~$1,500    | Sao lưu dư thừa            |
+| **Tuân thủ (30 ngày, mã hóa)** | NAS + Wasabi (mã hóa)    | $30/tháng  | Bằng chứng pháp lý         |
+
+## Câu Hỏi Thường Gặp
+
+<Accordion>
+  <AccordionItem>
+    <AccordionTrigger>
+      Có thể dùng ổ cứng thường cho NVR không?
+    </AccordionTrigger>
+    <AccordionContent>
+      Không khuyến nghị. Ổ cứng giám sát (WD Purple, Seagate SkyHawk) có
+      firmware xử lý ghi 24/7. Ổ thường ngừng để sửa lỗi, gây mất footage. Trong
+      môi trường giám sát, ổ thường hỏng nhanh gấp 2-3 lần.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Có nên dùng RAID cho NVR không?</AccordionTrigger>
+    <AccordionContent>
+      Có, nếu footage quan trọng. RAID 1 (2 ổ) đơn giản và chết 1 ổ. RAID 6 (4+
+      ổ) cho doanh nghiệp. Nhưng RAID không phải sao lưu — vẫn cần sao lưu ngoại
+      vi cho hỏa hoạn/trộm. Nếu không có RAID, kiểm tra ổ hàng tháng qua SMART.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionTrigger>Đám mây có an toàn không?</AccordionTrigger>
+    <AccordionContent>
+      Tùy thuộc. E2E mã hóa (HomeKit HSV, Eufy cục bộ): an toàn hơn. Đám mây
+      không mã hóa (Ring mặc định, Arlo): nhà cung cấp có thể xem video. Đọc
+      chính sách quyền riêng tư. Cho doanh nghiệp: mã hóa trước khi gửi lên
+      S3/Wasabi.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+## Hướng Dẫn Liên Quan
+
+- [Cách Thiết Lập Hệ Thống NVR PoE](/blog/poe-nvr-setup) — Máy tính lưu trữ, kích thước ổ cứng
+- [Máy Tính Lưu Trữ Video CCTV](/blog/cctv-video-storage-calculator-hard-drive-space) — Công thức GB/ngày chi tiết
+- [Camera An Ninh Ngoài Trời Tốt Nhất 2026](/blog/best-outdoor-security-cameras-2026) — Camera tương thích lưu trữ

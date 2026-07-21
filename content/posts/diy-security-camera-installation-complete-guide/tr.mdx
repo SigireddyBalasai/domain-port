@@ -1,0 +1,562 @@
+---
+title: "DIY Güvenlik Kamerası Kurulumu: Eksiksiz Kılavuz (2026)"
+description: "Güvenlik kameralarınızı kendiniz kurmak için adım adım kılavuz. Profesyonel kurulumdan $2,000+ tasarruf edin. Planlama, montaj, kablo çekme, yapılandırma ve test."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "diy-security-camera-installation-complete-guide"
+author: "Your Name"
+tags: ["diy-installation", "guide", "howto"]
+postType: "howto"
+---
+
+## DIY Güvenlik Kamerası Kurulumu
+
+Profesyonel güvenlik kamerası kurulumu **kamera başına $150-$400** (işçilik + malzeme) tutar. 8 kameralı tipik bir PoE sistemi: **$1,200-$3,200 işçilik**. Bu kılavuzla DIY: **$0 işçilik + $100-$300 alet**. Bu kılavuz, planlamadan ilk kayda kadar her adımı kapsar.
+
+<Badge variant="outline">Dürüst Değerlendirme</Badge> **DIY size uygunsa:**
+Merdiven kullanmaktan, delmekten, temel ağ kurulumundan ve diyagramları takip
+etmekten rahatsanız. **Profesyonel çağırın eğer:** Çok katlı çatı geçişleri,
+beton/tuğla delme, izin gerekli veya işçilik garantisi istiyorsanız.
+
+---
+
+## Aşama 1: Planlama ve Tasarım (Önce Bunu Yapın)
+
+### 1. Kamera Yerleşim Haritası
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="placement">
+    <AccordionTrigger>Kameralar Nereye Yerleştirilmeli (Öncelik Sırası)</AccordionTrigger>
+    <AccordionContent>
+
+<strong>Seviye 1 — Zorunlu (Giriş/Çıkış):</strong>
+<ul>
+  <li>Ön kapı (kapı zili veya üstten)</li>
+  <li>Arka/yan kapılar</li>
+  <li>Garaj girişi (yaya + araç)</li>
+  <li>Araba yolu (plakalar için)</li>
+</ul>
+
+<strong>Seviye 2 — Yüksek Değer (Kapsama):</strong>
+<ul>
+  <li>Birinci kat pencereleri (zemin erişimi)</li>
+  <li>Arka bahçe / veranda (hırsızlık, vandalizm)</li>
+  <li>Yan kapılar / çit boşlukları</li>
+  <li>Paket bırakma bölgesi</li>
+</ul>
+
+<strong>Seviye 3 — Durumsal:</strong>
+<ul>
+  <li>Havuz / jakuzi (güvenlik + sorumluluk)</li>
+  <li>Kulübe / müstakil garaj</li>
+  <li>Posta kutusu (hırsızlık)</li>
+  <li>Sokak görünümü (mahalle bağlamı)</li>
+</ul>
+
+<strong>Yerleşim Kuralları:</strong>
+<ul>
+  <li>
+    <strong>Yükseklik:</strong> 2.4-3 metre (ulaşılamaz, iyi açı)
+  </li>
+  <li>
+    <strong>Açı:</strong> 15-30° aşağı yataydan
+  </li>
+  <li>
+    <strong>Görüş alanı örtüşmesi:</strong> Bitişik kameralar arasında %20-30
+  </li>
+  <li>
+    <strong>Arkadan aydınlatma yok:</strong> Gün doğumu/batımına, parlak
+    ışıklara bakmaktan kaçının
+  </li>
+  <li>
+    <strong>Hava:</strong> Mümkünse saçak/çatı altı; açıkta ise IP66+
+  </li>
+</ul>
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### 2. Mimari Seçimi
+
+| Mimari               | En İyi İçin                    | Kablo Çekimi            | Güç                | Zorluk     |
+| -------------------- | ------------------------------ | ----------------------- | ------------------ | ---------- |
+| **PoE NVR Kiti**     | 4-16 kamera, kalıcı, 7/24      | Her kameraya Cat5e/6    | PoE (switch/NVR)   | Orta       |
+| **WiFi + NVR**       | 2-8 kamera, zor yerler         | Sadece güç (priz/güneş) | 120V / Pil / Güneş | Düşük-Orta |
+| **Pil/Güneş Sadece** | 1-4 kamera, kablo yok, kiralık | Yok                     | Pil + Güneş paneli | Düşük      |
+| **Hibrit**           | Çoğu ev                        | Karışık                 | Karışık            | Orta       |
+
+<Callout type="tip">
+
+**Mümkünse PoE ile başlayın.** En güvenilir, en kaliteli ve en düşük uzun vadeli maliyettir. WiFi/pil sadece kablonun gerçekten pratik olmadığı yerlerde kullanın.
+
+</Callout>
+
+### 3. Kablo Güzergahı Planlaması (PoE)
+
+- **İç duvarlar:** Üst plakayı delin, bodruma/çatı katına yönlendirin
+- **Dış duvarlar:** Eşik levhasından delin, silikonla kapatın
+- **Çatı katı:** Kirişler boyunca ilerletin, her 1.2m'de zımbalayın, yalıtım temasından kaçının
+- **Kanal:** Açık geçişler için 19mm EMT veya PVC (birçok bölgede yönetmelik)
+- **Maksimum uzunluk:** Cat5e/6 başına 100 metre. Ötesi için PoE genişletici veya fiber kullanın.
+
+### 4. Alet ve Malzeme Kontrol Listesi
+
+**Temel Aletler:**
+
+- [ ] Akülü matkap (18V+)
+- [ ] 12mm/22mm matkap ucu (kablo delikleri)
+- [ ] Kablo çekme bandı (7.5-15 metre)
+- [ ] Saplama bulucu (AC algılamalı)
+- [ ] Su terazisi
+- [ ] Merdiven (2 kat için uzatmalı)
+- [ ] RJ45 kıvırma aleti + kablo test cihazı
+- [ ] Kablo sıyırıcı (Cat5e/6)
+- [ ] Silikon dolgu (dış mekan)
+- [ ] Kablo zımbaları / J-kancaları / kablo bağları
+
+**Malzemeler (PoE):**
+
+- [ ] Cat6 solid copper (CMR iç duvar, CMX dış mekan)
+- [ ] RJ45 pass-through konektörler (50'li paket)
+- [ ] Keystone jaklar + duvar plakaları (isteğe bağlı, temiz sonlandırma)
+- [ ] PoE switch (8/16/24 port, 802.3at/bt) veya PoE portlu NVR
+- [ ] NVR+switch için UPS (1500VA min)
+
+**Malzemeler (Kablosuz/Pil):**
+
+- [ ] Montaj braketleri (dahil veya universal)
+- [ ] Güneş panelleri + montaj kolları
+- [ ] Dış mekan prizleri / hava koşullarına dayanıklı kutular
+
+---
+
+## Aşama 2: Montaj Donanımı ve Teknikleri
+
+### Duvar Montajı (Sıva, Tuğla, Dış Cephe, Vinil)
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="wall-mount">
+    <AccordionTrigger>Yüzeye Özel Montaj</AccordionTrigger>
+    <AccordionContent>
+
+<strong>Vinil / Alüminyum Dış Cephe:</strong>
+<ul>
+  <li>
+    <strong>Vinil dış cephe montaj bloğu</strong> kullanın (J-kanal uyumlu) —
+    dış cepheyi delmeyin
+  </li>
+  <li>Veya: 3M VHB bant + arka kaplamaya vida (saplamayı bulun)</li>
+</ul>
+
+<strong>Sıva / Tuğla / Beton:</strong>
+<ul>
+  <li>
+    <strong>Darbeli matkap + 6mm mason ucu</strong> → Plastik dübeller +
+    paslanmaz vidalar
+  </li>
+  <li>
+    <strong>Tapcon vidaları</strong> doğrudan masonluğa — dübel gerekmez
+  </li>
+  <li>
+    <strong>Yapıştırıcı seçeneği:</strong> 3M VHB 5952 + mekanik vida
+    (yedeklilik)
+  </li>
+</ul>
+
+<strong>Ahşap / Sertboard:</strong>
+<ul>
+  <li>
+    Kılavuz deliği → <strong>#8-#10 paslanmaz/kaplamalı güverte vidası</strong>{" "}
+    5cm saplamaya
+  </li>
+  <li>
+    Lap dış cephede düz yüzey için <strong>montaj bloğu</strong> kullanın
+  </li>
+</ul>
+
+<strong>Saçak / Çatı Altı (En İyi Konum):</strong>
+<ul>
+  <li>
+    <strong>Kiriş kuyruğuna</strong> veya <strong>çatı altı çerçevesine</strong>{" "}
+    vidalayın — sadece ince panele değil
+  </li>
+  <li>
+    <strong>4-5cm vida</strong> ile sağlam ahşaba
+  </li>
+  <li>Saçak eğimliyse açılı braket kullanın</li>
+</ul>
+
+<strong>Profesyonel İpucu:</strong> Her zaman yapıya vurun. Kamera + rüzgar = kaldıraç. Saplamaya 4 vida > sadece kaplamaya 8 vida.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### Tavan / Saçak Altı Montajı
+
+- **Bağlantı kutusu** (hava koşullarına dayanıklı, 10cm yuvarlak) → kamera braketi kutuya vidalanır
+- **Kanal** (12mm EMT veya LFMC) kutudan kameraya kablo açıktaysa
+- **Sızdırmazlık:** Kutu geçişi + kablo girişi etrafına silikon
+
+### Direk Montajı (Araba Yolu, Kapı, Bahçe)
+
+- **Schedule 40 çelik boru** (38mm veya 50mm iç çap) → betona gömün (45cm derin × 20cm çap)
+- **U-civata braketi** kamera için
+- **Kanal** direk içinde veya yüzey montajlı LFMC
+- **Topraklama:** #6 CU direk tabanında toprak çubuğuna (NEC 250.52)
+
+---
+
+## Aşama 3: Kablo Çekme (PoE Sistemleri)
+
+### İç Mekan Kablo Çekme (Çatı Katı → Duvar → Kamera)
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="cable-run">
+    <AccordionTrigger>Adım Adım: Çatı Katından Dış Kamera</AccordionTrigger>
+    <AccordionContent>
+
+<ol>
+  <li>
+    <strong>Kamera konumunu bulun</strong> içeriden (çatı katı) — bilinen bir
+    dönüm noktasından (baca, havalandırma) ölçün
+  </li>
+  <li>
+    <strong>22mm delik açın</strong> üst plakadan (iç duvar) veya saçaktan
+    (saçak montajı)
+  </li>
+  <li>
+    <strong>Kablo çekme bandını itin</strong> çatı katından duvar boşluğundan
+    aşağı kamera deliğine
+  </li>
+  <li>
+    <strong>Cat6'yı takın</strong> kablo çekme bandına: 15cm katlayın,
+    bandajlayın, <strong>nazikçe</strong> çekin
+  </li>
+  <li>
+    <strong>90-120cm boşluk bırakın</strong> kamera ucunda (servis döngüsü)
+  </li>
+  <li>
+    <strong>Dış deliği kapatın:</strong> Kablo + lastik etrafına silikon
+  </li>
+  <li>
+    <strong>Her iki ucu etiketleyin:</strong> "CAM-01 Ön Kapı" (kalıcı kalem +
+    kablo etiketi)
+  </li>
+  <li>
+    <strong>Sürekliliği test edin</strong> sonlandırmadan önce kablo test cihazı
+    ile
+  </li>
+</ol>
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### RJ45 Sonlandırma (Pass-Through — En Hızlı, En Güvenilir)
+
+<Callout type="note">
+
+**Pass-through konektör kullanın.** Standart RJ45 hassas kablo kesimi gerektirir. Pass-through, kıvırmadan önce renk sırasını doğrulamanızı sağlar. **T568B standardı** (en yaygın):
+
+</Callout>
+
+| Pin | Renk          | Pin | Renk             |
+| --- | ------------- | --- | ---------------- |
+| 1   | Turuncu/Beyaz | 5   | Mavi/Beyaz       |
+| 2   | Turuncu       | 6   | Yeşil            |
+| 3   | Yeşil/Beyaz   | 7   | Kahverengi/Beyaz |
+| 4   | Mavi          | 8   | Kahverengi       |
+
+**Kıvırma İşlemi:**
+
+1. 4cm kılıf sıyırın → çiftleri çözün → T568B düzenleyin
+2. Pass-through'a yerleştirin → renkleri önde görünür olduğunu doğrulayın
+3. Konektör yüzüyle aynı hizada kesin
+4. **Sıkıca** kıvırın (mandallı alet bir kez tıklar)
+5. **Her kabloyu test edin** — 8 LED yeşil = iyi
+
+### PoE Switch / NVR Bağlantısı
+
+- Her kamera switche/NVR'ye ayrı ayrı gider (daisy-chain değil)
+- **Patch panel** (isteğe bağlı ama profesyonel): 12/24 port keystone → switche kısa patch kablolar
+- **UPS:** NVR + PoE switch yedek güçte. Kameralar kesinti sırasında çalışmaya devam eder.
+
+---
+
+## Aşama 4: Kablosuz / Pil Kamerayı Kurulumu
+
+### WiFi Optimizasyonu
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="wifi-opt">
+    <AccordionTrigger>Kameralara Güvenilir WiFi</AccordionTrigger>
+    <AccordionContent>
+
+<strong>Yerleşim:</strong>
+<ul>
+  <li>
+    Kamera yönlendiriciye/AP'ye <strong>15 metre</strong> mesafede (en fazla 2
+    duvar)
+  </li>
+  <li>Metal dış cephe, baca, HVAC kanalından kaçının</li>
+</ul>
+
+<strong>Donanım Yükseltmeleri:</strong>
+<ul>
+  <li>
+    <strong>Mesh sistemi</strong> (Eero Pro 6E, UniFi Dream Router, Asus
+    ZenWiFi) — kablolu backhaul tercih edilir
+  </li>
+  <li>
+    <strong>Dış mekan AP</strong> (UniFi U6 Mesh, Ubiquiti UAP-AC-M) — PoE
+    güçlü, saçak altı
+  </li>
+  <li>
+    <strong>Yönlü anten</strong> (2.4 GHz Yagi) uzun menzil tek kamera için
+  </li>
+</ul>
+
+<strong>Kanal Planlaması:</strong>
+<ul>
+  <li>2.4 GHz: Sadece kanal 1, 6, 11 (çakışmayan)</li>
+  <li>
+    Kamerayı 2.4 GHz'e zorlayın (daha iyi nüfuz) — kamera uygulamasında 5 GHz'i
+    devre dışı bırakın
+  </li>
+  <li>
+    2.4 GHz için <strong>20 MHz genişlik</strong> ayarlayın (40 değil)
+  </li>
+</ul>
+
+<strong>Test:</strong> Kamera konumunda telefon → Speedtest → Kamera başına <strong>>5 Mbps yükleme</strong> (1080p) / <strong>>15 Mbps</strong> (4K)
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### Pil / Güneş Enerjisi Kurulumu
+
+1. **Tamamen şarj edin** montajdan önce (12-24 saat USB-C)
+2. **Uygulamaya eşleştirin** montaj yüksekliğinde (WiFi sinyalini test edin)
+3. **Braketi monte edin** → kamerayı takın → açıyı ayarlayın
+4. **Güneş paneli:** Kuzey Yarımküre'de gerçek güneye bakın, eğim = enlem ±15° (kış +15°, yaz -15°)
+5. **Şarjı doğrulayın** — uygulama 1 saat içinde ☀️ / ⚡ simgesi gösterir
+6. **Programlar ayarlayın:** Gece sadece hareket; canlı görüntü otomatik başlatmayı kapatın
+
+---
+
+## Aşama 5: NVR / VMS Yapılandırması
+
+### İlk Kurulum (Reolink / Amcrest / Dahua / Hikvision / UniFi)
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="nvr-setup">
+    <AccordionTrigger>NVR İlk Açılış Kontrol Listesi</AccordionTrigger>
+    <AccordionContent>
+
+<ol>
+  <li>
+    <strong>HDD'leri takın</strong> güç vermeden önce (SATA, WD Purple / Seagate
+    SkyHawk / Toshiba S300)
+  </li>
+  <li>
+    <strong>Açın</strong> → Sihirbaz: Tarih/Saat (NTP), Dil, Şifre (güçlü!)
+  </li>
+  <li>
+    <strong>Ağ:</strong> NVR için statik IP (örn. 192.168.1.50), Ağ Geçidi, DNS
+    (1.1.1.1)
+  </li>
+  <li>
+    <strong>PoE Portları:</strong> Tümünü etkinleştirin → "Oto Ekle" kameralar
+    (kameraları tek tek takın)
+  </li>
+  <li>
+    <strong>Kodlama Ayarları (kamera başına):</strong> Ana Akış: 4K/8MP @ 15-20
+    fps, H.265, VBR, 4-6 Mbps. Alt Akış: 720p/D1 @ 15 fps, H.265, 0.5-1 Mbps
+    (mobil canlı görüntü)
+  </li>
+  <li>
+    <strong>Kayıt Programı:</strong> Ana akışta 7/24 sürekli; Alt akışta hareket
+    (alan tasarrufu)
+  </li>
+  <li>
+    <strong>Hareket Bölgeleri:</strong> Sadece ilgili alanları çizin (ağaçlar,
+    cadde, bulutlar hariç)
+  </li>
+  <li>
+    <strong>Akıllı Olaylar:</strong> Kişi/Araç algılamayı etkinleştirin (yanlış
+    alarmları %90 azaltır)
+  </li>
+  <li>
+    <strong>Depolama:</strong> HDD'yi biçimlendirin → Üzerine yazmayı ayarlayın
+    (en eski ilk) → S.M.A.R.T. uyarılarını etkinleştirin
+  </li>
+  <li>
+    <strong>Uzaktan Erişim:</strong> <strong>PORT YÖNLENDİRME YAPMAYIN.</strong>{" "}
+    Kullanın: - <strong>Satıcı Bulutu</strong> (Reolink, Dahua, Hikvision,
+    UniFi) — en kolay - <strong>VPN</strong> (Router'da WireGuard, Tailscale,
+    ZeroTier) — en güvenli -{" "}
+    <strong>Tailscale Funnel / Cloudflare Tunnel</strong> — ileri düzey, VPN
+    istemcisi gerekmez
+  </li>
+</ol>
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### Hard Disk Seçimi ve RAID
+
+| Disk                          | Kapasite | İş Yükü Oranı  | Garanti | En İyi İçin            |
+| ----------------------------- | -------- | -------------- | ------- | ---------------------- |
+| WD Purple                     | 1-18 TB  | 180 TB/yıl     | 3 yıl   | Standart NVR           |
+| Seagate SkyHawk               | 1-20 TB  | 180 TB/yıl     | 3 yıl   | Standart NVR           |
+| WD Purple Pro                 | 8-22 TB  | 300 TB/yıl     | 5 yıl   | RAID / Çoklu akış      |
+| Seagate Exos X / IronWolf Pro | 4-24 TB  | 300-550 TB/yıl | 5 yıl   | Yüksek kapasiteli RAID |
+| Toshiba S300 / N300           | 4-18 TB  | 180 TB/yıl     | 3 yıl   | Bütçe RAID             |
+
+**RAID Yapılandırması:** 4 bölmeli → RAID 5 (1 disk arızası). 6+ bölmeli → RAID 6 (2 disk arızası). **Asla RAID 0 yapmayın.**
+
+---
+
+## Aşama 6: Ağ Güvenliği (Kritik)
+
+<Callout type="danger">
+
+**Kamera/NVR portlarını (80, 443, 8000, 554, 8080) asla yönlendirmeyin.** Shodan/Censys 7/24 tarar. Varsayılan bilgiler = dakikalar içinde botnet.
+
+</Callout>
+
+**Güvenli Uzaktan Erişim Seçenekleri (En iyi → İyi):**
+
+| Yöntem                                               | Güvenlik             | Kolaylık | Maliyet            | Platform |
+| ---------------------------------------------------- | -------------------- | -------- | ------------------ | -------- |
+| **Satıcı Bulutu** (UniFi, Reolink, Eufy, Ring)       | İyi (TLS, auth)      | En kolay | Ücretsiz           | Tümü     |
+| **Tailscale / ZeroTier** (VPN mesh)                  | Mükemmel (WireGuard) | Orta     | Ücretsiz (kişisel) | Tümü     |
+| **Router'da WireGuard** (OpenWrt, OPNsense, pfSense) | Mükemmel             | Zor      | Ücretsiz           | Tümü     |
+| **Cloudflare Tunnel** (Zero Trust)                   | Mükemmel             | Orta     | Ücretsiz           | Web UI   |
+| **Router'da OpenVPN**                                | İyi                  | Orta     | Ücretsiz           | Tümü     |
+
+**Kamera Düzeyinde Sertleştirme:**
+
+- Yönetici şifresini değiştirin (16+ karakter, şifre yöneticisi)
+- Kullanılmıyorsa ONVIF'i devre dışı bırakın
+- Router'da UPnP'yi kapatın
+- Sadece HTTPS'i etkinleştirin (self-signed sertifika yerel için yeterli)
+- Ürün yazılımını 3 ayda bir güncelleyin
+
+---
+
+## Aşama 7: Test ve Devreye Alma
+
+### Kamera Bazında Doğrulama
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="testing">
+    <AccordionTrigger>Eksiksiz Test Kontrol Listesi</AccordionTrigger>
+    <AccordionContent>
+
+<strong>Gündüz:</strong>
+<ul>
+  <li>[ ] Canlı görüntü: Net, eser yok, doğru yönlendirme</li>
+  <li>[ ] Görüş alanı: Hedef alanı kapsıyor, kör nokta yok</li>
+  <li>[ ] Odak: Hedef mesafede keskin (30 fitte plaka)</li>
+  <li>[ ] Hareket algılama: Yürüme testi → uyarı <5 sn</li>
+  <li>[ ] Akıllı olaylar: Kişi/Araç/Paket doğru tetikleniyor</li>
+  <li>[ ] Kayıt: Sürekli + hareket her ikisi de HDD'ye yazıyor</li>
+</ul>
+
+<strong>Gece (Kritik):</strong>
+<ul>
+  <li>[ ] IR aydınlatıcılar açık (kırmızı parıltı görünür)</li>
+  <li>[ ] IR yansıması yok (cam, beyaz dış cephe, çıkıntı)</li>
+  <li>[ ] Yakındaki ışıklardan "beyazlık" yok</li>
+  <li>[ ] Plaka hedef mesafede okunabilir</li>
+  <li>[ ] Renkli gece görüşü (destekleniyorsa) — ortam ışığı gerekli</li>
+</ul>
+
+<strong>Ağ:</strong>
+<ul>
+  <li>[ ] Kamera IP'sine PC'den erişilebilir (ping)</li>
+  <li>[ ] VLC'de RTSP akışı oynatılabilir</li>
+  <li>
+    [ ] NVR 7/24 kayıt yapıyor, boşluk yok (zaman çizelgesini kontrol edin)
+  </li>
+  <li>[ ] Uzaktan erişim çalışıyor (telefon LTE'de, WiFi değil)</li>
+</ul>
+
+<strong>Fiziksel:</strong>
+<ul>
+  <li>[ ] Tüm vidalar sıkı, kamera sallanmıyor</li>
+  <li>[ ] Kablo ilmekleri sabitlenmiş (rüzgar kamçısı yok)</li>
+  <li>[ ] Silikon sızdırmazlıklar sağlam (su girişi yok)</li>
+  <li>[ ] Kanal bağlantıları sıkı</li>
+  <li>[ ] Toprak teli bağlı (direk montajları)</li>
+</ul>
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+---
+
+## Aşama 8: Bakım Programı
+
+| Sıklık         | Görev                                                                                                                                          |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Haftalık**   | Kayıt zaman çizelgesinde boşluk kontrolü; uzaktan erişimi doğrulayın                                                                           |
+| **Aylık**      | Lensleri temizleyin (mikrofiber + lens temizleyici); gece IR parıltısını kontrol edin                                                          |
+| **3 ayda bir** | Ürün yazılımı güncellemeleri (NVR + kameralar); UPS pil testi; HDD S.M.A.R.T.                                                                  |
+| **Yıllık**     | Dış mekan silikonunu yenileyin; montaj vidalarını sıkın; kamera açılarını gözden geçirin (ağaçlar büyür); UPS pilini değiştirin (3-5 yıl ömür) |
+
+---
+
+## Sorun Giderme Hızlı Referans
+
+| Belirti                        | Olası Neden                    | Çözüm                                                                       |
+| ------------------------------ | ------------------------------ | --------------------------------------------------------------------------- |
+| **Görüntü yok / "Sinyal yok"** | PoE güç bütçesi aşıldı         | Switch PoE bütçesini kontrol edin; enjektöre geçin                          |
+| **Görüntü titriyor**           | Toprak döngüsü / kötü toprak   | Tüm ekipman için ortak toprak; izolatör                                     |
+| **Gece görüşü beyazlıyor**     | IR yansıması                   | Kamerayı aşağı eğin; duvardan/saçaktan uzaklaştırın; IR'yi kapatın          |
+| **Sürekli hareket alarmı**     | Ağaçlar, gölgeler, yağmur      | Bölgeleri daraltın; sadece Kişi/Araç; hassasiyeti azaltın                   |
+| **WiFi düşüyor**               | Kanal yoğunluğu / mesafe       | Sadece 2.4 GHz; 20 MHz; kameraya yakın mesh düğümü; yönlü anten             |
+| **NVR bip sesi çıkarıyor**     | HDD arızası / dolu / fan       | S.M.A.R.T. kontrol edin; sürücüyü değiştirin; fanı temizleyin               |
+| **Uzaktan erişim başarısız**   | ISP CGNAT / çift NAT           | Tailscale / Cloudflare Tunnel / Satıcı Bulutu kullanın                      |
+| **Gece plaka okunamıyor**      | Deklanşör çok yavaş / IR zayıf | Deklanşörü artırın (1/100+); harici IR aydınlatıcı ekleyin; 4K + optik zoom |
+
+---
+
+## Maliyet Dağılımı: DIY vs Profesyonel (8 Kameralı PoE Örneği)
+
+| Ürün                       | DIY Maliyet | Profesyonel (İşçilik + Kar) |
+| -------------------------- | ----------- | --------------------------- |
+| 8× 4K PoE Kutu Kamera      | $1,040      | $1,040 (aynı)               |
+| 8 kanallı PoE NVR + 2× 8TB | $650        | $650                        |
+| Cat6 (300 metre)           | $180        | $300                        |
+| RJ45 + Keystone            | $60         | $120                        |
+| Montaj / Kutu / Silikon    | $120        | $250                        |
+| PoE Switch (gerekirse)     | $150        | $200                        |
+| UPS (1500VA)               | $200        | $200                        |
+| **Aletler (bir kere)**     | **$300**    | **$0** (profesyonelin var)  |
+| **İşçilik**                | **$0**      | **$2,000-$3,500**           |
+| **TOPLAM**                 | **$2,700**  | **$4,760-$6,260**           |
+
+**DIY Tasarrufu: $2,000-$3,500** (aletler gelecek projelerde amorti edilir)
+
+---
+
+**İlgili Okumalar:**
+
+- [PoE Kamera Kablo Çekme: DIY Kurulum](/blog/poe-camera-cable-running-diy-installation) — Kablo yolları, sonlandırma, test
+- [Dış Mekan Kameraları Nasıl Monte Edilir (Duvar, Tavan, Saçak)](/blog/how-to-mount-outdoor-cameras-wall-ceiling-eave) — Yüzeye özel donanım
+- [Kablosuz Kamera Kurulumu: DIY İpuçları](/blog/wireless-camera-setup-diy-installation-tips) — WiFi, pil, güneş optimizasyonu
+- [Küçük İşletmeler İçin En İyi Kamera Sistemleri](/blog/best-small-business-security-camera-systems) — NVR boyutlandırma, RAID, çoklu site
+- [CCTV Video Depolama Hesaplayıcı](/blog/cctv-video-storage-calculator-hard-drive-space) — Etkileşimli boyutlandırma aracı

@@ -9,9 +9,6 @@ tags: ["outdoor", "buying-guide", "comparison"]
 postType: "review"
 ---
 
-import { Badge } from "@/components/ui/badge"
-import { Callout } from "@/components/ui/callout"
-
 ## Introduction: Outdoor Cameras Face Real Challenges
 
 Outdoor security cameras have to put up with a lot. Rain, snow, blazing sun, freezing temps—they need to survive it all while keeping a steady watch. Installation is another headache: you're dealing with power run lengths, WiFi range limitations, mounting surfaces that aren't always cooperative, and the ever-present question of where to run cables without ruining your landscaping.
@@ -22,14 +19,14 @@ We tested dozens of outdoor cameras in real-world conditions—from Arizona heat
 
 ## Comparison Table
 
-| Camera | Resolution | Field of View | Storage | Power | Price | Notable Features |
-|--------|------------|---------------|---------|-------|-------|------------------|
-| **Reolink Argus 3 Pro** | 2K | 160° | microSD (up to 256GB) | Battery / Solar | $129.99 | Spotlight, color night vision, PIR motion |
-| **TP-Link Tapo C500** | 1080p | 105° | microSD (up to 512GB) | WiFi + PoE | $79.99 | Dual power, starlight sensor, compact |
-| **Amcrest IP8M-2496B** | 4K | 106° | microSD (up to 256GB) / NVR | PoE | $199.99 | Ultra HD, IP67, built-in mic |
-| **Eufy Security SoloCam S340** | 2K (dual-lens) | 135° wide + tele | microSD (up to 256GB) | Battery / Solar | $179.99 | Dual lens, color night vision, local only |
-| **Zmodem Outdoor Pro** | 1080p | 130° | microSD (up to 128GB) | Battery / Solar | $99.99 | 6-month battery, IP66, no subscription |
-| **Reolink RLC-822A** | 4K | 180° | microSD (up to 256GB) / NVR | PoE | $239.99 | Ultra-wide, smart detection, motorized zoom |
+| Camera                         | Resolution     | Field of View    | Storage                     | Power           | Price   | Notable Features                            |
+| ------------------------------ | -------------- | ---------------- | --------------------------- | --------------- | ------- | ------------------------------------------- |
+| **Reolink Argus 3 Pro**        | 2K             | 160°             | microSD (up to 256GB)       | Battery / Solar | $129.99 | Spotlight, color night vision, PIR motion   |
+| **TP-Link Tapo C500**          | 1080p          | 105°             | microSD (up to 512GB)       | WiFi + PoE      | $79.99  | Dual power, starlight sensor, compact       |
+| **Amcrest IP8M-2496B**         | 4K             | 106°             | microSD (up to 256GB) / NVR | PoE             | $199.99 | Ultra HD, IP67, built-in mic                |
+| **Eufy Security SoloCam S340** | 2K (dual-lens) | 135° wide + tele | microSD (up to 256GB)       | Battery / Solar | $179.99 | Dual lens, color night vision, local only   |
+| **Zmodem Outdoor Pro**         | 1080p          | 130°             | microSD (up to 128GB)       | Battery / Solar | $99.99  | 6-month battery, IP66, no subscription      |
+| **Reolink RLC-822A**           | 4K             | 180°             | microSD (up to 256GB) / NVR | PoE             | $239.99 | Ultra-wide, smart detection, motorized zoom |
 
 ## Detailed Reviews
 
@@ -249,16 +246,19 @@ Outdoor cameras need an IP (Ingress Protection) rating. Two numbers:
 ### Mounting Tips: Height, Angle, and Placement
 
 **Height:**
+
 - **8-12 feet** is the sweet spot. High enough to be out of reach but low enough to capture faces.
 - Above 12 feet, you lose facial detail (license plates and faces become unidentifiable).
 - Below 8 feet, the camera is tamperable and may have a limited field of view.
 
 **Angle:**
+
 - Tilt downward 10-15° to avoid direct sunlight and glare.
 - Avoid pointing at the sky—bright sky blows out the exposure and makes darker subjects hard to see.
 - If monitoring a door or gate, aim so the subject fills at least 20% of the frame at typical distance.
 
 **Avoid:**
+
 - Facing into the sun at sunrise/sunset (glare, lens flare)
 - Pointing at reflective surfaces (cars, windows, pools) that cause false triggers
 - Mounting directly above doors where condensation can fog the lens
@@ -269,16 +269,19 @@ Outdoor cameras need an IP (Ingress Protection) rating. Two numbers:
 ### Power Options: Tradeoffs and Recommendations
 
 **Battery/Solar:**
+
 - **Pros:** Truly wire-free, place anywhere, easy relocation, works during power outages
 - **Cons:** Limited recording time (motion-triggered only), need to charge/replace batteries (unless solar), smaller batteries = shorter life
 - **Best for:** Renters, remote locations, areas without accessible power
 
 **WiFi:**
+
 - **Pros:** No cables needed, easy setup, mobile-friendly
 - **Cons:** Dependent on WiFi quality and range, bandwidth-heavy (4K can choke a network), 2.4GHz only on most (slower)
 - **Best for:** Homes with strong WiFi coverage, indoor/outdoor combinations where running cable is impractical
 
 **PoE (Power over Ethernet):**
+
 - **Pros:** Reliable power, single cable (data+power), supports continuous 24/7 recording, better bandwidth stability
 - **Cons:** Requires PoE switch or injector, running Ethernet cables can be challenging in existing homes
 - **Best for:** Permanent installations, multi-camera systems, commercial properties, anyone who wants rock-solid reliability
@@ -316,6 +319,7 @@ Outdoor cameras need an IP (Ingress Protection) rating. Two numbers:
 Modern cameras offer "smart detection"—the ability to distinguish people, vehicles, pets, and packages. This dramatically reduces false alerts from trees, shadows, bugs, and weather.
 
 **Key capabilities to look for:**
+
 - **Person detection:** Basic human form recognition—very useful
 - **Vehicle detection:** For driveways, streets
 - **Pet detection:** If you have animals that trigger alerts
@@ -359,23 +363,48 @@ Modern cameras offer "smart detection"—the ability to distinguish people, vehi
 ## Setup Tips: Get It Right the First Time
 
 <Callout type="info">
-  **Cable runs (PoE):** If you're running Ethernet, use outdoor-rated Cat6 or better. bury direct-burial cable at least 18" deep, or run in conduit above ground. Keep cables away from power lines to avoid interference. Use weatherproof gel-filled splice connectors if you have to join cables outdoors.
+
+**Cable runs (PoE):** If you're running Ethernet, use outdoor-rated Cat6 or
+better. bury direct-burial cable at least 18" deep, or run in conduit above
+ground. Keep cables away from power lines to avoid interference. Use
+weatherproof gel-filled splice connectors if you have to join cables outdoors.
+
 </Callout>
 
 <Callout type="info">
-  **WiFi optimization:** For WiFi cameras, aim for -65dBm signal strength or better at the mount location. Use a WiFi analyzer app to check. If signal is weak, consider a mesh node or outdoor WiFi access point. 5GHz is faster but has shorter range—2.4GHz is better for distant cameras.
+
+**WiFi optimization:** For WiFi cameras, aim for -65dBm signal strength or
+better at the mount location. Use a WiFi analyzer app to check. If signal is
+weak, consider a mesh node or outdoor WiFi access point. 5GHz is faster but
+has shorter range—2.4GHz is better for distant cameras.
+
 </Callout>
 
 <Callout type="info">
-  **SD card formatting:** Always format the microSD card IN THE CAMERA before first use. Do not pre-format on your computer. Format as exFAT (not FAT32) if the camera supports it, to handle files larger than 4GB. A 128GB card at 1080p typically holds 3-7 days of motion-triggered footage; 256GB doubles that.
+
+**SD card formatting:** Always format the microSD card IN THE CAMERA before
+first use. Do not pre-format on your computer. Format as exFAT (not FAT32) if
+the camera supports it, to handle files larger than 4GB. A 128GB card at 1080p
+typically holds 3-7 days of motion-triggered footage; 256GB doubles that.
+
 </Callout>
 
 <Callout type="info">
-  **App security:** Use a strong, unique password for your camera app account. Enable two-factor authentication if available. Keep the camera firmware updated—most apps notify you of updates. Change default passwords immediately; many compromised cameras were still using "admin/admin."
+
+**App security:** Use a strong, unique password for your camera app account.
+Enable two-factor authentication if available. Keep the camera firmware
+updated—most apps notify you of updates. Change default passwords immediately;
+many compromised cameras were still using "admin/admin."
+
 </Callout>
 
 <Callout type="info">
-  **Motion zones:** Always configure motion detection zones. Draw out areas you want to monitor and exclude high-traffic areas (sidewalks, streets, neighbor's yard, trees that blow in wind). This alone will reduce false alerts by 80% or more.
+
+**Motion zones:** Always configure motion detection zones. Draw out areas you
+want to monitor and exclude high-traffic areas (sidewalks, streets, neighbor's
+yard, trees that blow in wind). This alone will reduce false alerts by 80% or
+more.
+
 </Callout>
 
 ---
@@ -415,6 +444,7 @@ All the cameras on this list are weatherproof, reliable, and backed by brands wi
 ---
 
 **Related Reading:**
+
 - [Color Night Vision vs IR Comparison](/blog/color-night-vision-vs-ir-comparison)
 - [PoE vs Wireless vs Solar Power](/blog/poe-vs-wireless-vs-solar-comparison)
 - [Camera Resolution Guide](/blog/camera-resolution-guide)

@@ -9,13 +9,12 @@ tags: ["diy", "installation", "poe", "wireless", "nvr", "mounting"]
 postType: "howto"
 ---
 
-import { Callout } from "@/components/ui/callout"
-import { Badge } from "@/components/ui/badge"
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
-
 Professional security camera installation costs **$150–$400 per camera** (labor + materials). A typical 8-camera PoE system: **$1,200–$3,200 labor**. DIY with this guide: **$0 labor + $100–$300 tools**. This guide covers every step from planning to first recording.
 
-<Badge variant="outline">Honest Assessment</Badge> **DIY is right for you if:** You're comfortable with ladders, drilling, basic networking, and following diagrams. **Hire a pro if:** Multi-story roof runs, concrete/brick drilling, permits required, or you want warranty on labor.
+<Badge variant="outline">Honest Assessment</Badge> **DIY is right for you if:**
+You're comfortable with ladders, drilling, basic networking, and following
+diagrams. **Hire a pro if:** Multi-story roof runs, concrete/brick drilling,
+permits required, or you want warranty on labor.
 
 ---
 
@@ -27,45 +26,73 @@ Professional security camera installation costs **$150–$400 per camera** (labo
   <AccordionItem value="placement">
     <AccordionTrigger>Where to Place Cameras (Priority Order)</AccordionTrigger>
     <AccordionContent>
-**Tier 1 — Must Cover (Entry/Exit):**
-- Front door (doorbell or overhead)
-- Back/side doors
-- Garage entry (pedestrian + vehicle)
-- Driveway approach (license plates)
 
-**Tier 2 — High Value (Coverage):**
-- First-floor windows (ground access)
-- Backyard / patio (theft, vandalism)
-- Side gates / fence gaps
-- Package drop zone
+<strong>Tier 1 — Must Cover (Entry/Exit):</strong>
+<ul>
+  <li>Front door (doorbell or overhead)</li>
+  <li>Back/side doors</li>
+  <li>Garage entry (pedestrian + vehicle)</li>
+  <li>Driveway approach (license plates)</li>
+</ul>
 
-**Tier 3 — Situational:**
-- Pool / hot tub (safety + liability)
-- Shed / detached garage
-- Mailbox (theft)
-- Street view (neighborhood context)
+<strong>Tier 2 — High Value (Coverage):</strong>
 
-**Placement Rules:**
-- **Height:** 8–10 ft (out of reach, good angle)
-- **Angle:** 15–30° down from horizontal
-- **FOV Overlap:** 20–30% between adjacent cameras
-- **No Backlight:** Avoid pointing at rising/setting sun, bright lights
-- **Weather:** Under eave/soffit when possible; IP66+ if exposed
-    </AccordionContent>
+<ul>
+  <li>First-floor windows (ground access)</li>
+  <li>Backyard / patio (theft, vandalism)</li>
+  <li>Side gates / fence gaps</li>
+  <li>Package drop zone</li>
+</ul>
+
+<strong>Tier 3 — Situational:</strong>
+
+<ul>
+  <li>Pool / hot tub (safety + liability)</li>
+  <li>Shed / detached garage</li>
+  <li>Mailbox (theft)</li>
+  <li>Street view (neighborhood context)</li>
+</ul>
+
+<strong>Placement Rules:</strong>
+
+<ul>
+  <li>
+    <strong>Height:</strong> 8–10 ft (out of reach, good angle)
+  </li>
+  <li>
+    <strong>Angle:</strong> 15–30° down from horizontal
+  </li>
+  <li>
+    <strong>FOV Overlap:</strong> 20–30% between adjacent cameras
+  </li>
+  <li>
+    <strong>No Backlight:</strong> Avoid pointing at rising/setting sun, bright
+    lights
+  </li>
+  <li>
+    <strong>Weather:</strong> Under eave/soffit when possible; IP66+ if exposed
+  </li>
+</ul>
+
+  </AccordionContent>
   </AccordionItem>
 </Accordion>
 
 ### 2. Choose Your Architecture
 
-| Architecture | Best For | Cable Runs | Power | Difficulty |
-|--------------|----------|------------|-------|------------|
-| **PoE NVR Kit** | 4–16 cams, permanent, 24/7 | Cat5e/6 to each cam | PoE (switch/NVR) | Medium |
-| **Wi-Fi + NVR** | 2–8 cams, hard-to-wire spots | Power only (outlet/solar) | 120V / Battery / Solar | Low–Medium |
-| **Battery/Solar Only** | 1–4 cams, no wires, rentals | None | Battery + Solar panel | Low |
-| **Hybrid** | Most homes | Mix | Mix | Medium |
+| Architecture           | Best For                     | Cable Runs                | Power                  | Difficulty |
+| ---------------------- | ---------------------------- | ------------------------- | ---------------------- | ---------- |
+| **PoE NVR Kit**        | 4–16 cams, permanent, 24/7   | Cat5e/6 to each cam       | PoE (switch/NVR)       | Medium     |
+| **Wi-Fi + NVR**        | 2–8 cams, hard-to-wire spots | Power only (outlet/solar) | 120V / Battery / Solar | Low–Medium |
+| **Battery/Solar Only** | 1–4 cams, no wires, rentals  | None                      | Battery + Solar panel  | Low        |
+| **Hybrid**             | Most homes                   | Mix                       | Mix                    | Medium     |
 
 <Callout type="tip">
-**Start with PoE where you can.** It's the most reliable, highest quality, and lowest long-term cost. Use Wi-Fi/battery only where cable is truly impractical.
+
+**Start with PoE where you can.** It's the most reliable, highest quality, and
+lowest long-term cost. Use Wi-Fi/battery only where cable is truly
+impractical.
+
 </Callout>
 
 ### 3. Cable Route Planning (PoE)
@@ -79,6 +106,7 @@ Professional security camera installation costs **$150–$400 per camera** (labo
 ### 4. Tool & Material Checklist
 
 **Essential Tools:**
+
 - [ ] Cordless drill/driver (18V+)
 - [ ] ½" spade bit / ⅞" auger bit (cable holes)
 - [ ] Fish tape / glow rods (25–50 ft)
@@ -91,6 +119,7 @@ Professional security camera installation costs **$150–$400 per camera** (labo
 - [ ] Cable staples / J-hooks / zip ties
 
 **Materials (PoE):**
+
 - [ ] Cat6 solid copper (CMR riser for in-wall, CMX outdoor for exterior)
 - [ ] RJ45 pass-through connectors (50-pack)
 - [ ] Keystone jacks + wall plates (optional, for clean terminations)
@@ -98,6 +127,7 @@ Professional security camera installation costs **$150–$400 per camera** (labo
 - [ ] UPS for NVR + switch (1500VA min)
 
 **Materials (Wireless/Battery):**
+
 - [ ] Mounting brackets (included or universal)
 - [ ] Solar panels + mounting arms
 - [ ] 120V outdoor outlets / weatherproof boxes (if plug-in)
@@ -112,26 +142,63 @@ Professional security camera installation costs **$150–$400 per camera** (labo
   <AccordionItem value="wall-mount">
     <AccordionTrigger>Surface-Specific Mounting</AccordionTrigger>
     <AccordionContent>
-**Vinyl / Aluminum Siding:**
-- Use **vinyl siding mounting block** (J-channel compatible) — no drilling into siding
-- Or: 3M VHB tape + screw into sheathing behind (locate stud)
 
-**Stucco / Brick / Concrete:**
-- **Hammer drill + ¼" masonry bit** → Plastic anchors (red/blue) + stainless screws
-- **Tapcon screws** (blue) directly into masonry — no anchor needed
-- **Adhesive option:** 3M VHB 5952 + mechanical screw (redundancy)
+<strong>Vinyl / Aluminum Siding:</strong>
+<ul>
+  <li>
+    Use <strong>vinyl siding mounting block</strong> (J-channel compatible) — no
+    drilling into siding
+  </li>
+  <li>Or: 3M VHB tape + screw into sheathing behind (locate stud)</li>
+</ul>
 
-**Wood / Hardie / LP SmartSide:**
-- Pilot hole → **#8–#10 stainless/coated deck screw** 2–2.5" into stud
-- Use **mounting block** (1×4 or PVC) for flat surface on lap siding
+<strong>Stucco / Brick / Concrete:</strong>
 
-**Eave / Soffit (Best Location):**
-- Screw into **rafter tail** or **soffit vent framing** — not just thin soffit panel
-- Use **1.5–2" screw** into solid wood
-- Angle bracket if soffit slopes
+<ul>
+  <li>
+    <strong>Hammer drill + ¼" masonry bit</strong> → Plastic anchors (red/blue)
+    + stainless screws
+  </li>
+  <li>
+    <strong>Tapcon screws</strong> (blue) directly into masonry — no anchor
+    needed
+  </li>
+  <li>
+    <strong>Adhesive option:</strong> 3M VHB 5952 + mechanical screw
+    (redundancy)
+  </li>
+</ul>
 
-**Universal Pro Tip:** **Always hit structure.** Camera + wind = lever. 4 screws into stud/rafter > 8 screws into sheathing only.
-    </AccordionContent>
+<strong>Wood / Hardie / LP SmartSide:</strong>
+
+<ul>
+  <li>
+    Pilot hole → <strong>#8–#10 stainless/coated deck screw</strong> 2–2.5" into
+    stud
+  </li>
+  <li>
+    Use <strong>mounting block</strong> (1×4 or PVC) for flat surface on lap
+    siding
+  </li>
+</ul>
+
+<strong>Eave / Soffit (Best Location):</strong>
+
+<ul>
+  <li>
+    Screw into <strong>rafter tail</strong> or{" "}
+    <strong>soffit vent framing</strong> — not just thin soffit panel
+  </li>
+  <li>
+    Use <strong>1.5–2" screw</strong> into solid wood
+  </li>
+  <li>Angle bracket if soffit slopes</li>
+</ul>
+
+<strong>Universal Pro Tip:</strong> <strong>Always hit structure.</strong> Camera + wind = lever. 4 screws into stud/rafter > 8 screws into sheathing only.
+
+</AccordionContent>
+
   </AccordionItem>
 </Accordion>
 
@@ -158,32 +225,43 @@ Professional security camera installation costs **$150–$400 per camera** (labo
   <AccordionItem value="cable-run">
     <AccordionTrigger>Step-by-Step: Attic to Exterior Camera</AccordionTrigger>
     <AccordionContent>
-1. **Locate camera position** from inside (attic) — measure from known landmark (vent, chimney)
-2. **Drill ⅞" hole** through top plate (interior wall) or soffit (eave mount)
-3. **Push fish tape** from attic down wall cavity to camera hole
-4. **Attach Cat6** to fish tape: fold 6" back, tape smooth, pull **gently**
-5. **Leave 3–4 ft slack** at camera end (service loop)
-6. **Seal exterior hole:** Silicone around cable + grommet
-7. **Label both ends:** "CAM-01 Front Door" (Sharpie + cable label)
-8. **Test continuity** with cable tester before terminating
+
+        <ol>
+        <li><strong>Locate camera position</strong> from inside (attic) — measure from known</li>
+      </ol>
+      landmark (vent, chimney) 2. <strong>Drill ⅞" hole</strong> through top plate (interior
+      wall) or soffit (eave mount) 3. <strong>Push fish tape</strong> from attic down wall
+      cavity to camera hole 4. <strong>Attach Cat6</strong> to fish tape: fold 6" back, tape
+      smooth, pull <strong>gently</strong> 5. <strong>Leave 3–4 ft slack</strong> at camera end (service
+      loop) 6. <strong>Seal exterior hole:</strong> Silicone around cable + grommet 7.
+      <strong>Label both ends:</strong> "CAM-01 Front Door" (Sharpie + cable label) 8. **Test
+      continuity** with cable tester before terminating
+
+
     </AccordionContent>
+
   </AccordionItem>
 </Accordion>
 
 ### Termination: RJ45 Pass-Through (Fastest, Most Reliable)
 
 <Callout type="note">
-**Use pass-through connectors.** Standard RJ45 requires precise wire trim. Pass-through lets you verify color order *before* crimping. **T568B standard** (most common):
+
+**Use pass-through connectors.** Standard RJ45 requires precise wire trim.
+Pass-through lets you verify color order _before_ crimping. **T568B standard**
+(most common):
+
 </Callout>
 
-| Pin | Color | Pin | Color |
-|-----|-------|-----|-------|
-| 1 | Orange/White | 5 | Blue/White |
-| 2 | Orange | 6 | Green |
-| 3 | Green/White | 7 | Brown/White |
-| 4 | Blue | 8 | Brown |
+| Pin | Color        | Pin | Color       |
+| --- | ------------ | --- | ----------- |
+| 1   | Orange/White | 5   | Blue/White  |
+| 2   | Orange       | 6   | Green       |
+| 3   | Green/White  | 7   | Brown/White |
+| 4   | Blue         | 8   | Brown       |
 
 **Crimp Process:**
+
 1. Strip 1.5" jacket → untwist pairs → arrange T568B
 2. Insert into pass-through → verify colors visible at front
 3. Trim flush with connector face
@@ -206,22 +284,48 @@ Professional security camera installation costs **$150–$400 per camera** (labo
   <AccordionItem value="wifi-opt">
     <AccordionTrigger>Get Reliable Wi-Fi to Cameras</AccordionTrigger>
     <AccordionContent>
-**Placement:**
-- Camera within **50 ft** of router/AP (through 2 walls max)
-- Avoid metal siding, chimney, HVAC duct between cam and AP
 
-**Hardware Upgrades:**
-- **Mesh system** (Eero Pro 6E, UniFi Dream Router, Asus ZenWiFi) — wired backhaul preferred
-- **Outdoor AP** (UniFi U6 Mesh, Ubiquiti UAP-AC-M) — PoE powered, mounted under eave
-- **Directional antenna** (2.4 GHz Yagi) for long-range single camera
+<strong>Placement:</strong>
+<ul>
+  <li>
+    Camera within <strong>50 ft</strong> of router/AP (through 2 walls max)
+  </li>
+  <li>Avoid metal siding, chimney, HVAC duct between cam and AP</li>
+</ul>
 
-**Channel Planning:**
-- 2.4 GHz: Channels 1, 6, 11 only (non-overlapping)
-- Force camera to 2.4 GHz (better penetration) — disable 5 GHz in camera app
-- Set router 2.4 GHz to **20 MHz width** (not 40) for stability
+<strong>Hardware Upgrades:</strong>
 
-**Test:** Phone at camera location → Speedtest → Need **>5 Mbps upload** per camera (1080p) / **>15 Mbps** (4K)
-    </AccordionContent>
+<ul>
+  <li>
+    <strong>Mesh system</strong> (Eero Pro 6E, UniFi Dream Router, Asus ZenWiFi)
+    — wired backhaul preferred
+  </li>
+  <li>
+    <strong>Outdoor AP</strong> (UniFi U6 Mesh, Ubiquiti UAP-AC-M) — PoE
+    powered, mounted under eave
+  </li>
+  <li>
+    <strong>Directional antenna</strong> (2.4 GHz Yagi) for long-range single
+    camera
+  </li>
+</ul>
+
+<strong>Channel Planning:</strong>
+
+<ul>
+  <li>2.4 GHz: Channels 1, 6, 11 only (non-overlapping)</li>
+  <li>
+    Force camera to 2.4 GHz (better penetration) — disable 5 GHz in camera app
+  </li>
+  <li>
+    Set router 2.4 GHz to <strong>20 MHz width</strong> (not 40) for stability
+  </li>
+</ul>
+
+<strong>Test:</strong> Phone at camera location → Speedtest → Need <strong>>5 Mbps upload</strong> per camera (1080p) / <strong>>15 Mbps</strong> (4K)
+
+</AccordionContent>
+
   </AccordionItem>
 </Accordion>
 
@@ -244,34 +348,42 @@ Professional security camera installation costs **$150–$400 per camera** (labo
   <AccordionItem value="nvr-setup">
     <AccordionTrigger>NVR First Boot Checklist</AccordionTrigger>
     <AccordionContent>
-1. **Install HDDs** before power (SATA, WD Purple / Seagate SkyHawk / Toshiba S300)
-2. **Power on** → Wizard: Date/Time (NTP), Language, Password (strong!)
-3. **Network:** Static IP for NVR (e.g., 192.168.1.50), Gateway, DNS (1.1.1.1)
-4. **PoE Ports:** Enable all → "Auto Add" cameras (plug cameras in one by one)
-5. **Encode Settings (per camera):**
-   - **Main Stream:** 4K/8MP @ 15–20 fps, H.265, VBR, 4–6 Mbps
-   - **Sub Stream:** 720p/D1 @ 15 fps, H.265, 0.5–1 Mbps (mobile live view)
-6. **Record Schedule:** Continuous 24/7 on Main; Motion on Sub (saves space)
-7. **Motion Zones:** Draw only relevant areas (exclude trees, street, clouds)
-8. **Smart Events:** Enable Person/Vehicle detection (reduces false alerts 90%)
-9. **Storage:** Format HDD → Set overwrite (oldest first) → Enable S.M.A.R.T. alerts
-10. **Remote Access:** **DO NOT PORT FORWARD.** Use:
-    - **Vendor Cloud** (Reolink, Dahua, Hikvision, UniFi) — easiest
-    - **VPN** (WireGuard on router, Tailscale, ZeroTier) — most secure
-    - **Tailscale Funnel / Cloudflare Tunnel** — advanced, no VPN client needed
+
+        <ol>
+        <li><strong>Install HDDs</strong> before power (SATA, WD Purple / Seagate SkyHawk /</li>
+      </ol>
+      Toshiba S300) 2. <strong>Power on</strong> → Wizard: Date/Time (NTP), Language,
+      Password (strong!) 3. <strong>Network:</strong> Static IP for NVR (e.g., 192.168.1.50),
+      Gateway, DNS (1.1.1.1) 4. <strong>PoE Ports:</strong> Enable all → "Auto Add" cameras
+      (plug cameras in one by one) 5. <strong>Encode Settings (per camera):</strong> - **Main
+      Stream:<strong> 4K/8MP @ 15–20 fps, H.265, VBR, 4–6 Mbps - </strong>Sub Stream:**
+        720p/D1 @ 15 fps, H.265, 0.5–1 Mbps (mobile live view) 6. **Record
+      Schedule:** Continuous 24/7 on Main; Motion on Sub (saves space) 7.
+      <strong>Motion Zones:</strong> Draw only relevant areas (exclude trees, street, clouds)
+        <ol>
+        <li><strong>Smart Events:</strong> Enable Person/Vehicle detection (reduces false alerts</li>
+        </ol>
+        90%) 9. <strong>Storage:</strong> Format HDD → Set overwrite (oldest first) → Enable
+      S.M.A.R.T. alerts 10. <strong>Remote Access:</strong> <strong>DO NOT PORT FORWARD.</strong> Use: -
+      <strong>Vendor Cloud</strong> (Reolink, Dahua, Hikvision, UniFi) — easiest - <strong>VPN</strong>
+      (WireGuard on router, Tailscale, ZeroTier) — most secure - **Tailscale
+      Funnel / Cloudflare Tunnel** — advanced, no VPN client needed
+
+
     </AccordionContent>
+
   </AccordionItem>
 </Accordion>
 
 ### Hard Drive Selection & RAID
 
-| Drive | Capacity | Workload Rate | Warranty | Best For |
-|-------|----------|---------------|----------|----------|
-| WD Purple | 1–18 TB | 180 TB/yr | 3 yr | Standard NVR |
-| Seagate SkyHawk | 1–20 TB | 180 TB/yr | 3 yr | Standard NVR |
-| WD Purple Pro | 8–22 TB | 300 TB/yr | 5 yr | RAID / Multi-stream |
-| Seagate Exos X / IronWolf Pro | 4–24 TB | 300–550 TB/yr | 5 yr | High-cap RAID |
-| Toshiba S300 / N300 | 4–18 TB | 180 TB/yr | 3 yr | Budget RAID |
+| Drive                         | Capacity | Workload Rate | Warranty | Best For            |
+| ----------------------------- | -------- | ------------- | -------- | ------------------- |
+| WD Purple                     | 1–18 TB  | 180 TB/yr     | 3 yr     | Standard NVR        |
+| Seagate SkyHawk               | 1–20 TB  | 180 TB/yr     | 3 yr     | Standard NVR        |
+| WD Purple Pro                 | 8–22 TB  | 300 TB/yr     | 5 yr     | RAID / Multi-stream |
+| Seagate Exos X / IronWolf Pro | 4–24 TB  | 300–550 TB/yr | 5 yr     | High-cap RAID       |
+| Toshiba S300 / N300           | 4–18 TB  | 180 TB/yr     | 3 yr     | Budget RAID         |
 
 **RAID Config:** 4-bay → RAID 5 (1 drive failure). 6+ bay → RAID 6 (2 drive failure). **Never RAID 0.**
 
@@ -280,20 +392,24 @@ Professional security camera installation costs **$150–$400 per camera** (labo
 ## Phase 6: Network Security (Critical)
 
 <Callout type="danger">
-**Never port-forward camera/NVR ports (80, 443, 8000, 554, 8080).** Shodan/Censys scan 24/7. Default creds = botnet in minutes.
+
+**Never port-forward camera/NVR ports (80, 443, 8000, 554, 8080).**
+Shodan/Censys scan 24/7. Default creds = botnet in minutes.
+
 </Callout>
 
 **Secure Remote Access Options (Best → Good):**
 
-| Method | Security | Ease | Cost | Platform |
-|--------|----------|------|------|----------|
-| **Vendor Cloud (UniFi, Reolink, Eufy, Ring)** | Good (TLS, auth) | Easiest | Free | All |
-| **Tailscale / ZeroTier** (VPN mesh) | Excellent (WireGuard) | Medium | Free (personal) | All |
-| **WireGuard on Router** (OpenWrt, OPNsense, pfSense) | Excellent | Harder | Free | All |
-| **Cloudflare Tunnel** (Zero Trust) | Excellent | Medium | Free | Web UI only |
-| **OpenVPN Server on Router** | Good | Medium | Free | All |
+| Method                                               | Security              | Ease    | Cost            | Platform    |
+| ---------------------------------------------------- | --------------------- | ------- | --------------- | ----------- |
+| **Vendor Cloud (UniFi, Reolink, Eufy, Ring)**        | Good (TLS, auth)      | Easiest | Free            | All         |
+| **Tailscale / ZeroTier** (VPN mesh)                  | Excellent (WireGuard) | Medium  | Free (personal) | All         |
+| **WireGuard on Router** (OpenWrt, OPNsense, pfSense) | Excellent             | Harder  | Free            | All         |
+| **Cloudflare Tunnel** (Zero Trust)                   | Excellent             | Medium  | Free            | Web UI only |
+| **OpenVPN Server on Router**                         | Good                  | Medium  | Free            | All         |
 
 **Camera-Level Hardening:**
+
 - Change **admin password** (16+ chars, password manager)
 - Disable **ONVIF** if not used
 - Disable **UPnP** on router
@@ -310,79 +426,93 @@ Professional security camera installation costs **$150–$400 per camera** (labo
   <AccordionItem value="testing">
     <AccordionTrigger>Complete Test Checklist</AccordionTrigger>
     <AccordionContent>
-**Daytime:**
-- [ ] Live view: Clear, no artifacts, correct orientation
-- [ ] FOV: Covers intended zone, no blind spots
-- [ ] Focus: Sharp at target distance (license plate at 30 ft)
-- [ ] Motion detection: Walk test → alert <5 sec
-- [ ] Smart events: Person/Vehicle/Package trigger correctly
-- [ ] Recording: Continuous + motion both writing to HDD
 
-**Nighttime (Critical):**
-- [ ] IR illuminators on (red glow visible)
-- [ ] No IR reflection (glass, white siding, overhang)
-- [ ] No "whiteout" from nearby lights
-- [ ] Plate readable at target distance
-- [ ] Color night vision (if supported) — needs ambient light
+<strong>Daytime:</strong>
+<ul>
+  <li>[ ] Live view: Clear, no artifacts, correct orientation</li>
+  <li>[ ] FOV: Covers intended zone, no blind spots</li>
+  <li>[ ] Focus: Sharp at target distance (license plate at 30 ft)</li>
+  <li>[ ] Motion detection: Walk test → alert &lt;5 sec</li>
+  <li>[ ] Smart events: Person/Vehicle/Package trigger correctly</li>
+  <li>[ ] Recording: Continuous + motion both writing to HDD</li>
+</ul>
 
-**Network:**
-- [ ] Camera IP reachable from PC (ping)
-- [ ] RTSP stream playable in VLC (`rtsp://user:pass@ip:554/stream1`)
-- [ ] NVR recording 24/7 no gaps (check timeline)
-- [ ] Remote access works (phone on LTE, not Wi-Fi)
+<strong>Nighttime (Critical):</strong>
 
-**Physical:**
-- [ ] All screws tight, camera doesn't wobble
-- [ ] Cable loops secured (no wind whip)
-- [ ] Silicone seals intact (no water ingress)
-- [ ] Conduit fittings tight
-- [ ] Ground wire connected (pole mounts)
-    </AccordionContent>
-  </AccordionItem>
-</Accordion>
+<ul>
+  <li>[ ] IR illuminators on (red glow visible)</li>
+  <li>[ ] No IR reflection (glass, white siding, overhang)</li>
+  <li>[ ] No "whiteout" from nearby lights</li>
+  <li>[ ] Plate readable at target distance</li>
+  <li>[ ] Color night vision (if supported) — needs ambient light</li>
+</ul>
+
+<strong>Network:</strong>
+
+<ul>
+  <li>[ ] Camera IP reachable from PC (ping)</li>
+  <li>[ ] RTSP stream playable in VLC (`rtsp://user:pass@ip:554/stream1`)</li>
+  <li>[ ] NVR recording 24/7 no gaps (check timeline)</li>
+  <li>[ ] Remote access works (phone on LTE, not Wi-Fi)</li>
+</ul>
+
+<strong>Physical:</strong>
+
+<ul>
+  <li>[ ] All screws tight, camera doesn't wobble</li>
+  <li>[ ] Cable loops secured (no wind whip)</li>
+  <li>[ ] Silicone seals intact (no water ingress)</li>
+  <li>[ ] Conduit fittings tight</li>
+  <li>[ ] Ground wire connected (pole mounts)</li>
+</ul>
+
+      </AccordionContent>
+      </AccordionItem>
+
+  </Accordion>
 
 ---
 
 ## Phase 8: Maintenance Schedule
 
-| Frequency | Task |
-|-----------|------|
-| **Weekly** | Check recording timeline for gaps; verify remote access |
-| **Monthly** | Clean dome/lens (microfiber + lens cleaner); check IR glow at night |
-| **Quarterly** | Firmware updates (NVR + cameras); UPS battery test; HDD S.M.A.R.T. |
-| **Annually** | Re-seal exterior silicone; tighten mount screws; review camera angles (trees grow); replace UPS battery (3–5 yr life) |
+| Frequency     | Task                                                                                                                  |
+| ------------- | --------------------------------------------------------------------------------------------------------------------- |
+| **Weekly**    | Check recording timeline for gaps; verify remote access                                                               |
+| **Monthly**   | Clean dome/lens (microfiber + lens cleaner); check IR glow at night                                                   |
+| **Quarterly** | Firmware updates (NVR + cameras); UPS battery test; HDD S.M.A.R.T.                                                    |
+| **Annually**  | Re-seal exterior silicone; tighten mount screws; review camera angles (trees grow); replace UPS battery (3–5 yr life) |
 
 ---
 
 ## Troubleshooting Quick Reference
 
-| Symptom | Likely Cause | Fix |
-|---------|--------------|-----|
-| **No image / "No Signal"** | PoE power budget exceeded | Check switch PoE budget; move to injector |
-| **Image flicker / rolling lines** | Ground loop / bad ground | Common ground for all equipment; isolator |
-| **Night vision whiteout** | IR reflection | Angle camera down; move away from wall/eave; disable IR + external illuminator |
-| **Motion alerts constant** | Trees, shadows, rain, bugs | Narrow zones; enable Person/Vehicle only; reduce sensitivity |
-| **Wi-Fi drops** | Channel congestion / distance | 2.4 GHz only; 20 MHz; mesh node near camera; directional antenna |
-| **NVR beeping** | HDD failure / full / fan | Check S.M.A.R.T.; replace drive; clean fan |
-| **Remote access fails** | ISP CGNAT / double NAT | Use Tailscale / Cloudflare Tunnel / Vendor Cloud |
-| **Plate unreadable at night** | Shutter too slow / IR weak | Increase shutter (1/100+); add external IR illuminator; 4K + optical zoom |
+| Symptom                           | Likely Cause                  | Fix                                                                            |
+| --------------------------------- | ----------------------------- | ------------------------------------------------------------------------------ |
+| **No image / "No Signal"**        | PoE power budget exceeded     | Check switch PoE budget; move to injector                                      |
+| **Image flicker / rolling lines** | Ground loop / bad ground      | Common ground for all equipment; isolator                                      |
+| **Night vision whiteout**         | IR reflection                 | Angle camera down; move away from wall/eave; disable IR + external illuminator |
+| **Motion alerts constant**        | Trees, shadows, rain, bugs    | Narrow zones; enable Person/Vehicle only; reduce sensitivity                   |
+| **Wi-Fi drops**                   | Channel congestion / distance | 2.4 GHz only; 20 MHz; mesh node near camera; directional antenna               |
+| **NVR beeping**                   | HDD failure / full / fan      | Check S.M.A.R.T.; replace drive; clean fan                                     |
+| **Remote access fails**           | ISP CGNAT / double NAT        | Use Tailscale / Cloudflare Tunnel / Vendor Cloud                               |
+| **Plate unreadable at night**     | Shutter too slow / IR weak    | Increase shutter (1/100+); add external IR illuminator; 4K + optical zoom      |
 
 ---
 
 ## Cost Breakdown: DIY vs Pro (8-Camera PoE Example)
 
-| Item | DIY Cost | Pro Install (Labor + Markup) |
-|------|----------|------------------------------|
-| 8× 4K PoE Bullets | $1,040 | $1,040 (same) |
-| 8-ch PoE NVR + 2× 8TB | $650 | $650 |
-| Cat6 (1000 ft) | $180 | $300 |
-| RJ45 + Keystones | $60 | $120 |
-| Mounts / Boxes / Sealant | $120 | $250 |
-| PoE Switch (if needed) | $150 | $200 |
-| UPS (1500VA) | $200 | $200 |
-| **Tools (buy once)** | **$300** | **$0** (pro has) |
-| **Labor** | **$0** | **$2,000–$3,500** |
-| **TOTAL** | **$2,700** | **$4,760–$6,260** |
+| Item                     | DIY Cost   | Pro Install (Labor + Markup) |
+| ------------------------ | ---------- | ---------------------------- |
+| 8× 4K PoE Bullets        | $1,040     | $1,040 (same)                |
+| 8-ch PoE NVR + 2× 8TB    | $650       | $650                         |
+| Cat6 (1000 ft)           | $180       | $300                         |
+| RJ45 + Keystones         | $60        | $120                         |
+| Mounts / Boxes / Sealant | $120       | $250                         |
+| PoE Switch (if needed)   | $150       | $200                         |
+| UPS (1500VA)             | $200       | $200                         |
+| **Tools (buy once)**     | **$300**   | **$0** (pro has)             |
+| **Labor**                | **$0**     | **$2,000–$3,500**            |
+| **TOTAL**                | **$2,700** | **$4,760–$6,260**            |
 
 **DIY Savings: $2,000–$3,500** (tools amortize over future projects)
 
@@ -398,4 +528,4 @@ Professional security camera installation costs **$150–$400 per camera** (labo
 
 ---
 
-*Last updated: July 2026. Prices and firmware features change — verify current specs before purchasing.*
+_Last updated: July 2026. Prices and firmware features change — verify current specs before purchasing._

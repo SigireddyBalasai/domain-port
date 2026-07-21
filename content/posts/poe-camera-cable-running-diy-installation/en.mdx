@@ -9,33 +9,36 @@ tags: ["diy", "poe", "cable-running", "installation", "termination"]
 postType: "howto"
 ---
 
-import { Callout } from "@/components/ui/callout"
-import { Badge } from "@/components/ui/badge"
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
-
 Running cable is 70% of PoE camera installation labor. Do it right once: solid copper, proper pathways, correct termination, verified testing. This guide covers every step from spool to switch.
 
-<Badge variant="outline">Cable Choice</Badge> **Use solid copper Cat6 (CMR/CMP).** Not CCA (copper-clad aluminum). Not stranded. Not Cat5e for new runs. Solid copper Cat6 = 100m at 1Gbps PoE+ without voltage drop issues.
+<Badge variant="outline">Cable Choice</Badge> **Use solid copper Cat6
+(CMR/CMP).** Not CCA (copper-clad aluminum). Not stranded. Not Cat5e for new
+runs. Solid copper Cat6 = 100m at 1Gbps PoE+ without voltage drop issues.
 
 ---
 
 ## Cable Selection: What to Buy (And Avoid)
 
-| Cable Type | Conductor | PoE+ (30W) Max | PoE++ (60/90W) Max | Rating | Use Case |
-|------------|-----------|----------------|---------------------|--------|----------|
-| **Cat6 Solid Copper (CMR)** | 23 AWG Solid Cu | 100 m (328 ft) | 80 m (262 ft) | Riser (in-wall) | **Standard choice** |
-| **Cat6 Solid Copper (CMP)** | 23 AWG Solid Cu | 100 m | 80 m | Plenum (air ducts) | Required in plenums |
-| **Cat6a Solid Copper** | 23 AWG Solid Cu | 100 m | 100 m | Riser/Plenum | Future-proof 10G |
-| **Outdoor Direct Burial** | 23 AWG Solid Cu | 100 m | 80 m | Gel-filled, UV | Underground, aerial |
-| **❌ Cat5e** | 24 AWG | 100 m | 50 m | Riser | Legacy only |
-| **❌ CCA (Copper-Clad Al)** | Aluminum core | **FAIL** | **FAIL** | Any | **Never for PoE** |
-| **❌ Stranded / Patch** | Stranded Cu | 10 m (33 ft) | 5 m | Patch | Patch cords only |
+| Cable Type                  | Conductor       | PoE+ (30W) Max | PoE++ (60/90W) Max | Rating             | Use Case            |
+| --------------------------- | --------------- | -------------- | ------------------ | ------------------ | ------------------- |
+| **Cat6 Solid Copper (CMR)** | 23 AWG Solid Cu | 100 m (328 ft) | 80 m (262 ft)      | Riser (in-wall)    | **Standard choice** |
+| **Cat6 Solid Copper (CMP)** | 23 AWG Solid Cu | 100 m          | 80 m               | Plenum (air ducts) | Required in plenums |
+| **Cat6a Solid Copper**      | 23 AWG Solid Cu | 100 m          | 100 m              | Riser/Plenum       | Future-proof 10G    |
+| **Outdoor Direct Burial**   | 23 AWG Solid Cu | 100 m          | 80 m               | Gel-filled, UV     | Underground, aerial |
+| **❌ Cat5e**                | 24 AWG          | 100 m          | 50 m               | Riser              | Legacy only         |
+| **❌ CCA (Copper-Clad Al)** | Aluminum core   | **FAIL**       | **FAIL**           | Any                | **Never for PoE**   |
+| **❌ Stranded / Patch**     | Stranded Cu     | 10 m (33 ft)   | 5 m                | Patch              | Patch cords only    |
 
 <Callout type="danger">
-**CCA (Copper-Clad Aluminum) fails at PoE.** Aluminum has 60% higher resistance → voltage drop → camera reboots at night (IR on). **Verify "Solid Bare Copper" on jacket print.**
+
+**CCA (Copper-Clad Aluminum) fails at PoE.** Aluminum has 60% higher
+resistance → voltage drop → camera reboots at night (IR on). **Verify "Solid
+Bare Copper" on jacket print.**
+
 </Callout>
 
 **Recommended Brands (2026):**
+
 - **Budget:** Cable Matters Cat6 CMR (1000 ft $120)
 - **Mid:** Southwire Cat6 CMR (1000 ft $150)
 - **Pro:** Belden 2413 / General Cable GenSPEED 6000 (1000 ft $220)
@@ -51,27 +54,32 @@ Running cable is 70% of PoE camera installation labor. Do it right once: solid c
   <AccordionItem value="mapping">
     <AccordionTrigger>Create a Cable Schedule Spreadsheet</AccordionTrigger>
     <AccordionContent>
-| Camera | Location | Path | Length (ft) | Cable Type | Termination | PoE Class |
-|--------|----------|------|-------------|------------|-------------|-----------|
-| CAM-01 | Front Door | Attic → Soffit → Fascia | 65 | Cat6 CMR | RJ45 + Keystone | Class 4 (30W) |
-| CAM-02 | Driveway | Attic → Exterior Wall → Pole | 95 | Cat6 Outdoor | RJ45 Direct | Class 4 |
-| CAM-03 | Backyard | Basement → Rim Joist → Eave | 80 | Cat6 CMR | Keystone | Class 3 (15W) |
 
-**Rule:** Measure **twice**, add **10 ft slack** per run (service loops at both ends).
+| Camera | Location   | Path                         | Length (ft) | Cable Type   | Termination     | PoE Class     |
+| ------ | ---------- | ---------------------------- | ----------- | ------------ | --------------- | ------------- |
+| CAM-01 | Front Door | Attic → Soffit → Fascia      | 65          | Cat6 CMR     | RJ45 + Keystone | Class 4 (30W) |
+| CAM-02 | Driveway   | Attic → Exterior Wall → Pole | 95          | Cat6 Outdoor | RJ45 Direct     | Class 4       |
+| CAM-03 | Backyard   | Basement → Rim Joist → Eave  | 80          | Cat6 CMR     | Keystone        | Class 3 (15W) |
+
+<p>
+  <strong>Rule:</strong> Measure <strong>twice</strong>, add{" "}
+  <strong>10 ft slack</strong> per run (service loops at both ends).
+</p>
+
   </AccordionContent>
   </AccordionItem>
 </Accordion>
 
 ### 2. Identify Pathways (Best → Worst)
 
-| Pathway | Difficulty | Max Runs | Code Notes |
-|---------|------------|----------|------------|
-| **Attic → Soffit/Eave** | Easy | Unlimited | Avoid insulation contact (derate ampacity) |
-| **Basement/Crawl → Rim Joist → Wall** | Medium | Unlimited | Drill through sill plate, fireblock |
-| **Interior Wall → Exterior** | Medium | 1–2 per wall | Fireblock at top/bottom plate |
-| **Conduit (EMT/PVC) Surface** | Easy | Unlimited | Best for retrofits, exposed allowed |
-| **Direct Burial (Trench)** | Hard | Unlimited | 18" depth (24" under driveway), warning tape |
-| **Aerial (Pole-to-Pole)** | Medium | 1–2 | Messenger wire, drip loops, 10' clearance |
+| Pathway                               | Difficulty | Max Runs     | Code Notes                                   |
+| ------------------------------------- | ---------- | ------------ | -------------------------------------------- |
+| **Attic → Soffit/Eave**               | Easy       | Unlimited    | Avoid insulation contact (derate ampacity)   |
+| **Basement/Crawl → Rim Joist → Wall** | Medium     | Unlimited    | Drill through sill plate, fireblock          |
+| **Interior Wall → Exterior**          | Medium     | 1–2 per wall | Fireblock at top/bottom plate                |
+| **Conduit (EMT/PVC) Surface**         | Easy       | Unlimited    | Best for retrofits, exposed allowed          |
+| **Direct Burial (Trench)**            | Hard       | Unlimited    | 18" depth (24" under driveway), warning tape |
+| **Aerial (Pole-to-Pole)**             | Medium     | 1–2          | Messenger wire, drip loops, 10' clearance    |
 
 ---
 
@@ -83,18 +91,46 @@ Running cable is 70% of PoE camera installation labor. Do it right once: solid c
   <AccordionItem value="attic-soffit">
     <AccordionTrigger>Step-by-Step: Attic → Soffit Camera</AccordionTrigger>
     <AccordionContent>
-**Tools:** ⅞" spade/auger bit, 50' glow rods, headlamp, knee pads, dust mask
 
-1. **Locate camera position** from inside attic — measure from known landmark (vent, chimney)
-2. **Drill ⅞" hole** through top plate + soffit board (angle slightly down for water shed)
-3. **Push glow rods** from attic down through hole to soffit exterior
-4. **Tape cable** to rod end: fold 6" back, electrical tape smooth (no snag)
-5. **Pull gently** — 2-person job: one feeds, one pulls
-6. **Leave 3 ft slack** in attic (service loop), 2 ft at camera
-7. **Seal:** Silicone around cable at soffit penetration (inside + outside)
-8. **Staple** cable to rafters every 4 ft (T25 insulated staples)
-    </AccordionContent>
-  </AccordionItem>
+<p>
+  <strong>Tools:</strong> ⅞" spade/auger bit, 50' glow rods, headlamp, knee
+  pads, dust mask
+</p>
+
+<ol>
+  <li>
+    <strong>Locate camera position</strong> from inside attic — measure from
+    known landmark (vent, chimney)
+  </li>
+  <li>
+    <strong>Drill ⅞" hole</strong> through top plate + soffit board (angle
+    slightly down for water shed)
+  </li>
+  <li>
+    <strong>Push glow rods</strong> from attic down through hole to soffit
+    exterior
+  </li>
+  <li>
+    <strong>Tape cable</strong> to rod end: fold 6" back, electrical tape smooth
+    (no snag)
+  </li>
+  <li>
+    <strong>Pull gently</strong> — 2-person job: one feeds, one pulls
+  </li>
+  <li>
+    <strong>Leave 3 ft slack</strong> in attic (service loop), 2 ft at camera
+  </li>
+  <li>
+    <strong>Seal:</strong> Silicone around cable at soffit penetration (inside +
+    outside)
+  </li>
+  <li>
+    <strong>Staple</strong> cable to rafters every 4 ft (T25 insulated staples)
+  </li>
+</ol>
+
+  </AccordionContent>
+   </AccordionItem>
 </Accordion>
 
 ### Basement/Crawl to Exterior Wall
@@ -114,34 +150,38 @@ Running cable is 70% of PoE camera installation labor. Do it right once: solid c
 
 ## Conduit & Protection
 
-| Situation | Conduit Type | Size | Notes |
-|-----------|--------------|------|-------|
-| **Exterior wall surface** | LFMC (Liquidtight Flexible Metal) | ½" | UV rated, 4 ft max between supports |
-| **Underground** | PVC Schedule 40 / HDPE | ¾" | 18" cover, sweep elbows, pull string |
-| **Attic (exposed)** | None needed (Cat6 CMR) | — | Staple every 4 ft, no staple on cable |
-| **Plenum ceiling** | EMT / Plenum-rated cable | ½" | CMP cable required if no conduit |
-| **Through firewall** | Fire-rated sleeve + putty | — | Hilti CFS-SL / 3M CP25 |
+| Situation                 | Conduit Type                      | Size | Notes                                 |
+| ------------------------- | --------------------------------- | ---- | ------------------------------------- |
+| **Exterior wall surface** | LFMC (Liquidtight Flexible Metal) | ½"   | UV rated, 4 ft max between supports   |
+| **Underground**           | PVC Schedule 40 / HDPE            | ¾"   | 18" cover, sweep elbows, pull string  |
+| **Attic (exposed)**       | None needed (Cat6 CMR)            | —    | Staple every 4 ft, no staple on cable |
+| **Plenum ceiling**        | EMT / Plenum-rated cable          | ½"   | CMP cable required if no conduit      |
+| **Through firewall**      | Fire-rated sleeve + putty         | —    | Hilti CFS-SL / 3M CP25                |
 
 ---
 
 ## Termination: RJ45 Pass-Through (Fastest, Most Reliable)
 
 <Callout type="note">
-**Use pass-through connectors.** Standard RJ45 requires precise trim. Pass-through lets you verify color order *before* crimp. **Tool:** Ratcheting pass-through crimper (Klein VDV226-110, $45).
+
+**Use pass-through connectors.** Standard RJ45 requires precise trim.
+Pass-through lets you verify color order _before_ crimp. **Tool:** Ratcheting
+pass-through crimper (Klein VDV226-110, $45).
+
 </Callout>
 
 ### T568B Pinout (Standard for PoE)
 
-| Pin | Pair | Color | PoE Function |
-|-----|------|-------|--------------|
-| 1 | 2 | Orange/White | Data + PoE (+) |
-| 2 | 2 | Orange | Data + PoE (+) |
-| 3 | 3 | Green/White | Data + PoE (-) |
-| 4 | 1 | Blue | PoE (+) Spare |
-| 5 | 1 | Blue/White | PoE (+) Spare |
-| 6 | 3 | Green | Data + PoE (-) |
-| 7 | 4 | Brown/White | PoE (-) Spare |
-| 8 | 4 | Brown | PoE (-) Spare |
+| Pin | Pair | Color        | PoE Function   |
+| --- | ---- | ------------ | -------------- |
+| 1   | 2    | Orange/White | Data + PoE (+) |
+| 2   | 2    | Orange       | Data + PoE (+) |
+| 3   | 3    | Green/White  | Data + PoE (-) |
+| 4   | 1    | Blue         | PoE (+) Spare  |
+| 5   | 1    | Blue/White   | PoE (+) Spare  |
+| 6   | 3    | Green        | Data + PoE (-) |
+| 7   | 4    | Brown/White  | PoE (-) Spare  |
+| 8   | 4    | Brown        | PoE (-) Spare  |
 
 **PoE uses ALL 4 pairs** (802.3bt). **All 8 conductors must be perfect.**
 
@@ -153,7 +193,7 @@ Running cable is 70% of PoE camera installation labor. Do it right once: solid c
 4. **Insert fully** — conductors visible at front face
 5. **Verify order** — look through clear connector
 6. **Crimp** — ratchet tool, one firm squeeze
-6. **Tug test** — 5 lb pull, no movement
+7. **Tug test** — 5 lb pull, no movement
 
 ---
 
@@ -162,11 +202,12 @@ Running cable is 70% of PoE camera installation labor. Do it right once: solid c
 **When:** Camera connects to patch panel / wall jack → patch cable to camera
 
 **Punch-Down (110/Keystone):**
+
 1. Strip 2" jacket
 2. Seat wires in color-coded slots (T568B printed on jack)
 3. **Punch straight down** — 110 tool, one strike per wire
-6. Trim excess flush
-7. Snap into wall plate
+4. Trim excess flush
+5. Snap into wall plate
 
 **Test:** Continuity + PoE voltage at jack before camera connects.
 
@@ -175,12 +216,16 @@ Running cable is 70% of PoE camera installation labor. Do it right once: solid c
 ## Testing: Verify Every Run
 
 <Callout type="warning">
-**Never trust a cable untested.** 30% of "camera failures" are cable faults. Test *before* mounting camera.
+
+**Never trust a cable untested.** 30% of "camera failures" are cable faults.
+Test _before_ mounting camera.
+
 </Callout>
 
 ### Tier 1: Continuity + Wiremap (Every Cable)
 
 **Tool:** Basic tester (NF-8601, $25) — 8 LEDs + shield
+
 - **All 8 green** = pass
 - **Any red/open/cross** = re-terminate
 
@@ -190,14 +235,17 @@ Running cable is 70% of PoE camera installation labor. Do it right once: solid c
 
 1. Connect injector → cable → tester (or camera)
 2. Measure **at camera end**:
-   - **PoE (802.3af):** 44–57V DC
-   - **PoE+ (802.3at):** 50–57V DC
-   - **PoE++ (802.3bt):** 52–57V DC
-3. **Under load** (camera powered on) — voltage drop <3V from injector
+
+- **PoE (802.3af):** 44–57V DC
+- **PoE+ (802.3at):** 50–57V DC
+- **PoE++ (802.3bt):** 52–57V DC
+
+3. **Under load** (camera powered on) — voltage drop &lt;3V from injector
 
 ### Tier 3: Data Rate Validation (Pro)
 
 **Tool:** Cable Certifier (Fluke DSX-5000, $8k) — rental $150/day
+
 - **Cat6:** 250 MHz, 1 Gbps guaranteed
 - **Cat6a:** 500 MHz, 10 Gbps guaranteed
 - **Print report** for warranty
@@ -208,11 +256,11 @@ Running cable is 70% of PoE camera installation labor. Do it right once: solid c
 
 **Formula:** `Vdrop = (2 × Length_ft × Current_A × Resistance_Ω_per_1000ft) / 1000`
 
-| Cable | Resistance (Ω/1000ft) | Max 30W (0.6A) | Max 60W (1.2A) | Max 90W (1.8A) |
-|-------|----------------------|----------------|----------------|----------------|
-| **Cat6 (23 AWG)** | 6.6 | **328 ft** | **164 ft** | **109 ft** |
-| **Cat6a (23 AWG)** | 6.6 | 328 ft | 328 ft | 218 ft |
-| **Cat5e (24 AWG)** | 8.5 | 250 ft | 125 ft | 83 ft |
+| Cable              | Resistance (Ω/1000ft) | Max 30W (0.6A) | Max 60W (1.2A) | Max 90W (1.8A) |
+| ------------------ | --------------------- | -------------- | -------------- | -------------- |
+| **Cat6 (23 AWG)**  | 6.6                   | **328 ft**     | **164 ft**     | **109 ft**     |
+| **Cat6a (23 AWG)** | 6.6                   | 328 ft         | 328 ft         | 218 ft         |
+| **Cat5e (24 AWG)** | 8.5                   | 250 ft         | 125 ft         | 83 ft          |
 
 **Rule:** Stay under **80% of max** for margin. For PoE++ (60/90W), use Cat6a or limit to 100 ft on Cat6.
 
@@ -220,28 +268,28 @@ Running cable is 70% of PoE camera installation labor. Do it right once: solid c
 
 ## Common Faults & Fixes
 
-| Symptom | Cause | Fix |
-|---------|-------|-----|
-| **Camera reboots at night (IR on)** | Voltage drop >3V | Shorten run / Cat6a / PoE++ injector at camera |
-| **Link flaps 100/1000 Mbps** | Single pair open / high resistance | Re-terminate both ends; test each pair |
-| **No link, tester shows 7/8 wires** | One conductor broken / loose | Re-crimp; check for staple crush |
-| **Crossed pairs (1↔3, 2↔6)** | T568A one end, T568B other | Standardize T568B both ends |
-| **Water in cable (corrosion)** | Outdoor cable not gel-filled / bad seal | Replace with direct burial; seal entries |
-| **EMI noise (video artifacts)** | Parallel to Romex / HVAC | Separate 12"+ ; cross at 90° ; shielded Cat6 |
+| Symptom                             | Cause                                   | Fix                                            |
+| ----------------------------------- | --------------------------------------- | ---------------------------------------------- |
+| **Camera reboots at night (IR on)** | Voltage drop >3V                        | Shorten run / Cat6a / PoE++ injector at camera |
+| **Link flaps 100/1000 Mbps**        | Single pair open / high resistance      | Re-terminate both ends; test each pair         |
+| **No link, tester shows 7/8 wires** | One conductor broken / loose            | Re-crimp; check for staple crush               |
+| **Crossed pairs (1↔3, 2↔6)**        | T568A one end, T568B other              | Standardize T568B both ends                    |
+| **Water in cable (corrosion)**      | Outdoor cable not gel-filled / bad seal | Replace with direct burial; seal entries       |
+| **EMI noise (video artifacts)**     | Parallel to Romex / HVAC                | Separate 12"+ ; cross at 90° ; shielded Cat6   |
 
 ---
 
 ## Code Compliance Quick Reference (NEC 2023)
 
-| Article | Requirement | Practical Takeaway |
-|---------|-------------|-------------------|
-| **300.4** | Protection from physical damage | Nail plates, conduit, 1.25" from edge |
-| **300.11** | Secure & support | Staples 4' OC, within 12" of box |
-| **300.22** | Plenum spaces | CMP cable or conduit |
-| **411.4** | Low-voltage lighting (cameras) | Class 2/3, listed equipment |
-| **725.133** | Class 2/3 cable separation | 2" from power (or barrier) |
-| **800.170** | Grounding (outdoor) | Antenna discharge unit if aerial |
-| **Local** | Permit threshold | Often >$500 or >6 ft height |
+| Article     | Requirement                     | Practical Takeaway                    |
+| ----------- | ------------------------------- | ------------------------------------- |
+| **300.4**   | Protection from physical damage | Nail plates, conduit, 1.25" from edge |
+| **300.11**  | Secure & support                | Staples 4' OC, within 12" of box      |
+| **300.22**  | Plenum spaces                   | CMP cable or conduit                  |
+| **411.4**   | Low-voltage lighting (cameras)  | Class 2/3, listed equipment           |
+| **725.133** | Class 2/3 cable separation      | 2" from power (or barrier)            |
+| **800.170** | Grounding (outdoor)             | Antenna discharge unit if aerial      |
+| **Local**   | Permit threshold                | Often >$500 or >6 ft height           |
 
 ---
 
@@ -260,17 +308,17 @@ Running cable is 70% of PoE camera installation labor. Do it right once: solid c
 
 ## Tool Shopping List (One-Time Buy)
 
-| Tool | Model | Price | Notes |
-|------|-------|-------|-------|
-| **Pass-through Crimper** | Klein VDV226-110 | $45 | Ratchet, all-in-one |
-| **Cable Tester (Basic)** | NF-8601 / TRENDnetworks TC-NT2 | $25–$60 | Continuity + wiremap |
-| **PoE Tester** | LINKSYS PTPoE / Ubiquiti POE-Tester | $35 | Voltage under load |
-| **Punch-Down Tool** | Fluke D914S / Klein VDV427-800 | $40 | 110/66 blade |
-| **Glow Rods** | Klein 56107 / Jonard GR-20 | $35 | 25–50 ft set |
-| **⅞" Auger Bit** | Irwin Speedbor / Milwaukee | $15 | Clean holes in wood |
-| **Hammer Drill (SDS+)** | Bosch GBH2-28L / DeWalt DCH273 | $180 | For masonry |
-| **Label Maker** | Brother PT-E110 / PT-H110 | $50 | Heat-shrink labels |
-| **Fish Tape** | Klein 56007 100ft | $30 | Steel, non-conductive tip |
+| Tool                     | Model                               | Price   | Notes                     |
+| ------------------------ | ----------------------------------- | ------- | ------------------------- |
+| **Pass-through Crimper** | Klein VDV226-110                    | $45     | Ratchet, all-in-one       |
+| **Cable Tester (Basic)** | NF-8601 / TRENDnetworks TC-NT2      | $25–$60 | Continuity + wiremap      |
+| **PoE Tester**           | LINKSYS PTPoE / Ubiquiti POE-Tester | $35     | Voltage under load        |
+| **Punch-Down Tool**      | Fluke D914S / Klein VDV427-800      | $40     | 110/66 blade              |
+| **Glow Rods**            | Klein 56107 / Jonard GR-20          | $35     | 25–50 ft set              |
+| **⅞" Auger Bit**         | Irwin Speedbor / Milwaukee          | $15     | Clean holes in wood       |
+| **Hammer Drill (SDS+)**  | Bosch GBH2-28L / DeWalt DCH273      | $180    | For masonry               |
+| **Label Maker**          | Brother PT-E110 / PT-H110           | $50     | Heat-shrink labels        |
+| **Fish Tape**            | Klein 56007 100ft                   | $30     | Steel, non-conductive tip |
 
 ---
 
@@ -283,4 +331,4 @@ Running cable is 70% of PoE camera installation labor. Do it right once: solid c
 
 ---
 
-*Last updated: July 2026. NEC references based on 2023 edition — verify local amendments.*
+_Last updated: July 2026. NEC references based on 2023 edition — verify local amendments._

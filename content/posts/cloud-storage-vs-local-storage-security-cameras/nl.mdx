@@ -1,0 +1,220 @@
+---
+title: "Cloud Opslag vs Lokale Opslag voor Beveiligingscamera's (2026)"
+description: "Vergelijk elke opslagoptic: cloud-abonnementen (Ring, Arlo, Nest, Eufy), NVR/DVR, microSD, NAS, S3/Wasabi/Backblaze B2, hybride. Kosten per TB-jaar, retentie, privacy, bandbreedte en herstel."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "cloud-storage-vs-local-storage-security-cameras"
+author: "Your Name"
+tags: ["cloud-storage", "local-storage", "nvr", "buying-guide", "privacy"]
+postType: "review"
+---
+
+Opslag bepaalt of camerasystemen werken of falen. Verlies van beeldmateriaal = verlies van bewijs. Cloud biedt gemak maar kost voor altijd en riskeert privacy. Lokale opslag (NVR, microSD, NAS) kost eenmalig maar is van u. Hybride geeft beide voordelen — mits correct geconfigureerd. Deze gids behandelt elke optie met echte 2026-prijzen, bandbreedteberekeningen en beslissingskaders.
+
+<Badge variant="outline">Snel antwoord</Badge> **Meeste huizen:** PoE NVR
+(lokaal 24/7) + cloudback-up alleen voor meldingen. **Appartementen/huurders:**
+Camera met microSD + optioneel cloudabonnement. **Bedrijf:** NVR + NAS + offsite
+(Wasabi/Backblaze B2) + cloudmeldingen.
+
+<Callout type="warning">
+
+<strong>Bandbreedterealiteit:</strong> 8× 4K-camera's @ 8 Mbps H.265 = 64 Mbps
+**continue upload**. De meeste thuisverbindingen hebben 10–35 Mbps upload.
+Volledige 24/7 cloud is onmogelijk op typisch internet.
+
+</Callout>
+
+## Opslaglandschap (2026)
+
+| Categorie              | Voorbeelden                                                        | Kostenmodel         | Retentie      | Privacy                    | Internet vereist    |
+| ---------------------- | ------------------------------------------------------------------ | ------------------- | ------------- | -------------------------- | ------------------- |
+| **Cloudabonnement**    | Ring Protect, Arlo Secure, Nest Aware, Eufy Cloud, Blink           | $/cam/mnd           | 7–60 dagen    | Leverancier heeft sleutels | Ja (24/7 upload)    |
+| **NVR/DVR (lokaal)**   | Reolink RLK, Amcrest NV, Dahua, Hikvision, UniFi Protect           | Hardware eenmalig   | Maanden–Jaren | U heeft sleutels           | Nee (alleen lokaal) |
+| **microSD (edge)**     | Alle draadloze cams, sommige PoE                                   | Kaart eenmalig      | Dagen–Weken   | U heeft sleutels           | Nee (alleen lokaal) |
+| **NAS / Server**       | Synology, QNAP, TrueNAS, Unraid + Frigate/Scrypted                 | Hardware + schijven | Jaren         | U heeft sleutels           | Optioneel           |
+| **Cloud objectopslag** | Wasabi, Backblaze B2, AWS S3, Cloudflare R2                        | $/TB/mnd            | Oneindig      | U versleutelt              | Ja (alleen back-up) |
+| **Hybride**            | UniFi Protect + Cloud Back-up, Reolink NVR + FTP, Frigate + rclone | Gemengd             | Gelaagd       | U controleert              | Gedeeltelijk        |
+
+## Cloudabonnementen: de echte kosten (2026)
+
+| Dienst                 | Maandelijks (1 cam) | Jaarlijks (1 cam) | 5 cams/jr | Retentie  | 2K/4K    |
+| ---------------------- | ------------------- | ----------------- | --------- | --------- | -------- |
+| **Ring Protect Basic** | $4.99               | $49.99            | $49.99\*  | 180 dagen | 1080p    |
+| **Arlo Secure**        | $7.99               | $79.99            | $179.99   | 30 dagen  | 2K/4K    |
+| **Nest Aware**         | $8                  | $80               | $80\*     | 30 dagen  | 1080p/2K |
+| **Eufy Cloud**         | $2.99               | $29.99            | $29.99\*  | 30 dagen  | 2K       |
+
+**5-jaar TCO (5 cams, 4K, 30 dagen retentie):**
+
+- Lokale NVR (8TB): ~$600 eenmalig — wint na 2 jaar
+- Ring Protect Basic (5 cams): ~$250/jaar — ~$1.250 over 5 jaar
+- Nest Aware (5 cams): ~$400/jaar — ~$2.000 over 5 jaar
+- Conclusie: Lokale opslag is voordeliger vanaf maand 24
+
+## Lokale opslag: NVR diepgaand
+
+| Camera's | Resolutie | Bitrate (H.265) | GB/dag | 14 dagen | 30 dagen | 90 dagen | Aanbevolen schijven |
+| -------- | --------- | --------------- | ------ | -------- | -------- | -------- | ------------------- |
+| 4        | 4K        | 4 Mbps          | 173 GB | 2.4 TB   | 5.2 TB   | 15.6 TB  | 2× 8TB (RAID 1)     |
+| 8        | 4K        | 4 Mbps          | 346 GB | 4.8 TB   | 10.4 TB  | 31 TB    | 4× 10TB (RAID 5/6)  |
+| 16       | 4K        | 4 Mbps          | 691 GB | 9.7 TB   | 20.7 TB  | 62 TB    | 8× 10TB (RAID 6)    |
+
+### RAID voor NVR
+
+| RAID        | Min schijven | Bruikbare capaciteit | Overleeft    | Best voor                     |
+| ----------- | ------------ | -------------------- | ------------ | ----------------------------- |
+| **RAID 1**  | 2            | 50%                  | 1 schijf     | 2–4 bays, kritieke beelden    |
+| **RAID 5**  | 3            | (N-1)/N              | 1 schijf     | 4–8 bays, balans              |
+| **RAID 6**  | 4            | (N-2)/N              | 2 schijven   | 6+ bays, maximale bescherming |
+| **RAID 10** | 4            | 50%                  | 1–2 schijven | Prestatie + veiligheid        |
+
+## microSD: realiteitscheck edge-opslag
+
+**Praktische limieten:**
+
+- **Hitte:** 4K continu schrijven in zonbeschenen camera = kaartfalen in 6–12 maanden
+- **Levensduur:** 128GB TLC = ~600 TBW. 4K @ 4 Mbps = 43 GB/dag
+- **Capaciteit sweet spot:** **128GB–256GB**
+
+## Keuze tussen objectcloud en leverancierscloud
+
+Leverancierscloud-abonnementen (Ring Protect, Arlo Secure, Nest Aware) zijn gebruiksvriendelijk maar duur op de lange termijn. Objectcloud-opslag (Wasabi, Backblaze B2, Cloudflare R2) biedt goedkopere langetermijnopslag met client-side versleutelingsmogelijkheden — maar vereist handmatige configuratie via FTP, rclone, of S3 API.
+
+**Wanneer leverancierscloud:** U wilt plug-and-play, pushmeldingen werken direct vanuit de app, delen met familie is eenvoudig. Betaal voor gemak.
+
+**Wanneer objectcloud:** U heeft meer dan 30 dagen retentie nodig, u beheert meerdere NVR's, of u wilt volledige controle over encryptiesleutels. De initiële configuratie kost tijd, maar de maandelijkse kosten zijn 5–10× lager dan leverancierscloud voor dezelfde opslagcapaciteit.
+
+## NAS / Server: de keuze voor liefhebbers/professionals
+
+| Software           | Platform        | Camera-ondersteuning                   | AI/Analyse                               |
+| ------------------ | --------------- | -------------------------------------- | ---------------------------------------- |
+| **Frigate**        | Docker (Linux)  | ONVIF, RTSP, Go2RTC                    | Google Coral TPU (persoon/voertuig/dier) |
+| **Scrypted**       | Docker, Node.js | HomeKit, ONVIF, RTSP, Wyze, Ring, Arlo | TensorFlow, Coral                        |
+| **Blue Iris**      | Windows         | ONVIF, RTSP, 3000+ profielen           | DeepStack AI, CodeProject AI             |
+| **UniFi Protect**  | UniFi OS        | Alleen UniFi cams                      | Protect AI (persoon/voertuig/LPR)        |
+| **Synology Surv.** | DSM             | 8300+ ONVIF                            | Deep Learning (persoon/voertuig/gezicht) |
+
+## Cloud objectopslag: offsite back-up
+
+| Provider            | $/TB/mnd | $/TB/egress | Min. opslag | Verwijderingskost | Best voor                        |
+| ------------------- | -------- | ----------- | ----------- | ----------------- | -------------------------------- |
+| **Wasabi**          | $6.99    | **$0**      | 90 dagen    | Geen              | **Topkeuze** — voorspelbaar      |
+| **Backblaze B2**    | $6.00    | $0.01       | Geen        | Geen              | Goedkoopste bij weinig downloads |
+| **Cloudflare R2**   | $15      | **$0**      | Geen        | Geen              | Workers-integratie, zero egress  |
+| **AWS S3 Standard** | $23      | $0.09       | 30 dagen    | $0.03/GB          | Alleen als u al AWS gebruikt     |
+
+<Callout type="tip">
+
+<strong>Kostentip:</strong> Wasabi is de beste keuze voor NVR-back-ups omdat
+egress $0 kost — u kunt beeldmateriaal downloaden voor weergave zonder extra
+kosten. Backblaze B2 is goedkoper voor opslag, maar egress-kosten kunnen oplopen
+als u vaak beeldmateriaal bekijkt.
+
+</Callout>
+## Hybride architecturen
+
+### 1. UniFi Protect + Cloud Back-up
+
+- **Lokaal:** UNVR (7× HDD, RAID 6) → 24/7 4K
+- **Cloud:** Protect Cloud Backup ($0,50/cam/mnd) → alleen gebeurtenissen
+
+### 2. Reolink NVR + FTP/S3
+
+- **Lokaal:** RLN16-410 (16 ch, 2× SATA) → 24/7
+- **Cloud:** NVR firmware → FTP/S3 (Wasabi/B2) bij beweging
+
+### 3. Frigate + rclone (DIY)
+
+- **Lokaal:** Frigate (Intel N100 + 4× 10TB RAID 5) → 24/7 + AI
+- **Cloud:** `rclone sync` → Wasabi dagelijks
+- **Kosten:** ~$684 eerste jaar, ~$84/jaar daarna. Meest kosteneffectieve optie voor gevorderde gebruikers met maximale privacy.
+
+## Beslissingsmatrix
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="homeowner">
+    <AccordionTrigger>Huiseigenaar (4–8 camera's)</AccordionTrigger>
+    <AccordionContent>
+      <strong>Aanbevolen:</strong> PoE NVR (Reolink RLN8 / Amcrest NV4108E) + 2×
+      8TB RAID 1. Dit biedt 30+ dagen 4K-opname voor 8 camera's. Voeg
+      cloudback-up alleen voor gebeurtenissen toe (bijv. Protect Cloud Backup of
+      Wasabi) als bescherming tegen NVR-diefstal. Totale kosten: ~$600–$900
+      eenmalig plus ~$30/jaar voor cloudback-up.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="renter">
+    <AccordionTrigger>Huurder / Appartement (2–4 camera's)</AccordionTrigger>
+    <AccordionContent>
+      <strong>Aanbevolen:</strong> Batterij/Wi-Fi camera's (EufyCam 3, Reolink
+      Argus) + microSD 128–256GB. Vermijd cloudabonnementen voor basisgebruik —
+      opname op kaart volstaat voor 3–7 dagen aan gebeurtenissen. Als u langere
+      retentie nodig hebt, kies dan het goedkoopste cloudabonnement van de
+      leverancier. Voordeel is geen boren en eenvoudig verhuizen. Totale kosten:
+      ~$200–$400 eenmalig.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="business">
+    <AccordionTrigger>Klein bedrijf (8–24 camera's)</AccordionTrigger>
+    <AccordionContent>
+      <strong>Aanbevolen:</strong> UniFi Protect (UNVR Pro) + Site-to-Site VPN +
+      Wasabi offsite. Voor bedrijven is offsite back-up essentieel — Wasabi of
+      Backblaze B2 bieden goedkope externe opslag. Gebruik een apart VLAN-subnet
+      voor camera's en dwing multi-factor authenticatie af voor externe toegang.
+      Totale kosten: ~$1.500–$3.000 plus ~$84/jaar voor Wasabi.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+## Bandbreedteplanning
+
+| Streamtype                 | Resolutie | Bitrate      | 8 cams upload   | 16 cams upload   |
+| -------------------------- | --------- | ------------ | --------------- | ---------------- |
+| **Hoofd (opname)**         | 4K        | 4–6 Mbps     | 32–48 Mbps      | 64–96 Mbps       |
+| **Sub (livebeeld)**        | 1080p/D1  | 0.5–1.5 Mbps | 4–12 Mbps       | 8–24 Mbps        |
+| **Cloud (gebeurtenissen)** | 1080p     | 1–2 Mbps     | Burst 8–16 Mbps | Burst 16–32 Mbps |
+
+**Vuistregel:** Als upload < 50 Mbps, **nooit** de hoofdstroom 24/7 naar de cloud sturen. Neem in plaats daarvan lokaal op en stuur alleen korte clips bij gebeurtenissen. Voor verbindingen <20 Mbps upload beperk tot 1080p-substreams voor externe weergave en vertrouw op lokale NVR voor 4K-opname. Neem in plaats daarvan lokaal op en stuur alleen korte clips bij gebeurtenissen. Voor verbindingen <20 Mbps upload beperk tot 1080p-substreams voor externe weergave en vertrouw op lokale NVR voor 4K-opname.
+
+<Callout type="tip">
+
+<strong>microSD is GEEN back-up.</strong> Het zit in de camera — diefstal/brand
+vernietigt beide. Gebruik voor: buffer tijdens internetuitval, laatste 24–72u.
+
+</Callout>
+
+## Privacy en juridische aspecten
+
+Inzicht in wie toegang heeft tot uw beeldmateriaal is cruciaal voor privacy en naleving van regelgeving:
+
+| Opslag                                 | Versleuteling                 | Toegang door leverancier |
+| -------------------------------------- | ----------------------------- | ------------------------ |
+| **Cloud (Ring/Arlo/Nest)**             | In rust (leverancierssleutel) | Ja (ontsleutelbaar)      |
+| **NVR lokaal**                         | Geen (of zelf beheerd)        | Nee                      |
+| **Objectopslag + clientversleuteling** | **U heeft sleutels**          | **Nooit**                |
+
+Voor naleving van AVG/GDPR: lokale opslag of clientversleutelde objectopslag is de veiligste keuze.
+
+## Samenvatting: TCO opslag over 5 jaar (8 cams, 4K, 30 dagen)
+
+| Architectuur               | Jaar 1 | Jaar 2–5 (jaarlijks) | 5 jaar totaal | Privacy  |
+| -------------------------- | ------ | -------------------- | ------------- | -------- |
+| **Ring Protect Basic**     | $250   | $250                 | **$1,250**    | Laag     |
+| **Nest Aware**             | $400   | $400                 | **$2,000**    | Laag     |
+| **Reolink NVR (DIY)**      | $600   | $0                   | **$600**      | **Hoog** |
+| **UniFi Protect + Cloud**  | $1,150 | $30                  | **$1,270**    | Hoog     |
+| **Frigate + Wasabi (DIY)** | $684   | $84                  | **$1,020**    | **Max**  |
+
+---
+
+_Laatst bijgewerkt: Juli 2026. Prijzen en functies kunnen wijzigen._
+
+---
+
+## Gerelateerde gidsen
+
+- [Batterijduur & Stroomopties](/blog/battery-life-power-options-corded-battery-solar)
+- [Beste beveiligingscamerasystemen voor kleine bedrijven](/blog/best-small-business-security-camera-systems)
+- [DIY beveiligingscamera installatie: complete gids](/blog/diy-security-camera-installation-complete-guide)
+- [CCTV video-opslagcalculator](/blog/cctv-video-storage-calculator-hard-drive-space)
+- [NVR vs DVR: wat is het verschil?](/blog/nvr-vs-dvr)
+- [Nachtzicht werkt niet? Gids](/blog/night-vision-not-working-troubleshooting-guide)

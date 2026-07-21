@@ -1,0 +1,211 @@
+---
+title: "Máy Tính Lưu Trữ Video CCTV: Cần Bao Nhiêu Ổ Cứng?"
+description: "Tính toán dung lượng ổ cứng cần thiết cho hệ thống camera an ninh của bạn. Công cụ và công thức cho H.264, H.265 và H.265+."
+publishedAt: 2026-03-05T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "cctv-video-storage-calculator-hard-drive-space"
+author: "Your Name"
+tags: ["storage", "calculator", "guide"]
+postType: "guide"
+---
+
+Một trong những câu hỏi phổ biến nhất từ người mua camera an ninh là: "Tôi cần ổ cứng dung lượng bao nhiêu?" Câu trả lời phụ thuộc vào bốn yếu tố: số lượng camera, độ phân giải, khung hình/giây (fps) và thời gian lưu trữ mong muốn.
+
+Hướng dẫn này cung cấp một máy tính nhanh, công thức để tự tính toán và các khuyến nghị cho các tình huống khác nhau.
+
+<Badge variant="outline">Tóm Tắt Nhanh</Badge> Một camera 4K ghi hình 24/7 với
+H.265 tiêu thụ ~6 GB mỗi ngày. Bốn camera 4K trong 30 ngày = 720 GB. Một ổ cứng
+2TB lưu trữ ~75 ngày cho bốn camera 4K.
+
+## Máy Tính Nhanh
+
+| Số camera | Độ phân giải | Mã hóa | GB/ngày/cam | GB/ngày tổng | Lưu trữ 30 ngày   | Lưu trữ 60 ngày   |
+| --------- | ------------ | ------ | ----------- | ------------ | ----------------- | ----------------- |
+| 1         | 1080p (2MP)  | H.265  | 2 GB        | 2 GB         | 60 GB             | 120 GB            |
+| 2         | 1080p (2MP)  | H.265  | 2 GB        | 4 GB         | 120 GB            | 240 GB            |
+| 4         | 1080p (2MP)  | H.265  | 2 GB        | 8 GB         | 240 GB            | 480 GB            |
+| 8         | 1080p (2MP)  | H.265  | 2 GB        | 16 GB        | 480 GB            | 960 GB            |
+| 1         | 4K (8MP)     | H.265  | 6 GB        | 6 GB         | 180 GB            | 360 GB            |
+| 2         | 4K (8MP)     | H.265  | 6 GB        | 12 GB        | 360 GB            | 720 GB            |
+| 4         | 4K (8MP)     | H.265  | 6 GB        | 24 GB        | 720 GB            | 1.440 GB (1,4 TB) |
+| 8         | 4K (8MP)     | H.265  | 6 GB        | 48 GB        | 1.440 GB (1,4 TB) | 2.880 GB (2,8 TB) |
+| 1         | 12MP         | H.265  | 9 GB        | 9 GB         | 270 GB            | 540 GB            |
+| 4         | 12MP         | H.265  | 9 GB        | 36 GB        | 1.080 GB (1 TB)   | 2.160 GB (2,1 TB) |
+
+## Công Thức Tính Toán Lưu Trữ
+
+<Callout type="info">
+
+**Công thức:**
+Dung lượng (TB) = (Số camera × Bitrate (Mbps) × 86.400 giây/ngày × Số ngày) / (8 × 1.024 × 1.024)
+
+**Công thức đơn giản hóa:**
+Dung lượng (GB) = Số camera × GB mỗi camera mỗi ngày × Số ngày
+
+Trong đó GB mỗi camera mỗi ngày là: 1080p H.264 (~10 GB), 1080p H.265 (~5 GB), 4K H.264 (~20 GB), 4K H.265 (~10 GB), 4K H.265+ (~6 GB), 12MP H.265 (~15 GB).
+
+</Callout>
+
+### Tác Động Của Mã Hóa
+
+| Mã hóa                    | Tiết kiệm băng thông so với H.264 | Bitrate 4K (15 fps) | GB/ngày cho 1 camera 4K |
+| ------------------------- | --------------------------------- | ------------------- | ----------------------- |
+| H.264                     | —                                 | 12 Mbps             | 20 GB                   |
+| H.265 (HEVC)              | ~50%                              | 6 Mbps              | 10 GB                   |
+| H.265+ (H.265 thông minh) | ~65%                              | 4 Mbps              | 6 GB                    |
+| H.264+ (H.264 thông minh) | ~30%                              | 8 Mbps              | 14 GB                   |
+
+<Callout type="note">
+
+**Tại sao H.265+ tiết kiệm hơn H.265 tiêu chuẩn?** H.265+ (Hay còn gọi là Smart
+H.265+) phân tích cảnh và chỉ truyền các pixel thay đổi giữa các khung hình
+thay vì mã hóa lại toàn bộ khung hình. Trong các cảnh tĩnh (ví dụ: hành lang
+trống vào ban đêm), điều này giảm bitrate tới 80% so với H.264 và ~30–40% so
+với H.265 tiêu chuẩn. Trong các cảnh có nhiều chuyển động, lợi ích ít hơn.
+
+</Callout>
+
+## Yếu Tố Ảnh Hưởng Đến Dung Lượng Lưu Trữ
+
+### 1. Độ Phân Giải (Số MP)
+
+Càng nhiều megapixel, càng nhiều dữ liệu. Mỗi lần tăng gấp đôi độ phân giải (2MP → 4MP → 8MP) tăng dung lượng lưu trữ lên ~50–100% ở cùng bitrate. Cảm biến 12MP tạo ra nhiều dữ liệu hơn 50% so với 8MP ở cùng chất lượng nén.
+
+### 2. Khung Hình Trên Giây (fps)
+
+Giảm fps từ 30 xuống 15 cắt giảm một nửa dung lượng lưu trữ. Đối với hầu hết các tình huống an ninh, 15 fps là đủ—video mượt mà và dễ xem. Chỉ sử dụng 30 fps nếu bạn cần ghi lại chuyển động nhanh (xe cộ, thể thao).
+
+| fps                  | Dung lượng (so với 30 fps) |
+| -------------------- | -------------------------- |
+| 30 fps (tối đa)      | 100%                       |
+| 15 fps (khuyến nghị) | 50%                        |
+| 10 fps (tiết kiệm)   | 33%                        |
+| 6 fps (tối thiểu)    | 20%                        |
+
+### 3. Chất Lượng / Bitrate
+
+Hầu hết các NVR cho phép bạn đặt chất lượng: Cơ bản, Tiêu chuẩn, Tốt, Tốt nhất. "Tốt nhất" có thể tiêu thụ gấp đôi dung lượng so với "Tiêu chuẩn" mà không có sự khác biệt rõ rệt về hình ảnh. Kiểm tra với cài đặt mặc định trước, sau đó giảm nếu cần.
+
+### 4. Ghi Hình Liên Tục so với Theo Chuyển Động
+
+Ghi hình theo chuyển động giảm dung lượng 50–90% tùy thuộc vào tần suất chuyển động. Tuyệt vời cho gia đình. Không được khuyến nghị cho doanh nghiệp—bạn có thể bỏ lỡ cảnh quay quan trọng.
+
+### 5. Lịch Ghi Hình
+
+Ghi hình 24/7 sử dụng nhiều dung lượng nhất. Bạn có thể đặt lịch (ví dụ: chỉ ghi hình từ 6 giờ chiều đến 6 giờ sáng) để giảm đáng kể. Một số NVR cho phép lịch khác nhau cho các camera khác nhau.
+
+| Lịch                 | Giảm dung lượng so với 24/7 |
+| -------------------- | --------------------------- |
+| 24/7                 | 0%                          |
+| 12 giờ/ngày          | 50%                         |
+| Chỉ ban đêm (12 giờ) | 50%                         |
+| Theo chuyển động     | 50–90%                      |
+
+## Máy Tính Từng Bước
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>
+      Bước 1: Xác Định Số Lượng Camera & Độ Phân Giải
+    </AccordionTrigger>
+    <AccordionContent>
+      Liệt kê tất cả các camera của bạn và độ phân giải của chúng. Ví dụ: 4
+      camera 4K (8MP) + 2 camera 1080p (2MP).
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="item-2">
+    <AccordionTrigger>Bước 2: Chọn Mã Hóa</AccordionTrigger>
+    <AccordionContent>
+      Sử dụng H.265+ nếu NVR của bạn hỗ trợ. Nếu không, H.265 là tiêu chuẩn.
+      Tránh H.264 trừ khi cần tương thích—nó sử dụng gấp đôi dung lượng.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="item-3">
+    <AccordionTrigger>Bước 3: Chọn Lịch Ghi Hình</AccordionTrigger>
+    <AccordionContent>
+      24/7 cho doanh nghiệp; theo chuyển động là đủ cho gia đình. Trung thực về
+      nhu cầu của bạn.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="item-4">
+    <AccordionTrigger>Bước 4: Tính Toán</AccordionTrigger>
+    <AccordionContent>
+      Sử dụng bảng ở trên hoặc công thức. Làm tròn lên để có dung lượng dự
+      phòng—bạn sẽ muốn thêm thời gian lưu trữ sau này.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="item-5">
+    <AccordionTrigger>Bước 5: Thêm Dung Phòng</AccordionTrigger>
+    <AccordionContent>
+      Luôn thêm 20–30% dung phòng cho các bản cập nhật firmware, cảnh quay vụ
+      việc và sự kiện bất ngờ.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+## Khuyến Nghị Ổ Cứng
+
+<Callout type="warning">
+
+**Quan trọng:** Không sử dụng ổ cứng máy tính để bàn tiêu chuẩn cho NVR. Chúng
+không được thiết kế cho ghi hình 24/7. Sử dụng ổ cứng cấp giám sát (WD Purple,
+Seagate SkyHawk) được tối ưu hóa cho ghi hình liên tục, độ rung và nhiệt độ cao
+hơn.
+
+</Callout>
+
+### Ổ Cứng Giám Sát Được Khuyến Nghị
+
+| Ổ cứng          | Dung lượng | Tốc độ   | Bộ đệm | MTBF          | Bảo hành | Phù hợp          |
+| --------------- | ---------- | -------- | ------ | ------------- | -------- | ---------------- |
+| WD Purple       | 1TB        | 5400 RPM | 64 MB  | 1 triệu giờ   | 2 năm    | 1–2 camera 4K    |
+| WD Purple       | 2TB        | 5400 RPM | 64 MB  | 1 triệu giờ   | 2 năm    | 2–4 camera 4K    |
+| WD Purple       | 4TB        | 5400 RPM | 64 MB  | 1,5 triệu giờ | 3 năm    | 4–6 camera 4K    |
+| WD Purple       | 6TB        | 5400 RPM | 256 MB | 1,5 triệu giờ | 3 năm    | 6–8 camera 4K    |
+| WD Purple       | 8TB        | 5400 RPM | 256 MB | 2 triệu giờ   | 3 năm    | 8–12 camera 4K   |
+| Seagate SkyHawk | 2TB        | 5900 RPM | 256 MB | 1 triệu giờ   | 2 năm    | 2–4 camera 4K    |
+| Seagate SkyHawk | 4TB        | 5900 RPM | 256 MB | 1,5 triệu giờ | 3 năm    | 4–6 camera 4K    |
+| Seagate SkyHawk | 8TB        | 7200 RPM | 256 MB | 2 triệu giờ   | 3 năm    | 8–12 camera 4K   |
+| WD Purple Pro   | 10TB+      | 7200 RPM | 512 MB | 2,5 triệu giờ | 5 năm    | Doanh nghiệp, AI |
+
+### Ổ Cứng SSD Cho NVR?
+
+SSD nhanh hơn, im lặng hơn và bền hơn (không có bộ phận chuyển động). Nhưng chúng đắt hơn nhiều mỗi TB và có thể không mang lại lợi ích đáng kể cho ghi hình video (vốn là tuần tự, không phải ngẫu nhiên). Sử dụng HDD cho lưu trữ chính; SSD cho bộ đệm hoặc hệ điều hành NVR.
+
+---
+
+## Ví Dụ Thực Tế
+
+### Ví Dụ 1: Gia Đình (4 Camera 4K, Ghi Theo Chuyển Động, H.265+)
+
+- 4 × 4K @ H.265+, ghi theo chuyển động
+- GB/ngày ước tính: ~6 GB × 4 × 20% (chuyển động) = 4,8 GB/ngày
+- 30 ngày: ~144 GB — ổ 256 GB hoặc 500 GB là đủ
+- 60 ngày: ~288 GB — ổ 500 GB hoặc 1TB
+
+### Ví Dụ 2: Doanh Nghiệp Nhỏ (8 Camera 4K, Ghi 24/7, H.265)
+
+- 8 × 4K @ H.265, ghi 24/7
+- GB/ngày: 8 × 6 GB = 48 GB/ngày
+- 30 ngày: 48 × 30 = 1.440 GB (1,4 TB) — ổ 2TB
+- 60 ngày: 48 × 60 = 2.880 GB (2,8 TB) — ổ 4TB
+
+### Ví Dụ 3: Kho Hàng (16 Camera 1080p, Ghi 24/7, H.265)
+
+- 16 × 1080p @ H.265, ghi 24/7
+- GB/ngày: 16 × 2 GB = 32 GB/ngày
+- 30 ngày: 32 × 30 = 960 GB — ổ 1TB
+- 90 ngày: 32 × 90 = 2.880 GB (2,8 TB) — ổ 4TB
+
+---
+
+## Kết Luận
+
+Đối với hầu hết người dùng gia đình, ổ cứng 1TB–2TB là đủ. Đối với doanh nghiệp với 4–8 camera 4K, hãy chọn 4TB–8TB. Luôn mua ổ cứng cấp giám sát (WD Purple hoặc Seagate SkyHawk), sử dụng H.265+ để tiết kiệm dung lượng và thêm 20–30% dự phòng.
+
+---
+
+## Hướng Dẫn Liên Quan
+
+- [Lưu Trữ Đám Mây so với Lưu Trữ Cục Bộ](/blog/cloud-storage-vs-local-storage-security-cameras) — So sánh chi phí và bảo mật lưu trữ
+- [Hướng Dẫn Thiết Lập NVR](/blog/poe-nvr-setup) — Cách kết nối và cấu hình NVR của bạn

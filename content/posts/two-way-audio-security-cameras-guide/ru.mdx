@@ -3,19 +3,18 @@ title: "Камеры с двусторонним звуком: Полное ру
 description: "Full-duplex vs half-duplex, шумоподавление, юридическое согласие, триггеры умного дома и лучшие камеры для дверных звонков, няньки и бизнес-интеркомов."
 publishedAt: 2026-07-18T00:00:00.000Z
 updatedAt: 2026-07-18T00:00:00.000Z
-slug: "two-way-audio-security-cameras-complete-guide"
+slug: "two-way-audio-security-cameras-guide"
 author: "Your Name"
 tags: ["two-way-audio", "features", "buying-guide", "privacy"]
 postType: "review"
 ---
 
-import { Callout } from "@/components/ui/callout"
-import { Badge } from "@/components/ui/badge"
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
-
 Двусторонний звук превращает камеру в интерком: общайтесь с курьерами, устрашайте нарушителей, проверяйте детей/питомцев или связываетесь с сотрудниками. Но не все "двусторонние звуки" одинаковы — полудуплекс (рация) vs фулл-дуплекс (телефон), качество шумоподавления и требования закона о согласии варьируются дико.
 
-<Badge variant="outline">Ключевое различие</Badge> **Полудуплекс** = нажми-когда-говори, одно направление за раз (большинство бюджетных). **Фулл-дуплекс** = одновременный разговор/прослушивание как по телефону (премиум, выделенные интеркомы).
+<Badge variant="outline">Ключевое различие</Badge> **Полудуплекс** =
+нажми-когда-говори, одно направление за раз (большинство бюджетных).
+**Фулл-дуплекс** = одновременный разговор/прослушивание как по телефону
+(премиум, выделенные интеркомы).
 
 ## Аудио архитектура: Что внутри
 
@@ -23,82 +22,139 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
   <AccordionItem value="mic">
     <AccordionTrigger>Типы микрофонов и размещение</AccordionTrigger>
     <AccordionContent>
-**MEMS (Micro-Electro-Mechanical Systems)** — Стандарт в современных камерах. Маленькие, прочные, плоский АЧХ.  
-- **Омнидирекционные** — Ловят 360°; хорошо для покрытия комнаты, плохо для фокусного захвата  
-- **Направленные (beamforming array)** — 2–4 MEMS + DSP наведение; фокусируются на голосе, отвергают фон  
 
-**Размещение важно:**
-- Дверной звонок: Нижняя грань, наклонена вниз → ловит посетителя на 3–5 футах
-- Turret/Dome: Под объективом или сбоку → захватывает 10–20 футов радиуса
-- Bullet: Задняя/боковая вентиляция → часто заглушена корпусом
-- Внутренние: Верхняя передняя → лучшая для разговоров в комнате
+**MEMS (Micro-Electro-Mechanical Systems)** — Стандарт в современных камерах. Маленькие, прочные, плоский АЧХ.
 
-**Ветра/погоды:** Ищите **акустическую сетку** (Gore-Tex / ePTFE) над микрофонным портом — блокирует воду, пропускает звук. Дешевые камеры пропускают это → дождь = статический шум.
-    </AccordionContent>
+<ul>
+  <li>
+    <strong>Омнидирекционные</strong> — Ловят 360°; хорошо для покрытия комнаты,
+    плохо для фокусного захвата{" "}
+  </li>
+  <li>
+    <strong>Направленные (beamforming array)</strong> — 2–4 MEMS + DSP
+    наведение; фокусируются на голосе, отвергают фон
+  </li>
+</ul>
+
+<p>
+  <strong>Размещение важно:</strong>
+</p>
+
+<ul>
+  <li>
+    Дверной звонок: Нижняя грань, наклонена вниз → ловит посетителя на 3–5 футах
+  </li>
+  <li>
+    Turret/Dome: Под объективом или сбоку → захватывает 10–20 футов радиуса
+  </li>
+  <li>Bullet: Задняя/боковая вентиляция → часто заглушена корпусом</li>
+  <li>Внутренние: Верхняя передняя → лучшая для разговоров в комнате</li>
+</ul>
+
+<p><strong>Ветра/погоды:</strong> Ищите <strong>акустическую сетку</strong> (Gore-Tex / ePTFE) над микрофонным портом — блокирует воду, пропускает звук. Дешевые камеры пропускают это → дождь = статический шум.</p>
+</AccordionContent>
+
   </AccordionItem>
   <AccordionItem value="speaker">
     <AccordionTrigger>Выход динамика и усиление</AccordionTrigger>
     <AccordionContent>
-**Типичные спеки:** 0.5–2W Class D amp + 28–40mm драйвер → 80–100 dB SPL @ 1 фут  
-**Реальность:** 85 dB = комфортный разговор на 6 футах; 95 dB = слышно через 30 футов двора
 
-**Источник питания имеет значение:**
-- PoE (802.3af 15.4W) → достаточно для 2W аудио + камера
-- 12V DC → нормально
-- Батарейные камеры → **аудио убивает батарею** (amp тянет 200–500 mA). Ring/Eufy лимитят время разговора 30–60с на батарее.
+<p>
+  <strong>Типичные спеки:</strong> 0.5–2W Class D amp + 28–40mm драйвер → 80–100
+  dB SPL @ 1 фут
+</p>
 
-**Искажения:** Дешевые Class D усилители клиппят на макс. громкости. Ищите **THD <1% @ 1W** или маркетинг "HD Audio" (обычно значит лучший amp + DSP).
-    </AccordionContent>
+<p>
+  <strong>Реальность:</strong> 85 dB = комфортный разговор на 6 футах; 95 dB =
+  слышно через 30 футов двора
+</p>
+
+<p>
+  <strong>Источник питания имеет значение:</strong>
+</p>
+
+<ul>
+  <li>PoE (802.3af 15.4W) → достаточно для 2W аудио + камера</li>
+  <li>12V DC → нормально</li>
+  <li>
+    Батарейные камеры → <strong>аудио убивает батарею</strong> (amp тянет
+    200–500 mA). Ring/Eufy лимитят время разговора 30–60с на батарее.
+  </li>
+</ul>
+
+<p><strong>Искажения:</strong> Дешевые Class D усилители клиппят на макс. громкости. Ищите <strong>THD &lt;1% @ 1W</strong> или маркетинг "HD Audio" (обычно значит лучший amp + DSP).</p>
+</AccordionContent>
+
   </AccordionItem>
   <AccordionItem value="duplex">
     <AccordionTrigger>Half-Duplex vs Full-Duplex: Разрыв в опыте</AccordionTrigger>
     <AccordionContent>
-| Режим | Как работает | Латентность | Лучше для | Камеры |
-|------|--------------|---------|----------|---------|
-| **Half-Duplex (PTT)** | Нажми кнопку → говори → отпусти → слушай | 200–500 ms | Дверной звонок, ворота, быстрое "оставь посылку" | Ring, Arlo, Blink, Wyze, Reolink (большинство), Eufy (большинство) |
-| **Full-Duplex** | Одновременный TX/RX; эхо-отмена | 50–150 ms | Няня-монитор, уход за пожилыми, бизнес-интерком | Nest Doorbell (wired), Google Nest Cam, Arlo Ultra 2, UniFi G4 Doorbell Pro, Axis, 2N, Aiphone |
 
-**Echo Cancellation (AEC) — дифференциатор:**  
-- Полудуплексу не нужен AEC (мик выключен пока играет динамик)  
-- Фулл-дуплекс **требует** адаптивный AEC (NLMS/RLS/Kalman) — без него слышишь свой голос с задержкой = непригодно
+| Режим                 | Как работает                             | Латентность | Лучше для                                        | Камеры                                                                                         |
+| --------------------- | ---------------------------------------- | ----------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
+| **Half-Duplex (PTT)** | Нажми кнопку → говори → отпусти → слушай | 200–500 ms  | Дверной звонок, ворота, быстрое "оставь посылку" | Ring, Arlo, Blink, Wyze, Reolink (большинство), Eufy (большинство)                             |
+| **Full-Duplex**       | Одновременный TX/RX; эхо-отмена          | 50–150 ms   | Няня-монитор, уход за пожилыми, бизнес-интерком  | Nest Doorbell (wired), Google Nest Cam, Arlo Ultra 2, UniFi G4 Doorbell Pro, Axis, 2N, Aiphone |
 
-**Тест перед покупкой:** Позвони в камеру из приложения, говори пока оно играет. Если слышишь эхо/свист → AEC провалился.
-    </AccordionContent>
-  </AccordionItem>
-</Accordion>
+<p>
+  <strong>Echo Cancellation (AEC) — дифференциатор:</strong>
+</p>
+
+<ul>
+  <li>Полудуплексу не нужен AEC (мик выключен пока играет динамик)</li>
+  <li>
+    Фулл-дуплекс <strong>требует</strong> адаптивный AEC (NLMS/RLS/Kalman) — без
+    него слышишь свой голос с задержкой = непригодно
+  </li>
+</ul>
+
+<p>
+  <strong>Тест перед покупкой:</strong> Позвони в камеру из приложения, говори
+  пока оно играет. Если слышишь эхо/свист → AEC провалился.
+</p>
 
 ## Шумоподавление: Что реально работает
 
 <Callout type="note">
-**DSP Цепочка в хороших камерах:** Beamforming → Stationary Noise Suppression (Wiener/Kalman) → Non-Stationary Suppression (DNN) → AEC (full-duplex) → AGC (auto gain) → Limiter
+
+<p>
+  <strong>DSP Цепочка в хороших камерах:</strong> Beamforming → Stationary Noise
+</p>
+(Wiener/Kalman) → Non-Stationary Suppression (DNN) → AEC (full-duplex) → AGC
+(auto gain) → Limiter
+
 </Callout>
 
-| Тип шума | Метод подавления | Типичное снижение |
-|------------|-------------------|-------------------|
-| Ветер | Физическая сетка + спектральный гейт | 15–25 dB |
-| HVAC / Вентилятор / Трафик | Спектральное вычитание / Wiener | 10–20 dB |
-| Лай собаки / Крик ребенка | DNN-based non-stationary (RNNoise, NSNet2) | 15–30 dB |
-| Свой голос (эхо) | Адаптивный AEC (NLMS/Kalman) | 25–40 dB |
-| Обратная связь динамика (свист) | Notch filtering + gain margin | Превенция |
+| Тип шума                        | Метод подавления                           | Типичное снижение |
+| ------------------------------- | ------------------------------------------ | ----------------- |
+| Ветер                           | Физическая сетка + спектральный гейт       | 15–25 dB          |
+| HVAC / Вентилятор / Трафик      | Спектральное вычитание / Wiener            | 10–20 dB          |
+| Лай собаки / Крик ребенка       | DNN-based non-stationary (RNNoise, NSNet2) | 15–30 dB          |
+| Свой голос (эхо)                | Адаптивный AEC (NLMS/Kalman)               | 25–40 dB          |
+| Обратная связь динамика (свист) | Notch filtering + gain margin              | Превенция         |
 
-**Маркетинг vs Реальность:** "AI Noise Cancellation" = обычно просто спектральный гейт. **Настоящее DNN шумоподавление** нужно NPU (Ambarella CV25, Rockchip RV1126, Google TPU, Apple Neural Engine). Ищите в спеках: "RNNoise", "NSNet2", "DNN-based", "Deep learning noise reduction."
-    </AccordionContent>
+<p><strong>Маркетинг vs Реальность:</strong> "AI Noise Cancellation" = обычно просто спектральный гейт. <strong>Настоящее DNN шумоподавление</strong> нужно NPU (Ambarella CV25, Rockchip RV1126, Google TPU, Apple Neural Engine). Ищите в спеках: "RNNoise", "NSNet2", "DNN-based", "Deep learning noise reduction."</p>
+</AccordionContent>
+
   </AccordionItem>
 </Accordion>
 
 ## Юридическое: Одностороннее vs Двухстороннее согласие
 
 <Callout type="warning">
-**Законы о аудиозаписи строже видео.** Видео = разумное ожидание приватности (вариабельно). Аудио = законы о прослушивании во многих штатах. **Требования согласия применяются к *записи*, а не к живому прослушиванию.**
+
+**Законы о аудиозаписи строже видео.** Видео = разумное ожидание приватности
+(вариабельно). Аудио = законы о прослушивании во многих штатах. **Требования
+согласия применяются к _записи_, а не к живому прослушиванию.**
+
 </Callout>
 
 ### Законы США по согласии штатов (2026)
 
-| Тип согласия | Штаты | Что означает |
-|--------------|--------|---------------|
-| **Одностороннее** (38 штатов + DC) | AL, AK, AZ, AR, CO, DE, DC, GA, HI, ID, IN, IA, KS, KY, LA, ME, MN, MS, MO, NE, NV, NJ, NM, NY, NC, ND, OH, OK, RI, SC, SD, TN, TX, UT, VT, VA, WV, WI, WY | Вы можете записывать, если *вы* участник разговора. Никакого уведомления не нужно. |
-| **Двухстороннее / Все-участники** (12 штатов) | CA, CT, FL, IL, MD, MA, MI, MT, NH, OR, PA, WA | **Все участники должны согласиться.** Вывески + вербальное уведомление обязательны. |
-| **Гибрид / Сложные** | VT (одностороннее но строгое), OR (все-участники для очного) | Проверьте местного юриста |
+| Тип согласия                                  | Штаты                                                                                                                                                      | Что означает                                                                        |
+| --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| **Одностороннее** (38 штатов + DC)            | AL, AK, AZ, AR, CO, DE, DC, GA, HI, ID, IN, IA, KS, KY, LA, ME, MN, MS, MO, NE, NV, NJ, NM, NY, NC, ND, OH, OK, RI, SC, SD, TN, TX, UT, VT, VA, WV, WI, WY | Вы можете записывать, если _вы_ участник разговора. Никакого уведомления не нужно.  |
+| **Двухстороннее / Все-участники** (12 штатов) | CA, CT, FL, IL, MD, MA, MI, MT, NH, OR, PA, WA                                                                                                             | **Все участники должны согласиться.** Вывески + вербальное уведомление обязательны. |
+| **Гибрид / Сложные**                          | VT (одностороннее но строгое), OR (все-участники для очного)                                                                                               | Проверьте местного юриста                                                           |
 
 **Федеральный (Wiretap Act):** Одностороннее согласие базовая линия. Штаты могут быть строже.
 
@@ -108,39 +164,56 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
   <AccordionItem value="residential">
     <AccordionTrigger>Жилые (Дверной звонок, Двор, Внутренние)</AccordionTrigger>
     <AccordionContent>
-**Односторонний штат:** Вы участник → записывайте свободно. Все равно: **весьте вывеску** "Идет аудиозапись" — предотвращает споры, помогает приемлемости доказательств.
 
-**Двухсторонний штат:** 
-- **Посетитель дверного звонка:** Не участник, пока не заговорит. **Должны уведомить** перед записью.
-- **Решение:** Включите "Audio Recording: Off" по умолчанию; записывайте только видео. Или используйте Ring/Arlo "Privacy Zones" для аудио (некоторые поддерживают).
-- **Вывески:** "Аудио и видео запись идет — входом вы соглашаетесь" у ворот/двери.
-- **Лучшая практика:** Полностью отключите аудиозапись в CA/FL/IL/MA/MD/PA/WA, если нет явного процесса согласия.
-    </AccordionContent>
+<p>
+  <strong>Односторонний штат:</strong> Вы участник → записывайте свободно. Все
+  равно: <strong>весьте вывеску</strong> "Идет аудиозапись" — предотвращает
+  споры, помогает приемлемости доказательств.
+</p>
+
+<p>
+  <strong>Двухсторонний штат:</strong>
+</p>
+
+<ul>
+  <li><strong>Посетитель дверного звонка:</strong> Не участник, пока не заговорит. <strong>Должны уведомить</strong> перед записью.</li>
+  <li><strong>Решение:</strong> Включите "Audio Recording: Off" по умолчанию; записывайте только видео. Или используйте Ring/Arlo "Privacy Zones" для аудио (некоторые поддерживают).</li>
+  <li><strong>Вывески:</strong> "Аудио и видео запись идет — входом вы соглашаетесь" у ворот/двери.</li>
+  <li><strong>Лучшая практика:</strong> Полностью отключите аудиозапись в CA/FL/IL/MA/MD/PA/WA, если нет явного процесса согласия.</li>
+</ul>
+</AccordionContent>
   </AccordionItem>
   <AccordionItem value="business">
-    <AccordionTrigger>Бизнес / Коммерческие</AccordionTrigger>
-    <AccordionContent>
-- **Сотрудники:** Письменное согласие в руководстве/онбординге (все штаты)
-- **Клиенты:** Вывески на входе + POS ("Аудиозапись для безопасности")
-- **Переговорные / Санузлы:** **Никогда не записывайте аудио** (высокое ожидание приватности = незаконно в большинстве штатов)
-- **Колл-центры / Телефоны:** Отдельные федеральные/штатные законы о телефонии (часто все-участники)
-- **Хранение:** 30 дней макс., если нет холда по суду; автоудаление задокументировано
-    </AccordionContent>
+  <AccordionTrigger>Бизнес / Коммерческие</AccordionTrigger>
+  <AccordionContent>
+
+<ul>
+  <li><strong>Сотрудники:</strong> Письменное согласие в руководстве/онбординге (все штаты)</li>
+  <li><strong>Клиенты:</strong> Вывески на входе + POS ("Аудиозапись для безопасности")</li>
+  <li><strong>Переговорные / Санузлы:</strong> <strong>Никогда не записывайте аудио</strong> (высокое ожидание приватности = незаконно в большинстве штатов)</li>
+  <li><strong>Колл-центры / Телефоны:</strong> Отдельные федеральные/штатные законы о телефонии (часто все-участники)</li>
+  <li><strong>Хранение:</strong> 30 дней макс., если нет холда по суду; автоудаление задокументировано</li>
+</ul>
+</AccordionContent>
   </AccordionItem>
   <AccordionItem value="landlord">
-    <AccordionTrigger>Арендодатель / Многоквартирные</AccordionTrigger>
-    <AccordionContent>
-- **Общие зоны (лобби, коридор):** Видео ок; Аудио = **высокий риск**. Арендаторы не участники чужих разговоров.
-- **Интерьеры квартир:** **Никогда** — у арендатора разумное ожидание приватности.
-- **Дверные звонки на дверях арендаторов:** Арендатор владеет камерой → согласие арендатора. Арендодатель не может получить доступ к аудио без согласия арендатора.
-- **Добавление к договору:** "Арендатор может установить видео-дверной звонок; аудиозапись подлежит штатным законам о согласии; арендодатель не несет ответственности."
-    </AccordionContent>
+  <AccordionTrigger>Арендодатель / Многоквартирные</AccordionTrigger>
+  <AccordionContent>
+
+<ul>
+  <li><strong>Общие зоны (лобби, коридор):</strong> Видео ок; Аудио = <strong>высокий риск</strong>. Арендаторы не участники чужих разговоров.</li>
+  <li><strong>Интерьеры квартир:</strong> <strong>Никогда</strong> — у арендатора разумное ожидание приватности.</li>
+  <li><strong>Дверные звонки на дверях арендаторов:</strong> Арендатор владеет камерой → согласие арендатора. Арендодатель не может получить доступ к аудио без согласия арендатора.</li>
+  <li><strong>Добавление к договору:</strong> "Арендатор может установить видео-дверной звонок; аудиозапись подлежит штатным законам о согласии; арендодатель не несет ответственности."</li>
+</ul>
+</AccordionContent>
   </AccordionItem>
 </Accordion>
 
 ## Топ камер по сценариям использования (2026)
 
 ### 1. Лучший фулл-дуплекс дверной звонок: Google Nest Doorbell (Wired, 2nd Gen)
+
 **Аудио:** Фулл-дуплекс, отличный AEC, 2W динамик, 3-микрофонный массив с beamforming  
 **Шумоподавление:** TPU-ускоренное DNN (Google кремний) — лучший в классе подавление ветра/трафика  
 **Функции согласия:** "Visitor Announcement" (зывень + "Кто-то у двери" перед записью); переключатель аудиозаписи в Home app  
@@ -150,6 +223,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 **Лучше для:** Двухсторонних штатов (CA/FL/IL), фулл-дуплекс разговор, Google дома
 
 ### 2. Лучший полудуплекс дверной звонок: Ring Battery Doorbell Pro (2024) / Ring Stick Up Cam Pro
+
 **Аудио:** Полудуплекс PTT, 1.5W динамик, двухмикрофонный beamforming  
 **Шумоподавление:** "Audio+" DSP (спектральный гейт + базовый DNN) — неплохое подавление ветра  
 **Функции согласия:** Переключатель "Audio Recording" на камере; "Motion Verification" снижает ложные аудио-триггеры  
@@ -159,6 +233,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 **Лучше для:** Гибкость батареи, Alexa дома, односторонние штаты
 
 ### 3. Лучший локальный/без-облака: Reolink Video Doorbell PoE / Reolink Argus 4 Pro
+
 **Аудио:** Полудуплекс, 1W динамик, одиночный MEMS микрофон (PoE) / двухмикрофонный (Argus 4 Pro)  
 **Шумоподавление:** Базовый спектральный вычитание — приемлемо в тихих пригородах  
 **Функции согласия:** **Без облака** — аудио записывается только на NVR/microSD; Вы контролируете хранение  
@@ -168,6 +243,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 **Лучше для:** Абсолютисты приватности, владельцы NVR, без-подписки
 
 ### 4. Лучший внутренний фулл-дуплекс: Google Nest Cam (Wired, 2nd Gen) / Nest Cam IQ (выпуск прекращен, но доступен)
+
 **Аудио:** Фулл-дуплекс, 3-микрофонный массив, 2W динамик, Google TPU DNN шумоподавление  
 **Сценарий:** Няня-монитор, проверка пожилых, разговор с питомцами — **телефонное качество**  
 **Приватность:** Аппаратный LED индикатор при активном микрофоне; Аудиозапись выкл по умолчанию  
@@ -175,6 +251,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 **Лучше для:** Внутренний двусторонний разговор, Google Home
 
 ### 5. Лучший бизнес-интерком: UniFi G4 Doorbell Pro / 2N IP Verso / Aiphone IX
+
 **Аудио:** Фулл-дуплекс, 3W+ динамик, акустическая эхо-компенсация, SIP/VoIP интеграция  
 **Функции:** Реле открывания двери, клавиатура/RFID, контроль лифта, аудио лифта, мульти-тенант  
 **Соответствие:** 2N/Aiphone созданы под коммерческий кодекс (ADA, интеграция с пожаротушением)  
@@ -182,6 +259,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 **Лучше для:** Офисы, многоквартирные дома, закрытые поселки, интеграция СКУД
 
 ### 6. Лучший бюджетный полудуплекс: Wyze Cam v4 / Blink Outdoor 4 / TP-Link Tapo C120
+
 **Аудио:** PTT, 0.5–1W динамик, одиночный микрофон, базовый шумовой гейт  
 **Качество:** "Рация в лучшем случае" — нормально для "посылка у двери", не для разговора  
 **Облако:** Требуется для аудио (Wyze/Blink); Tapo поддерживает локальный microSD  
@@ -190,17 +268,17 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 
 ## Сравнительная матрица
 
-| Камера | Дуплекс | Динамик | Микрофоны | Шумоподавление | Локальный аудио | Облако обязательно | Цена |
-|--------|--------|---------|------|--------------|-------------|----------------|-------|
-| Nest Doorbell Wired | Full | 2W | 3 array | TPU DNN | ❌ | Nest Aware | $$$ |
-| Nest Cam (Wired) | Full | 2W | 3 array | TPU DNN | ❌ | Nest Aware | $$ |
-| Ring Pro / Stick Up Pro | Half | 1.5W | 2 beam | DSP+DNN | ❌ | Ring Protect | $$ |
-| UniFi G4 Doorbell Pro | Full | 3W | 2 beam | DSP+AEC | ✅ (NVR) | No | $$$ |
-| Reolink Doorbell PoE | Half | 1W | 1 | Basic | ✅ (NVR/SD) | No | $ |
-| Reolink Argus 4 Pro | Half | 1W | 2 | Basic | ✅ (Hub/SD) | No | $$ |
-| EufyCam 3 / Dual Cam | Half | 1.5W | 2 | DSP | ✅ (HomeBase) | No | $$ |
-| Wyze Cam v4 | Half | 0.5W | 1 | Basic | ✅ (SD) | Cam Plus | $ |
-| 2N IP Verso / Aiphone | Full | 5W+ | Array | Pro DSP | ✅ | No | $$$$ |
+| Камера                  | Дуплекс | Динамик | Микрофоны | Шумоподавление | Локальный аудио | Облако обязательно | Цена |
+| ----------------------- | ------- | ------- | --------- | -------------- | --------------- | ------------------ | ---- |
+| Nest Doorbell Wired     | Full    | 2W      | 3 array   | TPU DNN        | ❌              | Nest Aware         | $$$  |
+| Nest Cam (Wired)        | Full    | 2W      | 3 array   | TPU DNN        | ❌              | Nest Aware         | $$   |
+| Ring Pro / Stick Up Pro | Half    | 1.5W    | 2 beam    | DSP+DNN        | ❌              | Ring Protect       | $$   |
+| UniFi G4 Doorbell Pro   | Full    | 3W      | 2 beam    | DSP+AEC        | ✅ (NVR)        | No                 | $$$  |
+| Reolink Doorbell PoE    | Half    | 1W      | 1         | Basic          | ✅ (NVR/SD)     | No                 | $    |
+| Reolink Argus 4 Pro     | Half    | 1W      | 2         | Basic          | ✅ (Hub/SD)     | No                 | $$   |
+| EufyCam 3 / Dual Cam    | Half    | 1.5W    | 2         | DSP            | ✅ (HomeBase)   | No                 | $$   |
+| Wyze Cam v4             | Half    | 0.5W    | 1         | Basic          | ✅ (SD)         | Cam Plus           | $    |
+| 2N IP Verso / Aiphone   | Full    | 5W+     | Array     | Pro DSP        | ✅              | No                 | $$$$ |
 
 ## Умные домашние триггеры: Аудио как вход автоматизации
 
@@ -208,37 +286,49 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
   <AccordionItem value="alexa">
     <AccordionTrigger>Alexa Routines</AccordionTrigger>
     <AccordionContent>
-- **Триггер:** "When Ring detects motion" → "Announce on Echo: Motion at front door"
-- **Триггер:** "When person detected" → "Turn on porch light + unlock smart lock (with PIN confirm)"
-- **Действие:** "Alexa, talk to [camera]" → initiates two-way audio hands-free
-- **Ограничение:** Drop-in требует оба устройства на одном Amazon аккаунте / доме
-    </AccordionContent>
+
+<ul>
+  <li><strong>Триггер:</strong> "When Ring detects motion" → "Announce on Echo: Motion at front door"</li>
+  <li><strong>Триггер:</strong> "When person detected" → "Turn on porch light + unlock smart lock (with PIN confirm)"</li>
+  <li><strong>Действие:</strong> "Alexa, talk to [camera]" → initiates two-way audio hands-free</li>
+  <li><strong>Ограничение:</strong> Drop-in требует оба устройства на одном Amazon аккаунте / доме</li>
+</ul>
+</AccordionContent>
   </AccordionItem>
   <AccordionItem value="google">
     <AccordionTrigger>Google Home Automations</AccordionTrigger>
     <AccordionContent>
-- **Starter:** "Nest Doorbell detects person" → "Broadcast to all speakers: 'Person at front door'"
-- **Action:** "Hey Google, talk to front door" → opens full-duplex audio on phone/Nest Hub
-- **Script (YAML):** Can chain: Person detected → 30s delay → if no response → "Play deterrence tone on camera speaker"
-    </AccordionContent>
+
+<ul>
+  <li><strong>Starter:</strong> "Nest Doorbell detects person" → "Broadcast to all speakers: 'Person at front door'"</li>
+  <li><strong>Action:</strong> "Hey Google, talk to front door" → opens full-duplex audio on phone/Nest Hub</li>
+  <li><strong>Script (YAML):</strong> Can chain: Person detected → 30s delay → if no response → "Play deterrence tone on camera speaker"</li>
+</ul>
+</AccordionContent>
   </AccordionItem>
   <AccordionItem value="homekit">
     <AccordionTrigger>Apple HomeKit (Secure Video)</AccordionTrigger>
     <AccordionContent>
-- **Поддерживаемые камеры:** Logitech Circle View, EufyCam 3 (HSV), Netatmo, Eve
-- **Аудио:** Живой двусторонний в Home app; **Запись:** Зашифрованная в iCloud (план 200GB+)
-- **Автоматизация:** "When [camera] detects person" → "Set scene: Porch lights on + HomePod announces"
-- **Приватность:** **Лучшая в классе** — Apple не имеет ключей; аудио никогда не покидает зашифрованный поток
-    </AccordionContent>
+
+<ul>
+  <li><strong>Поддерживаемые камеры:</strong> Logitech Circle View, EufyCam 3 (HSV), Netatmo, Eve</li>
+  <li><strong>Аудио:</strong> Живой двусторонний в Home app; <strong>Запись:</strong> Зашифрованная в iCloud (план 200GB+)</li>
+  <li><strong>Автоматизация:</strong> "When [camera] detects person" → "Set scene: Porch lights on + HomePod announces"</li>
+  <li><strong>Приватность:</strong> <strong>Лучшая в классе</strong> — Apple не имеет ключей; аудио никогда не покидает зашифрованный поток</li>
+</ul>
+</AccordionContent>
   </AccordionItem>
   <AccordionItem value="ha">
     <AccordionTrigger>Home Assistant (Продвинутый)</AccordionTrigger>
     <AccordionContent>
-- **Reolink/ONVIF/RTSP:** `media_player` entity → `play_media` (TTS announcement) + `call_service: camera.record`
-- **MQTT:** Камера публикует `audio_level` → автоматизация: "If audio > 70 dB for 5s → notify + snapshot"
-- **SIP Integration:** 2N/Aiphone/Grandstream → register as SIP extension → call from HA dashboard / phone
-- **TTS Deterrence:** `tts.cloud_say` → "You are being recorded. Police dispatched." via camera speaker
-    </AccordionContent>
+
+<ul>
+  <li><strong>Reolink/ONVIF/RTSP:</strong> `media_player` entity → `play_media` (TTS announcement) + `call_service: camera.record`</li>
+  <li><strong>MQTT:</strong> Камера публикует `audio_level` → автоматизация: "If audio > 70 dB for 5s → notify + snapshot"</li>
+  <li><strong>SIP Integration:</strong> 2N/Aiphone/Grandstream → register as SIP extension → call from HA dashboard / phone</li>
+  <li><strong>TTS Deterrence:</strong> `tts.cloud_say` → "You are being recorded. Police dispatched." via camera speaker</li>
+</ul>
+</AccordionContent>
   </AccordionItem>
 </Accordion>
 
@@ -250,20 +340,20 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 4. **Включите музыку у камеры** (60 dB) → говорите → проверьте шумоподавление
 5. **Симулируйте ветер** (вентилятор на низком у микрофона) → говорите → проверьте ветроподавление
 6. **Фулл-дуплекс тест:** Оба говорят одновременно → проверьте эхо/обратную связь
-7. **Проверка задержки:** Считайте "1-2-3" → измерьте задержку до телефона (цель <200 ms полу, <100 ms фулл)
-8. **Батарейная камера:** Говорите 60 сек → проверьте падение заряда (должно быть <2% для полудуплекса)
+7. **Проверка задержки:** Считайте "1-2-3" → измерьте задержку до телефона (цель &lt;200 ms полу, &lt;100 ms фулл)
+8. **Батарейная камера:** Говорите 60 сек → проверьте падение заряда (должно быть &lt;2% для полудуплекса)
 
 ## Рекомендация по сценарию
 
-| Сценарий | Камера | Почему |
-|----------|--------|-----|
-| **CA/FL/IL житель, дверной звонок** | Nest Doorbell Wired | Фулл-дуплекс, лучшее шумоподавление, аудио тумблер |
-| **Арендатор, батарея, без подписки** | Reolink Argus 4 Pro + Solar | Локальное хранение, нет облака, полудуплекс ок |
-| **Google Home семья, няня-монитор** | Nest Cam (Wired) | Фулл-дуплекс indoor, железный приватность LED |
-| **Alexa дом, пакеты алерты** | Ring Stick Up Cam Pro | Alexa Drop-In, полудуплекс, солнечный вариант |
-| **Бизнес лобби / ворота** | UniFi G4 Doorbell Pro / 2N IP Verso | Фулл-дуплекс, SIP, реле, контроль доступа |
-| **Макс приватность, владелец NVR** | Reolink Doorbell PoE + NVR | Ноль облака, локальный звук, надежный PoE |
-| **Бюджетный второстепенный камер** | Wyze Cam v4 / Tapo C120 | Дешево, полудуплекс, локальный SD вариант |
+| Сценарий                             | Камера                              | Почему                                             |
+| ------------------------------------ | ----------------------------------- | -------------------------------------------------- |
+| **CA/FL/IL житель, дверной звонок**  | Nest Doorbell Wired                 | Фулл-дуплекс, лучшее шумоподавление, аудио тумблер |
+| **Арендатор, батарея, без подписки** | Reolink Argus 4 Pro + Solar         | Локальное хранение, нет облака, полудуплекс ок     |
+| **Google Home семья, няня-монитор**  | Nest Cam (Wired)                    | Фулл-дуплекс indoor, железный приватность LED      |
+| **Alexa дом, пакеты алерты**         | Ring Stick Up Cam Pro               | Alexa Drop-In, полудуплекс, солнечный вариант      |
+| **Бизнес лобби / ворота**            | UniFi G4 Doorbell Pro / 2N IP Verso | Фулл-дуплекс, SIP, реле, контроль доступа          |
+| **Макс приватность, владелец NVR**   | Reolink Doorbell PoE + NVR          | Ноль облака, локальный звук, надежный PoE          |
+| **Бюджетный второстепенный камер**   | Wyze Cam v4 / Tapo C120             | Дешево, полудуплекс, локальный SD вариант          |
 
 ---
 

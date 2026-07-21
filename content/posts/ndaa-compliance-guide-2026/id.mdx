@@ -1,0 +1,312 @@
+---
+title: "Kepatuhan NDAA: Yang Perlu Diketahui Installer CCTV di 2026"
+description: "Panduan komprehensif untuk memahami persyaratan NDAA, merek terlarang (Hikvision, Dahua), dan cara memilih kamera yang patuh untuk proyek federal."
+publishedAt: 2026-07-20T00:00:00.000Z
+updatedAt: 2026-07-20T00:00:00.000Z
+slug: "ndaa-compliance-guide-2026"
+author: "Your Name"
+tags: ["compliance", "ndaa"]
+postType: "article"
+---
+
+<svg
+  viewBox="0 0 64 64"
+  width="48"
+  height="48"
+  fill="none"
+  stroke="#dc2626"
+  strokeWidth="2"
+  strokeLinecap="round"
+  strokeLinejoin="round"
+  style={{ float: "left", marginRight: "12px" }}
+>
+  <path d="M32 4 L32 16 M32 48 L32 60 M4 32 L16 32 M48 32 L60 32" />
+  <circle cx="32" cy="32" r="24" strokeWidth="3" opacity="0.3" />
+  <path d="M32 16 L32 48 M16 32 L48 32" strokeWidth="3" />
+</svg>
+
+National Defense Authorization Act (NDAA) telah secara fundamental mengubah lanskap bagi installer CCTV yang bekerja pada proyek federal, negara bagian, dan infrastruktur kritis. Apa yang dulunya masalah kepatuhan khusus telah menjadi realitas sehari-hari bagi installer yang mengerjakan sekolah, gedung pemerintah, bandara, dan bahkan banyak proyek swasta yang mengikuti pedoman federal.
+
+Jika Anda pernah ditanya "Apakah kamera ini sesuai NDAA?" dan tidak yakin bagaimana menjawabnya, panduan ini untuk Anda. Kami akan memotong kebingungan dan memberi Anda kerangka kerja praktis untuk mengevaluasi peralatan, berbicara dengan klien, dan melindungi bisnis Anda dari risiko kepatuhan.
+
+_Catatan: Artikel ini mencerminkan lanskap hukum per pertengahan 2026. Selalu verifikasi peraturan terkini dengan penasihat hukum sebelum menyelesaikan pilihan peralatan untuk proyek federal._
+
+## Apa itu NDAA dan Mengapa Installer Harus Peduli?
+
+NDAA adalah undang-undang tahunan yang mendanai Departemen Pertahanan AS. Sejak 2019, undang-undang ini mencakup ketentuan—khususnya Bagian 889—yang membatasi teknologi buatan China tertentu dari pengadaan dan penggunaan pemerintah AS.
+
+### Bagian 889: Pembatasan Inti
+
+Bagian 889 melarang lembaga federal untuk mengadakan atau menggunakan peralatan telekomunikasi tercakup dari vendor tertentu yang dianggap ancaman keamanan nasional. Cakupan larangan:
+
+- **Larangan pengadaan**: Lembaga federal tidak dapat membeli atau memperoleh peralatan atau layanan tercakup
+- **Larangan kontraktor**: Kontraktor federal tidak dapat menggunakan peralatan tercakup dalam pelaksanaan kontrak federal
+- **Perluasan ke penerima hibah**: Banyak proyek negara bagian dan lokal yang menerima dana federal juga harus mematuhi
+
+Daftar perusahaan tercakup (per 2026) meliputi:
+
+- **Hikvision** (Hangzhou Hikvision Digital Technology)
+- **Dahua Technology** (termasuk Lorex, Amcrest, dan merek lainnya)
+- **Huawei** (termasuk chip HiSilicon)
+- **Hytera** (radio dua arah)
+- **ZTE** (peralatan telekomunikasi)
+
+### "Mengapa" Di Balik Pembatasan
+
+Kekhawatiran pemerintah AS berpusat pada:
+
+1. **Kerentanan pintu belakang**: Badan intelijen telah mendokumentasikan celah keamanan sistematis dan potensi pintu belakang di firmware produsen ini
+2. **Kerja sama paksa**: Hukum intelijen nasional China dapat mewajibkan perusahaan untuk bekerja sama dengan pengumpulan intelijen pemerintah
+3. **Transparansi rantai pasokan**: Kurangnya ketertelusuran yang dapat diverifikasi dalam sumber komponen
+
+## Apa Arti Sebenarnya "Sesuai NDAA"
+
+Kepatuhan ada dalam spektrum. Kepatuhan penuh memerlukan demonstrasi bahwa:
+
+1. **Komponen inti** (sensor, prosesor, chip, PCB) tidak berasal dari negara terlarang
+2. **Perakitan** terjadi di negara tidak terlarang (AS, Meksiko, Taiwan, Jepang, Korea Selatan, dll.)
+3. **Perangkat lunak/firmware** dikembangkan dan dikendalikan oleh entitas tidak terlarang
+4. **Tidak ada layanan tercakup** yang digunakan dalam pelaksanaan kontrak federal
+
+### Uji Empat Bagian
+
+<Callout type="info">
+
+**Kepatuhan bukan hanya tentang di mana produk dirakit.** Kamera yang dirakit
+di AS dengan prosesor HiSilicon dari China tetap tidak patuh. Demikian pula,
+perangkat lunak yang dikembangkan di China yang berjalan pada perangkat keras
+yang patuh juga menimbulkan masalah kepatuhan.
+
+</Callout>
+
+**1. Sumber Komponen**
+
+Faktor paling kritis adalah bill of materials (BOM). Installer harus meminta:
+
+- **Asal Prosesor/SoC**: Banyak yang menggunakan HiSilicon (Huawei), Allwinner (China), atau Amlogic (China). Alternatif patuh: Texas Instruments, Ambarella, Sony, atau prosesor buatan Taiwan/Korea Selatan/Jepang.
+- **Asal sensor gambar**: Sony, Samsung, dan OmniVision umumnya patuh.
+- **Fabrikasi PCB**: Tidak boleh terjadi di negara terlarang.
+- **Memori/penyimpanan**: Samsung (Korea Selatan), SK Hynix (Korea Selatan), Micron (AS) aman.
+
+**2. Lokasi Perakitan**
+
+Perakitan di AS, Meksiko, Taiwan, atau negara tidak terlarang lainnya memberikan sinyal kepatuhan yang kuat.
+
+<Callout type="warning">
+
+**"Dirancang di AS" ≠ "Buatan AS"**. Banyak merek memasarkan "desain AS"
+sementara memproduksi di China dengan komponen China. Ini tidak cukup untuk
+kepatuhan NDAA.
+
+</Callout>
+
+**3. Kepemilikan Perangkat Lunak/Firmware**
+
+Tumpukan perangkat lunak harus:
+
+- Dikembangkan di luar negara terlarang
+- Tidak dipelihara atau dihosting di China
+- Tidak menggunakan layanan cloud China untuk pemrosesan video atau analitik AI
+
+**4. Deklarasi Produsen**
+
+Produsen patuh yang bereputasi menyediakan:
+
+- Deklarasi pemasok yang menyatakan asal komponen
+- Dokumentasi negara asal
+- Sertifikasi kepatuhan pihak ketiga
+- Pernyataan kepatuhan USM
+
+## Cara Memverifikasi Kepatuhan sebagai Installer
+
+### Langkah 1: Minta BOM
+
+Minta bill of materials terperinci dari produsen atau distributor. Ini harus mencantumkan nomor bagian, negara asal untuk setiap komponen, dan nama produsen. Jika mereka menolak atau memberikan jawaban samar, itu tanda bahaya.
+
+### Langkah 2: Periksa Daftar TAA
+
+Daftar Trade Agreements Act (TAA) adalah proksi yang baik untuk kepatuhan NDAA. Produk yang sesuai TAA diproduksi di negara yang ditunjuk dan memenuhi syarat untuk pengadaan federal.
+
+### Langkah 3: Konfirmasi Lokasi Manufaktur
+
+Verifikasi di mana perakitan akhir terjadi. Perakitan inti (penyolderan PCB, integrasi komponen inti) harus terjadi di luar negara terlarang.
+
+### Langkah 4: Dapatkan Secara Tertulis
+
+Sebelum menawar proyek federal, dapatkan pernyataan kepatuhan tertulis dari produsen, konfirmasi email status TAA, dan simpan dokumentasi di file proyek.
+
+## Merek dan Lini Produk Patuh Teratas (2026)
+
+### Tier 1: Kepatuhan Penuh
+
+| Merek                             | Kelebihan                                                  | Catatan                                     |
+| --------------------------------- | ---------------------------------------------------------- | ------------------------------------------- |
+| **Axis Communications**           | Buatan Swedia, komponen EU, dokumentasi kuat               | Standar emas untuk kepatuhan; harga premium |
+| **Bosch Security Systems**        | Berbasis Jerman, rantai pasokan EU                         | Kualitas sangat baik, sepenuhnya sesuai TAA |
+| **Hanwha Techwin**                | Perakitan Korea Selatan, warisan Samsung                   | Portofolio besar, nilai bagus               |
+| **Motorola Solutions (Avigilon)** | Perakitan AS/Kanada, rantai pasokan domestik               | Keamanan komersial kelas atas               |
+| **Vanderbilt**                    | Berbasis Inggris, rantai pasokan EU                        | Kontrol akses dan sistem alarm              |
+| **GE Security**                   | Perakitan AS, merek warisan dengan silsilah kepatuhan kuat |                                             |
+
+### Tier 2: Sub-Merek Patuh / Perakitan Akhir AS
+
+| Merek         | Lini Produk                  | Catatan                                                     |
+| ------------- | ---------------------------- | ----------------------------------------------------------- |
+| **Honeywell** | Performance series, equIP    | Campuran lini patuh dan tidak patuh—verifikasi SKU spesifik |
+| **LenelS2**   | OnGuard, ELA                 | Sebagian besar patuh; verifikasi model kamera               |
+| **MERCURY**   | Kontrol pintu, kontrol akses | Berbasis Inggris, rekam jejak kepatuhan baik                |
+
+### Merek yang Harus Dihindari pada Proyek Federal
+
+<Callout type="warning">
+
+<strong>JANGAN GUNAKAN</strong> pada proyek yang tercakup NDAA:
+
+<ul>
+  <li>Hikvision (semua merek: Hikvision, HiWatch, Ezviz, dll.)</li>
+  <li>Dahua (semua merek: Dahua, Lorex, Amcrest—beberapa tumpang tindih)</li>
+  <li>Huawei (produk berbasis HiSilicon)</li>
+  <li>Hytera (radio)</li>
+  <li>ZTE (telekomunikasi)</li>
+  <li>Produk apa pun dengan "Powered by HiSilicon" di spesifikasi</li>
+</ul>
+
+  </Callout>
+
+## Daftar Periksa Kepatuhan untuk Installer
+
+### ☐ 1. Identifikasi Jenis Proyek
+
+Proyek federal → Harus patuh. Proyek negara bagian/lokal → Mungkin patuh jika menerima dana federal.
+
+### ☐ 2. Pilih Merek Terverifikasi
+
+Mulai dengan merek Tier 1 atau 2 dari panduan ini.
+
+### ☐ 3. Konfirmasi SKU Spesifik
+
+Kepatuhan spesifik model. Bahkan dalam merek patuh, beberapa produk menggunakan komponen tidak patuh.
+
+### ☐ 4. Dokumentasikan Semuanya
+
+Simpan email, lembar spesifikasi, dan deklarasi produsen di file proyek Anda.
+
+### ☐ 5. Sertakan Bahasa Kepatuhan dalam Proposal
+
+Contoh: "Semua peralatan yang ditawarkan untuk proyek ini terverifikasi sesuai NDAA/TAA per dokumentasi produsen."
+
+### ☐ 6. Rencanakan Audit
+
+Kontrak federal dapat mencakup hak audit. Pastikan rantai pasokan Anda dapat menghasilkan dokumentasi.
+
+### ☐ 7. Tetap Terkini
+
+Daftar entitas terbatas NDAA berubah setiap tahun. Berlangganan pembaruan FCC.
+
+## Pertanyaan yang Sering Diajukan
+
+<Accordion>
+<AccordionItem value="assembled-usa">
+<AccordionTrigger>Apakah "Dirakit di AS" Menjamin Kepatuhan?</AccordionTrigger>
+<AccordionContent>
+
+**Tidak.** Produk dapat dirakit di AS tetapi mengandung prosesor dari Huawei atau entitas terlarang lainnya. Kepatuhan mensyaratkan bahwa _komponen inti_ berasal dari negara tidak terlarang.
+
+</AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="used-refurbished">
+  <AccordionTrigger>
+    Apakah Kamera Bekas atau Rekondisi Tercakup?
+  </AccordionTrigger>
+  <AccordionContent>
+
+    Larangan pengadaan NDAA berlaku untuk pembelian *peralatan baru*. Namun,
+    kontraktor yang menggunakan peralatan bekas tidak patuh dalam pelaksanaan
+    kontrak federal dapat melanggar larangan tersebut.
+
+  </AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="existing-systems">
+  <AccordionTrigger>
+    Bagaimana dengan Sistem yang Sudah Ada di Situs Federal?
+  </AccordionTrigger>
+  <AccordionContent>
+
+    Sistem warisan yang dipasang secara sah sebelum pembatasan umumnya
+    "dikecualikan" dan dapat terus beroperasi. Namun, pembaruan perangkat lunak
+    dari produsen terlarang bisa menjadi masalah.
+
+  </AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="penalties">
+  <AccordionTrigger>Apa Hukuman untuk Ketidakpatuhan?</AccordionTrigger>
+  <AccordionContent>
+
+    Hukuman bisa berat: **Pemutusan kontrak**, **tanggung jawab False Claims
+    Act**, **hukuman pidana**, **hukuman perdata dari FCC**, dan **kerusakan
+    reputasi**.
+
+  </AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="prove-compliance">
+  <AccordionTrigger>
+    Bagaimana Cara Membuktikan Kepatuhan ke Klien?
+  </AccordionTrigger>
+  <AccordionContent>
+
+    Berikan pernyataan tertulis produsen, kontrak GSA Schedule, dokumentasi BOM,
+    tanda negara asal pada kemasan, dan sertifikat kepatuhan dari auditor pihak
+    ketiga.
+
+  </AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="state-projects">
+<AccordionTrigger>Apakah Proyek Negara Bagian dan Lokal Perlu Patuh?</AccordionTrigger>
+<AccordionContent>
+
+Banyak yang perlu, tergantung pada pendanaan. Jika proyek menerima hibah federal, pembatasan NDAA sering berlaku. Selalu tanya klien apakah proyek tunduk pada persyaratan TAA/NDAA.
+
+</AccordionContent>
+</AccordionItem>
+</Accordion>
+
+## Membangun Bisnis yang Mengutamakan Kepatuhan
+
+Installer paling sukses di era NDAA telah menjadikan kepatuhan sebagai keunggulan kompetitif:
+
+1. **Spesialisasi pada merek patuh** dan jadilah ahlinya
+2. **Buat paket kepatuhan standar** untuk jenis proyek federal umum
+3. **Dokumentasikan rantai pasokan Anda** dan dapat menghasilkan dokumen sesuai permintaan
+4. **Antisipasi pertanyaan klien** dengan pembaruan berkala
+5. **Verifikasi sebelum menawar** - Penawaran ditolak lebih baik dari kontrak dihentikan
+
+## Kesimpulan: Langkah Tindakan untuk 2026
+
+Kepatuhan NDAA akan tetap ada. Installer yang akan berkembang adalah mereka yang:
+
+- **Mengetahui rantai pasokan mereka**—hingga tingkat komponen
+- **Mendokumentasikan semuanya**—dokumen adalah satu-satunya pertahanan Anda
+- **Berspesialisasi pada merek patuh**—jangan berjudi dengan peralatan batas
+- **Tetap terkini**—daftar entitas terlarang berkembang setiap tahun
+
+Kabar baik: peralatan patuh berkualitas tinggi tersedia luas dari produsen bereputasi. Anda tidak perlu berkompromi pada performa atau harga—hanya lebih disengaja tentang sumber.
+
+_Sebelum proyek federal atau negara bagian Anda berikutnya:_
+
+1. Tinjau katalog produk saat ini untuk ketergantungan merek terlarang
+2. Bangun hubungan dengan produsen dan distributor patuh
+3. Buat paket dokumentasi kepatuhan standar
+4. Latih tim penjualan dan instalasi tentang poin kepatuhan
+
+---
+
+_Untuk daftar entitas terlarang terkini, kunjungi Covered List FCC di [fcc.gov/cvets](https://www.fcc.gov/cvets). Artikel ini memberikan panduan umum dan bukan merupakan nasihat hukum._
+
+[Kembali ke blog](/blog)
+
+{/* sitemap refreshed */}

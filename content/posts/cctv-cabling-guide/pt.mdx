@@ -48,11 +48,13 @@ Cablagem deficiente é responsável por mais falhas de CCTV do que qualquer outr
 Este guia cobre tudo o que precisa para cablar corretamente um sistema de câmaras de segurança PoE: seleção de cabo, terminação, conduíte, proteção contra surtos, as ferramentas necessárias e os erros que separam uma instalação profissional de uma problemática.
 
 <Callout type="info" title="40% dos Problemas PoE Estão Relacionados com Cabos">
-  Dados da indústria mostram que cerca de 40% dos tickets de "câmara offline"
-  são atribuídos a problemas de cabo — calibre errado, cabo interior usado no
-  exterior, Cat6 falsificado que é na realidade CCA Cat5e, ou terminações
-  deficientes. Usar o cabo certo desde o primeiro dia elimina o modo de falha
-  mais comum.
+
+Dados da indústria mostram que cerca de 40% dos tickets de "câmara offline"
+são atribuídos a problemas de cabo — calibre errado, cabo interior usado no
+exterior, Cat6 falsificado que é na realidade CCA Cat5e, ou terminações
+deficientes. Usar o cabo certo desde o primeiro dia elimina o modo de falha
+mais comum.
+
 </Callout>
 
 ## Seleção de Cabo
@@ -67,13 +69,15 @@ Este guia cobre tudo o que precisa para cablar corretamente um sistema de câmar
 | Cat7  | 22 AWG  | 10 Gbps a 100 m                | Todos os padrões PoE                               | Instalações comerciais preparadas para o futuro           |
 
 <Callout type="tip" title="Cat6 é o Ponto Ideal para 2026">
-  Cat6 é a melhor escolha versátil para instalações de câmaras de segurança. Os
-  condutores 23 AWG reduzem a queda de tensão e o calor relacionados com PoE em
-  comparação com Cat5e. A largura de banda de 250 MHz fornece margem generosa
-  para streams de vídeo 4K. O prémio de custo sobre o Cat5e é tipicamente apenas
-  $0,04-0,10 por pé — num sistema de 8 câmaras, isso adiciona $30-80 no total.
-  Por esse pequeno prémio, obtém desempenho PoE mensuravelmente melhor e margem
-  de largura de banda para futuras atualizações de câmaras.
+
+Cat6 é a melhor escolha versátil para instalações de câmaras de segurança. Os
+condutores 23 AWG reduzem a queda de tensão e o calor relacionados com PoE em
+comparação com Cat5e. A largura de banda de 250 MHz fornece margem generosa
+para streams de vídeo 4K. O prémio de custo sobre o Cat5e é tipicamente apenas
+$0,04-0,10 por pé — num sistema de 8 câmaras, isso adiciona $30-80 no total.
+Por esse pequeno prémio, obtém desempenho PoE mensuravelmente melhor e margem
+de largura de banda para futuras atualizações de câmaras.
+
 </Callout>
 
 ### Cobre Sólido vs. CCA
@@ -90,12 +94,14 @@ Esta é a decisão de cabo mais importante que tomará.
 | Vida útil em uso exterior | 10+ anos          | 2-3 anos                            |
 
 <Callout type="danger" title="Nunca Use CCA para PoE">
-  O cabo CCA tem resistência mais alta que o cobre puro, o que significa mais
-  queda de tensão, mais calor e falhas intermitentes de alimentação da câmara.
-  Sob carga PoE+ (30W), os cabos CCA podem aquecer o suficiente para degradar a
-  bainha ao longo do tempo. Se o vendedor não declarar explicitamente "cobre
-  puro 100%" ou "cobre nu", assuma que é CCA. Para qualquer instalação
-  profissional, insista em cobre sólido.
+
+O cabo CCA tem resistência mais alta que o cobre puro, o que significa mais
+queda de tensão, mais calor e falhas intermitentes de alimentação da câmara.
+Sob carga PoE+ (30W), os cabos CCA podem aquecer o suficiente para degradar a
+bainha ao longo do tempo. Se o vendedor não declarar explicitamente "cobre
+puro 100%" ou "cobre nu", assuma que é CCA. Para qualquer instalação
+profissional, insista em cobre sólido.
+
 </Callout>
 
 ### Cabo Interior vs. Exterior
@@ -126,11 +132,13 @@ Se qualquer parte do percurso do cabo estiver exposta ao clima, luz solar ou hum
 | Berbequim de impacto + brocas de alvenaria              | Montar câmaras em tijolo/betão                | Varia                  |
 
 <Callout type="note" title="Cabos Pré-Terminados São Uma Opção">
-  Para instalações pequenas (1-4 câmaras) com percursos de cabos acessíveis,
-  cabos Cat6 pré-terminados em comprimentos medidos poupam tempo e evitam erros
-  de terminação. Para instalações maiores ou percursos através de conduítes,
-  terminar o seu próprio cabo com conectores RJ45 pass-through é mais fiável e
-  rentável.
+
+Para instalações pequenas (1-4 câmaras) com percursos de cabos acessíveis,
+cabos Cat6 pré-terminados em comprimentos medidos poupam tempo e evitam erros
+de terminação. Para instalações maiores ou percursos através de conduítes,
+terminar o seu próprio cabo com conectores RJ45 pass-through é mais fiável e
+rentável.
+
 </Callout>
 
 ## Padrões de Terminação
@@ -158,11 +166,13 @@ O padrão T568B é o padrão de fiação dominante para instalações de câmara
 - **Punch down num painel de patch no lado do NVR**: Para percursos longos, terminar num painel de patch é mais fiável do que crimpar um RJ45 diretamente. Também torna a resolução de problemas e a re-terminação muito mais fáceis.
 
 <Callout type="warning" title="Teste Cada Terminação">
-  Use um testador de cabos para verificar o mapa de fios, continuidade e
-  curto-circuitos em cada percurso antes de ligar uma câmara. Um teste de 30
-  segundos deteta problemas que levariam horas a diagnosticar mais tarde. Para
-  percursos exteriores longos, teste também com um testador PoE para verificar o
-  fornecimento de energia na extremidade da câmara.
+
+Use um testador de cabos para verificar o mapa de fios, continuidade e
+curto-circuitos em cada percurso antes de ligar uma câmara. Um teste de 30
+segundos deteta problemas que levariam horas a diagnosticar mais tarde. Para
+percursos exteriores longos, teste também com um testador PoE para verificar o
+fornecimento de energia na extremidade da câmara.
+
 </Callout>
 
 ## Conduíte e Gestão de Cabos
@@ -197,11 +207,13 @@ Quando vários cabos PoE correm juntos num feixe ou conduíte, o calor acumula-s
 | 31+                      | 40-55%                                   | Usar Cat6A, reduzir tamanho do feixe, garantir ventilação |
 
 <Callout type="tip" title="Gestão de Calor para Feixes Grandes">
-  A ISO/IEC recomenda um tamanho máximo de feixe de 24 cabos, independentemente
-  de considerações PoE. Para instalações PoE++ de alta potência, use condutores
-  Cat6A (23 AWG) que dissipam calor mais eficazmente. Evite passar cabos PoE em
-  espaços não ventilados, como tetos fechados ou conduítes selados, sem derating
-  térmico adequado.
+
+A ISO/IEC recomenda um tamanho máximo de feixe de 24 cabos, independentemente
+de considerações PoE. Para instalações PoE++ de alta potência, use condutores
+Cat6A (23 AWG) que dissipam calor mais eficazmente. Evite passar cabos PoE em
+espaços não ventilados, como tetos fechados ou conduítes selados, sem derating
+térmico adequado.
+
 </Callout>
 
 ## Proteção contra Surtos
@@ -220,10 +232,12 @@ Câmaras em percursos PoE longos são vulneráveis a surtos induzidos por relâm
 - UPS com proteção contra surtos para o NVR e switch PoE
 
 <Callout type="danger" title="Aterragem Não é Opcional">
-  Um protetor de surto que não está corretamente aterrado não fornece qualquer
-  proteção. Certifique-se de que os seus protetores de surto estão ligados à
-  terra do edifício. Em instalações comerciais, a aterragem deve cumprir os
-  requisitos do código elétrico local.
+
+Um protetor de surto que não está corretamente aterrado não fornece qualquer
+proteção. Certifique-se de que os seus protetores de surto estão ligados à
+terra do edifício. Em instalações comerciais, a aterragem deve cumprir os
+requisitos do código elétrico local.
+
 </Callout>
 
 ## Erros Comuns de Cablagem
@@ -282,11 +296,13 @@ Antes de declarar a instalação completa:
 6. **Verificação de gravação**: Após 7 dias, verificar se a linha temporal do NVR não mostra falhas de gravação
 
 <Callout type="tip" title="O Limite Rigoroso de 100 Metros">
-  O padrão IEEE 802.3 limita percursos Ethernet a 100 metros (328 pés) incluindo
-  todos os cabos de patch. Na prática, com Cat6 de cobre puro, pode atingir
-  fiávelmente 95 metros. Além disso, a queda de tensão, mesmo em bom cabo, causa
-  reinicializações intermitentes da câmara. Planeie extensores PoE ou backhaul
-  de fibra para qualquer percurso que exceda 90 metros.
+
+O padrão IEEE 802.3 limita percursos Ethernet a 100 metros (328 pés) incluindo
+todos os cabos de patch. Na prática, com Cat6 de cobre puro, pode atingir
+fiávelmente 95 metros. Além disso, a queda de tensão, mesmo em bom cabo, causa
+reinicializações intermitentes da câmara. Planeie extensores PoE ou backhaul
+de fibra para qualquer percurso que exceda 90 metros.
+
 </Callout>
 
 ## Perguntas Frequentes
@@ -297,6 +313,7 @@ Antes de declarar a instalação completa:
       Devo usar Cat5e ou Cat6 para câmaras de segurança?
     </AccordionTrigger>
     <AccordionContent>
+
       Cat6 é a base recomendada para qualquer instalação nova. Os condutores 23
       AWG reduzem a queda de tensão em comparação com os 24 AWG do Cat5e, o que
       é importante para o fornecimento de energia PoE — especialmente em
@@ -304,66 +321,83 @@ Antes de declarar a instalação completa:
       diferença de custo é mínima ($0,04-0,10 por pé) comparada com a
       mão-de-obra de passar cabos. Reserve Cat5e apenas para percursos curtos
       abaixo de 30 metros com câmaras 1080p.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Quão longo pode ser um percurso de cabo PoE?
     </AccordionTrigger>
     <AccordionContent>
+
       O padrão IEEE 802.3 limita percursos Ethernet a um total de 100 metros
       (328 pés), incluindo cabos de patch. Além de 100 metros, o sinal de dados
       degrada-se e o fornecimento de energia PoE cai abaixo do mínimo da câmara.
       Para percursos mais longos, use um extensor PoE (adiciona 100 m por
       unidade, até 4 unidades), backhaul de fibra com um switch PoE remoto, ou
       mova o NVR para mais perto.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Posso misturar cabos CCA e cobre sólido na mesma instalação?
     </AccordionTrigger>
     <AccordionContent>
+
       Não. Misturar CCA e cobre sólido cria um ponto de corrosão galvânica na
       ligação, que aumenta a resistência e causa a falha da ligação ao longo do
       tempo. Escolha um tipo de cabo e use-o em toda a instalação. Para PoE,
       deve ser sempre cobre sólido.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>Preciso de cabo blindado (STP)?</AccordionTrigger>
     <AccordionContent>
+
       Apenas se passar perto de interferência elétrica significativa — motores
       grandes, balastros fluorescentes, maquinaria industrial ou painéis
       elétricos. Para a maioria das instalações residenciais e de escritório,
       Cat6 não blindado (UTP) é perfeitamente adequado. Se usar STP, deve usar
       conectores blindados e aterragem correta apenas numa extremidade, caso
       contrário a blindagem torna-se ineficaz.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Qual é o raio de curvatura mínimo para Cat6?
     </AccordionTrigger>
     <AccordionContent>
+
       O raio de curvatura mínimo para Cat6 é 4x o diâmetro do cabo, ou
       aproximadamente 5 cm (2 polegadas). Curvas apertadas esmagam a torção
       interna dos pares e degradam a qualidade do sinal. Para instalações
       permanentes, use curvas largas ou cotovelos de 45 graus em vez de curvas
       apertadas de 90 graus.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       Quão fundo devo enterrar o cabo Ethernet para câmaras exteriores?
     </AccordionTrigger>
     <AccordionContent>
+
       De acordo com o National Electrical Code (NEC), o conduíte PVC deve ser
       enterrado a pelo menos 18 polegadas (45 cm) de profundidade. O conduíte
       metálico requer apenas 6 polegadas (15 cm). O cabo classificado para
       enterramento direto em conduíte é preferido para percursos subterrâneos.
       Ligue sempre para os localizadores de utilidades antes de cavar.
+
     </AccordionContent>
+
   </AccordionItem>
 </Accordion>
 

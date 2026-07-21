@@ -13,6 +13,7 @@
 ### Task 1: Best Outdoor Security Cameras
 
 **Files:**
+
 - Create: `content/posts/best-outdoor-security-cameras-2026/en.mdx`
 
 - [ ] **Step 1: Write frontmatter**
@@ -33,6 +34,7 @@ postType: "review"
 - [ ] **Step 2: Write article content (≈2000 words)**
 
 Use structure:
+
 - Introduction: Outdoor camera challenges (weather, placement, power)
 - Comparison table: 6 cameras (resolution, FOV, storage, power, price, features)
 - Detailed reviews for each (pros/cons, best use case, why it made the list)
@@ -43,6 +45,7 @@ Use structure:
 - [ ] **Step 3: Add internal links** (check 2-3 related posts)
 
 Place naturally in content:
+
 - "For night vision performance, see our [Color Night Vision vs IR comparison](/blog/color-night-vision-vs-ir-comparison)."
 - "Power considerations: read our [PoE vs Wireless vs Solar guide](/blog/poe-vs-wireless-vs-solar-comparison)."
 - "Understanding resolution trade-offs: [Camera Resolution Guide](/blog/camera-resolution-guide)."
@@ -59,6 +62,7 @@ git commit -m "feat: add best outdoor security cameras guide"
 ### Task 2: Best Security Cameras for Apartments & Renters
 
 **Files:**
+
 - Create: `content/posts/best-security-cameras-for-apartments-renters/en.mdx`
 
 - [ ] **Step 1: Write frontmatter**
@@ -79,6 +83,7 @@ postType: "review"
 - [ ] **Step 2: Write article content (≈1800 words)**
 
 Structure:
+
 - Introduction: Rental constraints (no drilling, no permanence, landlord approval)
 - Key criteria: wire-free, battery-powered, removable mounting, no wiring
 - Comparison table: 5-6 renter-friendly cameras
@@ -97,6 +102,7 @@ Structure:
 ### Task 3: Best Cameras for Large Backyards & Acreage
 
 **Files:**
+
 - Create: `content/posts/best-cameras-large-backyards-acreage/en.mdx`
 
 - [ ] **Step 1: Write frontmatter**
@@ -117,6 +123,7 @@ postType: "review"
 - [ ] **Step 2: Write article content (≈1800 words)**
 
 Structure:
+
 - Introduction: Challenges of large properties (coverage gaps, power distance, wiring costs)
 - Key criteria: long range (200ft+), wide FOV (140°+), solar options, PoE for reliability
 - Comparison table: 6 cameras suited for large areas
@@ -134,6 +141,7 @@ Structure:
 ### Task 4: Best Small Business Security Camera Systems
 
 **Files:**
+
 - Create: `content/posts/best-small-business-security-camera-systems/en.mdx`
 
 - [ ] **Step 1: Write frontmatter**
@@ -154,6 +162,7 @@ postType: "review"
 - [ ] **Step 2: Write article content (≈2000 words)**
 
 Structure:
+
 - Introduction: Business vs residential needs (liability, evidence quality, scalability, uptime)
 - Key criteria: NVR vs cloud, number of cameras supported, retention, remote access, warranty
 - Comparison table: 4-5 commercial-ready systems (Reolink NVR kits, Lorex, Amcrest, Ubiquiti, etc.)
@@ -171,6 +180,7 @@ Structure:
 ### Task 5: Best HOA-Compliant Security Cameras
 
 **Files:**
+
 - Create: `content/posts/best-hoa-compliant-security-cameras/en.mdx`
 
 - [ ] **Step 1: Write frontmatter**
@@ -191,6 +201,7 @@ postType: "review"
 - [ ] **Step 2: Write article content (≈1600 words)**
 
 Structure:
+
 - Introduction: HOA restrictions (no pointing at streets/neighbors, aesthetic rules, placement approval)
 - Key criteria: small/compact housings, adjustable mounts to control angles, neutral colors, low-profile
 - Comparison table: 5-6 discreet cameras (bullet mini, dome cameras, low-profile)
@@ -208,6 +219,7 @@ Structure:
 ### Task 6: Best Security Cameras for RVs & Mobile Homes
 
 **Files:**
+
 - Create: `content/posts/best-security-cameras-for-rvs-mobile-homes/en.mdx`
 
 - [ ] **Step 1: Write frontmatter**
@@ -228,6 +240,7 @@ postType: "review"
 - [ ] **Step 2: Write article content (≈1500 words)**
 
 Structure:
+
 - Introduction: Mobile living security challenges (vibration, power variability, theft)
 - Key criteria: ruggedized housing, vibration resistance, battery/solar power, Wi-Fi range extenders
 - Comparison table: 5 cameras suitable for RVs
@@ -245,6 +258,7 @@ Structure:
 ### Task 7: Best Solar-Powered Security Cameras (Off-Grid)
 
 **Files:**
+
 - Create: `content/posts/best-solar-powered-security-cameras/en.mdx`
 
 - [ ] **Step 1: Write frontmatter**
@@ -265,6 +279,7 @@ postType: "review"
 - [ ] **Step 2: Write article content (≈1800 words)**
 
 Structure:
+
 - Introduction: Solar cameras as ultimatewire-free solution, but sun dependency
 - How solar cameras work: battery capacity, panel wattage, charge time
 - Comparison table: 6 solar cameras (panel included vs separate)
@@ -282,6 +297,7 @@ Structure:
 ### Task 8: PTZ Cameras: When You Need Pan-Tilt-Zoom
 
 **Files:**
+
 - Create: `content/posts/ptz-cameras-when-you-need-pan-tilt-zoom/en.mdx`
 
 - [ ] **Step 1: Write frontmatter**
@@ -302,6 +318,7 @@ postType: "article"
 - [ ] **Step 2: Write article content (≈2200 words)**
 
 Structure:
+
 - Introduction: What PTZ is, how it differs from fixed cameras
 - PTZ mechanics: motors, optical zoom vs digital, presets, auto-tracking
 - Use cases: large lots, construction sites, active monitoring, guard tours
@@ -320,6 +337,7 @@ Structure:
 ### Task 9: Facial Recognition Security Cameras: Capabilities & Privacy
 
 **Files:**
+
 - Create: `content/posts/facial-recognition-security-cameras-capabilities-privacy/en.mdx`
 
 - [ ] **Step 1: Write frontmatter**
@@ -340,6 +358,7 @@ postType: "article"
 - [ ] **Step 2: Write article content (≈2000 words)**
 
 Structure:
+
 - Introduction: Facial recognition in consumer/ prosumer cameras—reality vs marketing
 - How it works: face detection → face recognition → matching against database
 - Accuracy factors: lighting, angle, database size, false positives/negatives
@@ -358,6 +377,7 @@ Structure:
 ### Task 10: Two-Way Audio Security Cameras: Complete Guide
 
 **Files:**
+
 - Create: `content/posts/two-way-audio-security-cameras-complete-guide/en.mdx`
 
 - [ ] **Step 1: Write frontmatter**
@@ -378,6 +398,7 @@ postType: "article"
 - [ ] **Step 2: Write article content (≈1800 words)**
 
 Structure:
+
 - Introduction: What two-way audio is, why it's useful (deterrence, communication, accessibility)
 - Audio quality considerations: speaker wattage, microphone sensitivity, echo cancellation
 - Use cases: front door packages, warehouse communication, elderly care, pet deterrence
@@ -396,6 +417,7 @@ Structure:
 ### Task 11: Battery Life & Power Options: Corded vs Battery vs Solar
 
 **Files:**
+
 - Create: `content/posts/battery-life-power-options-corded-vs-battery-vs-solar/en.mdx`
 
 - [ ] **Step 1: Write frontmatter**
@@ -416,6 +438,7 @@ postType: "howto"
 - [ ] **Step 2: Write article content (≈2000 words)**
 
 Structure:
+
 - Introduction: Power choices dominate camera selection—understand trade-offs
 - Battery types: lithium-ion, li-poly, rechargeable vs replaceable
 - How to estimate battery life: motion events per day, video quality, features (spotlight, PTZ)
@@ -434,6 +457,7 @@ Structure:
 ### Task 12: Cloud Storage vs Local Storage for Security Cameras
 
 **Files:**
+
 - Create: `content/posts/cloud-storage-vs-local-storage/en.mdx`
 
 - [ ] **Step 1: Write frontmatter**
@@ -454,6 +478,7 @@ postType: "comparison"
 - [ ] **Step 2: Write article content (≈2500 words)**
 
 Structure:
+
 - Introduction: Storage is a critical, ongoing cost—understand the options
 - Cloud storage: how it works, subscription costs (per camera), vendor lock-in, accessibility, security
 - Local storage: NVR/DVR hard drives, NAS, microSD cards—upfront cost, maintenance, privacy
@@ -472,6 +497,7 @@ Structure:
 ### Task 13: Smart Home Integration: Alexa, Google, HomeKit
 
 **Files:**
+
 - Create: `content/posts/smart-home-integration-alexa-google-homekit/en.mdx`
 
 - [ ] **Step 1: Write frontmatter**
@@ -492,6 +518,7 @@ postType: "howto"
 - [ ] **Step 2: Write article content (≈2000 words)**
 
 Structure:
+
 - Introduction: Smart home integration adds convenience but adds compatibility complexity
 - Ecosystem overview: Alexa (Amazon), Google Assistant, Apple HomeKit/ HomeKit Secure Video
 - Compatibility check: how to know if a camera works (skills, works with Alexa, HomeKit certification)
@@ -510,6 +537,7 @@ Structure:
 ### Task 14: DIY Security Camera Installation: Complete Guide
 
 **Files:**
+
 - Create: `content/posts/diy-security-camera-installation-complete-guide/en.mdx`
 
 - [ ] **Step 1: Write frontmatter**
@@ -530,6 +558,7 @@ postType: "howto"
 - [ ] **Step 2: Write article content (≈2500 words)**
 
 Structure:
+
 - Introduction: DIY saves money and gives control—overview of what's involved
 - Tools checklist: drill, fish tape, cable clips, ladder, screwdriver set, wire stripper, etc.
 - Pre-installation planning: camera placement survey, field of view testing (use phone), cable routing paths
@@ -551,6 +580,7 @@ Structure:
 ### Task 15: How to Mount Outdoor Cameras (Wall, Ceiling, Eave)
 
 **Files:**
+
 - Create: `content/posts/how-to-mount-outdoor-cameras-wall-ceiling-eave/en.mdx`
 
 - [ ] **Step 1: Write frontmatter**
@@ -571,6 +601,7 @@ postType: "howto"
 - [ ] **Step 2: Write article content (≈1800 words)**
 
 Structure:
+
 - Introduction: Proper mounting is critical for performance and weatherproofing
 - Mounting location considerations: height (8-12 ft), angle (downward), avoiding glare, eavesdropping
 - Hardware types: camera-specific mounts, universal brackets, adjustable arms, pole mounts
@@ -591,6 +622,7 @@ Structure:
 ### Task 16: PoE Camera Cable Running: DIY Installation
 
 **Files:**
+
 - Create: `content/posts/poe-camera-cable-running-diy-installation/en.mdx`
 
 - [ ] **Step 1: Write frontmatter**
@@ -611,6 +643,7 @@ postType: "howto"
 - [ ] **Step 2: Write article content (≈2000 words)**
 
 Structure:
+
 - Introduction: PoE delivers power and data over one cable—the gold standard for reliability
 - Cable selection: Cat5e vs Cat6 vs outdoor-rated, solid core vs stranded, shielded vs unshielded
 - Tools: fish tape, cable puller, crimping tools, RJ45 connectors, punch-down tool (for keystone)
@@ -634,6 +667,7 @@ Structure:
 ### Task 17: Wireless Camera Setup: DIY Installation Tips
 
 **Files:**
+
 - Create: `content/posts/wireless-camera-setup-diy-tips/en.mdx`
 
 - [ ] **Step 1: Write frontmatter**
@@ -654,6 +688,7 @@ postType: "howto"
 - [ ] **Step 2: Write article content (≈1800 words)**
 
 Structure:
+
 - Introduction: Wireless means no cables for power/data, but WiFi reliability is key
 - Understanding WiFi range: 2.4GHz vs 5GHz, obstacles (walls, floors), interference (microwaves, neighbors)
 - Signal strength testing: use phone apps before installing
@@ -673,6 +708,7 @@ Structure:
 ### Task 18: Common Security Camera Problems & Fixes
 
 **Files:**
+
 - Create: `content/posts/common-security-camera-problems-fixes/en.mdx`
 
 - [ ] **Step 1: Write frontmatter**
@@ -693,6 +729,7 @@ postType: "howto"
 - [ ] **Step 2: Write article content (≈2200 words)**
 
 Structure:
+
 - Introduction: Problems are inevitable—this is your go-to troubleshooting reference
 - Symptom-based troubleshooting flowchart (text + bullet decisions)
 - Problems and fixes:
@@ -719,6 +756,7 @@ Structure:
 ### Task 19: Night Vision Not Working? Troubleshooting Guide
 
 **Files:**
+
 - Create: `content/posts/night-vision-not-working-troubleshooting-guide/en.mdx`
 
 - [ ] **Step 1: Write frontmatter**
@@ -739,6 +777,7 @@ postType: "howto"
 - [ ] **Step 2: Write article content (≈1600 words)**
 
 Structure:
+
 - Introduction: Night vision is critical—when it fails, your camera is useless at night
 - How IR night vision works: IR LEDs, sensor sensitivity, IR cut filter
 - Common symptoms and diagnosis:
@@ -761,6 +800,7 @@ Structure:
 ### Task 20: CCTV Video Storage Calculator: How Much Hard Drive Space
 
 **Files:**
+
 - Create: `content/posts/cctv-video-storage-calculator-hard-drive-space/en.mdx`
 
 - [ ] **Step 1: Write frontmatter**
@@ -781,6 +821,7 @@ postType: "howto"
 - [ ] **Step 2: Write article content (≈1800 words)**
 
 Structure:
+
 - Introduction: Storage planning prevents running out of space and ensures you keep footage long enough
 - Storage calculation formula: bitrate × seconds per day × retention days ÷ 8 = GB needed
 - Variables explained:

@@ -1,0 +1,215 @@
+---
+title: "Calculadora de Almacenamiento de Video CCTV: Espacio en Disco Duro (2026)"
+description: "Calcula cuánto espacio de almacenamiento necesita para su sistema CCTV. Resolución, tasa de bits, codec (H.264 vs H.265 vs H.265+), días de retención y tamaño del disco duro."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "cctv-video-storage-calculator-hard-drive-space"
+author: "Your Name"
+tags: ["storage", "calculator", "hard-drive", "bandwidth", "nvr"]
+postType: "howto"
+---
+
+El almacenamiento es uno de los costos ocultos de la seguridad por video. Quiere suficientes días de grabación para revisar incidentes, pero no quiere pagar por discos duros que nunca usará. Esta guía proporciona cálculos precisos para cualquier configuración de cámara.
+
+<Badge variant="outline">TL;DR</Badge> 1 cámara 4K (H.265, 15fps) = ~60GB/día. 8
+cámaras × 30 días = ~14.4TB. Siempre compre un HDD más grande de lo que cree que
+necesita.
+
+---
+
+## Calculadora Rápida de Almacenamiento
+
+### Almacenamiento Diario por Cámara
+
+| Resolución          | Codec  | Tasa de Bits | GB/día (24h) | GB/día (12h) |
+| ------------------- | ------ | ------------ | ------------ | ------------ |
+| **1080p (2MP)**     | H.264  | 4 Mbps       | 43 GB        | 22 GB        |
+| **1080p (2MP)**     | H.265  | 2 Mbps       | 22 GB        | 11 GB        |
+| **1080p (2MP)**     | H.265+ | 1-1.5 Mbps   | 11-16 GB     | 6-8 GB       |
+| **2K (4MP)**        | H.264  | 8 Mbps       | 86 GB        | 43 GB        |
+| **2K (4MP)**        | H.265  | 4 Mbps       | 43 GB        | 22 GB        |
+| **2K (4MP)**        | H.265+ | 2-3 Mbps     | 22-32 GB     | 11-16 GB     |
+| **4K (8MP)**        | H.264  | 16 Mbps      | 173 GB       | 86 GB        |
+| **4K (8MP)**        | H.265  | 8 Mbps       | 86 GB        | 43 GB        |
+| **4K (8MP)**        | H.265+ | 4-6 Mbps     | 43-65 GB     | 22-33 GB     |
+| **12MP (Ultra HD)** | H.265  | 12 Mbps      | 130 GB       | 65 GB        |
+| **12MP (Ultra HD)** | H.265+ | 6-9 Mbps     | 65-97 GB     | 33-49 GB     |
+
+### Almacenamiento Total del Sistema
+
+Para calcular el sistema total: multiplique el GB/día por cámara por el número de cámaras y días.
+
+**Fórmula:** `GB_día_por_cámara × N_cámaras × Días_retención = GB_total`
+
+**Ejemplo:** 8 cámaras 4K, H.265, 30 días = 86 GB × 8 × 30 = 20,640 GB ≈ 20 TB
+
+---
+
+## Factores Clave que Afectan el Almacenamiento
+
+### 1. Tasa de Bits (Bitrate)
+
+La tasa de bits es el factor más importante que determina el tamaño del archivo. No la resolución—la tasa de bits.
+
+| Tasa de Bits | Calidad                          | 1 Cámara 24h | Notas                         |
+| ------------ | -------------------------------- | ------------ | ----------------------------- |
+| 1 Mbps       | Baja (aceptable para 1080p)      | 11 GB        | Pixelado en movimiento rápido |
+| 2 Mbps       | Media (buena para 1080p)         | 22 GB        | Calidad YouTube               |
+| 4 Mbps       | Alta (excelente 1080p, buena 4K) | 43 GB        | Transmisión HD                |
+| 8 Mbps       | Muy alta (buena 4K)              | 86 GB        | Calidad Blu-ray               |
+| 16 Mbps      | Máxima (excelente 4K)            | 173 GB       | Calidad de estudio            |
+
+**Consejo:** Use VBR (tasa de bits variable) en lugar de CBR (constante). VBR ahorra 30-50% de almacenamiento en escenas estáticas y aumenta la tasa de bits solo cuando hay movimiento.
+
+### 2. Codec de Video
+
+| Codec                             | Eficiencia | Compatibilidad                                       | Ahorro vs H.264    |
+| --------------------------------- | ---------- | ---------------------------------------------------- | ------------------ |
+| **H.264 (AVC)**                   | Estándar   | Universal (todos los NVR, reproductores)             | Línea base         |
+| **H.265 (HEVC)**                  | Buena      | NVR modernos, la mayoría de reproductores            | **40-50%**         |
+| **H.265+ (Smart/H.265 mejorado)** | Excelente  | NVRs de marca específica (Hikvision, Dahua, Reolink) | **60-70%**         |
+| **H.264+ (Smart/H.264 mejorado)** | Buena      | NVRs de marca específica                             | **30-40%**         |
+| **MJPEG**                         | Terrible   | Universal (cámaras IP antiguas)                      | -300% (usa 4x más) |
+
+### 3. Fotogramas por Segundo (FPS)
+
+| FPS    | Suavidad                                         | Almacenamiento    |
+| ------ | ------------------------------------------------ | ----------------- |
+| 30 fps | Muy suave (deportes, tráfico rápido)             | 100% (línea base) |
+| 15 fps | Suave (seguridad general, la mayoría de escenas) | **60-70%**        |
+| 10 fps | Aceptable (escenas de baja actividad)            | **45-55%**        |
+| 5 fps  | Entre aceptable (portones, pasillos)             | **30-40%**        |
+
+**Recomendación:** Para seguridad, 15 fps es el punto óptimo. 30 fps desperdicia almacenamiento para la mayoría de escenas. 5-10 fps para áreas de baja actividad.
+
+### 4. Compresión Inteligente (Smart Codec)
+
+H.265+ / H.264+ analiza la escena y codifica dinámicamente:
+
+- **Escena estática (sin movimiento):** Reduce la tasa de bits drásticamente (90% de ahorro)
+- **Escena con movimiento normal:** Ahorro moderado (30-50%)
+- **Escena de alto movimiento:** Ahorro mínimo (sigue siendo H.265 estándar)
+
+**Ahorro real:** En una escena típica (60% estática, 30% movimiento ligero, 10% movimiento alto): **50-65% de ahorro** sobre H.265 estándar.
+
+---
+
+## Tamaños de Disco Duro Recomendados
+
+### Por Configuración de Cámara
+
+| Cámaras | Resolución | Codec | Retención | HDD Mínimo | HDD Recomendado |
+| ------- | ---------- | ----- | --------- | ---------- | --------------- |
+| **4**   | 1080p      | H.265 | 7 días    | 500 GB     | 1 TB            |
+| **4**   | 1080p      | H.265 | 30 días   | 2 TB       | 4 TB            |
+| **4**   | 4K         | H.265 | 7 días    | 2 TB       | 4 TB            |
+| **4**   | 4K         | H.265 | 30 días   | 8 TB       | 12 TB           |
+| **8**   | 1080p      | H.265 | 7 días    | 1 TB       | 2 TB            |
+| **8**   | 1080p      | H.265 | 30 días   | 4 TB       | 8 TB            |
+| **8**   | 4K         | H.265 | 7 días    | 4 TB       | 8 TB            |
+| **8**   | 4K         | H.265 | 30 días   | 16 TB      | 24 TB           |
+| **16**  | 1080p      | H.265 | 30 días   | 8 TB       | 16 TB           |
+| **16**  | 4K         | H.265 | 30 días   | 32 TB      | 48 TB           |
+
+### Tipos de HDD para NVR
+
+| Tipo                                | Velocidad     | Capacidad Máx | Fiabilidad                     | Precio/GB  | Mejor Para                   |
+| ----------------------------------- | ------------- | ------------- | ------------------------------ | ---------- | ---------------------------- |
+| **WD Purple**                       | 5400-7200 RPM | 14 TB         | Excelente (diseñado para CCTV) | $0.02-0.03 | La mayoría de NVR            |
+| **Seagate SkyHawk**                 | 5400-7200 RPM | 18 TB         | Excelente (diseñado para CCTV) | $0.02-0.03 | La mayoría de NVR            |
+| **WD Red Plus (NAS)**               | 5400 RPM      | 14 TB         | Buena                          | $0.02-0.03 | NVR con múltiples HDD (RAID) |
+| **Seagate IronWolf**                | 5400-7200 RPM | 20 TB         | Buena                          | $0.02-0.03 | NVR con múltiples HDD (RAID) |
+| **HDD de consumo (Blue/Barracuda)** | 7200 RPM      | 8 TB          | Baja (no para 24/7)            | $0.01-0.02 | **Evitar para CCTV 24/7**    |
+
+<Callout type="warning">
+
+**No use HDD de consumo (WD Blue, Seagate Barracuda) para CCTV 24/7.** Están
+diseñados para uso de 8 horas/día, no para escritura continua. Fallarán en
+6-18 meses. Los HDD para vigilancia (Purple, SkyHawk) tienen mejor tolerancia
+a errores y soportan escritura 24/7.
+
+</Callout>
+
+---
+
+## Grabación por Eventos vs Continua
+
+### Ahorro de Almacenamiento con Grabación por Eventos
+
+| Tipo de Grabación                        | Uso de Almacenamiento | Ahorro vs 24/7 |
+| ---------------------------------------- | --------------------- | -------------- |
+| **24/7 Continua**                        | 100%                  | Línea base     |
+| **Eventos + Pre-grabación (5s)**         | 5-15%                 | **85-95%**     |
+| **Solo eventos**                         | 3-10%                 | **90-97%**     |
+| **Programada (p. ej., noche solamente)** | 30-50%                | 50-70%         |
+
+### Cuándo Usar Cada Tipo
+
+| Tipo              | Cuándo Usarlo                                        | Cuándo Evitarlo                                                      |
+| ----------------- | ---------------------------------------------------- | -------------------------------------------------------------------- |
+| **24/7 Continua** | Evidencia legal, áreas de alto riesgo, cumplimiento  | Áreas de bajo riesgo, presupuesto de almacenamiento ajustado         |
+| **Solo eventos**  | Áreas remotas, batería/solar, bajo riesgo            | Necesidad de ver el período anterior al evento (pre-grabación ayuda) |
+| **Programada**    | Negocio con horario conocido, garaje (solo de noche) | Horarios impredecibles                                               |
+
+---
+
+## Tiempo de Retención por Tipo de Negocio
+
+| Tipo de Negocio | Retención Mínima | Retención Recomendada | Razón                                                  |
+| --------------- | ---------------- | --------------------- | ------------------------------------------------------ |
+| **Residencial** | 7 días           | 14-30 días            | Incidentes típicos resueltos en 1-2 semanas            |
+| **Minorista**   | 30 días          | 30-90 días            | Robos, disputas con clientes, reclamaciones de seguros |
+| **Oficina**     | 14 días          | 30-60 días            | Disputas laborales, seguridad                          |
+| **Almacén**     | 30 días          | 30-90 días            | Pérdida de existencias, reclamaciones de entregas      |
+| **Restaurante** | 14 días          | 30 días               | Disputas de clientes, seguridad de empleados           |
+| **Hotel/Motel** | 30 días          | 60-90 días            | Seguridad de huéspedes, responsabilidad                |
+
+---
+
+## Calculadora de Ancho de Banda de Red
+
+El almacenamiento no es el único límite—el ancho de banda de la red también importa.
+
+| Cámaras | Resolución | Codec | Ancho de Banda Subida |
+| ------- | ---------- | ----- | --------------------- |
+| **4**   | 1080p      | H.265 | 8 Mbps                |
+| **4**   | 4K         | H.265 | 32 Mbps               |
+| **8**   | 1080p      | H.265 | 16 Mbps               |
+| **8**   | 4K         | H.265 | 64 Mbps               |
+| **16**  | 1080p      | H.265 | 32 Mbps               |
+| **16**  | 4K         | H.265 | 128 Mbps              |
+
+**Límites de la red:** Asegúrese de que su switch/router pueda manejar el tráfico. Para 8+ cámaras 4K, use un switch gigabit con puertos de enlace ascendente de 10 Gbps si es posible.
+
+---
+
+## Calculadora Simple de Almacenamiento (Fórmula)
+
+```
+GB/día = (Tasa_de_Bits_en_Mbps × 86400) / 8 / 1024
+
+O más simple: GB/día = Tasa_de_Bits_en_Mbps × 10.55
+
+Ejemplo: 8 Mbps × 10.55 = 84.4 GB/día (aproximadamente)
+```
+
+**Para su sistema:**
+
+1. Determine la tasa de bits por cámara
+2. Multiplique por 10.55 para GB/día por cámara
+3. Multiplique por el número de cámaras
+4. Multiplique por los días de retención
+5. Divida entre 1000 para TB
+
+---
+
+## Lectura Relacionada
+
+- [CCTV Guía de Cableado](/blog/cctv-cabling-guide) — Opciones de cableado Ethernet
+- [Formatos de Archivo de Video CCTV](/blog/cctv-video-file-formats) — Codecs, contenedores, reproducción
+- [Almacenamiento en la Nube vs Local](/blog/cloud-storage-vs-local-storage-security-cameras) — Dónde almacenar el video
+- [Configuración de NVR PoE](/blog/poe-nvr-setup) — Guía de instalación de NVR
+
+---
+
+_Última actualización: Julio 2026. Las cifras de almacenamiento son estimaciones. El uso real varía según la complejidad de la escena, la iluminación y la configuración del codec._

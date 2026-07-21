@@ -1,0 +1,241 @@
+---
+title: "Calcolatore Archiviazione Video CCTV: Quanto Spazio su Disco Serve"
+description: "Calcola con precisione le esigenze di archiviazione CCTV: formule per risoluzione, bitrate, compressione H.265/H.264, giorni di conservazione e raccomandazioni hard disk."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "cctv-video-storage-calculator-hard-drive-space"
+author: "Your Name"
+tags: ["storage", "calculator", "nvr", "hard-drive"]
+postType: "howto"
+---
+
+Pianificare l'archiviazione CCTV è un'ipotesi per la maggior parte degli installatori. Quante registrazioni si ottengono da 2 TB? 10 TB? Dovresti usare H.265+ o H.264? Otto telecamere 4K significano 10 TB o 40 TB?
+
+Mostreremo la formula esatta—e un riferimento rapido per varie dimensioni di flotte e durate di conservazione.
+
+## La Formula di Archiviazione
+
+<Callout type="info">
+
+**Spazio di archiviazione necessario** = Numero telecamere × bitrate × tempo
+registrazione al giorno × giorni conservazione ÷ 8 (bit → byte)
+
+</Callout>
+
+Fabbisogno giornaliero per una telecamera in megabyte (MB):
+
+> (`bitrate` in megabit al secondo × 86.400 secondi/giorno) ÷ `8` ÷ `1024` = MB/giorno
+
+In gigabyte (GB):
+
+> (`bitrate` × 86.400) ÷ 8 ÷ 1.048.576 = GB/giorno
+
+### Bitrate Predefiniti per Risoluzioni Comuni (H.265)
+
+| Risoluzione | Megapixel | H.265 (Mbps) | H.264 (Mbps) | H.265+ (Mbps, var) |
+| ----------- | --------- | ------------ | ------------ | ------------------ |
+| 4K UHD      | 8 MP      | 4–8          | 8–16         | 2–5                |
+| 5MP         | 5 MP      | 3–6          | 6–12         | 1,5–4              |
+| 4MP         | 4 MP      | 2,5–5        | 5–10         | 1,5–3              |
+| 1080p (2MP) | 2 MP      | 1–3          | 2–6          | 0,8–2              |
+| 720p (1MP)  | 1 MP      | 0,5–1,5      | 1–3          | —                  |
+
+## Riferimento Veloce
+
+Le tabelle seguenti presumono registrazione **24/7 continua** a bitrate **H.265** (valore medio degli intervalli sopra).
+
+### 1 Telecamera
+
+| Risoluzione | H.265 al Giorno | 7 Giorni | 30 Giorni | 90 Giorni |
+| ----------- | --------------- | -------- | --------- | --------- |
+| 4K (8MP)    | 38 GB           | 268 GB   | 1,1 TB    | 3,4 TB    |
+| 5MP         | 28 GB           | 201 GB   | 843 GB    | 2,5 TB    |
+| 4MP         | 23 GB           | 164 GB   | 703 GB    | 2,1 TB    |
+| 1080p       | 14 GB           | 100 GB   | 421 GB    | 1,3 TB    |
+| 720p        | 7 GB            | 50 GB    | 210 GB    | 632 GB    |
+
+### 4 Telecamere
+
+| Risoluzione | al Giorno | 7 Giorni | 30 Giorni | 90 Giorni |
+| ----------- | --------- | -------- | --------- | --------- |
+| 4K (8MP)    | 152 GB    | 1,1 TB   | 4,5 TB    | 13,5 TB   |
+| 5MP         | 114 GB    | 804 GB   | 3,4 TB    | 10,1 TB   |
+| 4MP         | 95 GB     | 656 GB   | 2,8 TB    | 8,4 TB    |
+| 1080p       | 57 GB     | 402 GB   | 1,7 TB    | 5,1 TB    |
+| 720p        | 28 GB     | 201 GB   | 843 GB    | 2,5 TB    |
+
+### 8 Telecamere
+
+| Risoluzione | al Giorno | 7 Giorni | 30 Giorni | 90 Giorni |
+| ----------- | --------- | -------- | --------- | --------- |
+| 4K (8MP)    | 304 GB    | 2,1 TB   | 9,0 TB    | 27,0 TB   |
+| 5MP         | 228 GB    | 1,6 TB   | 6,7 TB    | 20,2 TB   |
+| 4MP         | 190 GB    | 1,3 TB   | 5,6 TB    | 16,9 TB   |
+| 1080p       | 114 GB    | 804 GB   | 3,4 TB    | 10,1 TB   |
+| 720p        | 57 GB     | 402 GB   | 1,7 TB    | 5,1 TB    |
+
+### 16 Telecamere
+
+| Risoluzione | al Giorno | 7 Giorni | 30 Giorni | 90 Giorni |
+| ----------- | --------- | -------- | --------- | --------- |
+| 4K (8MP)    | 608 GB    | 4,3 TB   | 18,0 TB   | 54,0 TB   |
+| 5MP         | 456 GB    | 3,2 TB   | 13,5 TB   | 40,4 TB   |
+| 4MP         | 380 GB    | 2,7 TB   | 11,3 TB   | 33,8 TB   |
+| 1080p       | 228 GB    | 1,6 TB   | 6,7 TB    | 20,2 TB   |
+| 720p        | 114 GB    | 804 GB   | 3,4 TB    | 10,1 TB   |
+
+## Personalizzare per Scenari Reali
+
+### Registrazione Attivata da Movimento
+
+Riduce l'archiviazione del 50–80% rispetto a 24/7 continuo. La maggior parte delle telecamere con solo registrazione movimento produce 4–12 ore di registrazione al giorno, non 24 ore.
+
+**Regola pratica:** Calcola 24/7 completo, moltiplica per 0,3 (ambiente a traffico medio, es. negozio al dettaglio) o 0,15 (traffico basso, es. magazzino notturno).
+
+### Fattori di Compressione
+
+| Codec  | Spazio vs H.264     | Qualità Comparabile      |
+| ------ | ------------------- | ------------------------ |
+| H.264  | 1× (base)           | Riferimento              |
+| H.265  | 0,5× (50% di H.264) | Uguale o migliore        |
+| H.265+ | 0,3–0,5× (30–50%)   | Uguale                   |
+| H.264+ | 0,6–0,8×            | Uguale                   |
+| MJPEG  | 5–10×               | Scarsa per archiviazione |
+
+<Callout type="note">
+
+**Prestazioni H.265+ vs H.265:** H.265+ usa codifica adattiva per scena (GOP
+variabile, migliore compensazione movimento). Scene statiche — telecamera che
+osserva un garage — ne beneficiano di più. Scene con movimento costante —
+pavimento vendita di un negozio — ne beneficiano meno. Nel mondo reale,
+aspettati il 60–80% della dimensione H.265 normale.
+
+</Callout>
+
+## Scegliere il Disco Rigido
+
+### WD Purple vs Seagate SkyHawk vs Disco Comune
+
+| Caratteristica         | WD Purple / Seagate SkyHawk | WD Red (NAS)        | Desktop Comune  |
+| ---------------------- | --------------------------- | ------------------- | --------------- |
+| **Carico Lavoro**      | 180 TB/anno                 | 180 TB/anno         | 55 TB/anno      |
+| **Flussi**             | 64+ flussi video            | fino a 8            | 1–2             |
+| **Scrittura Continua** | Ottimizzato per video       | Ottimizzato per NAS | Non ottimizzato |
+| **Recupero Errori**    | TLER (Timeout)              | TLER                | Standard        |
+| **Garanzia**           | 3 anni                      | 3 anni              | 2 anni          |
+
+**Verdetto:** Compra WD Purple o Seagate SkyHawk per NVR. Non usare mai dischi desktop comuni per registrazioni CCTV — non gestiscono flussi di scrittura costanti e si guastano in 6–12 mesi.
+
+### Configurazioni NVR Raccomandate
+
+| NVR                 | Dimensione Flotta | Disco              | Capacità Utilizzabile | Conservazione (H.265) |
+| ------------------- | ----------------- | ------------------ | --------------------- | --------------------- |
+| Reolink RLN16-410   | 8× 4K             | 2× 8 TB WD Purple  | 14,5 TB (mirror)      | ~45 giorni (8× 4K)    |
+| Uniview NVR302-16S2 | 16× 4K            | 4× 10 TB WD Purple | 36 TB (RAID 5)        | ~60 giorni (16× 4K)   |
+| Hikvision DS-7716NI | 16× 4K            | 4× 8 TB WD Purple  | 22 TB (RAID 5)        | ~36 giorni (16× 4K)   |
+| Amcrest NV4116E-HS  | 8× 4K             | 2× 6 TB WD Purple  | 10,9 TB (RAID 1)      | ~34 giorni (8× 4K)    |
+
+## FAQ
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="reduction">
+    <AccordionTrigger>
+      Quanto spazio risparmia H.265+ rispetto a H.265?
+    </AccordionTrigger>
+    <AccordionContent>
+
+      Varia per scena. Riprese statiche di garage/magazzino: risparmio 40–50%.
+      Pavimento vendita di negozio affollato: 15–25%. Stima sicura: pianifica il
+        70% della dimensione H.265 normale con H.265+.
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="overwrite">
+    <AccordionTrigger>
+      L'NVR sovrascrive automaticamente le vecchie registrazioni?
+    </AccordionTrigger>
+    <AccordionContent>
+
+      Sì. Tutti gli NVR moderni sovrascrivono per impostazione predefinita le
+      registrazioni più vecchie quando lo spazio è pieno. Non devi cancellare
+      manualmente. Modifica l'impostazione "giorni conservazione" per
+      controllare per quanto tempo le registrazioni vengono conservate prima di
+      essere sovrascritte.
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="raid">
+    <AccordionTrigger>Dovrei usare RAID nell'NVR?</AccordionTrigger>
+    <AccordionContent>
+
+      Per uso business: sì. RAID 1 (mirroring) o RAID 5 (striping con parità)
+      protegge dal guasto di un singolo disco. Senza RAID, se un disco si
+      guasta, perdi tutte le registrazioni. Per uso domestico: opzionale — la
+      perdita di registrazioni di solito non è critica, e RAID riduce la
+      capacità utilizzabile del 50% (RAID 1) o 25–33% (RAID 5).
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="cloud">
+    <AccordionTrigger>Quanti dati usa lo streaming cloud?</AccordionTrigger>
+    <AccordionContent>
+
+      Lo streaming cloud e l'archiviazione locale usano lo stesso bitrate. Se la
+      tua telecamera 4K trasmette a 4 Mbps all'NVR locale, lo streaming verso
+      cloud è anche 4 Mbps per telecamera visualizzata. Per backup cloud, la
+      maggior parte delle piattaforme memorizza il sub-stream (720p) per
+      risparmiare larghezza di banda e costi di archiviazione.
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="psu">
+    <AccordionTrigger>
+      Se sostituisco il disco con SSD, le prestazioni migliorano?
+    </AccordionTrigger>
+    <AccordionContent>
+
+      No per registrazione video. L'NVR scrive in flussi sequenziali, dove gli
+      HDD sono veloci quanto gli SSD. Gli SSD non aumentano il numero di
+      telecamere supportate o la velocità di riproduzione. Usa SSD solo per
+      cache o metadata. Gli HDD (WD Purple / SkyHawk) sono la scelta giusta per
+      l'archiviazione di registrazioni.
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="lpr">
+    <AccordionTrigger>
+      Per quanto tempo dovrei conservare le registrazioni?
+    </AccordionTrigger>
+    <AccordionContent>
+
+      Casa: 7–14 giorni. Negozi al dettaglio: 30 giorni (requisiti processori
+      carte di credito). Magazzini/logistica: 30–60 giorni. Casinò / alta
+      sicurezza: 90+ giorni. I casi giudiziari tipicamente richiedono 30–90
+      giorni di registrazioni. Consulta il tuo avvocato per requisiti di
+      conformità specifici.
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+<Callout type="tip">
+
+**Aggiungere archiviazione dopo:** La maggior parte degli NVR ha porte eSATA o
+USB 3.0 per espandere l'archiviazione. Puoi anche collegare unità di
+espansione DAS (Direct Attached Storage) per conservazione più lunga senza
+sostituire i dischi esistenti.
+
+</Callout>
+
+---
+
+## Guide Correlate
+
+- [Archiviazione Cloud vs Locale per Telecamere Sicurezza](/blog/cloud-storage-vs-local-storage-security-cameras) — Pro e contro di ogni approccio
+- [NVR vs DVR: Quale Scegliere](/blog/nvr-vs-dvr) — Perché l'NVR è superiore per nuove installazioni

@@ -1,0 +1,26 @@
+{
+  "objective": "Translate all 43 English blog articles (en.mdx) into Hindi (hi.mdx)",
+  "status": "completed",
+  "details": {
+    "total_en_source": 43,
+    "total_hi_written": 43,
+    "note": "All en.mdx files have matching hi.mdx translations. No remaining work.",
+    "articles_without_en_source_skipped": [
+      "best-4k-security-cameras-2026",
+      "best-budget-security-cameras-2026",
+      "best-indoor-security-cameras-2026",
+      "best-nvr-systems-2026",
+      "best-poe-security-cameras-2026",
+      "best-ptz-security-cameras-2026",
+      "best-security-cameras-for-business",
+      "best-security-cameras-for-driveway",
+      "best-security-cameras-for-elderly",
+      "best-security-cameras-for-kids",
+      "best-security-cameras-without-subscription",
+      "best-solar-security-cameras-2026",
+      "best-wireless-security-cameras-2026",
+      "best-wireless-security-cameras-with-audio",
+      "how-to-choose-a-security-camera"
+    ]
+  }
+}

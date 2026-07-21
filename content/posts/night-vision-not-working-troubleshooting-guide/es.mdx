@@ -1,0 +1,197 @@
+---
+title: "Visión Nocturna No Funciona: Guía de Solución de Problemas (2026)"
+description: "Solucione los problemas de visión nocturna de las cámaras de seguridad: imagen completamente negra, visión borrosa, reflejos, alcance reducido, visión nocturna a color que no funciona, y reparaciones de filtro IR/LED."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "night-vision-not-working-troubleshooting-guide"
+author: "Your Name"
+tags: ["night-vision", "troubleshooting", "ir", "fix"]
+postType: "howto"
+---
+
+La visión nocturna es la característica más crítica de una cámara de seguridad exterior. Y es la que más a menudo falla. Los problemas van desde lo simple (limpiar el lente) hasta lo complejo (LEDs IR fundidos o filtro ICR atascado). Esto es lo que debe verificar, en orden.
+
+<Badge variant="outline">Diagnóstico Rápido</Badge> **¿Imagen negra por la
+noche?** Primero: compruebe si la cámara está en modo nocturno. Si los LEDs IR
+están encendidos pero no se ve nada, el problema suele ser una telaraña o un
+filtro ICR atascado. Si los LEDs IR están apagados, es un problema de
+alimentación o de firmware.
+
+---
+
+## Cómo Funciona la Visión Nocturna
+
+La visión nocturna por infrarrojos (IR) típica funciona así:
+
+```
+Luz diurna: Filtro ICR abierto → Sensor ve luz visible → LEDs IR APAGADOS
+Noche:      Filtro ICR cerrado → Sensor ve luz IR →      LEDs IR ENCENDIDOS
+```
+
+El filtro ICR (Removedor de Corte Infrarrojo) es un pequeño filtro mecánico que se mueve hacia arriba y hacia abajo delante del sensor. Cuando está abierto (día), bloquea la luz IR para que los colores sean correctos. Cuando está cerrado (noche), permite que la luz IR llegue al sensor para visión nocturna.
+
+---
+
+## Problemas de la Visión Nocturna por IR
+
+### 1. Imagen Completamente Negra por la Noche
+
+| Causa Probable                                         | Síntomas                                                                                                 | Solución                                                                                                                          |
+| ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| **Los LEDs IR están apagados**                         | Sin luz roja/azul alrededor del lente de la cámara por la noche                                          | Verifique que el modo nocturno esté activado; reinicie la cámara; actualice el firmware                                           |
+| **El filtro ICR está atascado en posición abierta**    | Se oye un chasquido cuando la cámara intenta cambiar al modo nocturno, pero la imagen sigue siendo negra | Active/desactive manualmente el modo nocturno en la app; si se oye el chasquido pero la imagen no cambia, el filtro ICR está roto |
+| **El filtro ICR no se mueve (atascado mecánicamente)** | No se oye ningún sonido al cambiar al modo nocturno; imagen negra                                        | Golpecito suave en la cámara (a veces despega el filtro); si no, reemplace la cámara                                              |
+| **La cámara no cambia al modo nocturno**               | La imagen del día continúa pero es oscura/ruidosa                                                        | Verifique la configuración de "Cambio de día/noche" en la aplicación: debería estar en "Automático"                               |
+| **Alimentación insuficiente (PoE)**                    | Los LEDs IR parpadean o no se encienden; otros síntomas de fallo intermitente                            | Verifique el presupuesto PoE del switch; pruebe con un inyector PoE dedicado                                                      |
+
+### 2. Visión Nocturna Blanca/Nublada (Whiteout)
+
+| Causa Probable                                                | Síntomas                                                               | Solución                                                                                      |
+| ------------------------------------------------------------- | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| **Reflexión IR (la luz IR rebota en una superficie cercana)** | El centro de la imagen está bien, pero los bordes/puntos están blancos | Aleje la cámara de la pared al menos 6 pulgadas; incline 15° hacia abajo                      |
+| **Telaraña delante del lente**                                | Área blanca borrosa (la telaraña refleja la IR)                        | Limpie con un palo o un paño (las telarañas se forman en horas)                               |
+| **Polvo en el lente**                                         | Área blanca turbia                                                     | Limpie el lente con un paño de microfibra                                                     |
+| **Condensación dentro de la cámara**                          | Niebla/bruma que no se limpia                                          | Selle la cámara; póngala en una bolsa de arroz durante 24 horas (si es sellable); reemplácela |
+
+### 3. Visión Nocturna Borrosa (Fuera de Enfoque)
+
+| Causa Probable                                     | Solución                                                                                |
+| -------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| **La cámara tiene un anillo de enfoque ajustable** | Gire el anillo de enfoque (modelos varifocales) mientras ve la imagen nocturna          |
+| **Enfoque fijo y borroso**                         | Limpie el lente; si persiste, es un defecto del lente (reemplace)                       |
+| **El filtro ICR no se asienta completamente**      | Active/desactive el modo nocturno varias veces; el filtro puede estar atascado a medias |
+
+### 4. Alcance IR Reducido (Solo Ve 10 Pies en Lugar de 30-50 Pies)
+
+| Causa Probable                                     | Solución                                                                                  |
+| -------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| **LEDs IR envejecidos (se atenúan con el tiempo)** | Reemplace la cámara (3-5 años es la vida útil típica del LED IR)                          |
+| **Polvo/suciedad en los LEDs IR**                  | Limpie los LEDs IR (no solo el lente—las ventanas IR también acumulan polvo)              |
+| **Bajo voltaje (PoE largo)**                       | Verifique el voltaje en la cámara—debe ser >44V para PoE                                  |
+| **Ajuste de distancia IR en la app**               | Algunas cámaras tienen un control deslizante de "Alcance IR"—verifique que esté al máximo |
+
+---
+
+## Visión Nocturna a Color (Problemas)
+
+### "La Visión Nocturna a Color es Ruidosa/Granulada"
+
+| Causa                                                     | Solución                                                                              |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| **Poca luz ambiental**                                    | Añada un foco o iluminación exterior; active el foco incorporado (si está disponible) |
+| **ISO alto (la cámara sube la ganancia en la oscuridad)** | Esto es normal—no se puede solucionar sin más luz                                     |
+| **Sensor pequeño (cámaras baratas)**                      | Actualice a una cámara con un sensor más grande (1/2" o más grande)                   |
+| **Lente sucio**                                           | Limpie el lente                                                                       |
+
+### "La Visión Nocturna a Color No se Activa"
+
+| Causa                                         | Solución                                                                                                               |
+| --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| **La cámara cambia a IR en lugar de a color** | En la app, cambie el modo nocturno de "IR" a "Color" o "Automático"                                                    |
+| **Foco fundido**                              | Verifique que el foco funcione (actívelo manualmente en la app); si no se enciende, es posible que el LED esté fundido |
+| **No hay suficiente luz para el modo color**  | Añada iluminación exterior; la cámara necesita >1 lux para el modo color                                               |
+
+---
+
+## Solución de Problemas del Filtro ICR
+
+### Síntomas de Filtro ICR Defectuoso
+
+1. **La imagen es de color rosa/magenta durante el día** —el filtro ICR está atascado en posición nocturna
+2. **La imagen es completamente negra por la noche** —el filtro ICR está atascado en posición diurna
+3. **El filtro ICR chasquea repetidamente** —el filtro está atascado, tratando de moverse
+4. **No se oye ningún sonido al cambiar de día a noche** —el filtro ICR podría estar roto o atascado
+
+### Cómo Probar el Filtro ICR
+
+1. Abra la vista en vivo en la app
+2. Active/desactive el modo nocturno manualmente
+3. Escuche si oye un chasquido (el filtro ICR moviéndose)
+4. La imagen debería cambiar de color a blanco/negro (o viceversa)
+5. Si oye el chasquido pero la imagen no cambia: filtro ICR roto
+6. Si no oye ningún chasquido: el mecanismo está atascado o la placa base está defectuosa
+
+### Cómo Arreglar un Filtro ICR Atascado
+
+**Método 1: Golpecito suave**
+
+- Dele un golpecito suave a la cámara con el mango de un destornillador
+- A veces, la vibración despega el filtro
+- Repita la prueba de activación/desactivación del modo nocturno
+
+**Método 2: Ciclo de alimentación**
+
+- Desconecte la alimentación de la cámara durante 30 segundos
+- Vuelva a conectarla—el filtro ICR debería reiniciarse
+- Pruebe el cambio entre día y noche
+
+**Método 3: Actualización de firmware**
+
+- Algunos filtros ICR atascados se deben a fallos de firmware
+- Actualice al firmware más reciente
+- Reinicie después de la actualización
+
+**Método 4: Reemplace la cámara**
+
+- Si nada funciona, el filtro ICR está mecánicamente roto
+- Esto no se puede reparar económicamente—reemplace la cámara
+
+---
+
+## LEDs IR: Diagnóstico y Soluciones
+
+### Cómo Probar los LEDs IR
+
+1. Espere a que oscurezca o cubra el sensor de luz de la cámara
+2. Mire el lente de la cámara—debería ver un brillo rojo/azul tenue alrededor del lente
+3. Si no se ven los LEDs IR, la cámara no está emitiendo luz IR
+4. Si se ven los LEDs pero la imagen sigue siendo negra, el problema es el filtro ICR o el sensor
+
+### LEDs IR Débiles o Parpadeantes
+
+| Causa                                      | Solución                                                          |
+| ------------------------------------------ | ----------------------------------------------------------------- |
+| **Alimentación insuficiente**              | Verifique el presupuesto PoE; pruebe con un inyector PoE dedicado |
+| **Cable Ethernet demasiado largo (>100m)** | Acorte el cable o añada un extensor PoE                           |
+| **LEDs IR viejos (degradados)**            | Reemplace la cámara (los LEDs IR duran 3-5 años de uso nocturno)  |
+| **Conexión suelta**                        | Verifique el conector RJ45; vuelva a crimpar si es necesario      |
+
+---
+
+## Problemas Ambientales
+
+| Problema                                  | Solución                                                                                 |
+| ----------------------------------------- | ---------------------------------------------------------------------------------------- |
+| **Nieve/lluvia delante del lente**        | Monte la cámara bajo un alero; use un parasol; limpie después de tormentas               |
+| **Rocío/condensación en el lente**        | Monte en un lugar más protegido; limpie por la mañana                                    |
+| **Telarañas (se forman cada noche)**      | Limpie diariamente con un palo o use spray repelente de arañas alrededor de la cámara    |
+| **Insectos que vuelan hacia los LEDs IR** | Aleje la cámara de las luces (los insectos se sienten atraídos por la luz UV y el calor) |
+| **Árboles/ramas que se mecen**            | Pode las ramas que se acerquen a 3 pies de la cámara                                     |
+
+---
+
+## Configuración de Visión Nocturna (Ajustes en la App)
+
+### Ajustes Recomendados
+
+| Ajuste                      | Valor Recomendado                  | Notas                                               |
+| --------------------------- | ---------------------------------- | --------------------------------------------------- |
+| **Modo nocturno**           | Automático                         | Cambia según el sensor de luz                       |
+| **Brillo de IR**            | Medio-Alto (50-80%)                | El 100% puede causar whiteout con paredes cercanas  |
+| **Cambio de día/noche**     | Automático (o Programado)          | El modo programado evita cambios falsos con farolas |
+| **Sensibilidad IR**         | Media                              | La alta puede causar cambios parpadeantes           |
+| **Visión nocturna a color** | Automático (si hay suficiente luz) | Use con iluminación exterior                        |
+| **Frecuencia de parpadeo**  | 50Hz o 60Hz (según la región)      | Afecta a las luces LED interiores                   |
+
+---
+
+## Lectura Relacionada
+
+- [Problemas Comunes de Cámaras de Seguridad](/blog/common-security-camera-problems-fixes) — Soluciones generales
+- [Guía de Instalación de Cámaras DIY](/blog/diy-security-camera-installation-complete-guide) — Mejores prácticas de instalación
+- [Visión Nocturna a Color vs IR](/blog/color-night-vision-vs-ir-comparison) — Diferencias entre los tipos de visión nocturna
+- [Mejores Cámaras Exteriores 2026](/blog/best-outdoor-security-cameras-2026) — Cámaras con la mejor visión nocturna
+
+---
+
+_Última actualización: Julio 2026. Los problemas de visión nocturna suelen ser simples de diagnosticar pero frustrantes de solucionar. El culpable más común: telarañas._

@@ -1,0 +1,397 @@
+---
+title: "การรวมระบบบ้านอัจฉริยะ: Alexa, Google Home, HomeKit (2026)"
+description: "เชื่อมต่อกล้องรักษาความปลอดภัยกับ Alexa, Google Assistant และ Apple HomeKit เปรียบเทียบการรองรับแบบเนทีฟ บริดจ์ Matter และการควบคุมในท้องถิ่น ระบบอัตโนมัติ: ไฟเปิดเมื่อมีการเคลื่อนไหว ประกาศเสียง การบันทึก การปิดรั้วอัตโนมัติ"
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "smart-home-integration-alexa-google-homekit"
+author: "Your Name"
+tags: ["smart-home", "alexa", "google-home", "homekit", "matter", "automation"]
+postType: "review"
+---
+
+กล้องรักษาความปลอดภัยจะมีประสิทธิภาพเมื่อสามารถสื่อสารกับบ้านอัจฉริยะของคุณ: ไฟกระพริบเมื่อมีการเคลื่อนไหว ลำโพงประกาศผู้มาเยือน ระบบล็อกปลดล็อกสำหรับใบหน้าที่รู้จัก การปิดรั้วอัตโนมัติทำงาน/ปิดทำงาน แต่ไม่ใช่กล้องทุกตัวที่ทำงานร่วมกับทุกแพลตฟอร์มได้ดี คู่มือนี้อธิบายทุกเส้นทางการรวมระบบสำหรับปี 2026
+
+<Badge variant="outline">ตารางสรุปการรองรับแพลตฟอร์ม</Badge>
+
+| แบรนด์กล้อง                           | Alexa | Google Home | HomeKit              | Matter         | API ท้องถิ่น                     |
+| ------------------------------------- | ----- | ----------- | -------------------- | -------------- | -------------------------------- |
+| **Ring**                              | เนทีฟ | เนทีฟ       | ❌                   | ❌             | ❌                               |
+| **Arlo**                              | เนทีฟ | เนทีฟ       | เนทีฟ (Pro 3+)       | ❌             | ❌                               |
+| **Google Nest**                       | ❌    | เนทีฟ       | ❌                   | Matter (2024+) | ❌                               |
+| **Eufy**                              | Skill | Action      | เนทีฟ (HomeBase 3)   | Matter (Cam 3) | RTSP/ONVIF                       |
+| **Reolink**                           | Skill | Action      | ❌                   | ❌             | RTSP/ONVIF/HTTP                  |
+| **UniFi Protect**                     | Skill | Action      | เนทีฟ (Protect 3.0+) | ❌             | WebSocket/RTSP                   |
+| **Wyze**                              | Skill | Action      | ❌                   | ❌             | RTSP (beta)                      |
+| **Blink**                             | เนทีฟ | เนทีฟ       | ❌                   | ❌             | ❌                               |
+| **TP-Link Tapo**                      | Skill | Action      | เนทีฟ (Matter)       | **Matter**     | RTSP                             |
+| **Axis / Hanwha / Dahua / Hikvision** | ❌    | ❌          | ❌                   | ❌             | **ONVIF/VAPIX/ISAPI เต็มรูปแบบ** |
+
+---
+
+## เจาะลึกแต่ละแพลตฟอร์ม
+
+### Amazon Alexa
+
+**รองรับแบบเนทีฟ:** Ring, Blink, Arlo, Echo Show (เป็นจอแสดงผล)  
+**ต้องใช้ Skill:** Reolink, Eufy, UniFi, Wyze, Tapo, Amcrest, TP-Link Kasa
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="alexa-features">
+    <AccordionTrigger>Alexa ทำอะไรกับกล้องได้บ้าง</AccordionTrigger>
+    <AccordionContent>
+
+      **ดูสด:** "Alexa, show [ชื่อกล้อง]" → Echo Show, Fire TV, แอป Alexa
+      **ประกาศ:** "Alexa, announce [กล้อง] ตรวจพบบุคคล" → อุปกรณ์ Echo ทั้งหมด
+      **กิจวัตร (ระบบอัตโนมัติ):** - ตัวกระตุ้น: การเคลื่อนไหว / บุคคล / พัสดุ /
+      กดกริ่ง - การกระทำ: เปิด/ปิดไฟ, ล็อก/ปลดล็อก, พูดข้อความที่กำหนด,
+      เล่นเสียง, รอ, แจ้งเตือน **พูดสองทาง:** "Alexa, talk to [กล้อง]"
+      (half-duplex PTT) **การบันทึก:** Ring/Blink/Arlo → คลาวด์ (สมัครสมาชิก)
+      อื่นๆ → **ไม่มีการบันทึกคลาวด์ผ่าน Alexa** **ข้อจำกัด:** ไม่มีสตรีมมิง
+      ในท้องถิ่น (ทั้งหมดผ่านคลาวด์); หมดเวลา 10 นาทีบน Echo Show; ไม่มี 4K
+      (สูงสุด 1080p transcoded); กิจวัตรจำกัดที่ 1 ตัวกระตุ้น + 1
+      การกระทำต่อกิจวัตร (ใช้หลายกิจวัตร)
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="alexa-setup">
+    <AccordionTrigger>เคล็ดลับการตั้งค่า</AccordionTrigger>
+    <AccordionContent>
+
+        1. **เปิดใช้งาน Skill** → เชื่อมโยงบัญชี → ค้นพบอุปกรณ์ 2. **เปลี่ยนชื่อ**
+      กล้องในแอป Alexa เป็นภาษาธรรมชาติ ("ประตูหน้า", "กล้องถนน") 3.
+      **สร้างกลุ่ม** ("ภายนอก" = หน้า + หลัง + ถนน) สำหรับ "show outside" 4.
+      **ตัวอย่างกิจวัตร:** - **ไฟเฉลียง:** การเคลื่อนไหวที่ประตูหน้า 30 นาที
+      หลังพระอาทิตย์ตก → เปิดไฟเฉลียง (5 นาที) - **การขัดขวาง:** ตรวจพบบุคคล
+      ที่ถนน → "กล้องกำลังบันทึก" บน Echo + เปิดไฟสปอตไลท์ - **ต้อนรับ:**
+      กดกริ่ง → "มีคนที่ประตูหน้า" บน Echo ห้องครัว - **ปิดรั้ว:** "เมื่อฉันออก"
+      → ตั้งค่ากล้อง (ถ้า skill รองรับ)
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### Google Home (Google Assistant)
+
+**รองรับแบบเนทีฟ:** Nest, Arlo, Blink, Ring (จำกัด)  
+**ต้องใช้ Action:** Eufy, Reolink, UniFi, Wyze, Tapo, Amcrest
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="google-features">
+    <AccordionTrigger>Google Home ทำอะไรได้บ้าง</AccordionTrigger>
+    <AccordionContent>
+
+      **ดูสด:** "Hey Google, show [กล้อง]" → Nest Hub, Chromecast TV, โทรศัพท์
+      **ประกาศ:** "Hey Google, broadcast [กล้อง] เห็นบุคคล" → ลำโพง Nest ทั้งหมด
+      **ระบบอัตโนมัติ (แอป Home → ระบบอัตโนมัติ):** - ตัวเริ่ม: การเคลื่อนไหว,
+      บุคคล, ยานพาหนะ, สัตว์, พัสดุ, กริ่ง, เสียง - การกระทำ: ไฟ, ปลั๊ก, ล็อก,
+      เทอร์โมสตัท, ลำโพง, ทีวี, สคริปต์ **พูดสองทาง:** "Hey Google, talk to
+      [กล้อง]" (Nest เท่านั้น; อื่นๆ ผ่านแอป) **การบันทึก:** Nest Aware (คลาวด์)
+      อื่นๆ → **ไม่มีการบันทึกคลาวด์ผ่าน Google** **ข้อดีเหนือ Alexa:**
+      มุมมองกริดหลายกล้องที่ดีกว่าบน Nest Hub Max;
+      ประเภทการเคลื่อนไหวที่ละเอียดกว่า; กิจวัตรบ้าน/นอกในตัว;
+      ตัวแก้ไขสคริปต์สำหรับ ตรรกะที่ซับซ้อน
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="google-setup">
+    <AccordionTrigger>เคล็ดลับการตั้งค่า</AccordionTrigger>
+    <AccordionContent>
+
+        1. **เพิ่มอุปกรณ์** → "Works with Google" → ค้นหาแบรนด์ → เชื่อมโยงบัญชี
+        2. **กำหนดห้อง** ในแอป Google Home สำหรับ "กล้องในห้องนั่งเล่น" 3.
+
+      **ตัวอย่างระบบอัตโนมัติ:** - **ไฟกลางคืน:** บุคคลที่ประตูหน้าหลัง
+      พระอาทิตย์ตก → ไฟโถงทางเดิน 50% (5 นาที) - **แจ้งเตือนพัสดุ:** ตรวจพบพัสดุ
+      → "พัสดุมาส่งแล้ว" บนลำโพงทั้งหมด + บันทึกใน Google ชีต - **ออก จากบ้าน:**
+      โทรศัพท์หายไป → ตั้งค่ากล้อง (ถ้า skill รองรับ) + ล็อกประตู -
+      **แจ้งเตือนสัตว์:** ตรวจพบสัตว์ในสนาม → "สัตว์ในสนาม" บนลำโพง ห้องครัว
+
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### Apple HomeKit (HomeKit Secure Video)
+
+**รองรับแบบเนทีฟ:** Eufy (HomeBase 3), Arlo (Pro 3/4/5S, Ultra), Logitech Circle View, Netatmo, Eve, Aqara, TP-Link Tapo (Matter), UniFi Protect (3.0+), Onvis, Wemo  
+**ต้องใช้บริดจ์:** Reolink (ผ่าน Homebridge/Scrypted), Ring (ผ่าน Homebridge), Wyze (ผ่าน Homebridge), Dahua/Hikvision (ผ่าน Homebridge/Scrypted)
+
+<Callout type="info">
+
+**HomeKit Secure Video (HSV) = ความเป็นส่วนตัวที่ดีที่สุด** วิดีโอถูกวิเคราะห์
+**บนอุปกรณ์** (Home Hub: Apple TV 4K, HomePod, iPad) **เข้ารหัสแบบ
+end-to-end** — Apple ไม่สามารถดูได้ พื้นที่จัดเก็บแบบหมุนเวียน 10 วัน **รวมกับ
+iCloud+** (50GB = 1 กล้อง, 200GB = 5 กล้อง, 2TB = ไม่จำกัด)
+ไม่ต้องสมัครสมาชิกแยก
+
+</Callout>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="hsv-features">
+    <AccordionTrigger>ฟีเจอร์และข้อกำหนดของ HSV</AccordionTrigger>
+    <AccordionContent>
+
+**ความละเอียดที่รองรับ:** 1080p, 2K, 4K (ปรับลดเป็น 1080p เพื่อการวิเคราะห์, เก็บที่ความละเอียดต้นทาง)
+**โซนกิจกรรม:** ต่อกล้อง, ตั้งค่าในแอป Home
+**การจดจำใบหน้า:** "ตรวจพบบุคคล" → "ตรวจพบจอห์น" (ถ้าอยู่ในอัลบั้มบุคคล)
+**ตัวเลือกการบันทึก:** ปิด / ตรวจจับกิจกรรม / สตรีมและบันทึก
+**พื้นที่จัดเก็บ:** iCloud+ (50GB/$0.99, 200GB/$2.99, 2TB/$9.99) — **ไม่ใช่ต่อกล้อง**
+**ต้องใช้ Home Hub:** Apple TV 4K (2021+), HomePod (mini/รุ่น 2), iPad (เปิดตลอดเวลา)
+**สตรีมมิงในท้องถิ่น:** iPhone/iPad บน Wi-Fi เดียวกัน → โดยตรง (ไม่ต้องใช้อินเทอร์เน็ต) ระยะไกล → ถ่ายทอดผ่าน iCloud (เข้ารหัส)
+**ข้อจำกัด:** สูงสุด 5 กล้องบนแผน 200GB (ยกเว้น 2TB); ไม่มีต่อเนื่อง 24/7 (เฉพาะเหตุการณ์); ไม่มีมุมมองเว็บ (เฉพาะ iOS/macOS); ไม่มี Android ดั้งเดิม
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="homebridge">
+    <AccordionTrigger>เชื่อมกล้องที่ไม่ใช่ HomeKit (Homebridge / Scrypted / Hoobs)</AccordionTrigger>
+    <AccordionContent>
+
+**Homebridge** (Node.js, 2000+ ปลั๊กอิน): ทำงานบน Pi, Docker, NAS, มินิ PC
+
+- `homebridge-camera-ffmpeg` → RTSP → HSV (transcode, เพิ่มการเคลื่อนไหว)
+- `homebridge-reolink` → API ดั้งเดิมของ Reolink (การเคลื่อนไหว, PTZ, ภาพนิ่ง)
+- `homebridge-dahua` / `homebridge-hikvision` → ONVIF/ISAPI
+- `homebridge-ring` → กล้อง/กริ่ง Ring (polling, ~30s หน่วงเวลา)
+
+**Scrypted** (TypeScript, ใหม่กว่า, เร็วกว่า): ปลั๊กอินเนทีฟ HomeKit, Google, Alexa
+
+- จัดการ RTSP ได้ดีกว่า, หน่วงเวลาน้อยกว่า, ตลาดปลั๊กอิน
+- ทำงานบนฮาร์ดแวร์เดียวกับ Homebridge
+
+**ฮาร์ดแวร์สำหรับบริดจ์:** Raspberry Pi 4 (4GB+) / 5, Intel N100/N305 มินิ PC ($120), โน้ตบุ๊กเก่า, Docker Synology/QNAP
+**ความหน่วง:** Homebridge FFmpeg ~2–5s; Scrypted ~1–3s; HSV เนทีฟ ~0.5–1s
+**HSV ผ่านบริดจ์:** กล้องต้องรองรับ RTSP บริดจ์ transcode → HSV → iCloud **นับรวมในขีดจำกัดกล้อง HSV**
+
+</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+### Matter (มาตรฐานใหม่)
+
+**Matter 1.3 (2024)** เพิ่มประเภทอุปกรณ์ **กล้อง** **Matter 1.4 (2025)** เพิ่มประเภท **กริ่งประตู**
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="matter-status">
+    <AccordionTrigger>การรองรับกล้อง Matter ปัจจุบัน (2026)</AccordionTrigger>
+    <AccordionContent>
+
+**กล้องที่ได้รับการรับรอง Matter:**
+
+- **TP-Link Tapo C120 / C220 / C320WS** (Matter ผ่าน Wi-Fi)
+- **Eve Cam** (Thread + Matter)
+- **Google Nest Cam (แบบมีสาย, 2024)** / **Nest Doorbell (แบบมีสาย, 2024)** — บริดจ์ Matter ผ่าน Google Home
+- **EufyCam 3 / SoloCam S340** — อัปเดตเฟิร์มแวร์ Matter (2024)
+
+**สิ่งที่ Matter มอบให้:**
+
+- **ผู้ดูแลหลายระบบ:** เพิ่มไปยัง Apple Home, Google Home, Alexa, SmartThings พร้อมกัน
+- **ควบคุมในท้องถิ่น:** ไม่ต้องถ่ายทอดผ่านคลาวด์สำหรับเปิด/ปิด/สตรีมพื้นฐาน (Thread/Wi-Fi โดยตรง)
+- **คำสั่งที่ได้มาตรฐาน:** สตรีมสด, เหตุการณ์การเคลื่อนไหว, โหมดความเป็นส่วนตัว
+
+**สิ่งที่ Matter ยังไม่ทำ:**
+
+- สตรีม 4K (สูงสุด 1080p ในข้อกำหนด)
+- ควบคุม PTZ (ไม่อยู่ใน 1.3/1.4)
+- จดจำใบหน้า / ตรวจจับพัสดุ (เฉพาะส่วนขยายจากผู้ขาย)
+- บันทึกต่อเนื่อง (เฉพาะคลิปเหตุการณ์)
+- การรวม NVR
+
+**คำตัดสิน (2026):** กล้อง Matter ใช้ได้สำหรับ **ดูสดหลายแพลตฟอร์มพื้นฐาน + แจ้งเตือนการเคลื่อนไหว** สำหรับการบันทึก, AI, PTZ, 4K → ยังต้องใช้การรวมเนทีฟหรือบริดจ์
+
+</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+---
+
+## ควบคุมในท้องถิ่น / ไม่ใช้คลาวด์: เส้นทางขั้นสูง
+
+<Callout type="tip">
+
+**Local = เร็ว, ส่วนตัว, ทำงานแบบออฟไลน์** RTSP/ONVIF/WebSocket →
+Frigate/Scrypted/Blue Iris → Home Assistant → แดชบอร์ด/ระบบอัตโนมัติ ไม่มี
+คลาวด์ของผู้ขายเห็นวิดีโอของคุณ
+
+</Callout>
+
+### สถาปัตยกรรม: สแตกกล้องแบบท้องถิ่นทั้งหมด
+
+```
+กล้อง (PoE/RTSP)
+    │
+    ▼
+┌─────────────────────────────────────┐
+│  Frigate (Docker)                   │
+│  - รับ RTSP                      │
+│  - ตรวจจับการเคลื่อนไหว (CPU)           │
+│  - ตรวจจับวัตถุ AI (Coral TPU)  │
+│  - บันทึก (MP4, แยกส่วน)       │
+│  - เหตุการณ์ MQTT (การเคลื่อนไหว, บุคคล ฯลฯ)│
+│  - ดูสด WebRTC (ต่ำกว่า 1 วินาที)    │
+└─────────────────────────────────────┘
+    │                    │
+    ▼                    ▼
+┌─────────────┐    ┌─────────────┐
+│ Home Asst.  │    │  Scrypted   │
+│ (ระบบอัตโนมัติ)│    │ (HomeKit/   │
+│  - ไฟ   │    │  Google/    │
+│  - ล็อก    │    │  Alexa)     │
+│  - แจ้งเตือน   │    │             │
+└─────────────┘    └─────────────┘
+    │                    │
+    ▼                    ▼
+แดชบอร์ด           Apple Home /
+                     Google Home /
+                     แอป Alexa
+```
+
+### ฮาร์ดแวร์สำหรับสแตกท้องถิ่น
+
+| ส่วนประกอบ         | ประหยัด            | แนะนำ                                  | ระดับสูง                       |
+| ------------------ | ------------------ | -------------------------------------- | ------------------------------ |
+| **เซิร์ฟเวอร์**    | RPi 4 4GB ($80)    | Intel N100/N305 มินิ PC ($130)         | i5-13400 / Ryzen 5700G ($400)  |
+| **ตัวเร่ง AI**     | CPU เท่านั้น (ช้า) | **Google Coral USB ($60)** / M.2 ($40) | Coral PCIe x4 / Hailo-8 ($150) |
+| **พื้นที่จัดเก็บ** | 1× 4TB HDD         | 2× 8TB RAID 1                          | 4× 14TB RAID 6 / ZFS           |
+| **เครือข่าย**      | 1 Gbps             | สวิตช์ 2.5 Gbps + NIC                  | แบ็คโบน 10 Gbps                |
+
+### ข้อกำหนดกล้องสำหรับสแตกท้องถิ่น
+
+- **รองรับ RTSP** (มาตรฐาน: `rtsp://user:pass@ip:554/stream1`)
+- **ONVIF Profile S/T/G** (การค้นพบ, PTZ, เหตุการณ์)
+- **สตรีมย่อย** (D1/720p สำหรับ AI, 4K สำหรับบันทึก)
+- **ไม่พึ่งพาคลาวด์** สำหรับสตรีม (กล้องบางตัวต้องใช้โทเค็นยืนยันตัวตนคลาวด์ — หลีกเลี่ยง)
+
+**กล้อง ONVIF/RTSP ที่ดีที่สุด (2026):**
+
+- Reolink (ทั้งหมด PoE, Wi-Fi ส่วนใหญ่): `rtsp://ip:554/h264Preview_01_main`
+- Dahua / Hikvision / Hanwha / Axis / Uniview / Vivotek / Milesight
+- UniFi G4/G5 (RTSP ผ่านการตั้งค่า Protect)
+- Amcrest / Lorex / Annke / Montavue (OEM Dahua/Hik)
+- **หลีกเลี่ยง:** Ring, Blink, Nest, Arlo (ก่อน 2024), Wyze (จำกัด), Eufy (ไม่มี RTSP บนกล้องแบตเตอรี่)
+
+---
+
+## สูตรระบบอัตโนมัติ (พร้อมคัดลอก)
+
+### Home Assistant (YAML)
+
+```yaml
+# ไฟเฉลียงเมื่อตรวจพบบุคคล (หลังพระอาทิตย์ตก)
+automation:
+  - alias: "ไฟเฉลียง - บุคคลที่ประตูหน้า"
+    trigger:
+      - platform: mqtt
+        topic: frigate/front_door/person
+        payload: "on"
+    condition:
+      - condition: sun
+        after: sunset
+        after_offset: "-00:30:00"
+    action:
+      - service: light.turn_on
+        target:
+          entity_id: light.porch
+        data:
+          brightness_pct: 80
+      - delay: "00:05:00"
+      - service: light.turn_off
+        target:
+          entity_id: light.porch
+
+  # ขัดขวาง: ไซเรน + ไฟเมื่อตรวจพบบุคคลที่ถนน (กลางคืน)
+  - alias: "ขัดขวาง - บุคคลที่ถนนกลางคืน"
+    trigger:
+      - platform: mqtt
+        topic: frigate/driveway/person
+        payload: "on"
+    condition:
+      - condition: time
+        after: "22:00:00"
+        before: "06:00:00"
+    action:
+      - service: siren.turn_on
+        target:
+          entity_id: siren.outdoor
+      - service: light.turn_on
+        target:
+          entity_id: light.floodlights
+        data:
+          brightness_pct: 100
+      - service: notify.mobile_app
+        data:
+          title: "🚨 บุกรุกถนน"
+          message: "ตรวจพบบุคคลที่ถนนเวลา {{ now().strftime('%H:%M') }}"
+```
+
+### กิจวัตร Alexa (แอป → กิจวัตร)
+
+```
+เมื่อ: อุปกรณ์ Smart Home → [กล้องประตูหน้า] → ตรวจพบการเคลื่อนไหว → บุคคล
+ถ้า: เวลา → ระหว่างพระอาทิตย์ตกและพระอาทิตย์ขึ้น
+แล้ว:
+    1. Smart Home → [ไฟเฉลียง] → เปิด → 80% → 5 นาที
+    2. Alexa พูด → "บุคคลที่ประตูหน้า" → อุปกรณ์: [Echo ห้องครัว]
+    3. Smart Home → [ไฟสปอตไลท์] → เปิด → 100% → 3 นาที
+```
+
+### ระบบอัตโนมัติ Google Home (แอป Home → ระบบอัตโนมัติ)
+
+```
+ตัวเริ่ม: อุปกรณ์ → [กล้องถนน] → เหตุการณ์ → ตรวจพบบุคคล
+เงื่อนไข: เวลา → ระหว่าง 22:00 น. ถึง 06:00 น.
+การกระทำ:
+    1. อุปกรณ์ → [ไฟสปอตไลท์] → เปิด → ความสว่าง 100%
+    2. อุปกรณ์ → [ลำโพงทั้งหมด] → ประกาศ → "ตรวจพบบุคคลที่ถนน"
+    3. สคริปต์ → บันทึกลงใน Google ชีต (ผ่าน Make/Zapier/webhook)
+```
+
+### Apple HomeKit (แอป Home → ระบบอัตโนมัติ)
+
+```
+เมื่อ: เซ็นเซอร์ตรวจจับบางอย่าง → [กล้องประตูหน้า] → ตรวจพบบุคคล
+เงื่อนไข: เวลา → หลังพระอาทิตย์ตก
+ทำ:
+    1. ฉาก → [เปิดไฟเฉลียง] (ฉากที่สร้างไว้แล้ว: เฉลียง 80%, ทางเข้า 50%)
+    2. รอ → 5 นาที
+    3. ฉาก → [ปิดไฟเฉลียง]
+```
+
+---
+
+## เปรียบเทียบแพลตฟอร์ม: เลือกอันไหน?
+
+| ลำดับความสำคัญ                     | แพลตฟอร์มที่ดีที่สุด                    | เหตุผล                                               |
+| ---------------------------------- | --------------------------------------- | ---------------------------------------------------- |
+| **ความเป็นส่วนตัว / ไม่ใช้คลาวด์** | **HomeKit (HSV) + บริดจ์ท้องถิ่น**      | เข้ารหัส E2E, iCloud+ รวม, AI บนอุปกรณ์              |
+| **เสียง + จอแสดงผล**               | **Alexa** (ระบบนิเวศ Echo Show)         | Skill มากที่สุด, UI กิจวัตรดีที่สุด, จอแสดงผลราคาถูก |
+| **พลังระบบอัตโนมัติ**              | **Google Home** (ตัวแก้ไขสคริปต์)       | ตัวเริ่มที่ดีที่สุด, ตรรกะซับซ้อน, กริด Nest Hub     |
+| **ท้องถิ่น + หลายแพลตฟอร์ม**       | **Home Assistant + Frigate + Scrypted** | ควบคุมทั้งหมด, บริดจ์ Matter, ไม่ถูกล็อกโดยผู้ขาย    |
+| **ตั้งค่าง่ายที่สุด**              | **Ring / Blink / Nest** (แบรนด์เดียว)   | เนทีฟ, ไม่ต้องใช้บริดจ์, แต่ต้องสมัครสมาชิก + คลาวด์ |
+| **ธุรกิจ / หลายสถานที่**           | **UniFi Protect**                       | รวมศูนย์, ไม่มีค่าคลาวด์, skill HSV + Alexa/Google   |
+| **อนาคต Matter**                   | **TP-Link Tapo / Eve / Nanoleaf**       | Thread + Matter, ทำงานได้ทุกที่                      |
+
+---
+
+## เส้นทางการย้าย: จากคลาวด์สู่ท้องถิ่น
+
+1. **เก็บกล้องคลาวด์ไว้ก่อน** (Ring กริ่งประตู, Blink กลางแจ้ง)
+2. **เพิ่มกล้อง PoE** (Reolink, Dahua) → NVR (UniFi/Reolink) หรือเซิร์ฟเวอร์ Frigate
+3. **เชื่อมกล้องคลาวด์** ผ่าน Homebridge/Scrypted → HomeKit/Google/Alexa
+4. **ย้ายระบบอัตโนมัติ** ไปยัง Home Assistant (หรือ HA + กิจวัตร Alexa/Google)
+5. **ปิดการบันทึกคลาวด์** บนกล้องที่เชื่อม; ใช้ NVR/Frigate ท้องถิ่น
+6. **ยกเลิกการสมัครสมาชิก** เมื่อยืนยันการบันทึกในท้องถิ่นแล้ว
+7. **กล้องในอนาคต:** ซื้อเฉพาะ ONVIF/RTSP + Matter เท่านั้น
+
+---
+
+## คู่มือที่เกี่ยวข้อง
+
+- [คู่มือกล้องรักษาความปลอดภัยแบบพูดสองทางฉบับสมบูรณ์](/blog/two-way-audio-security-cameras-complete-guide) — ตัวกระตุ้นเสียงสำหรับประกาศ
+- [กล้องรักษาความปลอดภัยจดจำใบหน้า: ความสามารถและความเป็นส่วนตัว](/blog/facial-recognition-security-cameras-privacy) — จดจำใบหน้าใน HomeKit/HSV
+- [เปรียบเทียบ PoE vs ไร้สาย vs โซลาร์เซลล์](/blog/poe-vs-wireless-vs-solar-comparison) — พลังงานสำหรับสตรีมท้องถิ่นที่เชื่อถือได้
+- [กล้องรักษาความปลอดภัยกลางแจ้งที่ดีที่สุด 2026](/blog/best-outdoor-security-cameras-2026) — ฮาร์ดแวร์ที่มีการสนับสนุนการรวมระบบที่ดีที่สุด

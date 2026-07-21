@@ -90,7 +90,9 @@ export default async function BlogPage({
         new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
     )
 
-  const filteredPosts = tag ? allPosts.filter((p) => (p.tags || []).includes(tag)) : allPosts
+  const filteredPosts = tag
+    ? allPosts.filter((p) => (p.tags || []).includes(tag))
+    : allPosts
 
   return (
     <>
@@ -144,12 +146,12 @@ export default async function BlogPage({
       />
       <div className="flex-1">
         <div className="mx-auto px-4 py-12 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
             {/* Main content */}
-            <div className="lg:col-span-3 space-y-6">
+            <div className="space-y-6 lg:col-span-3">
               <h1 className="mb-8 text-4xl font-bold">{t("blog")}</h1>
               {tag && (
-                <div className="flex items-center gap-2 mb-4">
+                <div className="mb-4 flex items-center gap-2">
                   <Badge variant="default">Filter: {tag}</Badge>
                   <Link href="/blog" className="text-sm underline">
                     Clear
@@ -169,13 +171,13 @@ export default async function BlogPage({
                   />
                 )
               })}
-               {filteredPosts.length === 0 && (
-                 <p className="text-muted-foreground">{t("noPosts")}</p>
-               )}
+              {filteredPosts.length === 0 && (
+                <p className="text-muted-foreground">{t("noPosts")}</p>
+              )}
             </div>
             {/* Sidebar */}
-            <aside className="lg:col-span-1 space-y-8">
-               <PopularTagsSidebar posts={allPosts} />
+            <aside className="space-y-8 lg:col-span-1">
+              <PopularTagsSidebar posts={allPosts} />
             </aside>
           </div>
         </div>

@@ -1,0 +1,373 @@
+---
+title: "Zgodność z NDAA: co instalatorzy CCTV muszą wiedzieć w 2026"
+description: "Kompleksowy przewodnik po wymogach NDAA, zabronionych markach (Hikvision, Dahua) i wyborze zgodnych kamer do projektów federalnych."
+publishedAt: 2026-07-20T00:00:00.000Z
+updatedAt: 2026-07-20T00:00:00.000Z
+slug: "ndaa-compliance-guide-2026"
+author: "Your Name"
+tags: ["compliance", "ndaa"]
+postType: "article"
+---
+
+<svg
+  viewBox="0 0 64 64"
+  width="48"
+  height="48"
+  fill="none"
+  stroke="#dc2626"
+  strokeWidth="2"
+  strokeLinecap="round"
+  strokeLinejoin="round"
+  style={{ float: "left", marginRight: "12px" }}
+>
+  <path d="M32 4 L32 16 M32 48 L32 60 M4 32 L16 32 M48 32 L60 32" />
+  <circle cx="32" cy="32" r="24" strokeWidth="3" opacity="0.3" />
+  <path d="M32 16 L32 48 M16 32 L48 32" strokeWidth="3" />
+</svg>
+
+National Defense Authorization Act (NDAA) fundamentalnie zmienił krajobraz dla instalatorów CCTV pracujących przy projektach federalnych, stanowych i infrastruktury krytycznej. To, co kiedyś było niszowym problemem zgodności, stało się codziennością dla instalatorów składających oferty na szkoły, budynki rządowe, lotniska, a nawet wiele prywatnych projektów stosujących federalne wytyczne.
+
+Jeśli kiedykolwiek usłyszałeś pytanie "Czy te kamery są zgodne z NDAA?" i nie byłeś pewien, jak odpowiedzieć, ten przewodnik jest dla Ciebie. Przetniemy zamieszanie i damy Ci praktyczne ramy do oceny sprzętu, rozmów z klientami i ochrony Twojej firmy przed ryzykiem niezgodności.
+
+_Uwaga: Ten artykuł odzwierciedla stan prawny na połowę 2026 roku. Zawsze weryfikuj aktualne przepisy z prawnikiem przed finalizacją wyboru sprzętu do projektów federalnych._
+
+## Czym jest NDAA i dlaczego instalatorzy powinni się nim przejmować?
+
+NDAA to coroczna ustawa finansująca Departament Obrony USA. Od 2019 roku zawiera przepisy—szczególnie Sekcję 889—które ograniczają niektóre chińskie technologie w zamówieniach i użytkowaniu rządu USA.
+
+### Sekcja 889: główne ograniczenie
+
+Sekcja 889 zabrania agencjom federalnym nabywania lub używania objętych ograniczeniami urządzeń telekomunikacyjnych od określonych dostawców uznanych za zagrożenie bezpieczeństwa narodowego. Ograniczenie obejmuje:
+
+- **Zakaz nabywania**: Agencje federalne nie mogą kupować ani pozyskiwać objętego sprzętu lub usług
+- **Zakaz dla wykonawców**: Federalni wykonawcy nie mogą używać objętego sprzętu przy wykonywaniu kontraktów federalnych
+- **Rozszerzenie na beneficjentów grantów**: Wiele stanowych i lokalnych projektów otrzymujących fundusze federalne również musi być zgodnych
+
+Lista objętych firm (stan na 2026 rok) obejmuje:
+
+- **Hikvision** (Hangzhou Hikvision Digital Technology)
+- **Dahua Technology** (w tym Lorex, Amcrest i inne marki)
+- **Huawei** (w tym układy HiSilicon)
+- **Hytera** (radiotelefony)
+- **ZTE** (sprzęt telekomunikacyjny)
+
+Firmy te są oznaczone przez FCC jako objęty sprzęt telekomunikacyjny lub usługi (CVET). Zakaz dotyczy podstawowych komponentów, nie tylko gotowych produktów.
+
+### "Dlaczego" za ograniczeniami
+
+Obawy rządu USA koncentrują się na:
+
+1. **Lukach typu backdoor**: Agencje wywiadu udokumentowały systematyczne luki bezpieczeństwa i potencjalne backdoory w firmware tych producentów
+2. **Wymuszonej współpracy**: Chińskie przepisy o wywiadzie narodowym mogą wymagać od firm współpracy przy gromadzeniu danych wywiadowczych
+3. **Brak przejrzystości łańcucha dostaw**: Brak weryfikowalnej możliwości śledzenia pochodzenia komponentów
+
+Dla instalatorów oznacza to: **nie chodzi tylko o nazwę marki na pudełku**. Chodzi o to, co jest w środku.
+
+## Co właściwie oznacza "zgodność z NDAA"
+
+Zgodność istnieje na spektrum. Pełna zgodność wymaga wykazania, że:
+
+1. **Podstawowe komponenty** (czujniki, procesory, układy, PCB) nie pochodzą z objętych krajów
+2. **Montaż** odbywa się w nieobjętym kraju (USA, Meksyk, Tajwan, Japonia, Korea Południowa itp.)
+3. **Oprogramowanie/firmware** jest opracowywane i kontrolowane przez nieobjęte podmioty
+4. **Żadne objęte usługi** nie są używane przy wykonywaniu kontraktów federalnych
+
+### Test czterech części
+
+<Callout type="info">
+
+**Zgodność nie polega tylko na tym, gdzie produkt jest montowany.** Kamera
+montowana w USA z procesorem HiSilicon z Chin wciąż jest niezgodna. Podobnie
+oprogramowanie opracowane w Chinach działające na zgodnym sprzęcie również
+stwarza problemy.
+
+</Callout>
+
+**1. Pochodzenie komponentów**
+
+Najbardziej krytycznym czynnikiem jest Bill of Materials (BOM). Instalatorzy powinni poprosić o:
+
+- **Pochodzenie procesora/SoC**: Wiele używa HiSilicon (Huawei), Allwinner (Chiny) lub Amlogic (Chiny). Zgodne alternatywy: Texas Instruments, Ambarella, Sony lub procesory z Tajwanu/Korei Południowej/Japonii.
+- **Pochodzenie czujnika obrazu**: Sony, Samsung i OmniVision są generalnie zgodne. Niektóre chińskie czujniki (np. GalaxyCore) budzą obawy.
+- **Produkcja PCB**: Nie może odbywać się w objętych krajach. Większość zgodnych producentów używa Tajwanu, USA lub Japonii.
+- **Pamięć**: Samsung (Korea Południowa), SK Hynix (Korea Południowa), Micron (USA) są bezpieczne.
+- **Układy zasilania**: Często z Tajwanu lub USA.
+
+**2. Lokalizacja montażu**
+
+Montaż w USA, Meksyku, Tajwanie lub innych nieobjętych krajach daje silny sygnał zgodności. Jednak:
+
+<Callout type="warning">
+
+**"Zaprojektowane w USA" ≠ "Wyprodukowane w USA"**. Wiele marek promuje "US
+design" podczas gdy produkują w Chinach z chińskimi komponentami. To
+niewystarczające dla zgodności z NDAA.
+
+</Callout>
+
+**3. Własność oprogramowania/firmware'u**
+
+Stos oprogramowania musi być:
+
+- Opracowany poza objętymi krajami
+- Nieutrzymywany ani niehostowany w Chinach
+- Niekorzystający z chińskich usług chmurowych do przetwarzania wideo lub analityki AI
+
+Niektórzy producenci zlecają rozwój firmware'u do Chin, nawet jeśli projekt sprzętu jest lokalny. To stwarza ryzyko.
+
+**4. Deklaracje producenta**
+
+Renomowani zgodni producenci dostarczają:
+
+- **Deklaracje dostawców** potwierdzające pochodzenie komponentów
+- **Dokumentację kraju pochodzenia**
+- **Certyfikaty zgodności stron trzecich** (np. z programów TAA)
+- **Oświadczenia o produkcji w USA (USM)**
+
+## Jak zweryfikować zgodność jako instalator
+
+### Krok 1: Poproś o BOM
+
+Poproś producenta lub dystrybutora o szczegółowy Bill of Materials. Powinien zawierać:
+
+- Numery części dla głównych komponentów
+- Kraj pochodzenia dla każdego komponentu
+- Nazwy producentów
+
+Jeśli odmówią lub udzielą niejasnych odpowiedzi, to czerwona flaga.
+
+### Krok 2: Sprawdź listę TAA
+
+Lista U.S. Trade Agreements Act (TAA) jest dobrym wskaźnikiem zgodności z NDAA. Produkty zgodne z TAA są produkowane w wyznaczonych krajach i kwalifikują się do zamówień federalnych.
+
+Przeszukaj produkty producenta na:
+
+- GSA Schedules (Multiple Award Schedules)
+- Listach produktów SAM.gov
+- Deklaracjach zgodności TAA producenta
+
+### Krok 3: Potwierdź lokalizację produkcji
+
+Zweryfikuj, gdzie odbywa się końcowy montaż. Niektórzy producenci mają "wykończenie/konfigurację" w USA, nawet jeśli główny montaż jest za granicą—to może być niewystarczające. Główny montaż (lutowanie PCB, integracja głównych komponentów) powinien odbywać się poza objętymi krajami.
+
+### Krok 4: Uzyskaj to na piśmie
+
+Przed złożeniem oferty na projekt federalny:
+
+- Uzyskaj pisemne oświadczenia o zgodności od producenta
+- Poproś o potwierdzenia e-mail statusu TAA
+- Przechowuj dokumentację w plikach projektu
+
+**Ustne zapewnienia od przedstawicieli handlowych są bezwartościowe podczas audytu**.
+
+## Najlepsze zgodne marki i linie produktów (2026)
+
+Następujące marki mają udokumentowane osiągnięcia w zakresie zgodności:
+
+### Poziom 1: Pełna zgodność (ustalona produkcja w USA/krajach sojuszniczych)
+
+| Marka                             | Mocne strony                                                             | Uwagi                                  |
+| --------------------------------- | ------------------------------------------------------------------------ | -------------------------------------- |
+| **Axis Communications**           | Produkowane w Szwecji, komponenty z UE, solidna dokumentacja             | Złoty standard zgodności; ceny premium |
+| **Bosch Security Systems**        | Bazujące w Niemczech, łańcuch dostaw w UE                                | Doskonała jakość, w pełni zgodne z TAA |
+| **Hanwha Techwin**                | Montaż w Korei Południowej, dziedzictwo Samsung                          | Duże portfolio, dobra wartość          |
+| **Motorola Solutions (Avigilon)** | Montaż w USA/Kanadzie, krajowy łańcuch dostaw dla kluczowych komponentów | Bezpieczeństwo klasy wyższej           |
+| **Vanderbilt**                    | Bazujące w Wielkiej Brytanii, łańcuch dostaw w UE                        | Systemy kontroli dostępu i alarmowe    |
+| **GE Security**                   | Montaż w USA, uznana marka z silnym rodowodem zgodności                  |                                        |
+
+### Poziom 2: Zgodne submarki / montaż końcowy w USA
+
+| Marka         | Linie produktów                    | Zastrzeżenia                                                    |
+| ------------- | ---------------------------------- | --------------------------------------------------------------- |
+| **Honeywell** | Seria Performance, equIP           | Mieszanka zgodnych i niezgodnych linii—zweryfikuj konkretne SKU |
+| **LenelS2**   | OnGuard, ELA                       | Głównie zgodne; zweryfikuj modele kamer                         |
+| **MERCURY**   | Kontrolery drzwi, kontrola dostępu | Bazujące w Wielkiej Brytanii, dobra historia zgodności          |
+
+### Poziom 3: Zachowaj ostrożność / weryfikuj każde SKU
+
+Niektórzy producenci mają zarówno zgodne, jak i niezgodne produkty:
+
+- **Ubiquiti UniFi**: Częściowy montaż na Tajwanie, ale komponenty różnią się w zależności od modelu. Uzyskaj wyraźne potwierdzenie dla każdego produktu.
+- **Reolink**: Deklaruje pewien montaż w USA, ale pochodzenie komponentów jest niejasne. Wysokie ryzyko dla prac federalnych.
+- **Night Owl**: Deklaracje montażu w USA; poproś o szczegółową weryfikację BOM.
+
+### Marki, których należy unikać w projektach federalnych
+
+<Callout type="warning">
+
+<strong>NIE UŻYWAJ</strong> w projektach objętych NDAA:
+
+<ul>
+  <li>Hikvision (wszystkie marki: Hikvision, HiWatch, Ezviz itp.)</li>
+  <li>
+    Dahua (wszystkie marki: Dahua, Lorex, Amcrest, Reolink—częściowe nakładanie
+    ostrożności)
+  </li>
+  <li>Huawei (produkty oparte na HiSilicon)</li>
+  <li>Hytera (radiotelefony)</li>
+  <li>ZTE (telekomunikacja)</li>
+  <li>
+    Każdy produkt z "Powered by HiSilicon" lub "Huawei HiSilicon" w specyfikacji
+  </li>
+</ul>
+
+  </Callout>
+
+## Lista kontrolna zgodności dla instalatorów
+
+Użyj tej 7-punktowej listy przed zaproponowaniem sprzętu do projektu, który może podlegać wymogom NDAA:
+
+### ☐ 1. Określ typ projektu
+
+Projekt federalny → Musi być zgodny
+Projekt stanowy/lokalny → Może wymagać zgodności, jeśli otrzymuje fundusze federalne (zapytaj o źródło finansowania)
+Prywatny komercyjny → Zazwyczaj zwolniony, ale wielu klientów korporacyjnych przyjmuje podobne polityki
+
+### ☐ 2. Wybierz zweryfikowane marki
+
+Zacznij od marek z Poziomu 1 lub 2 z tego przewodnika. Jeśli rozważasz coś innego, żądaj dokumentacji zgodności producenta przed kontynuacją.
+
+### ☐ 3. Potwierdź konkretne SKU
+
+Zgodność dotyczy konkretnego modelu. Nawet w obrębie zgodnej marki, niektóre produkty używają niezgodnych komponentów. Zweryfikuj dokładny numer części.
+
+### ☐ 4. Udokumentuj wszystko
+
+Przechowuj e-maile, arkusze specyfikacji i deklaracje producenta w pliku projektu. Jesteś odpowiedzialny za swoje oświadczenia wobec klienta.
+
+### ☐ 5. Dołącz język zgodności w ofertach
+
+Przykład: "Cały sprzęt oferowany w tym projekcie jest zweryfikowany jako zgodny z NDAA/TAA zgodnie z dokumentacją producenta dostępną na żądanie. Zgodność konkretnego modelu potwierdzona na piśmie."
+
+### ☐ 6. Planuj audyty
+
+Kontrakty federalne mogą obejmować prawa do audytu. Upewnij się, że twój łańcuch dostaw może wyprodukować dokumentację, jeśli zostanie o to poproszony lata później.
+
+### ☐ 7. Bądź na bieżąco
+
+Lista objętych podmiotów NDAA zmienia się corocznie. Subskrybuj aktualizacje FCC i newslettery producentów. To, co jest zgodne dzisiaj, może być objęte ograniczeniami jutro.
+
+## Często zadawane pytania
+
+<Accordion>
+<AccordionItem value="assembled-usa">
+<AccordionTrigger>Czy "Montowane w USA" gwarantuje zgodność?</AccordionTrigger>
+<AccordionContent>
+
+**Nie.** Produkt może być montowany w USA, ale zawierać procesor z Huawei lub innych objętych podmiotów. Zgodność wymaga, aby _podstawowe komponenty_ pochodziły z nieobjętych krajów. Samo stwierdzenie "montowane w USA" jest niewystarczające—potrzebujesz weryfikacji pochodzenia BOM.
+
+</AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="used-refurbished">
+  <AccordionTrigger>
+    Czy używane lub odnowione kamery podlegają ograniczeniom?
+  </AccordionTrigger>
+  <AccordionContent>
+
+    Zakaz nabywania NDAA dotyczy *nowych* zakupów sprzętu. Jednak agencje
+    federalne mogą nadal używać istniejących niezgodnych systemów, które zostały
+    legalnie nabyte przed wprowadzeniem ograniczeń. Dla wykonawców używanie
+    odnowionego niezgodnego sprzętu przy wykonywaniu kontraktu federalnego może
+    naruszać zakaz. Większość integratorów traktuje odnowiony sprzęt jako
+    wysokiego ryzyka i szuka porady prawnej przed użyciem w objętych projektach.
+
+  </AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="existing-systems">
+  <AccordionTrigger>
+    Co z istniejącymi systemami na obiektach federalnych?
+  </AccordionTrigger>
+  <AccordionContent>
+
+    Starsze systemy, które zostały legalnie zainstalowane przed wprowadzeniem
+    ograniczeń, są generalnie "objęte ochroną" i mogą nadal działać. Jednak: -
+    Części zamienne i naprawcze mogą być objęte ograniczeniami, jeśli
+    stanowiłyby "istotną transformację" w nowy sprzęt - Aktualizacje
+    oprogramowania od objętych producentów mogą być problematyczne - Większość
+    agencji aktywnie wymienia niezgodne systemy w ustalonym harmonogramie
+
+  </AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="penalties">
+  <AccordionTrigger>Jakie są kary za niezgodność?</AccordionTrigger>
+  <AccordionContent>
+
+    Kary mogą być surowe: - **Rozwiązanie kontraktu** i wykluczenie z przyszłych
+    prac federalnych - **Odpowiedzialność z tytułu False Claims Act**: Składanie
+    fałszywych certyfikatów zgodności może skutkować potrójnym odszkodowaniem -
+    **Kary karne** w przypadku świadomych naruszeń - **Kary cywilne** od FCC -
+    **Uszczerbek na reputacji** i utrata zaufania klientów Co najważniejsze,
+    twój klient (agencja federalna lub wykonawca) ponosi ostateczną
+    odpowiedzialność, ale pociągnie cię do odpowiedzialności, jeśli twoje
+    oświadczenia spowodowały naruszenie.
+
+  </AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="prove-compliance">
+<AccordionTrigger>Jak udowodnić zgodność klientom?</AccordionTrigger>
+<AccordionContent>
+
+Zapewnij:
+
+1. **Pisemne oświadczenia producenta** (e-mail lub list) potwierdzające zgodność z TAA/NDAA dla konkretnych SKU
+2. **Kontrakty GSA Schedule** pokazujące produkty na zatwierdzonych listach
+3. **Dokumentację BOM** pokazującą pochodzenie komponentów (na żądanie)
+4. **Oznaczenia kraju pochodzenia** na opakowaniu sprzętu
+5. **Certyfikaty zgodności** od audytorów zewnętrznych (jeśli dostępne)
+
+Kluczem jest możliwość śledzenia: powinieneś być w stanie pokazać łańcuch zgodności od dostawcy komponentów do gotowego produktu.
+
+</AccordionContent>
+</AccordionItem>
+
+<AccordionItem value="state-projects">
+<AccordionTrigger>Czy projekty stanowe i lokalne wymagają zgodności?</AccordionTrigger>
+<AccordionContent>
+
+Wiele tak, ale zależy to od finansowania. Jeśli projekt otrzymuje granty federalne lub umowy o współpracy (np. finansowanie ochrony szkół z Department of Homeland Security), ograniczenia NDAA często obowiązują. Niektóre stany uchwaliły również własne zakazy chińskiego sprzętu do nadzoru. Zawsze pytaj klientów, czy projekt podlega wymogom TAA/NDAA i uzyskaj odpowiedź na piśmie.
+
+</AccordionContent>
+</AccordionItem>
+</Accordion>
+
+## Budowanie firmy stawiającej na zgodność
+
+Najskuteczniejsi instalatorzy w erze NDAA uczynili zgodność przewagą konkurencyjną, a nie ciężarem:
+
+1. **Wyspecjalizuj się w zgodnych markach** i zostań ekspertem. Twoja wiedza staje się atutem sprzedażowym.
+2. **Stwórz standardowe pakiety zgodności** dla typowych projektów federalnych (szkoły, sądy, budynki federalne).
+3. **Dokumentuj swój łańcuch dostaw** i bądź w stanie przedstawić dokumentację na żądanie. Rozważ przechowywanie pakietów zgodności dla każdego głównego dostawcy, którego używasz.
+4. **Wyprzedzaj pytania klientów**. Wysyłaj okresowe aktualizacje o dostępności produktów i statusie zgodności.
+5. **Weryfikuj przed złożeniem oferty**. Odrzucona oferta z powodu braku zgodności jest lepsza niż rozwiązany kontrakt i wykluczenie.
+
+## Podsumowanie: kroki na 2026 rok
+
+Zgodność z NDAA pozostanie z nami. Instalatorzy, którzy odniosą sukces, to ci, którzy:
+
+- **Znają swoje łańcuchy dostaw**—aż do poziomu komponentów
+- **Dokumentują wszystko**—dokumentacja jest twoją jedyną obroną
+- **Specjalizują się w zgodnych markach**—nie ryzykuj na sprzęcie granicznym
+- **Są na bieżąco**—listy objętych podmiotów ewoluują corocznie
+
+Dobra wiadomość: wysokiej jakości zgodny sprzęt jest powszechnie dostępny u renomowanych producentów. Nie musisz iść na kompromis w kwestii wydajności ani ceny—bądź po prostu bardziej świadomy w doborze źródeł.
+
+**Przed twoim następnym projektem federalnym lub stanowym:**
+
+1. Przejrzyj swój obecny katalog produktów pod kątem zależności od objętych marek
+2. Zbuduj relacje ze zgodnymi producentami i dystrybutorami
+3. Stwórz standardowy pakiet dokumentacji zgodności
+4. Przeszkól swoje zespoły sprzedaży i instalacji w zakresie kwestii zgodności
+
+Potrzebujesz pomocy w ocenie konkretnych produktów? Skontaktuj się z zespołami sprzedaży rządowej preferowanych producentów—są zobowiązani do dostarczenia dokumentacji zgodności.
+
+---
+
+_Aby uzyskać najbardziej aktualną listę objętych podmiotów, odwiedź FCC Covered List na [fcc.gov/cvets](https://www.fcc.gov/cvets). Ten artykuł zawiera ogólne wskazówki i nie stanowi porady prawnej; skonsultuj się z prawnikiem w sprawie zgodności dla konkretnego projektu._
+
+[Wróć do bloga](/blog)
+
+/_ sitemap refreshed _/

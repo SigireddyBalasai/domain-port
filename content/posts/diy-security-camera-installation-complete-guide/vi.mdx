@@ -1,0 +1,226 @@
+---
+title: "Hướng Dẫn Lắp Đặt Camera An Ninh DIY Từ A Đến Z (2026)"
+description: "Hướng dẫn từng bước cho camera PoE, không dây, pin và năng lượng mặt trời. Dụng cụ, chạy cáp, gắn kết, cấu hình mạng, thiết lập NVR và khắc phục sự cố. Tiết kiệm $500–$2,000 so với thuê chuyên nghiệp."
+publishedAt: 2026-06-01T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "diy-security-camera-installation-complete-guide"
+author: "Your Name"
+tags: ["diy", "lắp-đặt", "poe", "không-dây", "nvr", "gắn-kết"]
+postType: "howto"
+---
+
+Chi phí lắp đặt camera an ninh chuyên nghiệp **$150–$400 mỗi camera** (nhân công + vật liệu). Hệ thống 8 camera PoE điển hình: **$1,200–$3,200 nhân công**. Tự làm với hướng dẫn này: **$0 nhân công + $100–$300 dụng cụ**. Hướng dẫn này bao gồm mọi bước từ lập kế hoạch đến ghi hình đầu tiên.
+
+<Badge variant="outline">Đánh Giá Trung Thực</Badge> **DIY phù hợp nếu:** Bạn
+thoải mái với thang, khoan, mạng cơ bản và làm theo sơ đồ. **Thuê chuyên nghiệp
+nếu:** Chạy cáp mái nhiều tầng, khoan bê tông/gạch, cần giấy phép hoặc muốn bảo
+hành nhân công.
+
+## Giai Đoạn 1: Lập Kế Hoạch & Thiết Kế
+
+### 1. Bản Đồ Vị Trí Camera
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="placement">
+    <AccordionTrigger>Vị Trí Đặt Camera (Thứ Tự Ưu Tiên)</AccordionTrigger>
+    <AccordionContent>
+
+**Cấp 1 — Phải Che (Lối Vào/Ra):**
+
+- Cửa trước (chuông cửa hoặc trên cao)
+- Cửa sau/cửa bên
+- Lối vào gara (người + xe)
+- Đường lái xe (biển số)
+
+**Cấp 2 — Giá Trị Cao (Bao Phủ):**
+
+- Cửa sổ tầng một
+- Sân sau / hiên
+- Cổng bên / khoảng trống hàng rào
+- Khu vực nhận gói hàng
+
+**Cấp 3 — Theo Tình Huống:**
+
+- Hồ bơi / bồn tắm nước nóng
+- Nhà kho / gara riêng
+- Hộp thư
+- Tầm nhìn đường phố
+
+**Quy tắc đặt:**
+
+- **Chiều cao:** 8–10 ft (cách xa tầm với, góc tốt)
+- **Góc:** 15–30° xuống từ ngang — không để camera nhìn thẳng vào tường
+- **FOV chồng lấn:** 20–30% giữa các camera kề nhau để tránh điểm mù
+- **Tránh ánh sáng ngược:** Không hướng camera về phía mặt trời mọc/lặn, đèn sáng
+- **Chống thời tiết:** Đặt dưới mái hiên/soffit khi có thể; camera ngoài trời cần IP66+
+
+</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+### 2. Chọn Kiến Trúc Hệ Thống
+
+| Kiến trúc            | Tốt nhất cho                 | Chạy cáp             | Nguồn            | Độ khó     |
+| -------------------- | ---------------------------- | -------------------- | ---------------- | ---------- |
+| **PoE NVR Kit**      | 4–16 cam, cố định, 24/7      | Cat5e/6 đến mỗi cam  | PoE (switch/NVR) | Trung bình |
+| **Wi-Fi + NVR**      | 2–8 cam, chỗ khó kéo cáp     | Chỉ nguồn            | 120V / Pin / MT  | Thấp–TB    |
+| **Chỉ Pin/MT**       | 1–4 cam, không dây, nhà thuê | Không dây cáp        | Pin + mặt trời   | Thấp       |
+| **Kết hợp (Hybrid)** | Hầu hết nhà ở                | Trộn PoE + không dây | Trộn             | Trung bình |
+
+<Callout type="tip">
+
+**Bắt đầu với PoE nơi có thể.** PoE đáng tin cậy nhất, chất lượng cao nhất và chi phí dài hạn thấp nhất. Chỉ dùng Wi-Fi/pin nơi thực sự bất khả thi để chạy cáp.
+
+</Callout>
+
+### 3. Lập Kế Hoạch Đường Chạy Cáp
+
+- **Tường trong:** Khoan tấm trên, thả cáp xuống tầng hầm/gác xép
+- **Ngoài trời:** Ống dẫn PVC / LFMC, ống bọc chôn trực tiếp, hoặc đi trên không
+- **Giới hạn IEEE 802.3:** 100 mét (328 ft) mỗi đường chạy bao gồm dây patch
+- **Bán kính uốn tối thiểu:** 3–4" — không bẻ gập cáp
+- **Tách khỏi nguồn điện AC:** Tối thiểu 12" khi chạy song song
+- **Bảo vệ:** Tấm đinh nơi cáp qua đinh (NEC 300.4), chắn lửa tại lỗ xuyên
+
+## Giai Đoạn 2: Dụng Cụ & Vật Tư
+
+### Dụng Cụ Cần Thiết
+
+| Dụng cụ                       | Model khuyến nghị                 | Giá (USD) |
+| ----------------------------- | --------------------------------- | --------- |
+| **Búa khoan (SDS+)**          | Bosch GBH2-28L / DeWalt DCH273    | $180–250  |
+| **Máy dò đinh**               | Bosch GMS120 / Franklin ProSensor | $40–60    |
+| **Kìm bấm mạng pass-through** | Klein VDV226-110                  | $45       |
+| **Máy kiểm tra cáp**          | NF-8601 / TRENDnet TC-NT2         | $25–60    |
+| **Tua vít/Máy vặn vít**       | Milwaukee M12 / DeWalt DCF887     | $100–130  |
+| **Thang**                     | Thang rút 24-ft Type IA           | $250      |
+| **Que phát quang/Fish tape**  | Klein 56107 / Klein 56007         | $30–50    |
+| **Thước thủy lực (Laser)**    | Huepar / Bosch GLL 55             | $60–120   |
+| **Silicone ngoài trời**       | GE Silicone 2+ / OSI Quad Max     | $8/ống    |
+
+## Giai Đoạn 3: Gắn Camera
+
+### Chiều Cao & Góc Gắn Theo Loại Camera
+
+| Loại camera          | Chiều cao gắn | Góc nghiêng           | Ghi chú                          |
+| -------------------- | ------------- | --------------------- | -------------------------------- |
+| **PoE Bullet**       | 8–10 ft       | 15–30° xuống          | Gắn tường/mái hiên, dưới mái che |
+| **PoE Dome/Turret**  | 8–12 ft       | Nghiêng xuống         | Gắn trần/soffit tốt nhất         |
+| **Chuông cửa**       | 48–54"        | Ngang                 | Dùng bộ góc nếu cần              |
+| **PTZ**              | 10–15 ft      | Preset tour theo lịch | Cần giá đỡ nặng, neo vào kết cấu |
+| **Camera pin/solar** | 8–10 ft       | Theo hướng nam        | Wi-Fi là ưu tiên chính           |
+
+### Hướng Dẫn Gắn Theo Bề Mặt
+
+**Gỗ (siding, fascia, xà nhà):**
+
+- Khoan mồi ⅛" để tránh tách gỗ
+- Vít boong mạ #10 × 2.5" vào đinh
+- Silicone quanh đầu vít nếu không có gioăng
+
+**Gạch / Bê tông / Stucco:**
+
+- Cần búa khoan (SDS+) và mũi khoan xây
+- Neo Tapcon ¼" hoặc sleeve anchor ⅜"
+- Thổi sạch bụi trước khi đóng neo (quan trọng cho độ bám)
+
+**Vinyl / Nhôm siding:**
+
+- **Không vít trực tiếp qua siding** — tải gió sẽ xé rách
+- Dùng khối gắn siding (EZ Siding, Ply Gem) bắt vào ván/đinh
+
+**Soffit / Mái hiên:**
+
+- Lag bolt ⅜" × 3" vào **đuôi xà nhà** — không vào tấm soffit
+- Dùng băng butyl dưới chân giá đỡ để chống nước
+
+## Giai Đoạn 4: Chạy & Bấm Cáp PoE
+
+### Bấm Đầu RJ45 (T568B)
+
+| Chân | Màu dây          | Cặp | Chức năng         |
+| ---- | ---------------- | --- | ----------------- |
+| 1    | Trắng/Cam        | 2   | Dữ liệu + PoE (+) |
+| 2    | Cam              | 2   | Dữ liệu + PoE (+) |
+| 3    | Trắng/Xanh       | 3   | Dữ liệu + PoE (-) |
+| 4    | Xanh dương       | 1   | PoE (+) Dự phòng  |
+| 5    | Trắng/Xanh dương | 1   | PoE (+) Dự phòng  |
+| 6    | Xanh lá          | 3   | Dữ liệu + PoE (-) |
+| 7    | Trắng/Nâu        | 4   | PoE (-) Dự phòng  |
+| 8    | Nâu              | 4   | PoE (-) Dự phòng  |
+
+**Quy trình:** Cắt áo 1.5" → Sắp xếp theo T568B → Cắt thẳng đầu → Đẩy hết vào đầu nối pass-through → Kiểm tra thứ tự qua nhựa trong → Bấm chặt (kìm bánh cóc) → Kéo thử 5 lb
+
+**Mẹo chạy cáp:**
+
+- Dán nhãn cả hai đầu mỗi cáp trước khi kéo
+- Vòng dự phòng: 3 ft tại camera, 6 ft tại NVR/switch
+- Ghim cáp bằng ghim cách điện T25 mỗi 4 ft dọc xà nhà
+- Chống nước tại lỗ xuyên: silicone + grommet hoặc cable gland IP68
+- Buộc dây kéo (mason line) cho các lần chạy cáp sau
+
+## Giai Đoạn 5: Kiểm Tra & Cấu Hình
+
+### Kiểm Tra Cáp
+
+- **Kiểm tra liên tục:** Máy kiểm tra cáp — 8 đèn xanh = đạt
+- **Điện áp PoE dưới tải:** Đo tại đầu camera — PoE+ >50V, PoE++ >52V
+- **Sụt áp:** So sánh điện áp ngày và đêm (khi IR bật) — sụt <3V
+
+### Cấu Hình Mạng
+
+| Cài đặt        | Khuyến nghị                                                     |
+| -------------- | --------------------------------------------------------------- |
+| **SSID**       | SSID 2.4 GHz riêng (vd: "CAM-2G") riêng cho camera              |
+| **Băng tần**   | Chỉ 2.4 GHz — tắt band-steering nếu có                          |
+| **IP**         | DHCP reservation hoặc static IP cho mỗi camera                  |
+| **VLAN**       | VLAN riêng cho camera (không truy cập internet)                 |
+| **Kênh Wi-Fi** | 20 MHz, kênh 1/6/11 (kênh ít đông nhất)                         |
+| **NTP**        | Đồng bộ thời gian qua NTP server (quan trọng cho dấu thời gian) |
+
+### Cấu Hình NVR
+
+1. Đặt mật khẩu admin mạnh (không admin/admin)
+2. Cấu hình NTP đồng bộ thời gian
+3. Bật nén H.265 hoặc H.265+
+4. Khởi tạo ổ cứng, bật ghi đè khi đầy
+5. Cài đặt lịch ghi: liên tục cho lối vào, chuyển động cho các khu vực khác
+6. Cấu hình vùng phát hiện chuyển động — loại trừ cây cối, đường phố
+7. Bật phát hiện thông minh (Người/Xe) nếu NVR hỗ trợ
+
+## Giai Đoạn 6: Bảo Mật
+
+### Bảo Mật Mạng
+
+- **VLAN riêng cho camera** — chặn mọi truy cập internet (trừ NTP và firmware)
+- **VPN cho truy cập từ xa** — WireGuard hoặc OpenVPN, không chuyển tiếp cổng
+- **Tắt UPnP** trên NVR và switch
+- **Cập nhật firmware** cho NVR, camera, switch
+- **Mật khẩu mạnh** — không dùng mật khẩu mặc định
+
+### Danh Sách Kiểm Tra Hoàn Thành
+
+- [ ] Mỗi cáp đã kiểm tra liên tục + sơ đồ dây — 8/8 đèn xanh
+- [ ] Cáp đồng nguyên chất (xác nhận không CCA)
+- [ ] Ngân sách PoE: tổng tải camera × 1.3 ≤ ngân sách switch
+- [ ] Mật khẩu admin NVR đã thay đổi từ mặc định
+- [ ] NTP đã cấu hình, múi giờ đúng
+- [ ] H.265 (hoặc H.265+) đã bật
+- [ ] Vùng chuyển động, phát hiện thông minh đã cấu hình
+- [ ] Lịch ghi: liên tục cho lối vào, chuyển động cho còn lại
+- [ ] Ghi đè khi ổ đầy đã bật
+- [ ] VPN cho truy cập từ xa (không chuyển tiếp cổng)
+- [ ] Camera trên VLAN riêng, chặn outbound internet
+- [ ] UPnP đã tắt
+- [ ] UPS cho NVR, router và switch PoE
+- [ ] Tất cả cáp đã dán nhãn hai đầu
+- [ ] Ổ cứng chuyên giám sát đã lắp (WD Purple / Seagate SkyHawk)
+- [ ] Kiểm tra thời gian lưu sau 7 ngày hoạt động
+
+## Hướng Dẫn Liên Quan
+
+- [Cách Chạy Cáp Cho Camera PoE](/blog/poe-camera-cable-running-diy-installation) — Chi tiết về đường dẫn cáp, bấm đầu, kiểm tra
+- [Cách Gắn Camera Ngoài Trời](/blog/how-to-mount-outdoor-cameras-wall-ceiling-eave) — Phần cứng, neo, chống thấm theo bề mặt
+- [Cách Thiết Lập Hệ Thống NVR PoE](/blog/poe-nvr-setup) — Cấu hình NVR, ngân sách PoE, lưu trữ
+- [Thiết Lập Camera Không Dây](/blog/wireless-camera-setup-diy-installation-tips) — Tối ưu Wi-Fi, pin, năng lượng mặt trời
+- [Máy Tính Lưu Trữ Video CCTV](/blog/cctv-video-storage-calculator-hard-drive-space) — Tính toán kích thước ổ cứng cho hệ thống của bạn

@@ -3,19 +3,16 @@ title: "双向音频安防摄像头: 完整指南 (2026)"
 description: "全双工 vs 半双工、降噪、法律同意、智能家居触发、门铃/婴儿监护/商用对讲最佳摄像头推荐。"
 publishedAt: 2026-07-18T00:00:00.000Z
 updatedAt: 2026-07-18T00:00:00.000Z
-slug: "two-way-audio-security-cameras-complete-guide"
+slug: "two-way-audio-security-cameras-guide"
 author: "Your Name"
 tags: ["two-way-audio", "features", "buying-guide", "privacy"]
 postType: "review"
 ---
 
-import { Callout } from "@/components/ui/callout"
-import { Badge } from "@/components/ui/badge"
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
-
 双向音频让摄像头变身对讲机: 跟快递员对话、威慑入侵者、看护孩子/宠物、或与员工沟通。但并非所有"双向音频"都同等 — 半双工 (对讲机) vs 全双工 (电话)、降噪质量、法律同意要求差异巨大。
 
-<Badge variant="outline">关键区别</Badge> **半双工** = 按键说话、一次单向 (多数入门机)。**全双工** = 同时听说如电话 (高端机、专用对讲)。
+<Badge variant="outline">关键区别</Badge> **半双工** = 按键说话、一次单向
+(多数入门机)。**全双工** = 同时听说如电话 (高端机、专用对讲)。
 
 ## 音频架构: 内部有什么
 
@@ -23,82 +20,132 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
   <AccordionItem value="mic">
     <AccordionTrigger>麦克风类型与布局</AccordionTrigger>
     <AccordionContent>
-**MEMS (微机电系统)** — 现代摄像头标配。微小、耐用、频响平坦。  
-- **全向** — 拾取 360°; 适合房间覆盖, 不利于定向拾音  
-- **定向 (波束成形阵列)** — 2–4 MEMS + DSP 导向; 聚焦人声, 抑制背景  
 
-**布局很重要:**
-- 门铃: 底部面朝下 → 捕捉 3–5 英尺访客
-- 炮塔/球机: 镜头下方或侧面 → 覆盖 10–20 英尺半径
-- 子弹机: 后部/侧面通风口 → 常被外壳闷音
-- 室内: 顶部前方 → 最适合房间对话
+**MEMS (微机电系统)** — 现代摄像头标配。微小、耐用、频响平坦。
 
-**风/雨:** 找 **声学网** (Gore-Tex / ePTFE) 覆盖麦克风口 — 挡水透声。廉价机型省这步 → 下雨 = 静电噪音。
-    </AccordionContent>
+<ul>
+  <li>
+    <strong>全向</strong> — 拾取 360°; 适合房间覆盖, 不利于定向拾音{" "}
+  </li>
+  <li>
+    <strong>定向 (波束成形阵列)</strong> — 2–4 MEMS + DSP 导向; 聚焦人声,
+    抑制背景
+  </li>
+</ul>
+
+<p>
+  <strong>布局很重要:</strong>
+</p>
+
+<ul>
+  <li>门铃: 底部面朝下 → 捕捉 3–5 英尺访客</li>
+  <li>炮塔/球机: 镜头下方或侧面 → 覆盖 10–20 英尺半径</li>
+  <li>子弹机: 后部/侧面通风口 → 常被外壳闷音</li>
+  <li>室内: 顶部前方 → 最适合房间对话</li>
+</ul>
+
+<p><strong>风/雨:</strong> 找 <strong>声学网</strong> (Gore-Tex / ePTFE) 覆盖麦克风口 — 挡水透声。廉价机型省这步 → 下雨 = 静电噪音。</p>
+</AccordionContent>
+
   </AccordionItem>
   <AccordionItem value="speaker">
     <AccordionTrigger>扬声器输出与放大</AccordionTrigger>
     <AccordionContent>
-**典型规格:** 0.5–2W D 类功放 + 28–40mm 单元 → 80–100 dB SPL @ 1 英尺  
-**实测:** 85 dB = 6 英尺舒适对话; 95 dB = 30 英尺院子可闻  
 
-**供电影响:**
-- PoE (802.3af 15.4W) → 2W 音频 + 摄像头绰绰有余
-- 12V DC → 没问题
-- 电池机 → **音频耗电** (功放抽 200–500 mA)。Ring/Eufy 电池模式限制通话 30–60 秒
+<p>
+  <strong>典型规格:</strong> 0.5–2W D 类功放 + 28–40mm 单元 → 80–100 dB SPL @ 1
+  英尺
+</p>
 
-**失真:** 廉价 D 类功放满音量削波。找 **THD <1% @ 1W** 或 "HD Audio" 宣传 (通常指更好功放 + DSP)。
-    </AccordionContent>
+<p>
+  <strong>实测:</strong> 85 dB = 6 英尺舒适对话; 95 dB = 30 英尺院子可闻
+</p>
+
+<p>
+  <strong>供电影响:</strong>
+</p>
+
+<ul>
+  <li>PoE (802.3af 15.4W) → 2W 音频 + 摄像头绰绰有余</li>
+  <li>12V DC → 没问题</li>
+  <li>
+    电池机 → <strong>音频耗电</strong> (功放抽 200–500 mA)。Ring/Eufy
+    电池模式限制通话 30–60 秒
+  </li>
+</ul>
+
+<p><strong>失真:</strong> 廉价 D 类功放满音量削波。找 <strong>THD &lt;1% @ 1W</strong> 或 "HD Audio" 宣传 (通常指更好功放 + DSP)。</p>
+</AccordionContent>
+
   </AccordionItem>
   <AccordionItem value="duplex">
     <AccordionTrigger>半双工 vs 全双工: 体验鸿沟</AccordionTrigger>
     <AccordionContent>
-| 模式 | 工作方式 | 延迟 | 最适合 | 摄像头 |
-|------|--------------|---------|----------|---------|
-| **半双工 (PTT)** | 按键说话 → 释放听 | 200–500 ms | 门铃、大门、快速"放包裹" | Ring, Arlo, Blink, Wyze, Reolink (大多数), Eufy (大多数) |
-| **全双工** | 同步收发; 回声消除 | 50–150 ms | 婴儿监护、老人看护、商用对讲 | Nest 门铃 (有线), Google Nest Cam, Arlo Ultra 2, UniFi G4 门铃 Pro, Axis, 2N, Aiphone |
 
-**回声消除 (AEC) 是关键:**  
-- 半双工不需要 AEC (麦克风在扬声器播放时静音)  
-- 全双工 **必须** 自适应 AEC (NLMS/RLS/Kalman) — 无它, 你听到自己延迟的声音 = 不可用
+| 模式             | 工作方式           | 延迟       | 最适合                       | 摄像头                                                                                |
+| ---------------- | ------------------ | ---------- | ---------------------------- | ------------------------------------------------------------------------------------- |
+| **半双工 (PTT)** | 按键说话 → 释放听  | 200–500 ms | 门铃、大门、快速"放包裹"     | Ring, Arlo, Blink, Wyze, Reolink (大多数), Eufy (大多数)                              |
+| **全双工**       | 同步收发; 回声消除 | 50–150 ms  | 婴儿监护、老人看护、商用对讲 | Nest 门铃 (有线), Google Nest Cam, Arlo Ultra 2, UniFi G4 门铃 Pro, Axis, 2N, Aiphone |
 
-**买前测:** 用 App 给摄像头打电话, 边播放边说话。若听到回声/啸叫 → AEC 失败。
-    </AccordionContent>
-  </AccordionItem>
-</Accordion>
+<p>
+  <strong>回声消除 (AEC) 是关键:</strong>
+</p>
+
+<ul>
+  <li>半双工不需要 AEC (麦克风在扬声器播放时静音)</li>
+  <li>
+    全双工 <strong>必须</strong> 自适应 AEC (NLMS/RLS/Kalman) — 无它,
+    你听到自己延迟的声音 = 不可用
+  </li>
+</ul>
+
+<p>
+  <strong>买前测:</strong> 用 App 给摄像头打电话, 边播放边说话。若听到回声/啸叫
+  → AEC 失败。
+</p>
 
 ## 降噪: 什么真正有效
 
 <Callout type="note">
-**好摄像头的 DSP 链:** 波束成形 → 稳态噪声抑制 (Wiener/Kalman) → 非稳态抑制 (DNN) → AEC (全双工) → AGC (自动增益) → 限幅器
+
+<p>
+  <strong>好摄像头的 DSP 链:</strong> 波束成形 → 稳态噪声抑制 (Wiener/Kalman) →
+  非稳态抑制
+</p>
+(DNN) → AEC (全双工) → AGC (自动增益) → 限幅器
+
 </Callout>
 
-| 噪声类型 | 抑制方法 | 典型衰减 |
-|------------|-------------------|-------------------|
-| 风 | 物理网 + 频谱门控 | 15–25 dB |
-| HVAC / 风扇 / 交通 | 频谱减法 / Wiener | 10–20 dB |
-| 狗吠 / 孩尖叫 | DNN 非稳态 (RNNoise, NSNet2) | 15–30 dB |
-| 自己声音 (回声) | 自适应 AEC (NLMS/Kalman) | 25–40 dB |
-| 扬声器啸叫 | 陷波滤波 + 增益裕度 | 预防 |
+| 噪声类型           | 抑制方法                     | 典型衰减 |
+| ------------------ | ---------------------------- | -------- |
+| 风                 | 物理网 + 频谱门控            | 15–25 dB |
+| HVAC / 风扇 / 交通 | 频谱减法 / Wiener            | 10–20 dB |
+| 狗吠 / 孩尖叫      | DNN 非稳态 (RNNoise, NSNet2) | 15–30 dB |
+| 自己声音 (回声)    | 自适应 AEC (NLMS/Kalman)     | 25–40 dB |
+| 扬声器啸叫         | 陷波滤波 + 增益裕度          | 预防     |
 
-**营销 vs 现实:** "AI 降噪" = 通常只是频谱门。**真 DNN 降噪** 需 NPU (Ambarella CV25, Rockchip RV1126, Google TPU, Apple Neural Engine)。查规格: "RNNoise", "NSNet2", "DNN-based", "Deep learning noise reduction."
-    </AccordionContent>
+<p><strong>营销 vs 现实:</strong> "AI 降噪" = 通常只是频谱门。<strong>真 DNN 降噪</strong> 需 NPU (Ambarella CV25, Rockchip RV1126, Google TPU, Apple Neural Engine)。查规格: "RNNoise", "NSNet2", "DNN-based", "Deep learning noise reduction."</p>
+</AccordionContent>
+
   </AccordionItem>
 </Accordion>
 
 ## 法律: 单方 vs 双方同意
 
 <Callout type="warning">
-**音频录制法比视频更严。** 视频 = 合理隐私期望 (因地而异)。音频 = 多州窃听法。**同意要求针对 *录制*, 非实时收听。**
+
+**音频录制法比视频更严。** 视频 = 合理隐私期望 (因地而异)。音频 =
+多州窃听法。**同意要求针对 _录制_, 非实时收听。**
+
 </Callout>
 
 ### 美国州同意法 (2026)
 
-| 同意类型 | 州 | 含义 |
-|--------------|--------|---------------|
-| **单方** (38 州 + DC) | AL, AK, AZ, AR, CO, DE, DC, GA, HI, ID, IN, IA, KS, KY, LA, ME, MN, MS, MO, NE, NV, NJ, NM, NY, NC, ND, OH, OK, RI, SC, SD, TN, TX, UT, VT, VA, WV, WI, WY | 你是对话方即可录。无需通知。 |
-| **双方/全员** (12 州) | CA, CT, FL, IL, MD, MA, MI, MT, NH, OR, PA, WA | **所有方必须同意。** 标识 + 口头通知必需。 |
-| **混合/复杂** | VT (单方但严格), OR (面对面全员) | 查当地律师 |
+| 同意类型              | 州                                                                                                                                                         | 含义                                       |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| **单方** (38 州 + DC) | AL, AK, AZ, AR, CO, DE, DC, GA, HI, ID, IN, IA, KS, KY, LA, ME, MN, MS, MO, NE, NV, NJ, NM, NY, NC, ND, OH, OK, RI, SC, SD, TN, TX, UT, VT, VA, WV, WI, WY | 你是对话方即可录。无需通知。               |
+| **双方/全员** (12 州) | CA, CT, FL, IL, MD, MA, MI, MT, NH, OR, PA, WA                                                                                                             | **所有方必须同意。** 标识 + 口头通知必需。 |
+| **混合/复杂**         | VT (单方但严格), OR (面对面全员)                                                                                                                           | 查当地律师                                 |
 
 **联邦 (窃听法):** 单方同意基线。州法可更严。
 
@@ -108,39 +155,55 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
   <AccordionItem value="residential">
     <AccordionTrigger>住宅 (门铃、院子、室内)</AccordionTrigger>
     <AccordionContent>
-**单方州:** 你是对话方 → 可随意录。仍建议: **贴标识** "正在录音" — 避免纠纷, 助证据采信。
 
-**双方州:** 
-- **门铃访客:** 说话前非对话方。**录制前必须通知**。
-- **方案:** 默认 "音频录制: 关"; 仅录视频。或用 Ring/Arlo "音频隐私区" (部分支持)。
-- **标识:** 大门/门口贴 "进门即同意音视频录制"。
-- **最佳实践:** CA/FL/IL/MA/MD/PA/WA 除非有明确同意流程, 否则完全关闭音频录制。
-    </AccordionContent>
+<p>
+  <strong>单方州:</strong> 你是对话方 → 可随意录。仍建议:{" "}
+  <strong>贴标识</strong> "正在录音" — 避免纠纷, 助证据采信。
+</p>
+
+<p>
+  <strong>双方州:</strong>
+</p>
+
+<ul>
+  <li><strong>门铃访客:</strong> 说话前非对话方。<strong>录制前必须通知</strong>。</li>
+  <li><strong>方案:</strong> 默认 "音频录制: 关"; 仅录视频。或用 Ring/Arlo "音频隐私区" (部分支持)。</li>
+  <li><strong>标识:</strong> 大门/门口贴 "进门即同意音视频录制"。</li>
+  <li><strong>最佳实践:</strong> CA/FL/IL/MA/MD/PA/WA 除非有明确同意流程, 否则完全关闭音频录制。</li>
+</ul>
+</AccordionContent>
   </AccordionItem>
   <AccordionItem value="business">
-    <AccordionTrigger>商业 / 商用</AccordionTrigger>
-    <AccordionContent>
-- **员工:** 手册/入职书面同意 (全州)
-- **顾客:** 入口 + 收银处标识 ("为安全录音")
-- **休息室 / 洗手间:** **绝不录音** (高隐私期望 = 大多州违法)
-- **呼叫中心 / 电话:** 单独联邦/州电话录音法 (常为全员同意)
-- **留存:** 无诉讼保全 30 天内; 自动删除策略文档化
-    </AccordionContent>
+  <AccordionTrigger>商业 / 商用</AccordionTrigger>
+  <AccordionContent>
+
+<ul>
+  <li><strong>员工:</strong> 手册/入职书面同意 (全州)</li>
+  <li><strong>顾客:</strong> 入口 + 收银处标识 ("为安全录音")</li>
+  <li><strong>休息室 / 洗手间:</strong> <strong>绝不录音</strong> (高隐私期望 = 大多州违法)</li>
+  <li><strong>呼叫中心 / 电话:</strong> 单独联邦/州电话录音法 (常为全员同意)</li>
+  <li><strong>留存:</strong> 无诉讼保全 30 天内; 自动删除策略文档化</li>
+</ul>
+</AccordionContent>
   </AccordionItem>
   <AccordionItem value="landlord">
-    <AccordionTrigger>房东 / 多户</AccordionTrigger>
-    <AccordionContent>
-- **公共区域 (大厅、走廊):** 视频可; 音频 = **高风险**。租客非彼此对话方。
-- **单元内部:** **绝不** — 租客有合理隐私期望。
-- **租户门铃摄像头:** 租户拥有摄像头 → 租户同意适用。房东未经租户同意不可取音频。
-- **租约附件:** "租户可装视频门铃; 音频录制受州同意法约束; 房东不承担责任。"
-    </AccordionContent>
+  <AccordionTrigger>房东 / 多户</AccordionTrigger>
+  <AccordionContent>
+
+<ul>
+  <li><strong>公共区域 (大厅、走廊):</strong> 视频可; 音频 = <strong>高风险</strong>。租客非彼此对话方。</li>
+  <li><strong>单元内部:</strong> <strong>绝不</strong> — 租客有合理隐私期望。</li>
+  <li><strong>租户门铃摄像头:</strong> 租户拥有摄像头 → 租户同意适用。房东未经租户同意不可取音频。</li>
+  <li><strong>租约附件:</strong> "租户可装视频门铃; 音频录制受州同意法约束; 房东不承担责任。"</li>
+</ul>
+</AccordionContent>
   </AccordionItem>
 </Accordion>
 
 ## 2026 按用例精选推荐
 
 ### 1. 最佳全双工门铃: Google Nest Doorbell (有线, 第 2 代)
+
 **音频:** 全双工, 优秀 AEC, 2W 扬声器, 3 麦克风阵列波束成形  
 **降噪:** TPU 加速 DNN (Google 硅) — 同级最佳风/交通抑制  
 **同意功能:** "访客播报" (铃声 + "有人在门口" 录制前); Home App 音频录制开关  
@@ -150,6 +213,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 **最适合:** 双方州 (CA/FL/IL), 全双工对话, Google 家庭
 
 ### 2. 最佳半双工门铃: Ring Battery Doorbell Pro (2024) / Ring Stick Up Cam Pro
+
 **音频:** 半双工 PTT, 1.5W 扬声器, 双麦克风波束成形  
 **降噪:** "Audio+" DSP (频谱门 + 基础 DNN) — 不错的风噪抑制  
 **同意功能:** 每摄像头 "音频录制" 开关; "运动验证" 减少误触发  
@@ -159,6 +223,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 **最适合:** 电池灵活性、Alexa 家庭、单方州
 
 ### 3. 最佳本地/无云: Reolink 视频门铃 PoE / Reolink Argus 4 Pro
+
 **音频:** 半双工, 1W 扬声器, 单 MEMS 麦克风 (PoE) / 双麦克风 (Argus 4 Pro)  
 **降噪:** 基础频谱减法 — 安静郊区可接受  
 **同意功能:** **无云** — 音频仅录至 NVR/microSD; 您控制留存  
@@ -168,6 +233,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 **最适合:** 隐私绝对主义者、NVR 用户、免订阅
 
 ### 4. 最佳室内全双工: Google Nest Cam (有线, 第 2 代) / Nest Cam IQ (停产但买得到)
+
 **音频:** 全双工, 3 麦克风阵列, 2W 扬声器, Google TPU DNN 降噪  
 **用例:** 婴儿监护、老人查看、宠物对话 — **电话级质量**  
 **隐私:** 硬件 LED 指示麦克风激活; 音频录制默认关  
@@ -175,6 +241,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 **最适合:** 室内双向对话, Google Home
 
 ### 5. 最佳商用对讲: UniFi G4 门铃 Pro / 2N IP Verso / Aiphone IX
+
 **音频:** 全双工, 3W+ 扬声器, 声学回声消除, SIP/VoIP 集成  
 **功能:** 门禁继电器、键盘/RFID、电梯控制、电梯音频、多租户  
 **合规:** 2N/Aiphone 为商业规范而生 (ADA、消防面板集成)  
@@ -182,6 +249,7 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 **最适合:** 办公室、公寓楼、封闭社区、门禁集成
 
 ### 6. 最佳预算半双工: Wyze Cam v4 / Blink Outdoor 4 / TP-Link Tapo C120
+
 **音频:** PTT, 0.5–1W 扬声器, 单麦克风, 基础噪声门  
 **质量:** "顶多对讲机" — 适合"包裹在门口", 不适合对话  
 **云:** 音频需云端 (Wyze/Blink); Tapo 支持本地 microSD  
@@ -190,17 +258,17 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 
 ## 对比矩阵
 
-| 摄像头 | 双工 | 扬声器 | 麦克风 | 降噪 | 本地音频 | 需云端 | 价格 |
-|--------|--------|---------|------|--------------|-------------|----------------|-------|
-| Nest 门铃有线 | 全 | 2W | 3 阵列 | TPU DNN | ❌ | Nest Aware | $$$ |
-| Nest Cam (有线) | 全 | 2W | 3 阵列 | TPU DNN | ❌ | Nest Aware | $$ |
-| Ring Pro / Stick Up Pro | 半 | 1.5W | 2 波束 | DSP+DNN | ❌ | Ring Protect | $$ |
-| UniFi G4 门铃 Pro | 全 | 3W | 2 波束 | DSP+AEC | ✅ (NVR) | 无 | $$$ |
-| Reolink 门铃 PoE | 半 | 1W | 1 | 基础 | ✅ (NVR/SD) | 无 | $ |
-| Reolink Argus 4 Pro | 半 | 1W | 2 | 基础 | ✅ (Hub/SD) | 无 | $$ |
-| EufyCam 3 / 双摄 | 半 | 1.5W | 2 | DSP | ✅ (HomeBase) | 无 | $$ |
-| Wyze Cam v4 | 半 | 0.5W | 1 | 基础 | ✅ (SD) | Cam Plus | $ |
-| 2N IP Verso / Aiphone | 全 | 5W+ | 阵列 | 专业 DSP | ✅ | 无 | $$$$ |
+| 摄像头                  | 双工 | 扬声器 | 麦克风 | 降噪     | 本地音频      | 需云端       | 价格 |
+| ----------------------- | ---- | ------ | ------ | -------- | ------------- | ------------ | ---- |
+| Nest 门铃有线           | 全   | 2W     | 3 阵列 | TPU DNN  | ❌            | Nest Aware   | $$$  |
+| Nest Cam (有线)         | 全   | 2W     | 3 阵列 | TPU DNN  | ❌            | Nest Aware   | $$   |
+| Ring Pro / Stick Up Pro | 半   | 1.5W   | 2 波束 | DSP+DNN  | ❌            | Ring Protect | $$   |
+| UniFi G4 门铃 Pro       | 全   | 3W     | 2 波束 | DSP+AEC  | ✅ (NVR)      | 无           | $$$  |
+| Reolink 门铃 PoE        | 半   | 1W     | 1      | 基础     | ✅ (NVR/SD)   | 无           | $    |
+| Reolink Argus 4 Pro     | 半   | 1W     | 2      | 基础     | ✅ (Hub/SD)   | 无           | $$   |
+| EufyCam 3 / 双摄        | 半   | 1.5W   | 2      | DSP      | ✅ (HomeBase) | 无           | $$   |
+| Wyze Cam v4             | 半   | 0.5W   | 1      | 基础     | ✅ (SD)       | Cam Plus     | $    |
+| 2N IP Verso / Aiphone   | 全   | 5W+    | 阵列   | 专业 DSP | ✅            | 无           | $$$$ |
 
 ## 智能家居触发器: 音频作为自动化输入
 
@@ -208,37 +276,49 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
   <AccordionItem value="alexa">
     <AccordionTrigger>Alexa 常规</AccordionTrigger>
     <AccordionContent>
-- **触发:** "Ring 检测到运动" → "在 Echo 宣播: 前门有动静"
-- **触发:** "检测到人" → "开门廊灯 + 解锁智能锁 (需 PIN 确认)"
-- **动作:** "Alexa, 跟 [摄像头] 说话" → 免提发起双向音频
-- **限制:** Drop-in 要求同一 Amazon 账户/家庭
-    </AccordionContent>
+
+<ul>
+  <li><strong>触发:</strong> "Ring 检测到运动" → "在 Echo 宣播: 前门有动静"</li>
+  <li><strong>触发:</strong> "检测到人" → "开门廊灯 + 解锁智能锁 (需 PIN 确认)"</li>
+  <li><strong>动作:</strong> "Alexa, 跟 [摄像头] 说话" → 免提发起双向音频</li>
+  <li><strong>限制:</strong> Drop-in 要求同一 Amazon 账户/家庭</li>
+</ul>
+</AccordionContent>
   </AccordionItem>
   <AccordionItem value="google">
     <AccordionTrigger>Google Home 自动化</AccordionTrigger>
     <AccordionContent>
-- **启动器:** "Nest 门铃检测到人" → "向所有音箱播报: '前门有人'"
-- **动作:** "Hey Google, 跟前门说话" → 手机/Nest Hub 开启全双工音频
-- **脚本 (YAML):** 可串联: 人检测 → 30 秒延迟 → 无响应 → "摄像头扬声器播放威慑音"
-    </AccordionContent>
+
+<ul>
+  <li><strong>启动器:</strong> "Nest 门铃检测到人" → "向所有音箱播报: '前门有人'"</li>
+  <li><strong>动作:</strong> "Hey Google, 跟前门说话" → 手机/Nest Hub 开启全双工音频</li>
+  <li><strong>脚本 (YAML):</strong> 可串联: 人检测 → 30 秒延迟 → 无响应 → "摄像头扬声器播放威慑音"</li>
+</ul>
+</AccordionContent>
   </AccordionItem>
   <AccordionItem value="homekit">
     <AccordionTrigger>Apple HomeKit (Secure Video)</AccordionTrigger>
     <AccordionContent>
-- **支持机型:** Logitech Circle View, EufyCam 3 (HSV), Netatmo, Eve
-- **音频:** Home App 实时双向; **录制:** 加密存 iCloud (200GB+ 套餐)
-- **自动化:** "当 [摄像头] 检测到人" → "设置场景: 门廊灯开 + HomePod 播报"
-- **隐私:** **同级最佳** — Apple 无密钥; 音频从未离开加密流
-    </AccordionContent>
+
+<ul>
+  <li><strong>支持机型:</strong> Logitech Circle View, EufyCam 3 (HSV), Netatmo, Eve</li>
+  <li><strong>音频:</strong> Home App 实时双向; <strong>录制:</strong> 加密存 iCloud (200GB+ 套餐)</li>
+  <li><strong>自动化:</strong> "当 [摄像头] 检测到人" → "设置场景: 门廊灯开 + HomePod 播报"</li>
+  <li><strong>隐私:</strong> <strong>同级最佳</strong> — Apple 无密钥; 音频从未离开加密流</li>
+</ul>
+</AccordionContent>
   </AccordionItem>
   <AccordionItem value="ha">
     <AccordionTrigger>Home Assistant (进阶)</AccordionTrigger>
     <AccordionContent>
-- **Reolink/ONVIF/RTSP:** `media_player` 实体 → `play_media` (TTS 播报) + `call_service: camera.record`
-- **MQTT:** 摄像头发布 `audio_level` → 自动化: "音频 > 70 dB 持续 5 秒 → 通知 + 快照"
-- **SIP 集成:** 2N/Aiphone/Grandstream → 注册为 SIP 分机 → 从 HA 面板/电话拨打
-- **TTS 威慑:** `tts.cloud_say` → "你正在被录制. 警察已出动." 经摄像头扬声器
-    </AccordionContent>
+
+<ul>
+  <li><strong>Reolink/ONVIF/RTSP:</strong> `media_player` 实体 → `play_media` (TTS 播报) + `call_service: camera.record`</li>
+  <li><strong>MQTT:</strong> 摄像头发布 `audio_level` → 自动化: "音频 > 70 dB 持续 5 秒 → 通知 + 快照"</li>
+  <li><strong>SIP 集成:</strong> 2N/Aiphone/Grandstream → 注册为 SIP 分机 → 从 HA 面板/电话拨打</li>
+  <li><strong>TTS 威慑:</strong> `tts.cloud_say` → "你正在被录制. 警察已出动." 经摄像头扬声器</li>
+</ul>
+</AccordionContent>
   </AccordionItem>
 </Accordion>
 
@@ -250,20 +330,20 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/
 4. **摄像头旁放音乐** (60 dB) → 说话 → 检查降噪
 5. **模拟风** (风扇低档对准麦克风) → 说话 → 检查抗风
 6. **全双工测试:** 双方同时说话 → 检查回声/啸叫
-7. **延迟测:** 数 "1-2-3" → 测量到手机延迟 (目标 <200 ms 半双工, <100 ms 全双工)
-8. **电池机:** 连续说话 60 秒 → 看电量跌幅 (半双工应 <2%)
+7. **延迟测:** 数 "1-2-3" → 测量到手机延迟 (目标 &lt;200 ms 半双工, &lt;100 ms 全双工)
+8. **电池机:** 连续说话 60 秒 → 看电量跌幅 (半双工应 &lt;2%)
 
 ## 按场景推荐
 
-| 场景 | 摄像头 | 理由 |
-|----------|--------|-----|
-| **CA/FL/IL 居民, 门铃** | Nest 门铃有线 | 全双工, 最佳降噪, 音频开关 |
-| **租房者, 电池, 无订阅** | Reolink Argus 4 Pro + 太阳能 | 本地存储, 无云, 半双工可接受 |
-| **Google 家庭, 婴儿监护** | Nest Cam (有线) | 全双工室内, 硬件隐私 LED |
-| **Alexa 家庭, 包裹提醒** | Ring Stick Up Cam Pro | Alexa Drop-In, 半双工, 太阳能选项 |
-| **商业大堂 / 大门** | UniFi G4 门铃 Pro / 2N IP Verso | 全双工, SIP, 继电器, 门禁 |
-| **隐私极致, NVR 主** | Reolink 门铃 PoE + NVR | 零云, 本地音频, PoE 可靠 |
-| **预算辅助摄像头** | Wyze Cam v4 / Tapo C120 | 便宜, 半双工, 本地 SD 选项 |
+| 场景                      | 摄像头                          | 理由                              |
+| ------------------------- | ------------------------------- | --------------------------------- |
+| **CA/FL/IL 居民, 门铃**   | Nest 门铃有线                   | 全双工, 最佳降噪, 音频开关        |
+| **租房者, 电池, 无订阅**  | Reolink Argus 4 Pro + 太阳能    | 本地存储, 无云, 半双工可接受      |
+| **Google 家庭, 婴儿监护** | Nest Cam (有线)                 | 全双工室内, 硬件隐私 LED          |
+| **Alexa 家庭, 包裹提醒**  | Ring Stick Up Cam Pro           | Alexa Drop-In, 半双工, 太阳能选项 |
+| **商业大堂 / 大门**       | UniFi G4 门铃 Pro / 2N IP Verso | 全双工, SIP, 继电器, 门禁         |
+| **隐私极致, NVR 主**      | Reolink 门铃 PoE + NVR          | 零云, 本地音频, PoE 可靠          |
+| **预算辅助摄像头**        | Wyze Cam v4 / Tapo C120         | 便宜, 半双工, 本地 SD 选项        |
 
 ---
 

@@ -1,0 +1,266 @@
+---
+title: "Configuration Caméra Sans Fil : Conseils d'Installation DIY (2026)"
+description: "Optimisez le Wi-Fi pour les caméras à batterie et filaires. Mesh, extensions, planification des canaux, positionnement solaire, gestion de la batterie et configuration d'application pour une sécurité sans fil fiable."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "wireless-camera-setup-diy-installation-tips"
+author: "Your Name"
+tags: ["diy", "wireless", "wifi", "battery", "solar", "installation"]
+postType: "howto"
+---
+
+Les caméras sans fil promettent "pas de fils, installation facile." La réalité : zones mortes, anxiété de la batterie, congestion 2.4 GHz et panneaux solaires qui ne chargent pas en hiver. Ce guide rend le sans fil fiable au lieu de frustrant.
+
+<Badge variant="outline">Sans Fil ≠ Sans Fils</Badge> **Le sans fil filaire**
+(Reolink E1, Wyze v4, TP-Link Tapo) nécessite une prise 120V. **Le
+batterie/solaire** (EufyCam 3, Reolink Argus 4 Pro, Ring Stick Up) est vraiment
+sans fil. Les deux utilisent le Wi-Fi. Les deux ont besoin d'une bonne
+planification RF.
+
+---
+
+## Physique du Wi-Fi : Pourquoi Votre Caméra se Déconnecte
+
+### Bandes de Fréquence
+
+| Bande                  | Canaux                      | Vitesse Max   | Pénétration | Portée  | Idéal pour                               |
+| ---------------------- | --------------------------- | ------------- | ----------- | ------- | ---------------------------------------- |
+| **2.4 GHz**            | 1, 6, 11 (non-chevauchants) | 600 Mbps (ax) | ★★★★★       | 150+ pi | **Toutes les caméras extérieures**       |
+| **5 GHz**              | 36–165                      | 2.4 Gbps (ax) | ★★☆☆☆       | 50 pi   | Intérieur, courte portée                 |
+| **6 GHz (Wi-Fi 6E/7)** | 1–233                       | 5+ Gbps       | ★☆☆☆☆       | 30 pi   | Prêt pour le futur, intérieur uniquement |
+
+**Règle :** Forcez les caméras en **2.4 GHz uniquement**. Les 5/6 GHz ne traversent pas bien les murs/bardages. La plupart des caméras ne supportent pas le 6 GHz de toute façon.
+
+### Planification des Canaux (2.4 GHz)
+
+```
+Canaux :  1       6       11
+Fréq :  2412    2437    2462  MHz
+Largeur : 20 MHz chacun (non-chevauchants)
+```
+
+**Scannez d'abord :** Utilisez **WiFi Analyzer (Android)** ou **AirPort Utility (iOS)** → Scannez → Notez les canaux des voisins.
+
+**Attribuez :**
+
+- Votre routeur/PA : Canal 1, 6 ou 11 (le moins encombré)
+- PA des caméras (si séparé) : Canal non-chevauchant différent
+- **Largeur : 20 MHz uniquement** (40 MHz chevauche les voisins, provoque des retransmissions)
+
+---
+
+## Architecture Réseau : Mesh vs Extenseur vs PA Dédié
+
+| Architecture                                             | Avantages                                             | Inconvénients                                                        | Idéal pour                                      |
+| -------------------------------------------------------- | ----------------------------------------------------- | -------------------------------------------------------------------- | ----------------------------------------------- |
+| **Mesh (Eero Pro 6E, UniFi Dream Router, Asus ZenWiFi)** | Itinérance transparente, SSID unique, gestion par app | Coût (300$–600$), tout le trafic passe par le mesh                   | Toute la maison, 5+ caméras                     |
+| **PA Filaire (UniFi U6 Lite, U6+, U7 Pro)**              | Meilleure performance, PoE, support VLAN              | Nécessite un câble Ethernet                                          | **Meilleur pour les caméras** — liaison filaire |
+| **Powerline + Wi-Fi (TP-Link TL-WPA8630)**               | Pas de nouveaux fils, utilise le câblage électrique   | 50–200 Mbps réel, bruyant sur AFCI                                   | Rénovation où le câble est impossible           |
+| **Extension de Portée (TP-Link RE605X)**                 | Bon marché (50$)                                      | Divise la bande passante par deux, ajoute de la latence, SSID séparé | **À éviter pour les caméras**                   |
+| **PA Extérieur (UniFi U6 Mesh, UAP-AC-M)**               | Étanche, PoE, liaison mesh                            | Coût (180$–300$)                                                     | Garage détaché, portail, grange                 |
+
+<Callout type="tip">
+
+**Architecture Pro :** Switch PoE → UniFi U6+ PA (plafond, central) → SSID 2.4
+GHz dédié "CAM-2G" (VLAN 20) → Toutes les caméras. Isole l'IoT, pas de
+problèmes d'itinérance, liaison filaire.
+
+</Callout>
+
+---
+
+## Exigences Wi-Fi des Caméras
+
+| Spécification               | Minimum            | Recommandé           | Pourquoi                                                  |
+| --------------------------- | ------------------ | -------------------- | --------------------------------------------------------- |
+| **Signal (RSSI)**           | -70 dBm            | **-55 dBm ou mieux** | -70 = déconnexions fréquentes ; -55 = solide comme un roc |
+| **SNR**                     | 15 dB              | **25+ dB**           | Marge signal/bruit                                        |
+| **Bande Passante Montante** | 1 Mbps/cam (1080p) | 5 Mbps/cam (4K)      | Soutenue, pas en rafale                                   |
+| **Latence**                 | &lt;100 ms         | &lt;30 ms            | Réactivité de la vue en direct                            |
+| **Perte de Paquets**        | &lt;2%             | &lt;0.5%             | Trous d'enregistrement, images figées                     |
+
+**Testez à l'emplacement de la caméra :** Téléphone sur le même SSID → Test de débit → Notez le débit montant. Marchez jusqu'à l'emplacement de la caméra → retestez. Si le débit montant &lt;5 Mbps, réparez d'abord le Wi-Fi.
+
+---
+
+## Placement Mesh / PA pour les Caméras
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="placement">
+    <AccordionTrigger>Règles de Placement des PA</AccordionTrigger>
+    <AccordionContent>
+
+- **Central, surélevé** — Montage au plafond dans le couloir > étagère d'angle
+- **Ligne de vue** — Évitez : cheminée, mur de brique, bardage métallique, HVAC, miroir, aquarium
+- **Un mur maximum** — Caméra ↔ PA à travers ≤1 mur intérieur
+- **Évitez les coins** — La RF se réfléchit, crée des trajets multiples
+- **Hauteur** — 7–9 pi AGL (au-dessus du niveau du sol) pour le meilleur motif
+- **Orientation de l'antenne** — Vertical pour une couverture horizontale ; inclinez à 45° pour plusieurs étages
+
+**Exemple UniFi U6+ :** Montage au plafond au centre du couloir → 2.4 GHz couvre une maison de 3000 pi² + 50 pi de jardin. Caméras à -50 à -60 dBm.
+
+</AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+---
+
+## Optimisation des Caméras à Batterie
+
+### Placement pour le Solaire + Wi-Fi
+
+| Facteur             | Idéal                                                                    | À éviter                                              |
+| ------------------- | ------------------------------------------------------------------------ | ----------------------------------------------------- |
+| **Panneau Solaire** | Vrai sud (HN), inclinaison 30–45°, **pas d'ombre 9h–15h le 21 décembre** | Face nord, sous l'avant-toit, ombre d'arbre           |
+| **Caméra**          | 10–15 pi du panneau (portée du câble), sous l'avant-toit pour la pluie   | Soleil direct sur la lentille (surchauffe), arroseur  |
+| **Wi-Fi**           | ≤50 pi du PA, 1 mur maximum                                              | Bardage métallique, cheminée en brique entre les deux |
+
+### Prolongation de la Durée de Vie de la Batterie
+
+| Réglage                           | Défaut       | Optimisé                                   | Économies        |
+| --------------------------------- | ------------ | ------------------------------------------ | ---------------- |
+| **Sensibilité Mouvement**         | Élevée       | Moyenne / Zone personnalisée               | 30–50%           |
+| **Durée du Clip**                 | 30s          | 10–15s                                     | 40–60%           |
+| **Intervalle de Redéclenchement** | 10s          | 30–60s                                     | 20–30%           |
+| **Vision Nocturne**               | IR Auto      | Planification : IR désactivé si lampadaire | 15–25%           |
+| **Vue en Direct**                 | À la demande | Désactiver l'aperçu automatique            | 10–20%           |
+| **Firmware**                      | Auto         | Manuel (vérification mensuelle)            | Empêche les bugs |
+
+**Réel :** EufyCam 3 (13 000 mAh) @ Sensibilité moyenne, clips 15s, redéclenchement 30s, 2.4 GHz -55 dBm → **4–6 mois** (vs 1 an annoncé).
+
+### Soin de la Batterie en Hiver (Zone 5 et plus froid)
+
+- **Le Li-ion arrête la charge &lt;32°F (0°C).** La caméra fonctionne sur batterie jusqu'à épuisement.
+- **Solutions :**
+  - Apportez-la à l'intérieur mensuellement pour une charge chaude (pénible mais efficace)
+  - **Mise à niveau LiFePO₄** (Reolink Go PT Plus, personnalisé) — charge jusqu'à -4°F
+  - **Boîtier de batterie isolé** + coussin chauffant 5W (thermostat 40°F) — DIY
+  - **Panneau plus grand** (20W vs 6W) — plus de récolte hivernale
+
+---
+
+## Configuration des Caméras Sans Fil Filaires
+
+### Considérations sur l'Alimentation
+
+| Caméra                    | Consommation  | Type de Prise          | Gestion des Câbles              |
+| ------------------------- | ------------- | ---------------------- | ------------------------------- |
+| Reolink E1 Outdoor        | 5W (12V/0.5A) | 120V → adaptateur 12V  | Boîtier étanche + passe-fil     |
+| Wyze Cam v4               | 3W (5V/0.6A)  | 120V → USB 5V          | Extension USB + joint silicone  |
+| TP-Link Tapo C120         | 4W (5V/0.8A)  | 120V → USB 5V          | USB court, boucle d'égouttement |
+| Google Nest Cam (filaire) | 7W (5V/1.4A)  | 120V → 5V propriétaire | Câble propriétaire uniquement   |
+
+**Boucle d'Égouttement :** Le câble forme une **forme de U sous la prise** → l'eau s'égoutte sur la boucle, pas dans la prise.
+
+### GFCI et Code
+
+- **La prise extérieure doit être GFCI** (NEC 210.8(A)(3))
+- **Couvercle étanche** (couvercle d'utilisation / à bulle) — requis pour les emplacements humides
+- **Rallonge** — **Jamais** en permanence. Utilisez un câble extérieur homologué + boîtier.
+
+---
+
+## Liste de Vérification de Configuration de l'App (Par Caméra)
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="app-config">
+    <AccordionTrigger>Paramètres Essentiels de l'App</AccordionTrigger>
+    <AccordionContent>
+
+      **Nommage :** `CAM-PORTE-ENTREE`, `CAM-ALLEE`, `CAM-ARRIERE-COUR`
+      (triable, identifiable) **Fuseau Horaire / NTP :** Auto (téléphone) ou
+      manuel — critique pour les horodatages **Vidéo :** - Flux Principal :
+        2K/4K @ 15 fps, H.265, VBR 4–6 Mbps - Sous-flux : 720p @ 15 fps, H.265,
+        0.5–1 Mbps (vue en direct mobile) **Mouvement :** - Type de Détection :
+      Personne + Véhicule (désactiver "Tout Mouvement") - Zones : **Dessinez
+      UNIQUEMENT les zones cibles** (exclure arbres, rue, voisin) - Sensibilité
+      : Commencez par Moyen → ajustez après 48h de revue - Redéclenchement : 30s
+      minimum **Enregistrement :** - Planification : 24/7 si alimenté + microSD
+      ; Mouvement uniquement si batterie - Pré-enregistrement : 5–10s (capture
+      l'approche) - Post-enregistrement : 10–15s **Notifications :** - Push :
+      Personne + Véhicule uniquement - Email : Désactivé (encombre la boîte de
+      réception) - Aperçu Riches : Activé (voir la miniature sur l'écran de
+      verrouillage) **Confidentialité :** - Masque : Dessinez sur les fenêtres
+      des voisins, les fenêtres des chambres - Audio : Désactivé sauf si le
+      bidirectionnel est nécessaire (légal) **Réseau :** - 2.4 GHz uniquement
+      (forcez si bi-bande) - IP statique / Réservation DHCP (côté routeur) -
+      RTSP / ONVIF : Activez si vous utilisez NVR/Frigate
+
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+---
+
+## Dépannage des Problèmes de Caméra Sans Fil
+
+| Symptôme                                  | Diagnostic                         | Solution                                                                                |
+| ----------------------------------------- | ---------------------------------- | --------------------------------------------------------------------------------------- |
+| **"Caméra Hors Ligne" tous les jours**    | RSSI < -75 dBm                     | Rapprochez le PA ; ajoutez un PA filaire ; vérifiez le canal                            |
+| **La vue en direct tourne/échoue**        | Débit montant < 1 Mbps             | Testez le débit à la caméra ; mettez à niveau le PA                                     |
+| **Clips manquants la nuit**               | Réflexion IR / voile blanc         | Inclinez vers le bas 15° ; éloignez du mur ; désactivez IR + illuminateur externe       |
+| **Batterie morte en 2 semaines**          | Zone à fort trafic / mauvais RSSI  | Réduisez la sensibilité ; rétrécissez les zones ; ajoutez du solaire ; vérifiez -60 dBm |
+| **Latence vue en direct >5 s**            | Latence élevée / bufferbloat       | QoS sur le routeur (priorisez le VLAN des caméras) ; liaison filaire PA                 |
+| **"Pas de Wi-Fi" après une panne**        | La caméra démarre avant le routeur | UPS sur le routeur + PA ; reconnexion automatique de la caméra (vérifiez le firmware)   |
+| **Impossible de se connecter au 2.4 GHz** | Band-steering du routeur           | Désactivez le band-steering ; Ssid séparés ("MAISON-2G", "MAISON-5G")                   |
+
+---
+
+## Sécurité : Isolez Vos Caméras
+
+<Callout type="danger">
+
+**Les caméras sont de l'IoT — le risque de brèche le plus élevé.** Isolez sur
+un VLAN **sans accès internet** (sauf NTP/firmware). Bloquez caméra → LAN.
+Autorisez LAN → caméra (visualisation uniquement).
+
+</Callout>
+
+**Exemple UniFi / VLAN :**
+
+```
+VLAN 10 (LAN)     192.168.10.x  → Accès complet
+VLAN 20 (CAMÉRAS) 192.168.20.x  → Bloquer internet, Bloquer accès LAN
+                    Autoriser : NTP (udp/123), DNS (udp/53) vers routeur
+                    Autoriser : NVR (192.168.10.50) → Caméras (tcp/554, 8000)
+```
+
+**Règles de Pare-feu du Routeur (Ubiquiti / OPNsense / pfSense) :**
+
+- **Autoriser** CAMÉRAS → Routeur (NTP, DNS)
+- **Autoriser** NVR → CAMÉRAS (RTSP, HTTP, ONVIF)
+- **Bloquer** CAMÉRAS → LAN
+- **Bloquer** CAMÉRAS → WAN (internet)
+- **Autoriser** LAN → CAMÉRAS (gestion uniquement, IP restreintes)
+
+---
+
+## Référence Rapide : Spécifications des Caméras Sans Fil (2026)
+
+| Caméra                        | Wi-Fi               | Batterie     | Solaire            | RSSI Max | Idéal pour                           |
+| ----------------------------- | ------------------- | ------------ | ------------------ | -------- | ------------------------------------ |
+| **EufyCam 3 S330**            | 2.4/5 GHz (Wi-Fi 6) | 13 000 mAh   | Intégré 2.4W       | -55 dBm  | HomeKit, IA locale, pas d'abonnement |
+| **Reolink Argus 4 Pro**       | 2.4/5 GHz           | 9 600 mAh    | Panneau 6W (incl.) | -60 dBm  | 4K batterie, stockage local hub      |
+| **Ring Stick Up Cam Pro**     | 2.4/5 GHz           | 6 000 mAh    | Panneau 4W (opt.)  | -65 dBm  | Alexa, écosystème Ring, mouvement 3D |
+| **Arlo Pro 5S 2K**            | 2.4/5 GHz           | 5 200 mAh    | Panneau 4W (opt.)  | -65 dBm  | Arlo Secure, 2K HDR                  |
+| **Wyze Cam v4**               | 2.4 GHz             | Filaire (5V) | —                  | -55 dBm  | Budget intérieur/extérieur couvert   |
+| **TP-Link Tapo C120**         | 2.4 GHz             | Filaire (5V) | —                  | -55 dBm  | Budget, Matter, microSD local        |
+| **Google Nest Cam (filaire)** | 2.4/5 GHz           | Filaire (5V) | —                  | -55 dBm  | Nest Aware, HomeKit (via Matter)     |
+| **Reolink E1 Outdoor**        | 2.4/5 GHz           | PoE / 12V DC | —                  | -55 dBm  | Pan/Inclinaison, option PoE          |
+
+---
+
+## Guides Connexes
+
+- [Durée de Vie de la Batterie et Options d'Alimentation : Filaire vs Batterie vs Solaire](/blog/battery-life-power-options-corded-battery-solar) — Mathématiques approfondies de l'alimentation
+- [Meilleures Caméras de Sécurité Solaires (Hors-Réseau)](/blog/best-solar-powered-security-cameras-offgrid) — Dimensionnement des panneaux, LiFePO₄
+- [Comment Monter des Caméras Extérieures (Mur, Plafond, Avant-toit)](/blog/how-to-mount-outdoor-cameras-wall-ceiling-eave) — Quincaillerie pour caméras sans fil
+- [Installation DIY de Caméras de Sécurité : Guide Complet](/blog/diy-security-camera-installation-complete-guide) — Workflow complet
+- [Passage de Câbles Caméra PoE : Installation DIY](/blog/poe-camera-cable-running-diy-installation) — Quand le sans fil ne suffit pas
+
+---
+
+_Dernière mise à jour : juillet 2026. Wi-Fi 7 (802.11be) se déploie — canaux 320 MHz, MLO. Les caméras restent en 2.4 GHz pour la portée. Planifiez les mises à niveau des PA en conséquence._

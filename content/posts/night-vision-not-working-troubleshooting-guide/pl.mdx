@@ -1,0 +1,303 @@
+---
+title: "Nocne Widzenie Nie Działa? Kompletny Poradnik Rozwiązywania Problemów (2026)"
+description: "Napraw białe widzenie w nocy, brak trybu nocnego, rozmazane obrazy, nieczytelne tablice rejestracyjne, awarie kolorowego widzenia nocnego. Diagnostyka krok po kroku dla każdego typu kamery: PoE, Wi-Fi, bateria, domofon."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "night-vision-not-working-troubleshooting-guide"
+author: "Your Name"
+tags: ["troubleshooting", "night-vision", "ir", "installation", "diy"]
+postType: "howto"
+---
+
+Awarie widzenia nocnego to skarga #1: "kamera działa w dzień, bezużyteczna w nocy". Ten poradnik omawia każdy tryb awarii z diagnostyką, naprawami i kiedy wymienić.
+
+<Badge variant="outline">Szybka Triaż</Badge>
+1. **Diody IR włączone?** (czerwona poświata w nocy) → Nie = Zasilanie/płyta IR
+/ Tak = Optyka/Konfiguracja 2. **Obraz biały/szary?** → Odbicie IR
+(kąt/odległość) 3. **Obraz czarny/zaszumiony?** → IR za słabe / migawka za wolna
+/ uszkodzony sensor 4. **Kolorowe widzenie nocne wyłączone?** → Za mało światła
+otoczenia / wyłączone ustawienie
+
+---
+
+## 1. Diody IR Nie Świecą (Brak Czerwonej Poświaty)
+
+### 1.1 Sprawdź Status IR
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="check-ir">
+    <AccordionTrigger>Jak Sprawdzić Diody IR</AccordionTrigger>
+    <AccordionContent>
+
+      **Wizualnie:** Stań przed kamerą w nocy → szukaj **słabej czerwonej
+      poświaty** (850 nm) lub **braku widocznej poświaty** (940 nm "ukryte").
+      **Test Aparatu Telefonu:** Skieruj aparat telefonu na kamerę → IR pojawi
+      się jako **jasny fiolet/biały** na ekranie (sensory telefonu widzą bliską
+      podczerwień). **Status w Aplikacji:** Web UI kamery / NVR → "Status IR" /
+      "Tryb Nocny" → powinien pokazywać "Wł." lub "Auto".
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### 1.2 Przyczyny i Naprawy
+
+| Przyczyna                                   | Diagnoza                                               | Naprawa                                                                                |
+| ------------------------------------------- | ------------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| **Filtr IR Cut Zablokowany (Tryb Dzienny)** | Obraz kolorowy w nocy, brak poświaty IR                | Wyłącz zasilanie (12V/PoE na 30s). Zapukaj delikatnie w kamerę. Aktualizacja firmware. |
+| **Fotorezystor/LDR Uszkodzony**             | IR nigdy nie włącza się auto; ręczne "Wł." działa      | Zakryj LDR (małe okienko) → jeśli IR się włączy, wymień LDR ($2) lub kamerę            |
+| **Płyta Sterownika IR Martwa**              | 12V/PoE obecne, diody zimne, ręczne "Wł." nie działa   | Wymień kamerę (płyta nie podlega serwisowi)                                            |
+| **Niewystarczające Zasilanie dla IR**       | Dzień OK, noc restarty / migotanie IR                  | Sprawdź napięcie przy kamerze pod obciążeniem IR (patrz §1.3)                          |
+| **Błąd Firmware**                           | Ostatnia aktualizacja zepsuła auto-IR                  | Przywróć poprzednią wersję firmware; zgłoś do producenta                               |
+| **Ukryte IR (940 nm)**                      | Brak czerwonej poświaty, test telefonu pokazuje fiolet | Normalne — 940 nm jest niewidoczne dla oka                                             |
+
+### 1.3 Spadek Napięcia pod Obciążeniem IR (Krytyczne)
+
+**Diody IR pobierają dodatkowe 2–5W.** Kamera działa w dzień, wyłącza się w nocy.
+
+<Callout type="warning">
+
+**Test:** Multimetr przy wejściu zasilania kamery (PoE: użyj testera PoE). Napięcie w dzień vs Napięcie w nocy (IR włączone). **Spadek >0,5V (12V) lub >2V (PoE 48V) = kabel za długi / przekrój za mały / budżet switcha przekroczony.**
+
+</Callout>
+
+| Architektura              | Max Obciążenie IR               | Naprawa                                                           |
+| ------------------------- | ------------------------------- | ----------------------------------------------------------------- |
+| **PoE (802.3af 15,4W)**   | ~4W IR                          | Upgrade do PoE+ (30W) zasilacza/switcha                           |
+| **12V DC (18 AWG, 15 m)** | 2A IR                           | Skróć odcinek / 14 AWG / lokalne zasilanie 12V                    |
+| **Kamera Bateryjna**      | IR wykańcza baterię w godzinach | Wyłącz IR; używaj światła otoczenia / zewnętrznego oświetlacza IR |
+
+---
+
+## 2. Białe / Prześwietlone / Szare Obrazy IR
+
+**Objaw:** Obraz nocny = jasna biała/szara plama, bez szczegółów. IR odbija się od pobliskiej powierzchni.
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="whiteout-causes">
+    <AccordionTrigger>Najczęstsze Źródła Odbicia</AccordionTrigger>
+    <AccordionContent>
+
+      | Powierzchnia | Odległość | Naprawa |
+      |-------------|-----------|--------| | **Ściana / Elewacja / Podbitka** |
+        15–60 cm | Skieruj kamerę **15–30° w dół**; odsuń 30–45 cm (ramię
+      przedłużające) | | **Okap / Soffit** | 0–30 cm | Zamontuj **pod**
+      soffitem, nie przy nim | | **Okno / Szkło** | Dowolna | **Nigdy** nie
+      kieruj przez szkło (IR odbija 100%) | | **Pajęczyna / Kurz na Kopule** |
+      Na soczewce | Czyść miesięcznie; nakładka z polaru na pierścień IR | |
+      **Deszcz / Śnieg / Mgła** | W powietrzu | Zewnętrzny oświetlacz IR
+      (zamontowany z dala od soczewki) | | **Biała Listwa / Rynna** | 30–90 cm |
+      Pomaluj na płaski czarny (farba do grilla) lub zamaskuj taśmą | |
+      **Tablica Rejestracyjna (Retrorefleksyjna)** | 6–15 m | Skieruj w dół;
+      zewnętrzne IR; kamera LPR z polaryzatorem |
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### 2.1 Krok po Kroku Naprawa Białego Obrazu
+
+1. **Zidentyfikuj reflektor:** Wyjdź w nocy, obserwuj poświatę IR na powierzchniach. Użyj aparatu telefonu, aby zobaczyć rozproszenie IR.
+2. **Zmiana kąta:** Pochyl **15–30° w dół** od poziomu. Użyj poziomicy + kątomierza.
+3. **Zwiększ odległość:** Uchwyt przedłużający (30–60 cm) przesuwa stożek IR poza pobliskie obiekty.
+4. **Zewnętrzny oświetlacz IR:** Zamontuj 3–6 m dalej, wycelowany w strefę docelową. Kamera IR **WYŁ.** Najlepsze do tablic rejestracyjnych, bram.
+5. **Smart IR (jeśli obsługiwane):** Kamera automatycznie redukuje intensywność IR dla bliskich obiektów. Włącz w ustawieniach.
+6. **Sprawdź Filtr IR Cut:** Zablokowany "na zewnątrz" (tryb nocny) = kolorowy obraz dzienny. Zablokowany "wewnątrz" (tryb dzienny) = brak IR. Wyłącz zasilanie.
+
+---
+
+## 3. Czarny / Zaszumiony / Ziarnisty Obraz Nocny
+
+**Objaw:** Ciemne, nakrapiane, "zaśnieżone" wideo. Brak szczegółów.
+
+| Przyczyna                              | Diagnoza                         | Naprawa                                                         |
+| -------------------------------------- | -------------------------------- | --------------------------------------------------------------- |
+| **IR Za Słabe na Odległość**           | Cel >50% znamionowego zasięgu IR | Zewnętrzny oświetlacz IR; przybliż kamerę                       |
+| **Migawka Za Wolna (Rozmycie Ruchem)** | Smugi, jasne pasma               | Ustaw **Min Migawka: 1/100s** (1/250s dla tablic)               |
+| **Gain/ISO Maksymalny**                | Szum = "śnieg"                   | Dodaj światło (zewnętrzne IR, latarnia); obniż max gain         |
+| **WDR Wyłączony**                      | Jasne światła oślepiają kamerę   | Włącz **WDR: 120 dB+** (True WDR, nie DWDR)                     |
+| **Kopułka Brudna / Porysowana**        | Aureola wokół świateł            | Wymień kopułkę ($15); wyczyść mikrofibrą + środkiem do soczewek |
+| **Degradacja Sensora**                 | Postępuje z latami               | Wymień kamerę (CMOS starzeje się, gorące piksele rosną)         |
+| **Kompresja Za Wysoka**                | Blokowe artefakty w nocy         | Bitrate: CBR 4–6 Mbps (4K) / 2–3 Mbps (2K)                      |
+
+### 3.1 Ściągawka Czasu Migawki
+
+| Cel              | Min Migawka         | Uwagi                         |
+| ---------------- | ------------------- | ----------------------------- |
+| Ogólny obszar    | 1/50s (1/60s USA)   | Balans światła vs rozmycie    |
+| Idąca osoba      | 1/100s              | Ostre kończyny                |
+| **Tablica Rej.** | **1/250s – 1/500s** | **Krytyczne** — ustaw ręcznie |
+| Szybki pojazd    | 1/500s – 1/1000s    | Potrzebne zewnętrzne IR       |
+
+<Callout type="note">
+
+**Jak ustawić:** Web UI kamery → Obraz → Ekspozycja → Czas Migawki → Ręczny →
+Wprowadź wartość. Wyłącz "Auto" migawkę.
+
+</Callout>
+
+---
+
+## 4. Awarie Kolorowego Widzenia Nocnego
+
+**Kolorowe Widzenie Nocne (CNV)** = Duży sensor (1/1.8", 1/1.2") + ISP niskiego oświetlenia + **wymagane światło otoczenia**.
+
+| Awaria                                  | Przyczyna                    | Naprawa                                                                                                                      |
+| --------------------------------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| **Pozostaje C/B (IR włączone)**         | Otoczenie &lt;1 lux          | CNV potrzebuje ~3–5 lux (latarnia, światło na ganku). Dodaj **ciepłą białą (3000K) LED** 3–6 m dalej.                        |
+| **Kolor szumny/ziarnisty**              | Gain za wysoki               | Obniż max gain; dodaj światło; zaakceptuj C/B IR                                                                             |
+| **Przesunięcie koloru (fiolet/zieleń)** | Balans bieli zdezorientowany | Ustaw WB na "Na zewnątrz" / "Latarnia" / Niestandardowy 3000K                                                                |
+| **Konflikt IR + CNV**                   | Oba włączone = dziwne kolory | Wyłącz IR gdy CNV aktywne (automatycznie w dobrych kamerach)                                                                 |
+| **Niewspierane**                        | Kamera nie ma sensora CNV    | Sprawdź specyfikację: potrzebuje sensora 1/1.8"+ (Reolink ColorX, Hikvision ColorVu, Dahua Full-Color, Axis Lightfinder 2.0) |
+
+---
+
+## 5. Rejestracja Tablic Rejestracyjnych (LPC) — Specjalistyczne Naprawy Nocne
+
+**LPC zawodzi w nocy w 90% przez:** Odbicie IR od tablicy + wolna migawka + słabe IR.
+
+### 5.1 Lista Kontrolna LPC na Noc
+
+- [ ] **Kamera:** 4K/8MP + zoom optyczny (varifocal 2.8–12mm lub 5–50mm) LUB dedykowana LPR (2MP, 100+ fps, global shutter)
+- [ ] **Migawka:** **1/250s minimum** (ręczna)
+- [ ] **IR:** Zewnętrzny oświetlacz (850 nm, wiązka 30–50°) **poza kamerą**, wycelowany w strefę tablic
+- [ ] **Kąt:** ≤30° od prostopadłej; wysokość 1–1,2 m (poziom tablicy)
+- [ ] **WDR:** 120 dB+ True WDR (radzi sobie z reflektorami)
+- [ ] **Filtr IR:** Sprawdź przełączanie (dzień kolor / noc C/B)
+- [ ] **Strefa:** Strefa ruchu = tylko ścieżka tablicy (mniej fałszywych wyzwalaczy)
+- [ ] **Nagrywanie:** CBR 6–8 Mbps (4K) / 4 Mbps (2MP LPR)
+
+### 5.2 Polecane Kamery LPC (2026)
+
+| Camera                             | Typ            | Specyfikacja Nocna                           | Najlepsze Do                   |
+| ---------------------------------- | -------------- | -------------------------------------------- | ------------------------------ |
+| **Hikvision DS-2CD4A26FWD-IZHS/P** | 2MP LPR        | 100 fps, global shutter, 120 dB WDR, 30 m IR | Dedykowana rejestracja tablic  |
+| **Dahua ITC237-PW6M-IRLZF**        | 2MP LPR        | 60 fps, 140 dB WDR, 50 m IR                  | Parking, brama wjazdowa        |
+| **Reolink RLC-1212A**              | 12MP Varifocal | 5× zoom optyczny, 58 m IR, 1/1.8"            | Budżetowy 4K + zoom na tablice |
+| **Axis Q1700-LE**                  | 2MP LPR        | 60 fps, Forensic WDR, 40 m IR                | Korporacyjny, dowodowy         |
+
+---
+
+## 6. Problemy z Domofonem w Nocy
+
+| Problem                         | Przyczyna                    | Naprawa                                                                  |
+| ------------------------------- | ---------------------------- | ------------------------------------------------------------------------ |
+| **Twarz gościa prześwietlona**  | IR odbija się od ganku/okapu | Zestaw klinów kątowych (15–25° w dół); wyłącz IR → użyj światła na ganku |
+| **Brak widzenia nocnego**       | Tryb oszczędzania baterii    | Podłącz przewodowo (16–24V AC) → włącza pełnoczasowe IR                  |
+| **Kolorowe widzenie wyłączone** | Za mało światła otoczenia    | Dodaj **3000K LED** w oprawie na ganku (nie zimną biel)                  |
+| **Ruch pomijany w nocy**        | Zasięg PIR < zasięg IR       | PIR ~8 m, IR ~9 m → zmniejsz czułość IR / zawęź strefę                   |
+
+---
+
+## 7. Specyfika Nocy dla Kamer Bateryjnych / Solarnych
+
+| Problem                           | Przyczyna                        | Naprawa                                                                |
+| --------------------------------- | -------------------------------- | ---------------------------------------------------------------------- |
+| **IR wykańcza baterię w 1 tydz.** | IR = 2–4W ciągły                 | Wyłącz IR; polegaj na świetle otoczenia + reflektor ruchu (Eufy, Ring) |
+| **Brak widzenia nocnego zimą**    | Li-ion &lt;0°C przestaje ładować | Upgrade do LiFePO₄ (Reolink Go PT Plus); izolowana skrzynka + grzałka  |
+| **Ruch działa tylko w dzień**     | PIR zablokowany przez okno/szkło | Zamontuj **na zewnątrz** szyby; PIR potrzebuje różnicy temperatur      |
+| **Reflektor nie włącza się**      | Zła strefa ruchu                 | Przerysuj strefę, aby obejmowała ścieżkę podejścia; testuj przejście   |
+
+---
+
+## 8. Narzędzia Diagnostyczne i Procedury
+
+### 8.1 Karta Testowa Widzenia Nocnego (Wydrukuj i Zalaminuj)
+
+```
+┌─────────────────────────────────────┐
+│   KARTA TESTOWA WIDZENIA NOCNEGO    │
+│  ████████████████████████████████   │  ← 100% biały (odbicie IR)
+│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   │  ← 50% szary
+│  ████████████████████████████████   │  ← 0% czarny
+│                                     │
+│  Tablica: ABC-1234 (test na 6/12/18 m)│
+│  Twarz: [Zarys]                     │
+└─────────────────────────────────────┘
+```
+
+**Procedura:** Umieść na docelowej odległości → nagraj → oceń czytelność tablicy/twarzy.
+
+### 8.2 Pomiar Mocy IR
+
+| Narzędzie            | Pomiar                      | Kryterium Zaliczenia                 |
+| -------------------- | --------------------------- | ------------------------------------ |
+| **Tester PoE**       | Napięcie przy kamerze (noc) | >48V (PoE+), >52V (PoE++)            |
+| **Multimetr (12V)**  | Napięcie przy kamerze (noc) | >11,5V (12V nominalne)               |
+| **Cęgi Pomiarowe**   | Prąd na linii 12V (noc)     | &lt;2A (na kamerę)                   |
+| **Kamera Termiczna** | Temperatura diod IR         | 40–60°C (pracuje), &lt;30°C (martwa) |
+
+### 8.3 Audit Firmware i Konfiguracji
+
+```
+☐ Firmware: Najnowszy stabilny (nie beta)
+☐ Tryb IR: Auto (nie "Wł." 24/7)
+☐ Smart IR: Włączony
+☐ Migawka: Ręczna min 1/100s (1/250s dla tablic)
+☐ WDR: True WDR Wł. (120 dB+)
+☐ Gain Max: Ograniczony (nie "Auto Max")
+☐ Bitrate: CBR 4–6 Mbps (4K)
+☐ Filtr IR: Przełączanie zweryfikowane (dzień/noc)
+☐ Strefa czasowa/NTP: Poprawna (zaplanowane IR)
+```
+
+---
+
+## 9. Kiedy Wymienić vs Naprawić
+
+| Objaw                              | Naprawa Możliwa?               | Wymień Kiedy                                     |
+| ---------------------------------- | ------------------------------ | ------------------------------------------------ |
+| Brak poświaty IR, zasilanie OK     | Płyta IR ($50) / LDR ($2)      | Kamera >3 lat, wniknięcie wody                   |
+| Filtr IR cut zablokowany           | Stuknięcie/wyłącz (tymczasowe) | Mechanizm zużyty; >2 lata                        |
+| Biały obraz nie do naprawy         | N/d                            | Zła kamera do lokalizacji (użyj zewnętrznego IR) |
+| Szum sensora (gorące piksele)      | Mapowanie pikseli (niektóre)   | >5% martwych pikseli; >4 lat                     |
+| Kolorowe widzenie nocne uszkodzone | Problem sensor/ISP             | Sensor za mały (&lt;1/2.8"); upgrade             |
+| Nocne restarty co jakiś czas       | Spadek napięcia                | Napraw kabel/zasilanie; jeśli trwa → wymień      |
+
+---
+
+## 10. Szybka Karta Referencyjna (Wydrukuj do Auta)
+
+```
+SCHEMAT TRIAAŻU WIDZENIA NOCNEGO
+
+  1. POŚWIATA IR? (test aparatu telefonu)
+   NIE → Sprawdź napięcie (noc) → Naprawa zasilania
+   TAK → Krok 2
+
+  2. OBRAZ BIAŁY/SZARY?
+   TAK → Kąt 15-30° w dół / Odsuń 30+ cm / Zewnętrzne IR
+   NIE → Krok 3
+
+  3. OBRAZ CZARNY/SZUMNY?
+   TAK → Migawka 1/100s min / WDR Wł. / Zewnętrzne IR
+   NIE → Krok 4
+
+  4. KOLOROWE WIDZENIE NOCNE WYŁ.?
+   TAK → Dodaj światło 3000K / Sprawdź rozmiar sensora
+   NIE → Krok 5
+
+  5. TABLICA NIECZYTELNA?
+   TAK → Migawka 1/250s / Zewnętrzne IR / Varifocal zoom / LPR cam
+   NIE → GOTOWE ✓
+
+SPRAWDZENIE NAPIĘCIA (noc, IR włączone):
+PoE: >48V (af) / >50V (at) / >52V (bt)
+  12V: >11,5V przy kamerze
+```
+
+---
+
+## Powiązane Poradniki
+
+- [Common Security Camera Problems & Fixes](/blog/common-security-camera-problems-fixes) — Pełny indeks rozwiązywania problemów
+- [PoE Camera Cable Running: DIY Installation](/blog/poe-camera-cable-running-diy-installation) — Testowanie spadku napięcia
+- [Best Solar-Powered Security Cameras (Off-Grid)](/blog/best-solar-powered-security-cameras-offgrid) — Zimowa bateria/IR
+- [How to Mount Outdoor Cameras (Wall, Ceiling, Eave)](/blog/how-to-mount-outdoor-cameras-wall-ceiling-eave) — Kąt dla IR
+- [CCTV Video Storage Calculator](/blog/cctv-video-storage-calculator-hard-drive-space) — Planowanie bitrate w nocy
+
+---
+
+_Ostatnia aktualizacja: lipiec 2026. Procedury testowe zweryfikowane na modelach Reolink, Dahua, Hikvision, UniFi, Axis, Ring, Eufy, Arlo, Wyze, TP-Link._

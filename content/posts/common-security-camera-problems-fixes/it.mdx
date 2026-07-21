@@ -1,0 +1,381 @@
+---
+title: "Problemi Comuni delle Telecamere di Sicurezza e Soluzioni (2026)"
+description: "Risolvi i 25 problemi più comuni delle telecamere: offline, visione notturna, allarmi movimento, gap registrazione, cadute Wi-Fi, alimentazione PoE, errori NVR. Diagnostica passo-passo per ogni tipo di telecamera."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "common-security-camera-problems-fixes"
+author: "Your Name"
+tags: ["troubleshooting", "fixes", "problems", "maintenance", "diy"]
+postType: "howto"
+---
+
+Ogni sistema di telecamere sviluppa problemi. Questa guida copre i 25 problemi più comuni con diagnosi e soluzioni passo-passo — organizzati per sintomo in modo da trovare la soluzione rapidamente.
+
+<Badge variant="outline">Metodo di Diagnosi</Badge> **Inizia dal semplice:**
+Alimentazione → Cavo → Rete → Impostazioni → Hardware. L'80% dei problemi sono
+di alimentazione o cavo.
+
+---
+
+## Diagramma di Diagnosi Rapida
+
+```
+Telecamera non funziona?
+    │
+    ├─ Nessun LED alimentazione? → Alimentazione / PoE / Batteria (Sezione 1)
+    ├─ Alimentazione OK, nessuna immagine? → Cavo / Collegamento / IP Conflitto (Sezione 2)
+    ├─ Immagine OK, nessuna registrazione? → NVR / Archiviazione / Programmazione (Sezione 3)
+    ├─ Immagine OK, falsi allarmi? → Zone Movimento / Sensibilità / AI (Sezione 4)
+    ├─ Visione notturna scarsa? → IR / Riflesso / Otturatore (Sezione 5)
+    └─ Accesso remoto fallisce? → Port Forward / VPN / Cloud Fornitore (Sezione 6)
+```
+
+---
+
+## 1. Problemi di Alimentazione e Avvio
+
+### 1.1 Telecamera Morta — Nessun LED, Nessuna Risposta
+
+| Passo | Controllo                    | Soluzione                                                                         |
+| ----- | ---------------------------- | --------------------------------------------------------------------------------- |
+| 1     | **LED Porta Switch PoE**     | Spento = porta switch morta / budget superato → Sposta su porta buona nota        |
+| 2     | **LED Iniettore PoE**        | Spento = iniettore guasto / nessuna AC → Sostituisci iniettore (€25)              |
+| 3     | **Tensione alla Telecamera** | Multimetro: 44–57V (PoE), 12V±10% (DC) → Bassa = caduta tensione / cavo difettoso |
+| 4     | **Continuità Cavo**          | Tester: tutti 8 fili → Coppia aperta = ri-termina entrambe le estremità           |
+| 5     | **Reset Telecamera**         | Tieni reset 10–30s (controlla manuale) → Ri-adotta in app/NVR                     |
+
+**Telecamere a Batteria:** Carica 24 ore via USB-C prima di dichiararla morta. Il BMS Li-ion si blocca dopo scarica profonda.
+
+### 1.2 Telecamera Si Riavvia di Notte (IR Acceso)
+
+**Causa:** Caduta di tensione quando i LED IR si attivano (aggiungono 1–2W).
+
+| Diagnosi                                  | Soluzione                                                         |
+| ----------------------------------------- | ----------------------------------------------------------------- |
+| Switch PoE al limite budget               | Sposta telecamera su iniettore; aggiorna switch                   |
+| Cavo >75m su Cat6                         | Accorcia tratto; Cat6a; iniettore PoE++ alla telecamera           |
+| Cavo CCA (rame placcato alluminio)        | **Sostituisci con Cat6 rame massiccio**                           |
+| Batteria telecamera: caduta freddo Li-ion | Aggiornamento LiFePO₄; scatola isolata; porta dentro per caricare |
+
+### 1.3 Switch PoE Surriscaldato / Porte Flapping
+
+- **Controlla Budget PoE:** Σ consumo max telecamere ≤ budget switch × 0.8
+- **Termico:** Switch in armadio chiuso → aggiungi ventola o sposta in rack ventilato
+- **Firmware:** Aggiorna firmware switch (bug negoziazione PoE comuni)
+
+---
+
+## 2. Rete e Connettività
+
+### 2.1 Telecamera "Offline" in App/NVR
+
+| Passo | Test                                   | Soluzione                                       |
+| ----- | -------------------------------------- | ----------------------------------------------- |
+| 1     | Ping IP telecamera da PC               | Timeout = problema Layer 1/2 (cavo, switch, IP) |
+| 2     | Ping gateway da telecamera (shell NVR) | Timeout = VLAN / firewall / routing             |
+| 3     | `arp -a` → MAC corrisponde telecamera? | Conflitto IP → IP statico / prenotazione DHCP   |
+| 4     | Lease DHCP scaduto                     | IP statico o prenotazione DHCP (router)         |
+| 5     | Conflitto IP                           | Due dispositivi stesso IP → Riserva IP univoci  |
+
+### 2.2 Telecamera Wi-Fi Cada Giornalmente
+
+| Diagnosi                   | Soluzione                                                      |
+| -------------------------- | -------------------------------------------------------------- |
+| RSSI < -75 dBm             | Avvicina AP; aggiungi AP cablato; controlla canale             |
+| Congestione 2.4 GHz        | Solo canali 1/6/11; larghezza 20 MHz; disabilita band-steering |
+| Canale DFS (5 GHz)         | Forza 2.4 GHz; radar su 5 GHz = disconnessione                 |
+| Modalità Risparmio Energia | Disabilita risparmio energetico Wi-Fi in app telecamera        |
+| Riavvio programmato router | Disabilita auto-reboot; UPS su router                          |
+
+### 2.3 Stream RTSP Non Si Apre (VLC / Frigate / NVR)
+
+```
+URL test: rtsp://user:pass@192.168.1.100:554/stream1
+```
+
+| Errore             | Causa             | Soluzione                                                                                                                         |
+| ------------------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| 401 Unauthorized   | User/pass errato  | Controlla NVR/app: spesso `admin` / `123456` o vuoto                                                                              |
+| 404 Not Found      | Percorso errato   | Percorsi marca: Hikvision `/Streaming/Channels/101`, Dahua `/cam/realmonitor?channel=1&subtype=0`, Reolink `/h264Preview_01_main` |
+| Connection Refused | RTSP disabilitato | Abilita in web UI telecamera → Network → RTSP                                                                                     |
+| Timeout            | Firewall / VLAN   | Permetti TCP 554 da VLAN NVR a VLAN Telecamera                                                                                    |
+
+**Percorsi RTSP per Marca (Comuni):**
+
+- **Reolink:** `/h264Preview_01_main` (principale), `/h264Preview_01_sub` (secondario)
+- **Dahua/Amcrest:** `/cam/realmonitor?channel=1&subtype=0`
+- **Hikvision:** `/Streaming/Channels/101` (principale), `/Streaming/Channels/102` (secondario)
+- **UniFi:** `rtsp://user:pass@ip:7447/...` (Impostazioni Protect → RTSP)
+- **Amcrest:** Come Dahua (OEM)
+
+---
+
+## 3. Registrazione e Archiviazione
+
+### 3.1 NVR Non Registra / Gap nella Timeline
+
+| Controllo                      | Soluzione                                                                           |
+| ------------------------------ | ----------------------------------------------------------------------------------- |
+| Salute HDD (S.M.A.R.T.)        | Settori riallocati >0 → **Sostituisci immediatamente**                              |
+| HDD Pieno / Sovrascrittura Off | Abilita "Sovrascrivi Più Vecchi" in impostazioni archiviazione                      |
+| Programmazione Errata          | Verifica: Continuo 24/7 su Stream Principale; Movimento su Secondario               |
+| Stream Non Corrispondente      | NVR aspetta Principale; telecamera invia Secondario → Allinea impostazioni codifica |
+| Deriva Temporale               | Abilita NTP su NVR + Telecamere (stesso server: `pool.ntp.org`)                     |
+
+### 3.2 microSD Non Registra / Corrotta
+
+| Sintomo                         | Causa                                   | Soluzione                                                                  |
+| ------------------------------- | --------------------------------------- | -------------------------------------------------------------------------- |
+| Ciclo "Formattazione Richiesta" | Scheda guasta / FS errato               | Sostituisci con **U3/V30 A2** (SanDisk Extreme, Samsung Pro)               |
+| File 0 byte / non riproducibili | Perdita alimentazione durante scrittura | Abilita "Rimozione Sicura" in app; UPS su telecamere con cavo              |
+| Si ferma a 4 GB                 | Limite FAT32                            | La telecamera dovrebbe auto-exFAT; in caso contrario, formatta exFAT su PC |
+| Loop non funzionante            | Scheda piena / bloccata                 | Controlla interruttore blocco; elimina vecchi file; formatta in telecamera |
+
+### 3.3 Riproduzione Bloccata / Pixelata / Schermo Verde
+
+| Causa                           | Soluzione                                                               |
+| ------------------------------- | ----------------------------------------------------------------------- |
+| H.265/HEVC non supportato       | Il player necessita codec HEVC (Windows: Negozio €0.99; VLC: integrato) |
+| Stream secondario selezionato   | Passa a Stream Principale in riproduzione                               |
+| Intervallo keyframe troppo alto | Imposta Keyframe Interval = FPS (es. 15 fps → 15)                       |
+| Picchi bitrate VBR              | Imposta CBR o VBR Max Cap (4–6 Mbps per 4K)                             |
+
+---
+
+## 4. Rilevamento Movimento e Avvisi
+
+### 4.1 Troppi Falsi Avvisi (Spam)
+
+| Impostazione                  | Raccomandato                    | Perché                                  |
+| ----------------------------- | ------------------------------- | --------------------------------------- |
+| **Tipo Rilevamento**          | Solo Persona + Veicolo          | Esclude animali, alberi, ombre, pioggia |
+| **Zone Movimento**            | Disegna SOLO area target        | Esclude strada, alberi, vicino, cielo   |
+| **Sensibilità**               | Media (inizio) → regola         | Alta = tutto attiva                     |
+| **Intervallo Riattivazione**  | 30–60 secondi                   | Previene 50 clip della stessa auto      |
+| **Filtro Dimensione Oggetto** | Min 5% / Max 50% del frame      | Ignora insetti, uccelli, auto lontane   |
+| **AI/Deep Learning**          | Abilita (Persona/Veicolo/Pacco) | 90%+ riduzione falsi allarmi            |
+
+### 4.2 Eventi Persi (Nessun Avviso Quando è Successo Qualcosa)
+
+| Controllo                       | Soluzione                                                             |
+| ------------------------------- | --------------------------------------------------------------------- |
+| La zona copre l'area evento?    | Ridisegna zona più ampia; testa camminata                             |
+| Sensibilità troppo bassa?       | Aumenta di un gradino; testa                                          |
+| "Persona" non rilevata di notte | Riflesso IR confonde AI → inclina telecamera giù; aggiungi IR esterno |
+| Telecamera in modalità "Sleep"  | Telecamere batteria: disabilita sleep / aumenta sensibilità PIR       |
+| Rilevamento movimento NVR OFF   | Abilita lato NVR (lato telecamera potrebbe essere spento)             |
+
+### 4.3 Ritardo Avviso >10 Secondi
+
+| Causa                           | Soluzione                                      |
+| ------------------------------- | ---------------------------------------------- |
+| Relay cloud (Ring, Arlo, Blink) | Intrinseco — usa NVR/Frigate locale per &lt;1s |
+| Wi-Fi debole (RSSI < -75)       | Migliora segnale (Sezione 2.2)                 |
+| CPU NVR al massimo              | Riduci canali analisi; aggiorna NVR            |
+| Latenza MQTT/Webhook            | Testa push app diretta prima                   |
+
+---
+
+## 5. Qualità Immagine e Visione Notturna
+
+### 5.1 Visione Notturna Bianca / Sbiadita
+
+**Causa:** LED IR che si riflettono su superficie vicina (parete, gronda, vetro, ragnatela).
+
+| Soluzione                           | Come                                                                   |
+| ----------------------------------- | ---------------------------------------------------------------------- |
+| **Inclina giù 15–30°**              | Staffa inclinabile; telecamera guarda in basso, non verso parete       |
+| **Sposta telecamera fuori**         | 30–45 cm da parete/gronda (braccio estensione)                         |
+| **Disabilita IR integrato**         | Aggiungi **illuminatore IR esterno** (separato, puntato sul bersaglio) |
+| **Pulisci cupola/lente**            | Ragnatele = dispersione IR → microfibra + detergente lenti             |
+| **IR Intelligente (se supportato)** | Regola automaticamente intensità IR per distanza                       |
+
+### 5.2 Targhe Illeggibili di Notte
+
+| Requisito               | Specifica                                                           |
+| ----------------------- | ------------------------------------------------------------------- |
+| **Velocità Otturatore** | Minimo 1/100s (ideale 1/250s) — imposta in Esposizione → Otturatore |
+| **Risoluzione**         | 4K/8MP + zoom ottico OPPURE telecamera 2MP LPR                      |
+| **Gamma IR**            | Distanza targa ≤ 50% della potenza IR telecamera                    |
+| **WDR**                 | 120 dB+ (gestisce fari)                                             |
+| **Angolo**              | ≤30° dalla perpendicolare (targa frontale)                          |
+
+**Soluzione:** Aumenta otturatore → immagine più scura ma targa nitida. Aggiungi IR esterno se troppo scura.
+
+### 5.3 Immagine Diurna: Sbiadita / Basso Contrasto / Dominante Colore
+
+| Causa                       | Soluzione                                                               |
+| --------------------------- | ----------------------------------------------------------------------- |
+| Cupola sporca / graffiata   | Pulisci microfibra; sostituisci cupola (€15)                            |
+| Filtro IR Cut Bloccato      | Ciclo alimentazione; aggiorna firmware; tocca delicatamente (meccanico) |
+| Bilanciamento Bianco Errato | Imposta "Esterno" / "Auto" / Kelvin personalizzato (5500K)              |
+| Controluce (sole nel frame) | Riposiziona; abilita WDR; aggiungi parasole                             |
+
+### 5.4 Sfarfallio / Righe Scorrevoli (50/60 Hz)
+
+| Causa                           | Soluzione                                                                  |
+| ------------------------------- | -------------------------------------------------------------------------- |
+| **Frequenza Linea Errata**      | Telecamera impostata a 60 Hz (US) / 50 Hz (EU) — corrispondi alla tua rete |
+| **Ground Loop**                 | Tutte le apparecchiature stesso ground; isolatore PoE (Transtector)        |
+| **Sfarfallio Fluorescente/LED** | Imposta otturatore a 1/100 (50 Hz) o 1/120 (60 Hz)                         |
+
+---
+
+## 6. Accesso Remoto e App Mobile
+
+### 6.1 App Funziona su Wi-Fi, Fallisce su LTE/5G
+
+| Architettura                                     | Soluzione                                                               |
+| ------------------------------------------------ | ----------------------------------------------------------------------- |
+| **Cloud Fornitore** (Reolink, UniFi, Eufy, Ring) | Controlla internet sul telefono; pagina stato fornitore                 |
+| **Port Forward**                                 | **Non usare.** CGNAT, doppio NAT, ISP blocca. Passa a VPN/Cloud.        |
+| **VPN (Tailscale, WireGuard)**                   | Assicurati VPN attiva sul telefono; split-tunnel potrebbe escludere app |
+| **Cloudflare Tunnel**                            | Verifica servizio `cloudflared` sano                                    |
+
+### 6.2 "Connessione Fallita" / Timeout in Remoto
+
+| Test                                     | Previsto  | Soluzione                 |
+| ---------------------------------------- | --------- | ------------------------- |
+| Ping IP LAN NVR da telefono (VPN attiva) | &lt;50 ms | Problema routing VPN      |
+| `curl http://nvr:80` da telefono         | HTML      | Porta bloccata / firewall |
+| Pagina stato cloud fornitore             | Verde     | Aspetta / usa VPN locale  |
+
+### 6.3 Visione Diretta Funziona, Riproduzione Fallisce in Remoto
+
+- La riproduzione usa porta/stream diverso (spesso HTTPS/443 vs RTSP/554)
+- **Controlla:** NVR → Network → Porta HTTPS (default 443) accessibile via VPN
+- **Larghezza banda:** Riproduzione necessita 4–8 Mbps sostenuti; LTE potrebbe limitare
+
+---
+
+## 7. PTZ e Meccanica
+
+### 7.1 PTZ Non Si Muove / Bloccato / Rumore
+
+| Causa                            | Soluzione                                                                |
+| -------------------------------- | ------------------------------------------------------------------------ |
+| Limite meccanico raggiunto       | Controlla limiti preset; resetta a home                                  |
+| Guasto slip ring (360° infinito) | Cablaggio usurato → sostituisci telecamera (non riparabile)              |
+| Ghiaccio / Detriti               | Riscaldatore guasto; pulisci manualmente; verifica circuito riscaldatore |
+| Protocollo Non Corrispondente    | Pelco-D/P vs ONVIF PTZ → Allinea protocollo NVR a telecamera             |
+
+### 7.2 Tour Preset Non Funziona
+
+- Programmazione abilitata? (NVR → PTZ → Tour Schedule)
+- Tempo sosta >0? (10–30s per preset)
+- Home preset definito? (Il tour torna a home tra i loop)
+
+---
+
+## 8. Audio (Bidirezionale)
+
+### 8.1 Nessun Audio / Solo Unidirezionale
+
+| Controllo                  | Soluzione                                                 |
+| -------------------------- | --------------------------------------------------------- |
+| Permesso app               | Impostazioni Telefono → App → Microfono: ON               |
+| Audio telecamera abilitato | Web UI telecamera → Audio → Ingresso/Uscita: ON           |
+| Codec non corrispondente   | G.711 (PCM) più compatibile; prova G.726 / AAC            |
+| Half-duplex vs Full        | La maggior parte = PTT (half); non parlare mentre ascolti |
+
+### 8.2 Eco / Feedback / Statico
+
+| Causa                                              | Soluzione                                                                         |
+| -------------------------------------------------- | --------------------------------------------------------------------------------- |
+| Altoparlante troppo alto / guadagno microfono alto | Abbassa volume altoparlante in app; riduci guadagno microfono                     |
+| Nessun AEC (Cancellazione Eco Acustica)            | Telecamere full-duplex necessitano AEC; half-duplex = muta microfono mentre parli |
+| Vento sul microfono                                | Abilita filtro vento; parabrezza in schiuma; riposiziona                          |
+
+---
+
+## 9. Firmware e Aggiornamenti
+
+### 9.1 Procedura Sicura Aggiornamento Firmware
+
+1. **Leggi changelog** — Salta se "solo sicurezza" e sei stabile
+2. **Backup configurazione** — NVR: Esporta config; Telecamera: Screenshot impostazioni
+3. **Aggiorna NVR prima** — Poi telecamere (NVR potrebbe spingere firmware compatibile)
+4. **Una telecamera alla volta** — Verifica ciascuna prima della successiva
+5. **Non spegnere** — 5–10 min per telecamera
+6. **Verifica** — Visione diretta, registrazione, movimento, PTZ, audio
+
+### 9.2 Rollback Firmware Fallito
+
+| Marca               | Metodo                                                           |
+| ------------------- | ---------------------------------------------------------------- |
+| **Reolink**         | Pagina firmware → Pulsante "Versione Precedente"                 |
+| **Dahua/Hikvision** | Recovery TFTP (boot + tieni reset + server TFTP)                 |
+| **UniFi**           | Protect → Dispositivi → Telecamera → "Rollback Firmware"         |
+| **Generico**        | SD card con `firmware.bin` nella root; accendi con reset premuto |
+
+---
+
+## 10. Ambientali e Fisici
+
+### 10.1 Ingresso Acqua / Condensa
+
+| Sintomo                 | Soluzione                                                                               |
+| ----------------------- | --------------------------------------------------------------------------------------- |
+| Nebbia dentro cupola    | Pacchetto essiccante (sostituisci annualmente); verifica tappo sfiato aperto (Gore-Tex) |
+| Acqua all'ingresso cavo | Silicone + gommino; goccia drenaggio; corpo conduit                                     |
+| Corrosione su RJ45      | Grasso dielettrico sui contatti; sostituisci connettore; cavo schermato                 |
+
+### 10.2 Insetti / Ragni / Uccelli
+
+| Repellente                                                  | Efficacia                             |
+| ----------------------------------------------------------- | ------------------------------------- |
+| Olio di menta piperita (batuffolo cotone vicino telecamera) | Alta (ragni odiano)                   |
+| Repellente parassiti ultrasonico                            | Media                                 |
+| Punte anti-uccello su staffa                                | Alta (uccelli)                        |
+| Copertura in pile sull'anello IR                            | Alta (ragni costruiscono su IR caldo) |
+| Pulizia regolare (mensile)                                  | Essenziale                            |
+
+### 10.3 Vandalismo / Furto
+
+- **Viti Torx / Sicurezza** (incluse con la maggior parte delle telecamere professionali)
+- **Conduit** fino alla telecamera (non si può tagliare cavo facilmente)
+- **Altezza** >3 m (richiede scala)
+- **Telecamera di backup** che osserva la telecamera (sovrapposizione)
+- **Allarme Manomissione** (NVR: Telecamera → Rilevamento Manomissione → Allarme)
+
+---
+
+## Checklist Strumenti Diagnostici (Tieni nel Kit)
+
+| Strumento                                 | Scopo                        | Costo    |
+| ----------------------------------------- | ---------------------------- | -------- |
+| **Tester PoE** (LINKSYS PTPoE)            | Tensione sotto carico        | €35      |
+| **Tester Cavo** (NF-8601)                 | Continuità, mappa cavi       | €25      |
+| **Multimetro** (Klein MM400)              | Tensione, continuità         | €50      |
+| **Termocamera** (Flir ONE Pro)            | Surriscaldamento, perdite IR | €300     |
+| **Pinza Crimpatrice RJ45** (Pass-through) | Ri-terminazione              | €45      |
+| **Aste Luminescenti** (7.5 m)             | Pesca cavi                   | €35      |
+| **Laptop + VLC**                          | Test stream RTSP             | —        |
+| **Telefono + WiFi Analyzer**              | Rilievo segnale              | Gratuito |
+
+---
+
+## Quando Chiamare un Professionista
+
+| Situazione                               | Motivo                                     |
+| ---------------------------------------- | ------------------------------------------ |
+| Tratti tetto multi-piano                 | Rischio caduta, sollevamento specializzato |
+| Foratura cemento/mattone >6 fori         | Trapano a percussione + punte si consumano |
+| Permesso richiesto                       | Commerciale, multi-famiglia, >€500         |
+| Tratti fibra                             | Splicer fusione, testing OTDR              |
+| Protezione fulmini / Messa a terra       | NEC 250, componenti UL listed              |
+| Installazione richiesta da assicurazione | Certificato di conformità                  |
+
+---
+
+## Guide Correlate
+
+- [Visione Notturna Non Funziona? Guida alla Risoluzione](/blog/night-vision-not-working-troubleshooting-guide) — Approfondimento su problemi IR
+- [Cavo Telecamera PoE: Installazione DIY](/blog/poe-camera-cable-running-diy-installation) — Approfondimento guasti cavo
+- [Configurazione Telecamera Wireless: Consigli Installazione DIY](/blog/wireless-camera-setup-diy-installation-tips) — Diagnostica Wi-Fi
+- [Guida Completa Installazione Telecamere Sicurezza Fai-da-Te](/blog/diy-security-camera-installation-complete-guide) — Flusso di lavoro completo
+- [Calcolatore Archiviazione Video CCTV](/blog/cctv-video-storage-calculator-hard-drive-space) — Dimensionamento archiviazione
+
+---
+
+_Ultimo aggiornamento: Luglio 2026. Le versioni firmware cambiano — verifica i passaggi attuali per il tuo modello specifico._

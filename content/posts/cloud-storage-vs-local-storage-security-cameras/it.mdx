@@ -1,0 +1,342 @@
+---
+title: "Archiviazione Cloud vs Locale per Telecamere di Sicurezza (2026)"
+description: "Confronto approfondito tra archiviazione cloud e locale per telecamere di sicurezza: costi, sicurezza, affidabilità, accessibilità e quale fa per te."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "cloud-storage-vs-local-storage-security-cameras"
+author: "Your Name"
+tags: ["cloud-storage", "local-storage", "nvr", "comparison"]
+postType: "review"
+---
+
+Scegliere tra archiviazione cloud e locale per telecamere CCTV è una decisione fondamentale che influisce su costi, privacy, affidabilità e accesso remoto.
+
+L'archiviazione cloud è migliore per accesso ovunque e convenienza; l'archiviazione locale (NVR, DVR, microSD) è migliore per privacy, zero costi ricorrenti e registrazione 24/7 ad alta risoluzione. Ma ci sono sfumature: le registrazioni cloud possono essere crittografate end-to-end e protette, l'archiviazione locale è vulnerabile a furti, e molti sistemi offrono un ibrido.
+
+<Badge variant="outline">Risposta Rapida</Badge> **Maggiore parte delle case:**
+NVR PoE (locale 24/7) + backup cloud solo per allarmi.
+**Appartamenti/inquilini:** Telecamera con microSD + abbonamento cloud
+opzionale. **Aziende:** NVR + NAS + offsite (Wasabi/Backblaze B2) + clip allarme
+cloud.
+
+## Il Panorama dell'Archiviazione (2026)
+
+| Categoria                       | Esempi                                                            | Modello di Costo    | Conservazione    | Privacy                   | Internet Necessario |
+| ------------------------------- | ----------------------------------------------------------------- | ------------------- | ---------------- | ------------------------- | ------------------- |
+| **Abbonamento Cloud**           | Ring Protect, Arlo Secure, Nest Aware, Eufy Cloud, Blink          | €/fotocamera/mese   | 7–60 giorni      | Il fornitore ha le chiavi | Sì (upload 24/7)    |
+| **NVR/DVR (Locale)**            | Reolink RLK, Amcrest NV, Dahua, Hikvision, UniFi Protect          | Hardware una tantum | Mesi–Anni        | Tu hai le chiavi          | No (solo locale)    |
+| **microSD (Edge)**              | Tutte le wireless, alcune PoE                                     | Scheda una tantum   | Giorni–Settimane | Tu hai le chiavi          | No (solo locale)    |
+| **NAS / Server**                | Synology, QNAP, TrueNAS, Unraid + Frigate/Scrypted                | Hardware + dischi   | Anni             | Tu hai le chiavi          | Opzionale           |
+| **Archiviazione Oggetto Cloud** | Wasabi, Backblaze B2, AWS S3, Cloudflare R2                       | €/TB/mese           | Infinito         | Tu crittografi            | Sì (solo backup)    |
+| **Ibrido**                      | UniFi Protect + Backup Cloud, Reolink NVR + FTP, Frigate + rclone | Misto               | A livelli        | Tu controlli              | Parziale            |
+
+<Callout type="warning">
+
+<strong>Realtà della Larghezza di Banda:</strong> 8 telecamere 4K @ 8 Mbps H.265
+= 64 Mbps di **upload continuo**. La maggior parte degli upload residenziali è
+10–35 Mbps. **Il cloud 24/7 completo è impossibile su internet tipico.** Cloud =
+solo clip di movimento o sub-stream.
+
+</Callout>
+
+## Abbonamenti Cloud: Il Costo Reale (Prezzi 2026)
+
+| Servizio                       | Mensile (1 telecamera) | Annuale (1 telecamera) | 5 telecamere/anno | Conservazione | 2K/4K    | Limiti Chiave                          |
+| ------------------------------ | ---------------------- | ---------------------- | ----------------- | ------------- | -------- | -------------------------------------- |
+| **Ring Protect Basic**         | €4.99                  | €49.99                 | €49.99\*          | 180 giorni    | 1080p    | \*Telecamere illimitate a un indirizzo |
+| **Ring Protect Plus**          | €14.99                 | €149.99                | €149.99           | 180 giorni    | 1080p    | Monitoraggio pro, backup LTE           |
+| **Arlo Secure**                | €7.99                  | €79.99                 | €179.99 (5)       | 30 giorni     | 2K/4K    | Rilevamento AI, zone attività          |
+| **Arlo Secure Plus**           | €17.99                 | €179.99                | €299.99 (5)       | 60 giorni     | 4K       | Cloud 4K, risposta emergenze           |
+| **Nest Aware**                 | €8                     | €80                    | €80\*             | 30 giorni     | 1080p/2K | \*Telecamere illimitate, clip eventi   |
+| **Nest Aware Plus**            | €15                    | €150                   | €150\*            | 60 giorni     | 4K       | 10 giorni cronologia 24/7              |
+| **Eufy Cloud**                 | €2.99                  | €29.99                 | €29.99\*          | 30 giorni     | 2K       | \*Telecamere illimitate, locale-primo  |
+| **Blink Subscription**         | €3                     | €30                    | €30\*             | 60 giorni     | 1080p    | \*Telecamere illimitate                |
+| **UniFi Protect Cloud Backup** | €0.50/fotocamera       | €6/fotocamera          | €30 (5)           | 7–30 giorni   | 4K       | Solo backup, non primario              |
+
+**TCO a 5 anni (5 telecamere, 4K, 30 giorni conservazione):**
+
+- Ring Protect Basic: €250
+- Arlo Secure: €900
+- Nest Aware: €400
+- Eufy Cloud: €150
+- **NVR Locale (8TB): ~€600 una tantum** — vince dopo l'Anno 2
+
+<Callout type="info">
+
+<strong>Cloud ≠ Backup.</strong> Il cloud è archiviazione _primaria_ per
+telecamere wireless. Se internet cade, la telecamera non registra nulla (o solo
+su microSD se supportato). Vero backup = locale 24/7 + copia cloud degli eventi.
+
+</Callout>
+
+## Archiviazione Locale: Approfondimento NVR
+
+### NVR vs DVR (2026: Solo NVR)
+
+- **DVR:** Coassiale analogico (CVBS/AHD/TVI/CVI) → obsoleto. Max 5MP. No PoE.
+- **NVR:** Telecamere IP via Ethernet (PoE) → 4K/8K/12MP+, PoE, ONVIF, AI su NVR o telecamera.
+
+### Calcolatore Dimensione NVR
+
+| Telecamere | Risoluzione | Bitrate (H.265) | GB/giorno | 14 Giorni | 30 Giorni | 90 Giorni | HDD Consigliato    |
+| ---------- | ----------- | --------------- | --------- | --------- | --------- | --------- | ------------------ |
+| 4          | 4K (8MP)    | 4 Mbps          | 173 GB    | 2.4 TB    | 5.2 TB    | 15.6 TB   | 2× 8TB (RAID 1)    |
+| 8          | 4K          | 4 Mbps          | 346 GB    | 4.8 TB    | 10.4 TB   | 31 TB     | 4× 10TB (RAID 5/6) |
+| 16         | 4K          | 4 Mbps          | 691 GB    | 9.7 TB    | 20.7 TB   | 62 TB     | 8× 10TB (RAID 6)   |
+| 8          | 5MP         | 3 Mbps          | 260 GB    | 3.6 TB    | 7.8 TB    | 23 TB     | 3× 8TB (RAID 5)    |
+| 16         | 2MP (1080p) | 1.5 Mbps        | 130 GB    | 1.8 TB    | 3.9 TB    | 11.7 TB   | 2× 8TB (RAID 1)    |
+
+**Formula:** `GB/giorno = Telecamere × Mbps × 86400 sec ÷ 8 ÷ 1024 ÷ 1024`
+
+### RAID per NVR: Cosa Serve
+
+| RAID                | Min Dischi | Capacità Utilizzabile | Sopravvive | Rischio Ricostruzione | Migliore Per               |
+| ------------------- | ---------- | --------------------- | ---------- | --------------------- | -------------------------- |
+| **RAID 1 (Mirror)** | 2          | 50%                   | 1 disco    | Basso                 | 2–4 bay, filmati critici   |
+| **RAID 5**          | 3          | (N-1)/N               | 1 disco    | Medio (URE)           | 4–8 bay, equilibrio        |
+| **RAID 6**          | 4          | (N-2)/N               | 2 dischi   | Basso                 | 6+ bay, massima protezione |
+| **RAID 10**         | 4 (pari)   | 50%                   | 1–2 dischi | Molto Basso           | Prestazioni + sicurezza    |
+| **SHR (Synology)**  | 2+         | Flessibile            | 1–2        | Basso                 | Dimensioni disco miste     |
+
+**Raccomandazione:** **RAID 6** per 6+ bay. **RAID 1** per 2 bay. Evita RAID 5 su dischi >8TB (rischio URE durante ricostruzione).
+
+### Livelli Hardware NVR (2026)
+
+| Livello        | Esempio                                 | Porte PoE  | Max Telecamere | Bay Dischi   | RAID          | AI/Analytics                          | Prezzo      |
+| -------------- | --------------------------------------- | ---------- | -------------- | ------------ | ------------- | ------------------------------------- | ----------- |
+| **Base**       | Reolink RLN8-410                        | 8          | 8              | 1 (SATA)     | No            | Lato telecamera                       | €200        |
+| **Base+**      | Amcrest NV4108E-HS                      | 8          | 8              | 2            | RAID 1        | Lato telecamera                       | €280        |
+| **Medio**      | Dahua NVR5216-16P-I                     | 16         | 16             | 2            | RAID 1/5/10   | Lato NVR (WizSense)                   | €450        |
+| **Medio+**     | Hikvision DS-7716NI-I4/16P              | 16         | 16             | 4            | RAID 1/5/6/10 | Lato NVR (AcuSense)                   | €600        |
+| **Pro**        | UniFi UNVR / UNVR Pro                   | 0 (switch) | 50/100+        | 4/7          | RAID 1/5/6/10 | Protect AI (persone/veicoli/LPR)      | €500/€1.000 |
+| **Enterprise** | Synology DVA3221 + Surveillance Station | 0          | 40+            | 2 (M.2) + 12 | SHR/RAID      | Deep learning (persone/veicoli/volti) | €1.500+     |
+
+**Differenziatore chiave:** UniFi Protect / Synology girano su sistema operativo general-purpose (ecosistema app, Docker, API). Dahua/Hikvision/Reolink sono firmware appliance (più semplice, meno flessibile).
+
+## microSD: Verifica Realtà Archiviazione Edge
+
+| Specifica Scheda                                  | Scrittura Sostenuta      | 4K @ 15fps (4 Mbps) | 4K @ 30fps (8 Mbps)  | 2K @ 15fps (3 Mbps) |
+| ------------------------------------------------- | ------------------------ | ------------------- | -------------------- | ------------------- |
+| **UHS-I U3 / V30** (SanDisk Extreme, Samsung Pro) | 30 MB/s = 240 Mbps       | ✅ 60× margine      | ✅ 30× margine       | ✅ 80× margine      |
+| **UHS-I U1 / V10** (SanDisk Ultra, economica)     | 10 MB/s = 80 Mbps        | ⚠️ 10×              | ❌ 10× (perde frame) | ✅ 26×              |
+| **Application Class A1/A2**                       | IOPS casuali ottimizzati | ✅                  | ✅                   | ✅                  |
+
+**Limiti reali:**
+
+- **Calore:** Scrittura continua 4K in telecamera esposta al sole = scheda guasta in 6–12 mesi
+- **Resistenza:** 128GB TLC = ~600 TBW. 4K @ 4 Mbps = 43 GB/giorno = **38 anni teorici** ma il calore riduce a 2–3 anni
+- **Filesystem:** FAT32 (limite 32GB) vs exFAT (nessun limite). Le telecamere formattano internamente — fidati del loro formato.
+- **Capacità ottimale:** **128GB–256GB** (resistenza + costo). 512GB+ = rendimenti decrescenti.
+
+<Callout type="tip">
+
+<strong>microSD NON è un backup.</strong> È nella telecamera — furto/incendio
+distrugge entrambi. Usa per: buffer durante interruzione internet, ultime 24–72h
+se NVR si guasta, installazioni in affitto/temporanee.
+
+</Callout>
+
+## NAS / Server: La Scelta Appassionato/Professionista
+
+### Opzioni Software (2026)
+
+| Software                          | Piattaforma                | Supporto Telecamere                    | AI/Analytics                                       | UI/UX                | Licenza                                 |
+| --------------------------------- | -------------------------- | -------------------------------------- | -------------------------------------------------- | -------------------- | --------------------------------------- |
+| **Frigate**                       | Docker (Linux)             | ONVIF, RTSP, Go2RTC                    | Google Coral TPU (persona/veicolo/animale), OpenCV | Web, integrazione HA | Gratuito (OSS)                          |
+| **Scrypted**                      | Docker, Node.js            | HomeKit, ONVIF, RTSP, Wyze, Ring, Arlo | TensorFlow, Coral, CPU                             | Web, HomeKit, HA     | Gratuito (OSS)                          |
+| **Shinobi**                       | Docker, Node.js            | ONVIF, RTSP                            | OpenCV, TensorFlow                                 | Web                  | Gratuito (OSS) / Pro €                  |
+| **Blue Iris**                     | Windows                    | ONVIF, RTSP, 3000+ profili             | DeepStack AI, CodeProject AI                       | Desktop Windows      | €69.95 una tantum                       |
+| **Security Spy**                  | macOS                      | ONVIF, RTSP                            | AI integrata (persone/veicoli)                     | Nativo macOS         | €89–€499                                |
+| **UniFi Protect**                 | UniFi OS (UNVR, Cloud Key) | Solo telecamere UniFi                  | Protect AI (persone/veicoli/LPR)                   | Web, mobile          | Gratuito (hardware)                     |
+| **Synology Surveillance Station** | DSM                        | 8300+ ONVIF                            | Deep Learning (persone/veicoli/volti)              | Web, mobile          | Gratuito (4 telecamere), €50/telecamera |
+
+### Hardware per Registrazione 24/7 + AI
+
+| Configurazione             | CPU                    | RAM            | Dischi           | Acceleratore AI        | Potenza | Costo Stimato |
+| -------------------------- | ---------------------- | -------------- | ---------------- | ---------------------- | ------- | ------------- |
+| **Frigate Budget**         | Intel N100 (4C/4T)     | 16GB           | 2× 8TB (RAID 1)  | Google Coral USB (€60) | 15W     | €350          |
+| **Frigate/Scrypted Medio** | i5-1235U / i3-N305     | 32GB           | 4× 10TB (RAID 5) | Coral M.2 E-key (€40)  | 25W     | €600          |
+| **Blue Iris Pro**          | i5-13400 / Ryzen 5700G | 32GB           | 6× 14TB (RAID 6) | CodeProject AI (GPU)   | 65W     | €1.000        |
+| **Synology DVA3221**       | Ryzen V1500B           | 8GB (32GB max) | 2 M.2 + 12 bay   | NPU integrato          | 65W     | €1.500+       |
+| **UNVR Pro**               | Quad-core ARM          | 8GB            | 7× 3.5"          | Protect AI (ARM NPU)   | 40W     | €1.000        |
+
+**Raccomandazione:** **Frigate + Coral TPU su mini PC Intel N100/N305** = miglior €/prestazioni per 8–16 telecamere. Aggiungi **Scrypted** per ponte HomeKit/Home Assistant.
+
+## Archiviazione Oggetto Cloud: Backup Offsite Fatto Bene
+
+| Fornitore             | €/TB/mese       | Egress €/TB              | Fattura Minima   | API           | Crittografia                   | Migliore Per                                     |
+| --------------------- | --------------- | ------------------------ | ---------------- | ------------- | ------------------------------ | ------------------------------------------------ |
+| **Wasabi**            | €6.99           | **€0** (gratuito)        | 1 TB/mese        | S3            | SSE-S3, SSE-C                  | **Scelta migliore** — prevedibile, nessun egress |
+| **Backblaze B2**      | €6.00           | €0.01 (gratuito 3×/mese) | €7/mese          | S3, B2 nativo | SSE-B2, SSE-C                  | Più economico con basso egress                   |
+| **Cloudflare R2**     | €0.015/GB = €15 | **€0**                   | €0               | S3            | SSE-S3                         | Integrazione Workers, zero egress                |
+| **AWS S3 Standard**   | €23             | €0.09                    | €0               | S3            | SSE-S3, SSE-KMS                | Enterprise, policy lifecycle                     |
+| **AWS S3 Glacier IR** | €4              | €0.01                    | Minimo 90 giorni | S3            | SSE-S3                         | Livello archivio (accesso raro)                  |
+| **IDrive e2**         | €4              | €0                       | €0               | S3            | SSE-S3                         | Prezzi piatti semplici                           |
+| **Storj DCS**         | €4              | €7                       | €0               | S3, libuplink | Lato client (tu hai le chiavi) | **Massima privacy** — frammenti crittografati    |
+
+**Strategia Backup (rclone / duplicacy / restic):**
+
+```
+NVR locale (24/7) → Incrementale giornaliero a Wasabi (crittografato)
+               → Settimanale completo a Backblaze B2 (ridondanza geografica)
+Conservazione: 90 giorni locale, 1 anno cloud, 7 anni archivio (Glacier IR)
+```
+
+<Callout type="note">
+
+<strong>Crittografa prima dell'upload.</strong> Usa `rclone crypt` o `restic` —
+le tue chiavi, i tuoi dati. Il fornitore non vede mai testo in chiaro.
+Wasabi/B2/R2 supportano tutti SSE-C (chiave fornita dal cliente) ma la
+crittografia lato client è più sicura.
+
+</Callout>
+
+## Architetture Ibride: Il Meglio di Entrambi i Mondi
+
+### 1. UniFi Protect + Backup Cloud (Il più facile prosumer)
+
+- **Locale:** UNVR (7× HDD, RAID 6) → registrazione 24/7 4K
+- **Cloud:** Protect Cloud Backup (€0.50/fotocamera/mese) → solo clip eventi
+- **Avvisi:** Push via cloud UniFi (nessun port forwarding)
+- **Costo:** €1.000 hardware + €30/anno (5 telecamere) = **€1.150 Anno 1, €30/anno dopo**
+
+### 2. Reolink NVR + FTP/S3 Upload (Ibrido Budget)
+
+- **Locale:** RLN16-410 (16 canali, 2× SATA) → 24/7
+- **Cloud:** Firmware NVR → FTP/S3 (Wasabi/B2) su movimento
+- **Config:** Solo upload eventi, H.265, 7 giorni conservazione cloud
+- **Costo:** €300 NVR + €84/anno Wasabi (1TB) = **€384 Anno 1, €84/anno**
+
+### 3. Frigate + rclone (DIY Massimo Controllo)
+
+- **Locale:** Frigate (Intel N100 + 4× 10TB RAID 5) → 24/7 + eventi AI
+- **Cloud:** `rclone sync /media/frigate/clips wasabi:cctv-backup --encrypt` cron giornaliero
+- **Avvisi:** Frigate MQTT → Home Assistant → Push/Telegram
+- **Costo:** €600 hardware + €84/anno Wasabi = **€684 Anno 1, €84/anno**
+
+### 4. Synology Surveillance Station + C2 / Hyper Backup
+
+- **Locale:** DS923+ / DS1821+ + dischi → 24/7 + AI
+- **Cloud:** Hyper Backup → C2 Storage (€0.035/GB = €35/TB) o Wasabi/B2 tramite Cloud Sync
+- **Costo:** €600 NAS + €100 dischi + €35/anno = **€700 Anno 1, €35/anno**
+
+## Matrice Decisionale: Scegli la Tua Architettura
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="homeowner">
+    <AccordionTrigger>
+      Proprietario Casa (Casa, 4–8 telecamere, possiede rete)
+    </AccordionTrigger>
+    <AccordionContent>
+
+      <strong>Consigliato:</strong> NVR PoE (Reolink RLN8 / Amcrest NV4108E / UniFi UNVR) +
+        2× 8TB RAID 1 - registrazione locale 24/7, zero canone mensile - Aggiungi backup
+      Wasabi/B2 tramite FTP/S3 NVR o rclone su Pi - Se UniFi: Protect Cloud Backup per
+      clip eventi (€0.50/fotocamera/mese) - <strong>Costo 5 anni: ~€800</strong> vs Cloud €2.000+
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="renter">
+    <AccordionTrigger>
+      Inquilino / Appartamento (2–4 telecamere, senza cavi)
+    </AccordionTrigger>
+    <AccordionContent>
+
+      <strong>Consigliato:</strong> Telecamere batteria/Wi-Fi (EufyCam 3, Reolink Argus 4 Pro,
+      Ring Stick Up) + microSD (128GB) - Nessun cablaggio, portale quando ti trasferisci -
+      Eufy: HomeBase 3 locale (16GB + SSD) + cloud opzionale €30/anno - Ring/Arlo:
+      Richiedono abbonamento cloud per registrazione (€50–180/anno) - <strong>Costo 5 anni:
+      €300–€900</strong> (hardware + abbonamento opzionale)
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="business">
+    <AccordionTrigger>
+      Piccola Impresa (8–24 telecamere, conformità, multi-sede)
+    </AccordionTrigger>
+    <AccordionContent>
+
+      <strong>Consigliato:</strong> UniFi Protect (UNVR Pro × sedi) + VPN Sito-a-Sito +
+      Wasabi offsite - Gestione centralizzata tramite UniFi Site Manager - RAID 6 su
+      ogni UNVR, 30–90 giorni locale - rclone giornaliero a Wasabi (crittografato) per 7 anni
+      conservazione - LPR, conteggio persone, occupazione tramite Protect AI - **Costo 5 anni:
+      €3.000–€8.000** (hardware + dischi + cloud)
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="enthusiast">
+    <AccordionTrigger>
+      Appassionato / DIY (Home Assistant, AI personalizzata, massima privacy)
+    </AccordionTrigger>
+    <AccordionContent>
+
+      <strong>Consigliato:</strong> Frigate + Scrypted su mini PC Intel N100/N305 + Coral TPU
+      + 4× 10TB RAID 5 - AI locale completa (persona/veicolo/animale/targa/personalizzata)
+      <ul>
+        <li>HomeKit Secure Video tramite Scrypted (crittografia Apple) - MQTT → Home</li>
+      </ul>
+      Assistant → automazioni personalizzate - rclone → Wasabi/B2/R2 (crittografato) per
+      offsite - <strong>Costo 5 anni: €1.200–€2.000</strong> (hardware + dischi + cloud)
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+## Pianificazione Larghezza di Banda: Il Killer Nascosto
+
+| Tipo Stream                      | Risoluzione | Codec | Bitrate      | 8 Telecamere Upload     | 16 Telecamere Upload    |
+| -------------------------------- | ----------- | ----- | ------------ | ----------------------- | ----------------------- |
+| **Principale (Registrazione)**   | 4K          | H.265 | 4–6 Mbps     | 32–48 Mbps              | 64–96 Mbps              |
+| **Secondario (Visione diretta)** | 1080p/D1    | H.265 | 0.5–1.5 Mbps | 4–12 Mbps               | 8–24 Mbps               |
+| **Upload Cloud (Eventi)**        | 1080p       | H.265 | 1–2 Mbps     | Burst 8–16 Mbps         | Burst 16–32 Mbps        |
+| **Upload Cloud (24/7)**          | 4K          | H.265 | 4–6 Mbps     | **32–48 Mbps costante** | **64–96 Mbps costante** |
+
+**Realtà Upload Residenziale:**
+
+- Cavo: 10–35 Mbps in upload
+- Fibra (simmetrica): 300–1000 Mbps in upload
+- DSL: 1–5 Mbps in upload
+- Starlink: 10–25 Mbps in upload
+- 5G Casa: 20–100 Mbps in upload
+
+**Regola:** Se upload < 50 Mbps, **non** caricare mai stream principale 24/7. Usa sub-stream per backup cloud, o solo clip di eventi.
+
+## Privacy e Legale: Chi Ha le Chiavi?
+
+| Archiviazione                                   | Crittografia                                       | Accesso dal Fornitore    | Rischio Citazione             | GDPR/CCPA                          |
+| ----------------------------------------------- | -------------------------------------------------- | ------------------------ | ----------------------------- | ---------------------------------- |
+| **Cloud (Ring/Arlo/Nest)**                      | A riposo (chiave del fornitore)                    | Sì (decifrabile)         | Alto — il fornitore si adegua | Responsabile trattamento           |
+| **Cloud (Eufy)**                                | A riposo (chiave del fornitore)                    | Opzionale (locale-primo) | Medio                         | Responsabile trattamento           |
+| **NVR Locale**                                  | Nessuna (o autogestita)                            | No                       | Basso — tu controlli          | Titolare trattamento               |
+| **NAS (Frigate/Scrypted)**                      | Autogestita (LUKS, VeraCrypt)                      | No                       | Basso                         | Titolare trattamento               |
+| **Archiviazione Oggetto (Wasabi/B2)**           | SSE-S3 (fornitore) / SSE-C (tu) / Lato client (tu) | Solo se SSE-S3           | Medio (se chiave fornitore)   | Responsabile (se chiave fornitore) |
+| **Archiviazione Oggetto + Crittografia Client** | **Tu hai le chiavi**                               | **Mai**                  | **Minimo**                    | **Titolare trattamento**           |
+
+**Migliore Pratica:** Crittografa lato client (rclone crypt, restic, duplicacy) → carica su Wasabi/B2/R2. Il fornitore vede solo blob crittografati. Tu hai le chiavi. Una citazione ottiene solo dati illeggibili.
+
+## Riepilogo: TCO dell'Archiviazione su 5 Anni (8 Telecamere, 4K, 30 Giorni Conservazione)
+
+| Architettura                     | Anno 1 | Anno 2–5 (annuale) | Totale 5 Anni | Privacy     | Impegno |
+| -------------------------------- | ------ | ------------------ | ------------- | ----------- | ------- |
+| **Ring Protect Basic**           | €250   | €250               | **€1.250**    | Bassa       | Zero    |
+| **Arlo Secure**                  | €900   | €900               | **€4.500**    | Bassa       | Zero    |
+| **Nest Aware**                   | €400   | €400               | **€2.000**    | Bassa       | Zero    |
+| **Eufy Cloud**                   | €150   | €150               | **€750**      | Media       | Basso   |
+| **Reolink NVR (DIY)**            | €600   | €0                 | **€600**      | **Alta**    | Medio   |
+| **UniFi Protect + Cloud Backup** | €1.150 | €30                | **€1.270**    | Alta        | Basso   |
+| **Frigate + Wasabi (DIY)**       | €684   | €84                | **€1.020**    | **Massima** | Alto    |
+| **Synology + C2/Wasabi**         | €700   | €35                | **€840**      | Alta        | Medio   |
+
+---
+
+## Guide Correlate
+
+- [Durata Batteria e Opzioni Alimentazione: Cablato vs Batteria vs Solare](/blog/battery-life-power-options-corded-battery-solar) — Alimenta anche il tuo storage
+- [Migliori Sistemi di Telecamere di Sicurezza per Piccole Imprese](/blog/best-small-business-security-camera-systems) — Dimensionamento NVR per aziende
+- [Guida Completa Installazione Telecamere Sicurezza Fai-da-Te](/blog/diy-security-camera-installation-complete-guide) — Cavo, monta, configura
+- [Calcolatore Archiviazione Video CCTV: Quanto Spazio Disco Serve](/blog/cctv-video-storage-calculator-hard-drive-space) — Calcolatore interattivo
+- [Leggi sulla Privacy per Stato per CCTV](/blog/privacy-laws-by-state-cctv-guide) — Requisiti legali di conservazione

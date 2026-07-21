@@ -1,0 +1,339 @@
+---
+title: "Penyimpanan Cloud vs Penyimpanan Lokal untuk Kamera Keamanan (2026)"
+description: "Bandingkan setiap opsi penyimpanan: langganan cloud (Ring, Arlo, Nest, Eufy), NVR/DVR, microSD, NAS, S3/Wasabi/Backblaze B2, hybrid. Biaya per TB-tahun, retensi, privasi, bandwidth, dan pemulihan."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "cloud-storage-vs-local-storage-security-cameras"
+author: "Your Name"
+tags: ["cloud-storage", "local-storage", "nvr", "buying-guide", "privacy"]
+postType: "review"
+---
+
+Penyimpanan adalah tempat sistem kamera hidup atau mati. Kehilangan rekaman = kehilangan bukti. Cloud menawarkan kenyamanan tetapi berbiaya selamanya dan berisiko privasi. Lokal (NVR, microSD, NAS) berbiaya di muka tetapi Anda memilikinya. Hybrid memberi keduanya — jika Anda mengonfigurasinya dengan benar. Panduan ini menguraikan setiap opsi dengan harga 2026 nyata, perhitungan bandwidth, dan kerangka keputusan.
+
+<Badge variant="outline">Jawaban Cepat</Badge> **Sebagian besar rumah:** PoE NVR
+(lokal 24/7) + cadangan cloud untuk peringatan saja. **Apartemen/penyewa:**
+Kamera dengan microSD + langganan cloud opsional. **Bisnis:** NVR + NAS + di
+luar lokasi (Wasabi/Backblaze B2) + klip peringatan cloud.
+
+## Lanskap Penyimpanan (2026)
+
+| Kategori                | Contoh                                                              | Model Biaya             | Retensi      | Privasi               | Internet Diperlukan |
+| ----------------------- | ------------------------------------------------------------------- | ----------------------- | ------------ | --------------------- | ------------------- |
+| **Langganan Cloud**     | Ring Protect, Arlo Secure, Nest Aware, Eufy Cloud, Blink            | $/kamera/bulan          | 7–60 hari    | Vendor memegang kunci | Ya (unggah 24/7)    |
+| **NVR/DVR (Lokal)**     | Reolink RLK, Amcrest NV, Dahua, Hikvision, UniFi Protect            | Perangkat keras sekali  | Bulan–Tahun  | Anda memegang kunci   | Tidak (lokal saja)  |
+| **microSD (Edge)**      | Semua kamera nirkabel, beberapa PoE                                 | Kartu sekali            | Hari–Minggu  | Anda memegang kunci   | Tidak (lokal saja)  |
+| **NAS / Server**        | Synology, QNAP, TrueNAS, Unraid + Frigate/Scrypted                  | Perangkat keras + drive | Tahun        | Anda memegang kunci   | Opsional            |
+| **Objek Cloud Storage** | Wasabi, Backblaze B2, AWS S3, Cloudflare R2                         | $/TB/bulan              | Tak terbatas | Anda enkripsi         | Ya (cadangan saja)  |
+| **Hybrid**              | UniFi Protect + Cadangan Cloud, Reolink NVR + FTP, Frigate + rclone | Campuran                | Berjenjang   | Anda kontrol          | Sebagian            |
+
+<Callout type="warning">
+
+<strong>Realitas Bandwidth:</strong> 8× kamera 4K @ 8 Mbps H.265 = 64 Mbps
+**unggahan terus-menerus**. Sebagian besar unggahan residensial 10–35 Mbps.
+Cloud 24/7 penuh tidak mungkin di internet typical. Cloud = klip gerakan saja,
+atau sub-stream.
+
+</Callout>
+
+## Langganan Cloud: Biaya Nyata (Harga 2026)
+
+| Layanan                        | Bulanan (1 kamera) | Tahunan (1 kamera) | 5 kamera/tahun | Retensi   | 2K/4K    | Batasan Utama                         |
+| ------------------------------ | ------------------ | ------------------ | -------------- | --------- | -------- | ------------------------------------- |
+| **Ring Protect Basic**         | $4,99              | $49,99             | $49,99\*       | 180 hari  | 1080p    | \*Kamera tak terbatas di satu alamat  |
+| **Ring Protect Plus**          | $14,99             | $149,99            | $149,99        | 180 hari  | 1080p    | Pemantauan pro, cadangan LTE          |
+| **Arlo Secure**                | $7,99              | $79,99             | $179,99 (5)    | 30 hari   | 2K/4K    | Deteksi AI, zona aktivitas            |
+| **Arlo Secure Plus**           | $17,99             | $179,99            | $299,99 (5)    | 60 hari   | 4K       | Cloud 4K, respons darurat             |
+| **Nest Aware**                 | $8                 | $80                | $80\*          | 30 hari   | 1080p/2K | \*Kamera tak terbatas, klip peristiwa |
+| **Nest Aware Plus**            | $15                | $150               | $150\*         | 60 hari   | 4K       | Riwayat 24/7 10 hari                  |
+| **Eufy Cloud**                 | $2,99              | $29,99             | $29,99\*       | 30 hari   | 2K       | \*Kamera tak terbatas, lokal-utama    |
+| **Blink Subscription**         | $3                 | $30                | $30\*          | 60 hari   | 1080p    | \*Kamera tak terbatas                 |
+| **UniFi Protect Cloud Backup** | $0,50/kamera       | $6/kamera          | $30 (5)        | 7–30 hari | 4K       | Cadangan saja, bukan utama            |
+
+**TCO 5 Tahun (5 kamera, 4K, retensi 30 hari):**
+
+- Ring Protect Basic: $250
+- Arlo Secure: $900
+- Nest Aware: $400
+- Eufy Cloud: $150
+- **NVR Lokal (8TB): ~$600 sekali** — menang setelah Tahun 2
+
+<Callout type="info">
+
+<strong>Cloud ≠ Cadangan.</strong> Cloud adalah penyimpanan _primer_ untuk
+kamera nirkabel. Jika internet mati, kamera tidak merekam apa pun (atau hanya ke
+microSD jika didukung). Cadangan sejati = lokal 24/7 + salinan cloud peristiwa.
+
+</Callout>
+
+## Penyimpanan Lokal: NVR Deep Dive
+
+### NVR vs DVR (2026: NVR Saja)
+
+- **DVR:** Koaksial analog (CVBS/AHD/TVI/CVI) → usang. Maks 5MP. Tanpa PoE.
+- **NVR:** Kamera IP via Ethernet (PoE) → 4K/8K/12MP+, PoE, ONVIF, AI di NVR atau kamera.
+
+### Kalkulator Ukuran NVR
+
+| Kamera | Resolusi    | Bitrate (H.265) | GB/Hari | 14 Hari | 30 Hari | 90 Hari | HDD yang Direkomendasikan |
+| ------ | ----------- | --------------- | ------- | ------- | ------- | ------- | ------------------------- |
+| 4      | 4K (8MP)    | 4 Mbps          | 173 GB  | 2,4 TB  | 5,2 TB  | 15,6 TB | 2× 8TB (RAID 1)           |
+| 8      | 4K          | 4 Mbps          | 346 GB  | 4,8 TB  | 10,4 TB | 31 TB   | 4× 10TB (RAID 5/6)        |
+| 16     | 4K          | 4 Mbps          | 691 GB  | 9,7 TB  | 20,7 TB | 62 TB   | 8× 10TB (RAID 6)          |
+| 8      | 5MP         | 3 Mbps          | 260 GB  | 3,6 TB  | 7,8 TB  | 23 TB   | 3× 8TB (RAID 5)           |
+| 16     | 2MP (1080p) | 1,5 Mbps        | 130 GB  | 1,8 TB  | 3,9 TB  | 11,7 TB | 2× 8TB (RAID 1)           |
+
+**Rumus:** `GB/hari = Kamera × Mbps × 86400 detik ÷ 8 ÷ 1024 ÷ 1024`
+
+### RAID untuk NVR: Yang Anda Butuhkan
+
+| RAID                | Min Drive | Kapasitas Terpakai | Bertahan  | Risiko Rebuild | Terbaik Untuk             |
+| ------------------- | --------- | ------------------ | --------- | -------------- | ------------------------- |
+| **RAID 1 (Mirror)** | 2         | 50%                | 1 drive   | Rendah         | 2–4 bay, rekaman kritis   |
+| **RAID 5**          | 3         | (N-1)/N            | 1 drive   | Sedang (URE)   | 4–8 bay, keseimbangan     |
+| **RAID 6**          | 4         | (N-2)/N            | 2 drive   | Rendah         | 6+ bay, perlindungan maks |
+| **RAID 10**         | 4 (genap) | 50%                | 1–2 drive | Sangat Rendah  | Kinerja + keamanan        |
+| **SHR (Synology)**  | 2+        | Fleksibel          | 1–2       | Rendah         | Ukuran drive campuran     |
+
+**Rekomendasi:** **RAID 6** untuk 6+ bay. **RAID 1** untuk 2-bay. Hindari RAID 5 pada drive >8TB (risiko URE saat rebuild).
+
+### Tingkat Perangkat Keras NVR (2026)
+
+| Tingkat        | Contoh                                  | Port PoE   | Maks Kamera | Bay Drive    | RAID          | AI/Analitik                           | Harga       |
+| -------------- | --------------------------------------- | ---------- | ----------- | ------------ | ------------- | ------------------------------------- | ----------- |
+| **Entry**      | Reolink RLN8-410                        | 8          | 8           | 1 (SATA)     | Tidak         | Sisi kamera                           | $200        |
+| **Entry+**     | Amcrest NV4108E-HS                      | 8          | 8           | 2            | RAID 1        | Sisi kamera                           | $280        |
+| **Mid**        | Dahua NVR5216-16P-I                     | 16         | 16          | 2            | RAID 1/5/10   | Sisi NVR (WizSense)                   | $450        |
+| **Mid+**       | Hikvision DS-7716NI-I4/16P              | 16         | 16          | 4            | RAID 1/5/6/10 | Sisi NVR (AcuSense)                   | $600        |
+| **Pro**        | UniFi UNVR / UNVR Pro                   | 0 (switch) | 50/100+     | 4/7          | RAID 1/5/6/10 | Protect AI (orang/kendaraan/LPR)      | $500/$1.000 |
+| **Enterprise** | Synology DVA3221 + Surveillance Station | 0          | 40+         | 2 (M.2) + 12 | SHR/RAID      | Deep learning (orang/kendaraan/wajah) | $1.500+     |
+
+**Pembeda utama:** UniFi Protect / Synology berjalan di OS serba guna (ekosistem aplikasi, Docker, API). Dahua/Hikvision/Reolink adalah firmware appliance (lebih sederhana, kurang fleksibel).
+
+## microSD: Pemeriksaan Realitas Penyimpanan Tepi
+
+| Spesifikasi Kartu                                 | Tulis Berkelanjutan    | 4K @ 15fps (4 Mbps) | 4K @ 30fps (8 Mbps)  | 2K @ 15fps (3 Mbps) |
+| ------------------------------------------------- | ---------------------- | ------------------- | -------------------- | ------------------- |
+| **UHS-I U3 / V30** (SanDisk Extreme, Samsung Pro) | 30 MB/s = 240 Mbps     | ✅ 60× headroom     | ✅ 30× headroom      | ✅ 80× headroom     |
+| **UHS-I U1 / V10** (SanDisk Ultra, murah)         | 10 MB/s = 80 Mbps      | ⚠️ 10×              | ❌ 10× (jatuh frame) | ✅ 26×              |
+| **Application Class A1/A2**                       | IOPS acak dioptimalkan | ✅                  | ✅                   | ✅                  |
+
+**Batas dunia nyata:**
+
+- **Panas:** Tulis 4K terus-menerus di kamera terkena sinar matahari = kegagalan kartu dalam 6–12 bulan
+- **Daya tahan:** 128GB TLC = ~600 TBW. 4K @ 4 Mbps = 43 GB/hari = **38 tahun teoritis** tetapi panas memotong menjadi 2–3 tahun
+- **Sistem file:** FAT32 (batas 32GB) vs exFAT (tanpa batas). Kamera memformat secara internal — percayai format mereka.
+- **Titik manis kapasitas:** **128GB–256GB** (daya tahan + biaya). 512GB+ = pengembalian menurun.
+
+<Callout type="tip">
+
+<strong>microSD BUKAN cadangan.</strong> Itu ada di kamera — pencurian/kebakaran
+menghancurkan keduanya. Gunakan untuk: buffer selama pemadaman internet, 24–72
+jam terakhir jika NVR gagal, instalasi sewa/sementara.
+
+</Callout>
+
+## NAS / Server: Pilihan Penggemar/Pro
+
+### Opsi Perangkat Lunak (2026)
+
+| Perangkat Lunak                   | Platform                   | Dukungan Kamera                        | AI/Analitik                                      | UI/UX             | Lisensi                       |
+| --------------------------------- | -------------------------- | -------------------------------------- | ------------------------------------------------ | ----------------- | ----------------------------- |
+| **Frigate**                       | Docker (Linux)             | ONVIF, RTSP, Go2RTC                    | Google Coral TPU (orang/kendaraan/hewan), OpenCV | Web, HA integrasi | Gratis (OSS)                  |
+| **Scrypted**                      | Docker, Node.js            | HomeKit, ONVIF, RTSP, Wyze, Ring, Arlo | TensorFlow, Coral, CPU                           | Web, HomeKit, HA  | Gratis (OSS)                  |
+| **Shinobi**                       | Docker, Node.js            | ONVIF, RTSP                            | OpenCV, TensorFlow                               | Web               | Gratis (OSS) / Pro $          |
+| **Blue Iris**                     | Windows                    | ONVIF, RTSP, 3000+ profil              | DeepStack AI, CodeProject AI                     | Desktop Windows   | $69,95 sekali                 |
+| **Security Spy**                  | macOS                      | ONVIF, RTSP                            | AI bawaan (orang/kendaraan)                      | Native macOS      | $89–$499                      |
+| **UniFi Protect**                 | UniFi OS (UNVR, Cloud Key) | Kamera UniFi saja                      | Protect AI (orang/kendaraan/LPR)                 | Web, mobile       | Gratis (perangkat keras)      |
+| **Synology Surveillance Station** | DSM                        | 8300+ ONVIF                            | Deep Learning (orang/kendaraan/wajah)            | Web, mobile       | Gratis (4 kamera), $50/kamera |
+
+### Perangkat Keras untuk Rekaman 24/7 + AI
+
+| Build                         | CPU                    | RAM               | Drive            | Akselerator AI         | Daya | Perkiraan Biaya |
+| ----------------------------- | ---------------------- | ----------------- | ---------------- | ---------------------- | ---- | --------------- |
+| **Frigate Anggaran**          | Intel N100 (4C/4T)     | 16 GB             | 2× 8TB (RAID 1)  | Google Coral USB ($60) | 15 W | $350            |
+| **Frigate/Scrypted Menengah** | i5-1235U / i3-N305     | 32 GB             | 4× 10TB (RAID 5) | Coral M.2 E-key ($40)  | 25 W | $600            |
+| **Pro Blue Iris**             | i5-13400 / Ryzen 5700G | 32 GB             | 6× 14TB (RAID 6) | CodeProject AI (GPU)   | 65 W | $1.000          |
+| **Synology DVA3221**          | Ryzen V1500B           | 8 GB (maks 32 GB) | 2 M.2 + 12 bay   | NPU bawaan             | 65 W | $1.500+         |
+| **UNVR Pro**                  | Quad-core ARM          | 8 GB              | 7× 3,5"          | Protect AI (ARM NPU)   | 40 W | $1.000          |
+
+**Rekomendasi:** **Frigate + Coral TPU pada Intel N100/N305 mini PC** = $/kinerja terbaik untuk 8–16 kamera. Tambahkan **Scrypted** untuk jembatan HomeKit/Home Assistant.
+
+## Objek Cloud Storage: Cadangan Di Luar Lokasi yang Dilakukan dengan Benar
+
+| Penyedia              | Penyimpanan $/TB/bulan | Keluar $/TB             | Tagihan Min     | API           | Enkripsi                       | Terbaik Untuk                                              |
+| --------------------- | ---------------------- | ----------------------- | --------------- | ------------- | ------------------------------ | ---------------------------------------------------------- |
+| **Wasabi**            | $6,99                  | **$0** (gratis)         | 1 TB/bulan      | S3            | SSE-S3, SSE-C                  | **Pilihan teratas** — dapat diprediksi, tanpa biaya keluar |
+| **Backblaze B2**      | $6,00                  | $0,01 (gratis 3×/bulan) | $7/bulan        | S3, B2 native | SSE-B2, SSE-C                  | Termurah dengan keluar rendah                              |
+| **Cloudflare R2**     | $0,015/GB = $15        | **$0**                  | $0              | S3            | SSE-S3                         | Integrasi Workers, keluar nol                              |
+| **AWS S3 Standard**   | $23                    | $0,09                   | $0              | S3            | SSE-S3, SSE-KMS                | Enterprise, kebijakan siklus hidup                         |
+| **AWS S3 Glacier IR** | $4                     | $0,01                   | minimal 90 hari | S3            | SSE-S3                         | Tingkat arsip (akses jarang)                               |
+| **IDrive e2**         | $4                     | $0                      | $0              | S3            | SSE-S3                         | Harga datar sederhana                                      |
+| **Storj DCS**         | $4                     | $7                      | $0              | S3, libuplink | Sisi klien (Anda pegang kunci) | **Privasi maks** — pecahan terenkripsi                     |
+
+**Strategi Cadangan (rclone / duplicacy / restic):**
+
+```
+NVR Lokal (24/7) → Incremental harian ke Wasabi (dienkripsi)
+               → Penuh mingguan ke Backblaze B2 (redundansi geografis)
+Retensi: 90 hari lokal, 1 tahun cloud, 7 tahun arsip (Glacier IR)
+```
+
+<Callout type="note">
+
+<strong>Enkripsi sebelum unggah.</strong> Gunakan `rclone crypt` atau `restic` —
+kunci Anda, data Anda. Penyedia tidak pernah melihat teks biasa. Wasabi/B2/R2
+semua mendukung SSE-C (kunci disediakan pelanggan) tetapi enkripsi sisi klien
+lebih aman.
+
+</Callout>
+
+## Arsitektur Hybrid: Terbaik dari Kedua Dunia
+
+### 1. UniFi Protect + Cadangan Cloud (Prosumer Termudah)
+
+- **Lokal:** UNVR (7× HDD, RAID 6) → rekaman 4K 24/7
+- **Cloud:** Protect Cloud Backup ($0,50/kamera/bulan) → klip peristiwa saja
+- **Peringatan:** Push via cloud UniFi (tanpa port forwarding)
+- **Biaya:** $1.000 perangkat keras + $30/tahun (5 kamera) = **$1.150 Tahun 1, $30/tahun setelahnya**
+
+### 2. Reolink NVR + FTP/S3 Unggah (Hybrid Anggaran)
+
+- **Lokal:** RLN16-410 (16 ch, 2× SATA) → 24/7
+- **Cloud:** Firmware NVR → FTP/S3 (Wasabi/B2) pada gerakan
+- **Konfigurasi:** Unggah hanya peristiwa, H.265, retensi cloud 7 hari
+- **Biaya:** $300 NVR + $84/tahun Wasabi (1TB) = **$384 Tahun 1, $84/tahun**
+
+### 3. Frigate + rclone (DIY Kontrol Maks)
+
+- **Lokal:** Frigate (Intel N100 + 4× 10TB RAID 5) → 24/7 + peristiwa AI
+- **Cloud:** `rclone sync /media/frigate/clips wasabi:cctv-backup --encrypt` cron harian
+- **Peringatan:** Frigate MQTT → Home Assistant → Push/Telegram
+- **Biaya:** $600 perangkat keras + $84/tahun Wasabi = **$684 Tahun 1, $84/tahun**
+
+### 4. Synology Surveillance Station + C2 / Hyper Backup
+
+- **Lokal:** DS923+ / DS1821+ + drive → 24/7 + AI
+- **Cloud:** Hyper Backup → C2 Storage ($0,035/GB = $35/TB) atau Wasabi/B2 via Cloud Sync
+- **Biaya:** $600 NAS + $100 drive + $35/tahun = **$700 Tahun 1, $35/tahun**
+
+## Matriks Keputusan: Pilih Arsitektur Anda
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="homeowner">
+    <AccordionTrigger>
+      Pemilik Rumah (Rumah, 4–8 kamera, memiliki jaringan)
+    </AccordionTrigger>
+    <AccordionContent>
+
+      <strong>Direkomendasikan:</strong> PoE NVR (Reolink RLN8 / Amcrest NV4108E / UniFi UNVR) +
+        2× 8TB RAID 1 - Rekaman lokal 24/7, tanpa biaya bulanan - Tambahkan Wasabi/B2
+      cadangan via FTP/S3 NVR atau rclone di Pi - Jika UniFi: Protect Cloud Backup untuk
+      klip peristiwa ($0,50/kamera/bulan) - <strong>Biaya 5 tahun: ~$800</strong> vs Cloud $2.000+
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="renter">
+    <AccordionTrigger>
+      Penyewa / Apartemen (2–4 kamera, tanpa kabel)
+    </AccordionTrigger>
+    <AccordionContent>
+
+      <strong>Direkomendasikan:</strong> Kamera Baterai/Wi-Fi (EufyCam 3, Reolink Argus 4 Pro, Ring
+      Stick Up) + microSD (128GB) - Tanpa kabel, bawa saat pindah - Eufy: HomeBase
+      3 lokal (16GB + SSD) + cloud opsional $30/tahun - Ring/Arlo: Memerlukan cloud
+      untuk rekaman ($50–180/tahun) - <strong>Biaya 5 tahun: $300–$900</strong> (perangkat keras +
+      langganan opsional)
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="business">
+    <AccordionTrigger>
+      Bisnis Kecil (8–24 kamera, kepatuhan, multi-situs)
+    </AccordionTrigger>
+    <AccordionContent>
+
+      <strong>Direkomendasikan:</strong> UniFi Protect (UNVR Pro × situs) + Site-to-Site VPN +
+      Wasabi di luar lokasi - Manajemen terpusat via UniFi Site Manager - RAID 6 di
+      setiap UNVR, 30–90 hari lokal - rclone harian ke Wasabi (dienkripsi) untuk retensi
+      7 tahun - LPR, penghitungan orang, okupansi via Protect AI - **Biaya 5 tahun:
+      $3.000–$8.000** (perangkat keras + drive + cloud)
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="enthusiast">
+    <AccordionTrigger>
+      Penggemar / DIY (Home Assistant, AI kustom, privasi maks)
+    </AccordionTrigger>
+    <AccordionContent>
+
+      <strong>Direkomendasikan:</strong> Frigate + Scrypted pada Intel N100/N305 mini PC + Coral TPU
+      + 4× 10TB RAID 5 - AI lokal penuh (orang/kendaraan/hewan/plat nomor/kustom)
+      <ul>
+            <li>HomeKit Secure Video via Scrypted (enkripsi Apple) - MQTT → Home</li>
+      </ul>
+      Assistant → otomatisasi kustom - rclone → Wasabi/B2/R2 (dienkripsi) untuk
+      di luar lokasi - <strong>Biaya 5 tahun: $1.200–$2.000</strong> (perangkat keras + drive + cloud)
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+## Perencanaan Bandwidth: Pembunuh Tersembunyi
+
+| Tipe Stream                  | Resolusi | Codec | Bitrate      | Unggah 8 Kamera        | Unggah 16 Kamera       |
+| ---------------------------- | -------- | ----- | ------------ | ---------------------- | ---------------------- |
+| **Main (Rekaman)**           | 4K       | H.265 | 4–6 Mbps     | 32–48 Mbps             | 64–96 Mbps             |
+| **Sub (Tampilan Langsung)**  | 1080p/D1 | H.265 | 0,5–1,5 Mbps | 4–12 Mbps              | 8–24 Mbps              |
+| **Cloud Unggah (Peristiwa)** | 1080p    | H.265 | 1–2 Mbps     | Ledakan 8–16 Mbps      | Ledakan 16–32 Mbps     |
+| **Cloud Unggah (24/7)**      | 4K       | H.265 | 4–6 Mbps     | **32–48 Mbps konstan** | **64–96 Mbps konstan** |
+
+**Realitas Unggahan Residensial:**
+
+- Kabel: 10–35 Mbps naik
+- Fiber (simetris): 300–1000 Mbps naik
+- DSL: 1–5 Mbps naik
+- Starlink: 10–25 Mbps naik
+- 5G Rumah: 20–100 Mbps naik
+
+**Aturan:** Jika unggahan < 50 Mbps, **jangan pernah** unggah stream utama 24/7. Gunakan sub-stream untuk cadangan cloud, atau klip hanya peristiwa.
+
+## Privasi & Hukum: Siapa yang Memegang Kunci?
+
+| Penyimpanan                        | Enkripsi                                           | Akses oleh Vendor      | Risiko Panggilan Pengadilan | GDPR/CCPA                    |
+| ---------------------------------- | -------------------------------------------------- | ---------------------- | --------------------------- | ---------------------------- |
+| **Cloud (Ring/Arlo/Nest)**         | Saat diam (kunci vendor)                           | Ya (dapat didekripsi)  | Tinggi — vendor patuh       | Prosesor                     |
+| **Cloud (Eufy)**                   | Saat diam (kunci vendor)                           | Opsional (lokal-utama) | Sedang                      | Prosesor                     |
+| **NVR Lokal**                      | Tidak ada (atau dikelola sendiri)                  | Tidak                  | Rendah — Anda kontrol       | Pengontrol                   |
+| **NAS (Frigate/Scrypted)**         | Dikelola sendiri (LUKS, VeraCrypt)                 | Tidak                  | Rendah                      | Pengontrol                   |
+| **Objek Storage (Wasabi/B2)**      | SSE-S3 (vendor) / SSE-C (Anda) / Sisi klien (Anda) | Hanya jika SSE-S3      | Sedang (jika kunci vendor)  | Prosesor (jika kunci vendor) |
+| **Objek Storage + Enkripsi Klien** | **Anda pegang kunci**                              | **Tidak pernah**       | **Minimal**                 | **Pengontrol**               |
+
+**Praktik Terbaik:** Enkripsi sisi klien (rclone crypt, restic, duplicacy) → unggah ke Wasabi/B2/R2. Vendor hanya melihat gumpalan terenkripsi. Anda pegang kunci. Panggilan pengadilan mendapat omong kosong.
+
+## Ringkasan: TCO Penyimpanan Selama 5 Tahun (8 Kamera, 4K, Retensi 30 Hari)
+
+| Arsitektur                         | Tahun 1 | Tahun 2–5 (tahunan) | Total 5 Tahun | Privasi    | Upaya  |
+| ---------------------------------- | ------- | ------------------- | ------------- | ---------- | ------ |
+| **Ring Protect Basic**             | $250    | $250                | **$1.250**    | Rendah     | Nol    |
+| **Arlo Secure**                    | $900    | $900                | **$4.500**    | Rendah     | Nol    |
+| **Nest Aware**                     | $400    | $400                | **$2.000**    | Rendah     | Nol    |
+| **Eufy Cloud**                     | $150    | $150                | **$750**      | Sedang     | Rendah |
+| **Reolink NVR (DIY)**              | $600    | $0                  | **$600**      | **Tinggi** | Sedang |
+| **UniFi Protect + Cadangan Cloud** | $1.150  | $30                 | **$1.270**    | Tinggi     | Rendah |
+| **Frigate + Wasabi (DIY)**         | $684    | $84                 | **$1.020**    | **Maks**   | Tinggi |
+| **Synology + C2/Wasabi**           | $700    | $35                 | **$840**      | Tinggi     | Sedang |
+
+---
+
+## Panduan Terkait
+
+- [Masa Pakai Baterai & Opsi Daya: Berkabel vs Baterai vs Surya](/blog/battery-life-power-options-corded-battery-solar) — Dayai penyimpanan Anda juga
+- [Sistem Kamera Keamanan Bisnis Kecil Terbaik](/blog/best-small-business-security-camera-systems) — Ukuran NVR untuk bisnis
+- [Pemasangan Kamera Keamanan DIY: Panduan Lengkap](/blog/diy-security-camera-installation-complete-guide) — Kabel, pasang, konfigurasi
+- [Kalkulator Penyimpanan Video CCTV: Berapa Ruang Hard Drive](/blog/cctv-video-storage-calculator-hard-drive-space) — Kalkulator interaktif
+- [Hukum Privasi per Negara Bagian untuk CCTV](/blog/privacy-laws-by-state-cctv-guide) — Persyaratan hukum retensi

@@ -1,0 +1,352 @@
+---
+title: "กล้องรักษาความปลอดภัยแบบพูดสองทาง: คู่มือฉบับสมบูรณ์ (2026)"
+description: "Full-duplex vs half-duplex การตัดเสียงรบกวน การยินยอมตามกฎหมาย ตัวกระตุ้นบ้านอัจฉริยะ และกล้องที่ดีที่สุดสำหรับกริ่งประตู เบบี้มอนิเตอร์ และอินเตอร์คอมธุรกิจ"
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "two-way-audio-security-cameras-guide"
+author: "Your Name"
+tags: ["two-way-audio", "features", "buying-guide", "privacy"]
+postType: "review"
+---
+
+เสียงสองทางเปลี่ยนกล้องให้เป็นอินเตอร์คอม: พูดคุยกับพนักงานส่งของ ขัดขวางผู้บุกรุก ตรวจสอบเด็ก/สัตว์เลี้ยง หรือสื่อสารกับพนักงาน แต่ไม่ใช่ "เสียงสองทาง" ทุกระบบที่เท่าเทียมกัน — half-duplex (วอkeyทอล์กกี้) vs full-duplex (สายโทรศัพท์) คุณภาพการตัดเสียงรบกวน และข้อกำหนดการยินยอมตามกฎหมายแตกต่างกันอย่างมาก
+
+<Badge variant="outline">ความแตกต่างหลัก</Badge> **Half-duplex** = push-to-talk
+ทีละทิศทาง (กล้องราคาประหยัดส่วนใหญ่) **Full-duplex** = พูด/ฟังพร้อมกัน
+เหมือนโทรศัพท์ (กล้องพรีเมียม, อินเตอร์คอมเฉพาะ)
+
+## สถาปัตยกรรมเสียง: มีอะไรอยู่ข้างใน
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="mic">
+    <AccordionTrigger>ประเภทและการวางตำแหน่งไมโครโฟน</AccordionTrigger>
+    <AccordionContent>
+
+**MEMS (Micro-Electro-Mechanical Systems)** — มาตรฐานในกล้องสมัยใหม่ เล็ก ทนทาน การตอบสนองความถี่เรียบ
+
+<ul>
+  <li>
+    <strong>รอบทิศทาง</strong> — รับเสียง 360°; ดีสำหรับครอบคลุมห้อง,
+    ไม่ดีสำหรับการโฟกัสเฉพาะ{" "}
+  </li>
+  <li>
+    <strong>ทิศทาง (beamforming array)</strong> — 2–4 MEMS + DSP การบังคับ;
+    โฟกัสที่เสียงพูด, ปฏิเสธเสียงพื้นหลัง
+  </li>
+</ul>
+
+<p>
+  <strong>การวางตำแหน่งสำคัญ:</strong>
+</p>
+
+<ul>
+  <li>กริ่งประตู: ด้านล่าง, เอียงลง → จับภาพผู้มาเยือนที่ 0.9–1.5 ม.</li>
+  <li>Turret/Dome: ใต้เลนส์หรือด้านข้าง → จับภาพรัศมี 3–6 ม.</li>
+  <li>Bullet: ด้านหลัง/ช่องระบายอากาศข้าง → มักอู้อี้จากตัวกล้อง</li>
+  <li>ในร่ม: ด้านหน้าบน → ดีที่สุดสำหรับการสนทนาในห้อง</li>
+</ul>
+
+<p><strong>ลม/สภาพอากาศ:</strong> มองหา <strong>อะคูสติกเมช</strong> (Gore-Tex / ePTFE) คลุมพอร์ตไมโครโฟน — กันน้ำ, ผ่านเสียง กล้องราคาถูกข้ามนี้ → ฝน = เสียงรบกวน</p>
+</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="speaker">
+    <AccordionTrigger>เอาต์พุตลำโพงและการขยายสัญญาณ</AccordionTrigger>
+    <AccordionContent>
+
+<p>
+  <strong>สเปกทั่วไป:</strong> แอมป์ Class D 0.5–2W + ไดรเวอร์ 28–40mm → 80–100
+  dB SPL @ 30 ซม.
+</p>
+
+<p>
+  <strong>โลกจริง:</strong> 85 dB = สนทนาสบายที่ 1.8 ม.; 95 dB = ได้ยินทั่วสนาม
+  9 ม.
+</p>
+
+<p>
+  <strong>แหล่งจ่ายไฟสำคัญ:</strong>
+</p>
+
+<ul>
+  <li>PoE (802.3af 15.4W) → เพียงพอสำหรับเสียง 2W + กล้อง</li>
+  <li>12V DC → ใช้ได้</li>
+  <li>
+    กล้องแบตเตอรี่ → <strong>เสียงทำให้แบตหมด</strong> (แอมป์กิน 200–500 mA)
+    Ring/Eufy จำกัดเวลาพูดที่ 30–60 วินาทีบนแบตเตอรี่
+  </li>
+</ul>
+
+<p><strong>ความเพี้ยน:</strong> แอมป์ Class D ราคาถูก clipping ที่ระดับเสียงสูงสุด มองหา <strong>THD &lt;1% @ 1W</strong> หรือการตลาด "HD Audio" (มักหมายถึงแอมป์ + DSP ที่ดีกว่า)</p>
+</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="duplex">
+    <AccordionTrigger>Half-Duplex vs Full-Duplex: ช่องว่างประสบการณ์</AccordionTrigger>
+    <AccordionContent>
+
+| โหมด                  | วิธีการทำงาน                 | ความหน่วง  | เหมาะที่สุด                                       | กล้อง                                                                                             |
+| --------------------- | ---------------------------- | ---------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| **Half-Duplex (PTT)** | กดปุ่ม → พูด → ปล่อย → ฟัง   | 200–500 ms | กริ่งประตู, ประตูรั้ว, "ทิ้งพัสดุ" ด่วน           | Ring, Arlo, Blink, Wyze, Reolink (ส่วนใหญ่), Eufy (ส่วนใหญ่)                                      |
+| **Full-Duplex**       | TX/RX พร้อมกัน; ตัดเสียงก้อง | 50–150 ms  | เบบี้มอนิเตอร์, ดูแลผู้สูงอายุ, อินเตอร์คอมธุรกิจ | Nest Doorbell (แบบมีสาย), Google Nest Cam, Arlo Ultra 2, UniFi G4 Doorbell Pro, Axis, 2N, Aiphone |
+
+<p>
+  <strong>การตัดเสียงก้อง (AEC) คือตัวสร้างความแตกต่าง:</strong>
+</p>
+
+<ul>
+  <li>Half-duplex ไม่ต้องการ AEC (ไมค์ปิดขณะลำโพงเล่น)</li>
+  <li>
+    Full-duplex <strong>ต้องการ</strong> AEC แบบปรับตัว (NLMS/RLS/Kalman) —
+    หากไม่มี คุณจะได้ยินเสียงตัวเองหน่วง = ใช้ไม่ได้
+  </li>
+</ul>
+
+<p><strong>ทดสอบก่อนซื้อ:</strong> โทรหากล้องจากแอป พูดขณะที่มันเล่น ถ้าคุณได้ยินเสียงก้อง/feedback → AEC ล้มเหลว</p>
+</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+## การตัดเสียงรบกวน: อะไรที่ใช้ได้จริง
+
+<Callout type="note">
+
+**สาย DSP ในกล้องดี:** Beamforming → การระงับสัญญาณรบกวนคงที่ (Wiener/Kalman)
+→ การระงับไม่คงที่ (DNN) → AEC (full-duplex) → AGC (เกนอัตโนมัติ) → Limiter
+
+</Callout>
+
+| ประเภทสัญญาณรบกวน        | วิธีการระงับ                               | การลดทั่วไป |
+| ------------------------ | ------------------------------------------ | ----------- |
+| ลม                       | เมชกายภาพ + spectral gating                | 15–25 dB    |
+| HVAC / พัดลม / การจราจร  | Spectral subtraction / Wiener              | 10–20 dB    |
+| สุนัขเห่า / เด็กกรีดร้อง | DNN-based non-stationary (RNNoise, NSNet2) | 15–30 dB    |
+| เสียงตัวเอง (ก้อง)       | Adaptive AEC (NLMS/Kalman)                 | 25–40 dB    |
+| Feedback ลำโพง (หอน)     | Notch filtering + gain margin              | การป้องกัน  |
+
+**การตลาด vs ความเป็นจริง:** "AI Noise Cancellation" = มักเป็นแค่ spectral gate **การระงับสัญญาณรบกวน DNN จริง** ต้องใช้ NPU (Ambarella CV25, Rockchip RV1126, Google TPU, Apple Neural Engine) ตรวจสอบสเปก: "RNNoise", "NSNet2", "DNN-based", "Deep learning noise reduction"
+
+## กฎหมาย: การยินยอมฝ่ายเดียว vs สองฝ่าย
+
+<Callout type="warning">
+
+**กฎหมายบันทึกเสียงเข้มงวดกว่าวิดีโอ** วิดีโอ =
+ความคาดหวังความเป็นส่วนตัวที่สมเหตุสมผล (แตกต่างกันไป) เสียง =
+กฎหมายการดักฟังโทรศัพท์ในหลายรัฐ **ข้อกำหนดการยินยอมใช้กับ _การบันทึก_
+ไม่ใช่การฟังสด**
+
+</Callout>
+
+### กฎหมายการยินยอมของสหรัฐฯ (2026)
+
+| ประเภทการยินยอม                | รัฐ                                                                                                                                                        | ความหมาย                                                          |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| **ฝ่ายเดียว** (38 รัฐ + DC)    | AL, AK, AZ, AR, CO, DE, DC, GA, HI, ID, IN, IA, KS, KY, LA, ME, MN, MS, MO, NE, NV, NJ, NM, NY, NC, ND, OH, OK, RI, SC, SD, TN, TX, UT, VT, VA, WV, WI, WY | คุณสามารถบันทึกได้หาก _คุณ_ เป็นฝ่ายในการสนทนา ไม่ต้องแจ้งให้ทราบ |
+| **สองฝ่าย / ทุกฝ่าย** (12 รัฐ) | CA, CT, FL, IL, MD, MA, MI, MT, NH, OR, PA, WA                                                                                                             | **ทุกฝ่ายต้องยินยอม** ต้องมีป้าย + แจ้งด้วยวาจา                   |
+| **ผสม / ซับซ้อน**              | VT (ฝ่ายเดียวแต่เข้มงวด), OR (ทุกฝ่ายสำหรับ面对面)                                                                                                         | ตรวจสอบทนายความท้องถิ่น                                           |
+
+**รัฐบาลกลาง (Wiretap Act):** การยินยอมฝ่ายเดียวเป็นพื้นฐาน กฎหมายรัฐอาจเข้มงวดกว่า
+
+### การปฏิบัติตามสำหรับเจ้าของกล้อง
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="residential">
+    <AccordionTrigger>ที่อยู่อาศัย (กริ่งประตู, สนาม, ภายใน)</AccordionTrigger>
+    <AccordionContent>
+
+<p>
+  <strong>รัฐฝ่ายเดียว:</strong> คุณเป็นฝ่าย → บันทึกได้อย่างอิสระ แต่ยัง:{" "}
+  <strong>ติดป้าย</strong> "กำลังบันทึกเสียง" — ป้องกันข้อพิพาท,
+  ช่วยในการรับฟังพยานหลักฐาน
+</p>
+
+<p>
+  <strong>รัฐสองฝ่าย:</strong>
+</p>
+
+<ul>
+  <li><strong>ผู้มาเยือนกริ่งประตู:</strong> ไม่ใช่ฝ่ายจนกว่าจะพูด <strong>ต้องแจ้ง</strong> ก่อนบันทึก</li>
+  <li><strong>วิธีแก้:</strong> เปิด "การบันทึกเสียง: ปิด" เป็นค่าเริ่มต้น; บันทึกเฉพาะวิดีโอ หรือใช้ Ring/Arlo "โซนความเป็นส่วนตัว" สำหรับเสียง (บางรุ่นรองรับ)</li>
+  <li><strong>ป้าย:</strong> "กำลังบันทึกเสียงและวิดีโอ — โดยการเข้าแสดงว่าคุณยินยอม" ที่ประตูรั้ว/ประตู</li>
+  <li><strong>แนวทางปฏิบัติที่ดีที่สุด:</strong> ปิดการบันทึกเสียงทั้งหมดใน CA/FL/IL/MA/MD/PA/WA เว้นแต่คุณมีขั้นตอนการยินยอมที่ชัดเจน</li>
+</ul>
+</AccordionContent>
+    </AccordionItem>
+<AccordionItem value="business">
+  <AccordionTrigger>ธุรกิจ / เชิงพาณิชย์</AccordionTrigger>
+  <AccordionContent>
+
+<ul>
+  <li><strong>พนักงาน:</strong> การยินยอมเป็นลายลักษณ์อักษรในคู่มือ/การปฐมนิเทศ (ทุกรัฐ)</li>
+  <li><strong>ลูกค้า:</strong> ป้ายที่ทางเข้า + จุดขาย ("บันทึกเสียงเพื่อความปลอดภัย")</li>
+  <li><strong>ห้องพัก / ห้องน้ำ:</strong> <strong>ห้ามบันทึกเสียงเด็ดขาด</strong> (ความคาดหวังความเป็นส่วนตัวสูง = ผิดกฎหมายในほとりรัฐ)</li>
+  <li><strong>คอลเซ็นเตอร์ / โทรศัพท์:</strong> กฎหมายบันทึกเสียงโทรศัพท์แยกของรัฐบาลกลาง/รัฐ (มักทุกฝ่าย)</li>
+  <li><strong>การเก็บรักษา:</strong> สูงสุด 30 วันเว้นแต่มีการดำเนินคดี; นโยบายลบอัตโนมัติที่บันทึกไว้</li>
+</ul>
+</AccordionContent>
+    </AccordionItem>
+<AccordionItem value="landlord">
+  <AccordionTrigger>เจ้าของบ้าน / หลายครอบครัว</AccordionTrigger>
+  <AccordionContent>
+
+<ul>
+  <li><strong>พื้นที่ส่วนกลาง (ล็อบบี้, ทางเดิน):</strong> วิดีโอ OK; เสียง = <strong>ความเสี่ยงสูง</strong> ผู้เช่าไม่ใช่ฝ่ายในการสนทนาของกันและกัน</li>
+  <li><strong>ภายในห้อง:</strong> <strong>ห้ามเด็ดขาด</strong> — ผู้เช่ามีความคาดหวังความเป็นส่วนตัวที่สมเหตุสมผล</li>
+  <li><strong>กล้องกริ่งประตูที่ประตูผู้เช่า:</strong> ผู้เช่าเป็นเจ้าของกล้อง → การยินยอมของผู้เช่าใช้บังคับ เจ้าของบ้านไม่สามารถเข้าถึงเสียงได้โดยไม่ได้รับความยินยอมจากผู้เช่า</li>
+  <li><strong>สัญญาเพิ่มเติม:</strong> "ผู้เช่าอาจติดตั้งกริ่งประตูวิดีโอ; การบันทึกเสียงอยู่ภายใต้กฎหมายการยินยอมของรัฐ; เจ้าของบ้านไม่รับผิดชอบ"</li>
+</ul>
+</AccordionContent>
+</AccordionItem>
+</Accordion>
+
+## กล้องยอดนิยมตามกรณีการใช้งาน (2026)
+
+### 1. กริ่งประตู Full-Duplex ที่ดีที่สุด: Google Nest Doorbell (แบบมีสาย, รุ่น 2)
+
+**เสียง:** Full-duplex, AEC ยอดเยี่ยม, ลำโพง 2W, ไมค์ 3 ตัวพร้อม beamforming  
+**ตัดเสียงรบกวน:** TPU-accelerated DNN (ซิลิคอน Google) — ดีที่สุดในการปฏิเสธลม/การจราจร  
+**ฟีเจอร์การยินยอม:** "ประกาศผู้มาเยือน" (กริ่ง + "มีคนที่ประตู" ก่อนบันทึก); สลับการบันทึกเสียงในแอป Home  
+**การรวมระบบ:** Google Home, Assistant, Nest Aware ($8/เดือน สำหรับวิดีโอ + เสียง 30 วัน)  
+**ไฟ:** แบบมีสายเท่านั้น (16–24V AC) — ไม่มีแบตเตอรี่  
+**ราคา:** ~$180  
+**เหมาะที่สุด:** รัฐสองฝ่าย (CA/FL/IL), สนทนา full-duplex, บ้าน Google
+
+### 2. กริ่งประตู Half-Duplex ที่ดีที่สุด: Ring Battery Doorbell Pro (2024) / Ring Stick Up Cam Pro
+
+**เสียง:** Half-duplex PTT, ลำโพง 1.5W, beamforming ไมค์คู่  
+**ตัดเสียงรบกวน:** DSP "Audio+" (spectral gate + DNN พื้นฐาน) — ปฏิเสธลมใช้ได้  
+**ฟีเจอร์การยินยอม:** สลับ "บันทึกเสียง" ต่อกล้อง; "ยืนยันการเคลื่อนไหว" ลดตัวกระตุ้นเสียงปลอม  
+**การรวมระบบ:** แอป Ring, Alexa ("Alexa, talk to front door"), Ring Protect ($4–20/เดือน)  
+**ไฟ:** แบตเตอรี่ (Quick Release) + อุปกรณ์เสริมโซลาร์เซลล์ + ตัวเลือกเดินสาย  
+**ราคา:** ~$180–230  
+**เหมาะที่สุด:** ความยืดหยุ่นแบตเตอรี่, บ้าน Alexa, รัฐฝ่ายเดียว
+
+### 3. ท้องถิ่น/ไม่ใช้คลาวด์ที่ดีที่สุด: Reolink Video Doorbell PoE / Reolink Argus 4 Pro
+
+**เสียง:** Half-duplex, ลำโพง 1W, MEMS ไมค์เดียว (PoE) / ไมค์คู่ (Argus 4 Pro)  
+**ตัดเสียงรบกวน:** Basic spectral subtraction — ใช้ได้ในชานเมืองเงียบ  
+**ฟีเจอร์การยินยอม:** **ไม่มีคลาวด์** — เสียงบันทึกไปยัง NVR/microSD เท่านั้น; คุณควบคุมการเก็บรักษา  
+**การรวมระบบ:** แอป Reolink, ONVIF, NVR, Home Assistant (ผ่าน RTSP/ONVIF), ไม่มี HomeKit  
+**ไฟ:** PoE (กริ่งประตู) / แบตเตอรี่+โซลาร์ (Argus 4 Pro)  
+**ราคา:** ~$130 (PoE) / ~$220 (Argus 4 Pro + โซลาร์)  
+**เหมาะที่สุด:** ผู้ที่ให้ความสำคัญกับความเป็นส่วนตัวสูงสุด, เจ้าของ NVR, ไม่ต้องสมัครสมาชิก
+
+### 4. Full-Duplex ในร่มที่ดีที่สุด: Google Nest Cam (แบบมีสาย, รุ่น 2)
+
+**เสียง:** Full-duplex, ไมค์ 3 ตัว, ลำโพง 2W, Google TPU DNN noise suppression  
+**กรณีการใช้งาน:** เบบี้มอนิเตอร์, ตรวจสอบผู้สูงอายุ, พูดกับสัตว์เลี้ยง — **คุณภาพสายโทรศัพท์**  
+**ความเป็นส่วนตัว:** ไฟ LED ฮาร์ดแวร์เมื่อไมค์ทำงาน; ปิดการบันทึกเสียงเป็นค่าเริ่มต้น  
+**ราคา:** ~$100  
+**เหมาะที่สุด:** การสนทนาสองทางในร่ม, Google Home
+
+### 5. อินเตอร์คอมธุรกิจที่ดีที่สุด: UniFi G4 Doorbell Pro / 2N IP Verso / Aiphone IX
+
+**เสียง:** Full-duplex, ลำโพง 3W+, acoustic echo cancellation, การรวม SIP/VoIP  
+**ฟีเจอร์:** รีเลย์ปลดล็อกประตู, คีย์แพด/RFID, ควบคุมลิฟต์, เสียงลิฟต์, หลายผู้เช่า  
+**การปฏิบัติตาม:** 2N/Aiphone สร้างสำหรับรหัสพาณิชย์ (ADA, การรวมแผงอัคคีภัย)  
+**ราคา:** G4 Doorbell Pro ~$300; 2N IP Verso ~$800+; Aiphone IX ~$1,200+  
+**เหมาะที่สุด:** สำนักงาน, อาคารอพาร์ตเมนต์, ชุมชนที่มีรั้วรอบ, การรวมระบบควบคุมการเข้าถึง
+
+### 6. Half-Duplex ราคาประหยัดที่ดีที่สุด: Wyze Cam v4 / Blink Outdoor 4 / TP-Link Tapo C120
+
+**เสียง:** PTT, ลำโพง 0.5–1W, ไมค์เดียว, noise gate พื้นฐาน  
+**คุณภาพ:** "ที่ดีที่สุดคือวอkeyทอล์กกี้" — ใช้ได้สำหรับ "พัสดุที่ประตู" ไม่ใช่สำหรับการสนทนา  
+**คลาวด์:** จำเป็นสำหรับเสียง (Wyze/Blink); Tapo รองรับ microSD ท้องถิ่น  
+**ราคา:** $30–60  
+**เหมาะที่สุด:** กล้องรอง, รัฐฝ่ายเดียว, การสื่อสารความเสี่ยงต่ำ
+
+## ตารางเปรียบเทียบ
+
+| กล้อง                   | Duplex | ลำโพง | ไมค์    | ตัดเสียงรบกวน | เสียงท้องถิ่น | ต้องใช้คลาวด์ | ราคา |
+| ----------------------- | ------ | ----- | ------- | ------------- | ------------- | ------------- | ---- |
+| Nest Doorbell แบบมีสาย  | Full   | 2W    | 3 ตัว   | TPU DNN       | ❌            | Nest Aware    | $$$  |
+| Nest Cam (แบบมีสาย)     | Full   | 2W    | 3 ตัว   | TPU DNN       | ❌            | Nest Aware    | $$   |
+| Ring Pro / Stick Up Pro | Half   | 1.5W  | 2 beam  | DSP+DNN       | ❌            | Ring Protect  | $$   |
+| UniFi G4 Doorbell Pro   | Full   | 3W    | 2 beam  | DSP+AEC       | ✅ (NVR)      | ไม่           | $$$  |
+| Reolink Doorbell PoE    | Half   | 1W    | 1       | พื้นฐาน       | ✅ (NVR/SD)   | ไม่           | $    |
+| Reolink Argus 4 Pro     | Half   | 1W    | 2       | พื้นฐาน       | ✅ (Hub/SD)   | ไม่           | $$   |
+| EufyCam 3 / Dual Cam    | Half   | 1.5W  | 2       | DSP           | ✅ (HomeBase) | ไม่           | $$   |
+| Wyze Cam v4             | Half   | 0.5W  | 1       | พื้นฐาน       | ✅ (SD)       | Cam Plus      | $    |
+| 2N IP Verso / Aiphone   | Full   | 5W+   | หลายตัว | Pro DSP       | ✅            | ไม่           | $$$$ |
+
+## ตัวกระตุ้นบ้านอัจฉริยะ: เสียงเป็นอินพุตระบบอัตโนมัติ
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="alexa">
+    <AccordionTrigger>กิจวัตร Alexa</AccordionTrigger>
+    <AccordionContent>
+
+<ul>
+  <li><strong>ตัวกระตุ้น:</strong> "เมื่อ Ring ตรวจพบการเคลื่อนไหว" → "ประกาศบน Echo: การเคลื่อนไหวที่ประตูหน้า"</li>
+  <li><strong>ตัวกระตุ้น:</strong> "เมื่อตรวจพบบุคคล" → "เปิดไฟเฉลียง + ปลดล็อกสมาร์ทล็อก (ยืนยัน PIN)"</li>
+  <li><strong>การกระทำ:</strong> "Alexa, talk to [กล้อง]" → เริ่มเสียงสองทางแบบแฮนด์ฟรี</li>
+  <li><strong>ข้อจำกัด:</strong> Drop-in ต้องการอุปกรณ์ทั้งสองในบัญชี Amazon / บ้านเดียวกัน</li>
+</ul>
+</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="google">
+    <AccordionTrigger>ระบบอัตโนมัติ Google Home</AccordionTrigger>
+    <AccordionContent>
+
+<ul>
+  <li><strong>ตัวเริ่ม:</strong> "Nest Doorbell ตรวจพบบุคคล" → "ประกาศไปยังลำโพงทั้งหมด: 'บุคคลที่ประตูหน้า'"</li>
+  <li><strong>การกระทำ:</strong> "Hey Google, talk to front door" → เปิด full-duplex บนโทรศัพท์/Nest Hub</li>
+  <li><strong>สคริปต์ (YAML):</strong> สามารถต่อเนื่อง: ตรวจพบบุคคล → หน่วง 30s → ถ้าไม่ตอบสนอง → "เล่นเสียงขัดขวางบนลำโพงกล้อง"</li>
+</ul>
+</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="homekit">
+    <AccordionTrigger>Apple HomeKit (Secure Video)</AccordionTrigger>
+    <AccordionContent>
+
+<ul>
+  <li><strong>กล้องที่รองรับ:</strong> Logitech Circle View, EufyCam 3 (HSV), Netatmo, Eve</li>
+  <li><strong>เสียง:</strong> สองทางสดในแอป Home; <strong>บันทึก:</strong> เข้ารหัสใน iCloud (แผน 200GB+)</li>
+  <li><strong>ระบบอัตโนมัติ:</strong> "เมื่อ [กล้อง] ตรวจพบบุคคล" → "ตั้งฉาก: เปิดไฟเฉลียง + HomePod ประกาศ"</li>
+  <li><strong>ความเป็นส่วนตัว:</strong> <strong>ดีที่สุด</strong> — Apple ไม่มีคีย์; เสียงไม่ออกจากสตรีมที่เข้ารหัส</li>
+</ul>
+</AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="ha">
+    <AccordionTrigger>Home Assistant (ขั้นสูง)</AccordionTrigger>
+    <AccordionContent>
+
+<ul>
+  <li><strong>Reolink/ONVIF/RTSP:</strong> เอนทิตี `media_player` → `play_media` (ประกาศ TTS) + `call_service: camera.record`</li>
+  <li><strong>MQTT:</strong> กล้องเผยแพร่ `audio_level` → ระบบอัตโนมัติ: "ถ้าเสียง > 70 dB นาน 5s → แจ้งเตือน + ภาพนิ่ง"</li>
+  <li><strong>การรวม SIP:</strong> 2N/Aiphone/Grandstream → ลงทะเบียนเป็น SIP extension → โทรจากแดชบอร์ด HA / โทรศัพท์</li>
+  <li><strong>TTS ขัดขวาง:</strong> `tts.cloud_say` → "คุณกำลังถูกบันทึก ตำรวจถูกส่งมาแล้ว" ผ่านลำโพงกล้อง</li>
+</ul>
+</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+## รายการตรวจสอบคุณภาพเสียง (ก่อนติดตั้ง)
+
+1. **ดาวน์โหลดแอป, จับคู่กล้อง**
+2. **ยืนห่าง 3 ม.** พูดปกติ → ให้คู่ฟังบนโทรศัพท์
+3. **ยืนห่าง 0.9 ม.** พูด → ตรวจสอบ clipping/distortion
+4. **เล่นเพลงใกล้กล้อง** (60 dB) → พูด → ตรวจสอบการระงับสัญญาณรบกวน
+5. **จำลองลม** (พัดลมต่ำใกล้ไมค์) → พูด → ตรวจสอบการปฏิเสธลม
+6. **ทดสอบ full-duplex:** ทั้งคู่พูดพร้อมกัน → ตรวจสอบเสียงก้อง/feedback
+7. **ตรวจสอบความหน่วง:** นับ "1-2-3" → วัดหน่วงไปยังโทรศัพท์ (เป้าหมาย &lt;200 ms half, &lt;100 ms full)
+8. **กล้องแบตเตอรี่:** พูด 60s → ตรวจสอบแบตเตอรี่ลด (ควร &lt;2% สำหรับ half-duplex)
+
+## คำแนะนำตามสถานการณ์
+
+| สถานการณ์                                | กล้อง                               | เหตุผล                                          |
+| ---------------------------------------- | ----------------------------------- | ----------------------------------------------- |
+| **ผู้อยู่อาศัย CA/FL/IL, กริ่งประตู**    | Nest Doorbell แบบมีสาย              | Full-duplex, ตัดเสียงรบกวนดีที่สุด, สลับเสียง   |
+| **ผู้เช่า, แบตเตอรี่, ไม่สมัครสมาชิก**   | Reolink Argus 4 Pro + โซลาร์        | จัดเก็บในท้องถิ่น, ไม่ใช้คลาวด์, half-duplex OK |
+| **ครอบครัว Google Home, เบบี้มอนิเตอร์** | Nest Cam (แบบมีสาย)                 | Full-duplex ในร่ม, LED ความเป็นส่วนตัวฮาร์ดแวร์ |
+| **บ้าน Alexa, แจ้งเตือนพัสดุ**           | Ring Stick Up Cam Pro               | Alexa Drop-In, half-duplex, ตัวเลือกโซลาร์      |
+| **ล็อบบี้ธุรกิจ / ประตูรั้ว**            | UniFi G4 Doorbell Pro / 2N IP Verso | Full-duplex, SIP, รีเลย์, ควบคุมการเข้าถึง      |
+| **ความเป็นส่วนตัวสูงสุด, เจ้าของ NVR**   | Reolink Doorbell PoE + NVR          | ศูนย์คลาวด์, เสียงท้องถิ่น, PoE เชื่อถือได้     |
+| **กล้องรองราคาประหยัด**                  | Wyze Cam v4 / Tapo C120             | ถูก, half-duplex, ตัวเลือก SD ท้องถิ่น          |
+
+---
+
+## คู่มือที่เกี่ยวข้อง
+
+- [กล้องรักษาความปลอดภัยจดจำใบหน้า: ความสามารถและความเป็นส่วนตัว](/blog/facial-recognition-security-cameras-privacy) — กฎหมายชีวภาพทับซ้อนกับการยินยอมเสียง
+- [กฎหมายความเป็นส่วนตัวตามรัฐสำหรับ CCTV](/blog/privacy-laws-by-state-cctv-guide) — การสำรวจเสียง/วิดีโอ 50 รัฐ
+- [กล้องรักษาความปลอดภัยกลางแจ้งที่ดีที่สุด 2026](/blog/best-outdoor-security-cameras-2026) — สเปกฮาร์ดแวร์รวมถึงเสียง
+- [การรวมระบบบ้านอัจฉริยะ: Alexa, Google, HomeKit](/blog/smart-home-integration-alexa-google-homekit) — เจาะลึกตัวกระตุ้นเสียง

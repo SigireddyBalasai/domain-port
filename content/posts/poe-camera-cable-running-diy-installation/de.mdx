@@ -1,0 +1,340 @@
+---
+title: "PoE-Kamera-Kabelverlegung: DIY-Installationsanleitung (2026)"
+description: "Vollständige Anleitung zur Verlegung von Cat5e/6 für PoE-Kameras. Kabeltypen, Wegplanung, Anschluss, Test, Vorschriften und Profi-Tipps für saubere, zuverlässige Installationen."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "poe-camera-cable-running-diy-installation"
+author: "Your Name"
+tags: ["diy", "poe", "cable-running", "installation", "termination"]
+postType: "howto"
+---
+
+Kabelverlegung macht 70 % der PoE-Kamera-Installationsarbeit aus. Einmal richtig machen: massives Kupfer, richtige Wege, korrekter Anschluss, geprüfter Test. Dieser Leitfaden deckt jeden Schritt von der Trommel bis zum Switch ab.
+
+<Badge variant="outline">Kabelauswahl</Badge> **Massives Kupfer-Cat6 (CMR/CMP)
+verwenden.** Nicht CCA (kupferkaschiertes Aluminium). Nicht Litze. Nicht Cat5e
+für neue Verlegungen. Massives Kupfer-Cat6 = 100m bei 1 Gbit/s PoE+ ohne
+Spannungsabfallprobleme.
+
+---
+
+## Kabelauswahl: Was kaufen (Und vermeiden)
+
+| Kabeltyp                     | Leiter           | PoE+ (30W) max. | PoE++ (60/90W) max. | Bewertung                | Einsatzbereich          |
+| ---------------------------- | ---------------- | --------------- | ------------------- | ------------------------ | ----------------------- |
+| **Cat6 Massiv Kupfer (CMR)** | 23 AWG Massiv Cu | 100 m           | 80 m                | Steigleitung (Innenwand) | **Standardwahl**        |
+| **Cat6 Massiv Kupfer (CMP)** | 23 AWG Massiv Cu | 100 m           | 80 m                | Plenum (Luftkanäle)      | Erforderlich in Plenums |
+| **Cat6a Massiv Kupfer**      | 23 AWG Massiv Cu | 100 m           | 100 m               | Steigleitung/Plenum      | Zukunftssicher 10G      |
+| **Outdoor Direct Burial**    | 23 AWG Massiv Cu | 100 m           | 80 m                | Gelgefüllt, UV-beständig | Unterirdisch, Freiluft  |
+| **❌ Cat5e**                 | 24 AWG           | 100 m           | 50 m                | Steigleitung             | Nur Altbestand          |
+| **❌ CCA (Kupferkaschiert)** | Aluminiumkern    | **FEHLER**      | **FEHLER**          | Beliebig                 | **Nie für PoE**         |
+| **❌ Litze / Patch**         | Litze Cu         | 10 m            | 5 m                 | Patch                    | Nur Patchkabel          |
+
+<Callout type="danger">
+
+**CCA (Kupferkaschiertes Aluminium) versagt bei PoE.** Aluminium hat 60 %
+höheren Widerstand → Spannungsabfall → Kamera startet nachts neu (IR an).
+**"Massives Blank Copper" auf dem Kabelmantel prüfen.**
+
+</Callout>
+
+**Empfohlene Marken (2026):**
+
+- **Budget:** Cable Matters Cat6 CMR (300 m ~120 €)
+- **Mittel:** Southwire Cat6 CMR (300 m ~150 €)
+- **Profi:** Belden 2413 / General Cable GenSPEED 6000 (300 m ~220 €)
+- **Außen:** Superior Essex 04-001-59 (Direct Burial, ~180 €)
+
+---
+
+## Wegplanung: Vor dem Bohren
+
+### 1. Jede Strecke kartieren
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="mapping">
+    <AccordionTrigger>Kabelplan-Tabelle erstellen</AccordionTrigger>
+    <AccordionContent>
+
+| Kamera | Standort  | Weg                                 | Länge (m) | Kabeltyp     | Anschluss       | PoE-Klasse     |
+| ------ | --------- | ----------------------------------- | --------- | ------------ | --------------- | -------------- |
+| CAM-01 | Haustür   | Dachboden → Traufe → Ortgang        | 20        | Cat6 CMR     | RJ45 + Keystone | Klasse 4 (30W) |
+| CAM-02 | Einfahrt  | Dachboden → Außenwand → Mast        | 29        | Cat6 Outdoor | RJ45 Direkt     | Klasse 4       |
+| CAM-03 | Hinterhof | Keller → Randbalken → Dachvorsprung | 24        | Cat6 CMR     | Keystone        | Klasse 3 (15W) |
+
+<p>
+  <strong>Faustregel:</strong> <strong>Zweimal</strong> messen,{" "}
+  <strong>3 m Reserve</strong> pro Strecke hinzufügen (Serviceschleifen an
+  beiden Enden).
+</p>
+
+  </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+### 2. Wege identifizieren (Beste → Schlechteste)
+
+| Weg                                         | Schwierigkeit | Max. Strecken | Vorschriften                                       |
+| ------------------------------------------- | ------------- | ------------- | -------------------------------------------------- |
+| **Dachboden → Traufe/Dachvorsprung**        | Einfach       | Unbegrenzt    | Kontakt mit Dämmung vermeiden (Strombelastbarkeit) |
+| **Keller/Kriechkeller → Randbalken → Wand** | Mittel        | Unbegrenzt    | Durch Schwellenplatte bohren, Brandschott          |
+| **Innenwand → Außenbereich**                | Mittel        | 1–2 pro Wand  | Brandschott an oberer/unterer Platte               |
+| **Leerrohr (EMT/PVC) oberirdisch**          | Einfach       | Unbegrenzt    | Am besten für Nachrüstung, freiliegend erlaubt     |
+| **Direct Burial (Graben)**                  | Schwer        | Unbegrenzt    | 45 cm tief (60 cm unter Einfahrt), Warnband        |
+| **Freiluft (Mast-zu-Mast)**                 | Mittel        | 1–2           | Tragseil, Tropfschlaufen, 3 m Durchfahrtshöhe      |
+
+---
+
+## Bohr- & Einfädeltechniken
+
+### Dachboden zur Traufe (Am häufigsten)
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="attic-soffit">
+    <AccordionTrigger>Schritt-für-Schritt: Dachboden → Traufkamera</AccordionTrigger>
+    <AccordionContent>
+
+<p>
+  <strong>Werkzeuge:</strong> 22 mm Spaten/Schneckenbohrer, 15 m Glasfaserstäbe,
+  Stirnlampe, Knieschoner, Staubmaske
+</p>
+
+<ol>
+  <li>
+    <strong>Kameraposition</strong> vom Dachboden aus lokalisieren — Entfernung
+    von bekanntem Orientierungspunkt (Entlüftung, Schornstein) messen
+  </li>
+  <li>
+    <strong>22 mm Loch</strong> durch obere Platte + Traufbrett bohren (leicht
+    schräg nach unten für Wasserablauf)
+  </li>
+  <li>
+    <strong>Glasfaserstäbe</strong> vom Dachboden durch das Loch zur
+    Traufaußenseite schieben
+  </li>
+  <li>
+    <strong>Kabel an Stabende</strong> befestigen: 15 cm zurückfalten, mit
+    Elektroklebeband glatt umwickeln (kein Haken)
+  </li>
+  <li>
+    <strong>Vorsichtig ziehen</strong> — 2-Personen-Job: einer führt zu, einer
+    zieht
+  </li>
+  <li>
+    <strong>1 m Reserve</strong> auf Dachboden lassen (Serviceschlaufe), 60 cm
+    an der Kamera
+  </li>
+  <li>
+    <strong>Abdichten:</strong> Silikon um Kabel an Traufdurchdringung (innen +
+    außen)
+  </li>
+  <li>
+    <strong>Kabel tackern</strong> an Sparren alle 1,2 m (T25 isolierte
+    Klammern)
+  </li>
+</ol>
+
+  </AccordionContent>
+
+</AccordionItem>
+</Accordion>
+
+### Keller/Kriechkeller zur Außenwand
+
+- **Durch Randbalken bohren** (nicht Fundament) — 22 mm Loch, mind. 30 cm über Erdreich
+- **Brandschott:** Mineralwolle + Brandschutzsilikon um Kabel an Durchdringung stopfen
+- **Außen:** LB-Leerrohrbogen → ½" LFMC zur Kameradose
+
+### Innenwand → Außenbereich (Nachrüstung)
+
+1. **Old-Work-Dosenloch schneiden** in Kamerahöhe (innen)
+2. **Nach unten bohren** durch Bodenplatte in Keller/Kriechkeller (22 mm Schneckenbohrer)
+3. **Von unten herauffädeln** mit Glasfaserstäben
+4. **Schützen:** Nagelschutzplatten auf Balken wo Kabel vorbeiführt (NEC 300.4)
+
+---
+
+## Leerrohr & Schutz
+
+| Situation                   | Leerrohrtyp                                         | Größe | Hinweise                                     |
+| --------------------------- | --------------------------------------------------- | ----- | -------------------------------------------- |
+| **Außenwand freiliegend**   | LFMC (Flexibler flüssigkeitsdichter Metallschlauch) | ½"    | UV-beständig, max. 1,2 m zwischen Stützen    |
+| **Unterirdisch**            | PVC Schedule 40 / HDPE                              | ¾"    | 45 cm Abdeckung, Bogen, Einzugsschnur        |
+| **Dachboden (freiliegend)** | Nicht nötig (Cat6 CMR)                              | —     | Alle 1,2 m tackern, keine Klammern auf Kabel |
+| **Plenum-Decke**            | EMT / Plenum-zugelassenes Kabel                     | ½"    | CMP-Kabel erforderlich wenn kein Leerrohr    |
+| **Durch Brandwand**         | Feuerbeständige Muffe + Dichtmasse                  | —     | Hilti CFS-SL / 3M CP25                       |
+
+---
+
+## Anschluss: RJ45-Durchsteck (Am schnellsten, am zuverlässigsten)
+
+<Callout type="note">
+
+**Durchsteckstecker verwenden.** Standard-RJ45 erfordert präzises Trimmen.
+Durchsteck erlaubt Farbreihenfolge _vor_ dem Crimpen zu prüfen. **Werkzeug:**
+Ratschen-Durchsteck-Crimpzange (Klein VDV226-110, 45 €).
+
+</Callout>
+
+### T568B-Pinbelegung (Standard für PoE)
+
+| Pin | Paar | Farbe       | PoE-Funktion    |
+| --- | ---- | ----------- | --------------- |
+| 1   | 2    | Weiß/Orange | Daten + PoE (+) |
+| 2   | 2    | Orange      | Daten + PoE (+) |
+| 3   | 3    | Weiß/Grün   | Daten + PoE (-) |
+| 4   | 1    | Blau        | PoE (+) Reserve |
+| 5   | 1    | Weiß/Blau   | PoE (+) Reserve |
+| 6   | 3    | Grün        | Daten + PoE (-) |
+| 7   | 4    | Weiß/Braun  | PoE (-) Reserve |
+| 8   | 4    | Braun       | PoE (-) Reserve |
+
+**PoE nutzt ALLE 4 Paare** (802.3bt). **Alle 8 Adern müssen perfekt sein.**
+
+### Crimp-Verfahren (Durchsteck)
+
+1. **3,8 cm Mantel abisolieren** — Leiter nicht beschädigen
+2. **Paare nur soweit nötig aufdrehen** — Verdrillung nahe am Stecker belassen
+3. **T568B anordnen** — flach fächern, Reihenfolge links-nach-rechts prüfen
+4. **Vollständig einführen** — Leiter an Vorderseite sichtbar
+5. **Reihenfolge prüfen** — durch klaren Stecker sehen
+6. **Crimpen** — Ratschenwerkzeug, ein fester Druck
+7. **Zugtest** — 2,3 kg Zug, keine Bewegung
+
+---
+
+## Keystone-Buchsen (Wandsteckdosen-Anschluss)
+
+**Wann:** Kamera verbindet mit Patchpanel / Wanddose → Patchkabel zur Kamera
+
+**Punch-Down (110/Keystone):**
+
+1. 5 cm Mantel abisolieren
+2. Adern in farbcodierte Schlitze setzen (T568B auf Buchse aufgedruckt)
+3. **Gerade nach unten drücken** — 110er-Werkzeug, ein Schlag pro Ader
+4. Überstand bündig abschneiden
+5. In Wandplatte einrasten
+
+**Test:** Durchgang + PoE-Spannung an Buchse vor Kameraanschluss.
+
+---
+
+## Test: Jede Strecke prüfen
+
+<Callout type="warning">
+
+**Nie einem ungetesteten Kabel vertrauen.** 30 % der "Kameraausfälle" sind
+Kabelprobleme. Testen _vor_ der Kameramontage.
+
+</Callout>
+
+### Stufe 1: Durchgang + Aderbelegung (Jedes Kabel)
+
+**Werkzeug:** Basistester (NF-8601, 25 €) — 8 LEDs + Schirmung
+
+- **Alle 8 grün** = bestanden
+- **Jedes rot/offen/gekreuzt** = neu anschließen
+
+### Stufe 2: PoE-Spannung unter Last (Kritisch)
+
+**Werkzeug:** PoE-Tester (LINKSYS PTPoE, 35 €) oder Multimeter + PoE-Injektor
+
+1. Injektor → Kabel → Tester (oder Kamera) verbinden
+2. **Am Kameraknde messen**:
+
+- **PoE (802.3af):** 44–57V DC
+- **PoE+ (802.3at):** 50–57V DC
+- **PoE++ (802.3bt):** 52–57V DC
+
+3. **Unter Last** (Kamera eingeschaltet) — Spannungsabfall &lt;3V vom Injektor
+
+### Stufe 3: Datenrate bestätigen (Profi)
+
+**Werkzeug:** Kabelzertifizierer (Fluke DSX-5000, 8.000 €) — Miete 150 €/Tag
+
+- **Cat6:** 250 MHz, 1 Gbit/s garantiert
+- **Cat6a:** 500 MHz, 10 Gbit/s garantiert
+- **Bericht ausdrucken** für Garantie
+
+---
+
+## PoE-Spannungsabfall-Rechner
+
+**Formel:** `Vdrop = (2 × Länge_m × Strom_A × Widerstand_Ω_pro_1000m) / 1000`
+
+| Kabel              | Widerstand (Ω/1000m) | Max. 30W (0,6A) | Max. 60W (1,2A) | Max. 90W (1,8A) |
+| ------------------ | -------------------- | --------------- | --------------- | --------------- |
+| **Cat6 (23 AWG)**  | 21,7                 | **100 m**       | **50 m**        | **33 m**        |
+| **Cat6a (23 AWG)** | 21,7                 | 100 m           | 100 m           | 66 m            |
+| **Cat5e (24 AWG)** | 27,9                 | 76 m            | 38 m            | 25 m            |
+
+**Faustregel:** Unter **80 % des Maximums** bleiben für Reserve. Bei PoE++ (60/90W) Cat6a verwenden oder auf 30 m bei Cat6 begrenzen.
+
+---
+
+## Häufige Fehler & Lösungen
+
+| Symptom                               | Ursache                                            | Lösung                                                      |
+| ------------------------------------- | -------------------------------------------------- | ----------------------------------------------------------- |
+| **Kamera startet nachts neu (IR an)** | Spannungsabfall >3V                                | Kabel kürzen / Cat6a / PoE++-Injektor an Kamera             |
+| **Link flackert 100/1000 Mbit/s**     | Ein Paar offen / hoher Widerstand                  | Beide Enden neu anschließen; jedes Paar testen              |
+| **Kein Link, Tester zeigt 7/8 Adern** | Ein Leiter gebrochen / lose                        | Neu crimpen; auf Klammer-Quetschung prüfen                  |
+| **Gekreuzte Paare (1↔3, 2↔6)**        | T568A ein Ende, T568B anderes                      | Vereinheitlichen auf T568B beide Enden                      |
+| **Wasser im Kabel (Korrosion)**       | Außenkabel nicht gelgefüllt / schlechte Abdichtung | Mit Direct Burial ersetzen; Eintritte abdichten             |
+| **EMI-Störungen (Video-Artefakte)**   | Parallel zu Stromleitung/HLK                       | 30 cm+ Abstand; im rechten Winkel kreuzen; geschirmtes Cat6 |
+
+---
+
+## Vorschriften-Kurzreferenz (NEC 2023)
+
+| Artikel     | Anforderung                          | Praktische Umsetzung                               |
+| ----------- | ------------------------------------ | -------------------------------------------------- |
+| **300.4**   | Schutz vor mechanischer Beschädigung | Nagelschutzplatten, Leerrohr, 3,2 cm von der Kante |
+| **300.11**  | Befestigen & stützen                 | Klammern alle 1,2 m, innerhalb 30 cm der Dose      |
+| **300.22**  | Plenum-Bereiche                      | CMP-Kabel oder Leerrohr                            |
+| **411.4**   | Kleinspannungsbeleuchtung (Kameras)  | Klasse 2/3, gelistete Geräte                       |
+| **725.133** | Klasse 2/3 Kabeltrennung             | 5 cm von Starkstrom (oder Trennwand)               |
+| **800.170** | Erdung (Außenbereich)                | Antennen-Entladeeinrichtung bei Freiluft           |
+| **Lokal**   | Genehmigungsschwelle                 | Oft >500 € oder >1,8 m Höhe                        |
+
+---
+
+## Profi-Tipps aus 100+ Installationen
+
+1. **Beide Enden beschriften** vor dem Zug — Edding + Kabelmarkierer (Brother PT-E110)
+2. **Einzugsschnur zuerst** — Masonschnur für zukünftige Verlegungen hinterlassen
+3. **Serviceschleifen** — 1 m an Kamera, 1,8 m an NVR/Switch
+4. **Farbcodierung** — Unterschiedliche Mantelfarben pro Zone (Blau=Vorne, Grün=Hinten, Gelb=Seite)
+5. **Dokumentieren** — Foto jedes Anschlusses, Kabelplan PDF, As-Built-Diagramm
+6. **Vor Montage testen** — Kamera auf Leiter = 10× schwerer zu beheben
+7. **PoE-Budget** — Switch-Gesamt-PoE-Budget ≥ Σ Kamera max. Verbrauch × 1,2
+8. **Überspannungsschutz** — Außenverlegungen: PoE-Überspannungsschutz (Transtector, 30 €) am Gebäudeeintritt
+
+---
+
+## Werkzeug-Einkaufsliste (Einmalige Anschaffung)
+
+| Werkzeug                      | Modell                              | Preis   | Hinweise                    |
+| ----------------------------- | ----------------------------------- | ------- | --------------------------- |
+| **Durchsteck-Crimpzange**     | Klein VDV226-110                    | 45 €    | Ratsche, alles in einem     |
+| **Kabeltester (Basis)**       | NF-8601 / TRENDnetworks TC-NT2      | 25–60 € | Durchgang + Aderbelegung    |
+| **PoE-Tester**                | LINKSYS PTPoE / Ubiquiti POE-Tester | 35 €    | Spannung unter Last         |
+| **Punch-Down-Werkzeug**       | Fluke D914S / Klein VDV427-800      | 40 €    | 110/66 Klinge               |
+| **Glasfaserstäbe**            | Klein 56107 / Jonard GR-20          | 35 €    | 7,5–15 m Set                |
+| **22 mm Schneckenbohrer**     | Irwin Speedbor / Milwaukee          | 15 €    | Saubere Löcher in Holz      |
+| **Schlagbohrmaschine (SDS+)** | Bosch GBH2-28L / DeWalt DCH273      | 180 €   | Für Mauerwerk               |
+| **Beschriftungsgerät**        | Brother PT-E110 / PT-H110           | 50 €    | Schrumpfschlauch-Etiketten  |
+| **Kabeleinfädler**            | Klein 56007 30m                     | 30 €    | Stahl, nichtleitende Spitze |
+
+---
+
+## Verwandte Leitfäden
+
+- [DIY-Installation von Überwachungskameras: Komplette Anleitung](/blog/diy-security-camera-installation-complete-guide) — Vollständiger Installationsablauf
+- [So montieren Sie Außenkameras (Wand, Decke, Dachvorsprung)](/blog/how-to-mount-outdoor-cameras-wall-ceiling-eave) — Oberflächenspezifische Hardware
+- [Beste Überwachungskamerasysteme für kleine Unternehmen](/blog/best-small-business-security-camera-systems) — NVR-Dimensionierung, PoE-Budget
+- [CCTV-Videospeicher-Rechner](/blog/cctv-video-storage-calculator-hard-drive-space) — Speicherdimensionierung für Ihre Verlegungen
+
+---
+
+_Letzte Aktualisierung: Juli 2026. NEC-Referenzen basieren auf Ausgabe 2023 — lokale Änderungen prüfen._

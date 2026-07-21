@@ -1,0 +1,398 @@
+---
+title: "स्मार्ट होम इंटीग्रेशन: Alexa, Google Home, HomeKit (2026)"
+description: "सिक्योरिटी कैमरों को Alexa, Google Assistant और Apple HomeKit से कनेक्ट करें। नेटिव सपोर्ट, ब्रिज, Matter और लोकल कंट्रोल की तुलना करें। ऑटोमेशन: मोशन पर लाइट, घोषणाएं, रिकॉर्डिंग, जियोफ़ेंसिंग।"
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "smart-home-integration-alexa-google-homekit"
+author: "Your Name"
+tags: ["smart-home", "alexa", "google-home", "homekit", "matter", "automation"]
+postType: "review"
+---
+
+सिक्योरिटी कैमरे शक्तिशाली बन जाते हैं जब वे आपके स्मार्ट होम से बात करते हैं: मोशन पर लाइट चमकती हैं, स्पीकर आगंतुकों की घोषणा करते हैं, पहचाने गए चेहरों के लिए लॉक खुलते हैं, जियोफ़ेंसिंग अपने आप आर्म/डिसआर्म करती है। लेकिन सभी कैमरे सभी प्लेटफ़ॉर्म के साथ अच्छा नहीं खेलते। यह गाइड 2026 के लिए हर इंटीग्रेशन पथ का मैप बनाती है।
+
+<Badge variant="outline">प्लेटफ़ॉर्म सपोर्ट चीट शीट</Badge>
+
+| कैमरा ब्रांड                          | Alexa | Google Home | HomeKit              | Matter         | लोकल API                   |
+| ------------------------------------- | ----- | ----------- | -------------------- | -------------- | -------------------------- |
+| **Ring**                              | नेटिव | नेटिव       | ❌                   | ❌             | ❌                         |
+| **Arlo**                              | नेटिव | नेटिव       | नेटिव (Pro 3+)       | ❌             | ❌                         |
+| **Google Nest**                       | ❌    | नेटिव       | ❌                   | Matter (2024+) | ❌                         |
+| **Eufy**                              | स्किल | एक्शन       | नेटिव (HomeBase 3)   | Matter (Cam 3) | RTSP/ONVIF                 |
+| **Reolink**                           | स्किल | एक्शन       | ❌                   | ❌             | RTSP/ONVIF/HTTP            |
+| **UniFi Protect**                     | स्किल | एक्शन       | नेटिव (Protect 3.0+) | ❌             | WebSocket/RTSP             |
+| **Wyze**                              | स्किल | एक्शन       | ❌                   | ❌             | RTSP (बीटा)                |
+| **Blink**                             | नेटिव | नेटिव       | ❌                   | ❌             | ❌                         |
+| **TP-Link Tapo**                      | स्किल | एक्शन       | नेटिव (Matter)       | **Matter**     | RTSP                       |
+| **Axis / Hanwha / Dahua / Hikvision** | ❌    | ❌          | ❌                   | ❌             | **पूरा ONVIF/VAPIX/ISAPI** |
+
+---
+
+## प्लेटफ़ॉर्म डीप डाइव
+
+### Amazon Alexa
+
+**नेटिव सपोर्ट:** Ring, Blink, Arlo, Echo Show (डिस्प्ले के रूप में)
+**स्किल आवश्यक:** Reolink, Eufy, UniFi, Wyze, Tapo, Amcrest, TP-Link Kasa
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="alexa-features">
+    <AccordionTrigger>Alexa कैमरों के साथ क्या कर सकता है</AccordionTrigger>
+    <AccordionContent>
+
+      **लाइव व्यू:** "Alexa, [कैमरा नाम] दिखाओ" → Echo Show, Fire TV, Alexa ऐप
+      **घोषणाएं:** "Alexa, घोषणा करो [कैमरा] ने एक व्यक्ति का पता लगाया" → सभी
+      Echo डिवाइस **रूटीन (ऑटोमेशन):** - ट्रिगर: मोशन / व्यक्ति / पार्सल /
+      डोरबेल प्रेस - क्रियाएं: लाइट चालू/बंद, लॉक/अनलॉक, कस्टम वाक्यांश बोलें,
+      ध्वनि चलाएं, प्रतीक्षा करें, अधिसूचना **टू-वे टॉक:** "Alexa, [कैमरा] से
+      बात करो" (हाफ-डुप्लेक्स PTT) **रिकॉर्डिंग:** Ring/Blink/Arlo → क्लाउड
+      (सब्सक्रिप्शन)। अन्य → **Alexa के माध्यम से कोई क्लाउड रिकॉर्डिंग नहीं**।
+      **सीमाएं:** कोई स्थानीय स्ट्रीमिंग नहीं (सभी क्लाउड-रिले); Echo Show पर
+        10-मिनट टाइमआउट; कोई 4K नहीं (अधिकतम 1080p ट्रांसकोडेड); रूटीन प्रति रूटीन
+        1 ट्रिगर + 1 क्रिया तक सीमित (एकाधिक रूटीन का उपयोग करें)।
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="alexa-setup">
+    <AccordionTrigger>सेटअप टिप्स</AccordionTrigger>
+    <AccordionContent>
+
+        1. **स्किल सक्षम करें** → खाता लिंक करें → डिवाइस खोजें 2. Alexa ऐप में
+      कैमरों का **नाम बदलें** प्राकृतिक भाषा में ("सामने का दरवाज़ा", "ड्राइववे
+      कैम") 3. **ग्रुप बनाएं** ("बाहर" = सामने + पीछे + ड्राइववे) "बाहर दिखाओ"
+      के लिए 4. **रूटीन उदाहरण:** - **पोर्च लाइट:** सूर्यास्त के 30 मिनट बाद
+      सामने के दरवाज़े पर मोशन → पोर्च लाइट चालू करें (5 मिनट) - **निवारण:**
+      ड्राइववे पर व्यक्ति का पता चला → Echo पर "सिक्योरिटी कैमरा रिकॉर्डिंग कर
+      रहा है" + फ़्लडलाइट चालू - **स्वागत:** डोरबेल प्रेस → किचन Echo पर "कोई
+      सामने के दरवाज़े पर है" - **जियोफ़ेंस:** "जब मैं निकलूं" → कैमरे आर्म करें
+      (यदि स्किल द्वारा समर्थित)
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### Google Home (Google Assistant)
+
+**नेटिव सपोर्ट:** Nest, Arlo, Blink, Ring (सीमित)
+**एक्शन आवश्यक:** Eufy, Reolink, UniFi, Wyze, Tapo, Amcrest
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="google-features">
+    <AccordionTrigger>Google Home क्या कर सकता है</AccordionTrigger>
+    <AccordionContent>
+
+      **लाइव व्यू:** "Hey Google, [कैमरा] दिखाओ" → Nest Hub, Chromecast TV, फ़ोन
+      **घोषणाएं:** "Hey Google, ब्रॉडकास्ट करो [कैमरा] एक व्यक्ति देखता है" →
+      सभी Nest स्पीकर **ऑटोमेशन (Home ऐप → ऑटोमेशन):** - स्टार्टर: मोशन,
+      व्यक्ति, वाहन, जानवर, पार्सल, डोरबेल, ध्वनि - क्रियाएं: लाइट, प्लग, लॉक,
+      थर्मोस्टैट, स्पीकर, TV, स्क्रिप्ट **टू-वे टॉक:** "Hey Google, [कैमरा] से
+      बात करो" (केवल Nest; अन्य ऐप के माध्यम से) **रिकॉर्डिंग:** Nest Aware
+      (क्लाउड)। अन्य → **Google के माध्यम से कोई क्लाउड रिकॉर्डिंग नहीं**।
+      **Alexa से लाभ:** Nest Hub Max पर बेहतर मल्टी-कैमरा ग्रिड व्यू; अधिक
+      सूक्ष्म मोशन प्रकार; बिल्ट-इन Home/Away रूटीन; जटिल तर्क के लिए स्क्रिप्ट
+      एडिटर।
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="google-setup">
+    <AccordionTrigger>सेटअप टिप्स</AccordionTrigger>
+    <AccordionContent>
+
+        1. **डिवाइस जोड़ें** → "Google के साथ काम करता है" → ब्रांड खोजें → खाता
+      लिंक करें 2. Google Home ऐप में **कमरे असाइन करें** "लिविंग रूम में कैमरे"
+      के लिए 3. **ऑटोमेशन उदाहरण:** - **नाइट लाइट:** सूर्यास्त के बाद सामने के
+      दरवाज़े पर व्यक्ति → हॉलवे लाइट 50% (5 मिनट) - **पार्सल अलर्ट:** पार्सल का
+      पता चला → सभी स्पीकर पर "पार्सल डिलीवर हुआ" + Google शीट में लॉग करें -
+      **घर छोड़ना:** फ़ोन की उपस्थिति दूर → कैमरे आर्म करें (यदि स्किल समर्थन
+      करती है) + दरवाज़े लॉक करें - **पालतू अलर्ट:** यार्ड में जानवर का पता चला
+      → किचन स्पीकर पर "यार्ड में पालतू"
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### Apple HomeKit (HomeKit Secure Video)
+
+**नेटिव सपोर्ट:** Eufy (HomeBase 3), Arlo (Pro 3/4/5S, Ultra), Logitech Circle View, Netatmo, Eve, Aqara, TP-Link Tapo (Matter), UniFi Protect (3.0+), Onvis, Wemo
+**ब्रिज आवश्यक:** Reolink (Homebridge/Scrypted के माध्यम से), Ring (Homebridge के माध्यम से), Wyze (Homebridge के माध्यम से), Dahua/Hikvision (Homebridge/Scrypted के माध्यम से)
+
+<Callout type="info">
+
+**HomeKit Secure Video (HSV) = सर्वश्रेष्ठ गोपनीयता।** वीडियो **ऑन-डिवाइस**
+विश्लेषित (होम हब: Apple TV 4K, HomePod, iPad)। **एंड-टू-एंड एन्क्रिप्टेड** —
+Apple नहीं देख सकता। 10-दिन रोलिंग स्टोरेज **iCloud+ के साथ शामिल** (50GB = 1
+कैम, 200GB = 5 कैम, 2TB = असीमित)। कोई अलग सब्सक्रिप्शन नहीं।
+
+</Callout>
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="hsv-features">
+    <AccordionTrigger>HSV सुविधाएं और आवश्यकताएं</AccordionTrigger>
+    <AccordionContent>
+
+**समर्थित रेज़ोल्यूशन:** 1080p, 2K, 4K (विश्लेषण के लिए 1080p पर डाउनस्केल, स्रोत रेज़ पर संग्रहीत)
+**एक्टिविटी ज़ोन:** प्रति कैमरा, Home ऐप में सेट करें
+**फ़ेस रिकॉग्निशन:** "व्यक्ति का पता चला" → "जॉन का पता चला" (यदि पीपल एल्बम में है)
+**रिकॉर्डिंग विकल्प:** बंद / गतिविधि का पता लगाएं / स्ट्रीम और रिकॉर्ड करें
+**स्टोरेज:** iCloud+ (50GB/$0.99, 200GB/$2.99, 2TB/$9.99) — **प्रति कैमरा नहीं**
+**होम हब आवश्यक:** Apple TV 4K (2021+), HomePod (मिनी/2nd gen), iPad (हमेशा चालू)
+**लोकल स्ट्रीमिंग:** उसी Wi-Fi पर iPhone/iPad → सीधा (कोई इंटरनेट नहीं)। रिमोट → iCloud के माध्यम से रिले (एन्क्रिप्टेड)।
+**सीमाएं:** 200GB प्लान पर अधिकतम 5 कैमरे (जब तक 2TB न हो); कोई 24/7 निरंतर नहीं (केवल इवेंट); कोई वेब व्यू नहीं (केवल iOS/macOS); कोई नेटिव Android नहीं।
+
+    </AccordionContent>
+
+  </AccordionItem>
+  <AccordionItem value="homebridge">
+    <AccordionTrigger>गैर-HomeKit कैमरों को ब्रिज करना (Homebridge / Scrypted / Hoobs)</AccordionTrigger>
+    <AccordionContent>
+
+**Homebridge** (Node.js, 2000+ प्लगइन): Pi, Docker, NAS, मिनी PC पर चलता है
+
+- `homebridge-camera-ffmpeg` → RTSP → HSV (ट्रांसकोड करता है, मोशन जोड़ता है)
+- `homebridge-reolink` → Reolink नेटिव API (मोशन, PTZ, स्नैपशॉट)
+- `homebridge-dahua` / `homebridge-hikvision` → ONVIF/ISAPI
+- `homebridge-ring` → Ring कैमरे/डोरबेल (पोलिंग, ~30s लेटेंसी)
+
+**Scrypted** (TypeScript, नया, तेज़): नेटिव HomeKit, Google, Alexa प्लगइन
+
+- बेहतर RTSP हैंडलिंग, कम लेटेंसी, प्लगइन मार्केटप्लेस
+- Homebridge के समान हार्डवेयर पर चलता है
+
+**ब्रिज के लिए हार्डवेयर:** Raspberry Pi 4 (4GB+) / 5, Intel N100/N305 मिनी PC ($120), पुराना लैपटॉप, Synology/QNAP Docker।
+**लेटेंसी:** Homebridge FFmpeg ~2–5s; Scrypted ~1–3s; नेटिव HSV ~0.5–1s।
+**ब्रिज के माध्यम से HSV:** कैमरा RTSP का समर्थन करना चाहिए। ब्रिज ट्रांसकोड → HSV → iCloud। **HSV कैम सीमा में गिना जाता है।**
+
+</AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### Matter (नया मानक)
+
+**Matter 1.3 (2024)** **कैमरा** डिवाइस प्रकार जोड़ता है। **Matter 1.4 (2025)** **डोरबेल** प्रकार जोड़ता है।
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="matter-status">
+    <AccordionTrigger>वर्तमान Matter कैमरा सपोर्ट (2026)</AccordionTrigger>
+    <AccordionContent>
+
+**प्रमाणित Matter कैमरे:**
+
+- **TP-Link Tapo C120 / C220 / C320WS** (Wi-Fi पर Matter)
+- **Eve Cam** (Thread + Matter)
+- **Google Nest Cam (वायर्ड, 2024)** / **Nest Doorbell (वायर्ड, 2024)** — Google Home के माध्यम से Matter ब्रिज
+- **EufyCam 3 / SoloCam S340** — Matter फ़र्मवेयर अपडेट (2024)
+
+**Matter आपको क्या देता है:**
+
+- **मल्टी-एडमिन:** एक साथ Apple Home, Google Home, Alexa, SmartThings में जोड़ें
+- **लोकल कंट्रोल:** बेसिक ऑन/ऑफ/स्ट्रीम के लिए कोई क्लाउड रिले नहीं (Thread/Wi-Fi डायरेक्ट)
+- **मानकीकृत कमांड:** लाइव स्ट्रीम, मोशन इवेंट, प्राइवेसी मोड
+
+**Matter अभी तक क्या नहीं करता:**
+
+- 4K स्ट्रीमिंग (स्पेक में अधिकतम 1080p)
+- PTZ कंट्रोल (1.3/1.4 में नहीं)
+- फ़ेस रिकॉग्निशन / पार्सल डिटेक्शन (केवल विक्रेता एक्सटेंशन)
+- निरंतर रिकॉर्डिंग (केवल इवेंट क्लिप)
+- NVR एकीकरण
+
+**निर्णय (2026):** Matter कैमरे **बेसिक मल्टी-प्लेटफ़ॉर्म लाइव व्यू + मोशन अलर्ट** के लिए काम करते हैं। रिकॉर्डिंग, AI, PTZ, 4K के लिए → अभी भी नेटिव इंटीग्रेशन या ब्रिज की ज़रूरत है।
+
+</AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+---
+
+## लोकल कंट्रोल / नो-क्लाउड: उन्नत पथ
+
+<Callout type="tip">
+
+**लोकल = तेज़, निजी, ऑफ़लाइन काम करता है।** RTSP/ONVIF/WebSocket →
+Frigate/Scrypted/Blue Iris → Home Assistant → डैशबोर्ड/ऑटोमेशन। कोई विक्रेता
+क्लाउड कभी आपका वीडियो नहीं देखता।
+
+</Callout>
+
+### आर्किटेक्चर: पूरी तरह से स्थानीय कैमरा स्टैक
+
+```
+कैमरे (PoE/RTSP)
+    │
+    ▼
+┌─────────────────────────────────────┐
+│  Frigate (Docker)                   │
+│  - RTSP इन्जेस्ट                      │
+│  - मोशन डिटेक्शन (CPU)           │
+│  - AI ऑब्जेक्ट डिटेक्शन (Coral TPU)  │
+│  - रिकॉर्डिंग (MP4, सेगमेंटेड)       │
+│  - MQTT इवेंट (मोशन, व्यक्ति, आदि)│
+│  - WebRTC लाइव व्यू (सब-सेकंड)    │
+└─────────────────────────────────────┘
+    │                    │
+    ▼                    ▼
+┌─────────────┐    ┌─────────────┐
+│ Home Asst.  │    │  Scrypted   │
+│ (ऑटोमेशन)│    │ (HomeKit/   │
+│  - लाइट   │    │  Google/    │
+│  - लॉक    │    │  Alexa)     │
+│  - अलर्ट   │    │             │
+└─────────────┘    └─────────────┘
+    │                    │
+    ▼                    ▼
+डैशबोर्ड           Apple Home /
+                    Google Home /
+                    Alexa ऐप
+```
+
+### लोकल स्टैक के लिए हार्डवेयर
+
+| घटक                | बजट             | अनुशंसित                               | हाई-एंड                        |
+| ------------------ | --------------- | -------------------------------------- | ------------------------------ |
+| **सर्वर**          | RPi 4 4GB ($80) | Intel N100/N305 मिनी PC ($130)         | i5-13400 / Ryzen 5700G ($400)  |
+| **AI एक्सेलेरेटर** | केवल CPU (धीमा) | **Google Coral USB ($60)** / M.2 ($40) | Coral PCIe x4 / Hailo-8 ($150) |
+| **स्टोरेज**        | 1× 4TB HDD      | 2× 8TB RAID 1                          | 4× 14TB RAID 6 / ZFS           |
+| **नेटवर्क**        | 1 Gbps          | 2.5 Gbps स्विच + NIC                   | 10 Gbps बैकबोन                 |
+
+### लोकल स्टैक के लिए कैमरा आवश्यकताएं
+
+- **RTSP सपोर्ट** (मानक: `rtsp://user:pass@ip:554/stream1`)
+- **ONVIF प्रोफ़ाइल S/T/G** (डिस्कवरी, PTZ, इवेंट)
+- **सब-स्ट्रीम** (AI के लिए D1/720p, रिकॉर्डिंग के लिए 4K)
+- **स्ट्रीम के लिए कोई क्लाउड निर्भरता नहीं** (कुछ कैमरों को क्लाउड ऑथ टोकन की आवश्यकता होती है — उनसे बचें)
+
+**सर्वश्रेष्ठ ONVIF/RTSP कैमरे (2026):**
+
+- Reolink (सभी PoE, अधिकांश Wi-Fi): `rtsp://ip:554/h264Preview_01_main`
+- Dahua / Hikvision / Hanwha / Axis / Uniview / Vivotek / Milesight
+- UniFi G4/G5 (Protect सेटिंग्स के माध्यम से RTSP)
+- Amcrest / Lorex / Annke / Montavue (OEM Dahua/Hik)
+- **बचें:** Ring, Blink, Nest, Arlo (पूर्व-2024), Wyze (सीमित), Eufy (बैटरी कैम पर कोई RTSP नहीं)
+
+---
+
+## ऑटोमेशन रेसिपी (कॉपी-पेस्ट रेडी)
+
+### Home Assistant (YAML)
+
+```yaml
+# पोर्च लाइट व्यक्ति पर (सूर्यास्त के बाद)
+automation:
+  - alias: "पोर्च लाइट - सामने के दरवाज़े पर व्यक्ति"
+    trigger:
+      - platform: mqtt
+        topic: frigate/front_door/person
+        payload: "on"
+    condition:
+      - condition: sun
+        after: sunset
+        after_offset: "-00:30:00"
+    action:
+      - service: light.turn_on
+        target:
+          entity_id: light.porch
+        data:
+          brightness_pct: 80
+      - delay: "00:05:00"
+      - service: light.turn_off
+        target:
+          entity_id: light.porch
+
+  # निवारण: रात में ड्राइववे पर व्यक्ति पर सायरन + लाइट
+  - alias: "निवारण - रात ड्राइववे व्यक्ति"
+    trigger:
+      - platform: mqtt
+        topic: frigate/driveway/person
+        payload: "on"
+    condition:
+      - condition: time
+        after: "22:00:00"
+        before: "06:00:00"
+    action:
+      - service: siren.turn_on
+        target:
+          entity_id: siren.outdoor
+      - service: light.turn_on
+        target:
+          entity_id: light.floodlights
+        data:
+          brightness_pct: 100
+      - service: notify.mobile_app
+        data:
+          title: "ड्राइववे घुसपैठ"
+          message: "ड्राइववे पर {{ now().strftime('%H:%M') }} पर व्यक्ति का पता चला"
+```
+
+### Alexa रूटीन (ऐप → रूटीन)
+
+```
+जब: स्मार्ट होम डिवाइस → [सामने का दरवाज़ा कैमरा] → मोशन डिटेक्ट → व्यक्ति
+अगर: समय → सूर्यास्त और सूर्योदय के बीच
+तब:
+    1. स्मार्ट होम → [पोर्च लाइट] → चालू करें → 80% → 5 मिनट
+    2. Alexa कहता है → "सामने के दरवाज़े पर व्यक्ति" → डिवाइस: [किचन Echo]
+    3. स्मार्ट होम → [फ़्लडलाइट] → चालू करें → 100% → 3 मिनट
+```
+
+### Google Home ऑटोमेशन (Home ऐप → ऑटोमेशन)
+
+```
+स्टार्टर: डिवाइस → [ड्राइववे कैमरा] → इवेंट → व्यक्ति का पता चला
+शर्त: समय → रात 10:00 बजे और सुबह 6:00 बजे के बीच
+क्रियाएं:
+    1. डिवाइस → [फ़्लडलाइट] → चालू करें → चमक 100%
+    2. डिवाइस → [सभी स्पीकर] → ब्रॉडकास्ट → "ड्राइववे पर व्यक्ति का पता चला"
+    3. स्क्रिप्ट → Google शीट्स में लॉग करें (Make/Zapier/वेबहुक के माध्यम से)
+```
+
+### Apple HomeKit (Home ऐप → ऑटोमेशन)
+
+```
+जब: एक सेंसर कुछ पता लगाता है → [सामने का दरवाज़ा कैमरा] → लोगों का पता चला
+शर्त: समय → सूर्यास्त के बाद
+करें:
+    1. सीन → [पोर्च लाइट चालू] (पूर्व-निर्मित सीन: पोर्च 80%, एंट्री 50%)
+    2. प्रतीक्षा करें → 5 मिनट
+    3. सीन → [पोर्च लाइट बंद]
+```
+
+---
+
+## प्लेटफ़ॉर्म तुलना: आपको कौन सा चुनना चाहिए
+
+| प्राथमिकता                   | सर्वश्रेष्ठ प्लेटफ़ॉर्म                 | क्यों                                                       |
+| ---------------------------- | --------------------------------------- | ----------------------------------------------------------- |
+| **गोपनीयता / कोई क्लाउड**    | **HomeKit (HSV) + लोकल ब्रिज**          | E2E एन्क्रिप्शन, iCloud+ शामिल, ऑन-डिवाइस AI                |
+| **आवाज + डिस्प्ले**          | **Alexa** (Echo Show इकोसिस्टम)         | सबसे अधिक स्किल, सर्वश्रेष्ठ रूटीन UI, सस्ते डिस्प्ले       |
+| **ऑटोमेशन पावर**             | **Google Home** (स्क्रिप्ट एडिटर)       | सर्वश्रेष्ठ स्टार्टर प्रकार, जटिल तर्क, Nest Hub ग्रिड      |
+| **लोकल + मल्टी-प्लेटफ़ॉर्म** | **Home Assistant + Frigate + Scrypted** | पूर्ण नियंत्रण, Matter ब्रिज, कोई विक्रेता लॉक-इन नहीं      |
+| **सबसे आसान सेटअप**          | **Ring / Blink / Nest** (एकल ब्रांड)    | नेटिव, कोई ब्रिज नहीं, लेकिन सब्सक्रिप्शन + क्लाउड          |
+| **व्यवसाय / मल्टी-साइट**     | **UniFi Protect**                       | केंद्रीकृत, कोई क्लाउड शुल्क नहीं, HSV + Alexa/Google स्किल |
+| **Matter फ़्यूचर-प्रूफ**     | **TP-Link Tapo / Eve**                  | Thread + Matter, हर जगह काम करता है                         |
+
+---
+
+## माइग्रेशन पथ: क्लाउड से लोकल तक
+
+1. अभी के लिए **क्लाउड कैम रखें** (Ring डोरबेल, Blink आउटडोर)
+2. **PoE कैम जोड़ें** (Reolink, Dahua) → NVR (UniFi/Reolink) या Frigate सर्वर
+3. **क्लाउड कैम को ब्रिज करें** Homebridge/Scrypted → HomeKit/Google/Alexa के माध्यम से
+4. **ऑटोमेशन को Home Assistant** (या HA + Alexa/Google रूटीन) में ले जाएं
+5. **ब्रिज किए गए कैम पर क्लाउड रिकॉर्डिंग अक्षम करें**; लोकल NVR/Frigate का उपयोग करें
+6. **सब्सक्रिप्शन रद्द करें** जब लोकल रिकॉर्डिंग सत्यापित हो जाए
+7. **भविष्य के कैम:** केवल ONVIF/RTSP + Matter खरीदें
+
+---
+
+## संबंधित गाइड
+
+- [Two-Way Audio Security Cameras: Complete Guide](/blog/two-way-audio-security-cameras-complete-guide) — घोषणाओं के लिए ऑडियो ट्रिगर
+- [Facial Recognition Security Cameras: Capabilities & Privacy](/blog/facial-recognition-security-cameras-privacy) — HomeKit/HSV में फ़ेस रिक
+- [PoE vs Wireless vs Solar Comparison](/blog/poe-vs-wireless-vs-solar-comparison) — विश्वसनीय लोकल स्ट्रीमिंग के लिए पावर
+- [Best Outdoor Security Cameras 2026](/blog/best-outdoor-security-cameras-2026) — सर्वश्रेष्ठ इंटीग्रेशन सपोर्ट वाला हार्डवेयर

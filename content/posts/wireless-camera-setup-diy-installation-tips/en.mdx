@@ -9,13 +9,12 @@ tags: ["diy", "wireless", "wifi", "battery", "solar", "installation"]
 postType: "howto"
 ---
 
-import { Callout } from "@/components/ui/callout"
-import { Badge } from "@/components/ui/badge"
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
-
 Wireless cameras promise "no wires, easy install." Reality: dead zones, battery anxiety, 2.4 GHz congestion, and solar panels that don't charge in winter. This guide turns wireless from frustrating to reliable.
 
-<Badge variant="outline">Wireless ≠ Wire-Free</Badge> **Plug-in wireless** (Reolink E1, Wyze v4, TP-Link Tapo) needs 120V outlet. **Battery/Solar** (EufyCam 3, Reolink Argus 4 Pro, Ring Stick Up) is truly wire-free. Both use Wi-Fi. Both need solid RF planning.
+<Badge variant="outline">Wireless ≠ Wire-Free</Badge> **Plug-in wireless**
+(Reolink E1, Wyze v4, TP-Link Tapo) needs 120V outlet. **Battery/Solar**
+(EufyCam 3, Reolink Argus 4 Pro, Ring Stick Up) is truly wire-free. Both use
+Wi-Fi. Both need solid RF planning.
 
 ---
 
@@ -23,11 +22,11 @@ Wireless cameras promise "no wires, easy install." Reality: dead zones, battery 
 
 ### Frequency Bands
 
-| Band | Channels | Max Speed | Penetration | Range | Best For |
-|------|----------|-----------|-------------|-------|----------|
-| **2.4 GHz** | 1, 6, 11 (non-overlap) | 600 Mbps (ax) | ★★★★★ | 150+ ft | **All outdoor cameras** |
-| **5 GHz** | 36–165 | 2.4 Gbps (ax) | ★★☆☆☆ | 50 ft | Indoor, short-range |
-| **6 GHz (Wi-Fi 6E/7)** | 1–233 | 5+ Gbps | ★☆☆☆☆ | 30 ft | Future-proof, indoor only |
+| Band                   | Channels               | Max Speed     | Penetration | Range   | Best For                  |
+| ---------------------- | ---------------------- | ------------- | ----------- | ------- | ------------------------- |
+| **2.4 GHz**            | 1, 6, 11 (non-overlap) | 600 Mbps (ax) | ★★★★★       | 150+ ft | **All outdoor cameras**   |
+| **5 GHz**              | 36–165                 | 2.4 Gbps (ax) | ★★☆☆☆       | 50 ft   | Indoor, short-range       |
+| **6 GHz (Wi-Fi 6E/7)** | 1–233                  | 5+ Gbps       | ★☆☆☆☆       | 30 ft   | Future-proof, indoor only |
 
 **Rule:** Force cameras to **2.4 GHz only**. 5/6 GHz don't penetrate walls/siding. Most cameras don't support 6 GHz anyway.
 
@@ -42,6 +41,7 @@ Width:  20 MHz each (non-overlapping)
 **Scan first:** Use **WiFi Analyzer (Android)** or **AirPort Utility (iOS)** → Scan → Note neighbor channels.
 
 **Assign:**
+
 - Your router/AP: Channel 1, 6, or 11 (whichever least crowded)
 - Camera AP (if separate): Different non-overlapping channel
 - **Width: 20 MHz only** (40 MHz overlaps neighbors, causes retries)
@@ -50,31 +50,35 @@ Width:  20 MHz each (non-overlapping)
 
 ## Network Architecture: Mesh vs Extender vs Dedicated AP
 
-| Architecture | Pros | Cons | Best For |
-|--------------|------|------|----------|
-| **Mesh (Eero Pro 6E, UniFi Dream Router, Asus ZenWiFi)** | Seamless roaming, single SSID, app management | Cost ($300–600), all traffic through mesh | Whole-home, 5+ cameras |
-| **Wired AP (UniFi U6 Lite, U6+, U7 Pro)** | Best performance, PoE powered, VLAN support | Requires Ethernet run | **Best for cameras** — wired backhaul |
-| **Powerline + Wi-Fi (TP-Link TL-WPA8630)** | No new wires, uses electrical wiring | 50–200 Mbps real, noisy on AFCI | Retrofit where cable impossible |
-| **Range Extender (TP-Link RE605X)** | Cheap ($50) | Halves bandwidth, adds latency, separate SSID | **Avoid for cameras** |
-| **Outdoor AP (UniFi U6 Mesh, UAP-AC-M)** | Weatherproof, PoE, mesh uplink | Cost ($180–300) | Detached garage, gate, barn |
+| Architecture                                             | Pros                                          | Cons                                          | Best For                              |
+| -------------------------------------------------------- | --------------------------------------------- | --------------------------------------------- | ------------------------------------- |
+| **Mesh (Eero Pro 6E, UniFi Dream Router, Asus ZenWiFi)** | Seamless roaming, single SSID, app management | Cost ($300–600), all traffic through mesh     | Whole-home, 5+ cameras                |
+| **Wired AP (UniFi U6 Lite, U6+, U7 Pro)**                | Best performance, PoE powered, VLAN support   | Requires Ethernet run                         | **Best for cameras** — wired backhaul |
+| **Powerline + Wi-Fi (TP-Link TL-WPA8630)**               | No new wires, uses electrical wiring          | 50–200 Mbps real, noisy on AFCI               | Retrofit where cable impossible       |
+| **Range Extender (TP-Link RE605X)**                      | Cheap ($50)                                   | Halves bandwidth, adds latency, separate SSID | **Avoid for cameras**                 |
+| **Outdoor AP (UniFi U6 Mesh, UAP-AC-M)**                 | Weatherproof, PoE, mesh uplink                | Cost ($180–300)                               | Detached garage, gate, barn           |
 
 <Callout type="tip">
-**Pro Architecture:** PoE Switch → UniFi U6+ AP (ceiling, central) → 2.4 GHz dedicated SSID "CAM-2G" (VLAN 20) → All cameras. Isolates IoT, no roaming issues, wired backhaul.
+
+**Pro Architecture:** PoE Switch → UniFi U6+ AP (ceiling, central) → 2.4 GHz
+dedicated SSID "CAM-2G" (VLAN 20) → All cameras. Isolates IoT, no roaming
+issues, wired backhaul.
+
 </Callout>
 
 ---
 
 ## Camera Wi-Fi Requirements
 
-| Spec | Minimum | Recommended | Why |
-|------|---------|-------------|-----|
-| **Signal (RSSI)** | -70 dBm | **-55 dBm or better** | -70 = frequent drops; -55 = rock solid |
-| **SNR** | 15 dB | **25+ dB** | Signal vs noise margin |
-| **Upload Bandwidth** | 1 Mbps/cam (1080p) | 5 Mbps/cam (4K) | Sustained, not burst |
-| **Latency** | <100 ms | <30 ms | Live view responsiveness |
-| **Packet Loss** | <2% | <0.5% | Recording gaps, frozen frames |
+| Spec                 | Minimum            | Recommended           | Why                                    |
+| -------------------- | ------------------ | --------------------- | -------------------------------------- |
+| **Signal (RSSI)**    | -70 dBm            | **-55 dBm or better** | -70 = frequent drops; -55 = rock solid |
+| **SNR**              | 15 dB              | **25+ dB**            | Signal vs noise margin                 |
+| **Upload Bandwidth** | 1 Mbps/cam (1080p) | 5 Mbps/cam (4K)       | Sustained, not burst                   |
+| **Latency**          | &lt;100 ms         | &lt;30 ms             | Live view responsiveness               |
+| **Packet Loss**      | &lt;2%             | &lt;0.5%              | Recording gaps, frozen frames          |
 
-**Test at camera location:** Phone on same SSID → Speedtest → Note upload. Walk to camera spot → re-test. If upload <5 Mbps, fix Wi-Fi first.
+**Test at camera location:** Phone on same SSID → Speedtest → Note upload. Walk to camera spot → re-test. If upload &lt;5 Mbps, fix Wi-Fi first.
 
 ---
 
@@ -84,6 +88,7 @@ Width:  20 MHz each (non-overlapping)
   <AccordionItem value="placement">
     <AccordionTrigger>AP Placement Rules</AccordionTrigger>
     <AccordionContent>
+
 1. **Central, elevated** — Ceiling mount in hallway > corner shelf
 2. **Line of sight** — Avoid: chimney, brick wall, metal siding, HVAC, mirror, aquarium
 3. **One wall max** — Camera ↔ AP through ≤1 interior wall
@@ -92,7 +97,9 @@ Width:  20 MHz each (non-overlapping)
 6. **Antenna orientation** — Vertical for horizontal coverage; tilt 45° for multi-floor
 
 **UniFi U6+ Example:** Ceiling mount in hallway center → 2.4 GHz covers 3,000 sq ft home + 50 ft yard. Cameras at -50 to -60 dBm.
-    </AccordionContent>
+
+</AccordionContent>
+
   </AccordionItem>
 </Accordion>
 
@@ -102,28 +109,28 @@ Width:  20 MHz each (non-overlapping)
 
 ### Placement for Solar + Wi-Fi
 
-| Factor | Ideal | Avoid |
-|--------|-------|-------|
-| **Solar Panel** | True south (NH), 30–45° tilt, **no shade 9am–3pm Dec 21** | North face, under eave, tree shadow |
-| **Camera** | 10–15 ft from panel (cable reach), under eave for rain | Direct sun on lens (overheats), sprinkler spray |
-| **Wi-Fi** | ≤50 ft from AP, 1 wall max | Metal siding, brick chimney between |
+| Factor          | Ideal                                                     | Avoid                                           |
+| --------------- | --------------------------------------------------------- | ----------------------------------------------- |
+| **Solar Panel** | True south (NH), 30–45° tilt, **no shade 9am–3pm Dec 21** | North face, under eave, tree shadow             |
+| **Camera**      | 10–15 ft from panel (cable reach), under eave for rain    | Direct sun on lens (overheats), sprinkler spray |
+| **Wi-Fi**       | ≤50 ft from AP, 1 wall max                                | Metal siding, brick chimney between             |
 
 ### Battery Life Extension
 
-| Setting | Default | Optimized | Savings |
-|---------|---------|-----------|---------|
-| **Motion Sensitivity** | High | Medium / Custom Zone | 30–50% |
-| **Clip Length** | 30s | 10–15s | 40–60% |
-| **Retrigger Interval** | 10s | 30–60s | 20–30% |
-| **Night Vision** | Auto IR | Schedule: IR off if streetlight | 15–25% |
-| **Live View** | On demand | Disable auto-preview | 10–20% |
-| **Firmware** | Auto | Manual (check monthly) | Prevents bugs |
+| Setting                | Default   | Optimized                       | Savings       |
+| ---------------------- | --------- | ------------------------------- | ------------- |
+| **Motion Sensitivity** | High      | Medium / Custom Zone            | 30–50%        |
+| **Clip Length**        | 30s       | 10–15s                          | 40–60%        |
+| **Retrigger Interval** | 10s       | 30–60s                          | 20–30%        |
+| **Night Vision**       | Auto IR   | Schedule: IR off if streetlight | 15–25%        |
+| **Live View**          | On demand | Disable auto-preview            | 10–20%        |
+| **Firmware**           | Auto      | Manual (check monthly)          | Prevents bugs |
 
 **Real-world:** EufyCam 3 (13,000 mAh) @ Medium sensitivity, 15s clips, 30s retrigger, 2.4 GHz -55 dBm → **4–6 months** (vs claimed 1 yr).
 
 ### Winter Battery Care (Zone 5 and colder)
 
-- **Li-ion stops charging <32°F (0°C).** Camera runs on battery until dead.
+- **Li-ion stops charging &lt;32°F (0°C).** Camera runs on battery until dead.
 - **Fixes:**
   - Bring inside monthly to warm-charge (painful but works)
   - **LiFePO₄ upgrade** (Reolink Go PT Plus, custom) — charges to -4°F
@@ -136,12 +143,12 @@ Width:  20 MHz each (non-overlapping)
 
 ### Power Considerations
 
-| Camera | Power Draw | Outlet Type | Cable Management |
-|--------|------------|-------------|------------------|
-| Reolink E1 Outdoor | 5W (12V/0.5A) | 120V → 12V adapter | Weatherproof box + grommet |
-| Wyze Cam v4 | 3W (5V/0.6A) | 120V → 5V USB | USB extension + silicone seal |
-| TP-Link Tapo C120 | 4W (5V/0.8A) | 120V → 5V USB | Short USB, drip loop |
-| Google Nest Cam (wired) | 7W (5V/1.4A) | 120V → 5V proprietary | Proprietary cable only |
+| Camera                  | Power Draw    | Outlet Type           | Cable Management              |
+| ----------------------- | ------------- | --------------------- | ----------------------------- |
+| Reolink E1 Outdoor      | 5W (12V/0.5A) | 120V → 12V adapter    | Weatherproof box + grommet    |
+| Wyze Cam v4             | 3W (5V/0.6A)  | 120V → 5V USB         | USB extension + silicone seal |
+| TP-Link Tapo C120       | 4W (5V/0.8A)  | 120V → 5V USB         | Short USB, drip loop          |
+| Google Nest Cam (wired) | 7W (5V/1.4A)  | 120V → 5V proprietary | Proprietary cable only        |
 
 **Drip Loop:** Cable forms **U-shape below outlet** → water drips off loop, not into outlet.
 
@@ -159,32 +166,25 @@ Width:  20 MHz each (non-overlapping)
   <AccordionItem value="app-config">
     <AccordionTrigger>Essential App Settings</AccordionTrigger>
     <AccordionContent>
-**Naming:** `CAM-FRONT-DOOR`, `CAM-DRIVEWAY`, `CAM-BACKYARD` (sortable, identifiable)
-**Timezone / NTP:** Auto (phone) or manual — critical for timestamps
-**Video:**
-- Main Stream: 2K/4K @ 15 fps, H.265, VBR 4–6 Mbps
-- Sub Stream: 720p @ 15 fps, H.265, 0.5–1 Mbps (mobile live view)
-**Motion:**
-- Detection Type: Person + Vehicle (disable "All Motion")
-- Zones: Draw ONLY target areas (exclude trees, street, neighbor)
-- Sensitivity: Start Medium → adjust after 48h review
-- Retrigger: 30s minimum
-**Recording:**
-- Schedule: 24/7 if powered + microSD; Motion-only if battery
-- Pre-record: 5–10s (captures approach)
-- Post-record: 10–15s
-**Notifications:**
-- Push: Person + Vehicle only
-- Email: Off (clutters inbox)
-- Rich Preview: On (see thumbnail in lock screen)
-**Privacy:**
-- Mask: Draw over neighbor windows, bedroom windows
-- Audio: Off unless two-way needed (legal)
-**Network:**
-- 2.4 GHz only (force if dual-band)
-- Static IP / DHCP Reservation (router side)
-- RTSP / ONVIF: Enable if using NVR/Frigate
+
+      **Naming:** `CAM-FRONT-DOOR`, `CAM-DRIVEWAY`, `CAM-BACKYARD` (sortable,
+      identifiable) **Timezone / NTP:** Auto (phone) or manual — critical for
+      timestamps **Video:** - Main Stream: 2K/4K @ 15 fps, H.265, VBR 4–6 Mbps -
+      Sub Stream: 720p @ 15 fps, H.265, 0.5–1 Mbps (mobile live view)
+      **Motion:** - Detection Type: Person + Vehicle (disable "All Motion") -
+      Zones: Draw ONLY target areas (exclude trees, street, neighbor) -
+      Sensitivity: Start Medium → adjust after 48h review - Retrigger: 30s
+      minimum **Recording:** - Schedule: 24/7 if powered + microSD; Motion-only
+      if battery - Pre-record: 5–10s (captures approach) - Post-record: 10–15s
+      **Notifications:** - Push: Person + Vehicle only - Email: Off (clutters
+      inbox) - Rich Preview: On (see thumbnail in lock screen) **Privacy:** -
+      Mask: Draw over neighbor windows, bedroom windows - Audio: Off unless
+      two-way needed (legal) **Network:** - 2.4 GHz only (force if dual-band) -
+      Static IP / DHCP Reservation (router side) - RTSP / ONVIF: Enable if using
+      NVR/Frigate
+
     </AccordionContent>
+
   </AccordionItem>
 </Accordion>
 
@@ -192,25 +192,30 @@ Width:  20 MHz each (non-overlapping)
 
 ## Troubleshooting Wireless Camera Issues
 
-| Symptom | Diagnosis | Fix |
-|---------|-----------|-----|
-| **"Camera Offline" daily** | RSSI < -75 dBm | Move AP closer; add wired AP; check channel |
-| **Live view spins / fails** | Upload < 1 Mbps | Test Speedtest at camera; upgrade AP |
-| **Clips missing at night** | IR reflection / whiteout | Angle down 15°; move away from wall; disable IR + external illuminator |
-| **Battery dies in 2 weeks** | High traffic zone / poor RSSI | Reduce sensitivity; narrow zones; add solar; check -60 dBm |
-| **Live view lag > 5 sec** | High latency / bufferbloat | QoS on router (prioritize camera VLAN); wired AP backhaul |
-| **"No Wi-Fi" after power outage** | Camera boots before router | UPS on router + AP; camera auto-reconnect (check firmware) |
-| **Can't connect to 2.4 GHz** | Router band-steering | Disable band-steering; separate SSIDs ("HOME-2G", "HOME-5G") |
+| Symptom                           | Diagnosis                     | Fix                                                                    |
+| --------------------------------- | ----------------------------- | ---------------------------------------------------------------------- |
+| **"Camera Offline" daily**        | RSSI < -75 dBm                | Move AP closer; add wired AP; check channel                            |
+| **Live view spins / fails**       | Upload < 1 Mbps               | Test Speedtest at camera; upgrade AP                                   |
+| **Clips missing at night**        | IR reflection / whiteout      | Angle down 15°; move away from wall; disable IR + external illuminator |
+| **Battery dies in 2 weeks**       | High traffic zone / poor RSSI | Reduce sensitivity; narrow zones; add solar; check -60 dBm             |
+| **Live view lag > 5 sec**         | High latency / bufferbloat    | QoS on router (prioritize camera VLAN); wired AP backhaul              |
+| **"No Wi-Fi" after power outage** | Camera boots before router    | UPS on router + AP; camera auto-reconnect (check firmware)             |
+| **Can't connect to 2.4 GHz**      | Router band-steering          | Disable band-steering; separate SSIDs ("HOME-2G", "HOME-5G")           |
 
 ---
 
 ## Security: Isolate Your Cameras
 
 <Callout type="danger">
-**Cameras are IoT — highest breach risk.** Isolate on VLAN with **no internet access** (except NTP/firmware). Block camera → LAN. Allow LAN → camera (view only).
+
+**Cameras are IoT — highest breach risk.** Isolate on VLAN with **no internet
+access** (except NTP/firmware). Block camera → LAN. Allow LAN → camera (view
+only).
+
 </Callout>
 
 **UniFi / VLAN Example:**
+
 ```
 VLAN 10 (LAN)     192.168.10.x  → Full access
 VLAN 20 (CAMERAS) 192.168.20.x  → Block internet, Block LAN access
@@ -219,6 +224,7 @@ VLAN 20 (CAMERAS) 192.168.20.x  → Block internet, Block LAN access
 ```
 
 **Router Firewall Rules (Ubiquiti / OPNsense / pfSense):**
+
 1. **Allow** CAMERAS → Router (NTP, DNS)
 2. **Allow** NVR → CAMERAS (RTSP, HTTP, ONVIF)
 3. **Block** CAMERAS → LAN
@@ -229,16 +235,16 @@ VLAN 20 (CAMERAS) 192.168.20.x  → Block internet, Block LAN access
 
 ## Quick Reference: Wireless Camera Specs (2026)
 
-| Camera | Wi-Fi | Battery | Solar | Max RSSI | Best For |
-|--------|-------|---------|-------|----------|----------|
-| **EufyCam 3 S330** | 2.4/5 GHz (Wi-Fi 6) | 13,000 mAh | Integrated 2.4W | -55 dBm | HomeKit, local AI, no sub |
-| **Reolink Argus 4 Pro** | 2.4/5 GHz | 9,600 mAh | 6W panel (inc) | -60 dBm | 4K battery, hub local storage |
-| **Ring Stick Up Cam Pro** | 2.4/5 GHz | 6,000 mAh | 4W panel (opt) | -65 dBm | Alexa, Ring ecosystem, 3D motion |
-| **Arlo Pro 5S 2K** | 2.4/5 GHz | 5,200 mAh | 4W panel (opt) | -65 dBm | Arlo Secure, 2K HDR |
-| **Wyze Cam v4** | 2.4 GHz | Plug-in (5V) | — | -55 dBm | Budget indoor/covered outdoor |
-| **TP-Link Tapo C120** | 2.4 GHz | Plug-in (5V) | — | -55 dBm | Budget, Matter, local microSD |
-| **Google Nest Cam (wired)** | 2.4/5 GHz | Plug-in (5V) | — | -55 dBm | Nest Aware, HomeKit (via Matter) |
-| **Reolink E1 Outdoor** | 2.4/5 GHz | PoE / 12V DC | — | -55 dBm | Pan/tilt, PoE option |
+| Camera                      | Wi-Fi               | Battery      | Solar           | Max RSSI | Best For                         |
+| --------------------------- | ------------------- | ------------ | --------------- | -------- | -------------------------------- |
+| **EufyCam 3 S330**          | 2.4/5 GHz (Wi-Fi 6) | 13,000 mAh   | Integrated 2.4W | -55 dBm  | HomeKit, local AI, no sub        |
+| **Reolink Argus 4 Pro**     | 2.4/5 GHz           | 9,600 mAh    | 6W panel (inc)  | -60 dBm  | 4K battery, hub local storage    |
+| **Ring Stick Up Cam Pro**   | 2.4/5 GHz           | 6,000 mAh    | 4W panel (opt)  | -65 dBm  | Alexa, Ring ecosystem, 3D motion |
+| **Arlo Pro 5S 2K**          | 2.4/5 GHz           | 5,200 mAh    | 4W panel (opt)  | -65 dBm  | Arlo Secure, 2K HDR              |
+| **Wyze Cam v4**             | 2.4 GHz             | Plug-in (5V) | —               | -55 dBm  | Budget indoor/covered outdoor    |
+| **TP-Link Tapo C120**       | 2.4 GHz             | Plug-in (5V) | —               | -55 dBm  | Budget, Matter, local microSD    |
+| **Google Nest Cam (wired)** | 2.4/5 GHz           | Plug-in (5V) | —               | -55 dBm  | Nest Aware, HomeKit (via Matter) |
+| **Reolink E1 Outdoor**      | 2.4/5 GHz           | PoE / 12V DC | —               | -55 dBm  | Pan/tilt, PoE option             |
 
 ---
 
@@ -252,4 +258,4 @@ VLAN 20 (CAMERAS) 192.168.20.x  → Block internet, Block LAN access
 
 ---
 
-*Last updated: July 2026. Wi-Fi 7 (802.11be) rolling out — 320 MHz channels, MLO. Cameras still 2.4 GHz for range. Plan AP upgrades accordingly.*
+_Last updated: July 2026. Wi-Fi 7 (802.11be) rolling out — 320 MHz channels, MLO. Cameras still 2.4 GHz for range. Plan AP upgrades accordingly._

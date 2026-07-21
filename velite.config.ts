@@ -1,6 +1,6 @@
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypeExternalLinks from "rehype-external-links"
-import rehypeRaw from "rehype-raw"
+// import rehypeRaw from "rehype-raw"
 import rehypeSlug from "rehype-slug"
 import remarkEmoji from "remark-emoji"
 import remarkGfm from "remark-gfm"
@@ -149,6 +149,7 @@ const posts = defineCollection({
           "event",
           "software",
           "listing",
+          "guide",
         ])
         .default("blog")
         .optional(),
@@ -189,18 +190,6 @@ export default defineConfig({
     rehypePlugins: [
       rehypeSlug,
       [rehypeAutolinkHeadings, { behavior: "wrap" }],
-      [
-        rehypeRaw,
-        {
-          passThrough: [
-            "mdxJsxFlowElement",
-            "mdxJsxTextElement",
-            "mdxFlowExpression",
-            "mdxTextExpression",
-            "mdxEsm",
-          ] as const,
-        },
-      ],
       [
         rehypeExternalLinks,
         { target: "_blank", rel: ["nofollow", "noopener", "noreferrer"] },

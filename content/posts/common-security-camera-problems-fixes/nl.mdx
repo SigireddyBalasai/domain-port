@@ -1,0 +1,274 @@
+---
+title: "Veelvoorkomende Problemen met Beveiligingscamera's & Oplossingen (2026)"
+description: "Los de 25 meest voorkomende cameraproblemen op: offline, nachtzicht, beweging meldingen, opname hiaten, Wi-Fi uitval, PoE stroom, NVR fouten. Stapsgewijze diagnostiek voor elk cameratype."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "common-security-camera-problems-fixes"
+author: "Your Name"
+tags: ["troubleshooting", "fixes", "problems", "maintenance", "diy"]
+postType: "howto"
+---
+
+Elk camerasysteem krijgt problemen. Deze gids behandelt de 25 meest voorkomende problemen met stapsgewijze diagnose en oplossingen — geordend op symptoom zodat u snel de oplossing vindt.
+
+<Badge variant="outline">Diagnosemethode</Badge> **Begin simpel:** Stroom →
+Kabel → Netwerk → Instellingen → Hardware. 80% van problemen is stroom of kabel.
+
+---
+
+## Snelle diagnostische stroomdiagram
+
+```
+Camera werkt niet?
+    │
+    ├─ Geen stroom-LED? → Voeding / PoE / Batterij (Sectie 1)
+    ├─ Stroom OK, geen beeld? → Kabel / Link / IP Conflict (Sectie 2)
+    ├─ Beeld OK, geen opname? → NVR / Opslag / Schema (Sectie 3)
+    ├─ Beeld OK, valse meldingen? → Bewegingszones / Gevoeligheid / AI (Sectie 4)
+    ├─ Nachtzicht slecht? → IR / Reflectie / Sluiter (Sectie 5)
+    └─ Externe toegang mislukt? → Poort Doorsturen / VPN / Cloud (Sectie 6)
+```
+
+---
+
+## 1. Stroom & Opstartproblemen
+
+### 1.1 Camera dood — geen LED, geen reactie
+
+| Stap | Controle                 | Oplossing                                                                    |
+| ---- | ------------------------ | ---------------------------------------------------------------------------- |
+| 1    | **PoE Switch Poort LED** | Uit = poort dood / budget overschreden → Verplaats naar goede poort          |
+| 2    | **PoE Injector LED**     | Uit = injector defect / geen AC → Vervang injector ($25)                     |
+| 3    | **Spanning bij camera**  | Multimeter: 44–57V (PoE), 12V±10% (DC) → Laag = spanningsval / slechte kabel |
+| 4    | **Kabelcontinuïteit**    | Tester: alle 8 draden → Open paar = beide uiteinden hertermineren            |
+| 5    | **Camera reset**         | Reset 10–30s ingedrukt houden → Opnieuw toevoegen in app/NVR                 |
+
+### 1.2 Camera herstart 's nachts (IR aan)
+
+**Oorzaak:** Spanningsval wanneer IR-LED's inschakelen (voegt 1–2W toe).
+
+| Diagnose                            | Oplossing                                      |
+| ----------------------------------- | ---------------------------------------------- |
+| PoE switch op budgetlimiet          | Verplaats camera naar injector; upgrade switch |
+| Kabelloop >250 ft op Cat6           | Verkorten; Cat6a; PoE++ injector bij camera    |
+| CCA-kabel (koper bekleed aluminium) | **Vervang door massief koper Cat6**            |
+
+---
+
+## 2. Netwerk & Connectiviteit
+
+### 2.1 Camera "offline" in app/NVR
+
+| Stap | Test                                  | Oplossing                                       |
+| ---- | ------------------------------------- | ----------------------------------------------- |
+| 1    | Ping camera-IP vanaf PC               | Timeout = Laag 1/2 probleem (kabel, switch, IP) |
+| 2    | Ping gateway vanaf camera (NVR shell) | Timeout = VLAN / firewall / routing             |
+| 3    | `arp -a` → MAC komt overeen?          | IP-conflict → Statisch IP / DHCP-reservatie     |
+| 4    | DHCP-lease verlopen                   | Statisch IP of DHCP-reservatie (router)         |
+
+### 2.2 Wi-Fi camera valt dagelijks uit
+
+| Diagnose               | Oplossing                                                        |
+| ---------------------- | ---------------------------------------------------------------- |
+| RSSI < -75 dBm         | AP dichterbij; bedrade AP toevoegen; kanaal controleren          |
+| 2.4 GHz congestie      | Alleen kanaal 1/6/11; 20 MHz breedte; band-steering uitschakelen |
+| Stroombesparende modus | Wi-Fi stroombesparing uitschakelen in camera-app                 |
+
+---
+
+## 3. Opname & Opslag
+
+### 3.1 NVR neemt niet op / hiaten in tijdlijn
+
+| Controle                       | Oplossing                                                |
+| ------------------------------ | -------------------------------------------------------- |
+| HDD Gezondheid (S.M.A.R.T.)    | Toegewezen sectoren >0 → **Onmiddellijk vervangen**      |
+| HDD Vol / Overschrijven uit    | "Overschrijf oudste" inschakelen in opslaginstellingen   |
+| Schema verkeerd geconfigureerd | Controleer: Continu 24/7 op hoofdstroom; Beweging op sub |
+
+### 3.2 microSD neemt niet op / corrupt
+
+| Symptoom                          | Oorzaak                        | Oplossing                                                |
+| --------------------------------- | ------------------------------ | -------------------------------------------------------- |
+| "Format Required" loop            | Kaart defect / verkeerd FS     | Vervang met **U3/V30 A2** (SanDisk Extreme, Samsung Pro) |
+| Bestanden 0 bytes / onafspeelbaar | Stroomuitval tijdens schrijven | Schakel "Safe Eject" in app in; UPS op plug-in camera's  |
+| Stopt bij 4 GB                    | FAT32 limiet                   | Camera moet auto-exFAT; anders formatteren exFAT op PC   |
+
+### 3.3 Afspelen bevroren / gepixeleerd / groen scherm
+
+| Oorzaak                     | Oplossing                                                    |
+| --------------------------- | ------------------------------------------------------------ |
+| H.265/HEVC niet ondersteund | Speler heeft HEVC-codec nodig (Windows Store; VLC ingebouwd) |
+| Sub-stream geselecteerd     | Schakel naar hoofdstroom in afspelen                         |
+| Keyframe-interval te hoog   | Stel keyframe-interval = FPS (bijv. 15 fps → 15)             |
+
+---
+
+## 4. Bewegingsdetectie & Meldingen
+
+### 4.1 Te veel valse meldingen (spam)
+
+| Instelling              | Aanbevolen                            | Waarom                                    |
+| ----------------------- | ------------------------------------- | ----------------------------------------- |
+| **Detectietype**        | Alleen persoon + voertuig             | Sluit dieren, bomen, schaduwen, regen uit |
+| **Bewegingszones**      | Teken ALLEEN doelgebied               | Sluit straat, bomen, buren, lucht uit     |
+| **Gevoeligheid**        | Medium (start) → aanpassen            | Hoog = alles triggert                     |
+| **Objectgroottefilter** | Min 5% / Max 50% van frame            | Negeert insecten, vogels, verre auto's    |
+| **AI/Deep Learning**    | Inschakelen (Persoon/Voertuig/Pakket) | 90%+ reductie valse meldingen             |
+
+### 4.2 Gemiste gebeurtenissen (geen melding bij activiteit)
+
+| Controle                              | Oplossing                                                           |
+| ------------------------------------- | ------------------------------------------------------------------- |
+| Dekking zone voldoende?               | Zone breder tekenen; testloop                                       |
+| Gevoeligheid te laag?                 | Verhoog één stap; test                                              |
+| "Persoon" niet gedetecteerd 's nachts | IR-reflectie verwart AI → kantel camera omlaag; voeg externe IR toe |
+| Camera in "Slaap"-modus               | Batterijcams: slaap uitschakelen / PIR-gevoeligheid verhogen        |
+
+---
+
+## 5. Beeldkwaliteit & Nachtzicht
+
+### 5.1 Nachtzicht wit / uitgewassen
+
+**Oorzaak:** IR-LED's reflecteren op nabij oppervlak (muur, dakrand, glas, spinnenweb).
+
+| Oplossing                        | Hoe                                                         |
+| -------------------------------- | ----------------------------------------------------------- |
+| **15–30° naar beneden kantelen** | Kantelbeugel; camera kijkt omlaag, niet naar muur           |
+| **Verplaats camera naar buiten** | 12–18" van muur/dakrand (verlengarm)                        |
+| **Ingebouwde IR uitschakelen**   | Voeg **externe IR-verlichter** toe (apart, gericht op doel) |
+| **Dome/lens reinigen**           | Spinnenwebben = IR verstrooiing → microvezel + lensreiniger |
+
+### 5.2 Kenteken onleesbaar 's nachts
+
+| Vereiste        | Specificatie                                                        |
+| --------------- | ------------------------------------------------------------------- |
+| **Sluitertijd** | Minimaal 1/100s (ideaal 1/250s) — instellen in Belichting → Sluiter |
+| **Resolutie**   | 4K/8MP + optische zoom OF 2MP LPR-camera                            |
+| **IR-bereik**   | Afstand kenteken ≤ 50% van camera IR-classificatie                  |
+
+### 5.3 Dagbeeld: Wazig / Laag contrast / Kleurzweem
+
+| Oorzaak             | Oplossing                                                   |
+| ------------------- | ----------------------------------------------------------- |
+| Dome vies / bekrast | Reinigen microvezel; dome vervangen ($15)                   |
+| IR Cut Filter vast  | Power cyclen; firmware-update; zachtjes tikken (mechanisch) |
+| Witbalans verkeerd  | Stel "Buiten" / "Auto" / Custom Kelvin in (5500K)           |
+
+### 5.4 Flikkering / rollende lijnen (50/60 Hz)
+
+| Oorzaak                    | Oplossing                                                        |
+| -------------------------- | ---------------------------------------------------------------- |
+| **Netfrequentie mismatch** | Camera ingesteld op 60 Hz (VS) / 50 Hz (EU) — pas aan uw net aan |
+| Ground loop                | Alle apparatuur zelfde aarding; PoE-isolator (Transtector)       |
+
+---
+
+## 6. Externe toegang & Mobiele app
+
+### 6.1 App werkt op Wi-Fi, niet op LTE/5G
+
+| Architectuur                                 | Oplossing                                                                           |
+| -------------------------------------------- | ----------------------------------------------------------------------------------- |
+| **Leverancierscloud** (Reolink, UniFi, Eufy) | Controleer internet op telefoon; leveranciersstatuspagina                           |
+| **Poort doorsturen**                         | **Niet gebruiken.** CGNAT, dubbel NAT, ISP blokkeert. Overschakelen naar VPN/Cloud. |
+| **VPN (Tailscale, WireGuard)**               | Zorg dat VPN actief is; split-tunnel kan app uitsluiten                             |
+
+### 6.2 Live beeld werkt, afspelen faalt op afstand
+
+- Afspelen gebruikt andere poort/stream (vaak HTTPS/443 vs RTSP/554)
+- **Controleer:** NVR → Netwerk → HTTPS Poort (standaard 443) toegankelijk via VPN
+- **Bandbreedte:** Afspelen heeft 4–8 Mbps sustained nodig; LTE kan throttlen
+
+---
+
+## 7. PTZ & Mechanisch
+
+### 7.1 PTZ beweegt niet / vast / schurend
+
+| Oorzaak                           | Oplossing                                                     |
+| --------------------------------- | ------------------------------------------------------------- |
+| Mechanische limiet bereikt        | Controleer preset-limieten; reset naar thuis                  |
+| Sleepring defect (360° eindeloos) | Kabelboom versleten → camera vervangen (niet repareerbaar)    |
+| IJs / Vuil                        | Verwarmer defect; handmatig reinigen; verwarmercircuit testen |
+
+---
+
+## 8. Audio (tweerichtings)
+
+### 8.1 Geen audio / slechts eenrichting
+
+| Controle                  | Oplossing                                         |
+| ------------------------- | ------------------------------------------------- |
+| App-machtiging            | Telefoon Instellingen → App → Microfoon: AAN      |
+| Camera audio ingeschakeld | Camera web UI → Audio → Ingang/Uitgang: AAN       |
+| Codec mismatch            | G.711 (PCM) meest compatibel; probeer G.726 / AAC |
+
+---
+
+## 9. Firmware & Updates
+
+### 9.1 Veilige firmware-update procedure
+
+1. **Lees changelog** — Sla over als "alleen beveiliging" en u stabiel bent
+2. **Back-up configuratie** — NVR: Config exporteren; Camera: Schermafdruk instellingen
+3. **Eerst NVR updaten** — Daarna camera's (NVR kan compatibele firmware pushen)
+4. **Eén camera tegelijk** — Elke verifiëren voor volgende
+5. **Niet uitschakelen** — 5–10 min per camera
+6. **Verifiëren** — Live beeld, opname, beweging, PTZ, audio
+
+---
+
+## 10. Omgeving & Fysiek
+
+### 10.1 Water / condensatie
+
+| Symptoom              | Oplossing                                                             |
+| --------------------- | --------------------------------------------------------------------- |
+| Mist in dome          | Droogmiddelzak (jaarlijks vervangen); ventplug controleren (Gore-Tex) |
+| Water bij kabelingang | Siliconen + wartel; druppellus; buis                                  |
+
+### 10.2 Insecten / spinnen / vogels
+
+| Afschrikmiddel                       | Effectiviteit            |
+| ------------------------------------ | ------------------------ |
+| Pepermuntolie (wattenbol bij camera) | Hoog (spinnen haten het) |
+| Vogelpinnen op beugel                | Hoog (vogels)            |
+
+### 10.3 Vandalisme / diefstal
+
+- **Torx / Beveiligingsschroeven** (meegeleverd bij de meeste pro camera's)
+- **Buis** naar camera (moeilijk kabel door te knippen)
+- **Hoogte** >10 ft (vereist ladder)
+- **Tamper Alert** (NVR: Camera → Tamper Detectie → Alarm)
+
+---
+
+## Wanneer een professional inschakelen
+
+| Situatie                   | Reden                            |
+| -------------------------- | -------------------------------- |
+| Meerlaagse dakgoten        | Valrisico, gespecialiseerde lift |
+| Beton/steen boren >6 gaten | Hamerboor + bits slijten snel    |
+| Vergunning vereist         | Commercieel, meergezins, >$500   |
+
+## Lijst diagnostische hulpmiddelen
+
+| Gereedschap                    | Doel                     | Kosten |
+| ------------------------------ | ------------------------ | ------ |
+| **PoE Tester** (LINKSYS PTPoE) | Spanning onder belasting | $35    |
+| **Kabeltester** (NF-8601)      | Continuïteit, draadkaart | $25    |
+| **Multimeter** (Klein MM400)   | Spanning, continuïteit   | $50    |
+
+---
+
+_Laatst bijgewerkt: Juli 2026. Firmware-versies veranderen — verifieer huidige stappen voor uw specifieke model._
+
+---
+
+## Gerelateerde gidsen
+
+- [Nachtzicht werkt niet? Probleemoplossingsgids](/blog/night-vision-not-working-troubleshooting-guide)
+- [DIY beveiligingscamera installatie: complete gids](/blog/diy-security-camera-installation-complete-guide)
+- [CCTV video-opslagcalculator](/blog/cctv-video-storage-calculator-hard-drive-space)

@@ -1,0 +1,214 @@
+---
+title: "Przechowywanie w Chmurze vs Lokalne dla Kamer Bezpieczeństwa (2026)"
+description: "Porównaj każdą opcję przechowywania: subskrypcje chmury (Ring, Arlo, Nest, Eufy), NVR/DVR, microSD, NAS, S3/Wasabi/Backblaze B2, hybrydę. Koszt na TB-rok, retencja, prywatność, przepustowość i odzyskiwanie."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "cloud-storage-vs-local-storage-security-cameras"
+author: "Your Name"
+tags: ["cloud-storage", "local-storage", "nvr", "buying-guide", "privacy"]
+postType: "review"
+---
+
+Pamięć decyduje o tym, czy system kamer działa czy zawodzi. Utrata nagrań = utrata dowodów. Chmura oferuje wygodę, ale kosztuje wiecznie i ryzykuje prywatnością. Pamięć lokalna (NVR, microSD, NAS) kosztuje z góry, ale jest twoja. Hybryda daje obie zalety — jeśli skonfigurujesz ją prawidłowo. Ten przewodnik rozkłada każdą opcję z rzeczywistymi cenami 2026, matematyką przepustowości i frameworkami decyzyjnymi.
+
+<Badge variant="outline">Szybka odpowiedź</Badge> **Większość domów:** NVR PoE
+(lokalny 24/7) + kopia zapasowa w chmurze tylko dla alertów.
+**Mieszkania/najemcy:** Kamera z microSD + opcjonalna subskrypcja chmury.
+**Firma:** NVR + NAS + offsite (Wasabi/Backblaze B2) + alerty w chmurze.
+
+## Krajobraz przechowywania (2026)
+
+| Kategoria              | Przykłady                                                           | Model kosztów  | Retencja      | Prywatność           | Wymagany internet    |
+| ---------------------- | ------------------------------------------------------------------- | -------------- | ------------- | -------------------- | -------------------- |
+| **Subskrypcja chmury** | Ring Protect, Arlo Secure, Nest Aware, Eufy Cloud, Blink            | $/kam/mies     | 7–60 dni      | Sprzedawca ma klucze | Tak (24/7 wysyłanie) |
+| **NVR/DVR (lokalny)**  | Reolink RLK, Amcrest NV, Dahua, Hikvision, UniFi Protect            | Sprzęt raz     | Miesiące–Lata | Ty masz klucze       | Nie (tylko lokalnie) |
+| **microSD (krawędź)**  | Wszystkie kamery bezprzewodowe, niektóre PoE                        | Karta raz      | Dni–Tygodnie  | Ty masz klucze       | Nie (tylko lokalnie) |
+| **NAS / Serwer**       | Synology, QNAP, TrueNAS, Unraid + Frigate/Scrypted                  | Sprzęt + dyski | Lata          | Ty masz klucze       | Opcjonalny           |
+| **Obiektowa chmura**   | Wasabi, Backblaze B2, AWS S3, Cloudflare R2                         | $/TB/mies      | Nieskończona  | Ty szyfrujesz        | Tak (tylko kopia)    |
+| **Hybryda**            | UniFi Protect + Kopia chmurowa, Reolink NVR + FTP, Frigate + rclone | Mieszany       | Warstwowa     | Ty kontrolujesz      | Częściowy            |
+
+<Callout type="warning">
+
+<strong>Rzeczywistość przepustowości:</strong> 8× kamery 4K @ 8 Mbps H.265 = 64
+Mbps **ciągłego wysyłania**. Większość łączy mieszkaniowych ma 10–35 Mbps
+wysyłania. Pełna chmura 24/7 jest niemożliwa na typowym internecie.
+
+</Callout>
+
+## Subskrypcje chmury: rzeczywisty koszt (ceny 2026)
+
+| Usługa                 | Miesięcznie (1 kam) | Rocznie (1 kam) | 5 kamer/rok | Retencja | 2K/4K    | Kluczowe ograniczenia               |
+| ---------------------- | ------------------- | --------------- | ----------- | -------- | -------- | ----------------------------------- |
+| **Ring Protect Basic** | $4.99               | $49.99          | $49.99\*    | 180 dni  | 1080p    | \*Nieograniczone kamery pod adresem |
+| **Ring Protect Plus**  | $14.99              | $149.99         | $149.99     | 180 dni  | 1080p    | Monitoring, LTE backup              |
+| **Arlo Secure**        | $7.99               | $79.99          | $179.99 (5) | 30 dni   | 2K/4K    | AI detekcja, strefy aktywności      |
+| **Nest Aware**         | $8                  | $80             | $80\*       | 30 dni   | 1080p/2K | \*Nieograniczone kamery             |
+| **Eufy Cloud**         | $2.99               | $29.99          | $29.99\*    | 30 dni   | 2K       | \*Nieograniczone kamery             |
+
+**5-letni TCO (5 kamer, 4K, 30-dniowa retencja):**
+
+- NVR lokalny (8TB): ~$600 jednorazowo — wygrywa po 2 latach
+
+## Przechowywanie lokalne: szczegółowa analiza NVR
+
+| Kamery | Rozdzielczość | Bitrate (H.265) | GB dziennie | 14 dni | 30 dni  | 90 dni  | Zalecane dyski     |
+| ------ | ------------- | --------------- | ----------- | ------ | ------- | ------- | ------------------ |
+| 4      | 4K (8MP)      | 4 Mbps          | 173 GB      | 2.4 TB | 5.2 TB  | 15.6 TB | 2× 8TB (RAID 1)    |
+| 8      | 4K            | 4 Mbps          | 346 GB      | 4.8 TB | 10.4 TB | 31 TB   | 4× 10TB (RAID 5/6) |
+| 16     | 4K            | 4 Mbps          | 691 GB      | 9.7 TB | 20.7 TB | 62 TB   | 8× 10TB (RAID 6)   |
+
+### RAID dla NVR
+
+| RAID        | Min dysków | Używalna pojemność | Przetrzymuje | Najlepsze do                  |
+| ----------- | ---------- | ------------------ | ------------ | ----------------------------- |
+| **RAID 1**  | 2          | 50%                | 1 dysk       | 2–4 wnęki, krytyczne nagrania |
+| **RAID 5**  | 3          | (N-1)/N            | 1 dysk       | 4–8 wnęk, balans              |
+| **RAID 6**  | 4          | (N-2)/N            | 2 dyski      | 6+ wnęk, maks. ochrona        |
+| **RAID 10** | 4          | 50%                | 1–2 dyski    | Wydajność + bezpieczeństwo    |
+
+## microSD: rzeczywistość przechowywania brzegowego
+
+**Ograniczenia w realnym świecie:**
+
+- **Ciepło:** Ciągły zapis 4K w nagrzanej kamerze = awaria karty za 6–12 miesięcy
+- **Trwałość:** 128GB TLC = ~600 TBW. 4K @ 4 Mbps = 43 GB/dzień
+- **Optymalna pojemność:** **128GB–256GB**
+
+<Callout type="tip">
+
+<strong>microSD to NIE kopia zapasowa.</strong> Jest w kamerze — kradzież/pożar
+niszczy oba. Używaj do: bufora podczas przerwy w internecie, ostatnich 24–72h.
+
+</Callout>
+
+## NAS / Serwer: wybór entuzjasty/profesjonalisty
+
+| Oprogramowanie     | Platforma       | Wsparcie kamer                         | AI/Analiza                               |
+| ------------------ | --------------- | -------------------------------------- | ---------------------------------------- |
+| **Frigate**        | Docker (Linux)  | ONVIF, RTSP, Go2RTC                    | Google Coral TPU (osoba/pojazd/zwierzak) |
+| **Scrypted**       | Docker, Node.js | HomeKit, ONVIF, RTSP, Wyze, Ring, Arlo | TensorFlow, Coral                        |
+| **Blue Iris**      | Windows         | ONVIF, RTSP, 3000+ profili             | DeepStack AI, CodeProject AI             |
+| **UniFi Protect**  | UniFi OS        | Tylko kamery UniFi                     | Protect AI (osoba/pojazd/LPR)            |
+| **Synology Surv.** | DSM             | 8300+ ONVIF                            | Deep Learning (osoba/pojazd/twarz)       |
+
+## Obiektowa chmura: kopia zapasowa offsite
+
+| Dostawca            | $/TB/mies | $/TB/egress | Min. przechowywanie | Opłata za usunięcie | Najlepsze dla                       |
+| ------------------- | --------- | ----------- | ------------------- | ------------------- | ----------------------------------- |
+| **Wasabi**          | $6.99     | **$0**      | 90 dni              | Brak                | **Najlepszy wybór** — przewidywalny |
+| **Backblaze B2**    | $6.00     | $0.01       | Brak                | Brak                | Najtańszy przy niskim pobieraniu    |
+| **Cloudflare R2**   | $15       | **$0**      | Brak                | Brak                | Integracja Workers, zerowy egress   |
+| **AWS S3 Standard** | $23       | $0.09       | 30 dni              | $0.03/GB            | Tylko jeśli już używasz AWS         |
+
+<Callout type="tip">
+
+<strong>Porada kosztowa:</strong> Wasabi jest najlepszym wyborem dla kopii
+zapasowych NVR, ponieważ opłata za wyjście wynosi $0 — możesz pobierać nagrania
+do odtwarzania bez dodatkowych kosztów. Backblaze B2 jest tańszy za
+przechowywanie, ale opłaty za pobieranie mogą się sumować, jeśli często
+przeglądasz nagrania.
+
+</Callout>
+
+## Wybór między chmurą obiektową a subskrypcją producenta
+
+Wybór między chmurą producenta (Ring, Arlo, Nest) a obiektową chmurą (Wasabi, B2, S3) zależy od twojego modelu użycia:
+
+**Chmura producenta:** Najlepsza dla użytkowników domowych, którzy chcą "działa od razu". Aplikacja integruje się bezpośrednio, alerty push są natychmiastowe, a udostępnianie jest proste. Minusem są wyższe koszty długoterminowe i ograniczona retencja (zwykle 30–180 dni).
+
+**Obiektowa chmura:** Wymaga konfiguracji (FTP, rclone, S3 API), ale pozwala przechowywać nagrania przez lata za ułamek kosztu. Idealna dla zaawansowanych użytkowników i firm, które potrzebują długoterminowego archiwum. Możesz szyfrować po stronie klienta przed wysłaniem, co daje pełną kontrolę nad prywatnością.
+
+## Architektury hybrydowe
+
+### 1. UniFi Protect + Kopia chmurowa
+
+- **Lokalnie:** UNVR (7× HDD, RAID 6) → 24/7 4K
+- **Chmura:** Protect Cloud Backup ($0.50/kam/mies) → tylko zdarzenia
+
+### 2. Reolink NVR + FTP/S3
+
+- **Lokalnie:** RLN16-410 (16 ch, 2× SATA) → 24/7
+- **Chmura:** NVR firmware → FTP/S3 (Wasabi/B2) przy ruchu
+
+### 3. Frigate + rclone (DIY)
+
+- **Lokalnie:** Frigate (Intel N100 + 4× 10TB RAID 5) → 24/7 + AI
+- **Chmura:** `rclone sync` → Wasabi codziennie
+
+## Macierz decyzyjna
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="homeowner">
+    <AccordionTrigger>Właściciel domu (4–8 kamer)</AccordionTrigger>
+    <AccordionContent>
+      <strong>Zalecane:</strong> NVR PoE (Reolink RLN8 / Amcrest NV4108E) + 2×
+      8TB RAID 1. To zapewnia 30+ dni nagrań 4K dla 8 kamer. Dodaj kopię w
+      chmurze tylko dla zdarzeń (np. Protect Cloud Backup lub Wasabi) jako
+      zabezpieczenie przed kradzieżą NVR. Całkowity koszt: ~$600–$900
+      jednorazowo plus ~$30/rok za kopię w chmurze.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="renter">
+    <AccordionTrigger>Najemca / Mieszkanie (2–4 kamery)</AccordionTrigger>
+    <AccordionContent>
+      <strong>Zalecane:</strong> Kamery bateryjne/Wi-Fi (EufyCam 3, Reolink
+      Argus) + microSD 128–256GB. Unikaj subskrypcji chmury dla podstawowego
+      użytku — nagrywanie na kartę wystarcza na 3–7 dni zdarzeń. Jeśli
+      potrzebujesz dłuższej retencji, wybierz najtańszy plan chmury producenta.
+      Zaletą jest brak wiercenia i łatwość przenoszenia. Całkowity koszt:
+      ~$200–$400 jednorazowo.
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="business">
+    <AccordionTrigger>Mała firma (8–24 kamery)</AccordionTrigger>
+    <AccordionContent>
+      <strong>Zalecane:</strong> UniFi Protect (UNVR Pro) + VPN Site-to-Site +
+      Wasabi offsite. Dla firm krytyczne jest posiadanie kopii poza lokalem —
+      Wasabi lub Backblaze B2 zapewniają niedrogie przechowywanie zewnętrzne.
+      Użyj oddzielnej podsieci VLAN dla kamer i wymuś uwierzytelnianie
+      wieloskładnikowe dla dostępu zdalnego. Całkowity koszt: ~$1,500–$3,000
+      plus ~$84/rok za Wasabi.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+## Planowanie przepustowości
+
+| Typ strumienia           | Rozdzielczość | Bitrate      | 8 kamer wysyłanie | 16 kamer wysyłanie |
+| ------------------------ | ------------- | ------------ | ----------------- | ------------------ |
+| **Główny (nagrywanie)**  | 4K            | 4–6 Mbps     | 32–48 Mbps        | 64–96 Mbps         |
+| **Pomocniczy (podgląd)** | 1080p/D1      | 0.5–1.5 Mbps | 4–12 Mbps         | 8–24 Mbps          |
+| **Chmura (zdarzenia)**   | 1080p         | 1–2 Mbps     | Burst 8–16 Mbps   | Burst 16–32 Mbps   |
+
+**Reguła:** Jeśli wysyłanie < 50 Mbps, **nigdy** nie wysyłaj strumienia głównego 24/7 do chmury. Zamiast tego nagrywaj lokalnie i wysyłaj tylko krótkie klipy zdarzeń. Dla łączy <20 Mbps wysyłania ogranicz się do strumieni pomocniczych 1080p przy zdalnym podglądzie i polegaj na lokalnym NVR do nagrywania 4K.
+
+## Prywatność i kwestie prawne
+
+| Przechowywanie                        | Szyfrowanie                    | Dostęp sprzedawcy     |
+| ------------------------------------- | ------------------------------ | --------------------- |
+| **Chmura (Ring/Arlo/Nest)**           | W spoczynku (klucz sprzedawcy) | Tak (odszyfrowywalne) |
+| **NVR lokalny**                       | Brak (lub samodzielnie)        | Nie                   |
+| **Obiektowa chmura + szyfr kliencki** | **Ty masz klucze**             | **Nigdy**             |
+
+## Podsumowanie: TCO przechowywania przez 5 lat (8 kamer, 4K, 30 dni)
+
+| Architektura               | Rok 1  | Lata 2–5 (rocznie) | 5 lat razem | Prywatność |
+| -------------------------- | ------ | ------------------ | ----------- | ---------- |
+| **Ring Protect Basic**     | $250   | $250               | **$1,250**  | Niska      |
+| **Nest Aware**             | $400   | $400               | **$2,000**  | Niska      |
+| **Reolink NVR (DIY)**      | $600   | $0                 | **$600**    | **Wysoka** |
+| **UniFi Protect + Cloud**  | $1,150 | $30                | **$1,270**  | Wysoka     |
+| **Frigate + Wasabi (DIY)** | $684   | $84                | **$1,020**  | **Maks**   |
+
+---
+
+_Ostatnia aktualizacja: Lipiec 2026. Ceny i funkcje mogą się zmieniać._
+
+---
+
+## Powiązane przewodniki
+
+- [Żywotność baterii i opcje zasilania](/blog/battery-life-power-options-corded-battery-solar)
+- [Najlepsze systemy kamer dla małych firm](/blog/best-small-business-security-camera-systems)
+- [Instalacja kamer DIY: kompletny przewodnik](/blog/diy-security-camera-installation-complete-guide)
+- [Kalkulator pamięci wideo CCTV](/blog/cctv-video-storage-calculator-hard-drive-space)

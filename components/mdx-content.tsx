@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { createElement, useMemo } from "react"
+import { createElement, use, useMemo } from "react"
 import * as runtime from "react/jsx-runtime"
 import { BlogTableLazy } from "./blog/blog-table-lazy"
 import {
@@ -102,19 +102,16 @@ interface MdxProps {
   localePrefix?: string
 }
 
-const createMdxComponent = (
+const createMdxComponent = async (
   code: string
-): React.ComponentType<{
-  components?: Record<string, React.ComponentType<any>>
-}> => {
-  const Fn = globalThis.Function as unknown as new (code: string) => (
-    ...args: unknown[]
-  ) => {
-    default: React.ComponentType<any>
-  }
-  const fn = new Fn(code)
+): Promise<
+  React.ComponentType<{
+    components?: Record<string, React.ComponentType<any>>
+  }>
+> => {
+  const fn = new Function(code)
 
-  return fn({ ...runtime }).default
+  return (await fn({ ...runtime, baseUrl: "/" })).default
 }
 
 export function MdxContent({
@@ -122,8 +119,11 @@ export function MdxContent({
   components,
   localePrefix = "",
 }: MdxProps): React.ReactNode {
-  const Component = useMemo(() => createMdxComponent(code), [code])
+  const ComponentPromise = useMemo(() => createMdxComponent(code), [code])
+  const Component = use(ComponentPromise)
   const LocalePrefixProvider = localePrefixContext.Provider
+
+  if (!Component) return null
 
   return (
     <LocalePrefixProvider value={localePrefix}>

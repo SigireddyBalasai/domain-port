@@ -1,0 +1,300 @@
+---
+title: "Visione Notturna Non Funziona? Guida alla Risoluzione Completa (2026)"
+description: "Risolvi IR bianco, assenza visione notturna, immagini sfocate, targa sfocata, errori visione notturna a colori. Diagnostica passo-passo per ogni tipo di telecamera: PoE, Wi-Fi, batteria, campanello."
+publishedAt: 2026-07-18T00:00:00.000Z
+updatedAt: 2026-07-18T00:00:00.000Z
+slug: "night-vision-not-working-troubleshooting-guide"
+author: "Your Name"
+tags: ["troubleshooting", "night-vision", "ir", "installation", "diy"]
+postType: "howto"
+---
+
+I guasti alla visione notturna sono il reclamo #1 "telecamera funziona di giorno, inutile di notte". Questa guida analizza ogni modalità di guasto con diagnostica, soluzioni e quando sostituire.
+
+<Badge variant="outline">Triage Rapido</Badge>
+1. **LED IR accesi?** (bagliore rosso di notte) → No = Alimentazione/scheda IR /
+Sì = Ottica/configurazione 2. **Immagine bianca/grigia?** → Riflesso IR
+(angolo/distanza) 3. **Immagine nera/rumorosa?** → IR troppo debole / otturatore
+troppo lento / sensore guasto 4. **Visione notturna a colori spenta?** → Luce
+ambientale troppo bassa / impostazione disabilitata
+
+---
+
+## 1. LED IR Non Illuminano (Nessun Bagliore Rosso)
+
+### 1.1 Verifica Stato IR
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="check-ir">
+    <AccordionTrigger>Come Controllare i LED IR</AccordionTrigger>
+    <AccordionContent>
+
+      **Visivo:** Mettiti davanti alla telecamera di notte → cerca un **debole
+      bagliore rosso** (850 nm) o **nessun bagliore visibile** (940 nm
+      "nascosto"). **Test con Fotocamera Cellulare:** Punta la fotocamera del
+      telefono verso la telecamera → l'IR appare **viola/bianco brillante** sullo
+      schermo (i sensori del telefono vedono il vicino IR). **Stato App:** Web UI
+      della telecamera / NVR → "Stato IR" / "Modalità Notte" → dovrebbe
+      mostrare "Acceso" o "Auto".
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### 1.2 Cause e Soluzioni
+
+| Causa                                    | Diagnosi                                                        | Soluzione                                                                                               |
+| ---------------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| **Filtro IR Bloccato (Modalità Giorno)** | Immagine colorata di notte, nessun bagliore IR                  | Ciclo di alimentazione (12V/PoE spento 30s). Tocca delicatamente la telecamera. Aggiornamento firmware. |
+| **Fotoresistenza/LDR Guasta**            | IR non si attiva mai automaticamente; manuale "Acceso" funziona | Copri LDR (piccola finestra trasparente) → se IR si attiva, sostituisci LDR (€2) o telecamera           |
+| **Scheda Driver IR MBR**                 | 12V/PoE presente, LED freddi, manuale "Acceso" non funziona     | Sostituisci telecamera (scheda non riparabile)                                                          |
+| **Alimentazione Insufficiente per IR**   | Giorno OK, notte si riavvia / IR lampeggia                      | Controlla tensione alla telecamera sotto carico IR (vedi §1.3)                                          |
+| **Bug Firmware**                         | Aggiornamento recente ha rotto IR automatico                    | Rollback firmware; ticket supporto fornitore                                                            |
+| **IR Nascosto (940 nm)**                 | Nessun bagliore rosso, test telefono mostra viola               | Normale — 940 nm è invisibile all'occhio                                                                |
+
+### 1.3 Caduta di Tensione Sotto Carico IR (Critico)
+
+**I LED IR consumano 2–5W extra.** La telecamera funziona di giorno, si spegne di notte.
+
+<Callout type="warning">
+
+**Test:** Multimetro all'ingresso alimentazione telecamera (PoE: usa tester PoE). Tensione giorno vs tensione notte (IR acceso). **Calo >0.5V (12V) o >2V (PoE 48V) = cavo troppo lungo / sezione troppo piccola / switch insufficiente.**
+
+</Callout>
+
+| Architettura              | Carico IR Max              | Soluzione                                                    |
+| ------------------------- | -------------------------- | ------------------------------------------------------------ |
+| **PoE (802.3af 15.4W)**   | ~4W IR                     | Aggiorna a PoE+ (30W) injector/switch                        |
+| **12V DC (18 AWG, 15 m)** | 2A IR                      | Accorcia percorso / 14 AWG / alimentazione 12V locale        |
+| **Telecamera a Batteria** | IR consuma batteria in ore | Disabilita IR; usa luce ambientale / illuminatore IR esterno |
+
+---
+
+## 2. IR Bianco / Sbiadito / Immagine Grigia
+
+**Sintomo:** Immagine notturna = macchia bianca brillante/grigia, nessun dettaglio. L'IR si riflette su una superficie vicina.
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="whiteout-causes">
+    <AccordionTrigger>Fonti di Riflessione Comuni</AccordionTrigger>
+    <AccordionContent>
+
+      | Superficie | Distanza | Soluzione |
+      |---------|----------|-----|
+      | **Muro / Rivestimento / Fascia** | 15–60 cm | Inclina telecamera **verso il basso 15–30°**; sposta fuori 30–45 cm (braccio di estensione) |
+      | **Gronda / Aggetto** | 0–30 cm | Monta **sotto** l'aggetto, non a filo |
+      | **Finestra / Vetro** | Qualsiasi | **Mai** puntare attraverso vetro (l'IR si riflette al 100%) |
+      | **Ragnatela / Polvere sulla Cupola** | Sulla lente | Pulisci mensilmente; copertura in pile sull'anello IR |
+      | **Pioggia / Neve / Nebbia** | Aria | Illuminatore IR esterno (montato lontano dalla lente) |
+      | **Finitura Bianca / Grondaia** | 30–90 cm | Dipingi nero opaco (vernice per barbecue) o maschera con nastro |
+      | **Targa (Retroriflettente)** | 6–15 m | Inclina verso il basso; IR esterno; telecamera LPR con polarizzatore |
+
+    </AccordionContent>
+
+  </AccordionItem>
+</Accordion>
+
+### 2.1 Risoluzione Bianco Passo-Passo
+
+1. **Identifica il riflettore:** Esci di notte, osserva il bagliore IR sulle superfici. Usa la fotocamera del telefono per vedere la diffusione IR.
+2. **Re-angola:** Inclina **verso il basso 15–30°** dall'orizzontale. Usa livella + goniometro.
+3. **Aggiungi distanza:** Staffa di estensione (30–60 cm) sposta il cono IR oltre gli oggetti vicini.
+4. **Illuminatore IR Esterno:** Monta a 3–6 m di distanza, puntato verso la zona bersaglio. IR telecamera **SPENTO**. Migliore per targhe, cancelli.
+5. **IR Intelligente (se supportato):** La telecamera riduce automaticamente l'intensità IR per oggetti vicini. Abilita nelle impostazioni.
+6. **Controllo Filtro IR:** Bloccato "fuori" (modalità notte) = immagine giorno colorata. Bloccato "dentro" (modalità giorno) = nessun IR. Ciclo di alimentazione.
+
+---
+
+## 3. Immagine Nera / Rumorosa / Granulosa
+
+**Sintomo:** Video scuro, macchiato, "nevoso". Nessun dettaglio.
+
+| Causa                                     | Diagnosi                                 | Soluzione                                                           |
+| ----------------------------------------- | ---------------------------------------- | ------------------------------------------------------------------- |
+| **IR Troppo Debole per Distanza**         | Bersaglio >50% della portata IR nominale | Illuminatore IR esterno; avvicina la telecamera                     |
+| **Otturatore Troppo Lento (Motion Blur)** | Scie fantasma, strisce luminose          | Imposta **Otturatore Min: 1/100s** (1/250s per targhe)              |
+| **Guadagno/ISO al Massimo**               | Rumore = "neve"                          | Aggiungi luce (IR esterno, lampione); abbassa guadagno max          |
+| **WDR Spento**                            | Luci brillanti accecano la telecamera    | Abilita **WDR: 120 dB+** (True WDR, non DWDR)                       |
+| **Cupola Sporca / Graffiata**             | Alone intorno alle luci                  | Sostituisci cupola (€15); pulisci con microfibra + detergente lenti |
+| **Sensore Degradante**                    | Progressivo negli anni                   | Sostituisci telecamera (CMOS invecchia, pixel caldi aumentano)      |
+| **Compressione Troppo Alta**              | Artefatti a blocchi di notte             | Bitrate: CBR 4–6 Mbps (4K) / 2–3 Mbps (2K)                          |
+
+### 3.1 Prontuario Velocità Otturatore
+
+| Bersaglio           | Otturatore Min      | Note                              |
+| ------------------- | ------------------- | --------------------------------- |
+| Area generale       | 1/50s (1/60s USA)   | Bilancia luce vs sfocatura        |
+| Persona che cammina | 1/100s              | Arti nitidi                       |
+| **Targa**           | **1/250s – 1/500s** | **Critico** — imposta manualmente |
+| Veicolo veloce      | 1/500s – 1/1000s    | Necessita IR esterno              |
+
+<Callout type="note">
+
+**Come impostare:** Web UI telecamera → Immagine → Esposizione → Velocità otturatore → Manuale → Inserisci valore. Disabilita otturatore "Auto".
+
+</Callout>
+
+---
+
+## 4. Guasti Visione Notturna a Colori
+
+**Visione Notturna a Colori (VNC)** = Sensore grande (1/1.8", 1/1.2") + ISP scarsa illuminazione + **luce ambientale richiesta**.
+
+| Modo Guasto                       | Causa                           | Soluzione                                                                                                                   |
+| --------------------------------- | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **Rimane B/N (IR acceso)**        | Luce ambiente &lt;1 lux         | La VNC necessita ~3–5 lux (lampione, luce portico). Aggiungi **LED bianco caldo (3000K)** a 3–6 m di distanza.              |
+| **Colore rumoroso/granuloso**     | Guadagno troppo alto            | Abbassa guadagno max; aggiungi luce; accetta B/N IR                                                                         |
+| **Colori alterati (viola/verde)** | Bilanciamento bianco confuso    | Imposta WB su "Esterno" / "Lampione" / Personalizzato 3000K                                                                 |
+| **Conflitto IR + VNC**            | Entrambi accesi = colori strani | Disabilita IR quando VNC attiva (auto nelle buone telecamere)                                                               |
+| **Non supportato**                | Telecamera manca sensore VNC    | Controlla specifiche: necessita sensore 1/1.8"+ (Reolink ColorX, Hikvision ColorVu, Dahua Full-Color, Axis Lightfinder 2.0) |
+
+---
+
+## 5. Cattura Targa (LPC) — Soluzioni Notturne Specializzate
+
+**LPC fallisce di notte 90% per:** riflesso IR sulla targa + otturatore lento + IR debole.
+
+### 5.1 Checklist Notturna LPC
+
+- [ ] **Telecamera:** 4K/8MP + zoom ottico (varifocale 2.8–12mm o 5–50mm) O LPR dedicata (2MP, 100+ fps, otturatore globale)
+- [ ] **Otturatore:** **1/250s minimo** (manuale)
+- [ ] **IR:** Illuminatore esterno (850 nm, fascio 30–50°) **fuori telecamera**, puntato verso la zona targa
+- [ ] **Angolo:** ≤30° dalla perpendicolare; altezza 90–120 cm (livello targa)
+- [ ] **WDR:** 120 dB+ True WDR (gestisce fari)
+- [ ] **Taglio IR:** Verifica commutazione (giorno colore / notte B/N)
+- [ ] **Zona:** Zona movimento = solo percorso targa (riduce falsi trigger)
+- [ ] **Registrazione:** CBR 6–8 Mbps (4K) / 4 Mbps (LPR 2MP)
+
+### 5.2 Telecamere LPC Raccomandate (2026)
+
+| Telecamera                         | Tipo            | Specifiche Notte                                 | Migliore Per                    |
+| ---------------------------------- | --------------- | ------------------------------------------------ | ------------------------------- |
+| **Hikvision DS-2CD4A26FWD-IZHS/P** | 2MP LPR         | 100 fps, otturatore globale, 120 dB WDR, 30 m IR | Cattura targa dedicata          |
+| **Dahua ITC237-PW6M-IRLZF**        | 2MP LPR         | 60 fps, 140 dB WDR, 50 m IR                      | Parcheggio, ingresso cancellato |
+| **Reolink RLC-1212A**              | 12MP Varifocale | 5× zoom ottico, 58 m IR, 1/1.8"                  | Budget 4K + zoom per targhe     |
+| **Axis Q1700-LE**                  | 2MP LPR         | 60 fps, Forensic WDR, 40 m IR                    | Aziendale, prova forense        |
+
+---
+
+## 6. Problemi Notturni Campanello Telecamera
+
+| Problema                             | Causa                           | Soluzione                                                                    |
+| ------------------------------------ | ------------------------------- | ---------------------------------------------------------------------------- |
+| **Viso visitatore bianco**           | IR si riflette su portico/tetto | Kit cuneo angolare (15–25° verso il basso); disabilita IR → usa luce portico |
+| **Nessuna visione notturna**         | Modalità risparmio batteria     | Collegamento via cavo (16–24V AC) → abilita IR 24/7                          |
+| **Visione notturna a colori spenta** | Luce ambiente troppo bassa      | Aggiungi **LED 3000K** nella plafoniera del portico (non bianco freddo)      |
+| **Movimento manca di notte**         | Portata PIR < portata IR        | PIR ~7.5 m, IR ~9 m → riduci sensibilità IR / restringi zona                 |
+
+---
+
+## 7. Specificità Notturne Telecamera a Batteria / Solare
+
+| Problema                                | Causa                             | Soluzione                                                                  |
+| --------------------------------------- | --------------------------------- | -------------------------------------------------------------------------- |
+| **IR consuma batteria in 1 settimana**  | IR = 2–4W continuo                | Disabilita IR; affidati a luce ambientale + faro movimento (Eufy, Ring)    |
+| **Nessuna visione notturna in inverno** | Li-ion &lt;0°C smette di caricare | Aggiornamento LiFePO₄ (Reolink Go PT Plus); scatola isolata + riscaldatore |
+| **Movimento funziona solo di giorno**   | PIR bloccato da finestra/vetro    | Monta **fuori** dal vetro; PIR necessita differenziale temperatura         |
+| **Faro non si attiva**                  | Zona movimento sbagliata          | Ridisegna zona per coprire percorso avvicinamento; test camminata          |
+
+---
+
+## 8. Strumenti Diagnostici e Procedure
+
+### 8.1 Scheda Test Visione Notturna (Stampa e Plastifica)
+
+```
+┌─────────────────────────────────────┐
+│   SCHEDA TEST VISIONE NOTTURNA            │
+│  ████████████████████████████████   │  ← 100% bianco (riflessione IR)
+│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   │  ← 50% grigio
+│  ████████████████████████████████   │  ← 0% nero
+│                                     │
+│  Targa: ABC-1234  (test a 6/12/18 m)│
+│  Volto: [Contorno]                    │
+└─────────────────────────────────────┘
+```
+
+**Procedura:** Monta a distanza bersaglio → registra → verifica chiarezza targa/volto.
+
+### 8.2 Misurazione Potenza IR
+
+| Strumento               | Misurazione                      | Criterio Superamento                     |
+| ----------------------- | -------------------------------- | ---------------------------------------- |
+| **Tester PoE**          | Tensione alla telecamera (notte) | >48V (PoE+), >52V (PoE++)                |
+| **Multimetro (12V)**    | Tensione alla telecamera (notte) | >11.5V (12V nominale)                    |
+| **Pinza Amperometrica** | Corrente su linea 12V (notte)    | &lt;2A (per telecamera)                  |
+| **Termocamera**         | Temperatura LED IR               | 40–60°C (funzionante), &lt;30°C (guasto) |
+
+### 8.3 Verifica Firmware e Configurazione
+
+```
+☐ Firmware: Ultima stabile (non beta)
+☐ Modalità IR: Auto (non "Acceso" 24/7)
+☐ IR Intelligente: Abilitato
+☐ Otturatore: Manuale 1/100s min (1/250s per targhe)
+☐ WDR: True WDR On (120 dB+)
+☐ Guadagno Max: Limitato (non "Auto Max")
+☐ Bitrate: CBR 4–6 Mbps (4K)
+☐ Taglio IR: Commutazione verificata (giorno/notte)
+☐ Timezone/NTP: Corretto (IR programmato)
+```
+
+---
+
+## 9. Quando Sostituire vs Riparare
+
+| Sintomo                              | Riparazione Possibile?              | Sostituisci Quando                                      |
+| ------------------------------------ | ----------------------------------- | ------------------------------------------------------- |
+| Nessun bagliore IR, alimentazione OK | Scheda IR (€50) / LDR (€2)          | Telecamera >3 anni, infiltrazione acqua                 |
+| Filtro IR bloccato                   | Tocca/ciclo alimentazione (temp)    | Meccanismo usurato; >2 anni                             |
+| Bianco non riparabile con angolo     | N/A                                 | Telecamera sbagliata per posizione (usa IR esterno)     |
+| Sensore rumoroso (pixel caldi)       | Mappatura pixel (alcune telecamere) | >5% pixel morti; >4 anni                                |
+| Visione notturna a colori guasta     | Problema sensore/ISP                | Sensore troppo piccolo (&lt;1/2.8"); aggiorna           |
+| Riavvio notturno intermittente       | Caduta tensione                     | Ripara cavo/alimentazione; se persistente → sostituisci |
+
+---
+
+## 10. Scheda Riferimento Rapido (Stampa per Cassetta Attrezzi)
+
+```
+DIAGRAMMA TRIAGE VISIONE NOTTURNA
+
+  1. BAGLIORE IR? (test fotocamera telefono)
+   NO → Controlla tensione (notte) → Ripara alimentazione
+   SÌ → Passo 2
+
+  2. IMMAGINE BIANCA/GRIGIA?
+   SÌ → Inclina giù 15-30° / Sposta fuori 30 cm+ / IR esterno
+   NO → Passo 3
+
+  3. IMMAGINE NERA/RUMOROSA?
+   SÌ → Otturatore 1/100s min / WDR On / IR esterno
+   NO → Passo 4
+
+  4. VISIONE NOTTURNA A COLORI SPENTA?
+   SÌ → Aggiungi luce 3000K / Controlla dimensione sensore
+   NO → Passo 5
+
+  5. TARGA ILLEGGIBILE?
+   SÌ → Otturatore 1/250s / IR esterno / Zoom varifocale / Telecamera LPR
+   NO → FATTO ✓
+
+CONTROLLO TENSIONE (notte, IR acceso):
+PoE: >48V (af) / >50V (at) / >52V (bt)
+  12V: >11.5V alla telecamera
+```
+
+---
+
+## Guide Correlate
+
+- [Problemi Comuni Telecamere Sicurezza e Soluzioni](/blog/common-security-camera-problems-fixes) — Indice completo risoluzione problemi
+- [Cavo Telecamera PoE: Installazione DIY](/blog/poe-camera-cable-running-diy-installation) — Test caduta tensione
+- [Migliori Telecamere Sicurezza Solari (Off-Grid)](/blog/best-solar-powered-security-cameras-offgrid) — Batteria invernale/IR
+- [Come Montare Telecamere Esterne (Muro, Soffitto, Gronda)](/blog/how-to-mount-outdoor-cameras-wall-ceiling-eave) — Angolo per IR
+- [Calcolatore Archiviazione Video CCTV](/blog/cctv-video-storage-calculator-hard-drive-space) — Pianificazione bitrate notturno
+
+---
+
+_Ultimo aggiornamento: Luglio 2026. Procedure di test validate su modelli Reolink, Dahua, Hikvision, UniFi, Axis, Ring, Eufy, Arlo, Wyze, TP-Link._

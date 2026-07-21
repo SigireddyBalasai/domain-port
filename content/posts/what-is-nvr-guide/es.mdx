@@ -16,6 +16,8 @@ tags:
     "grabación de video",
   ]
 postType: "howto"
+speakable:
+  - "blog-content"
 howTo:
   - name: "¿Qué es un NVR?"
     text: "Un NVR (Grabador de Video en Red) graba video de cámaras IP a través de una red. A diferencia de los DVR, los NVR reciben flujos de video digital ya codificados, lo que permite mayores resoluciones, cableado más simple y funciones avanzadas de IA."
@@ -49,12 +51,14 @@ Un NVR (Grabador de Video en Red) es un computador especializado que graba video
 En 2026, los NVR son la opción estándar para la vigilancia doméstica y empresarial. Soportan cámaras de 4K, 8MP e incluso 12MP, incluyen análisis de IA integrados que filtran falsas alarmas y utilizan Power over Ethernet (PoE) para alimentar las cámaras con un solo cable. Esta guía cubre todo lo que necesitas saber.
 
 <Callout type="info" title="NVR de un vistazo">
-  Un NVR graba flujos de video digital de cámaras IP a través de una red.
-  Almacena imágenes localmente en discos duros (sin suscripción a la nube),
-  soporta resolución 4K+, permite PoE para instalación con un solo cable e
-  incluye análisis de IA para detección de personas, vehículos y animales. A
-  diferencia de los DVR, el procesamiento de video ocurre dentro de la cámara —
-  el NVR simplemente almacena y gestiona los flujos ya codificados.
+
+Un NVR graba flujos de video digital de cámaras IP a través de una red.
+Almacena imágenes localmente en discos duros (sin suscripción a la nube),
+soporta resolución 4K+, permite PoE para instalación con un solo cable e
+incluye análisis de IA para detección de personas, vehículos y animales. A
+diferencia de los DVR, el procesamiento de video ocurre dentro de la cámara —
+el NVR simplemente almacena y gestiona los flujos ya codificados.
+
 </Callout>
 
 ## Cómo funcionan los sistemas NVR
@@ -77,11 +81,13 @@ Un sistema NVR tiene tres componentes principales: las cámaras IP, la infraestr
 | Disco duro                           | Proporciona almacenamiento a largo plazo para video grabado        | WD Purple 6 TB, Seagate SkyHawk 8 TB                |
 
 <Callout type="tip" title="La diferencia clave con el DVR">
-  En un sistema DVR, las cámaras analógicas envían video sin procesar a través
-  de cable coaxial, y el DVR realiza toda la codificación. En un sistema NVR,
-  las cámaras IP realizan su propia codificación — por eso los NVR son más
-  escalables (añades potencia de procesamiento actualizando las cámaras) y
-  soportan mayores resoluciones de forma nativa.
+
+En un sistema DVR, las cámaras analógicas envían video sin procesar a través
+de cable coaxial, y el DVR realiza toda la codificación. En un sistema NVR,
+las cámaras IP realizan su propia codificación — por eso los NVR son más
+escalables (añades potencia de procesamiento actualizando las cámaras) y
+soportan mayores resoluciones de forma nativa.
+
 </Callout>
 
 ### Acceso local vs remoto
@@ -110,10 +116,12 @@ No todos los NVR son iguales. Así es como se comparan las características más
 | Rango de precio              | $80-200           | $200-500                          | $500-2000+                                   |
 
 <Callout type="note" title="Planificación de canales">
-  Compra un NVR con **el doble** de canales de los que necesitas actualmente.
-  Una instalación de 4 cámaras debe usar un NVR de 8 canales. Una instalación de
-  6 cámaras debe usar un NVR de 16 canales. La expansión siempre ocurre, y
-  reemplazar un NVR a mitad de vida es costoso e inconveniente.
+
+Compra un NVR con **el doble** de canales de los que necesitas actualmente.
+Una instalación de 4 cámaras debe usar un NVR de 8 canales. Una instalación de
+6 cámaras debe usar un NVR de 16 canales. La expansión siempre ocurre, y
+reemplazar un NVR a mitad de vida es costoso e inconveniente.
+
 </Callout>
 
 ## Power over Ethernet (PoE) explicado
@@ -132,12 +140,14 @@ Un conmutador PoE o un NVR con PoE inyecta un voltaje DC (típicamente 48 V) en 
 | IEEE 802.3bt Tipo 4 (PoE++) | 100 W               | Cámaras multisensor, PTZ de alta potencia       |
 
 <Callout type="warning" title="Trampa del presupuesto PoE">
-  Una cámara que consume 5 W durante el día puede dispararse a 12-15 W por la
-  noche cuando se activan sus LED IR. Siempre haz el presupuesto usando el
-  **consumo máximo de energía** de la ficha técnica de la cámara, luego agrega
-  al menos un 20-30% de margen. Un sistema de 8 cámaras con cámaras que alcanzan
-  un máximo de 12 W cada una necesita aproximadamente 125 W de presupuesto PoE,
-  no 96 W.
+
+Una cámara que consume 5 W durante el día puede dispararse a 12-15 W por la
+noche cuando se activan sus LED IR. Siempre haz el presupuesto usando el
+**consumo máximo de energía** de la ficha técnica de la cámara, luego agrega
+al menos un 20-30% de margen. Un sistema de 8 cámaras con cámaras que alcanzan
+un máximo de 12 W cada una necesita aproximadamente 125 W de presupuesto PoE,
+no 96 W.
+
 </Callout>
 
 ### Tipos de cable y límites de distancia
@@ -190,11 +200,13 @@ Los NVR modernos vienen con IA a bordo que procesa video localmente — sin nece
 - **ANPR (Reconocimiento automático de matrículas)** — lee y registra placas (modelos de alta gama)
 
 <Callout type="info" title="La IA reduce las falsas alarmas en un 80-90%">
-  La detección de movimiento tradicional se activa con cada objeto en movimiento
-  — árboles, sombras, faros, animales. La IA del NVR filtra estos y solo te
-  alerta sobre lo que importa. La detección de personas por sí sola elimina la
-  mayoría de las falsas alarmas y hace que revisar las grabaciones sea 10 veces
-  más rápido.
+
+La detección de movimiento tradicional se activa con cada objeto en movimiento
+— árboles, sombras, faros, animales. La IA del NVR filtra estos y solo te
+alerta sobre lo que importa. La detección de personas por sí sola elimina la
+mayoría de las falsas alarmas y hace que revisar las grabaciones sea 10 veces
+más rápido.
+
 </Callout>
 
 ### Escalabilidad
@@ -240,11 +252,14 @@ Esta es una de las mayores ventajas sobre las cámaras basadas en la nube (Ring,
 Para un desglose detallado, lee nuestra [comparativa NVR vs DVR](/blog/nvr-vs-dvr).
 
 <Callout type="tip" title="Comparativa de costos a 5 años: NVR vs Nube">
-  Un sistema NVR 4K de 4 cámaras cuesta aproximadamente $600 por adelantado (NVR
-  + 4 cámaras + disco de 4 TB) y $0 al mes. Un sistema Ring de 4 cámaras cuesta
+
+Un sistema NVR 4K de 4 cámaras cuesta aproximadamente $600 por adelantado (NVR
+
+- 4 cámaras + disco de 4 TB) y $0 al mes. Un sistema Ring de 4 cámaras cuesta
   $500 por adelantado más $100/año en suscripciones — $1,000 en 5 años. El
   sistema NVR tiene mayor resolución, almacenamiento local, funciona sin
   conexión y cuesta menos a largo plazo.
+
 </Callout>
 
 ## Cómo elegir el NVR adecuado
@@ -293,12 +308,17 @@ Si quieres alertas inteligentes que realmente funcionen, la detección de person
 Suma el consumo máximo de energía de cada cámara. Agrega un 30% de margen. Asegúrate de que el presupuesto PoE del NVR supere esta cifra. Si usas un conmutador PoE separado, el NVR mismo no necesita puertos PoE.
 
 <Callout type="warning" title="Evita estos errores">
-  - Comprar un DVR cuando planeas usar cámaras IP (son incompatibles) - Comprar
-  un NVR de 8 canales para 6 cámaras sin espacio para crecer - Ignorar el
-  presupuesto PoE — las cámaras que se reinician por la noche son inutilizables
-  - Usar un disco duro de escritorio estándar en lugar de uno para vigilancia -
-  Asumir que "funciona con ONVIF" significa soporte completo de funciones —
-  verifica siempre los perfiles ONVIF
+
+- Comprar un DVR cuando planeas usar cámaras IP (son incompatibles) - Comprar
+
+un NVR de 8 canales para 6 cámaras sin espacio para crecer - Ignorar el
+presupuesto PoE — las cámaras que se reinician por la noche son inutilizables
+
+- Usar un disco duro de escritorio estándar en lugar de uno para vigilancia -
+
+Asumir que "funciona con ONVIF" significa soporte completo de funciones —
+verifica siempre los perfiles ONVIF
+
 </Callout>
 
 ## Preguntas frecuentes
@@ -307,17 +327,21 @@ Suma el consumo máximo de energía de cada cámara. Agrega un 30% de margen. As
   <AccordionItem>
     <AccordionTrigger>¿Qué significa NVR?</AccordionTrigger>
     <AccordionContent>
+
       NVR significa Grabador de Video en Red (Network Video Recorder). Es un
       computador especializado diseñado para grabar video de cámaras IP a través
       de una red Ethernet. A diferencia de un computador estándar, un NVR
       incluye software de gestión de video dedicado, puertos PoE para alimentar
       cámaras, procesadores de IA integrados y hardware optimizado para
       grabación 24/7 sin fallos ni degradación del rendimiento.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>¿En qué se diferencia el NVR del DVR?</AccordionTrigger>
     <AccordionContent>
+
       La diferencia fundamental es dónde ocurre el procesamiento de video. En un
       sistema NVR, las cámaras IP codifican el video por sí mismas y envían
       flujos ya digitales a través de Ethernet. En un sistema DVR, las cámaras
@@ -326,13 +350,16 @@ Suma el consumo máximo de energía de cada cámara. Agrega un 30% de margen. As
       resoluciones (4K+), usan cableado más simple (un solo Cat6 con PoE) y
       escalan más fácilmente. Consulta nuestra [comparativa completa NVR vs
       DVR](/blog/nvr-vs-dvr) para más detalles.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       ¿Necesito internet para que un NVR grabe?
     </AccordionTrigger>
     <AccordionContent>
+
       No. Los NVR graban localmente en discos duros internos y funcionan
       completamente sin conexión. Tus cámaras continúan grabando y tu NVR sigue
       almacenando imágenes tanto si internet funciona como si no. Solo se
@@ -340,13 +367,16 @@ Suma el consumo máximo de energía de cada cámara. Agrega un 30% de margen. As
       notificaciones push en tu teléfono y actualizaciones de firmware. Esta es
       una de las ventajas más importantes sobre los sistemas basados en la nube
       — tus imágenes están siempre disponibles localmente.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       ¿Puedo mezclar diferentes marcas de cámaras con un mismo NVR?
     </AccordionTrigger>
     <AccordionContent>
+
       Sí, siempre que las cámaras y el NVR sean compatibles con ONVIF. ONVIF es
       un estándar de interoperabilidad abierto que la mayoría de los principales
       fabricantes de cámaras IP y NVR soportan. Para una mejor compatibilidad,
@@ -354,29 +384,35 @@ Suma el consumo máximo de energía de cada cámara. Agrega un 30% de margen. As
       detección de movimiento avanzada, audio bidireccional) y Perfil G
       (reproducción y búsqueda en almacenamiento). Puedes mezclar Hikvision,
       Dahua, Reolink, Amcrest, Axis y otras marcas en el mismo NVR.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       ¿Cuánto almacenamiento necesito para un NVR?
     </AccordionTrigger>
     <AccordionContent>
+
       Los requisitos de almacenamiento dependen de la resolución, la tasa de
       fotogramas, la compresión y el modo de grabación. Una sola cámara 4K
       grabando 24/7 con compresión H.265 usa aproximadamente 30-50 GB por día.
       La grabación solo por movimiento reduce esto en un 60-70%. Para un sistema
-      4K de 4 cámaras con retención de 30 días, planea entre 6-12 TB dependiendo
+        4K de 4 cámaras con retención de 30 días, planea entre 6-12 TB dependiendo
       del modo de grabación. Usa siempre discos duros para vigilancia como WD
       Purple o Seagate SkyHawk — están diseñados para cargas de escritura 24/7 e
       incluyen firmware que evita la pérdida de fotogramas durante la
       recuperación de errores.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       ¿Qué es PoE y por qué es importante para el NVR?
     </AccordionTrigger>
     <AccordionContent>
+
       PoE (Power over Ethernet) es una tecnología que suministra tanto energía
       eléctrica como datos a través de un solo cable Ethernet. Un NVR con
       puertos PoE integrados envía energía a cada cámara a través del mismo
@@ -386,13 +422,16 @@ Suma el consumo máximo de energía de cada cámara. Agrega un 30% de margen. As
       un solo UPS. PoE es una de las principales razones por las que los
       sistemas NVR son más rápidos y limpios de instalar que los sistemas DVR o
       de nube.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>
       ¿Puede un NVR alimentar cámaras sin PoE?
     </AccordionTrigger>
     <AccordionContent>
+
       No. Un NVR envía energía solo a través de sus puertos PoE. Si tienes
       cámaras sin PoE o necesitas alimentar cámaras más allá de la capacidad PoE
       integrada del NVR, necesitas un conmutador PoE separado. Conecta las
@@ -400,11 +439,14 @@ Suma el consumo máximo de energía de cada cámara. Agrega un 30% de margen. As
       tu red local. Esto también funciona para cámaras ubicadas lejos del NVR —
       pasa un cable de red largo hasta un conmutador PoE remoto cerca de las
       cámaras.
+
     </AccordionContent>
+
   </AccordionItem>
   <AccordionItem>
     <AccordionTrigger>¿Cuánto dura un NVR?</AccordionTrigger>
     <AccordionContent>
+
       Un sistema NVR bien diseñado típicamente sirve de 7 a 10 años antes de
       necesitar reemplazo. Los discos duros deben reemplazarse cada 3-5 años
       (funcionan 24/7 y se desgastan). Las actualizaciones de firmware deben
@@ -413,7 +455,9 @@ Suma el consumo máximo de energía de cada cámara. Agrega un 30% de margen. As
       capacidad de canales o el ancho de banda del NVR antes de que falle
       físicamente. Por eso comprar 2x tu cantidad actual de canales tiene
       sentido financiero.
+
     </AccordionContent>
+
   </AccordionItem>
 </Accordion>
 
@@ -427,12 +471,14 @@ Ahora que entiendes qué es un NVR y cómo funciona, aquí tienes algunos pasos 
 - Compara [NVR vs DVR](/blog/nvr-vs-dvr) si estás decidiendo entre los dos sistemas
 
 <Callout type="note" title="¿Aún tienes preguntas?">
-  La tecnología NVR continúa evolucionando. En 2026, estamos viendo la
-  compresión H.266 (VVC) que ofrece un 50% de ahorro en almacenamiento sobre
-  H.265, procesadores de IA más rápidos y económicos, y discos de vigilancia de
-  24 TB que se vuelven algo común. Si no estás seguro de qué NVR se adapta a tus
-  necesidades específicas, comienza con un plan claro de cuántas cámaras
-  necesitas y dónde — todo lo demás fluye a partir de eso.
+
+La tecnología NVR continúa evolucionando. En 2026, estamos viendo la
+compresión H.266 (VVC) que ofrece un 50% de ahorro en almacenamiento sobre
+H.265, procesadores de IA más rápidos y económicos, y discos de vigilancia de
+24 TB que se vuelven algo común. Si no estás seguro de qué NVR se adapta a tus
+necesidades específicas, comienza con un plan claro de cuántas cámaras
+necesitas y dónde — todo lo demás fluye a partir de eso.
+
 </Callout>
 
 {/* sitemap refreshed */}
