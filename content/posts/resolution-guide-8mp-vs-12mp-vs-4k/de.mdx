@@ -11,142 +11,135 @@ postType: "howto"
 
 <img
   src="/resolution-comparison-diagram.svg"
-  alt="Diagram showing pixel density at 30 feet: 4MP provides approximately 40 pixels on target, 8MP provides 80 pixels, and 12MP (4K) provides 120 pixels, illustrating the diminishing returns beyond 8MP."
+  alt="Diagramm zeigt Pixeldichte auf 30 Fuß: 4MP liefert etwa 40 Pixel, 8MP liefert 80 Pixel und 12MP (4K) liefert 120 Pixel, was die abnehmenden Erträge jenseits von 8MP veranschaulicht."
 />
 
-### Myth Buster: More Megapixels = Better Security
+### Mythenentlarvung: Mehr Megapixel = Bessere Sicherheit
 
-The surveillance industry pushes higher megapixel counts as the ultimate upgrade, but **more pixels often mean more problems without delivering real-world benefits**. Many users pay extra for 4K or 12MP cameras only to discover their footage is noisier, requires more storage, and doesn't actually improve identification rates. The truth? You're likely overspending.
+Die Überwachungsbranche preist höhere Megapixelzahlen als das ultimative Upgrade an, aber **mehr Pixel bedeuten oft mehr Probleme, ohne praktische Vorteile zu bringen**. Viele Nutzer zahlen extra für 4K- oder 12MP-Kameras, nur um festzustellen, dass das Bildmaterial verrauschter ist, mehr Speicher benötigt und die Identifikationsraten nicht verbessert. Die Wahrheit? Sie geben wahrscheinlich zu viel aus.
 
-## Technical Breakdown
+## Technische Aufschlüsselung
 
-### Pixel Density vs Field of View Trade-off
+### Pixeldichte vs. Sichtfeld-Abwägung
 
-Higher resolution cameras pack more pixels onto the same sensor size, which creates two competing effects:
+Kameras mit höherer Auflösung packen mehr Pixel auf dieselbe Sensorgröße, was zwei gegensätzliche Effekte erzeugt:
 
-- **More pixels on target** means you can digitally zoom further and still recognize faces or read license plates at a distance.
-- **Smaller individual pixels** reduce light-gathering ability, hurting night vision performance unless you compensate with a larger sensor.
+- **Mehr Pixel auf dem Zielobjekt** bedeutet, dass Sie digital weiter zoomen können und dennoch Gesichter erkennen oder Kennzeichen aus der Ferne lesen können.
+- **Kleinere einzelne Pixel** verringern die Lichtsammelfähigkeit und beeinträchtigen die Nachtsichtleistung, sofern Sie nicht mit einem größeren Sensor kompensieren.
 
-Additionally, higher resolution allows you to cover a wider field of view while maintaining the same pixel density. A 4MP camera might need to cover a doorway with a narrow lens (say 30° horizontal) to get 80 pixels across a face at 15 feet. An 8MP camera with the same sensor size could use a 60° lens and still deliver those 80 pixels—effectively doubling coverage area.
+Hinzu kommt, dass eine höhere Auflösung ein breiteres Sichtfeld bei gleicher Pixeldichte ermöglicht. Eine 4MP-Kamera müsste eine Türöffnung mit einem schmalen Objektiv (sagen wir 30° horizontal) abdecken, um 80 Pixel über ein Gesicht auf 15 Fuß zu erhalten. Eine 8MP-Kamera mit derselben Sensorgröße könnte ein 60°-Objektiv verwenden und dennoch diese 80 Pixel liefern – was die Abdeckungsfläche effektiv verdoppelt.
 
-But there's a catch: **Lens quality becomes critical**. A cheap lens on a 12MP sensor will produce soft images that negate the resolution advantage. Aberrations, distortion, and chromatic effects become more visible as pixel count rises. You can't cheap out on optics if you're investing in high resolution.
+Aber es gibt einen Haken: **Die Objektivqualität wird entscheidend**. Ein billiges Objektiv auf einem 12MP-Sensor erzeugt weiche Bilder, die den Auflösungsvorteil zunichtemachen. Aberrationen, Verzerrungen und chromatische Effekte werden mit steigender Pixelzahl sichtbarer. An der Optik darf man nicht sparen, wenn man in hohe Auflösung investiert.
 
-### Storage and Bandwidth Implications
+### Speicher- und Bandbreitenauswirkungen
 
-Higher resolution dramatically increases storage needs, and it's not linear—doubling resolution roughly quadruples pixel count, but bitrate increases are somewhat less due to compression efficiency.
+Höhere Auflösung erhöht den Speicherbedarf drastisch, und das nicht linear – eine Verdoppelung der Auflösung vervierfacht grob die Pixelzahl, aber die Bitratenerhöhung fällt aufgrund der Kompressionseffizienz etwas geringer aus.
 
-| Resolution | Typical Bitrate (H.265) | Daily Storage (24/7) | 8-Camera 30-Day Storage |
-| ---------- | ----------------------- | -------------------- | ----------------------- |
-| 4MP        | 4-6 Mbps                | 12-18 GB             | 1.0-1.5 TB              |
-| 8MP (4K)   | 8-12 Mbps               | 24-36 GB             | 2.0-3.0 TB              |
-| 12MP       | 12-18 Mbps              | 36-54 GB             | 3.0-4.5 TB              |
+| Auflösung | Typische Bitrate (H.265) | Täglicher Speicher (24/7) | 8-Kameras 30-Tage-Speicher |
+| --------- | ------------------------ | ------------------------- | -------------------------- |
+| 4MP       | 4-6 Mbps                 | 12-18 GB                  | 1,0-1,5 TB                 |
+| 8MP (4K)  | 8-12 Mbps                | 24-36 GB                  | 2,0-3,0 TB                 |
+| 12MP      | 12-18 Mbps               | 36-54 GB                  | 3,0-4,5 TB                 |
 
-_Storage varies with scene complexity, motion, and compression settings._
+_Der Speicher variiert je nach Szenenkomplexität, Bewegung und Komprimierungseinstellungen._
 
-<Callout type="warning" title="The hidden costs of 4K">
+<Callout type="warning" title="Die versteckten Kosten von 4K">
 
-    4K cameras chew through storage and bandwidth. If you're currently using 4MP
-
-cameras and switch to 4K, expect your recording storage needs to **more than
-double**. That means larger NVR hard drives, more cloud upload bandwidth if
-you use remote monitoring, and potentially slower playback due to higher data
-throughput requirements.
+    4K-Kameras verbrauchen viel Speicher und Bandbreite. Wenn Sie derzeit 4MP-Kameras verwenden und auf 4K umsteigen, verdoppelt sich Ihr Aufnahmespeicherbedarf **mehr als**. Das bedeutet größere NVR-Festplatten, mehr Cloud-Upload-Bandbreite bei Fernüberwachung und möglicherweise langsamere Wiedergabe durch höhere Durchsatzanforderungen.
 
 </Callout>
 
-### Lens Quality Impact
+### Einfluss der Objektivqualität
 
-Higher resolution sensors demand better lenses to resolve the extra detail. A lens that's "good enough" for 4MP will become the limiting factor on an 8MP or 12MP camera. Look for:
+Höher aufgelöste Sensoren benötigen bessere Objektive, um die zusätzlichen Details aufzulösen. Ein Objektiv, das für 4MP "gut genug" ist, wird zum limitierenden Faktor auf einer 8MP- oder 12MP-Kamera. Achten Sie auf:
 
-- **High-quality glass elements** (not plastic)
-- **Low F-stop** (f/1.4 or lower) for better low-light performance
-- **Minimal distortion** (< 1% for wide-angle lenses)
-- **IR corrected** for night vision clarity
+- **Hochwertige Glaselemente** (kein Kunststoff)
+- **Niedrige Blendenzahl** (f/1,4 oder niedriger) für bessere Low-Light-Leistung
+- **Minimale Verzerrung** (< 1% für Weitwinkelobjektive)
+- **IR-korrigiert** für klare Nachtsicht
 
-A cheap 4K camera with a poor lens will deliver worse identifiable detail than a 4MP camera with a good lens.
+Eine billige 4K-Kamera mit schlechtem Objektiv liefert weniger identifizierbare Details als eine 4MP-Kamera mit gutem Objektiv.
 
-## Practical Scenarios
+## Praktische Szenarien
 
-### Small Home (≤ 50ft FOV)
+### Kleines Zuhause (≤ 50 Fuß Sichtfeld)
 
-For most residential properties with a footprint under 50 feet across, **4MP to 5MP is more than sufficient**. You can cover entrances, driveways, and yards with a single camera and still have enough pixel density to recognize faces at 10-15 feet.
+Für die meisten Wohnimmobilien mit einer Grundfläche unter 50 Fuß sind **4MP bis 5MP mehr als ausreichend**. Sie können Eingänge, Einfahrten und Gärten mit einer einzigen Kamera abdecken und haben dennoch genügend Pixeldichte, um Gesichter auf 10-15 Fuß zu erkennen.
 
-**Why buy more?** You don't need it. Storage costs are lower, night vision is better (larger pixels), and you can place cameras farther apart.
+**Warum mehr kaufen?** Sie brauchen es nicht. Die Speicherkosten sind niedriger, die Nachtsicht ist besser (größere Pixel), und Sie können Kameras weiter auseinander platzieren.
 
-**When to consider 8MP**: Only if you need to read license plates at the street or monitor a large, open backyard where you want to digitally zoom after the fact.
+**Wann 8MP in Betracht ziehen**: Nur, wenn Sie Kennzeichen auf der Straße lesen oder einen großen, offenen Garten überwachen müssen, in den Sie nachträglich digital zoomen möchten.
 
-### Medium Property (50-100ft)
+### Mittlere Immobilie (50-100 Fuß)
 
-For larger homes, small businesses, or medium-sized lots, **5MP to 8MP** strikes the right balance. You get enough detail to identify faces at 20-30 feet and enough coverage area to reduce camera count.
+Für größere Häuser, kleine Unternehmen oder mittelgroße Grundstücke bietet **5MP bis 8MP** die richtige Balance. Sie erhalten genügend Details, um Gesichter auf 20-30 Fuß zu identifizieren, und genügend Abdeckungsfläche, um die Kameraanzahl zu reduzieren.
 
-**8MP benefits**: Digital zoom capability becomes useful; you can mount cameras farther from doorways while still capturing clear facial views.
+**8MP Vorteile**: Die digitale Zoomfähigkeit wird nützlich; Sie können Kameras weiter von Türöffnungen entfernt montieren und dennoch klare Gesichtsaufnahmen machen.
 
-**Storage planning**: Budget about 25-35 GB per camera per day for 8MP vs 15-22 GB for 5MP. Over 30 days, that's roughly 1 TB vs 0.7 TB per camera. For a 16-camera system, that difference means 16 TB vs 11 TB—a significant cost.
+**Speicherplanung**: Planen Sie etwa 25-35 GB pro Kamera pro Tag für 8MP gegenüber 15-22 GB für 5MP. Über 30 Tage sind das grob 1 TB gegenüber 0,7 TB pro Kamera. Bei einem 16-Kamera-System bedeutet dieser Unterschied 16 TB gegenüber 11 TB – ein erheblicher Kostenfaktor.
 
-### Large Perimeter / License Plate Reading
+### Große Perimeter / Kennzeichenerfassung
 
-For large industrial sites, perimeter fencing, or dedicated license plate recognition (LPR), **12MP (4K) can be justified** if you need to:
+Für große Industrieanlagen, Perimeterzäune oder dedizierte Kennzeichenerfassung (LPR) kann **12MP (4K) gerechtfertigt sein**, wenn Sie Folgendes benötigen:
 
-- Cover a wide area (100+ feet) with a single camera
-- Identify faces or plates beyond 30 feet
-- Perform forensic analysis after an incident (zoom into small details)
+- Abdeckung eines großen Bereichs (100+ Fuß) mit einer einzigen Kamera
+- Identifizierung von Gesichtern oder Kennzeichen jenseits von 30 Fuß
+- Forensische Analyse nach einem Vorfall (Zoom in kleine Details)
 
-**Caveat**: 12MP requires excellent lighting. At dusk or night, you'll need supplemental IR or white-light illumination to overcome the small pixel size. Many LPR systems actually use dedicated 2MP-5MP cameras with very narrow fields of view and strong IR—resolution isn't the only factor.
+**Einschränkung**: 12MP erfordert hervorragende Beleuchtung. In der Dämmerung oder Nacht benötigen Sie zusätzliche IR- oder Weißlichtausleuchtung, um die kleine Pixelgröße auszugleichen. Viele LPR-Systeme verwenden tatsächlich dedizierte 2MP-5MP-Kameras mit sehr schmalen Sichtfeldern und starkem IR – Auflösung ist nicht der einzige Faktor.
 
-### Facial Identification Requirements
+### Anforderungen an die Gesichtserkennung
 
-To reliably identify a face, you need **approximately 80-120 pixels between the eyes** (depending on algorithm quality). At 15 feet:
+Um ein Gesicht zuverlässig zu identifizieren, benötigen Sie **etwa 80-120 Pixel zwischen den Augen** (abhängig von der Algorithmusqualität). Auf 15 Fuß:
 
-- 4MP (2560x1440) with a 60° lens: ~60 pixels between eyes
-- 8MP (3840x2160) with a 60° lens: ~90 pixels between eyes
-- 12MP with a 60° lens: ~130 pixels between eyes
+- 4MP (2560x1440) mit einem 60°-Objektiv: ~60 Pixel zwischen den Augen
+- 8MP (3840x2160) mit einem 60°-Objektiv: ~90 Pixel zwischen den Augen
+- 12MP mit einem 60°-Objektiv: ~130 Pixel zwischen den Augen
 
-If your identification distance is consistently under 20 feet, 8MP gives you enough pixels for modern facial recognition algorithms. Beyond 30 feet, even 12MP may fall short without an extreme telephoto lens.
+Wenn Ihr Identifikationsabstand konstant unter 20 Fuß liegt, liefert 8MP genügend Pixel für moderne Gesichtserkennungsalgorithmen. Jenseits von 30 Fuß kann selbst 12MP ohne ein extremes Teleobjektiv an seine Grenzen stoßen.
 
-## Cost vs Benefit: Diminishing Returns
+## Kosten vs. Nutzen: Abnehmende Erträge
 
-The math is straightforward: if you double resolution in each dimension (2x width, 2x height), you get 4x the pixel count. But your ability to extract useful information doesn't scale linearly.
+Die Mathematik ist einfach: Wenn Sie die Auflösung in jeder Dimension verdoppeln (2x Breite, 2x Höhe), erhalten Sie die 4-fache Pixelzahl. Aber Ihre Fähigkeit, nützliche Informationen zu extrahieren, skaliert nicht linear.
 
-**Why?** Because most security use cases require a threshold of pixels on target (typically 40-80 pixels for general detection, 80-120 for identification). Once you exceed that threshold, extra pixels provide diminishing returns.
+**Warum?** Weil die meisten Sicherheitsanwendungen einen Schwellenwert von Pixeln auf dem Zielobjekt erfordern (typisch 40-80 Pixel für allgemeine Erkennung, 80-120 für Identifikation). Sobald dieser Schwellenwert überschritten ist, bringen zusätzliche Pixel nur noch abnehmende Erträge.
 
-Example: Suppose your camera needs to cover a 20-foot wide doorway, and you want 80 pixels across a face at the far edge. With a 60° horizontal FOV:
+Beispiel: Angenommen, Ihre Kamera muss eine 20 Fuß breite Türöffnung abdecken, und Sie möchten 80 Pixel über ein Gesicht am entfernten Rand. Mit einem horizontalen Sichtfeld von 60°:
 
-- At 4MP: you'd need to zoom digitally (crop) to achieve 80 pixels, reducing the scene coverage.
-- At 8MP: you get 80 pixels naturally across the full 20 feet.
-- At 12MP: you get 120 pixels—more than needed for identification, but you're paying for 50% more pixels than the 8MP camera that already met the threshold.
+- Bei 4MP: Sie müssten digital zoomen (crop), um 80 Pixel zu erreichen, was die Szenenabdeckung reduziert.
+- Bei 8MP: Sie erhalten 80 Pixel natürlich über die gesamten 20 Fuß.
+- Bei 12MP: Sie erhalten 120 Pixel – mehr als für die Identifikation nötig, aber Sie zahlen für 50% mehr Pixel als die 8MP-Kamera, die den Schwellenwert bereits erreicht hat.
 
-**Storage cost inflation**: Going from 4MP to 8MP increases daily storage per camera by ~2x. From 8MP to 12MP, another ~1.5x. Yet the practical benefit from 8MP to 12MP is often marginal unless you're pushing extreme distances.
+**Speicherkosteninflation**: Der Wechsel von 4MP auf 8MP erhöht den täglichen Speicher pro Kamera um ~2x. Von 8MP auf 12MP weitere ~1,5x. Doch der praktische Nutzen von 8MP auf 12MP ist oft marginal, es sei denn, Sie arbeiten mit extremen Entfernungen.
 
-## Recommendation Matrix
+## Empfehlungsmatrix
 
-| Use Case                           | Recommended Resolution | Why?                                                                |
-| ---------------------------------- | ---------------------- | ------------------------------------------------------------------- |
-| Indoor office / retail             | 4MP                    | Low light performance excellent; storage minimal; face ID at 10 ft  |
-| Front door / short-range entry     | 5MP or 8MP             | Good balance; 8MP if you need digital zoom for package details      |
-| Driveway / street parking          | 8MP                    | License plates at 15-20 mph; face ID at 20 ft                       |
-| Large backyard / perimeter fence   | 8MP or 12MP            | Wide coverage; 12MP only if you need >30 ft identification distance |
-| ATM / point of sale                | 8MP                    | Required by many compliance standards for facial capture quality    |
-| Industrial loading dock            | 12MP                   | Extreme distance identification; wide coverage area                 |
-| Warehouse interior (high ceilings) | 4MP-5MP                | Better low-light; fewer pixels needed for presence detection        |
-| Multi-unit building entrance       | 8MP                    | Covers entire entryway; zoom to see who's at each door              |
+| Anwendungsfall                | Empfohlene Auflösung | Warum?                                                                       |
+| ----------------------------- | -------------------- | ---------------------------------------------------------------------------- |
+| Innenraum Büro / Einzelhandel | 4MP                  | Hervorragende Low-Light-Leistung; minimaler Speicher; Gesichts-ID auf 10 Fuß |
+| Haustür / kurze Zufahrt       | 5MP oder 8MP         | Gute Balance; 8MP bei Bedarf für digitalen Zoom für Paketdetails             |
+| Einfahrt / Straßenparkplatz   | 8MP                  | Kennzeichen bei 15-20 mph; Gesichts-ID auf 20 Fuß                            |
+| Großer Garten / Perimeterzaun | 8MP oder 12MP        | Breite Abdeckung; 12MP nur bei >30 Fuß Identifikationsentfernung             |
+| Geldautomat / Kassensystem    | 8MP                  | Von vielen Compliance-Standards für Gesichtserfassungsqualität gefordert     |
+| Industrie-Laderampe           | 12MP                 | Identifikation über extreme Entfernungen; breites Abdeckungsgebiet           |
+| Lagerhalle (hohe Decken)      | 4MP-5MP              | Besseres Low-Light; weniger Pixel für Anwesenheitserkennung nötig            |
+| Mehrfamilienhaus-Eingang      | 8MP                  | Deckt gesamten Eingangsbereich; Zoom, um zu sehen, wer an jeder Tür ist      |
 
-<Callout type="info" title="Mix and match!">
+<Callout type="info" title="Mischen und kombinieren!">
 
-The best systems use multiple resolutions: 4MP indoors for low-light, 8MP at
-key outdoor zones, and maybe 12MP on a dedicated LPR camera. Don't feel
-pressured to standardize on one resolution across your entire property.
+Die besten Systeme verwenden mehrere Auflösungen: 4MP in Innenräumen für Low-Light, 8MP an wichtigen Außenbereichen und vielleicht 12MP auf einer dedizierten LPR-Kamera. Sie müssen sich nicht unter Druck setzen lassen, eine einheitliche Auflösung für Ihr gesamtes Grundstück zu verwenden.
 
 </Callout>
 
-## Conclusion: Choose Based on Needs, Not Megapixels
+## Fazit: Wählen Sie nach Bedarf, nicht nach Megapixeln
 
-The surveillance industry wants you to believe that higher numbers are always better. The reality is that **the optimal resolution is the lowest one that meets your identification distance requirements at your required field of view**. Beyond that, you're just spending more on storage, bandwidth, and potentially worse low-light performance.
+Die Überwachungsbranche möchte Ihnen glauben machen, dass höhere Zahlen immer besser sind. Die Realität ist, dass **die optimale Auflösung die niedrigste ist, die Ihre Identifikationsentfernungsanforderungen bei Ihrem erforderlichen Sichtfeld erfüllt**. Darüber hinaus geben Sie nur mehr für Speicher, Bandbreite und potenziell schlechtere Low-Light-Leistung aus.
 
-**Quick decision guide**:
+**Schnelle Entscheidungshilfe**:
 
-- **Need identification at ≤ 20 feet?** 5MP-8MP is plenty.
-- **Covering > 100 ft wide area?** Consider 8MP, but evaluate sensor size and lens quality.
-- **License plates at > 30 feet or wide perimeter?** 12MP may be necessary, but check low-light specs.
-- **Budget or storage constrained?** Drop a tier; you won't lose meaningful identification capability.
+- **Identifikation bei ≤ 20 Fuß nötig?** 5MP-8MP ist völlig ausreichend.
+- **Abdeckung eines > 100 Fuß breiten Bereichs?** 8MP in Betracht ziehen, aber Sensorgröße und Objektivqualität prüfen.
+- **Kennzeichen bei > 30 Fuß oder breiter Perimeter?** 12MP kann notwendig sein, aber Low-Light-Spezifikationen prüfen.
+- **Budget- oder speicherbeschränkt?** Eine Stufe tiefer gehen; Sie verlieren keine relevante Identifikationsfähigkeit.
 
-Before buying that 4K camera, calculate: How many pixels on target do I actually need at my critical distance? Then buy the resolution that meets that number—nothing more.
+Bevor Sie diese 4K-Kamera kaufen, rechnen Sie nach: Wie viele Pixel auf dem Zielobjekt benötige ich tatsächlich in meiner kritischen Entfernung? Kaufen Sie dann die Auflösung, die diese Zahl erfüllt – nicht mehr.

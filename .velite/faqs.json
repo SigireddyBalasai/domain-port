@@ -273,279 +273,6 @@
     "locale": "zh"
   },
   {
-    "question": "كم عدد كاميرات CCTV التي أحتاجها لمنزلي؟",
-    "answer": "const{Fragment:n,jsx:e,jsxs:r}=arguments[0];function _createMdxContent(t){const l={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return r(n,{children:[r(l.p,{children:[\"بالنسبة لمعظم المنازل، \",e(l.strong,{children:\"2-4 كاميرات\"}),\" كافية. ضع الكاميرات عند نقاط الدخول (الباب الأمامي، الباب الخلفي، المرآب)، وفكر في تغطية النوافذ أو النقاط العمياء.\"]}),\"\\n\",r(l.p,{children:[\"قد تحتاج الممتلكات الأكبر إلى \",e(l.strong,{children:\"6-8 كاميرات\"}),\" لتغطية كاملة. ضع في اعتبارك هذه المناطق الرئيسية:\"]}),\"\\n\",r(l.ol,{children:[\"\\n\",e(l.li,{children:\"مدخل الباب الأمامي\"}),\"\\n\",e(l.li,{children:\"الباب الخلفي أو الفناء\"}),\"\\n\",e(l.li,{children:\"المرآب أو الممر\"}),\"\\n\",e(l.li,{children:\"نوافذ الطابق الأرضي\"}),\"\\n\",e(l.li,{children:\"الفناء الخلفي أو الجانبي\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:r}=n.components||{};return r?e(r,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};",
-    "category": "installation",
-    "order": 2,
-    "tags": [
-      "home",
-      "installation",
-      "cameras"
-    ],
-    "slug": "how-many-cameras",
-    "locale": "ar"
-  },
-  {
-    "question": "আমার বাড়ির জন্য কতগুলি সিসিটিভি ক্যামেরা প্রয়োজন?",
-    "answer": "const{Fragment:n,jsx:e,jsxs:r}=arguments[0];function _createMdxContent(t){const l={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return r(n,{children:[r(l.p,{children:[\"বেশিরভাগ বাড়ির জন্য, \",e(l.strong,{children:\"2-4টি ক্যামেরা\"}),\" যথেষ্ট। প্রবেশ পয়েন্টে (সামনের দরজা, পিছনের দরজা, গ্যারেজ) ক্যামেরা রাখুন এবং জানালা বা অন্ধ স্থানগুলি কভার করার কথা বিবেচনা করুন।\"]}),\"\\n\",r(l.p,{children:[\"বড় সম্পত্তির সম্পূর্ণ কভারেজের জন্য \",e(l.strong,{children:\"6-8টি ক্যামেরার\"}),\" প্রয়োজন হতে পারে। এই গুরুত্বপূর্ণ এলাকাগুলি বিবেচনা করুন:\"]}),\"\\n\",r(l.ol,{children:[\"\\n\",e(l.li,{children:\"সামনের দরজার প্রবেশপথ\"}),\"\\n\",e(l.li,{children:\"পিছনের দরজা বা বারান্দা\"}),\"\\n\",e(l.li,{children:\"গ্যারেজ বা ড্রাইভওয়ে\"}),\"\\n\",e(l.li,{children:\"নিচতলার জানালা\"}),\"\\n\",e(l.li,{children:\"পিছনের উঠোন বা পাশের উঠোন\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:r}=n.components||{};return r?e(r,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};",
-    "category": "installation",
-    "order": 2,
-    "tags": [
-      "home",
-      "installation",
-      "cameras"
-    ],
-    "slug": "how-many-cameras",
-    "locale": "bn"
-  },
-  {
-    "question": "Wie viele CCTV-Kameras brauche ich für mein Zuhause?",
-    "answer": "const{Fragment:e,jsx:n,jsxs:r}=arguments[0];function _createMdxContent(i){const t={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...i.components};return r(e,{children:[r(t.p,{children:[\"Für die meisten Häuser sind \",n(t.strong,{children:\"2-4 Kameras\"}),\" ausreichend. Platzieren Sie Kameras an den Eingangspunkten (Eingangstür, Hintertür, Garage) und decken Sie Fenster oder tote Winkel ab.\"]}),\"\\n\",r(t.p,{children:[\"Größere Grundstücke benötigen möglicherweise \",n(t.strong,{children:\"6-8 Kameras\"}),\" für eine vollständige Abdeckung. Berücksichtigen Sie diese Schlüsselbereiche:\"]}),\"\\n\",r(t.ol,{children:[\"\\n\",n(t.li,{children:\"Hauseingang\"}),\"\\n\",n(t.li,{children:\"Hintertür oder Terrasse\"}),\"\\n\",n(t.li,{children:\"Garage oder Einfahrt\"}),\"\\n\",n(t.li,{children:\"Fenster im Erdgeschoss\"}),\"\\n\",n(t.li,{children:\"Hinterhof oder Seitenbereich\"}),\"\\n\"]})]})}return{default:function(e={}){const{wrapper:r}=e.components||{};return r?n(r,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};",
-    "category": "installation",
-    "order": 2,
-    "tags": [
-      "home",
-      "installation",
-      "cameras"
-    ],
-    "slug": "how-many-cameras",
-    "locale": "de"
-  },
-  {
-    "question": "How many CCTV cameras do I need for my home?",
-    "answer": "const{Fragment:r,jsx:n,jsxs:e}=arguments[0];function _createMdxContent(o){const t={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...o.components};return e(r,{children:[e(t.p,{children:[\"For most homes, \",n(t.strong,{children:\"2-4 cameras\"}),\" are sufficient. Place cameras at entry points (front door, back door, garage), and consider covering windows or blind spots.\"]}),\"\\n\",e(t.p,{children:[\"Larger properties may need \",n(t.strong,{children:\"6-8 cameras\"}),\" for complete coverage. Consider these key areas:\"]}),\"\\n\",e(t.ol,{children:[\"\\n\",n(t.li,{children:\"Front door entrance\"}),\"\\n\",n(t.li,{children:\"Back door or patio\"}),\"\\n\",n(t.li,{children:\"Garage or driveway\"}),\"\\n\",n(t.li,{children:\"Ground-floor windows\"}),\"\\n\",n(t.li,{children:\"Backyard or side yard\"}),\"\\n\"]})]})}return{default:function(r={}){const{wrapper:e}=r.components||{};return e?n(e,{...r,children:n(_createMdxContent,{...r})}):_createMdxContent(r)}};",
-    "category": "installation",
-    "order": 2,
-    "tags": [
-      "home",
-      "installation",
-      "cameras"
-    ],
-    "slug": "how-many-cameras",
-    "locale": "en"
-  },
-  {
-    "question": "¿Cuántas cámaras CCTV necesito para mi hogar?",
-    "answer": "const{Fragment:e,jsx:a,jsxs:n}=arguments[0];function _createMdxContent(r){const t={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...r.components};return n(e,{children:[n(t.p,{children:[\"Para la mayoría de los hogares, \",a(t.strong,{children:\"2-4 cámaras\"}),\" son suficientes. Coloque las cámaras en los puntos de entrada (puerta principal, puerta trasera, garaje) y considere cubrir ventanas o puntos ciegos.\"]}),\"\\n\",n(t.p,{children:[\"Las propiedades más grandes pueden necesitar \",a(t.strong,{children:\"6-8 cámaras\"}),\" para una cobertura completa. Considere estas áreas clave:\"]}),\"\\n\",n(t.ol,{children:[\"\\n\",a(t.li,{children:\"Entrada de la puerta principal\"}),\"\\n\",a(t.li,{children:\"Puerta trasera o patio\"}),\"\\n\",a(t.li,{children:\"Garaje o entrada de vehículos\"}),\"\\n\",a(t.li,{children:\"Ventanas de la planta baja\"}),\"\\n\",a(t.li,{children:\"Patio trasero o jardín lateral\"}),\"\\n\"]})]})}return{default:function(e={}){const{wrapper:n}=e.components||{};return n?a(n,{...e,children:a(_createMdxContent,{...e})}):_createMdxContent(e)}};",
-    "category": "installation",
-    "order": 2,
-    "tags": [
-      "home",
-      "installation",
-      "cameras"
-    ],
-    "slug": "how-many-cameras",
-    "locale": "es"
-  },
-  {
-    "question": "De combien de caméras CCTV ai-je besoin pour ma maison ?",
-    "answer": "const{Fragment:e,jsx:r,jsxs:n}=arguments[0];function _createMdxContent(t){const s={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return n(e,{children:[n(s.p,{children:[\"Pour la plupart des maisons, \",r(s.strong,{children:\"2 à 4 caméras\"}),\" suffisent. Placez les caméras aux points d'entrée (porte d'entrée, porte arrière, garage) et envisagez de couvrir les fenêtres ou les angles morts.\"]}),\"\\n\",n(s.p,{children:[\"Les propriétés plus grandes peuvent nécessiter \",r(s.strong,{children:\"6 à 8 caméras\"}),\" pour une couverture complète. Considérez ces zones clés :\"]}),\"\\n\",n(s.ol,{children:[\"\\n\",r(s.li,{children:\"Entrée de la porte principale\"}),\"\\n\",r(s.li,{children:\"Porte arrière ou patio\"}),\"\\n\",r(s.li,{children:\"Garage ou allée\"}),\"\\n\",r(s.li,{children:\"Fenêtres du rez-de-chaussée\"}),\"\\n\",r(s.li,{children:\"Arrière-cour ou côté de la maison\"}),\"\\n\"]})]})}return{default:function(e={}){const{wrapper:n}=e.components||{};return n?r(n,{...e,children:r(_createMdxContent,{...e})}):_createMdxContent(e)}};",
-    "category": "installation",
-    "order": 2,
-    "tags": [
-      "home",
-      "installation",
-      "cameras"
-    ],
-    "slug": "how-many-cameras",
-    "locale": "fr"
-  },
-  {
-    "question": "मुझे अपने घर के लिए कितने सीसीटीवी कैमरे चाहिए?",
-    "answer": "const{Fragment:n,jsx:e,jsxs:r}=arguments[0];function _createMdxContent(t){const l={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return r(n,{children:[r(l.p,{children:[\"अधिकांश घरों के लिए, \",e(l.strong,{children:\"2-4 कैमरे\"}),\" पर्याप्त हैं। कैमरों को प्रवेश बिंदुओं (सामने का दरवाजा, पिछला दरवाजा, गैरेज) पर रखें, और खिड़कियों या अंधे स्थानों को कवर करने पर विचार करें।\"]}),\"\\n\",r(l.p,{children:[\"बड़ी संपत्तियों को पूर्ण कवरेज के लिए \",e(l.strong,{children:\"6-8 कैमरों\"}),\" की आवश्यकता हो सकती है। इन प्रमुख क्षेत्रों पर विचार करें:\"]}),\"\\n\",r(l.ol,{children:[\"\\n\",e(l.li,{children:\"सामने के दरवाजे का प्रवेश\"}),\"\\n\",e(l.li,{children:\"पिछला दरवाजा या आँगन\"}),\"\\n\",e(l.li,{children:\"गैरेज या ड्राइववे\"}),\"\\n\",e(l.li,{children:\"भूतल की खिड़कियाँ\"}),\"\\n\",e(l.li,{children:\"पिछवाड़ा या बगल का यार्ड\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:r}=n.components||{};return r?e(r,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};",
-    "category": "installation",
-    "order": 2,
-    "tags": [
-      "home",
-      "installation",
-      "cameras"
-    ],
-    "slug": "how-many-cameras",
-    "locale": "hi"
-  },
-  {
-    "question": "Berapa banyak kamera CCTV yang saya butuhkan untuk rumah saya?",
-    "answer": "const{Fragment:n,jsx:a,jsxs:e}=arguments[0];function _createMdxContent(t){const r={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return e(n,{children:[e(r.p,{children:[\"Untuk sebagian besar rumah, \",a(r.strong,{children:\"2-4 kamera\"}),\" sudah cukup. Tempatkan kamera di titik masuk (pintu depan, pintu belakang, garasi), dan pertimbangkan untuk menutupi jendela atau titik buta.\"]}),\"\\n\",e(r.p,{children:[\"Properti yang lebih besar mungkin membutuhkan \",a(r.strong,{children:\"6-8 kamera\"}),\" untuk cakupan yang lengkap. Pertimbangkan area-area utama berikut:\"]}),\"\\n\",e(r.ol,{children:[\"\\n\",a(r.li,{children:\"Pintu masuk depan\"}),\"\\n\",a(r.li,{children:\"Pintu belakang atau teras\"}),\"\\n\",a(r.li,{children:\"Garasi atau jalan masuk\"}),\"\\n\",a(r.li,{children:\"Jendela lantai dasar\"}),\"\\n\",a(r.li,{children:\"Halaman belakang atau halaman samping\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:e}=n.components||{};return e?a(e,{...n,children:a(_createMdxContent,{...n})}):_createMdxContent(n)}};",
-    "category": "installation",
-    "order": 2,
-    "tags": [
-      "home",
-      "installation",
-      "cameras"
-    ],
-    "slug": "how-many-cameras",
-    "locale": "id"
-  },
-  {
-    "question": "Di quante telecamere CCTV ho bisogno per la mia casa?",
-    "answer": "const{Fragment:e,jsx:r,jsxs:n}=arguments[0];function _createMdxContent(i){const t={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...i.components};return n(e,{children:[n(t.p,{children:[\"Per la maggior parte delle case, \",r(t.strong,{children:\"2-4 telecamere\"}),\" sono sufficienti. Posiziona le telecamere nei punti di ingresso (porta principale, porta sul retro, garage) e considera di coprire finestre o punti ciechi.\"]}),\"\\n\",n(t.p,{children:[\"Le proprietà più grandi potrebbero aver bisogno di \",r(t.strong,{children:\"6-8 telecamere\"}),\" per una copertura completa. Considera queste aree chiave:\"]}),\"\\n\",n(t.ol,{children:[\"\\n\",r(t.li,{children:\"Ingresso principale\"}),\"\\n\",r(t.li,{children:\"Porta sul retro o patio\"}),\"\\n\",r(t.li,{children:\"Garage o vialetto\"}),\"\\n\",r(t.li,{children:\"Finestre del piano terra\"}),\"\\n\",r(t.li,{children:\"Cortile posteriore o laterale\"}),\"\\n\"]})]})}return{default:function(e={}){const{wrapper:n}=e.components||{};return n?r(n,{...e,children:r(_createMdxContent,{...e})}):_createMdxContent(e)}};",
-    "category": "installation",
-    "order": 2,
-    "tags": [
-      "home",
-      "installation",
-      "cameras"
-    ],
-    "slug": "how-many-cameras",
-    "locale": "it"
-  },
-  {
-    "question": "自宅には何台のCCTVカメラが必要ですか？",
-    "answer": "const{Fragment:n,jsx:e,jsxs:r}=arguments[0];function _createMdxContent(t){const l={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return r(n,{children:[r(l.p,{children:[\"ほとんどの家庭では、\",e(l.strong,{children:\"2〜4台のカメラ\"}),\"で十分です。カメラは出入り口（玄関、裏口、ガレージ）に設置し、窓や死角もカバーすることを検討してください。\"]}),\"\\n\",r(l.p,{children:[\"より大きな物件では、完全なカバレッジのために\",e(l.strong,{children:\"6〜8台のカメラ\"}),\"が必要になる場合があります。以下の重要なエリアを考慮してください：\"]}),\"\\n\",r(l.ol,{children:[\"\\n\",e(l.li,{children:\"玄関入り口\"}),\"\\n\",e(l.li,{children:\"裏口またはパティオ\"}),\"\\n\",e(l.li,{children:\"ガレージまたは私道\"}),\"\\n\",e(l.li,{children:\"1階の窓\"}),\"\\n\",e(l.li,{children:\"裏庭または側庭\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:r}=n.components||{};return r?e(r,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};",
-    "category": "installation",
-    "order": 2,
-    "tags": [
-      "home",
-      "installation",
-      "cameras"
-    ],
-    "slug": "how-many-cameras",
-    "locale": "ja"
-  },
-  {
-    "question": "집에 몇 대의 CCTV 카메라가 필요합니까?",
-    "answer": "const{Fragment:n,jsx:e,jsxs:r}=arguments[0];function _createMdxContent(t){const l={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return r(n,{children:[r(l.p,{children:[\"대부분의 가정에서는 \",e(l.strong,{children:\"2~4대의 카메라\"}),\"로 충분합니다. 출입구(현관문, 뒷문, 차고)에 카메라를 배치하고 창문이나 사각지대를 커버하는 것을 고려하세요.\"]}),\"\\n\",r(l.p,{children:[\"더 큰 주택은 완전한 커버리지를 위해 \",e(l.strong,{children:\"6~8대의 카메라\"}),\"가 필요할 수 있습니다. 다음 주요 영역을 고려하세요:\"]}),\"\\n\",r(l.ol,{children:[\"\\n\",e(l.li,{children:\"현관문 입구\"}),\"\\n\",e(l.li,{children:\"뒷문 또는 파티오\"}),\"\\n\",e(l.li,{children:\"차고 또는 진입로\"}),\"\\n\",e(l.li,{children:\"1층 창문\"}),\"\\n\",e(l.li,{children:\"뒷마당 또는 옆마당\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:r}=n.components||{};return r?e(r,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};",
-    "category": "installation",
-    "order": 2,
-    "tags": [
-      "home",
-      "installation",
-      "cameras"
-    ],
-    "slug": "how-many-cameras",
-    "locale": "ko"
-  },
-  {
-    "question": "Hoeveel CCTV-camera's heb ik nodig voor mijn huis?",
-    "answer": "const{Fragment:e,jsx:n,jsxs:r}=arguments[0];function _createMdxContent(o){const t={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...o.components};return r(e,{children:[r(t.p,{children:[\"Voor de meeste woningen zijn \",n(t.strong,{children:\"2-4 camera's\"}),\" voldoende. Plaats camera's bij toegangspunten (voordeur, achterdeur, garage) en overweeg om ramen of dode hoeken te bedekken.\"]}),\"\\n\",r(t.p,{children:[\"Grotere eigendommen hebben mogelijk \",n(t.strong,{children:\"6-8 camera's\"}),\" nodig voor volledige dekking. Overweeg deze belangrijke gebieden:\"]}),\"\\n\",r(t.ol,{children:[\"\\n\",n(t.li,{children:\"Voordeur-ingang\"}),\"\\n\",n(t.li,{children:\"Achterdeur of patio\"}),\"\\n\",n(t.li,{children:\"Garage of oprit\"}),\"\\n\",n(t.li,{children:\"Ramen op de begane grond\"}),\"\\n\",n(t.li,{children:\"Achtertuin of zijtuin\"}),\"\\n\"]})]})}return{default:function(e={}){const{wrapper:r}=e.components||{};return r?n(r,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};",
-    "category": "installation",
-    "order": 2,
-    "tags": [
-      "home",
-      "installation",
-      "cameras"
-    ],
-    "slug": "how-many-cameras",
-    "locale": "nl"
-  },
-  {
-    "question": "Ile kamer CCTV potrzebuję do mojego domu?",
-    "answer": "const{Fragment:n,jsx:e,jsxs:r}=arguments[0];function _createMdxContent(o){const t={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...o.components};return r(n,{children:[r(t.p,{children:[\"W przypadku większości domów wystarczą \",e(t.strong,{children:\"2-4 kamery\"}),\". Umieść kamery przy punktach wejścia (drzwi frontowe, drzwi tylne, garaż) i rozważ pokrycie okien lub martwych punktów.\"]}),\"\\n\",r(t.p,{children:[\"Większe posesje mogą wymagać \",e(t.strong,{children:\"6-8 kamer\"}),\" dla pełnego pokrycia. Rozważ te kluczowe obszary:\"]}),\"\\n\",r(t.ol,{children:[\"\\n\",e(t.li,{children:\"Wejście głównych drzwi\"}),\"\\n\",e(t.li,{children:\"Drzwi tylne lub taras\"}),\"\\n\",e(t.li,{children:\"Garaż lub podjazd\"}),\"\\n\",e(t.li,{children:\"Okna parteru\"}),\"\\n\",e(t.li,{children:\"Podwórko tylne lub boczne\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:r}=n.components||{};return r?e(r,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};",
-    "category": "installation",
-    "order": 2,
-    "tags": [
-      "home",
-      "installation",
-      "cameras"
-    ],
-    "slug": "how-many-cameras",
-    "locale": "pl"
-  },
-  {
-    "question": "Quantas câmeras CCTV preciso para minha casa?",
-    "answer": "const{Fragment:e,jsx:r,jsxs:n}=arguments[0];function _createMdxContent(a){const o={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...a.components};return n(e,{children:[n(o.p,{children:[\"Para a maioria das residências, \",r(o.strong,{children:\"2 a 4 câmeras\"}),\" são suficientes. Coloque as câmeras nos pontos de entrada (porta da frente, porta dos fundos, garagem) e considere cobrir janelas ou pontos cegos.\"]}),\"\\n\",n(o.p,{children:[\"Propriedades maiores podem precisar de \",r(o.strong,{children:\"6 a 8 câmeras\"}),\" para cobertura completa. Considere estas áreas principais:\"]}),\"\\n\",n(o.ol,{children:[\"\\n\",r(o.li,{children:\"Entrada da porta da frente\"}),\"\\n\",r(o.li,{children:\"Porta dos fundos ou pátio\"}),\"\\n\",r(o.li,{children:\"Garagem ou entrada de carros\"}),\"\\n\",r(o.li,{children:\"Janelas do térreo\"}),\"\\n\",r(o.li,{children:\"Quintal ou jardim lateral\"}),\"\\n\"]})]})}return{default:function(e={}){const{wrapper:n}=e.components||{};return n?r(n,{...e,children:r(_createMdxContent,{...e})}):_createMdxContent(e)}};",
-    "category": "installation",
-    "order": 2,
-    "tags": [
-      "home",
-      "installation",
-      "cameras"
-    ],
-    "slug": "how-many-cameras",
-    "locale": "pt"
-  },
-  {
-    "question": "Сколько камер CCTV нужно для дома?",
-    "answer": "const{Fragment:n,jsx:e,jsxs:r}=arguments[0];function _createMdxContent(t){const l={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return r(n,{children:[r(l.p,{children:[\"Для большинства домов достаточно \",e(l.strong,{children:\"2-4 камер\"}),\". Разместите камеры в точках входа (входная дверь, задняя дверь, гараж) и рассмотрите возможность покрытия окон или слепых зон.\"]}),\"\\n\",r(l.p,{children:[\"Для больших объектов может потребоваться \",e(l.strong,{children:\"6-8 камер\"}),\" для полного покрытия. Учитывайте эти ключевые зоны:\"]}),\"\\n\",r(l.ol,{children:[\"\\n\",e(l.li,{children:\"Входная дверь\"}),\"\\n\",e(l.li,{children:\"Задняя дверь или patio\"}),\"\\n\",e(l.li,{children:\"Гараж или подъездная дорога\"}),\"\\n\",e(l.li,{children:\"Окна первого этажа\"}),\"\\n\",e(l.li,{children:\"Задний или боковой двор\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:r}=n.components||{};return r?e(r,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};",
-    "category": "installation",
-    "order": 2,
-    "tags": [
-      "home",
-      "installation",
-      "cameras"
-    ],
-    "slug": "how-many-cameras",
-    "locale": "ru"
-  },
-  {
-    "question": "ฉันต้องใช้กล้อง CCTV กี่ตัวสำหรับบ้านของฉัน?",
-    "answer": "const{Fragment:n,jsx:e,jsxs:r}=arguments[0];function _createMdxContent(t){const l={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return r(n,{children:[r(l.p,{children:[\"สำหรับบ้านส่วนใหญ่ \",e(l.strong,{children:\"กล้อง 2-4 ตัว\"}),\" ก็เพียงพอแล้ว วางกล้องไว้ที่จุดเข้า (ประตูหน้า, ประตูหลัง, โรงรถ) และพิจารณาให้ครอบคลุมหน้าต่างหรือจุดอับสายตา\"]}),\"\\n\",r(l.p,{children:[\"บ้านขนาดใหญ่อาจต้องใช้ \",e(l.strong,{children:\"กล้อง 6-8 ตัว\"}),\" เพื่อครอบคลุมพื้นที่ทั้งหมด พิจารณาพื้นที่สำคัญเหล่านี้:\"]}),\"\\n\",r(l.ol,{children:[\"\\n\",e(l.li,{children:\"ทางเข้าประตูหน้า\"}),\"\\n\",e(l.li,{children:\"ประตูหลังหรือลานบ้าน\"}),\"\\n\",e(l.li,{children:\"โรงรถหรือทางรถเข้า\"}),\"\\n\",e(l.li,{children:\"หน้าต่างชั้นล่าง\"}),\"\\n\",e(l.li,{children:\"สนามหลังบ้านหรือสนามข้างบ้าน\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:r}=n.components||{};return r?e(r,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};",
-    "category": "installation",
-    "order": 2,
-    "tags": [
-      "home",
-      "installation",
-      "cameras"
-    ],
-    "slug": "how-many-cameras",
-    "locale": "th"
-  },
-  {
-    "question": "Evim için kaç CCTV kamerasına ihtiyacım var?",
-    "answer": "const{Fragment:n,jsx:a,jsxs:e}=arguments[0];function _createMdxContent(r){const i={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...r.components};return e(n,{children:[e(i.p,{children:[\"Çoğu ev için \",a(i.strong,{children:\"2-4 kamera\"}),\" yeterlidir. Kameraları giriş noktalarına (ön kapı, arka kapı, garaj) yerleştirin ve pencereleri veya kör noktaları kapsamayı düşünün.\"]}),\"\\n\",e(i.p,{children:[\"Daha büyük mülkler tam kapsama için \",a(i.strong,{children:\"6-8 kameraya\"}),\" ihtiyaç duyabilir. Bu önemli alanları göz önünde bulundurun:\"]}),\"\\n\",e(i.ol,{children:[\"\\n\",a(i.li,{children:\"Ön kapı girişi\"}),\"\\n\",a(i.li,{children:\"Arka kapı veya teras\"}),\"\\n\",a(i.li,{children:\"Garaj veya araba yolu\"}),\"\\n\",a(i.li,{children:\"Zemin kat pencereleri\"}),\"\\n\",a(i.li,{children:\"Arka bahçe veya yan bahçe\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:e}=n.components||{};return e?a(e,{...n,children:a(_createMdxContent,{...n})}):_createMdxContent(n)}};",
-    "category": "installation",
-    "order": 2,
-    "tags": [
-      "home",
-      "installation",
-      "cameras"
-    ],
-    "slug": "how-many-cameras",
-    "locale": "tr"
-  },
-  {
-    "question": "Скільки камер CCTV потрібно для мого будинку?",
-    "answer": "const{Fragment:n,jsx:e,jsxs:r}=arguments[0];function _createMdxContent(t){const l={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return r(n,{children:[r(l.p,{children:[\"Для більшості будинків достатньо \",e(l.strong,{children:\"2-4 камер\"}),\". Розмістіть камери в точках входу (вхідні двері, задні двері, гараж) та розгляньте можливість покриття вікон або сліпих зон.\"]}),\"\\n\",r(l.p,{children:[\"Для більших об'єктів може знадобитися \",e(l.strong,{children:\"6-8 камер\"}),\" для повного покриття. Враховуйте ці ключові зони:\"]}),\"\\n\",r(l.ol,{children:[\"\\n\",e(l.li,{children:\"Вхідні двері\"}),\"\\n\",e(l.li,{children:\"Задні двері або патіо\"}),\"\\n\",e(l.li,{children:\"Гараж або під'їзна дорога\"}),\"\\n\",e(l.li,{children:\"Вікна першого поверху\"}),\"\\n\",e(l.li,{children:\"Задній або бічний двір\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:r}=n.components||{};return r?e(r,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};",
-    "category": "installation",
-    "order": 2,
-    "tags": [
-      "home",
-      "installation",
-      "cameras"
-    ],
-    "slug": "how-many-cameras",
-    "locale": "uk"
-  },
-  {
-    "question": "مجھے اپنے گھر کے لیے کتنے CCTV کیمرے چاہییں؟",
-    "answer": "const{Fragment:n,jsx:e,jsxs:r}=arguments[0];function _createMdxContent(t){const l={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return r(n,{children:[r(l.p,{children:[\"زیادہ تر گھروں کے لیے \",e(l.strong,{children:\"2-4 کیمرے\"}),\" کافی ہوتے ہیں۔ کیمرے داخلی مقامات (سامنے کا دروازہ، پچھلا دروازہ، گیراج) پر رکھیں، اور کھڑکیوں یا اندھے مقامات کو کور کرنے پر غور کریں۔\"]}),\"\\n\",r(l.p,{children:[\"بڑی جائیدادوں کو مکمل کوریج کے لیے \",e(l.strong,{children:\"6-8 کیمروں\"}),\" کی ضرورت ہو سکتی ہے۔ ان اہم علاقوں پر غور کریں:\"]}),\"\\n\",r(l.ol,{children:[\"\\n\",e(l.li,{children:\"سامنے کے دروازے کا داخلہ\"}),\"\\n\",e(l.li,{children:\"پچھلا دروازہ یا آنگن\"}),\"\\n\",e(l.li,{children:\"گیراج یا ڈرائیو وے\"}),\"\\n\",e(l.li,{children:\"گراؤنڈ فلور کی کھڑکیاں\"}),\"\\n\",e(l.li,{children:\"پچھلا صحن یا سائیڈ یارڈ\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:r}=n.components||{};return r?e(r,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};",
-    "category": "installation",
-    "order": 2,
-    "tags": [
-      "home",
-      "installation",
-      "cameras"
-    ],
-    "slug": "how-many-cameras",
-    "locale": "ur"
-  },
-  {
-    "question": "Tôi cần bao nhiêu camera CCTV cho ngôi nhà của mình?",
-    "answer": "const{Fragment:n,jsx:c,jsxs:e}=arguments[0];function _createMdxContent(t){const r={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return e(n,{children:[e(r.p,{children:[\"Đối với hầu hết các ngôi nhà, \",c(r.strong,{children:\"2-4 camera\"}),\" là đủ. Đặt camera tại các điểm ra vào (cửa trước, cửa sau, nhà để xe) và cân nhắc che phủ cửa sổ hoặc điểm mù.\"]}),\"\\n\",e(r.p,{children:[\"Các bất động sản lớn hơn có thể cần \",c(r.strong,{children:\"6-8 camera\"}),\" để bao phủ toàn bộ. Hãy xem xét những khu vực chính sau:\"]}),\"\\n\",e(r.ol,{children:[\"\\n\",c(r.li,{children:\"Lối vào cửa trước\"}),\"\\n\",c(r.li,{children:\"Cửa sau hoặc sân hiên\"}),\"\\n\",c(r.li,{children:\"Nhà để xe hoặc đường lái xe\"}),\"\\n\",c(r.li,{children:\"Cửa sổ tầng trệt\"}),\"\\n\",c(r.li,{children:\"Sân sau hoặc sân bên hông\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:e}=n.components||{};return e?c(e,{...n,children:c(_createMdxContent,{...n})}):_createMdxContent(n)}};",
-    "category": "installation",
-    "order": 2,
-    "tags": [
-      "home",
-      "installation",
-      "cameras"
-    ],
-    "slug": "how-many-cameras",
-    "locale": "vi"
-  },
-  {
-    "question": "我的家庭需要多少台CCTV摄像机？",
-    "answer": "const{Fragment:n,jsx:e,jsxs:r}=arguments[0];function _createMdxContent(t){const l={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return r(n,{children:[r(l.p,{children:[\"对于大多数家庭来说，\",e(l.strong,{children:\"2-4台摄像机\"}),\"就足够了。将摄像机放置在入口处（前门、后门、车库），并考虑覆盖窗户或盲区。\"]}),\"\\n\",r(l.p,{children:[\"较大的房产可能需要\",e(l.strong,{children:\"6-8台摄像机\"}),\"才能实现全面覆盖。请考虑以下关键区域：\"]}),\"\\n\",r(l.ol,{children:[\"\\n\",e(l.li,{children:\"前门入口\"}),\"\\n\",e(l.li,{children:\"后门或露台\"}),\"\\n\",e(l.li,{children:\"车库或车道\"}),\"\\n\",e(l.li,{children:\"底楼窗户\"}),\"\\n\",e(l.li,{children:\"后院或侧院\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:r}=n.components||{};return r?e(r,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};",
-    "category": "installation",
-    "order": 2,
-    "tags": [
-      "home",
-      "installation",
-      "cameras"
-    ],
-    "slug": "how-many-cameras",
-    "locale": "zh"
-  },
-  {
     "question": "كم من الوقت يجب تخزين لقطات CCTV؟",
     "answer": "const{Fragment:n,jsx:t,jsxs:r}=arguments[0];function _createMdxContent(e){const d={li:\"li\",p:\"p\",strong:\"strong\",table:\"table\",tbody:\"tbody\",td:\"td\",th:\"th\",thead:\"thead\",tr:\"tr\",ul:\"ul\",...e.components};return r(n,{children:[t(d.p,{children:\"مدة التخزين تعتمد على احتياجاتك:\"}),\"\\n\",r(d.ul,{children:[\"\\n\",r(d.li,{children:[t(d.strong,{children:\"المنازل\"}),\": 7-14 يومًا كافية عادةً\"]}),\"\\n\",r(d.li,{children:[t(d.strong,{children:\"الشركات الصغيرة\"}),\": 30 يومًا موصى به\"]}),\"\\n\",r(d.li,{children:[t(d.strong,{children:\"الشركات الكبيرة\"}),\": 30-90 يومًا\"]}),\"\\n\"]}),\"\\n\",t(d.p,{children:\"العوامل المؤثرة على احتياجات التخزين:\"}),\"\\n\",r(d.table,{children:[t(d.thead,{children:r(d.tr,{children:[t(d.th,{children:\"العامل\"}),t(d.th,{children:\"التأثير\"})]})}),r(d.tbody,{children:[r(d.tr,{children:[t(d.td,{children:\"عدد الكاميرات\"}),t(d.td,{children:\"كاميرات أكثر = مساحة تخزين أكبر\"})]}),r(d.tr,{children:[t(d.td,{children:\"الدقة\"}),t(d.td,{children:\"دقة أعلى = مساحة أكبر\"})]}),r(d.tr,{children:[t(d.td,{children:\"كشف الحركة\"}),t(d.td,{children:\"يقلل من احتياجات التخزين\"})]}),r(d.tr,{children:[t(d.td,{children:\"اللوائح المحلية\"}),t(d.td,{children:\"قد تتطلب احتفاظًا أدنى\"})]})]})]})]})}return{default:function(n={}){const{wrapper:r}=n.components||{};return r?t(r,{...n,children:t(_createMdxContent,{...n})}):_createMdxContent(n)}};",
     "category": "storage",
@@ -1362,6 +1089,279 @@
       "features"
     ],
     "slug": "night-vision",
+    "locale": "zh"
+  },
+  {
+    "question": "كم عدد كاميرات CCTV التي أحتاجها لمنزلي؟",
+    "answer": "const{Fragment:n,jsx:e,jsxs:r}=arguments[0];function _createMdxContent(t){const l={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return r(n,{children:[r(l.p,{children:[\"بالنسبة لمعظم المنازل، \",e(l.strong,{children:\"2-4 كاميرات\"}),\" كافية. ضع الكاميرات عند نقاط الدخول (الباب الأمامي، الباب الخلفي، المرآب)، وفكر في تغطية النوافذ أو النقاط العمياء.\"]}),\"\\n\",r(l.p,{children:[\"قد تحتاج الممتلكات الأكبر إلى \",e(l.strong,{children:\"6-8 كاميرات\"}),\" لتغطية كاملة. ضع في اعتبارك هذه المناطق الرئيسية:\"]}),\"\\n\",r(l.ol,{children:[\"\\n\",e(l.li,{children:\"مدخل الباب الأمامي\"}),\"\\n\",e(l.li,{children:\"الباب الخلفي أو الفناء\"}),\"\\n\",e(l.li,{children:\"المرآب أو الممر\"}),\"\\n\",e(l.li,{children:\"نوافذ الطابق الأرضي\"}),\"\\n\",e(l.li,{children:\"الفناء الخلفي أو الجانبي\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:r}=n.components||{};return r?e(r,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};",
+    "category": "installation",
+    "order": 2,
+    "tags": [
+      "home",
+      "installation",
+      "cameras"
+    ],
+    "slug": "how-many-cameras",
+    "locale": "ar"
+  },
+  {
+    "question": "আমার বাড়ির জন্য কতগুলি সিসিটিভি ক্যামেরা প্রয়োজন?",
+    "answer": "const{Fragment:n,jsx:e,jsxs:r}=arguments[0];function _createMdxContent(t){const l={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return r(n,{children:[r(l.p,{children:[\"বেশিরভাগ বাড়ির জন্য, \",e(l.strong,{children:\"2-4টি ক্যামেরা\"}),\" যথেষ্ট। প্রবেশ পয়েন্টে (সামনের দরজা, পিছনের দরজা, গ্যারেজ) ক্যামেরা রাখুন এবং জানালা বা অন্ধ স্থানগুলি কভার করার কথা বিবেচনা করুন।\"]}),\"\\n\",r(l.p,{children:[\"বড় সম্পত্তির সম্পূর্ণ কভারেজের জন্য \",e(l.strong,{children:\"6-8টি ক্যামেরার\"}),\" প্রয়োজন হতে পারে। এই গুরুত্বপূর্ণ এলাকাগুলি বিবেচনা করুন:\"]}),\"\\n\",r(l.ol,{children:[\"\\n\",e(l.li,{children:\"সামনের দরজার প্রবেশপথ\"}),\"\\n\",e(l.li,{children:\"পিছনের দরজা বা বারান্দা\"}),\"\\n\",e(l.li,{children:\"গ্যারেজ বা ড্রাইভওয়ে\"}),\"\\n\",e(l.li,{children:\"নিচতলার জানালা\"}),\"\\n\",e(l.li,{children:\"পিছনের উঠোন বা পাশের উঠোন\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:r}=n.components||{};return r?e(r,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};",
+    "category": "installation",
+    "order": 2,
+    "tags": [
+      "home",
+      "installation",
+      "cameras"
+    ],
+    "slug": "how-many-cameras",
+    "locale": "bn"
+  },
+  {
+    "question": "Wie viele CCTV-Kameras brauche ich für mein Zuhause?",
+    "answer": "const{Fragment:e,jsx:n,jsxs:r}=arguments[0];function _createMdxContent(i){const t={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...i.components};return r(e,{children:[r(t.p,{children:[\"Für die meisten Häuser sind \",n(t.strong,{children:\"2-4 Kameras\"}),\" ausreichend. Platzieren Sie Kameras an den Eingangspunkten (Eingangstür, Hintertür, Garage) und decken Sie Fenster oder tote Winkel ab.\"]}),\"\\n\",r(t.p,{children:[\"Größere Grundstücke benötigen möglicherweise \",n(t.strong,{children:\"6-8 Kameras\"}),\" für eine vollständige Abdeckung. Berücksichtigen Sie diese Schlüsselbereiche:\"]}),\"\\n\",r(t.ol,{children:[\"\\n\",n(t.li,{children:\"Hauseingang\"}),\"\\n\",n(t.li,{children:\"Hintertür oder Terrasse\"}),\"\\n\",n(t.li,{children:\"Garage oder Einfahrt\"}),\"\\n\",n(t.li,{children:\"Fenster im Erdgeschoss\"}),\"\\n\",n(t.li,{children:\"Hinterhof oder Seitenbereich\"}),\"\\n\"]})]})}return{default:function(e={}){const{wrapper:r}=e.components||{};return r?n(r,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};",
+    "category": "installation",
+    "order": 2,
+    "tags": [
+      "home",
+      "installation",
+      "cameras"
+    ],
+    "slug": "how-many-cameras",
+    "locale": "de"
+  },
+  {
+    "question": "How many CCTV cameras do I need for my home?",
+    "answer": "const{Fragment:r,jsx:n,jsxs:e}=arguments[0];function _createMdxContent(o){const t={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...o.components};return e(r,{children:[e(t.p,{children:[\"For most homes, \",n(t.strong,{children:\"2-4 cameras\"}),\" are sufficient. Place cameras at entry points (front door, back door, garage), and consider covering windows or blind spots.\"]}),\"\\n\",e(t.p,{children:[\"Larger properties may need \",n(t.strong,{children:\"6-8 cameras\"}),\" for complete coverage. Consider these key areas:\"]}),\"\\n\",e(t.ol,{children:[\"\\n\",n(t.li,{children:\"Front door entrance\"}),\"\\n\",n(t.li,{children:\"Back door or patio\"}),\"\\n\",n(t.li,{children:\"Garage or driveway\"}),\"\\n\",n(t.li,{children:\"Ground-floor windows\"}),\"\\n\",n(t.li,{children:\"Backyard or side yard\"}),\"\\n\"]})]})}return{default:function(r={}){const{wrapper:e}=r.components||{};return e?n(e,{...r,children:n(_createMdxContent,{...r})}):_createMdxContent(r)}};",
+    "category": "installation",
+    "order": 2,
+    "tags": [
+      "home",
+      "installation",
+      "cameras"
+    ],
+    "slug": "how-many-cameras",
+    "locale": "en"
+  },
+  {
+    "question": "¿Cuántas cámaras CCTV necesito para mi hogar?",
+    "answer": "const{Fragment:e,jsx:a,jsxs:n}=arguments[0];function _createMdxContent(r){const t={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...r.components};return n(e,{children:[n(t.p,{children:[\"Para la mayoría de los hogares, \",a(t.strong,{children:\"2-4 cámaras\"}),\" son suficientes. Coloque las cámaras en los puntos de entrada (puerta principal, puerta trasera, garaje) y considere cubrir ventanas o puntos ciegos.\"]}),\"\\n\",n(t.p,{children:[\"Las propiedades más grandes pueden necesitar \",a(t.strong,{children:\"6-8 cámaras\"}),\" para una cobertura completa. Considere estas áreas clave:\"]}),\"\\n\",n(t.ol,{children:[\"\\n\",a(t.li,{children:\"Entrada de la puerta principal\"}),\"\\n\",a(t.li,{children:\"Puerta trasera o patio\"}),\"\\n\",a(t.li,{children:\"Garaje o entrada de vehículos\"}),\"\\n\",a(t.li,{children:\"Ventanas de la planta baja\"}),\"\\n\",a(t.li,{children:\"Patio trasero o jardín lateral\"}),\"\\n\"]})]})}return{default:function(e={}){const{wrapper:n}=e.components||{};return n?a(n,{...e,children:a(_createMdxContent,{...e})}):_createMdxContent(e)}};",
+    "category": "installation",
+    "order": 2,
+    "tags": [
+      "home",
+      "installation",
+      "cameras"
+    ],
+    "slug": "how-many-cameras",
+    "locale": "es"
+  },
+  {
+    "question": "De combien de caméras CCTV ai-je besoin pour ma maison ?",
+    "answer": "const{Fragment:e,jsx:r,jsxs:n}=arguments[0];function _createMdxContent(t){const s={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return n(e,{children:[n(s.p,{children:[\"Pour la plupart des maisons, \",r(s.strong,{children:\"2 à 4 caméras\"}),\" suffisent. Placez les caméras aux points d'entrée (porte d'entrée, porte arrière, garage) et envisagez de couvrir les fenêtres ou les angles morts.\"]}),\"\\n\",n(s.p,{children:[\"Les propriétés plus grandes peuvent nécessiter \",r(s.strong,{children:\"6 à 8 caméras\"}),\" pour une couverture complète. Considérez ces zones clés :\"]}),\"\\n\",n(s.ol,{children:[\"\\n\",r(s.li,{children:\"Entrée de la porte principale\"}),\"\\n\",r(s.li,{children:\"Porte arrière ou patio\"}),\"\\n\",r(s.li,{children:\"Garage ou allée\"}),\"\\n\",r(s.li,{children:\"Fenêtres du rez-de-chaussée\"}),\"\\n\",r(s.li,{children:\"Arrière-cour ou côté de la maison\"}),\"\\n\"]})]})}return{default:function(e={}){const{wrapper:n}=e.components||{};return n?r(n,{...e,children:r(_createMdxContent,{...e})}):_createMdxContent(e)}};",
+    "category": "installation",
+    "order": 2,
+    "tags": [
+      "home",
+      "installation",
+      "cameras"
+    ],
+    "slug": "how-many-cameras",
+    "locale": "fr"
+  },
+  {
+    "question": "मुझे अपने घर के लिए कितने सीसीटीवी कैमरे चाहिए?",
+    "answer": "const{Fragment:n,jsx:e,jsxs:r}=arguments[0];function _createMdxContent(t){const l={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return r(n,{children:[r(l.p,{children:[\"अधिकांश घरों के लिए, \",e(l.strong,{children:\"2-4 कैमरे\"}),\" पर्याप्त हैं। कैमरों को प्रवेश बिंदुओं (सामने का दरवाजा, पिछला दरवाजा, गैरेज) पर रखें, और खिड़कियों या अंधे स्थानों को कवर करने पर विचार करें।\"]}),\"\\n\",r(l.p,{children:[\"बड़ी संपत्तियों को पूर्ण कवरेज के लिए \",e(l.strong,{children:\"6-8 कैमरों\"}),\" की आवश्यकता हो सकती है। इन प्रमुख क्षेत्रों पर विचार करें:\"]}),\"\\n\",r(l.ol,{children:[\"\\n\",e(l.li,{children:\"सामने के दरवाजे का प्रवेश\"}),\"\\n\",e(l.li,{children:\"पिछला दरवाजा या आँगन\"}),\"\\n\",e(l.li,{children:\"गैरेज या ड्राइववे\"}),\"\\n\",e(l.li,{children:\"भूतल की खिड़कियाँ\"}),\"\\n\",e(l.li,{children:\"पिछवाड़ा या बगल का यार्ड\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:r}=n.components||{};return r?e(r,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};",
+    "category": "installation",
+    "order": 2,
+    "tags": [
+      "home",
+      "installation",
+      "cameras"
+    ],
+    "slug": "how-many-cameras",
+    "locale": "hi"
+  },
+  {
+    "question": "Berapa banyak kamera CCTV yang saya butuhkan untuk rumah saya?",
+    "answer": "const{Fragment:n,jsx:a,jsxs:e}=arguments[0];function _createMdxContent(t){const r={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return e(n,{children:[e(r.p,{children:[\"Untuk sebagian besar rumah, \",a(r.strong,{children:\"2-4 kamera\"}),\" sudah cukup. Tempatkan kamera di titik masuk (pintu depan, pintu belakang, garasi), dan pertimbangkan untuk menutupi jendela atau titik buta.\"]}),\"\\n\",e(r.p,{children:[\"Properti yang lebih besar mungkin membutuhkan \",a(r.strong,{children:\"6-8 kamera\"}),\" untuk cakupan yang lengkap. Pertimbangkan area-area utama berikut:\"]}),\"\\n\",e(r.ol,{children:[\"\\n\",a(r.li,{children:\"Pintu masuk depan\"}),\"\\n\",a(r.li,{children:\"Pintu belakang atau teras\"}),\"\\n\",a(r.li,{children:\"Garasi atau jalan masuk\"}),\"\\n\",a(r.li,{children:\"Jendela lantai dasar\"}),\"\\n\",a(r.li,{children:\"Halaman belakang atau halaman samping\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:e}=n.components||{};return e?a(e,{...n,children:a(_createMdxContent,{...n})}):_createMdxContent(n)}};",
+    "category": "installation",
+    "order": 2,
+    "tags": [
+      "home",
+      "installation",
+      "cameras"
+    ],
+    "slug": "how-many-cameras",
+    "locale": "id"
+  },
+  {
+    "question": "Di quante telecamere CCTV ho bisogno per la mia casa?",
+    "answer": "const{Fragment:e,jsx:r,jsxs:n}=arguments[0];function _createMdxContent(i){const t={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...i.components};return n(e,{children:[n(t.p,{children:[\"Per la maggior parte delle case, \",r(t.strong,{children:\"2-4 telecamere\"}),\" sono sufficienti. Posiziona le telecamere nei punti di ingresso (porta principale, porta sul retro, garage) e considera di coprire finestre o punti ciechi.\"]}),\"\\n\",n(t.p,{children:[\"Le proprietà più grandi potrebbero aver bisogno di \",r(t.strong,{children:\"6-8 telecamere\"}),\" per una copertura completa. Considera queste aree chiave:\"]}),\"\\n\",n(t.ol,{children:[\"\\n\",r(t.li,{children:\"Ingresso principale\"}),\"\\n\",r(t.li,{children:\"Porta sul retro o patio\"}),\"\\n\",r(t.li,{children:\"Garage o vialetto\"}),\"\\n\",r(t.li,{children:\"Finestre del piano terra\"}),\"\\n\",r(t.li,{children:\"Cortile posteriore o laterale\"}),\"\\n\"]})]})}return{default:function(e={}){const{wrapper:n}=e.components||{};return n?r(n,{...e,children:r(_createMdxContent,{...e})}):_createMdxContent(e)}};",
+    "category": "installation",
+    "order": 2,
+    "tags": [
+      "home",
+      "installation",
+      "cameras"
+    ],
+    "slug": "how-many-cameras",
+    "locale": "it"
+  },
+  {
+    "question": "自宅には何台のCCTVカメラが必要ですか？",
+    "answer": "const{Fragment:n,jsx:e,jsxs:r}=arguments[0];function _createMdxContent(t){const l={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return r(n,{children:[r(l.p,{children:[\"ほとんどの家庭では、\",e(l.strong,{children:\"2〜4台のカメラ\"}),\"で十分です。カメラは出入り口（玄関、裏口、ガレージ）に設置し、窓や死角もカバーすることを検討してください。\"]}),\"\\n\",r(l.p,{children:[\"より大きな物件では、完全なカバレッジのために\",e(l.strong,{children:\"6〜8台のカメラ\"}),\"が必要になる場合があります。以下の重要なエリアを考慮してください：\"]}),\"\\n\",r(l.ol,{children:[\"\\n\",e(l.li,{children:\"玄関入り口\"}),\"\\n\",e(l.li,{children:\"裏口またはパティオ\"}),\"\\n\",e(l.li,{children:\"ガレージまたは私道\"}),\"\\n\",e(l.li,{children:\"1階の窓\"}),\"\\n\",e(l.li,{children:\"裏庭または側庭\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:r}=n.components||{};return r?e(r,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};",
+    "category": "installation",
+    "order": 2,
+    "tags": [
+      "home",
+      "installation",
+      "cameras"
+    ],
+    "slug": "how-many-cameras",
+    "locale": "ja"
+  },
+  {
+    "question": "집에 몇 대의 CCTV 카메라가 필요합니까?",
+    "answer": "const{Fragment:n,jsx:e,jsxs:r}=arguments[0];function _createMdxContent(t){const l={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return r(n,{children:[r(l.p,{children:[\"대부분의 가정에서는 \",e(l.strong,{children:\"2~4대의 카메라\"}),\"로 충분합니다. 출입구(현관문, 뒷문, 차고)에 카메라를 배치하고 창문이나 사각지대를 커버하는 것을 고려하세요.\"]}),\"\\n\",r(l.p,{children:[\"더 큰 주택은 완전한 커버리지를 위해 \",e(l.strong,{children:\"6~8대의 카메라\"}),\"가 필요할 수 있습니다. 다음 주요 영역을 고려하세요:\"]}),\"\\n\",r(l.ol,{children:[\"\\n\",e(l.li,{children:\"현관문 입구\"}),\"\\n\",e(l.li,{children:\"뒷문 또는 파티오\"}),\"\\n\",e(l.li,{children:\"차고 또는 진입로\"}),\"\\n\",e(l.li,{children:\"1층 창문\"}),\"\\n\",e(l.li,{children:\"뒷마당 또는 옆마당\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:r}=n.components||{};return r?e(r,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};",
+    "category": "installation",
+    "order": 2,
+    "tags": [
+      "home",
+      "installation",
+      "cameras"
+    ],
+    "slug": "how-many-cameras",
+    "locale": "ko"
+  },
+  {
+    "question": "Hoeveel CCTV-camera's heb ik nodig voor mijn huis?",
+    "answer": "const{Fragment:e,jsx:n,jsxs:r}=arguments[0];function _createMdxContent(o){const t={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...o.components};return r(e,{children:[r(t.p,{children:[\"Voor de meeste woningen zijn \",n(t.strong,{children:\"2-4 camera's\"}),\" voldoende. Plaats camera's bij toegangspunten (voordeur, achterdeur, garage) en overweeg om ramen of dode hoeken te bedekken.\"]}),\"\\n\",r(t.p,{children:[\"Grotere eigendommen hebben mogelijk \",n(t.strong,{children:\"6-8 camera's\"}),\" nodig voor volledige dekking. Overweeg deze belangrijke gebieden:\"]}),\"\\n\",r(t.ol,{children:[\"\\n\",n(t.li,{children:\"Voordeur-ingang\"}),\"\\n\",n(t.li,{children:\"Achterdeur of patio\"}),\"\\n\",n(t.li,{children:\"Garage of oprit\"}),\"\\n\",n(t.li,{children:\"Ramen op de begane grond\"}),\"\\n\",n(t.li,{children:\"Achtertuin of zijtuin\"}),\"\\n\"]})]})}return{default:function(e={}){const{wrapper:r}=e.components||{};return r?n(r,{...e,children:n(_createMdxContent,{...e})}):_createMdxContent(e)}};",
+    "category": "installation",
+    "order": 2,
+    "tags": [
+      "home",
+      "installation",
+      "cameras"
+    ],
+    "slug": "how-many-cameras",
+    "locale": "nl"
+  },
+  {
+    "question": "Ile kamer CCTV potrzebuję do mojego domu?",
+    "answer": "const{Fragment:n,jsx:e,jsxs:r}=arguments[0];function _createMdxContent(o){const t={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...o.components};return r(n,{children:[r(t.p,{children:[\"W przypadku większości domów wystarczą \",e(t.strong,{children:\"2-4 kamery\"}),\". Umieść kamery przy punktach wejścia (drzwi frontowe, drzwi tylne, garaż) i rozważ pokrycie okien lub martwych punktów.\"]}),\"\\n\",r(t.p,{children:[\"Większe posesje mogą wymagać \",e(t.strong,{children:\"6-8 kamer\"}),\" dla pełnego pokrycia. Rozważ te kluczowe obszary:\"]}),\"\\n\",r(t.ol,{children:[\"\\n\",e(t.li,{children:\"Wejście głównych drzwi\"}),\"\\n\",e(t.li,{children:\"Drzwi tylne lub taras\"}),\"\\n\",e(t.li,{children:\"Garaż lub podjazd\"}),\"\\n\",e(t.li,{children:\"Okna parteru\"}),\"\\n\",e(t.li,{children:\"Podwórko tylne lub boczne\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:r}=n.components||{};return r?e(r,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};",
+    "category": "installation",
+    "order": 2,
+    "tags": [
+      "home",
+      "installation",
+      "cameras"
+    ],
+    "slug": "how-many-cameras",
+    "locale": "pl"
+  },
+  {
+    "question": "Quantas câmeras CCTV preciso para minha casa?",
+    "answer": "const{Fragment:e,jsx:r,jsxs:n}=arguments[0];function _createMdxContent(a){const o={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...a.components};return n(e,{children:[n(o.p,{children:[\"Para a maioria das residências, \",r(o.strong,{children:\"2 a 4 câmeras\"}),\" são suficientes. Coloque as câmeras nos pontos de entrada (porta da frente, porta dos fundos, garagem) e considere cobrir janelas ou pontos cegos.\"]}),\"\\n\",n(o.p,{children:[\"Propriedades maiores podem precisar de \",r(o.strong,{children:\"6 a 8 câmeras\"}),\" para cobertura completa. Considere estas áreas principais:\"]}),\"\\n\",n(o.ol,{children:[\"\\n\",r(o.li,{children:\"Entrada da porta da frente\"}),\"\\n\",r(o.li,{children:\"Porta dos fundos ou pátio\"}),\"\\n\",r(o.li,{children:\"Garagem ou entrada de carros\"}),\"\\n\",r(o.li,{children:\"Janelas do térreo\"}),\"\\n\",r(o.li,{children:\"Quintal ou jardim lateral\"}),\"\\n\"]})]})}return{default:function(e={}){const{wrapper:n}=e.components||{};return n?r(n,{...e,children:r(_createMdxContent,{...e})}):_createMdxContent(e)}};",
+    "category": "installation",
+    "order": 2,
+    "tags": [
+      "home",
+      "installation",
+      "cameras"
+    ],
+    "slug": "how-many-cameras",
+    "locale": "pt"
+  },
+  {
+    "question": "Сколько камер CCTV нужно для дома?",
+    "answer": "const{Fragment:n,jsx:e,jsxs:r}=arguments[0];function _createMdxContent(t){const l={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return r(n,{children:[r(l.p,{children:[\"Для большинства домов достаточно \",e(l.strong,{children:\"2-4 камер\"}),\". Разместите камеры в точках входа (входная дверь, задняя дверь, гараж) и рассмотрите возможность покрытия окон или слепых зон.\"]}),\"\\n\",r(l.p,{children:[\"Для больших объектов может потребоваться \",e(l.strong,{children:\"6-8 камер\"}),\" для полного покрытия. Учитывайте эти ключевые зоны:\"]}),\"\\n\",r(l.ol,{children:[\"\\n\",e(l.li,{children:\"Входная дверь\"}),\"\\n\",e(l.li,{children:\"Задняя дверь или patio\"}),\"\\n\",e(l.li,{children:\"Гараж или подъездная дорога\"}),\"\\n\",e(l.li,{children:\"Окна первого этажа\"}),\"\\n\",e(l.li,{children:\"Задний или боковой двор\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:r}=n.components||{};return r?e(r,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};",
+    "category": "installation",
+    "order": 2,
+    "tags": [
+      "home",
+      "installation",
+      "cameras"
+    ],
+    "slug": "how-many-cameras",
+    "locale": "ru"
+  },
+  {
+    "question": "ฉันต้องใช้กล้อง CCTV กี่ตัวสำหรับบ้านของฉัน?",
+    "answer": "const{Fragment:n,jsx:e,jsxs:r}=arguments[0];function _createMdxContent(t){const l={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return r(n,{children:[r(l.p,{children:[\"สำหรับบ้านส่วนใหญ่ \",e(l.strong,{children:\"กล้อง 2-4 ตัว\"}),\" ก็เพียงพอแล้ว วางกล้องไว้ที่จุดเข้า (ประตูหน้า, ประตูหลัง, โรงรถ) และพิจารณาให้ครอบคลุมหน้าต่างหรือจุดอับสายตา\"]}),\"\\n\",r(l.p,{children:[\"บ้านขนาดใหญ่อาจต้องใช้ \",e(l.strong,{children:\"กล้อง 6-8 ตัว\"}),\" เพื่อครอบคลุมพื้นที่ทั้งหมด พิจารณาพื้นที่สำคัญเหล่านี้:\"]}),\"\\n\",r(l.ol,{children:[\"\\n\",e(l.li,{children:\"ทางเข้าประตูหน้า\"}),\"\\n\",e(l.li,{children:\"ประตูหลังหรือลานบ้าน\"}),\"\\n\",e(l.li,{children:\"โรงรถหรือทางรถเข้า\"}),\"\\n\",e(l.li,{children:\"หน้าต่างชั้นล่าง\"}),\"\\n\",e(l.li,{children:\"สนามหลังบ้านหรือสนามข้างบ้าน\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:r}=n.components||{};return r?e(r,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};",
+    "category": "installation",
+    "order": 2,
+    "tags": [
+      "home",
+      "installation",
+      "cameras"
+    ],
+    "slug": "how-many-cameras",
+    "locale": "th"
+  },
+  {
+    "question": "Evim için kaç CCTV kamerasına ihtiyacım var?",
+    "answer": "const{Fragment:n,jsx:a,jsxs:e}=arguments[0];function _createMdxContent(r){const i={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...r.components};return e(n,{children:[e(i.p,{children:[\"Çoğu ev için \",a(i.strong,{children:\"2-4 kamera\"}),\" yeterlidir. Kameraları giriş noktalarına (ön kapı, arka kapı, garaj) yerleştirin ve pencereleri veya kör noktaları kapsamayı düşünün.\"]}),\"\\n\",e(i.p,{children:[\"Daha büyük mülkler tam kapsama için \",a(i.strong,{children:\"6-8 kameraya\"}),\" ihtiyaç duyabilir. Bu önemli alanları göz önünde bulundurun:\"]}),\"\\n\",e(i.ol,{children:[\"\\n\",a(i.li,{children:\"Ön kapı girişi\"}),\"\\n\",a(i.li,{children:\"Arka kapı veya teras\"}),\"\\n\",a(i.li,{children:\"Garaj veya araba yolu\"}),\"\\n\",a(i.li,{children:\"Zemin kat pencereleri\"}),\"\\n\",a(i.li,{children:\"Arka bahçe veya yan bahçe\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:e}=n.components||{};return e?a(e,{...n,children:a(_createMdxContent,{...n})}):_createMdxContent(n)}};",
+    "category": "installation",
+    "order": 2,
+    "tags": [
+      "home",
+      "installation",
+      "cameras"
+    ],
+    "slug": "how-many-cameras",
+    "locale": "tr"
+  },
+  {
+    "question": "Скільки камер CCTV потрібно для мого будинку?",
+    "answer": "const{Fragment:n,jsx:e,jsxs:r}=arguments[0];function _createMdxContent(t){const l={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return r(n,{children:[r(l.p,{children:[\"Для більшості будинків достатньо \",e(l.strong,{children:\"2-4 камер\"}),\". Розмістіть камери в точках входу (вхідні двері, задні двері, гараж) та розгляньте можливість покриття вікон або сліпих зон.\"]}),\"\\n\",r(l.p,{children:[\"Для більших об'єктів може знадобитися \",e(l.strong,{children:\"6-8 камер\"}),\" для повного покриття. Враховуйте ці ключові зони:\"]}),\"\\n\",r(l.ol,{children:[\"\\n\",e(l.li,{children:\"Вхідні двері\"}),\"\\n\",e(l.li,{children:\"Задні двері або патіо\"}),\"\\n\",e(l.li,{children:\"Гараж або під'їзна дорога\"}),\"\\n\",e(l.li,{children:\"Вікна першого поверху\"}),\"\\n\",e(l.li,{children:\"Задній або бічний двір\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:r}=n.components||{};return r?e(r,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};",
+    "category": "installation",
+    "order": 2,
+    "tags": [
+      "home",
+      "installation",
+      "cameras"
+    ],
+    "slug": "how-many-cameras",
+    "locale": "uk"
+  },
+  {
+    "question": "مجھے اپنے گھر کے لیے کتنے CCTV کیمرے چاہییں؟",
+    "answer": "const{Fragment:n,jsx:e,jsxs:r}=arguments[0];function _createMdxContent(t){const l={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return r(n,{children:[r(l.p,{children:[\"زیادہ تر گھروں کے لیے \",e(l.strong,{children:\"2-4 کیمرے\"}),\" کافی ہوتے ہیں۔ کیمرے داخلی مقامات (سامنے کا دروازہ، پچھلا دروازہ، گیراج) پر رکھیں، اور کھڑکیوں یا اندھے مقامات کو کور کرنے پر غور کریں۔\"]}),\"\\n\",r(l.p,{children:[\"بڑی جائیدادوں کو مکمل کوریج کے لیے \",e(l.strong,{children:\"6-8 کیمروں\"}),\" کی ضرورت ہو سکتی ہے۔ ان اہم علاقوں پر غور کریں:\"]}),\"\\n\",r(l.ol,{children:[\"\\n\",e(l.li,{children:\"سامنے کے دروازے کا داخلہ\"}),\"\\n\",e(l.li,{children:\"پچھلا دروازہ یا آنگن\"}),\"\\n\",e(l.li,{children:\"گیراج یا ڈرائیو وے\"}),\"\\n\",e(l.li,{children:\"گراؤنڈ فلور کی کھڑکیاں\"}),\"\\n\",e(l.li,{children:\"پچھلا صحن یا سائیڈ یارڈ\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:r}=n.components||{};return r?e(r,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};",
+    "category": "installation",
+    "order": 2,
+    "tags": [
+      "home",
+      "installation",
+      "cameras"
+    ],
+    "slug": "how-many-cameras",
+    "locale": "ur"
+  },
+  {
+    "question": "Tôi cần bao nhiêu camera CCTV cho ngôi nhà của mình?",
+    "answer": "const{Fragment:n,jsx:c,jsxs:e}=arguments[0];function _createMdxContent(t){const r={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return e(n,{children:[e(r.p,{children:[\"Đối với hầu hết các ngôi nhà, \",c(r.strong,{children:\"2-4 camera\"}),\" là đủ. Đặt camera tại các điểm ra vào (cửa trước, cửa sau, nhà để xe) và cân nhắc che phủ cửa sổ hoặc điểm mù.\"]}),\"\\n\",e(r.p,{children:[\"Các bất động sản lớn hơn có thể cần \",c(r.strong,{children:\"6-8 camera\"}),\" để bao phủ toàn bộ. Hãy xem xét những khu vực chính sau:\"]}),\"\\n\",e(r.ol,{children:[\"\\n\",c(r.li,{children:\"Lối vào cửa trước\"}),\"\\n\",c(r.li,{children:\"Cửa sau hoặc sân hiên\"}),\"\\n\",c(r.li,{children:\"Nhà để xe hoặc đường lái xe\"}),\"\\n\",c(r.li,{children:\"Cửa sổ tầng trệt\"}),\"\\n\",c(r.li,{children:\"Sân sau hoặc sân bên hông\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:e}=n.components||{};return e?c(e,{...n,children:c(_createMdxContent,{...n})}):_createMdxContent(n)}};",
+    "category": "installation",
+    "order": 2,
+    "tags": [
+      "home",
+      "installation",
+      "cameras"
+    ],
+    "slug": "how-many-cameras",
+    "locale": "vi"
+  },
+  {
+    "question": "我的家庭需要多少台CCTV摄像机？",
+    "answer": "const{Fragment:n,jsx:e,jsxs:r}=arguments[0];function _createMdxContent(t){const l={li:\"li\",ol:\"ol\",p:\"p\",strong:\"strong\",...t.components};return r(n,{children:[r(l.p,{children:[\"对于大多数家庭来说，\",e(l.strong,{children:\"2-4台摄像机\"}),\"就足够了。将摄像机放置在入口处（前门、后门、车库），并考虑覆盖窗户或盲区。\"]}),\"\\n\",r(l.p,{children:[\"较大的房产可能需要\",e(l.strong,{children:\"6-8台摄像机\"}),\"才能实现全面覆盖。请考虑以下关键区域：\"]}),\"\\n\",r(l.ol,{children:[\"\\n\",e(l.li,{children:\"前门入口\"}),\"\\n\",e(l.li,{children:\"后门或露台\"}),\"\\n\",e(l.li,{children:\"车库或车道\"}),\"\\n\",e(l.li,{children:\"底楼窗户\"}),\"\\n\",e(l.li,{children:\"后院或侧院\"}),\"\\n\"]})]})}return{default:function(n={}){const{wrapper:r}=n.components||{};return r?e(r,{...n,children:e(_createMdxContent,{...n})}):_createMdxContent(n)}};",
+    "category": "installation",
+    "order": 2,
+    "tags": [
+      "home",
+      "installation",
+      "cameras"
+    ],
+    "slug": "how-many-cameras",
     "locale": "zh"
   },
   {

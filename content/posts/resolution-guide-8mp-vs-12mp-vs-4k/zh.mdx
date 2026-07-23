@@ -11,142 +11,137 @@ postType: "howto"
 
 <img
   src="/resolution-comparison-diagram.svg"
-  alt="Diagram showing pixel density at 30 feet: 4MP provides approximately 40 pixels on target, 8MP provides 80 pixels, and 12MP (4K) provides 120 pixels, illustrating the diminishing returns beyond 8MP."
+  alt="图表显示30英尺处的像素密度：4MP在目标上提供约40像素，8MP提供80像素，12MP（4K）提供120像素，说明了超过8MP后收益递减"
 />
 
-### Myth Buster: More Megapixels = Better Security
+### 破除迷思：更多像素 = 更好的安全性
 
-The surveillance industry pushes higher megapixel counts as the ultimate upgrade, but **more pixels often mean more problems without delivering real-world benefits**. Many users pay extra for 4K or 12MP cameras only to discover their footage is noisier, requires more storage, and doesn't actually improve identification rates. The truth? You're likely overspending.
+监控行业将更高的像素数作为终极升级来推广，但**更多像素往往意味着更多问题，却没有带来实际的好处**。许多用户为4K或12MP摄像头支付额外费用，却发现他们的画面噪声更大，需要更多存储空间，并且实际上并没有提高识别率。真相是什么？你可能在过度消费。
 
-## Technical Breakdown
+## 技术解析
 
-### Pixel Density vs Field of View Trade-off
+### 像素密度与视野的权衡
 
-Higher resolution cameras pack more pixels onto the same sensor size, which creates two competing effects:
+更高分辨率的摄像头在相同的传感器尺寸上塞入更多像素，这会产生两种相互竞争的效果：
 
-- **More pixels on target** means you can digitally zoom further and still recognize faces or read license plates at a distance.
-- **Smaller individual pixels** reduce light-gathering ability, hurting night vision performance unless you compensate with a larger sensor.
+- **目标上更多像素**意味着你可以进一步数码变焦，仍然能在远处识别面部或读取车牌。
+- **更小的单个像素**会降低聚光能力，损害夜视性能，除非你用更大的传感器来补偿。
 
-Additionally, higher resolution allows you to cover a wider field of view while maintaining the same pixel density. A 4MP camera might need to cover a doorway with a narrow lens (say 30° horizontal) to get 80 pixels across a face at 15 feet. An 8MP camera with the same sensor size could use a 60° lens and still deliver those 80 pixels—effectively doubling coverage area.
+此外，更高的分辨率允许你在保持相同像素密度的同时覆盖更宽的视野。一个4MP摄像头可能需要用窄镜头（比如水平30°）覆盖门口，以便在15英尺处获得80像素的面部。同样传感器尺寸的8MP摄像头可以使用60°镜头，仍然提供那80像素——实际上使覆盖面积翻倍。
 
-But there's a catch: **Lens quality becomes critical**. A cheap lens on a 12MP sensor will produce soft images that negate the resolution advantage. Aberrations, distortion, and chromatic effects become more visible as pixel count rises. You can't cheap out on optics if you're investing in high resolution.
+但有一个问题：**镜头质量变得至关重要**。12MP传感器上的廉价镜头会产生模糊的图像，从而抵消分辨率优势。随着像素数的增加，像差、畸变和色差变得更加明显。如果你投资高分辨率，就不能在光学元件上省钱。
 
-### Storage and Bandwidth Implications
+### 存储和带宽影响
 
-Higher resolution dramatically increases storage needs, and it's not linear—doubling resolution roughly quadruples pixel count, but bitrate increases are somewhat less due to compression efficiency.
+更高的分辨率会显著增加存储需求，而且这不是线性的——分辨率翻倍大约会使像素数增加四倍，但由于压缩效率，比特率的增加会少一些。
 
-| Resolution | Typical Bitrate (H.265) | Daily Storage (24/7) | 8-Camera 30-Day Storage |
-| ---------- | ----------------------- | -------------------- | ----------------------- |
-| 4MP        | 4-6 Mbps                | 12-18 GB             | 1.0-1.5 TB              |
-| 8MP (4K)   | 8-12 Mbps               | 24-36 GB             | 2.0-3.0 TB              |
-| 12MP       | 12-18 Mbps              | 36-54 GB             | 3.0-4.5 TB              |
+| 分辨率   | 典型比特率（H.265） | 每日存储（24/7） | 8台摄像头30天存储 |
+| -------- | ------------------- | ---------------- | ----------------- |
+| 4MP      | 4-6 Mbps            | 12-18 GB         | 1.0-1.5 TB        |
+| 8MP (4K) | 8-12 Mbps           | 24-36 GB         | 2.0-3.0 TB        |
+| 12MP     | 12-18 Mbps          | 36-54 GB         | 3.0-4.5 TB        |
 
-_Storage varies with scene complexity, motion, and compression settings._
+_存储量因场景复杂程度、运动量和压缩设置而异。_
 
-<Callout type="warning" title="The hidden costs of 4K">
+<Callout type="warning" title="4K的隐藏成本">
 
-    4K cameras chew through storage and bandwidth. If you're currently using 4MP
+    4K摄像头会消耗大量存储和带宽。如果你目前使用4MP
 
-cameras and switch to 4K, expect your recording storage needs to **more than
-double**. That means larger NVR hard drives, more cloud upload bandwidth if
-you use remote monitoring, and potentially slower playback due to higher data
-throughput requirements.
+摄像头并切换到4K，预计你的录像存储需求将**增加一倍以上**。这意味着更大的NVR硬盘，如果你使用远程监控则需要更多的云上传带宽，以及由于更高的数据吞吐量要求而可能更慢的回放。
 
 </Callout>
 
-### Lens Quality Impact
+### 镜头质量影响
 
-Higher resolution sensors demand better lenses to resolve the extra detail. A lens that's "good enough" for 4MP will become the limiting factor on an 8MP or 12MP camera. Look for:
+更高分辨率的传感器需要更好的镜头来解析额外的细节。一个对4MP来说"足够好"的镜头将成为8MP或12MP摄像头上的限制因素。寻找：
 
-- **High-quality glass elements** (not plastic)
-- **Low F-stop** (f/1.4 or lower) for better low-light performance
-- **Minimal distortion** (< 1% for wide-angle lenses)
-- **IR corrected** for night vision clarity
+- **高质量玻璃镜片**（非塑料）
+- **低F值**（f/1.4或更低）以获得更好的低光性能
+- **最小畸变**（广角镜头< 1%）
+- **红外校正**以获得清晰的夜视效果
 
-A cheap 4K camera with a poor lens will deliver worse identifiable detail than a 4MP camera with a good lens.
+一个镜头质量差的廉价4K摄像头，其可识别的细节会比镜头质量好的4MP摄像头更差。
 
-## Practical Scenarios
+## 实际场景
 
-### Small Home (≤ 50ft FOV)
+### 小型住宅（视野≤ 50英尺）
 
-For most residential properties with a footprint under 50 feet across, **4MP to 5MP is more than sufficient**. You can cover entrances, driveways, and yards with a single camera and still have enough pixel density to recognize faces at 10-15 feet.
+对于大多数占地面积小于50英尺的住宅物业，**4MP到5MP已经绰绰有余**。你可以用单个摄像头覆盖入口、车道和院子，仍然有足够的像素密度在10-15英尺处识别面部。
 
-**Why buy more?** You don't need it. Storage costs are lower, night vision is better (larger pixels), and you can place cameras farther apart.
+**为什么要买更多？** 你不需要。存储成本更低，夜视更好（像素更大），而且你可以把摄像头放得更远。
 
-**When to consider 8MP**: Only if you need to read license plates at the street or monitor a large, open backyard where you want to digitally zoom after the fact.
+**何时考虑8MP**：只有当你需要读取街道上的车牌，或监控一个你想要事后数码变焦的大型开放后院时。
 
-### Medium Property (50-100ft)
+### 中型物业（50-100英尺）
 
-For larger homes, small businesses, or medium-sized lots, **5MP to 8MP** strikes the right balance. You get enough detail to identify faces at 20-30 feet and enough coverage area to reduce camera count.
+对于较大的住宅、小型企业或中等大小的地块，**5MP到8MP**达到了正确的平衡。你获得足够的细节来识别20-30英尺处的面部，并有足够的覆盖面积来减少摄像头数量。
 
-**8MP benefits**: Digital zoom capability becomes useful; you can mount cameras farther from doorways while still capturing clear facial views.
+**8MP的优势**：数码变焦能力变得有用；你可以将摄像头安装在离门口更远的地方，同时仍能捕捉到清晰的面部视图。
 
-**Storage planning**: Budget about 25-35 GB per camera per day for 8MP vs 15-22 GB for 5MP. Over 30 days, that's roughly 1 TB vs 0.7 TB per camera. For a 16-camera system, that difference means 16 TB vs 11 TB—a significant cost.
+**存储规划**：8MP每个摄像头每天预算约25-35 GB，而5MP为15-22 GB。30天内，每个摄像头大约需要1 TB对0.7 TB。对于一个16摄像头的系统，这个差异意味着16 TB对11 TB——这是一笔可观的成本。
 
-### Large Perimeter / License Plate Reading
+### 大型周界 / 车牌读取
 
-For large industrial sites, perimeter fencing, or dedicated license plate recognition (LPR), **12MP (4K) can be justified** if you need to:
+对于大型工业场所、周界围栏或专用车牌识别（LPR），**12MP（4K）可能是合理的**，如果你需要：
 
-- Cover a wide area (100+ feet) with a single camera
-- Identify faces or plates beyond 30 feet
-- Perform forensic analysis after an incident (zoom into small details)
+- 用单个摄像头覆盖广阔区域（100+英尺）
+- 识别30英尺以外的面部或车牌
+- 在事件发生后进行法医分析（放大查看细节）
 
-**Caveat**: 12MP requires excellent lighting. At dusk or night, you'll need supplemental IR or white-light illumination to overcome the small pixel size. Many LPR systems actually use dedicated 2MP-5MP cameras with very narrow fields of view and strong IR—resolution isn't the only factor.
+**注意**：12MP需要极好的照明。在黄昏或夜间，你需要补充红外或白光照明来克服小像素尺寸的问题。许多LPR系统实际上使用专门的2MP-5MP摄像头，具有非常窄的视野和强大的红外——分辨率不是唯一的因素。
 
-### Facial Identification Requirements
+### 面部识别要求
 
-To reliably identify a face, you need **approximately 80-120 pixels between the eyes** (depending on algorithm quality). At 15 feet:
+要可靠地识别面部，你需要在**双眼之间大约80-120像素**（取决于算法质量）。在15英尺处：
 
-- 4MP (2560x1440) with a 60° lens: ~60 pixels between eyes
-- 8MP (3840x2160) with a 60° lens: ~90 pixels between eyes
-- 12MP with a 60° lens: ~130 pixels between eyes
+- 4MP（2560x1440）搭配60°镜头：双眼之间约60像素
+- 8MP（3840x2160）搭配60°镜头：双眼之间约90像素
+- 12MP搭配60°镜头：双眼之间约130像素
 
-If your identification distance is consistently under 20 feet, 8MP gives you enough pixels for modern facial recognition algorithms. Beyond 30 feet, even 12MP may fall short without an extreme telephoto lens.
+如果你的识别距离始终在20英尺以下，8MP为现代面部识别算法提供了足够的像素。超过30英尺，即使12MP也可能不够，除非使用极端的远摄镜头。
 
-## Cost vs Benefit: Diminishing Returns
+## 成本与收益：收益递减
 
-The math is straightforward: if you double resolution in each dimension (2x width, 2x height), you get 4x the pixel count. But your ability to extract useful information doesn't scale linearly.
+计算方法很简单：如果你在每个维度上将分辨率翻倍（2倍宽度，2倍高度），你会获得4倍的像素数。但你提取有用信息的能力并不能线性扩展。
 
-**Why?** Because most security use cases require a threshold of pixels on target (typically 40-80 pixels for general detection, 80-120 for identification). Once you exceed that threshold, extra pixels provide diminishing returns.
+**为什么？** 因为大多数安全用例需要目标上的像素阈值（一般检测通常需要40-80像素，识别需要80-120像素）。一旦你超过这个阈值，额外的像素提供递减的收益。
 
-Example: Suppose your camera needs to cover a 20-foot wide doorway, and you want 80 pixels across a face at the far edge. With a 60° horizontal FOV:
+例子：假设你的摄像头需要覆盖一个20英尺宽的门口，并且你希望在远边缘的面部上有80像素。使用60°水平视野：
 
-- At 4MP: you'd need to zoom digitally (crop) to achieve 80 pixels, reducing the scene coverage.
-- At 8MP: you get 80 pixels naturally across the full 20 feet.
-- At 12MP: you get 120 pixels—more than needed for identification, but you're paying for 50% more pixels than the 8MP camera that already met the threshold.
+- 在4MP：你需要数码变焦（裁剪）才能达到80像素，从而减少了场景覆盖。
+- 在8MP：你在整个20英尺范围内自然获得80像素。
+- 在12MP：你获得120像素——超过了识别所需，但你支付的像素比已经达到阈值的8MP摄像头多50%。
 
-**Storage cost inflation**: Going from 4MP to 8MP increases daily storage per camera by ~2x. From 8MP to 12MP, another ~1.5x. Yet the practical benefit from 8MP to 12MP is often marginal unless you're pushing extreme distances.
+**存储成本膨胀**：从4MP升级到8MP，每台摄像头每日存储增加约2倍。从8MP到12MP，再增加约1.5倍。然而，从8MP到12MP的实际收益通常是微不足道的，除非你追求极远的距离。
 
-## Recommendation Matrix
+## 推荐矩阵
 
-| Use Case                           | Recommended Resolution | Why?                                                                |
-| ---------------------------------- | ---------------------- | ------------------------------------------------------------------- |
-| Indoor office / retail             | 4MP                    | Low light performance excellent; storage minimal; face ID at 10 ft  |
-| Front door / short-range entry     | 5MP or 8MP             | Good balance; 8MP if you need digital zoom for package details      |
-| Driveway / street parking          | 8MP                    | License plates at 15-20 mph; face ID at 20 ft                       |
-| Large backyard / perimeter fence   | 8MP or 12MP            | Wide coverage; 12MP only if you need >30 ft identification distance |
-| ATM / point of sale                | 8MP                    | Required by many compliance standards for facial capture quality    |
-| Industrial loading dock            | 12MP                   | Extreme distance identification; wide coverage area                 |
-| Warehouse interior (high ceilings) | 4MP-5MP                | Better low-light; fewer pixels needed for presence detection        |
-| Multi-unit building entrance       | 8MP                    | Covers entire entryway; zoom to see who's at each door              |
+| 使用场景             | 推荐分辨率 | 原因                                              |
+| -------------------- | ---------- | ------------------------------------------------- |
+| 室内办公室 / 零售店  | 4MP        | 低光性能出色；存储需求最小；10英尺处面部识别      |
+| 前门 / 短距离入口    | 5MP或8MP   | 良好的平衡；如果需要数码变焦查看包裹细节，选择8MP |
+| 车道 / 路边停车      | 8MP        | 15-20英尺处识别车牌；20英尺处面部识别             |
+| 大后院 / 周界围栏    | 8MP或12MP  | 宽覆盖；仅当需要>30英尺识别距离时选择12MP         |
+| ATM / 销售点         | 8MP        | 许多合规标准对面部捕捉质量的要求                  |
+| 工业装卸区           | 12MP       | 极远距离识别；宽覆盖面积                          |
+| 仓库内部（高天花板） | 4MP-5MP    | 更好的低光性能；存在检测所需的像素更少            |
+| 多单元建筑入口       | 8MP        | 覆盖整个入口；放大查看每个门口的人                |
 
-<Callout type="info" title="Mix and match!">
+<Callout type="info" title="混合搭配！">
 
-The best systems use multiple resolutions: 4MP indoors for low-light, 8MP at
-key outdoor zones, and maybe 12MP on a dedicated LPR camera. Don't feel
-pressured to standardize on one resolution across your entire property.
+最好的系统使用多种分辨率：室内低光用4MP，关键户外区域用8MP，专用LPR摄像头可能用12MP。不要感到有压力要在整个物业中统一使用一种分辨率。
 
 </Callout>
 
-## Conclusion: Choose Based on Needs, Not Megapixels
+## 结论：根据需求选择，而非像素
 
-The surveillance industry wants you to believe that higher numbers are always better. The reality is that **the optimal resolution is the lowest one that meets your identification distance requirements at your required field of view**. Beyond that, you're just spending more on storage, bandwidth, and potentially worse low-light performance.
+监控行业希望你相信更高的数字总是更好。事实是**最佳分辨率是能在你所需的视野内满足识别距离要求的最低分辨率**。超过这个限度，你只是在存储、带宽和可能更差的低光性能上花费更多。
 
-**Quick decision guide**:
+**快速决策指南**：
 
-- **Need identification at ≤ 20 feet?** 5MP-8MP is plenty.
-- **Covering > 100 ft wide area?** Consider 8MP, but evaluate sensor size and lens quality.
-- **License plates at > 30 feet or wide perimeter?** 12MP may be necessary, but check low-light specs.
-- **Budget or storage constrained?** Drop a tier; you won't lose meaningful identification capability.
+- **需要在≤ 20英尺处识别？** 5MP-8MP足够了。
+- **覆盖> 100英尺的宽广区域？** 考虑8MP，但要评估传感器尺寸和镜头质量。
+- **在> 30英尺处识别车牌或宽广周界？** 12MP可能是必要的，但要检查低光规格。
+- **预算或存储受限？** 降低一个档次；你不会失去有意义的识别能力。
 
-Before buying that 4K camera, calculate: How many pixels on target do I actually need at my critical distance? Then buy the resolution that meets that number—nothing more.
+在购买那台4K摄像头之前，计算一下：在关键距离上，我实际上需要目标上有多少像素？然后购买满足这个数字的分辨率——仅此而已。
